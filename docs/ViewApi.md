@@ -14,7 +14,7 @@ Method | HTTP request | Description
 
 ## Export
 
-> *os.File Export(ctx, viewId).ColumnIds(columnIds).Query(query).Sort(sort).Type_(type_).Execute()
+> *os.File Export(ctx, viewId).ColumnIds(columnIds).FileHeader(fileHeader).Query(query).Sort(sort).Type_(type_).Execute()
 
 export
 
@@ -33,13 +33,14 @@ import (
 func main() {
     viewId := "viewId_example" // string | viewId
     columnIds := []string{"Inner_example"} // []string | columnIds (optional)
+    fileHeader := "fileHeader_example" // string | fileHeader (optional) (default to "columnName")
     query := "query_example" // string | query (optional) (default to "{}")
     sort := "sort_example" // string | sort (optional) (default to "{}")
     type_ := "type__example" // string | type (optional) (default to "csv")
 
     configuration := gridly.NewConfiguration()
     api_client := gridly.NewAPIClient(configuration)
-    resp, r, err := api_client.ViewApi.Export(context.Background(), viewId).ColumnIds(columnIds).Query(query).Sort(sort).Type_(type_).Execute()
+    resp, r, err := api_client.ViewApi.Export(context.Background(), viewId).ColumnIds(columnIds).FileHeader(fileHeader).Query(query).Sort(sort).Type_(type_).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ViewApi.Export``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -66,6 +67,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
  **columnIds** | **[]string** | columnIds | 
+ **fileHeader** | **string** | fileHeader | [default to &quot;columnName&quot;]
  **query** | **string** | query | [default to &quot;{}&quot;]
  **sort** | **string** | sort | [default to &quot;{}&quot;]
  **type_** | **string** | type | [default to &quot;csv&quot;]

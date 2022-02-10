@@ -102,7 +102,7 @@ Class | Method | HTTP request | Description
 *GridMetadataApi* | [**Update**](docs/GridMetadataApi.md#update) | **Patch** /v1/grids/{gridId}/metadata/{metadataId} | update
 *ProjectApi* | [**Create**](docs/ProjectApi.md#create) | **Post** /v1/projects | create
 *ProjectApi* | [**Delete**](docs/ProjectApi.md#delete) | **Delete** /v1/projects/{projectId} | delete
-*ProjectApi* | [**FindOneDetail**](docs/ProjectApi.md#findonedetail) | **Get** /v1/projects/{projectId} | findOneDetail
+*ProjectApi* | [**FindOne**](docs/ProjectApi.md#findone) | **Get** /v1/projects/{projectId} | findOne
 *ProjectApi* | [**List**](docs/ProjectApi.md#list) | **Get** /v1/projects | list
 *ProjectApi* | [**Update**](docs/ProjectApi.md#update) | **Put** /v1/projects/{projectId} | update
 *RecordApi* | [**Create**](docs/RecordApi.md#create) | **Post** /v1/views/{viewId}/records | create

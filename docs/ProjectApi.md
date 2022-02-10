@@ -6,7 +6,7 @@ Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**Create**](ProjectApi.md#Create) | **Post** /v1/projects | create
 [**Delete**](ProjectApi.md#Delete) | **Delete** /v1/projects/{projectId} | delete
-[**FindOneDetail**](ProjectApi.md#FindOneDetail) | **Get** /v1/projects/{projectId} | findOneDetail
+[**FindOne**](ProjectApi.md#FindOne) | **Get** /v1/projects/{projectId} | findOne
 [**List**](ProjectApi.md#List) | **Get** /v1/projects | list
 [**Update**](ProjectApi.md#Update) | **Put** /v1/projects/{projectId} | update
 
@@ -142,11 +142,11 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## FindOneDetail
+## FindOne
 
-> ProjectDetail FindOneDetail(ctx, projectId).Expand(expand).Execute()
+> ProjectDetail FindOne(ctx, projectId).Execute()
 
-findOneDetail
+findOne
 
 ### Example
 
@@ -161,18 +161,17 @@ import (
 )
 
 func main() {
-    expand := "expand_example" // string | expand
     projectId := int64(789) // int64 | projectId
 
     configuration := gridly.NewConfiguration()
     api_client := gridly.NewAPIClient(configuration)
-    resp, r, err := api_client.ProjectApi.FindOneDetail(context.Background(), projectId).Expand(expand).Execute()
+    resp, r, err := api_client.ProjectApi.FindOne(context.Background(), projectId).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `ProjectApi.FindOneDetail``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `ProjectApi.FindOne``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `FindOneDetail`: ProjectDetail
-    fmt.Fprintf(os.Stdout, "Response from `ProjectApi.FindOneDetail`: %v\n", resp)
+    // response from `FindOne`: ProjectDetail
+    fmt.Fprintf(os.Stdout, "Response from `ProjectApi.FindOne`: %v\n", resp)
 }
 ```
 
@@ -186,12 +185,11 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiFindOneDetailRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiFindOneRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **expand** | **string** | expand | 
 
 
 ### Return type

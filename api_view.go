@@ -34,6 +34,7 @@ type ViewApiApiExportRequest struct {
 	ApiService *ViewApiService
 	viewId string
 	columnIds *[]string
+	fileHeader *string
 	query *string
 	sort *string
 	type_ *string
@@ -42,6 +43,11 @@ type ViewApiApiExportRequest struct {
 // columnIds
 func (r ViewApiApiExportRequest) ColumnIds(columnIds []string) ViewApiApiExportRequest {
 	r.columnIds = &columnIds
+	return r
+}
+// fileHeader
+func (r ViewApiApiExportRequest) FileHeader(fileHeader string) ViewApiApiExportRequest {
+	r.fileHeader = &fileHeader
 	return r
 }
 // query
@@ -111,6 +117,9 @@ func (a *ViewApiService) ExportExecute(r ViewApiApiExportRequest) (*os.File, *_n
 		} else {
 			localVarQueryParams.Add("columnIds", parameterToString(t, "multi"))
 		}
+	}
+	if r.fileHeader != nil {
+		localVarQueryParams.Add("fileHeader", parameterToString(*r.fileHeader, ""))
 	}
 	if r.query != nil {
 		localVarQueryParams.Add("query", parameterToString(*r.query, ""))

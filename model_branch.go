@@ -23,6 +23,7 @@ type Branch struct {
 	IsMaster *bool `json:"isMaster,omitempty"`
 	Metadata *map[string]string `json:"metadata,omitempty"`
 	Name *string `json:"name,omitempty"`
+	Status *string `json:"status,omitempty"`
 }
 
 // NewBranch instantiates a new Branch object
@@ -266,6 +267,38 @@ func (o *Branch) SetName(v string) {
 	o.Name = &v
 }
 
+// GetStatus returns the Status field value if set, zero value otherwise.
+func (o *Branch) GetStatus() string {
+	if o == nil || o.Status == nil {
+		var ret string
+		return ret
+	}
+	return *o.Status
+}
+
+// GetStatusOk returns a tuple with the Status field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *Branch) GetStatusOk() (*string, bool) {
+	if o == nil || o.Status == nil {
+		return nil, false
+	}
+	return o.Status, true
+}
+
+// HasStatus returns a boolean if a field has been set.
+func (o *Branch) HasStatus() bool {
+	if o != nil && o.Status != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetStatus gets a reference to the given string and assigns it to the Status field.
+func (o *Branch) SetStatus(v string) {
+	o.Status = &v
+}
+
 func (o Branch) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if o.Columns != nil {
@@ -288,6 +321,9 @@ func (o Branch) MarshalJSON() ([]byte, error) {
 	}
 	if o.Name != nil {
 		toSerialize["name"] = o.Name
+	}
+	if o.Status != nil {
+		toSerialize["status"] = o.Status
 	}
 	return json.Marshal(toSerialize)
 }

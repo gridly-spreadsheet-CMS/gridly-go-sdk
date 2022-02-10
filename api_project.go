@@ -255,32 +255,26 @@ func (a *ProjectApiService) DeleteExecute(r ProjectApiApiDeleteRequest) (*_netht
 	return localVarHTTPResponse, nil
 }
 
-type ProjectApiApiFindOneDetailRequest struct {
+type ProjectApiApiFindOneRequest struct {
 	ctx _context.Context
 	ApiService *ProjectApiService
-	expand *string
 	projectId int64
 }
 
-// expand
-func (r ProjectApiApiFindOneDetailRequest) Expand(expand string) ProjectApiApiFindOneDetailRequest {
-	r.expand = &expand
-	return r
-}
 
-func (r ProjectApiApiFindOneDetailRequest) Execute() (ProjectDetail, *_nethttp.Response, error) {
-	return r.ApiService.FindOneDetailExecute(r)
+func (r ProjectApiApiFindOneRequest) Execute() (ProjectDetail, *_nethttp.Response, error) {
+	return r.ApiService.FindOneExecute(r)
 }
 
 /*
-FindOneDetail findOneDetail
+FindOne findOne
 
  @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param projectId projectId
- @return ProjectApiApiFindOneDetailRequest
+ @return ProjectApiApiFindOneRequest
 */
-func (a *ProjectApiService) FindOneDetail(ctx _context.Context, projectId int64) ProjectApiApiFindOneDetailRequest {
-	return ProjectApiApiFindOneDetailRequest{
+func (a *ProjectApiService) FindOne(ctx _context.Context, projectId int64) ProjectApiApiFindOneRequest {
+	return ProjectApiApiFindOneRequest{
 		ApiService: a,
 		ctx: ctx,
 		projectId: projectId,
@@ -289,7 +283,7 @@ func (a *ProjectApiService) FindOneDetail(ctx _context.Context, projectId int64)
 
 // Execute executes the request
 //  @return ProjectDetail
-func (a *ProjectApiService) FindOneDetailExecute(r ProjectApiApiFindOneDetailRequest) (ProjectDetail, *_nethttp.Response, error) {
+func (a *ProjectApiService) FindOneExecute(r ProjectApiApiFindOneRequest) (ProjectDetail, *_nethttp.Response, error) {
 	var (
 		localVarHTTPMethod   = _nethttp.MethodGet
 		localVarPostBody     interface{}
@@ -297,7 +291,7 @@ func (a *ProjectApiService) FindOneDetailExecute(r ProjectApiApiFindOneDetailReq
 		localVarReturnValue  ProjectDetail
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProjectApiService.FindOneDetail")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProjectApiService.FindOne")
 	if err != nil {
 		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
 	}
@@ -308,11 +302,7 @@ func (a *ProjectApiService) FindOneDetailExecute(r ProjectApiApiFindOneDetailReq
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := _neturl.Values{}
 	localVarFormParams := _neturl.Values{}
-	if r.expand == nil {
-		return localVarReturnValue, nil, reportError("expand is required and must be specified")
-	}
 
-	localVarQueryParams.Add("expand", parameterToString(*r.expand, ""))
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
 
