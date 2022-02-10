@@ -19,7 +19,7 @@ jobs:
           - 1.16.x
           - 1.17.x
     env:
-      TAG_NAME: 1.1.0
+      TAG_NAME: 1.2.0
     steps:
     - name: Setup Go
       uses: actions/setup-go@v2
@@ -47,7 +47,7 @@ jobs:
       with:
         draft: false
         prerelease: true
-        tag_name: 1.1.0
+        tag_name: 1.2.0
         files: .zip
       env:
         GITHUB_TOKEN: ${{ github.token }}
