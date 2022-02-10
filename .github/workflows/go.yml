@@ -37,7 +37,7 @@ jobs:
         # Artifact name
         name: com.gridly.go-sdk
         # A file, directory or wildcard pattern that describes what to upload
-        path: *.*
+        path: .*
         retention-days: 1
         if-no-files-found: error
         
@@ -48,6 +48,6 @@ jobs:
         draft: false
         prerelease: true
         tag_name: 1.1.0
-        files: *.zip
+        files: .zip
       env:
         GITHUB_TOKEN: ${{ github.token }}
