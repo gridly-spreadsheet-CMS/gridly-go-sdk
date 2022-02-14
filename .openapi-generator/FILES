@@ -37,7 +37,6 @@ docs/GridApi.md
 docs/GridMetadataApi.md
 docs/Metadata.md
 docs/NumberFormat.md
-docs/OptionalOfstring.md
 docs/Privilege.md
 docs/Project.md
 docs/ProjectApi.md
@@ -90,7 +89,6 @@ model_file.go
 model_grid.go
 model_metadata.go
 model_number_format.go
-model_optional_ofstring.go
 model_privilege.go
 model_project.go
 model_project_detail.go

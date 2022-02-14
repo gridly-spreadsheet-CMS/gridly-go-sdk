@@ -6,7 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Cells** | Pointer to [**[]SetCell**](SetCell.md) |  | [optional] 
 **Id** | Pointer to **string** |  | [optional] 
-**Path** | Pointer to [**OptionalOfstring**](OptionalOfstring.md) |  | [optional] 
+**Path** | Pointer to **string** |  | [optional] 
 
 ## Methods
 
@@ -79,20 +79,20 @@ HasId returns a boolean if a field has been set.
 
 ### GetPath
 
-`func (o *SetRecord) GetPath() OptionalOfstring`
+`func (o *SetRecord) GetPath() string`
 
 GetPath returns the Path field if non-nil, zero value otherwise.
 
 ### GetPathOk
 
-`func (o *SetRecord) GetPathOk() (*OptionalOfstring, bool)`
+`func (o *SetRecord) GetPathOk() (*string, bool)`
 
 GetPathOk returns a tuple with the Path field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetPath
 
-`func (o *SetRecord) SetPath(v OptionalOfstring)`
+`func (o *SetRecord) SetPath(v string)`
 
 SetPath sets Path field to given value.
 

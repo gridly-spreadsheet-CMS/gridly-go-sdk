@@ -18,7 +18,7 @@ import (
 type SetRecord struct {
 	Cells *[]SetCell `json:"cells,omitempty"`
 	Id *string `json:"id,omitempty"`
-	Path *OptionalOfstring `json:"path,omitempty"`
+	Path *string `json:"path,omitempty"`
 }
 
 // NewSetRecord instantiates a new SetRecord object
@@ -103,9 +103,9 @@ func (o *SetRecord) SetId(v string) {
 }
 
 // GetPath returns the Path field value if set, zero value otherwise.
-func (o *SetRecord) GetPath() OptionalOfstring {
+func (o *SetRecord) GetPath() string {
 	if o == nil || o.Path == nil {
-		var ret OptionalOfstring
+		var ret string
 		return ret
 	}
 	return *o.Path
@@ -113,7 +113,7 @@ func (o *SetRecord) GetPath() OptionalOfstring {
 
 // GetPathOk returns a tuple with the Path field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *SetRecord) GetPathOk() (*OptionalOfstring, bool) {
+func (o *SetRecord) GetPathOk() (*string, bool) {
 	if o == nil || o.Path == nil {
 		return nil, false
 	}
@@ -129,8 +129,8 @@ func (o *SetRecord) HasPath() bool {
 	return false
 }
 
-// SetPath gets a reference to the given OptionalOfstring and assigns it to the Path field.
-func (o *SetRecord) SetPath(v OptionalOfstring) {
+// SetPath gets a reference to the given string and assigns it to the Path field.
+func (o *SetRecord) SetPath(v string) {
 	o.Path = &v
 }
 

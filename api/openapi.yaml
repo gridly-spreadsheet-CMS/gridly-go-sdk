@@ -3003,17 +3003,6 @@ components:
           type: boolean
       title: NumberFormat
       type: object
-    OptionalOfstring:
-      example:
-        present: true
-        empty: true
-      properties:
-        empty:
-          type: boolean
-        present:
-          type: boolean
-      title: OptionalOfstring
-      type: object
     Record:
       example:
         path: path
@@ -3157,9 +3146,7 @@ components:
       type: object
     SetRecord:
       example:
-        path:
-          present: true
-          empty: true
+        path: path
         cells:
         - columnId: columnId
           referencedIds:
@@ -3180,7 +3167,7 @@ components:
         id:
           type: string
         path:
-          $ref: '#/components/schemas/OptionalOfstring'
+          type: string
       title: SetRecord
       type: object
     StreamingResponseBody:
