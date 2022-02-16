@@ -15,7 +15,7 @@ Method | HTTP request | Description
 
 ## Create
 
-> Grid Create(ctx).DbId(dbId).CreateCompositeGrid(createCompositeGrid).Execute()
+> Grid Create(ctx).DbId(dbId).CreateGrid(createGrid).Execute()
 
 create
 
@@ -33,11 +33,11 @@ import (
 
 func main() {
     dbId := "dbId_example" // string | dbId
-    createCompositeGrid := *gridly.NewCreateGrid() // CreateGrid | createCompositeGrid
+    createGrid := *gridly.NewCreateGrid() // CreateGrid | createGrid
 
     configuration := gridly.NewConfiguration()
     api_client := gridly.NewAPIClient(configuration)
-    resp, r, err := api_client.GridApi.Create(context.Background()).DbId(dbId).CreateCompositeGrid(createCompositeGrid).Execute()
+    resp, r, err := api_client.GridApi.Create(context.Background()).DbId(dbId).CreateGrid(createGrid).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `GridApi.Create``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -59,7 +59,7 @@ Other parameters are passed through a pointer to a apiCreateRequest struct via t
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **dbId** | **string** | dbId | 
- **createCompositeGrid** | [**CreateGrid**](CreateGrid.md) | createCompositeGrid | 
+ **createGrid** | [**CreateGrid**](CreateGrid.md) | createGrid | 
 
 ### Return type
 
@@ -338,7 +338,7 @@ Other parameters are passed through a pointer to a apiListTemplateGridsRequest s
 
 ## Update
 
-> Grid Update(ctx, gridId).UpdateCompositeGrid(updateCompositeGrid).Execute()
+> Grid Update(ctx, gridId).UpdateGrid(updateGrid).Execute()
 
 update
 
@@ -356,11 +356,11 @@ import (
 
 func main() {
     gridId := "gridId_example" // string | gridId
-    updateCompositeGrid := *gridly.NewUpdateGrid() // UpdateGrid | updateCompositeGrid
+    updateGrid := *gridly.NewUpdateGrid() // UpdateGrid | updateGrid
 
     configuration := gridly.NewConfiguration()
     api_client := gridly.NewAPIClient(configuration)
-    resp, r, err := api_client.GridApi.Update(context.Background(), gridId).UpdateCompositeGrid(updateCompositeGrid).Execute()
+    resp, r, err := api_client.GridApi.Update(context.Background(), gridId).UpdateGrid(updateGrid).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `GridApi.Update``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -386,7 +386,7 @@ Other parameters are passed through a pointer to a apiUpdateRequest struct via t
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **updateCompositeGrid** | [**UpdateGrid**](UpdateGrid.md) | updateCompositeGrid | 
+ **updateGrid** | [**UpdateGrid**](UpdateGrid.md) | updateGrid | 
 
 ### Return type
 
