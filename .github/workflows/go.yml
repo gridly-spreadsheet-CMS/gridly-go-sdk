@@ -19,7 +19,7 @@ jobs:
           - 1.16.x
           - 1.17.x
     env:
-      TAG_NAME: 1.2.0
+      RELEASE_VERSION: ""
     steps:
     - name: Setup Go
       uses: actions/setup-go@v2
@@ -40,14 +40,15 @@ jobs:
         path: .*
         retention-days: 1
         if-no-files-found: error
-        
+    - name: Get version
+      run: |
+          cat VERSION >> $RELEASE_VERSION          
     - name: Github Release
       uses: softprops/action-gh-release@v1
       id: create_release
       with:
         draft: false
         prerelease: true
-        tag_name: 1.2.0
-        files: .zip
+        tag_name: ${{ RELEASE_VERSION }}
       env:
         GITHUB_TOKEN: ${{ github.token }}
