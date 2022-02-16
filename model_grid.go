@@ -16,14 +16,12 @@ import (
 
 // Grid struct for Grid
 type Grid struct {
-	BranchId *string `json:"branchId,omitempty"`
-	Branches *[]Grid `json:"branches,omitempty"`
-	CustomProperties *map[string]map[string]interface{} `json:"customProperties,omitempty"`
+	Columns *[]ViewColumn `json:"columns,omitempty"`
 	DefaultAccessViewId *string `json:"defaultAccessViewId,omitempty"`
-	GroupTagDefinition *[]string `json:"groupTagDefinition,omitempty"`
+	Description *string `json:"description,omitempty"`
 	Id *string `json:"id,omitempty"`
+	Metadata *map[string]string `json:"metadata,omitempty"`
 	Name *string `json:"name,omitempty"`
-	ParentGridId *string `json:"parentGridId,omitempty"`
 	Status *string `json:"status,omitempty"`
 }
 
@@ -44,100 +42,36 @@ func NewGridWithDefaults() *Grid {
 	return &this
 }
 
-// GetBranchId returns the BranchId field value if set, zero value otherwise.
-func (o *Grid) GetBranchId() string {
-	if o == nil || o.BranchId == nil {
-		var ret string
+// GetColumns returns the Columns field value if set, zero value otherwise.
+func (o *Grid) GetColumns() []ViewColumn {
+	if o == nil || o.Columns == nil {
+		var ret []ViewColumn
 		return ret
 	}
-	return *o.BranchId
+	return *o.Columns
 }
 
-// GetBranchIdOk returns a tuple with the BranchId field value if set, nil otherwise
+// GetColumnsOk returns a tuple with the Columns field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *Grid) GetBranchIdOk() (*string, bool) {
-	if o == nil || o.BranchId == nil {
+func (o *Grid) GetColumnsOk() (*[]ViewColumn, bool) {
+	if o == nil || o.Columns == nil {
 		return nil, false
 	}
-	return o.BranchId, true
+	return o.Columns, true
 }
 
-// HasBranchId returns a boolean if a field has been set.
-func (o *Grid) HasBranchId() bool {
-	if o != nil && o.BranchId != nil {
+// HasColumns returns a boolean if a field has been set.
+func (o *Grid) HasColumns() bool {
+	if o != nil && o.Columns != nil {
 		return true
 	}
 
 	return false
 }
 
-// SetBranchId gets a reference to the given string and assigns it to the BranchId field.
-func (o *Grid) SetBranchId(v string) {
-	o.BranchId = &v
-}
-
-// GetBranches returns the Branches field value if set, zero value otherwise.
-func (o *Grid) GetBranches() []Grid {
-	if o == nil || o.Branches == nil {
-		var ret []Grid
-		return ret
-	}
-	return *o.Branches
-}
-
-// GetBranchesOk returns a tuple with the Branches field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *Grid) GetBranchesOk() (*[]Grid, bool) {
-	if o == nil || o.Branches == nil {
-		return nil, false
-	}
-	return o.Branches, true
-}
-
-// HasBranches returns a boolean if a field has been set.
-func (o *Grid) HasBranches() bool {
-	if o != nil && o.Branches != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetBranches gets a reference to the given []Grid and assigns it to the Branches field.
-func (o *Grid) SetBranches(v []Grid) {
-	o.Branches = &v
-}
-
-// GetCustomProperties returns the CustomProperties field value if set, zero value otherwise.
-func (o *Grid) GetCustomProperties() map[string]map[string]interface{} {
-	if o == nil || o.CustomProperties == nil {
-		var ret map[string]map[string]interface{}
-		return ret
-	}
-	return *o.CustomProperties
-}
-
-// GetCustomPropertiesOk returns a tuple with the CustomProperties field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *Grid) GetCustomPropertiesOk() (*map[string]map[string]interface{}, bool) {
-	if o == nil || o.CustomProperties == nil {
-		return nil, false
-	}
-	return o.CustomProperties, true
-}
-
-// HasCustomProperties returns a boolean if a field has been set.
-func (o *Grid) HasCustomProperties() bool {
-	if o != nil && o.CustomProperties != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetCustomProperties gets a reference to the given map[string]map[string]interface{} and assigns it to the CustomProperties field.
-func (o *Grid) SetCustomProperties(v map[string]map[string]interface{}) {
-	o.CustomProperties = &v
+// SetColumns gets a reference to the given []ViewColumn and assigns it to the Columns field.
+func (o *Grid) SetColumns(v []ViewColumn) {
+	o.Columns = &v
 }
 
 // GetDefaultAccessViewId returns the DefaultAccessViewId field value if set, zero value otherwise.
@@ -172,36 +106,36 @@ func (o *Grid) SetDefaultAccessViewId(v string) {
 	o.DefaultAccessViewId = &v
 }
 
-// GetGroupTagDefinition returns the GroupTagDefinition field value if set, zero value otherwise.
-func (o *Grid) GetGroupTagDefinition() []string {
-	if o == nil || o.GroupTagDefinition == nil {
-		var ret []string
+// GetDescription returns the Description field value if set, zero value otherwise.
+func (o *Grid) GetDescription() string {
+	if o == nil || o.Description == nil {
+		var ret string
 		return ret
 	}
-	return *o.GroupTagDefinition
+	return *o.Description
 }
 
-// GetGroupTagDefinitionOk returns a tuple with the GroupTagDefinition field value if set, nil otherwise
+// GetDescriptionOk returns a tuple with the Description field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *Grid) GetGroupTagDefinitionOk() (*[]string, bool) {
-	if o == nil || o.GroupTagDefinition == nil {
+func (o *Grid) GetDescriptionOk() (*string, bool) {
+	if o == nil || o.Description == nil {
 		return nil, false
 	}
-	return o.GroupTagDefinition, true
+	return o.Description, true
 }
 
-// HasGroupTagDefinition returns a boolean if a field has been set.
-func (o *Grid) HasGroupTagDefinition() bool {
-	if o != nil && o.GroupTagDefinition != nil {
+// HasDescription returns a boolean if a field has been set.
+func (o *Grid) HasDescription() bool {
+	if o != nil && o.Description != nil {
 		return true
 	}
 
 	return false
 }
 
-// SetGroupTagDefinition gets a reference to the given []string and assigns it to the GroupTagDefinition field.
-func (o *Grid) SetGroupTagDefinition(v []string) {
-	o.GroupTagDefinition = &v
+// SetDescription gets a reference to the given string and assigns it to the Description field.
+func (o *Grid) SetDescription(v string) {
+	o.Description = &v
 }
 
 // GetId returns the Id field value if set, zero value otherwise.
@@ -236,6 +170,38 @@ func (o *Grid) SetId(v string) {
 	o.Id = &v
 }
 
+// GetMetadata returns the Metadata field value if set, zero value otherwise.
+func (o *Grid) GetMetadata() map[string]string {
+	if o == nil || o.Metadata == nil {
+		var ret map[string]string
+		return ret
+	}
+	return *o.Metadata
+}
+
+// GetMetadataOk returns a tuple with the Metadata field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *Grid) GetMetadataOk() (*map[string]string, bool) {
+	if o == nil || o.Metadata == nil {
+		return nil, false
+	}
+	return o.Metadata, true
+}
+
+// HasMetadata returns a boolean if a field has been set.
+func (o *Grid) HasMetadata() bool {
+	if o != nil && o.Metadata != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetMetadata gets a reference to the given map[string]string and assigns it to the Metadata field.
+func (o *Grid) SetMetadata(v map[string]string) {
+	o.Metadata = &v
+}
+
 // GetName returns the Name field value if set, zero value otherwise.
 func (o *Grid) GetName() string {
 	if o == nil || o.Name == nil {
@@ -266,38 +232,6 @@ func (o *Grid) HasName() bool {
 // SetName gets a reference to the given string and assigns it to the Name field.
 func (o *Grid) SetName(v string) {
 	o.Name = &v
-}
-
-// GetParentGridId returns the ParentGridId field value if set, zero value otherwise.
-func (o *Grid) GetParentGridId() string {
-	if o == nil || o.ParentGridId == nil {
-		var ret string
-		return ret
-	}
-	return *o.ParentGridId
-}
-
-// GetParentGridIdOk returns a tuple with the ParentGridId field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *Grid) GetParentGridIdOk() (*string, bool) {
-	if o == nil || o.ParentGridId == nil {
-		return nil, false
-	}
-	return o.ParentGridId, true
-}
-
-// HasParentGridId returns a boolean if a field has been set.
-func (o *Grid) HasParentGridId() bool {
-	if o != nil && o.ParentGridId != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetParentGridId gets a reference to the given string and assigns it to the ParentGridId field.
-func (o *Grid) SetParentGridId(v string) {
-	o.ParentGridId = &v
 }
 
 // GetStatus returns the Status field value if set, zero value otherwise.
@@ -334,29 +268,23 @@ func (o *Grid) SetStatus(v string) {
 
 func (o Grid) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
-	if o.BranchId != nil {
-		toSerialize["branchId"] = o.BranchId
-	}
-	if o.Branches != nil {
-		toSerialize["branches"] = o.Branches
-	}
-	if o.CustomProperties != nil {
-		toSerialize["customProperties"] = o.CustomProperties
+	if o.Columns != nil {
+		toSerialize["columns"] = o.Columns
 	}
 	if o.DefaultAccessViewId != nil {
 		toSerialize["defaultAccessViewId"] = o.DefaultAccessViewId
 	}
-	if o.GroupTagDefinition != nil {
-		toSerialize["groupTagDefinition"] = o.GroupTagDefinition
+	if o.Description != nil {
+		toSerialize["description"] = o.Description
 	}
 	if o.Id != nil {
 		toSerialize["id"] = o.Id
 	}
+	if o.Metadata != nil {
+		toSerialize["metadata"] = o.Metadata
+	}
 	if o.Name != nil {
 		toSerialize["name"] = o.Name
-	}
-	if o.ParentGridId != nil {
-		toSerialize["parentGridId"] = o.ParentGridId
 	}
 	if o.Status != nil {
 		toSerialize["status"] = o.Status

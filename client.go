@@ -55,8 +55,6 @@ type APIClient struct {
 
 	GridApi *GridApiService
 
-	GridMetadataApi *GridMetadataApiService
-
 	ProjectApi *ProjectApiService
 
 	RecordApi *RecordApiService
@@ -91,7 +89,6 @@ func NewAPIClient(cfg *Configuration) *APIClient {
 	c.BranchApi = (*BranchApiService)(&c.common)
 	c.DatabaseApi = (*DatabaseApiService)(&c.common)
 	c.GridApi = (*GridApiService)(&c.common)
-	c.GridMetadataApi = (*GridMetadataApiService)(&c.common)
 	c.ProjectApi = (*ProjectApiService)(&c.common)
 	c.RecordApi = (*RecordApiService)(&c.common)
 	c.TaskApi = (*TaskApiService)(&c.common)

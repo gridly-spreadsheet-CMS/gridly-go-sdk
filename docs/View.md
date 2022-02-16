@@ -4,13 +4,12 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**CustomProperties** | Pointer to **map[string]map[string]interface{}** |  | [optional] 
-**Description** | Pointer to **string** |  | [optional] 
+**Columns** | Pointer to [**[]ViewColumn**](ViewColumn.md) |  | [optional] 
 **GridId** | Pointer to **string** |  | [optional] 
-**GroupTagDefinition** | Pointer to **[]string** |  | [optional] 
+**GridStatus** | Pointer to **string** |  | [optional] 
 **Id** | Pointer to **string** |  | [optional] 
 **Name** | Pointer to **string** |  | [optional] 
-**Status** | Pointer to **string** |  | [optional] 
+**Records** | Pointer to [**[]Record**](Record.md) |  | [optional] 
 
 ## Methods
 
@@ -31,55 +30,30 @@ NewViewWithDefaults instantiates a new View object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
 
-### GetCustomProperties
+### GetColumns
 
-`func (o *View) GetCustomProperties() map[string]map[string]interface{}`
+`func (o *View) GetColumns() []ViewColumn`
 
-GetCustomProperties returns the CustomProperties field if non-nil, zero value otherwise.
+GetColumns returns the Columns field if non-nil, zero value otherwise.
 
-### GetCustomPropertiesOk
+### GetColumnsOk
 
-`func (o *View) GetCustomPropertiesOk() (*map[string]map[string]interface{}, bool)`
+`func (o *View) GetColumnsOk() (*[]ViewColumn, bool)`
 
-GetCustomPropertiesOk returns a tuple with the CustomProperties field if it's non-nil, zero value otherwise
+GetColumnsOk returns a tuple with the Columns field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetCustomProperties
+### SetColumns
 
-`func (o *View) SetCustomProperties(v map[string]map[string]interface{})`
+`func (o *View) SetColumns(v []ViewColumn)`
 
-SetCustomProperties sets CustomProperties field to given value.
+SetColumns sets Columns field to given value.
 
-### HasCustomProperties
+### HasColumns
 
-`func (o *View) HasCustomProperties() bool`
+`func (o *View) HasColumns() bool`
 
-HasCustomProperties returns a boolean if a field has been set.
-
-### GetDescription
-
-`func (o *View) GetDescription() string`
-
-GetDescription returns the Description field if non-nil, zero value otherwise.
-
-### GetDescriptionOk
-
-`func (o *View) GetDescriptionOk() (*string, bool)`
-
-GetDescriptionOk returns a tuple with the Description field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetDescription
-
-`func (o *View) SetDescription(v string)`
-
-SetDescription sets Description field to given value.
-
-### HasDescription
-
-`func (o *View) HasDescription() bool`
-
-HasDescription returns a boolean if a field has been set.
+HasColumns returns a boolean if a field has been set.
 
 ### GetGridId
 
@@ -106,30 +80,30 @@ SetGridId sets GridId field to given value.
 
 HasGridId returns a boolean if a field has been set.
 
-### GetGroupTagDefinition
+### GetGridStatus
 
-`func (o *View) GetGroupTagDefinition() []string`
+`func (o *View) GetGridStatus() string`
 
-GetGroupTagDefinition returns the GroupTagDefinition field if non-nil, zero value otherwise.
+GetGridStatus returns the GridStatus field if non-nil, zero value otherwise.
 
-### GetGroupTagDefinitionOk
+### GetGridStatusOk
 
-`func (o *View) GetGroupTagDefinitionOk() (*[]string, bool)`
+`func (o *View) GetGridStatusOk() (*string, bool)`
 
-GetGroupTagDefinitionOk returns a tuple with the GroupTagDefinition field if it's non-nil, zero value otherwise
+GetGridStatusOk returns a tuple with the GridStatus field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetGroupTagDefinition
+### SetGridStatus
 
-`func (o *View) SetGroupTagDefinition(v []string)`
+`func (o *View) SetGridStatus(v string)`
 
-SetGroupTagDefinition sets GroupTagDefinition field to given value.
+SetGridStatus sets GridStatus field to given value.
 
-### HasGroupTagDefinition
+### HasGridStatus
 
-`func (o *View) HasGroupTagDefinition() bool`
+`func (o *View) HasGridStatus() bool`
 
-HasGroupTagDefinition returns a boolean if a field has been set.
+HasGridStatus returns a boolean if a field has been set.
 
 ### GetId
 
@@ -181,30 +155,30 @@ SetName sets Name field to given value.
 
 HasName returns a boolean if a field has been set.
 
-### GetStatus
+### GetRecords
 
-`func (o *View) GetStatus() string`
+`func (o *View) GetRecords() []Record`
 
-GetStatus returns the Status field if non-nil, zero value otherwise.
+GetRecords returns the Records field if non-nil, zero value otherwise.
 
-### GetStatusOk
+### GetRecordsOk
 
-`func (o *View) GetStatusOk() (*string, bool)`
+`func (o *View) GetRecordsOk() (*[]Record, bool)`
 
-GetStatusOk returns a tuple with the Status field if it's non-nil, zero value otherwise
+GetRecordsOk returns a tuple with the Records field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetStatus
+### SetRecords
 
-`func (o *View) SetStatus(v string)`
+`func (o *View) SetRecords(v []Record)`
 
-SetStatus sets Status field to given value.
+SetRecords sets Records field to given value.
 
-### HasStatus
+### HasRecords
 
-`func (o *View) HasStatus() bool`
+`func (o *View) HasRecords() bool`
 
-HasStatus returns a boolean if a field has been set.
+HasRecords returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

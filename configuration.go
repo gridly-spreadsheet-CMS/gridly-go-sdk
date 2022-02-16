@@ -101,7 +101,7 @@ type Configuration struct {
 func NewConfiguration() *Configuration {
 	cfg := &Configuration{
 		DefaultHeader:    make(map[string]string),
-		UserAgent:        "Gridly Go SDK 1.2.1",
+		UserAgent:        "Gridly Go SDK 1.2.2",
 		Debug:            false,
 		Servers:          ServerConfigurations{
 			{
