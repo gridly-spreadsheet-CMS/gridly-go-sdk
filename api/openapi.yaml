@@ -5,7 +5,7 @@ info:
   license:
     name: Apache 2.0
   title: Gridly API
-  version: 3.21.4
+  version: 3.21.6
 servers:
 - url: https://api.gridly.com/
 tags:
@@ -2320,7 +2320,7 @@ components:
           type: array
         value:
           title: DataItem
-          type: object
+          type: AnyType
       title: Cell
       type: object
     ColumnReference:
@@ -2794,7 +2794,7 @@ components:
           - referencedIds
           - referencedIds
           value: "{}"
-        lastModifiedTime: 2000-01-23T04:56:07.000+00:00
+        lastModifiedTime: 2000-01-23T04:56:07Z
         lastModifiedBy: lastModifiedBy
         id: id
       properties:
@@ -2895,7 +2895,7 @@ components:
           type: array
         value:
           title: DataItem
-          type: object
+          type: AnyType
       title: SetCell
       type: object
     SetRecord:
@@ -3184,7 +3184,7 @@ components:
             - referencedIds
             - referencedIds
             value: "{}"
-          lastModifiedTime: 2000-01-23T04:56:07.000+00:00
+          lastModifiedTime: 2000-01-23T04:56:07Z
           lastModifiedBy: lastModifiedBy
           id: id
         - path: path
@@ -3201,7 +3201,7 @@ components:
             - referencedIds
             - referencedIds
             value: "{}"
-          lastModifiedTime: 2000-01-23T04:56:07.000+00:00
+          lastModifiedTime: 2000-01-23T04:56:07Z
           lastModifiedBy: lastModifiedBy
           id: id
         columns:
@@ -3588,7 +3588,7 @@ components:
               - referencedIds
               - referencedIds
               value: "{}"
-            lastModifiedTime: 2000-01-23T04:56:07.000+00:00
+            lastModifiedTime: 2000-01-23T04:56:07Z
             lastModifiedBy: lastModifiedBy
             id: id
           - path: path
@@ -3605,7 +3605,7 @@ components:
               - referencedIds
               - referencedIds
               value: "{}"
-            lastModifiedTime: 2000-01-23T04:56:07.000+00:00
+            lastModifiedTime: 2000-01-23T04:56:07Z
             lastModifiedBy: lastModifiedBy
             id: id
           columns:
@@ -3684,7 +3684,7 @@ components:
               - referencedIds
               - referencedIds
               value: "{}"
-            lastModifiedTime: 2000-01-23T04:56:07.000+00:00
+            lastModifiedTime: 2000-01-23T04:56:07Z
             lastModifiedBy: lastModifiedBy
             id: id
           - path: path
@@ -3701,7 +3701,7 @@ components:
               - referencedIds
               - referencedIds
               value: "{}"
-            lastModifiedTime: 2000-01-23T04:56:07.000+00:00
+            lastModifiedTime: 2000-01-23T04:56:07Z
             lastModifiedBy: lastModifiedBy
             id: id
           columns:
@@ -4055,7 +4055,7 @@ components:
                 - referencedIds
                 - referencedIds
                 value: "{}"
-              lastModifiedTime: 2000-01-23T04:56:07.000+00:00
+              lastModifiedTime: 2000-01-23T04:56:07Z
               lastModifiedBy: lastModifiedBy
               id: id
             - path: path
@@ -4072,7 +4072,7 @@ components:
                 - referencedIds
                 - referencedIds
                 value: "{}"
-              lastModifiedTime: 2000-01-23T04:56:07.000+00:00
+              lastModifiedTime: 2000-01-23T04:56:07Z
               lastModifiedBy: lastModifiedBy
               id: id
             columns:
@@ -4151,7 +4151,7 @@ components:
                 - referencedIds
                 - referencedIds
                 value: "{}"
-              lastModifiedTime: 2000-01-23T04:56:07.000+00:00
+              lastModifiedTime: 2000-01-23T04:56:07Z
               lastModifiedBy: lastModifiedBy
               id: id
             - path: path
@@ -4168,7 +4168,7 @@ components:
                 - referencedIds
                 - referencedIds
                 value: "{}"
-              lastModifiedTime: 2000-01-23T04:56:07.000+00:00
+              lastModifiedTime: 2000-01-23T04:56:07Z
               lastModifiedBy: lastModifiedBy
               id: id
             columns:
@@ -4415,7 +4415,7 @@ components:
                 - referencedIds
                 - referencedIds
                 value: "{}"
-              lastModifiedTime: 2000-01-23T04:56:07.000+00:00
+              lastModifiedTime: 2000-01-23T04:56:07Z
               lastModifiedBy: lastModifiedBy
               id: id
             - path: path
@@ -4432,7 +4432,7 @@ components:
                 - referencedIds
                 - referencedIds
                 value: "{}"
-              lastModifiedTime: 2000-01-23T04:56:07.000+00:00
+              lastModifiedTime: 2000-01-23T04:56:07Z
               lastModifiedBy: lastModifiedBy
               id: id
             columns:
@@ -4511,7 +4511,7 @@ components:
                 - referencedIds
                 - referencedIds
                 value: "{}"
-              lastModifiedTime: 2000-01-23T04:56:07.000+00:00
+              lastModifiedTime: 2000-01-23T04:56:07Z
               lastModifiedBy: lastModifiedBy
               id: id
             - path: path
@@ -4528,7 +4528,7 @@ components:
                 - referencedIds
                 - referencedIds
                 value: "{}"
-              lastModifiedTime: 2000-01-23T04:56:07.000+00:00
+              lastModifiedTime: 2000-01-23T04:56:07Z
               lastModifiedBy: lastModifiedBy
               id: id
             columns:
