@@ -7,6 +7,7 @@ Name | Type | Description | Notes
 **Description** | Pointer to **string** |  | [optional] 
 **LanguageCode** | Pointer to **string** |  | [optional] 
 **Name** | Pointer to **string** |  | [optional] 
+**NewId** | Pointer to **string** |  | [optional] 
 **NumberFormat** | Pointer to [**NumberFormat**](NumberFormat.md) |  | [optional] 
 **SelectionOptions** | Pointer to **[]string** |  | [optional] 
 
@@ -103,6 +104,31 @@ SetName sets Name field to given value.
 `func (o *UpdateColumn) HasName() bool`
 
 HasName returns a boolean if a field has been set.
+
+### GetNewId
+
+`func (o *UpdateColumn) GetNewId() string`
+
+GetNewId returns the NewId field if non-nil, zero value otherwise.
+
+### GetNewIdOk
+
+`func (o *UpdateColumn) GetNewIdOk() (*string, bool)`
+
+GetNewIdOk returns a tuple with the NewId field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetNewId
+
+`func (o *UpdateColumn) SetNewId(v string)`
+
+SetNewId sets NewId field to given value.
+
+### HasNewId
+
+`func (o *UpdateColumn) HasNewId() bool`
+
+HasNewId returns a boolean if a field has been set.
 
 ### GetNumberFormat
 

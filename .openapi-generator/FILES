@@ -14,6 +14,7 @@ api_view_dependency.go
 api_view_file.go
 client.go
 configuration.go
+docs/AddViewColumn.md
 docs/Branch.md
 docs/BranchApi.md
 docs/Cell.md
@@ -24,6 +25,7 @@ docs/CreateDatabase.md
 docs/CreateDependency.md
 docs/CreateGrid.md
 docs/CreateProject.md
+docs/CreateView.md
 docs/Database.md
 docs/DatabaseApi.md
 docs/DeleteDependency.md
@@ -62,6 +64,7 @@ docs/ViewFileApi.md
 git_push.sh
 go.mod
 go.sum
+model_add_view_column.go
 model_branch.go
 model_cell.go
 model_column_reference.go
@@ -71,6 +74,7 @@ model_create_database.go
 model_create_dependency.go
 model_create_grid.go
 model_create_project.go
+model_create_view.go
 model_database.go
 model_delete_dependency.go
 model_delete_record.go

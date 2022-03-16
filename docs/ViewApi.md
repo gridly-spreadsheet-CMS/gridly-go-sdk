@@ -4,12 +4,77 @@ All URIs are relative to *https://api.gridly.com*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
+[**Create**](ViewApi.md#Create) | **Post** /v1/views | create
 [**Export**](ViewApi.md#Export) | **Get** /v1/views/{viewId}/export | export
 [**Get**](ViewApi.md#Get) | **Get** /v1/views/{viewId} | get
 [**ImportView**](ViewApi.md#ImportView) | **Post** /v1/views/{viewId}/import | importView
 [**List**](ViewApi.md#List) | **Get** /v1/views | list
 [**Merge**](ViewApi.md#Merge) | **Post** /v1/views/{viewId}/merge | merge
 
+
+
+## Create
+
+> View Create(ctx).CreateView(createView).Execute()
+
+create
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    gridly "./openapi"
+)
+
+func main() {
+    createView := *gridly.NewCreateView() // CreateView | createView
+
+    configuration := gridly.NewConfiguration()
+    api_client := gridly.NewAPIClient(configuration)
+    resp, r, err := api_client.ViewApi.Create(context.Background()).CreateView(createView).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `ViewApi.Create``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `Create`: View
+    fmt.Fprintf(os.Stdout, "Response from `ViewApi.Create`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiCreateRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **createView** | [**CreateView**](CreateView.md) | createView | 
+
+### Return type
+
+[**View**](View.md)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
 
 
 ## Export

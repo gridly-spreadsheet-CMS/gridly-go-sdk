@@ -5,6 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **ColumnId** | Pointer to **string** |  | [optional] 
+**DependencyStatus** | Pointer to **string** |  | [optional] 
 **ReferencedIds** | Pointer to **[]string** |  | [optional] 
 **Value** | Pointer to **interface{}** |  | [optional] 
 
@@ -51,6 +52,31 @@ SetColumnId sets ColumnId field to given value.
 `func (o *SetCell) HasColumnId() bool`
 
 HasColumnId returns a boolean if a field has been set.
+
+### GetDependencyStatus
+
+`func (o *SetCell) GetDependencyStatus() string`
+
+GetDependencyStatus returns the DependencyStatus field if non-nil, zero value otherwise.
+
+### GetDependencyStatusOk
+
+`func (o *SetCell) GetDependencyStatusOk() (*string, bool)`
+
+GetDependencyStatusOk returns a tuple with the DependencyStatus field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetDependencyStatus
+
+`func (o *SetCell) SetDependencyStatus(v string)`
+
+SetDependencyStatus sets DependencyStatus field to given value.
+
+### HasDependencyStatus
+
+`func (o *SetCell) HasDependencyStatus() bool`
+
+HasDependencyStatus returns a boolean if a field has been set.
 
 ### GetReferencedIds
 
