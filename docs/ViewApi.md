@@ -254,8 +254,8 @@ import (
 func main() {
     viewId := "viewId_example" // string | viewId
     file := os.NewFile(1234, "some_file") // *os.File | The following file types are supported: csv, tsv, xls, xlsx and JSON
-    importRequest := TODO // interface{} | importRequest (optional)
-    type_ := TODO // interface{} | type (optional)
+    importRequest := "importRequest_example" // string | importRequest (optional)
+    type_ := "type__example" // string | type (optional)
 
     configuration := gridly.NewConfiguration()
     api_client := gridly.NewAPIClient(configuration)
@@ -284,8 +284,8 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
  **file** | ***os.File** | The following file types are supported: csv, tsv, xls, xlsx and JSON | 
- **importRequest** | [**interface{}**](interface{}.md) | importRequest | 
- **type_** | [**interface{}**](interface{}.md) | type | 
+ **importRequest** | **string** | importRequest | 
+ **type_** | **string** | type | 
 
 ### Return type
 

@@ -14,30 +14,30 @@ import (
 	"encoding/json"
 )
 
-// DeleteDependency struct for DeleteDependency
-type DeleteDependency struct {
+// DeleteFile struct for DeleteFile
+type DeleteFile struct {
 	Ids *[]string `json:"ids,omitempty"`
 }
 
-// NewDeleteDependency instantiates a new DeleteDependency object
+// NewDeleteFile instantiates a new DeleteFile object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewDeleteDependency() *DeleteDependency {
-	this := DeleteDependency{}
+func NewDeleteFile() *DeleteFile {
+	this := DeleteFile{}
 	return &this
 }
 
-// NewDeleteDependencyWithDefaults instantiates a new DeleteDependency object
+// NewDeleteFileWithDefaults instantiates a new DeleteFile object
 // This constructor will only assign default values to properties that have it defined,
 // but it doesn't guarantee that properties required by API are set
-func NewDeleteDependencyWithDefaults() *DeleteDependency {
-	this := DeleteDependency{}
+func NewDeleteFileWithDefaults() *DeleteFile {
+	this := DeleteFile{}
 	return &this
 }
 
 // GetIds returns the Ids field value if set, zero value otherwise.
-func (o *DeleteDependency) GetIds() []string {
+func (o *DeleteFile) GetIds() []string {
 	if o == nil || o.Ids == nil {
 		var ret []string
 		return ret
@@ -47,7 +47,7 @@ func (o *DeleteDependency) GetIds() []string {
 
 // GetIdsOk returns a tuple with the Ids field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *DeleteDependency) GetIdsOk() (*[]string, bool) {
+func (o *DeleteFile) GetIdsOk() (*[]string, bool) {
 	if o == nil || o.Ids == nil {
 		return nil, false
 	}
@@ -55,7 +55,7 @@ func (o *DeleteDependency) GetIdsOk() (*[]string, bool) {
 }
 
 // HasIds returns a boolean if a field has been set.
-func (o *DeleteDependency) HasIds() bool {
+func (o *DeleteFile) HasIds() bool {
 	if o != nil && o.Ids != nil {
 		return true
 	}
@@ -64,11 +64,11 @@ func (o *DeleteDependency) HasIds() bool {
 }
 
 // SetIds gets a reference to the given []string and assigns it to the Ids field.
-func (o *DeleteDependency) SetIds(v []string) {
+func (o *DeleteFile) SetIds(v []string) {
 	o.Ids = &v
 }
 
-func (o DeleteDependency) MarshalJSON() ([]byte, error) {
+func (o DeleteFile) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if o.Ids != nil {
 		toSerialize["ids"] = o.Ids
@@ -76,38 +76,38 @@ func (o DeleteDependency) MarshalJSON() ([]byte, error) {
 	return json.Marshal(toSerialize)
 }
 
-type NullableDeleteDependency struct {
-	value *DeleteDependency
+type NullableDeleteFile struct {
+	value *DeleteFile
 	isSet bool
 }
 
-func (v NullableDeleteDependency) Get() *DeleteDependency {
+func (v NullableDeleteFile) Get() *DeleteFile {
 	return v.value
 }
 
-func (v *NullableDeleteDependency) Set(val *DeleteDependency) {
+func (v *NullableDeleteFile) Set(val *DeleteFile) {
 	v.value = val
 	v.isSet = true
 }
 
-func (v NullableDeleteDependency) IsSet() bool {
+func (v NullableDeleteFile) IsSet() bool {
 	return v.isSet
 }
 
-func (v *NullableDeleteDependency) Unset() {
+func (v *NullableDeleteFile) Unset() {
 	v.value = nil
 	v.isSet = false
 }
 
-func NewNullableDeleteDependency(val *DeleteDependency) *NullableDeleteDependency {
-	return &NullableDeleteDependency{value: val, isSet: true}
+func NewNullableDeleteFile(val *DeleteFile) *NullableDeleteFile {
+	return &NullableDeleteFile{value: val, isSet: true}
 }
 
-func (v NullableDeleteDependency) MarshalJSON() ([]byte, error) {
+func (v NullableDeleteFile) MarshalJSON() ([]byte, error) {
 	return json.Marshal(v.value)
 }
 
-func (v *NullableDeleteDependency) UnmarshalJSON(src []byte) error {
+func (v *NullableDeleteFile) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }

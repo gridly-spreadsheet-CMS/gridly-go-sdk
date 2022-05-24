@@ -4,10 +4,83 @@ All URIs are relative to *https://api.gridly.com*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
+[**Delete**](ViewFileApi.md#Delete) | **Delete** /v1/views/{viewId}/files | delete
 [**Download**](ViewFileApi.md#Download) | **Get** /v1/views/{viewId}/files/{fileId} | download
 [**Upload**](ViewFileApi.md#Upload) | **Post** /v1/views/{viewId}/files | upload
 [**UploadZip**](ViewFileApi.md#UploadZip) | **Post** /v1/views/{viewId}/files/zip | uploadZip
 
+
+
+## Delete
+
+> Delete(ctx, viewId).ColumnId(columnId).RecordId(recordId).DeleteFileDTO(deleteFileDTO).Execute()
+
+delete
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    gridly "./openapi"
+)
+
+func main() {
+    columnId := "columnId_example" // string | columnId
+    recordId := "recordId_example" // string | recordId
+    viewId := "viewId_example" // string | viewId
+    deleteFileDTO := *gridly.NewDeleteFile() // DeleteFile | deleteFileDTO
+
+    configuration := gridly.NewConfiguration()
+    api_client := gridly.NewAPIClient(configuration)
+    resp, r, err := api_client.ViewFileApi.Delete(context.Background(), viewId).ColumnId(columnId).RecordId(recordId).DeleteFileDTO(deleteFileDTO).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `ViewFileApi.Delete``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**viewId** | **string** | viewId | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiDeleteRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **columnId** | **string** | columnId | 
+ **recordId** | **string** | recordId | 
+
+ **deleteFileDTO** | [**DeleteFile**](DeleteFile.md) | deleteFileDTO | 
+
+### Return type
+
+ (empty response body)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: Not defined
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
 
 
 ## Download
@@ -101,9 +174,9 @@ import (
 
 func main() {
     viewId := "viewId_example" // string | viewId
-    columnId := TODO // interface{} | columnId
+    columnId := "columnId_example" // string | columnId
     file := os.NewFile(1234, "some_file") // *os.File | file
-    recordId := TODO // interface{} | recordId
+    recordId := "recordId_example" // string | recordId
 
     configuration := gridly.NewConfiguration()
     api_client := gridly.NewAPIClient(configuration)
@@ -133,9 +206,9 @@ Other parameters are passed through a pointer to a apiUploadRequest struct via t
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **columnId** | [**interface{}**](interface{}.md) | columnId | 
+ **columnId** | **string** | columnId | 
  **file** | ***os.File** | file | 
- **recordId** | [**interface{}**](interface{}.md) | recordId | 
+ **recordId** | **string** | recordId | 
 
 ### Return type
 
@@ -175,9 +248,9 @@ import (
 
 func main() {
     viewId := "viewId_example" // string | viewId
-    columnId := TODO // interface{} | columnId
+    columnId := "columnId_example" // string | columnId
     file := os.NewFile(1234, "some_file") // *os.File | file
-    fileMappings := TODO // interface{} | fileMappings
+    fileMappings := "fileMappings_example" // string | fileMappings
 
     configuration := gridly.NewConfiguration()
     api_client := gridly.NewAPIClient(configuration)
@@ -207,9 +280,9 @@ Other parameters are passed through a pointer to a apiUploadZipRequest struct vi
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **columnId** | [**interface{}**](interface{}.md) | columnId | 
+ **columnId** | **string** | columnId | 
  **file** | ***os.File** | file | 
- **fileMappings** | [**interface{}**](interface{}.md) | fileMappings | 
+ **fileMappings** | **string** | fileMappings | 
 
 ### Return type
 
