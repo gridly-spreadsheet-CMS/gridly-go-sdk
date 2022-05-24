@@ -13,7 +13,7 @@ Method | HTTP request | Description
 
 ## Delete
 
-> Delete(ctx, viewId).ColumnId(columnId).RecordId(recordId).DeleteFileDTO(deleteFileDTO).Execute()
+> Delete(ctx, viewId).ColumnId(columnId).RecordId(recordId).DeleteFile(deleteFile).Execute()
 
 delete
 
@@ -33,11 +33,11 @@ func main() {
     columnId := "columnId_example" // string | columnId
     recordId := "recordId_example" // string | recordId
     viewId := "viewId_example" // string | viewId
-    deleteFileDTO := *gridly.NewDeleteFile() // DeleteFile | deleteFileDTO
+    deleteFile := *gridly.NewDeleteFile() // DeleteFile | deleteFile
 
     configuration := gridly.NewConfiguration()
     api_client := gridly.NewAPIClient(configuration)
-    resp, r, err := api_client.ViewFileApi.Delete(context.Background(), viewId).ColumnId(columnId).RecordId(recordId).DeleteFileDTO(deleteFileDTO).Execute()
+    resp, r, err := api_client.ViewFileApi.Delete(context.Background(), viewId).ColumnId(columnId).RecordId(recordId).DeleteFile(deleteFile).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ViewFileApi.Delete``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -63,7 +63,7 @@ Name | Type | Description  | Notes
  **columnId** | **string** | columnId | 
  **recordId** | **string** | recordId | 
 
- **deleteFileDTO** | [**DeleteFile**](DeleteFile.md) | deleteFileDTO | 
+ **deleteFile** | [**DeleteFile**](DeleteFile.md) | deleteFile | 
 
 ### Return type
 

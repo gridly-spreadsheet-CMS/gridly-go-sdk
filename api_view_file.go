@@ -34,7 +34,7 @@ type ViewFileApiApiDeleteRequest struct {
 	columnId *string
 	recordId *string
 	viewId string
-	deleteFileDTO *DeleteFile
+	deleteFile *DeleteFile
 }
 
 // columnId
@@ -47,9 +47,9 @@ func (r ViewFileApiApiDeleteRequest) RecordId(recordId string) ViewFileApiApiDel
 	r.recordId = &recordId
 	return r
 }
-// deleteFileDTO
-func (r ViewFileApiApiDeleteRequest) DeleteFileDTO(deleteFileDTO DeleteFile) ViewFileApiApiDeleteRequest {
-	r.deleteFileDTO = &deleteFileDTO
+// deleteFile
+func (r ViewFileApiApiDeleteRequest) DeleteFile(deleteFile DeleteFile) ViewFileApiApiDeleteRequest {
+	r.deleteFile = &deleteFile
 	return r
 }
 
@@ -97,8 +97,8 @@ func (a *ViewFileApiService) DeleteExecute(r ViewFileApiApiDeleteRequest) (*_net
 	if r.recordId == nil {
 		return nil, reportError("recordId is required and must be specified")
 	}
-	if r.deleteFileDTO == nil {
-		return nil, reportError("deleteFileDTO is required and must be specified")
+	if r.deleteFile == nil {
+		return nil, reportError("deleteFile is required and must be specified")
 	}
 
 	localVarQueryParams.Add("columnId", parameterToString(*r.columnId, ""))
@@ -121,7 +121,7 @@ func (a *ViewFileApiService) DeleteExecute(r ViewFileApiApiDeleteRequest) (*_net
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.deleteFileDTO
+	localVarPostBody = r.deleteFile
 	if r.ctx != nil {
 		// API Key Authentication
 		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
