@@ -20,7 +20,7 @@ type Cell struct {
 	ColumnId *string `json:"columnId,omitempty"`
 	DependencyStatus *string `json:"dependencyStatus,omitempty"`
 	ReferencedIds []string `json:"referencedIds,omitempty"`
-	Value map[string]interface{} `json:"value,omitempty"`
+	Value *interface{} `json:"value,omitempty"`
 }
 
 // NewCell instantiates a new Cell object
@@ -137,17 +137,17 @@ func (o *Cell) SetReferencedIds(v []string) {
 }
 
 // GetValue returns the Value field value if set, zero value otherwise.
-func (o *Cell) GetValue() map[string]interface{} {
+func (o *Cell) GetValue() interface{} {
 	if o == nil || o.Value == nil {
-		var ret map[string]interface{}
+		var ret interface{}
 		return ret
 	}
-	return o.Value
+	return *o.Value
 }
 
 // GetValueOk returns a tuple with the Value field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *Cell) GetValueOk() (map[string]interface{}, bool) {
+func (o *Cell) GetValueOk() (*interface{}, bool) {
 	if o == nil || o.Value == nil {
 		return nil, false
 	}
@@ -163,9 +163,9 @@ func (o *Cell) HasValue() bool {
 	return false
 }
 
-// SetValue gets a reference to the given map[string]interface{} and assigns it to the Value field.
-func (o *Cell) SetValue(v map[string]interface{}) {
-	o.Value = v
+// SetValue gets a reference to the given interface{} and assigns it to the Value field.
+func (o *Cell) SetValue(v interface{}) {
+	o.Value = &v
 }
 
 func (o Cell) MarshalJSON() ([]byte, error) {
