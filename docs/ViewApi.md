@@ -102,10 +102,10 @@ import (
 func main() {
     viewId := "viewId_example" // string | viewId
     columnIds := []string{"Inner_example"} // []string | columnIds (optional) (default to [])
-    fileHeader := gridly.ExportFileHeader("none") // ExportFileHeader | fileHeader (optional) (default to "columnName")
+    fileHeader := gridly.ExportFileHeader("none") // ExportFileHeader | fileHeader (optional)
     query := "query_example" // string | query (optional) (default to "{}")
     sort := "sort_example" // string | sort (optional) (default to "{}")
-    type_ := gridly.FileType("csv") // FileType | type (optional) (default to "csv")
+    type_ := gridly.FileType("csv") // FileType | type (optional)
 
     configuration := gridly.NewConfiguration()
     apiClient := gridly.NewAPIClient(configuration)
@@ -136,10 +136,10 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
  **columnIds** | **[]string** | columnIds | [default to []]
- **fileHeader** | [**ExportFileHeader**](ExportFileHeader.md) | fileHeader | [default to &quot;columnName&quot;]
+ **fileHeader** | [**ExportFileHeader**](ExportFileHeader.md) | fileHeader | 
  **query** | **string** | query | [default to &quot;{}&quot;]
  **sort** | **string** | sort | [default to &quot;{}&quot;]
- **type_** | [**FileType**](FileType.md) | type | [default to &quot;csv&quot;]
+ **type_** | [**FileType**](FileType.md) | type | 
 
 ### Return type
 
@@ -261,9 +261,9 @@ import (
 
 func main() {
     viewId := "viewId_example" // string | viewId
-    file := os.NewFile(1234, "some_file") // *os.File | 
+    file := os.NewFile(1234, "some_file") // *os.File | The following file types are supported: csv, tsv, xls, xlsx and json
     importRequest := "importRequest_example" // string | importRequest (optional) (default to "{}")
-    type_ := "type__example" // string | type (optional) (default to "csv")
+    type_ := gridly.FileType("csv") // FileType | type (optional)
 
     configuration := gridly.NewConfiguration()
     apiClient := gridly.NewAPIClient(configuration)
@@ -291,9 +291,9 @@ Other parameters are passed through a pointer to a apiImportViewRequest struct v
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **file** | ***os.File** |  | 
+ **file** | ***os.File** | The following file types are supported: csv, tsv, xls, xlsx and json | 
  **importRequest** | **string** | importRequest | [default to &quot;{}&quot;]
- **type_** | **string** | type | [default to &quot;csv&quot;]
+ **type_** | [**FileType**](FileType.md) | type | 
 
 ### Return type
 
@@ -336,7 +336,7 @@ import (
 func main() {
     branchId := "branchId_example" // string | branchId (optional)
     gridId := "gridId_example" // string | gridId (optional)
-    type_ := gridly.ViewType("defaultView") // ViewType | type (optional) (default to "accessView")
+    type_ := "type__example" // string | type (optional)
 
     configuration := gridly.NewConfiguration()
     apiClient := gridly.NewAPIClient(configuration)
@@ -363,7 +363,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **branchId** | **string** | branchId | 
  **gridId** | **string** | gridId | 
- **type_** | [**ViewType**](ViewType.md) | type | [default to &quot;accessView&quot;]
+ **type_** | **string** | type | 
 
 ### Return type
 

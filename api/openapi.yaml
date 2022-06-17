@@ -164,7 +164,11 @@ paths:
         name: type
         required: false
         schema:
-          $ref: '#/components/schemas/ViewType'
+          enum:
+          - defaultView
+          - accessView
+          - userView
+          type: string
         style: form
       responses:
         "200":
@@ -249,6 +253,7 @@ paths:
           default: []
           items:
             type: string
+          nullable: true
           type: array
         style: form
       - description: page
@@ -258,6 +263,7 @@ paths:
         required: false
         schema:
           default: "{}"
+          nullable: true
           type: string
         style: form
       - description: query
@@ -267,6 +273,7 @@ paths:
         required: false
         schema:
           default: "{}"
+          nullable: true
           type: string
         style: form
       - description: sort
@@ -276,6 +283,7 @@ paths:
         required: false
         schema:
           default: "{}"
+          nullable: true
           type: string
         style: form
       - description: fetchFileOption
@@ -403,6 +411,7 @@ paths:
             - delete
             - override
             type: string
+          nullable: true
           type: array
         style: form
       responses:
@@ -437,6 +446,7 @@ paths:
         required: false
         schema:
           default: "{}"
+          nullable: true
           type: string
         style: form
       - description: type
@@ -445,15 +455,7 @@ paths:
         name: type
         required: false
         schema:
-          default: csv
-          enum:
-          - csv
-          - tsv
-          - xls
-          - xlsx
-          - json
-          - po
-          type: string
+          $ref: '#/components/schemas/FileType'
         style: form
       requestBody:
         content:
@@ -501,7 +503,7 @@ paths:
         content:
           multipart/form-data:
             schema:
-              $ref: '#/components/schemas/importView_request'
+              $ref: '#/components/schemas/uploadZip_request'
       responses:
         default:
           content:
@@ -591,7 +593,7 @@ paths:
         content:
           multipart/form-data:
             schema:
-              $ref: '#/components/schemas/importView_request'
+              $ref: '#/components/schemas/uploadZip_request'
       responses:
         "201":
           content:
@@ -937,6 +939,7 @@ paths:
             - delete
             - override
             type: string
+          nullable: true
           type: array
         style: form
       responses:
@@ -1194,6 +1197,7 @@ paths:
           default: []
           items:
             type: string
+          nullable: true
           type: array
         style: form
       - description: include
@@ -1207,6 +1211,7 @@ paths:
             enum:
             - records
             type: string
+          nullable: true
           type: array
         style: form
       - description: page
@@ -1216,6 +1221,7 @@ paths:
         required: false
         schema:
           default: "{}"
+          nullable: true
           type: string
         style: form
       - description: query
@@ -1225,6 +1231,7 @@ paths:
         required: false
         schema:
           default: "{}"
+          nullable: true
           type: string
         style: form
       - description: sort
@@ -1234,6 +1241,7 @@ paths:
         required: false
         schema:
           default: "{}"
+          nullable: true
           type: string
         style: form
       responses:
@@ -1304,6 +1312,7 @@ paths:
           default: []
           items:
             type: string
+          nullable: true
           type: array
         style: form
       - description: fileHeader
@@ -1321,6 +1330,7 @@ paths:
         required: false
         schema:
           default: "{}"
+          nullable: true
           type: string
         style: form
       - description: sort
@@ -1330,6 +1340,7 @@ paths:
         required: false
         schema:
           default: "{}"
+          nullable: true
           type: string
         style: form
       - description: type
@@ -2225,6 +2236,22 @@ components:
           - running
           type: string
       type: object
+    FileType:
+      enum:
+      - csv
+      - tsv
+      - xls
+      - xlsx
+      - json
+      - po
+      type: string
+      x-enum-varnames:
+      - csv
+      - tsv
+      - xls
+      - xlsx
+      - json
+      - po
     UploadedFile:
       example:
         originalName: originalName
@@ -3093,13 +3120,6 @@ components:
             type: string
           type: object
       type: object
-    ViewType:
-      default: accessView
-      enum:
-      - defaultView
-      - accessView
-      - userView
-      type: string
     FetchFileOption:
       default: id
       enum:
@@ -3107,23 +3127,18 @@ components:
       - id
       - name
       type: string
+      x-enum-varnames:
+      - all
+      - id
+      - name
     ExportFileHeader:
-      default: columnName
       enum:
       - none
       - columnName
-      nullable: true
       type: string
-    FileType:
-      default: csv
-      enum:
-      - csv
-      - tsv
-      - xls
-      - xlsx
-      - json
-      - po
-      type: string
+      x-enum-varnames:
+      - none
+      - columnName
     DeleteRecord:
       example:
         identifiers:
@@ -4621,6 +4636,16 @@ components:
           type: array
       type: object
     importView_request:
+      properties:
+        file:
+          description: "The following file types are supported: csv, tsv, xls, xlsx\
+            \ and json"
+          format: binary
+          type: string
+      required:
+      - file
+      type: object
+    uploadZip_request:
       properties:
         file:
           format: binary

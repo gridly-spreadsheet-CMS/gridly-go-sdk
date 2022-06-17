@@ -21,12 +21,12 @@ type FileType string
 
 // List of FileType
 const (
-	CSV FileType = "csv"
-	TSV FileType = "tsv"
-	XLS FileType = "xls"
-	XLSX FileType = "xlsx"
-	JSON FileType = "json"
-	PO FileType = "po"
+	csv FileType = "csv"
+	tsv FileType = "tsv"
+	xls FileType = "xls"
+	xlsx FileType = "xlsx"
+	json FileType = "json"
+	po FileType = "po"
 )
 
 // All allowed values of FileType enum

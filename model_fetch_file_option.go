@@ -21,9 +21,9 @@ type FetchFileOption string
 
 // List of FetchFileOption
 const (
-	ALL FetchFileOption = "all"
-	ID FetchFileOption = "id"
-	NAME FetchFileOption = "name"
+	all FetchFileOption = "all"
+	id FetchFileOption = "id"
+	name FetchFileOption = "name"
 )
 
 // All allowed values of FetchFileOption enum

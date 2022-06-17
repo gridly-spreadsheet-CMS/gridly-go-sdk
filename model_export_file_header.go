@@ -21,8 +21,8 @@ type ExportFileHeader string
 
 // List of ExportFileHeader
 const (
-	NONE ExportFileHeader = "none"
-	COLUMN_NAME ExportFileHeader = "columnName"
+	none ExportFileHeader = "none"
+	columnName ExportFileHeader = "columnName"
 )
 
 // All allowed values of ExportFileHeader enum

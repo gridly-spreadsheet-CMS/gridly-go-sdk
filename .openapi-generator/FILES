@@ -66,7 +66,6 @@ docs/ViewColumn.md
 docs/ViewColumnApi.md
 docs/ViewDependencyApi.md
 docs/ViewFileApi.md
-docs/ViewType.md
 git_push.sh
 go.mod
 go.sum
@@ -112,6 +111,5 @@ model_update_project.go
 model_uploaded_file.go
 model_view.go
 model_view_column.go
-model_view_type.go
 response.go
 utils.go

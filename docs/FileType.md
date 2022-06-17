@@ -3,17 +3,17 @@
 ## Enum
 
 
-* `CSV` (value: `"csv"`)
+* `csv` (value: `"csv"`)
 
-* `TSV` (value: `"tsv"`)
+* `tsv` (value: `"tsv"`)
 
-* `XLS` (value: `"xls"`)
+* `xls` (value: `"xls"`)
 
-* `XLSX` (value: `"xlsx"`)
+* `xlsx` (value: `"xlsx"`)
 
-* `JSON` (value: `"json"`)
+* `json` (value: `"json"`)
 
-* `PO` (value: `"po"`)
+* `po` (value: `"po"`)
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

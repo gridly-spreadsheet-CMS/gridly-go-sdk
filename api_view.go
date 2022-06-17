@@ -521,9 +521,10 @@ type ViewApiImportViewRequest struct {
 	viewId string
 	file **os.File
 	importRequest *string
-	type_ *string
+	type_ *FileType
 }
 
+// The following file types are supported: csv, tsv, xls, xlsx and json
 func (r ViewApiImportViewRequest) File(file *os.File) ViewApiImportViewRequest {
 	r.file = &file
 	return r
@@ -536,7 +537,7 @@ func (r ViewApiImportViewRequest) ImportRequest(importRequest string) ViewApiImp
 }
 
 // type
-func (r ViewApiImportViewRequest) Type_(type_ string) ViewApiImportViewRequest {
+func (r ViewApiImportViewRequest) Type_(type_ FileType) ViewApiImportViewRequest {
 	r.type_ = &type_
 	return r
 }
@@ -669,7 +670,7 @@ type ViewApiListRequest struct {
 	ApiService *ViewApiService
 	branchId *string
 	gridId *string
-	type_ *ViewType
+	type_ *string
 }
 
 // branchId
@@ -685,7 +686,7 @@ func (r ViewApiListRequest) GridId(gridId string) ViewApiListRequest {
 }
 
 // type
-func (r ViewApiListRequest) Type_(type_ ViewType) ViewApiListRequest {
+func (r ViewApiListRequest) Type_(type_ string) ViewApiListRequest {
 	r.type_ = &type_
 	return r
 }
