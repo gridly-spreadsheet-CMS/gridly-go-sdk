@@ -6,7 +6,7 @@ Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**Create**](ViewDependencyApi.md#Create) | **Post** /v1/views/{viewId}/dependencies | create
 [**Delete**](ViewDependencyApi.md#Delete) | **Delete** /v1/views/{viewId}/dependencies | delete
-[**Delete_0**](ViewDependencyApi.md#Delete_0) | **Delete** /v1/views/{viewId}/dependencies/{dependencyId} | delete
+[**DeleteById**](ViewDependencyApi.md#DeleteById) | **Delete** /v1/views/{viewId}/dependencies/{dependencyId} | deleteById
 [**Get**](ViewDependencyApi.md#Get) | **Get** /v1/views/{viewId}/dependencies/{dependencyId} | get
 [**List**](ViewDependencyApi.md#List) | **Get** /v1/views/{viewId}/dependencies | list
 [**Update**](ViewDependencyApi.md#Update) | **Put** /v1/views/{viewId}/dependencies/{dependencyId} | update
@@ -18,6 +18,8 @@ Method | HTTP request | Description
 > Dependency Create(ctx, viewId).CreateDependency(createDependency).Execute()
 
 create
+
+
 
 ### Example
 
@@ -33,11 +35,11 @@ import (
 
 func main() {
     viewId := "viewId_example" // string | viewId
-    createDependency := *gridly.NewCreateDependency() // CreateDependency | createDependency
+    createDependency := *gridly.NewCreateDependency("SourceColumnId_example", "TargetColumnId_example") // CreateDependency | 
 
     configuration := gridly.NewConfiguration()
-    api_client := gridly.NewAPIClient(configuration)
-    resp, r, err := api_client.ViewDependencyApi.Create(context.Background(), viewId).CreateDependency(createDependency).Execute()
+    apiClient := gridly.NewAPIClient(configuration)
+    resp, r, err := apiClient.ViewDependencyApi.Create(context.Background(), viewId).CreateDependency(createDependency).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ViewDependencyApi.Create``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -63,7 +65,7 @@ Other parameters are passed through a pointer to a apiCreateRequest struct via t
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **createDependency** | [**CreateDependency**](CreateDependency.md) | createDependency | 
+ **createDependency** | [**CreateDependency**](CreateDependency.md) |  | 
 
 ### Return type
 
@@ -89,6 +91,8 @@ Name | Type | Description  | Notes
 
 delete
 
+
+
 ### Example
 
 ```go
@@ -103,11 +107,11 @@ import (
 
 func main() {
     viewId := "viewId_example" // string | viewId
-    deleteDependency := *gridly.NewDeleteDependency() // DeleteDependency | deleteDependency
+    deleteDependency := *gridly.NewDeleteDependency() // DeleteDependency | 
 
     configuration := gridly.NewConfiguration()
-    api_client := gridly.NewAPIClient(configuration)
-    resp, r, err := api_client.ViewDependencyApi.Delete(context.Background(), viewId).DeleteDependency(deleteDependency).Execute()
+    apiClient := gridly.NewAPIClient(configuration)
+    resp, r, err := apiClient.ViewDependencyApi.Delete(context.Background(), viewId).DeleteDependency(deleteDependency).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ViewDependencyApi.Delete``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -131,7 +135,7 @@ Other parameters are passed through a pointer to a apiDeleteRequest struct via t
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **deleteDependency** | [**DeleteDependency**](DeleteDependency.md) | deleteDependency | 
+ **deleteDependency** | [**DeleteDependency**](DeleteDependency.md) |  | 
 
 ### Return type
 
@@ -151,11 +155,13 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## Delete_0
+## DeleteById
 
-> Delete_0(ctx, dependencyId, viewId).Execute()
+> DeleteById(ctx, viewId, dependencyId).Execute()
 
-delete
+deleteById
+
+
 
 ### Example
 
@@ -170,14 +176,14 @@ import (
 )
 
 func main() {
-    dependencyId := "dependencyId_example" // string | dependencyId
     viewId := "viewId_example" // string | viewId
+    dependencyId := "dependencyId_example" // string | dependencyId
 
     configuration := gridly.NewConfiguration()
-    api_client := gridly.NewAPIClient(configuration)
-    resp, r, err := api_client.ViewDependencyApi.Delete_0(context.Background(), dependencyId, viewId).Execute()
+    apiClient := gridly.NewAPIClient(configuration)
+    resp, r, err := apiClient.ViewDependencyApi.DeleteById(context.Background(), viewId, dependencyId).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `ViewDependencyApi.Delete_0``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `ViewDependencyApi.DeleteById``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
 }
@@ -189,12 +195,12 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**dependencyId** | **string** | dependencyId | 
 **viewId** | **string** | viewId | 
+**dependencyId** | **string** | dependencyId | 
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiDelete_1Request struct via the builder pattern
+Other parameters are passed through a pointer to a apiDeleteByIdRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -226,6 +232,8 @@ Name | Type | Description  | Notes
 
 get
 
+
+
 ### Example
 
 ```go
@@ -243,8 +251,8 @@ func main() {
     viewId := "viewId_example" // string | viewId
 
     configuration := gridly.NewConfiguration()
-    api_client := gridly.NewAPIClient(configuration)
-    resp, r, err := api_client.ViewDependencyApi.Get(context.Background(), dependencyId, viewId).Execute()
+    apiClient := gridly.NewAPIClient(configuration)
+    resp, r, err := apiClient.ViewDependencyApi.Get(context.Background(), dependencyId, viewId).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ViewDependencyApi.Get``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -297,6 +305,8 @@ Name | Type | Description  | Notes
 
 list
 
+
+
 ### Example
 
 ```go
@@ -313,8 +323,8 @@ func main() {
     viewId := "viewId_example" // string | viewId
 
     configuration := gridly.NewConfiguration()
-    api_client := gridly.NewAPIClient(configuration)
-    resp, r, err := api_client.ViewDependencyApi.List(context.Background(), viewId).Execute()
+    apiClient := gridly.NewAPIClient(configuration)
+    resp, r, err := apiClient.ViewDependencyApi.List(context.Background(), viewId).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ViewDependencyApi.List``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -365,6 +375,8 @@ Name | Type | Description  | Notes
 
 update
 
+
+
 ### Example
 
 ```go
@@ -380,11 +392,11 @@ import (
 func main() {
     dependencyId := "dependencyId_example" // string | dependencyId
     viewId := "viewId_example" // string | viewId
-    updateDependency := *gridly.NewUpdateDependency() // UpdateDependency | updateDependency
+    updateDependency := *gridly.NewUpdateDependency("SourceColumnId_example", "TargetColumnId_example") // UpdateDependency | 
 
     configuration := gridly.NewConfiguration()
-    api_client := gridly.NewAPIClient(configuration)
-    resp, r, err := api_client.ViewDependencyApi.Update(context.Background(), dependencyId, viewId).UpdateDependency(updateDependency).Execute()
+    apiClient := gridly.NewAPIClient(configuration)
+    resp, r, err := apiClient.ViewDependencyApi.Update(context.Background(), dependencyId, viewId).UpdateDependency(updateDependency).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ViewDependencyApi.Update``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -412,7 +424,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
 
- **updateDependency** | [**UpdateDependency**](UpdateDependency.md) | updateDependency | 
+ **updateDependency** | [**UpdateDependency**](UpdateDependency.md) |  | 
 
 ### Return type
 

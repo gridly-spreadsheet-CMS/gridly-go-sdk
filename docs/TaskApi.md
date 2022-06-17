@@ -14,6 +14,8 @@ Method | HTTP request | Description
 
 get
 
+
+
 ### Example
 
 ```go
@@ -30,8 +32,8 @@ func main() {
     taskId := "taskId_example" // string | taskId
 
     configuration := gridly.NewConfiguration()
-    api_client := gridly.NewAPIClient(configuration)
-    resp, r, err := api_client.TaskApi.Get(context.Background(), taskId).Execute()
+    apiClient := gridly.NewAPIClient(configuration)
+    resp, r, err := apiClient.TaskApi.Get(context.Background(), taskId).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `TaskApi.Get``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)

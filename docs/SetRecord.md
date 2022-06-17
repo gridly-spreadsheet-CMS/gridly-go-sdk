@@ -4,8 +4,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Cells** | Pointer to [**[]SetCell**](SetCell.md) |  | [optional] 
 **Id** | Pointer to **string** |  | [optional] 
+**Cells** | Pointer to [**[]SetCell**](SetCell.md) |  | [optional] 
 **Path** | Pointer to **string** |  | [optional] 
 
 ## Methods
@@ -26,31 +26,6 @@ will change when the set of required properties is changed
 NewSetRecordWithDefaults instantiates a new SetRecord object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
-
-### GetCells
-
-`func (o *SetRecord) GetCells() []SetCell`
-
-GetCells returns the Cells field if non-nil, zero value otherwise.
-
-### GetCellsOk
-
-`func (o *SetRecord) GetCellsOk() (*[]SetCell, bool)`
-
-GetCellsOk returns a tuple with the Cells field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetCells
-
-`func (o *SetRecord) SetCells(v []SetCell)`
-
-SetCells sets Cells field to given value.
-
-### HasCells
-
-`func (o *SetRecord) HasCells() bool`
-
-HasCells returns a boolean if a field has been set.
 
 ### GetId
 
@@ -76,6 +51,31 @@ SetId sets Id field to given value.
 `func (o *SetRecord) HasId() bool`
 
 HasId returns a boolean if a field has been set.
+
+### GetCells
+
+`func (o *SetRecord) GetCells() []SetCell`
+
+GetCells returns the Cells field if non-nil, zero value otherwise.
+
+### GetCellsOk
+
+`func (o *SetRecord) GetCellsOk() (*[]SetCell, bool)`
+
+GetCellsOk returns a tuple with the Cells field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetCells
+
+`func (o *SetRecord) SetCells(v []SetCell)`
+
+SetCells sets Cells field to given value.
+
+### HasCells
+
+`func (o *SetRecord) HasCells() bool`
+
+HasCells returns a boolean if a field has been set.
 
 ### GetPath
 

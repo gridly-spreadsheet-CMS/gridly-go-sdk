@@ -19,6 +19,8 @@ Method | HTTP request | Description
 
 create
 
+
+
 ### Example
 
 ```go
@@ -32,11 +34,11 @@ import (
 )
 
 func main() {
-    createView := *gridly.NewCreateView() // CreateView | createView
+    createView := *gridly.NewCreateView() // CreateView | 
 
     configuration := gridly.NewConfiguration()
-    api_client := gridly.NewAPIClient(configuration)
-    resp, r, err := api_client.ViewApi.Create(context.Background()).CreateView(createView).Execute()
+    apiClient := gridly.NewAPIClient(configuration)
+    resp, r, err := apiClient.ViewApi.Create(context.Background()).CreateView(createView).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ViewApi.Create``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -57,7 +59,7 @@ Other parameters are passed through a pointer to a apiCreateRequest struct via t
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **createView** | [**CreateView**](CreateView.md) | createView | 
+ **createView** | [**CreateView**](CreateView.md) |  | 
 
 ### Return type
 
@@ -83,6 +85,8 @@ Name | Type | Description  | Notes
 
 export
 
+
+
 ### Example
 
 ```go
@@ -97,15 +101,15 @@ import (
 
 func main() {
     viewId := "viewId_example" // string | viewId
-    columnIds := []string{"Inner_example"} // []string | columnIds (optional)
-    fileHeader := "fileHeader_example" // string | fileHeader (optional) (default to "columnName")
+    columnIds := []string{"Inner_example"} // []string | columnIds (optional) (default to [])
+    fileHeader := gridly.ExportFileHeader("none") // ExportFileHeader | fileHeader (optional) (default to "columnName")
     query := "query_example" // string | query (optional) (default to "{}")
     sort := "sort_example" // string | sort (optional) (default to "{}")
-    type_ := "type__example" // string | type (optional) (default to "csv")
+    type_ := gridly.FileType("csv") // FileType | type (optional) (default to "csv")
 
     configuration := gridly.NewConfiguration()
-    api_client := gridly.NewAPIClient(configuration)
-    resp, r, err := api_client.ViewApi.Export(context.Background(), viewId).ColumnIds(columnIds).FileHeader(fileHeader).Query(query).Sort(sort).Type_(type_).Execute()
+    apiClient := gridly.NewAPIClient(configuration)
+    resp, r, err := apiClient.ViewApi.Export(context.Background(), viewId).ColumnIds(columnIds).FileHeader(fileHeader).Query(query).Sort(sort).Type_(type_).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ViewApi.Export``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -131,11 +135,11 @@ Other parameters are passed through a pointer to a apiExportRequest struct via t
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **columnIds** | **[]string** | columnIds | 
- **fileHeader** | **string** | fileHeader | [default to &quot;columnName&quot;]
+ **columnIds** | **[]string** | columnIds | [default to []]
+ **fileHeader** | [**ExportFileHeader**](ExportFileHeader.md) | fileHeader | [default to &quot;columnName&quot;]
  **query** | **string** | query | [default to &quot;{}&quot;]
  **sort** | **string** | sort | [default to &quot;{}&quot;]
- **type_** | **string** | type | [default to &quot;csv&quot;]
+ **type_** | [**FileType**](FileType.md) | type | [default to &quot;csv&quot;]
 
 ### Return type
 
@@ -161,6 +165,8 @@ Name | Type | Description  | Notes
 
 get
 
+
+
 ### Example
 
 ```go
@@ -175,15 +181,15 @@ import (
 
 func main() {
     viewId := "viewId_example" // string | viewId
-    columnIds := []string{"Inner_example"} // []string | columnIds (optional)
-    include := []string{"Include_example"} // []string | include (optional)
+    columnIds := []string{"Inner_example"} // []string | columnIds (optional) (default to [])
+    include := []string{"Include_example"} // []string | include (optional) (default to [])
     page := "page_example" // string | page (optional) (default to "{}")
     query := "query_example" // string | query (optional) (default to "{}")
     sort := "sort_example" // string | sort (optional) (default to "{}")
 
     configuration := gridly.NewConfiguration()
-    api_client := gridly.NewAPIClient(configuration)
-    resp, r, err := api_client.ViewApi.Get(context.Background(), viewId).ColumnIds(columnIds).Include(include).Page(page).Query(query).Sort(sort).Execute()
+    apiClient := gridly.NewAPIClient(configuration)
+    resp, r, err := apiClient.ViewApi.Get(context.Background(), viewId).ColumnIds(columnIds).Include(include).Page(page).Query(query).Sort(sort).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ViewApi.Get``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -209,8 +215,8 @@ Other parameters are passed through a pointer to a apiGetRequest struct via the 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **columnIds** | **[]string** | columnIds | 
- **include** | **[]string** | include | 
+ **columnIds** | **[]string** | columnIds | [default to []]
+ **include** | **[]string** | include | [default to []]
  **page** | **string** | page | [default to &quot;{}&quot;]
  **query** | **string** | query | [default to &quot;{}&quot;]
  **sort** | **string** | sort | [default to &quot;{}&quot;]
@@ -239,6 +245,8 @@ Name | Type | Description  | Notes
 
 importView
 
+
+
 ### Example
 
 ```go
@@ -253,13 +261,13 @@ import (
 
 func main() {
     viewId := "viewId_example" // string | viewId
-    file := os.NewFile(1234, "some_file") // *os.File | The following file types are supported: csv, tsv, xls, xlsx and JSON
-    importRequest := "importRequest_example" // string | importRequest (optional)
-    type_ := "type__example" // string | type (optional)
+    file := os.NewFile(1234, "some_file") // *os.File | 
+    importRequest := "importRequest_example" // string | importRequest (optional) (default to "{}")
+    type_ := "type__example" // string | type (optional) (default to "csv")
 
     configuration := gridly.NewConfiguration()
-    api_client := gridly.NewAPIClient(configuration)
-    resp, r, err := api_client.ViewApi.ImportView(context.Background(), viewId).File(file).ImportRequest(importRequest).Type_(type_).Execute()
+    apiClient := gridly.NewAPIClient(configuration)
+    resp, r, err := apiClient.ViewApi.ImportView(context.Background(), viewId).File(file).ImportRequest(importRequest).Type_(type_).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ViewApi.ImportView``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -283,9 +291,9 @@ Other parameters are passed through a pointer to a apiImportViewRequest struct v
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **file** | ***os.File** | The following file types are supported: csv, tsv, xls, xlsx and JSON | 
- **importRequest** | **string** | importRequest | 
- **type_** | **string** | type | 
+ **file** | ***os.File** |  | 
+ **importRequest** | **string** | importRequest | [default to &quot;{}&quot;]
+ **type_** | **string** | type | [default to &quot;csv&quot;]
 
 ### Return type
 
@@ -311,6 +319,8 @@ Name | Type | Description  | Notes
 
 list
 
+
+
 ### Example
 
 ```go
@@ -326,11 +336,11 @@ import (
 func main() {
     branchId := "branchId_example" // string | branchId (optional)
     gridId := "gridId_example" // string | gridId (optional)
-    type_ := "type__example" // string | type (optional)
+    type_ := gridly.ViewType("defaultView") // ViewType | type (optional) (default to "accessView")
 
     configuration := gridly.NewConfiguration()
-    api_client := gridly.NewAPIClient(configuration)
-    resp, r, err := api_client.ViewApi.List(context.Background()).BranchId(branchId).GridId(gridId).Type_(type_).Execute()
+    apiClient := gridly.NewAPIClient(configuration)
+    resp, r, err := apiClient.ViewApi.List(context.Background()).BranchId(branchId).GridId(gridId).Type_(type_).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ViewApi.List``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -353,7 +363,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **branchId** | **string** | branchId | 
  **gridId** | **string** | gridId | 
- **type_** | **string** | type | 
+ **type_** | [**ViewType**](ViewType.md) | type | [default to &quot;accessView&quot;]
 
 ### Return type
 
@@ -375,9 +385,11 @@ Name | Type | Description  | Notes
 
 ## Merge
 
-> Merge(ctx, viewId).DestinationViewId(destinationViewId).MergeRecordOptions(mergeRecordOptions).Execute()
+> Task Merge(ctx, viewId).DestinationViewId(destinationViewId).MergeRecordOptions(mergeRecordOptions).Execute()
 
 merge
+
+
 
 ### Example
 
@@ -394,15 +406,17 @@ import (
 func main() {
     destinationViewId := "destinationViewId_example" // string | destinationViewId
     viewId := "viewId_example" // string | viewId
-    mergeRecordOptions := []string{"MergeRecordOptions_example"} // []string | mergeRecordOptions (optional)
+    mergeRecordOptions := []string{"MergeRecordOptions_example"} // []string | mergeRecordOptions (optional) (default to [])
 
     configuration := gridly.NewConfiguration()
-    api_client := gridly.NewAPIClient(configuration)
-    resp, r, err := api_client.ViewApi.Merge(context.Background(), viewId).DestinationViewId(destinationViewId).MergeRecordOptions(mergeRecordOptions).Execute()
+    apiClient := gridly.NewAPIClient(configuration)
+    resp, r, err := apiClient.ViewApi.Merge(context.Background(), viewId).DestinationViewId(destinationViewId).MergeRecordOptions(mergeRecordOptions).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ViewApi.Merge``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
+    // response from `Merge`: Task
+    fmt.Fprintf(os.Stdout, "Response from `ViewApi.Merge`: %v\n", resp)
 }
 ```
 
@@ -423,11 +437,11 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **destinationViewId** | **string** | destinationViewId | 
 
- **mergeRecordOptions** | **[]string** | mergeRecordOptions | 
+ **mergeRecordOptions** | **[]string** | mergeRecordOptions | [default to []]
 
 ### Return type
 
- (empty response body)
+[**Task**](Task.md)
 
 ### Authorization
 

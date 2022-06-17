@@ -15,7 +15,7 @@ Method | HTTP request | Description
 
 ## Create
 
-> Database Create(ctx).ProjectId(projectId).Body(body).Execute()
+> Database Create(ctx).ProjectId(projectId).CreateDatabase(createDatabase).Execute()
 
 create
 
@@ -33,11 +33,11 @@ import (
 
 func main() {
     projectId := int64(789) // int64 | projectId
-    body := *gridly.NewCreateDatabase() // CreateDatabase | body
+    createDatabase := *gridly.NewCreateDatabase("Name_example") // CreateDatabase | 
 
     configuration := gridly.NewConfiguration()
-    api_client := gridly.NewAPIClient(configuration)
-    resp, r, err := api_client.DatabaseApi.Create(context.Background()).ProjectId(projectId).Body(body).Execute()
+    apiClient := gridly.NewAPIClient(configuration)
+    resp, r, err := apiClient.DatabaseApi.Create(context.Background()).ProjectId(projectId).CreateDatabase(createDatabase).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `DatabaseApi.Create``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -59,7 +59,7 @@ Other parameters are passed through a pointer to a apiCreateRequest struct via t
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **projectId** | **int64** | projectId | 
- **body** | [**CreateDatabase**](CreateDatabase.md) | body | 
+ **createDatabase** | [**CreateDatabase**](CreateDatabase.md) |  | 
 
 ### Return type
 
@@ -101,8 +101,8 @@ func main() {
     dbId := "dbId_example" // string | dbId
 
     configuration := gridly.NewConfiguration()
-    api_client := gridly.NewAPIClient(configuration)
-    resp, r, err := api_client.DatabaseApi.Delete(context.Background(), dbId).Execute()
+    apiClient := gridly.NewAPIClient(configuration)
+    resp, r, err := apiClient.DatabaseApi.Delete(context.Background(), dbId).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `DatabaseApi.Delete``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -147,7 +147,7 @@ Name | Type | Description  | Notes
 
 ## Duplicate
 
-> Database Duplicate(ctx, dbId).ProjectId(projectId).Body(body).Execute()
+> Database Duplicate(ctx, dbId).ProjectId(projectId).CreateDatabase(createDatabase).Execute()
 
 duplicate
 
@@ -166,11 +166,11 @@ import (
 func main() {
     dbId := "dbId_example" // string | dbId
     projectId := int64(789) // int64 | projectId
-    body := *gridly.NewCreateDatabase() // CreateDatabase | body
+    createDatabase := *gridly.NewCreateDatabase("Name_example") // CreateDatabase | 
 
     configuration := gridly.NewConfiguration()
-    api_client := gridly.NewAPIClient(configuration)
-    resp, r, err := api_client.DatabaseApi.Duplicate(context.Background(), dbId).ProjectId(projectId).Body(body).Execute()
+    apiClient := gridly.NewAPIClient(configuration)
+    resp, r, err := apiClient.DatabaseApi.Duplicate(context.Background(), dbId).ProjectId(projectId).CreateDatabase(createDatabase).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `DatabaseApi.Duplicate``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -197,7 +197,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
  **projectId** | **int64** | projectId | 
- **body** | [**CreateDatabase**](CreateDatabase.md) | body | 
+ **createDatabase** | [**CreateDatabase**](CreateDatabase.md) |  | 
 
 ### Return type
 
@@ -239,8 +239,8 @@ func main() {
     dbId := "dbId_example" // string | dbId
 
     configuration := gridly.NewConfiguration()
-    api_client := gridly.NewAPIClient(configuration)
-    resp, r, err := api_client.DatabaseApi.Get(context.Background(), dbId).Execute()
+    apiClient := gridly.NewAPIClient(configuration)
+    resp, r, err := apiClient.DatabaseApi.Get(context.Background(), dbId).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `DatabaseApi.Get``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -305,14 +305,14 @@ import (
 
 func main() {
     expand := []string{"Expand_example"} // []string | expand (optional)
-    page := "page_example" // string | page (optional)
+    page := "page_example" // string | page (optional) (default to "")
     projectId := int64(789) // int64 | projectId (optional)
     search := "search_example" // string | search (optional)
-    sort := "sort_example" // string | sort (optional)
+    sort := "sort_example" // string | sort (optional) (default to "")
 
     configuration := gridly.NewConfiguration()
-    api_client := gridly.NewAPIClient(configuration)
-    resp, r, err := api_client.DatabaseApi.List(context.Background()).Expand(expand).Page(page).ProjectId(projectId).Search(search).Sort(sort).Execute()
+    apiClient := gridly.NewAPIClient(configuration)
+    resp, r, err := apiClient.DatabaseApi.List(context.Background()).Expand(expand).Page(page).ProjectId(projectId).Search(search).Sort(sort).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `DatabaseApi.List``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -334,10 +334,10 @@ Other parameters are passed through a pointer to a apiListRequest struct via the
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **expand** | **[]string** | expand | 
- **page** | **string** | page | 
+ **page** | **string** | page | [default to &quot;&quot;]
  **projectId** | **int64** | projectId | 
  **search** | **string** | search | 
- **sort** | **string** | sort | 
+ **sort** | **string** | sort | [default to &quot;&quot;]
 
 ### Return type
 
@@ -359,7 +359,7 @@ Name | Type | Description  | Notes
 
 ## Update
 
-> Database Update(ctx, dbId).Body(body).Execute()
+> Database Update(ctx, dbId).UpdateDatabase(updateDatabase).Execute()
 
 update
 
@@ -377,11 +377,11 @@ import (
 
 func main() {
     dbId := "dbId_example" // string | dbId
-    body := *gridly.NewUpdateDatabase("Name_example") // UpdateDatabase | body
+    updateDatabase := *gridly.NewUpdateDatabase("Name_example") // UpdateDatabase | 
 
     configuration := gridly.NewConfiguration()
-    api_client := gridly.NewAPIClient(configuration)
-    resp, r, err := api_client.DatabaseApi.Update(context.Background(), dbId).Body(body).Execute()
+    apiClient := gridly.NewAPIClient(configuration)
+    resp, r, err := apiClient.DatabaseApi.Update(context.Background(), dbId).UpdateDatabase(updateDatabase).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `DatabaseApi.Update``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -407,7 +407,7 @@ Other parameters are passed through a pointer to a apiUpdateRequest struct via t
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **body** | [**UpdateDatabase**](UpdateDatabase.md) | body | 
+ **updateDatabase** | [**UpdateDatabase**](UpdateDatabase.md) |  | 
 
 ### Return type
 

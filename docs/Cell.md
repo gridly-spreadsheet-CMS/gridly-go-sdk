@@ -7,7 +7,7 @@ Name | Type | Description | Notes
 **ColumnId** | Pointer to **string** |  | [optional] 
 **DependencyStatus** | Pointer to **string** |  | [optional] 
 **ReferencedIds** | Pointer to **[]string** |  | [optional] 
-**Value** | Pointer to **interface{}** |  | [optional] 
+**Value** | Pointer to **map[string]interface{}** |  | [optional] 
 
 ## Methods
 
@@ -105,20 +105,20 @@ HasReferencedIds returns a boolean if a field has been set.
 
 ### GetValue
 
-`func (o *Cell) GetValue() interface{}`
+`func (o *Cell) GetValue() map[string]interface{}`
 
 GetValue returns the Value field if non-nil, zero value otherwise.
 
 ### GetValueOk
 
-`func (o *Cell) GetValueOk() (*interface{}, bool)`
+`func (o *Cell) GetValueOk() (*map[string]interface{}, bool)`
 
 GetValueOk returns a tuple with the Value field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetValue
 
-`func (o *Cell) SetValue(v interface{})`
+`func (o *Cell) SetValue(v map[string]interface{})`
 
 SetValue sets Value field to given value.
 

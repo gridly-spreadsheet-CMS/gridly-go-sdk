@@ -4,12 +4,12 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**Name** | Pointer to **string** |  | [optional] 
 **Description** | Pointer to **string** |  | [optional] 
 **LanguageCode** | Pointer to **string** |  | [optional] 
-**Name** | Pointer to **string** |  | [optional] 
-**NewId** | Pointer to **string** |  | [optional] 
-**NumberFormat** | Pointer to [**NumberFormat**](NumberFormat.md) |  | [optional] 
 **SelectionOptions** | Pointer to **[]string** |  | [optional] 
+**NumberFormat** | Pointer to [**NumberFormat**](NumberFormat.md) |  | [optional] 
+**NewId** | Pointer to **string** |  | [optional] 
 
 ## Methods
 
@@ -29,6 +29,31 @@ will change when the set of required properties is changed
 NewUpdateColumnWithDefaults instantiates a new UpdateColumn object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
+
+### GetName
+
+`func (o *UpdateColumn) GetName() string`
+
+GetName returns the Name field if non-nil, zero value otherwise.
+
+### GetNameOk
+
+`func (o *UpdateColumn) GetNameOk() (*string, bool)`
+
+GetNameOk returns a tuple with the Name field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetName
+
+`func (o *UpdateColumn) SetName(v string)`
+
+SetName sets Name field to given value.
+
+### HasName
+
+`func (o *UpdateColumn) HasName() bool`
+
+HasName returns a boolean if a field has been set.
 
 ### GetDescription
 
@@ -80,55 +105,30 @@ SetLanguageCode sets LanguageCode field to given value.
 
 HasLanguageCode returns a boolean if a field has been set.
 
-### GetName
+### GetSelectionOptions
 
-`func (o *UpdateColumn) GetName() string`
+`func (o *UpdateColumn) GetSelectionOptions() []string`
 
-GetName returns the Name field if non-nil, zero value otherwise.
+GetSelectionOptions returns the SelectionOptions field if non-nil, zero value otherwise.
 
-### GetNameOk
+### GetSelectionOptionsOk
 
-`func (o *UpdateColumn) GetNameOk() (*string, bool)`
+`func (o *UpdateColumn) GetSelectionOptionsOk() (*[]string, bool)`
 
-GetNameOk returns a tuple with the Name field if it's non-nil, zero value otherwise
+GetSelectionOptionsOk returns a tuple with the SelectionOptions field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetName
+### SetSelectionOptions
 
-`func (o *UpdateColumn) SetName(v string)`
+`func (o *UpdateColumn) SetSelectionOptions(v []string)`
 
-SetName sets Name field to given value.
+SetSelectionOptions sets SelectionOptions field to given value.
 
-### HasName
+### HasSelectionOptions
 
-`func (o *UpdateColumn) HasName() bool`
+`func (o *UpdateColumn) HasSelectionOptions() bool`
 
-HasName returns a boolean if a field has been set.
-
-### GetNewId
-
-`func (o *UpdateColumn) GetNewId() string`
-
-GetNewId returns the NewId field if non-nil, zero value otherwise.
-
-### GetNewIdOk
-
-`func (o *UpdateColumn) GetNewIdOk() (*string, bool)`
-
-GetNewIdOk returns a tuple with the NewId field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetNewId
-
-`func (o *UpdateColumn) SetNewId(v string)`
-
-SetNewId sets NewId field to given value.
-
-### HasNewId
-
-`func (o *UpdateColumn) HasNewId() bool`
-
-HasNewId returns a boolean if a field has been set.
+HasSelectionOptions returns a boolean if a field has been set.
 
 ### GetNumberFormat
 
@@ -155,30 +155,30 @@ SetNumberFormat sets NumberFormat field to given value.
 
 HasNumberFormat returns a boolean if a field has been set.
 
-### GetSelectionOptions
+### GetNewId
 
-`func (o *UpdateColumn) GetSelectionOptions() []string`
+`func (o *UpdateColumn) GetNewId() string`
 
-GetSelectionOptions returns the SelectionOptions field if non-nil, zero value otherwise.
+GetNewId returns the NewId field if non-nil, zero value otherwise.
 
-### GetSelectionOptionsOk
+### GetNewIdOk
 
-`func (o *UpdateColumn) GetSelectionOptionsOk() (*[]string, bool)`
+`func (o *UpdateColumn) GetNewIdOk() (*string, bool)`
 
-GetSelectionOptionsOk returns a tuple with the SelectionOptions field if it's non-nil, zero value otherwise
+GetNewIdOk returns a tuple with the NewId field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetSelectionOptions
+### SetNewId
 
-`func (o *UpdateColumn) SetSelectionOptions(v []string)`
+`func (o *UpdateColumn) SetNewId(v string)`
 
-SetSelectionOptions sets SelectionOptions field to given value.
+SetNewId sets NewId field to given value.
 
-### HasSelectionOptions
+### HasNewId
 
-`func (o *UpdateColumn) HasSelectionOptions() bool`
+`func (o *UpdateColumn) HasNewId() bool`
 
-HasSelectionOptions returns a boolean if a field has been set.
+HasNewId returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

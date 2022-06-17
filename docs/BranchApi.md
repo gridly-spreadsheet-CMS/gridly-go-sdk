@@ -14,9 +14,11 @@ Method | HTTP request | Description
 
 ## Create
 
-> Branch Create(ctx).CreateBranch(createBranch).BranchId(branchId).GridId(gridId).Execute()
+> Branch Create(ctx).CreateBranch(createBranch).GridId(gridId).BranchId(branchId).Execute()
 
 create
+
+
 
 ### Example
 
@@ -31,13 +33,13 @@ import (
 )
 
 func main() {
-    createBranch := *gridly.NewCreateBranch() // CreateBranch | createBranch
-    branchId := "branchId_example" // string | branchId (optional)
+    createBranch := *gridly.NewCreateBranch("Name_example") // CreateBranch | 
     gridId := "gridId_example" // string | gridId (optional)
+    branchId := "branchId_example" // string | branchId (optional)
 
     configuration := gridly.NewConfiguration()
-    api_client := gridly.NewAPIClient(configuration)
-    resp, r, err := api_client.BranchApi.Create(context.Background()).CreateBranch(createBranch).BranchId(branchId).GridId(gridId).Execute()
+    apiClient := gridly.NewAPIClient(configuration)
+    resp, r, err := apiClient.BranchApi.Create(context.Background()).CreateBranch(createBranch).GridId(gridId).BranchId(branchId).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `BranchApi.Create``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -58,9 +60,9 @@ Other parameters are passed through a pointer to a apiCreateRequest struct via t
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **createBranch** | [**CreateBranch**](CreateBranch.md) | createBranch | 
- **branchId** | **string** | branchId | 
+ **createBranch** | [**CreateBranch**](CreateBranch.md) |  | 
  **gridId** | **string** | gridId | 
+ **branchId** | **string** | branchId | 
 
 ### Return type
 
@@ -86,6 +88,8 @@ Name | Type | Description  | Notes
 
 delete
 
+
+
 ### Example
 
 ```go
@@ -102,8 +106,8 @@ func main() {
     branchId := "branchId_example" // string | branchId
 
     configuration := gridly.NewConfiguration()
-    api_client := gridly.NewAPIClient(configuration)
-    resp, r, err := api_client.BranchApi.Delete(context.Background(), branchId).Execute()
+    apiClient := gridly.NewAPIClient(configuration)
+    resp, r, err := apiClient.BranchApi.Delete(context.Background(), branchId).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `BranchApi.Delete``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -152,6 +156,8 @@ Name | Type | Description  | Notes
 
 get
 
+
+
 ### Example
 
 ```go
@@ -168,8 +174,8 @@ func main() {
     branchId := "branchId_example" // string | branchId
 
     configuration := gridly.NewConfiguration()
-    api_client := gridly.NewAPIClient(configuration)
-    resp, r, err := api_client.BranchApi.Get(context.Background(), branchId).Execute()
+    apiClient := gridly.NewAPIClient(configuration)
+    resp, r, err := apiClient.BranchApi.Get(context.Background(), branchId).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `BranchApi.Get``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -220,6 +226,8 @@ Name | Type | Description  | Notes
 
 list
 
+
+
 ### Example
 
 ```go
@@ -236,8 +244,8 @@ func main() {
     gridId := "gridId_example" // string | gridId
 
     configuration := gridly.NewConfiguration()
-    api_client := gridly.NewAPIClient(configuration)
-    resp, r, err := api_client.BranchApi.List(context.Background()).GridId(gridId).Execute()
+    apiClient := gridly.NewAPIClient(configuration)
+    resp, r, err := apiClient.BranchApi.List(context.Background()).GridId(gridId).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `BranchApi.List``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -280,9 +288,11 @@ Name | Type | Description  | Notes
 
 ## Merge
 
-> Merge(ctx, branchId).DestinationBranchId(destinationBranchId).MergeRecordOptions(mergeRecordOptions).Execute()
+> Task Merge(ctx, branchId).DestinationBranchId(destinationBranchId).MergeRecordOptions(mergeRecordOptions).Execute()
 
 merge
+
+
 
 ### Example
 
@@ -299,15 +309,17 @@ import (
 func main() {
     branchId := "branchId_example" // string | branchId
     destinationBranchId := "destinationBranchId_example" // string | destinationBranchId
-    mergeRecordOptions := []string{"MergeRecordOptions_example"} // []string | mergeRecordOptions (optional)
+    mergeRecordOptions := []string{"MergeRecordOptions_example"} // []string | mergeRecordOptions (optional) (default to [])
 
     configuration := gridly.NewConfiguration()
-    api_client := gridly.NewAPIClient(configuration)
-    resp, r, err := api_client.BranchApi.Merge(context.Background(), branchId).DestinationBranchId(destinationBranchId).MergeRecordOptions(mergeRecordOptions).Execute()
+    apiClient := gridly.NewAPIClient(configuration)
+    resp, r, err := apiClient.BranchApi.Merge(context.Background(), branchId).DestinationBranchId(destinationBranchId).MergeRecordOptions(mergeRecordOptions).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `BranchApi.Merge``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
+    // response from `Merge`: Task
+    fmt.Fprintf(os.Stdout, "Response from `BranchApi.Merge`: %v\n", resp)
 }
 ```
 
@@ -328,11 +340,11 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
  **destinationBranchId** | **string** | destinationBranchId | 
- **mergeRecordOptions** | **[]string** | mergeRecordOptions | 
+ **mergeRecordOptions** | **[]string** | mergeRecordOptions | [default to []]
 
 ### Return type
 
- (empty response body)
+[**Task**](Task.md)
 
 ### Authorization
 

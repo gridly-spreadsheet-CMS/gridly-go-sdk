@@ -5,14 +5,14 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Id** | Pointer to **string** |  | [optional] 
-**SourceColumnId** | Pointer to **string** |  | [optional] 
-**TargetColumnId** | Pointer to **string** |  | [optional] 
+**SourceColumnId** | **string** |  | 
+**TargetColumnId** | **string** |  | 
 
 ## Methods
 
 ### NewDependency
 
-`func NewDependency() *Dependency`
+`func NewDependency(sourceColumnId string, targetColumnId string, ) *Dependency`
 
 NewDependency instantiates a new Dependency object
 This constructor will assign default values to properties that have it defined,
@@ -71,11 +71,6 @@ and a boolean to check if the value has been set.
 
 SetSourceColumnId sets SourceColumnId field to given value.
 
-### HasSourceColumnId
-
-`func (o *Dependency) HasSourceColumnId() bool`
-
-HasSourceColumnId returns a boolean if a field has been set.
 
 ### GetTargetColumnId
 
@@ -96,11 +91,6 @@ and a boolean to check if the value has been set.
 
 SetTargetColumnId sets TargetColumnId field to given value.
 
-### HasTargetColumnId
-
-`func (o *Dependency) HasTargetColumnId() bool`
-
-HasTargetColumnId returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

@@ -4,9 +4,9 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**ContentType** | Pointer to **string** |  | [optional] 
 **Id** | Pointer to **string** |  | [optional] 
 **OriginalName** | Pointer to **string** |  | [optional] 
+**ContentType** | Pointer to **string** |  | [optional] 
 **Size** | Pointer to **int64** |  | [optional] 
 
 ## Methods
@@ -27,31 +27,6 @@ will change when the set of required properties is changed
 NewUploadedFileWithDefaults instantiates a new UploadedFile object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
-
-### GetContentType
-
-`func (o *UploadedFile) GetContentType() string`
-
-GetContentType returns the ContentType field if non-nil, zero value otherwise.
-
-### GetContentTypeOk
-
-`func (o *UploadedFile) GetContentTypeOk() (*string, bool)`
-
-GetContentTypeOk returns a tuple with the ContentType field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetContentType
-
-`func (o *UploadedFile) SetContentType(v string)`
-
-SetContentType sets ContentType field to given value.
-
-### HasContentType
-
-`func (o *UploadedFile) HasContentType() bool`
-
-HasContentType returns a boolean if a field has been set.
 
 ### GetId
 
@@ -102,6 +77,31 @@ SetOriginalName sets OriginalName field to given value.
 `func (o *UploadedFile) HasOriginalName() bool`
 
 HasOriginalName returns a boolean if a field has been set.
+
+### GetContentType
+
+`func (o *UploadedFile) GetContentType() string`
+
+GetContentType returns the ContentType field if non-nil, zero value otherwise.
+
+### GetContentTypeOk
+
+`func (o *UploadedFile) GetContentTypeOk() (*string, bool)`
+
+GetContentTypeOk returns a tuple with the ContentType field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetContentType
+
+`func (o *UploadedFile) SetContentType(v string)`
+
+SetContentType sets ContentType field to given value.
+
+### HasContentType
+
+`func (o *UploadedFile) HasContentType() bool`
+
+HasContentType returns a boolean if a field has been set.
 
 ### GetSize
 

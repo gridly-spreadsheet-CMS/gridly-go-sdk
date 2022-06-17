@@ -4,9 +4,9 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**Id** | Pointer to **string** |  | [optional] 
 **DependsOn** | Pointer to **string** |  | [optional] 
 **Description** | Pointer to **string** |  | [optional] 
-**Id** | Pointer to **string** |  | [optional] 
 **IsSource** | Pointer to **bool** |  | [optional] 
 **IsTarget** | Pointer to **bool** |  | [optional] 
 **LanguageCode** | Pointer to **string** |  | [optional] 
@@ -34,6 +34,31 @@ will change when the set of required properties is changed
 NewViewColumnWithDefaults instantiates a new ViewColumn object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
+
+### GetId
+
+`func (o *ViewColumn) GetId() string`
+
+GetId returns the Id field if non-nil, zero value otherwise.
+
+### GetIdOk
+
+`func (o *ViewColumn) GetIdOk() (*string, bool)`
+
+GetIdOk returns a tuple with the Id field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetId
+
+`func (o *ViewColumn) SetId(v string)`
+
+SetId sets Id field to given value.
+
+### HasId
+
+`func (o *ViewColumn) HasId() bool`
+
+HasId returns a boolean if a field has been set.
 
 ### GetDependsOn
 
@@ -84,31 +109,6 @@ SetDescription sets Description field to given value.
 `func (o *ViewColumn) HasDescription() bool`
 
 HasDescription returns a boolean if a field has been set.
-
-### GetId
-
-`func (o *ViewColumn) GetId() string`
-
-GetId returns the Id field if non-nil, zero value otherwise.
-
-### GetIdOk
-
-`func (o *ViewColumn) GetIdOk() (*string, bool)`
-
-GetIdOk returns a tuple with the Id field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetId
-
-`func (o *ViewColumn) SetId(v string)`
-
-SetId sets Id field to given value.
-
-### HasId
-
-`func (o *ViewColumn) HasId() bool`
-
-HasId returns a boolean if a field has been set.
 
 ### GetIsSource
 

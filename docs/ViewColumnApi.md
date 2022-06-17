@@ -19,6 +19,8 @@ Method | HTTP request | Description
 
 add
 
+
+
 ### Example
 
 ```go
@@ -36,8 +38,8 @@ func main() {
     viewId := "viewId_example" // string | viewId
 
     configuration := gridly.NewConfiguration()
-    api_client := gridly.NewAPIClient(configuration)
-    resp, r, err := api_client.ViewColumnApi.Add(context.Background(), columnId, viewId).Execute()
+    apiClient := gridly.NewAPIClient(configuration)
+    resp, r, err := apiClient.ViewColumnApi.Add(context.Background(), columnId, viewId).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ViewColumnApi.Add``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -90,6 +92,8 @@ Name | Type | Description  | Notes
 
 create
 
+
+
 ### Example
 
 ```go
@@ -104,11 +108,11 @@ import (
 
 func main() {
     viewId := "viewId_example" // string | viewId
-    createColumn := *gridly.NewCreateColumn("Type_example") // CreateColumn | createColumn
+    createColumn := *gridly.NewCreateColumn("Name_example", "Type_example") // CreateColumn | 
 
     configuration := gridly.NewConfiguration()
-    api_client := gridly.NewAPIClient(configuration)
-    resp, r, err := api_client.ViewColumnApi.Create(context.Background(), viewId).CreateColumn(createColumn).Execute()
+    apiClient := gridly.NewAPIClient(configuration)
+    resp, r, err := apiClient.ViewColumnApi.Create(context.Background(), viewId).CreateColumn(createColumn).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ViewColumnApi.Create``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -134,7 +138,7 @@ Other parameters are passed through a pointer to a apiCreateRequest struct via t
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **createColumn** | [**CreateColumn**](CreateColumn.md) | createColumn | 
+ **createColumn** | [**CreateColumn**](CreateColumn.md) |  | 
 
 ### Return type
 
@@ -160,6 +164,8 @@ Name | Type | Description  | Notes
 
 delete
 
+
+
 ### Example
 
 ```go
@@ -177,8 +183,8 @@ func main() {
     viewId := "viewId_example" // string | viewId
 
     configuration := gridly.NewConfiguration()
-    api_client := gridly.NewAPIClient(configuration)
-    resp, r, err := api_client.ViewColumnApi.Delete(context.Background(), columnId, viewId).Execute()
+    apiClient := gridly.NewAPIClient(configuration)
+    resp, r, err := apiClient.ViewColumnApi.Delete(context.Background(), columnId, viewId).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ViewColumnApi.Delete``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -229,6 +235,8 @@ Name | Type | Description  | Notes
 
 get
 
+
+
 ### Example
 
 ```go
@@ -246,8 +254,8 @@ func main() {
     viewId := "viewId_example" // string | viewId
 
     configuration := gridly.NewConfiguration()
-    api_client := gridly.NewAPIClient(configuration)
-    resp, r, err := api_client.ViewColumnApi.Get(context.Background(), columnId, viewId).Execute()
+    apiClient := gridly.NewAPIClient(configuration)
+    resp, r, err := apiClient.ViewColumnApi.Get(context.Background(), columnId, viewId).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ViewColumnApi.Get``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -300,6 +308,8 @@ Name | Type | Description  | Notes
 
 remove
 
+
+
 ### Example
 
 ```go
@@ -317,8 +327,8 @@ func main() {
     viewId := "viewId_example" // string | viewId
 
     configuration := gridly.NewConfiguration()
-    api_client := gridly.NewAPIClient(configuration)
-    resp, r, err := api_client.ViewColumnApi.Remove(context.Background(), columnId, viewId).Execute()
+    apiClient := gridly.NewAPIClient(configuration)
+    resp, r, err := apiClient.ViewColumnApi.Remove(context.Background(), columnId, viewId).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ViewColumnApi.Remove``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -369,6 +379,8 @@ Name | Type | Description  | Notes
 
 update
 
+
+
 ### Example
 
 ```go
@@ -384,11 +396,11 @@ import (
 func main() {
     columnId := "columnId_example" // string | columnId
     viewId := "viewId_example" // string | viewId
-    updateColumn := *gridly.NewUpdateColumn() // UpdateColumn | updateColumn
+    updateColumn := *gridly.NewUpdateColumn() // UpdateColumn | 
 
     configuration := gridly.NewConfiguration()
-    api_client := gridly.NewAPIClient(configuration)
-    resp, r, err := api_client.ViewColumnApi.Update(context.Background(), columnId, viewId).UpdateColumn(updateColumn).Execute()
+    apiClient := gridly.NewAPIClient(configuration)
+    resp, r, err := apiClient.ViewColumnApi.Update(context.Background(), columnId, viewId).UpdateColumn(updateColumn).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ViewColumnApi.Update``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -416,7 +428,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
 
- **updateColumn** | [**UpdateColumn**](UpdateColumn.md) | updateColumn | 
+ **updateColumn** | [**UpdateColumn**](UpdateColumn.md) |  | 
 
 ### Return type
 

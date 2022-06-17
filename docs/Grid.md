@@ -4,10 +4,10 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**Id** | Pointer to **string** |  | [optional] 
 **Columns** | Pointer to [**[]ViewColumn**](ViewColumn.md) |  | [optional] 
 **DefaultAccessViewId** | Pointer to **string** |  | [optional] 
 **Description** | Pointer to **string** |  | [optional] 
-**Id** | Pointer to **string** |  | [optional] 
 **Metadata** | Pointer to **map[string]string** |  | [optional] 
 **Name** | Pointer to **string** |  | [optional] 
 **Status** | Pointer to **string** |  | [optional] 
@@ -30,6 +30,31 @@ will change when the set of required properties is changed
 NewGridWithDefaults instantiates a new Grid object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
+
+### GetId
+
+`func (o *Grid) GetId() string`
+
+GetId returns the Id field if non-nil, zero value otherwise.
+
+### GetIdOk
+
+`func (o *Grid) GetIdOk() (*string, bool)`
+
+GetIdOk returns a tuple with the Id field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetId
+
+`func (o *Grid) SetId(v string)`
+
+SetId sets Id field to given value.
+
+### HasId
+
+`func (o *Grid) HasId() bool`
+
+HasId returns a boolean if a field has been set.
 
 ### GetColumns
 
@@ -105,31 +130,6 @@ SetDescription sets Description field to given value.
 `func (o *Grid) HasDescription() bool`
 
 HasDescription returns a boolean if a field has been set.
-
-### GetId
-
-`func (o *Grid) GetId() string`
-
-GetId returns the Id field if non-nil, zero value otherwise.
-
-### GetIdOk
-
-`func (o *Grid) GetIdOk() (*string, bool)`
-
-GetIdOk returns a tuple with the Id field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetId
-
-`func (o *Grid) SetId(v string)`
-
-SetId sets Id field to given value.
-
-### HasId
-
-`func (o *Grid) HasId() bool`
-
-HasId returns a boolean if a field has been set.
 
 ### GetMetadata
 

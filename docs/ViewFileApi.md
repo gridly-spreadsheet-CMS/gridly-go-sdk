@@ -17,6 +17,8 @@ Method | HTTP request | Description
 
 delete
 
+
+
 ### Example
 
 ```go
@@ -33,11 +35,11 @@ func main() {
     columnId := "columnId_example" // string | columnId
     recordId := "recordId_example" // string | recordId
     viewId := "viewId_example" // string | viewId
-    deleteFile := *gridly.NewDeleteFile() // DeleteFile | deleteFile
+    deleteFile := *gridly.NewDeleteFile([]string{"Ids_example"}) // DeleteFile | 
 
     configuration := gridly.NewConfiguration()
-    api_client := gridly.NewAPIClient(configuration)
-    resp, r, err := api_client.ViewFileApi.Delete(context.Background(), viewId).ColumnId(columnId).RecordId(recordId).DeleteFile(deleteFile).Execute()
+    apiClient := gridly.NewAPIClient(configuration)
+    resp, r, err := apiClient.ViewFileApi.Delete(context.Background(), viewId).ColumnId(columnId).RecordId(recordId).DeleteFile(deleteFile).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ViewFileApi.Delete``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -63,7 +65,7 @@ Name | Type | Description  | Notes
  **columnId** | **string** | columnId | 
  **recordId** | **string** | recordId | 
 
- **deleteFile** | [**DeleteFile**](DeleteFile.md) | deleteFile | 
+ **deleteFile** | [**DeleteFile**](DeleteFile.md) |  | 
 
 ### Return type
 
@@ -89,6 +91,8 @@ Name | Type | Description  | Notes
 
 download
 
+
+
 ### Example
 
 ```go
@@ -106,8 +110,8 @@ func main() {
     viewId := "viewId_example" // string | viewId
 
     configuration := gridly.NewConfiguration()
-    api_client := gridly.NewAPIClient(configuration)
-    resp, r, err := api_client.ViewFileApi.Download(context.Background(), fileId, viewId).Execute()
+    apiClient := gridly.NewAPIClient(configuration)
+    resp, r, err := apiClient.ViewFileApi.Download(context.Background(), fileId, viewId).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ViewFileApi.Download``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -156,9 +160,11 @@ Name | Type | Description  | Notes
 
 ## Upload
 
-> UploadedFile Upload(ctx, viewId).ColumnId(columnId).File(file).RecordId(recordId).Execute()
+> UploadedFile Upload(ctx, viewId).ColumnId(columnId).RecordId(recordId).File(file).Execute()
 
 upload
+
+
 
 ### Example
 
@@ -175,12 +181,12 @@ import (
 func main() {
     viewId := "viewId_example" // string | viewId
     columnId := "columnId_example" // string | columnId
-    file := os.NewFile(1234, "some_file") // *os.File | file
     recordId := "recordId_example" // string | recordId
+    file := os.NewFile(1234, "some_file") // *os.File | 
 
     configuration := gridly.NewConfiguration()
-    api_client := gridly.NewAPIClient(configuration)
-    resp, r, err := api_client.ViewFileApi.Upload(context.Background(), viewId).ColumnId(columnId).File(file).RecordId(recordId).Execute()
+    apiClient := gridly.NewAPIClient(configuration)
+    resp, r, err := apiClient.ViewFileApi.Upload(context.Background(), viewId).ColumnId(columnId).RecordId(recordId).File(file).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ViewFileApi.Upload``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -207,8 +213,8 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
  **columnId** | **string** | columnId | 
- **file** | ***os.File** | file | 
  **recordId** | **string** | recordId | 
+ **file** | ***os.File** |  | 
 
 ### Return type
 
@@ -230,9 +236,11 @@ Name | Type | Description  | Notes
 
 ## UploadZip
 
-> []Record UploadZip(ctx, viewId).ColumnId(columnId).File(file).FileMappings(fileMappings).Execute()
+> []Record UploadZip(ctx, viewId).ColumnId(columnId).FileMappings(fileMappings).File(file).Execute()
 
 uploadZip
+
+
 
 ### Example
 
@@ -249,12 +257,12 @@ import (
 func main() {
     viewId := "viewId_example" // string | viewId
     columnId := "columnId_example" // string | columnId
-    file := os.NewFile(1234, "some_file") // *os.File | file
     fileMappings := "fileMappings_example" // string | fileMappings
+    file := os.NewFile(1234, "some_file") // *os.File | 
 
     configuration := gridly.NewConfiguration()
-    api_client := gridly.NewAPIClient(configuration)
-    resp, r, err := api_client.ViewFileApi.UploadZip(context.Background(), viewId).ColumnId(columnId).File(file).FileMappings(fileMappings).Execute()
+    apiClient := gridly.NewAPIClient(configuration)
+    resp, r, err := apiClient.ViewFileApi.UploadZip(context.Background(), viewId).ColumnId(columnId).FileMappings(fileMappings).File(file).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ViewFileApi.UploadZip``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -281,8 +289,8 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
  **columnId** | **string** | columnId | 
- **file** | ***os.File** | file | 
  **fileMappings** | **string** | fileMappings | 
+ **file** | ***os.File** |  | 
 
 ### Return type
 

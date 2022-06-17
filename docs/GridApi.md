@@ -19,6 +19,8 @@ Method | HTTP request | Description
 
 create
 
+
+
 ### Example
 
 ```go
@@ -33,11 +35,11 @@ import (
 
 func main() {
     dbId := "dbId_example" // string | dbId
-    createGrid := *gridly.NewCreateGrid() // CreateGrid | createGrid
+    createGrid := *gridly.NewCreateGrid("Name_example") // CreateGrid | 
 
     configuration := gridly.NewConfiguration()
-    api_client := gridly.NewAPIClient(configuration)
-    resp, r, err := api_client.GridApi.Create(context.Background()).DbId(dbId).CreateGrid(createGrid).Execute()
+    apiClient := gridly.NewAPIClient(configuration)
+    resp, r, err := apiClient.GridApi.Create(context.Background()).DbId(dbId).CreateGrid(createGrid).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `GridApi.Create``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -59,7 +61,7 @@ Other parameters are passed through a pointer to a apiCreateRequest struct via t
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **dbId** | **string** | dbId | 
- **createGrid** | [**CreateGrid**](CreateGrid.md) | createGrid | 
+ **createGrid** | [**CreateGrid**](CreateGrid.md) |  | 
 
 ### Return type
 
@@ -85,6 +87,8 @@ Name | Type | Description  | Notes
 
 delete
 
+
+
 ### Example
 
 ```go
@@ -101,8 +105,8 @@ func main() {
     gridId := "gridId_example" // string | gridId
 
     configuration := gridly.NewConfiguration()
-    api_client := gridly.NewAPIClient(configuration)
-    resp, r, err := api_client.GridApi.Delete(context.Background(), gridId).Execute()
+    apiClient := gridly.NewAPIClient(configuration)
+    resp, r, err := apiClient.GridApi.Delete(context.Background(), gridId).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `GridApi.Delete``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -151,6 +155,8 @@ Name | Type | Description  | Notes
 
 get
 
+
+
 ### Example
 
 ```go
@@ -167,8 +173,8 @@ func main() {
     gridId := "gridId_example" // string | gridId
 
     configuration := gridly.NewConfiguration()
-    api_client := gridly.NewAPIClient(configuration)
-    resp, r, err := api_client.GridApi.Get(context.Background(), gridId).Execute()
+    apiClient := gridly.NewAPIClient(configuration)
+    resp, r, err := apiClient.GridApi.Get(context.Background(), gridId).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `GridApi.Get``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -219,6 +225,8 @@ Name | Type | Description  | Notes
 
 list
 
+
+
 ### Example
 
 ```go
@@ -235,8 +243,8 @@ func main() {
     dbId := "dbId_example" // string | dbId
 
     configuration := gridly.NewConfiguration()
-    api_client := gridly.NewAPIClient(configuration)
-    resp, r, err := api_client.GridApi.List(context.Background()).DbId(dbId).Execute()
+    apiClient := gridly.NewAPIClient(configuration)
+    resp, r, err := apiClient.GridApi.List(context.Background()).DbId(dbId).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `GridApi.List``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -283,6 +291,8 @@ Name | Type | Description  | Notes
 
 listTemplateGrids
 
+
+
 ### Example
 
 ```go
@@ -298,8 +308,8 @@ import (
 func main() {
 
     configuration := gridly.NewConfiguration()
-    api_client := gridly.NewAPIClient(configuration)
-    resp, r, err := api_client.GridApi.ListTemplateGrids(context.Background()).Execute()
+    apiClient := gridly.NewAPIClient(configuration)
+    resp, r, err := apiClient.GridApi.ListTemplateGrids(context.Background()).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `GridApi.ListTemplateGrids``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -342,6 +352,8 @@ Other parameters are passed through a pointer to a apiListTemplateGridsRequest s
 
 update
 
+
+
 ### Example
 
 ```go
@@ -356,11 +368,11 @@ import (
 
 func main() {
     gridId := "gridId_example" // string | gridId
-    updateGrid := *gridly.NewUpdateGrid() // UpdateGrid | updateGrid
+    updateGrid := *gridly.NewUpdateGrid() // UpdateGrid | 
 
     configuration := gridly.NewConfiguration()
-    api_client := gridly.NewAPIClient(configuration)
-    resp, r, err := api_client.GridApi.Update(context.Background(), gridId).UpdateGrid(updateGrid).Execute()
+    apiClient := gridly.NewAPIClient(configuration)
+    resp, r, err := apiClient.GridApi.Update(context.Background(), gridId).UpdateGrid(updateGrid).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `GridApi.Update``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -386,7 +398,7 @@ Other parameters are passed through a pointer to a apiUpdateRequest struct via t
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **updateGrid** | [**UpdateGrid**](UpdateGrid.md) | updateGrid | 
+ **updateGrid** | [**UpdateGrid**](UpdateGrid.md) |  | 
 
 ### Return type
 

@@ -5,13 +5,13 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Id** | Pointer to **int64** |  | [optional] 
-**IsSystemRole** | Pointer to **bool** |  | [optional] 
-**Level** | Pointer to **string** |  | [optional] 
 **Name** | Pointer to **string** |  | [optional] 
-**PrivilegeIds** | Pointer to **[]int64** |  | [optional] 
-**Privileges** | Pointer to [**[]Privilege**](Privilege.md) |  | [optional] 
 **Title** | Pointer to **string** |  | [optional] 
 **Type** | Pointer to **string** |  | [optional] 
+**Level** | Pointer to **string** |  | [optional] 
+**Privileges** | Pointer to [**[]Privilege**](Privilege.md) |  | [optional] 
+**PrivilegeIds** | Pointer to **[]int64** |  | [optional] 
+**IsSystemRole** | Pointer to **bool** |  | [optional] 
 
 ## Methods
 
@@ -57,56 +57,6 @@ SetId sets Id field to given value.
 
 HasId returns a boolean if a field has been set.
 
-### GetIsSystemRole
-
-`func (o *Role) GetIsSystemRole() bool`
-
-GetIsSystemRole returns the IsSystemRole field if non-nil, zero value otherwise.
-
-### GetIsSystemRoleOk
-
-`func (o *Role) GetIsSystemRoleOk() (*bool, bool)`
-
-GetIsSystemRoleOk returns a tuple with the IsSystemRole field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetIsSystemRole
-
-`func (o *Role) SetIsSystemRole(v bool)`
-
-SetIsSystemRole sets IsSystemRole field to given value.
-
-### HasIsSystemRole
-
-`func (o *Role) HasIsSystemRole() bool`
-
-HasIsSystemRole returns a boolean if a field has been set.
-
-### GetLevel
-
-`func (o *Role) GetLevel() string`
-
-GetLevel returns the Level field if non-nil, zero value otherwise.
-
-### GetLevelOk
-
-`func (o *Role) GetLevelOk() (*string, bool)`
-
-GetLevelOk returns a tuple with the Level field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetLevel
-
-`func (o *Role) SetLevel(v string)`
-
-SetLevel sets Level field to given value.
-
-### HasLevel
-
-`func (o *Role) HasLevel() bool`
-
-HasLevel returns a boolean if a field has been set.
-
 ### GetName
 
 `func (o *Role) GetName() string`
@@ -131,56 +81,6 @@ SetName sets Name field to given value.
 `func (o *Role) HasName() bool`
 
 HasName returns a boolean if a field has been set.
-
-### GetPrivilegeIds
-
-`func (o *Role) GetPrivilegeIds() []int64`
-
-GetPrivilegeIds returns the PrivilegeIds field if non-nil, zero value otherwise.
-
-### GetPrivilegeIdsOk
-
-`func (o *Role) GetPrivilegeIdsOk() (*[]int64, bool)`
-
-GetPrivilegeIdsOk returns a tuple with the PrivilegeIds field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetPrivilegeIds
-
-`func (o *Role) SetPrivilegeIds(v []int64)`
-
-SetPrivilegeIds sets PrivilegeIds field to given value.
-
-### HasPrivilegeIds
-
-`func (o *Role) HasPrivilegeIds() bool`
-
-HasPrivilegeIds returns a boolean if a field has been set.
-
-### GetPrivileges
-
-`func (o *Role) GetPrivileges() []Privilege`
-
-GetPrivileges returns the Privileges field if non-nil, zero value otherwise.
-
-### GetPrivilegesOk
-
-`func (o *Role) GetPrivilegesOk() (*[]Privilege, bool)`
-
-GetPrivilegesOk returns a tuple with the Privileges field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetPrivileges
-
-`func (o *Role) SetPrivileges(v []Privilege)`
-
-SetPrivileges sets Privileges field to given value.
-
-### HasPrivileges
-
-`func (o *Role) HasPrivileges() bool`
-
-HasPrivileges returns a boolean if a field has been set.
 
 ### GetTitle
 
@@ -231,6 +131,106 @@ SetType sets Type field to given value.
 `func (o *Role) HasType() bool`
 
 HasType returns a boolean if a field has been set.
+
+### GetLevel
+
+`func (o *Role) GetLevel() string`
+
+GetLevel returns the Level field if non-nil, zero value otherwise.
+
+### GetLevelOk
+
+`func (o *Role) GetLevelOk() (*string, bool)`
+
+GetLevelOk returns a tuple with the Level field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetLevel
+
+`func (o *Role) SetLevel(v string)`
+
+SetLevel sets Level field to given value.
+
+### HasLevel
+
+`func (o *Role) HasLevel() bool`
+
+HasLevel returns a boolean if a field has been set.
+
+### GetPrivileges
+
+`func (o *Role) GetPrivileges() []Privilege`
+
+GetPrivileges returns the Privileges field if non-nil, zero value otherwise.
+
+### GetPrivilegesOk
+
+`func (o *Role) GetPrivilegesOk() (*[]Privilege, bool)`
+
+GetPrivilegesOk returns a tuple with the Privileges field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetPrivileges
+
+`func (o *Role) SetPrivileges(v []Privilege)`
+
+SetPrivileges sets Privileges field to given value.
+
+### HasPrivileges
+
+`func (o *Role) HasPrivileges() bool`
+
+HasPrivileges returns a boolean if a field has been set.
+
+### GetPrivilegeIds
+
+`func (o *Role) GetPrivilegeIds() []int64`
+
+GetPrivilegeIds returns the PrivilegeIds field if non-nil, zero value otherwise.
+
+### GetPrivilegeIdsOk
+
+`func (o *Role) GetPrivilegeIdsOk() (*[]int64, bool)`
+
+GetPrivilegeIdsOk returns a tuple with the PrivilegeIds field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetPrivilegeIds
+
+`func (o *Role) SetPrivilegeIds(v []int64)`
+
+SetPrivilegeIds sets PrivilegeIds field to given value.
+
+### HasPrivilegeIds
+
+`func (o *Role) HasPrivilegeIds() bool`
+
+HasPrivilegeIds returns a boolean if a field has been set.
+
+### GetIsSystemRole
+
+`func (o *Role) GetIsSystemRole() bool`
+
+GetIsSystemRole returns the IsSystemRole field if non-nil, zero value otherwise.
+
+### GetIsSystemRoleOk
+
+`func (o *Role) GetIsSystemRoleOk() (*bool, bool)`
+
+GetIsSystemRoleOk returns a tuple with the IsSystemRole field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetIsSystemRole
+
+`func (o *Role) SetIsSystemRole(v bool)`
+
+SetIsSystemRole sets IsSystemRole field to given value.
+
+### HasIsSystemRole
+
+`func (o *Role) HasIsSystemRole() bool`
+
+HasIsSystemRole returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

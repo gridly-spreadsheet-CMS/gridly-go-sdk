@@ -31,11 +31,11 @@ import (
 )
 
 func main() {
-    createProject := *gridly.NewCreateProject("Name_example") // CreateProject | createProject
+    createProject := *gridly.NewCreateProject("Name_example") // CreateProject | 
 
     configuration := gridly.NewConfiguration()
-    api_client := gridly.NewAPIClient(configuration)
-    resp, r, err := api_client.ProjectApi.Create(context.Background()).CreateProject(createProject).Execute()
+    apiClient := gridly.NewAPIClient(configuration)
+    resp, r, err := apiClient.ProjectApi.Create(context.Background()).CreateProject(createProject).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ProjectApi.Create``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -56,7 +56,7 @@ Other parameters are passed through a pointer to a apiCreateRequest struct via t
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **createProject** | [**CreateProject**](CreateProject.md) | createProject | 
+ **createProject** | [**CreateProject**](CreateProject.md) |  | 
 
 ### Return type
 
@@ -98,8 +98,8 @@ func main() {
     projectId := int64(789) // int64 | projectId
 
     configuration := gridly.NewConfiguration()
-    api_client := gridly.NewAPIClient(configuration)
-    resp, r, err := api_client.ProjectApi.Delete(context.Background(), projectId).Execute()
+    apiClient := gridly.NewAPIClient(configuration)
+    resp, r, err := apiClient.ProjectApi.Delete(context.Background(), projectId).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ProjectApi.Delete``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -164,8 +164,8 @@ func main() {
     projectId := int64(789) // int64 | projectId
 
     configuration := gridly.NewConfiguration()
-    api_client := gridly.NewAPIClient(configuration)
-    resp, r, err := api_client.ProjectApi.FindOne(context.Background(), projectId).Execute()
+    apiClient := gridly.NewAPIClient(configuration)
+    resp, r, err := apiClient.ProjectApi.FindOne(context.Background(), projectId).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ProjectApi.FindOne``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -231,8 +231,8 @@ import (
 func main() {
 
     configuration := gridly.NewConfiguration()
-    api_client := gridly.NewAPIClient(configuration)
-    resp, r, err := api_client.ProjectApi.List(context.Background()).Execute()
+    apiClient := gridly.NewAPIClient(configuration)
+    resp, r, err := apiClient.ProjectApi.List(context.Background()).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ProjectApi.List``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -289,11 +289,11 @@ import (
 
 func main() {
     projectId := int64(789) // int64 | projectId
-    updateProject := *gridly.NewUpdateProject("Name_example") // UpdateProject | updateProject
+    updateProject := *gridly.NewUpdateProject("Name_example") // UpdateProject | 
 
     configuration := gridly.NewConfiguration()
-    api_client := gridly.NewAPIClient(configuration)
-    resp, r, err := api_client.ProjectApi.Update(context.Background(), projectId).UpdateProject(updateProject).Execute()
+    apiClient := gridly.NewAPIClient(configuration)
+    resp, r, err := apiClient.ProjectApi.Update(context.Background(), projectId).UpdateProject(updateProject).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ProjectApi.Update``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -319,7 +319,7 @@ Other parameters are passed through a pointer to a apiUpdateRequest struct via t
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **updateProject** | [**UpdateProject**](UpdateProject.md) | updateProject | 
+ **updateProject** | [**UpdateProject**](UpdateProject.md) |  | 
 
 ### Return type
 

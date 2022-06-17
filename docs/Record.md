@@ -4,8 +4,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Cells** | Pointer to [**[]Cell**](Cell.md) |  | [optional] 
 **Id** | Pointer to **string** |  | [optional] 
+**Cells** | Pointer to [**[]Cell**](Cell.md) |  | [optional] 
 **LastModifiedBy** | Pointer to **string** |  | [optional] 
 **LastModifiedTime** | Pointer to **time.Time** |  | [optional] 
 **Path** | Pointer to **string** |  | [optional] 
@@ -28,31 +28,6 @@ will change when the set of required properties is changed
 NewRecordWithDefaults instantiates a new Record object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
-
-### GetCells
-
-`func (o *Record) GetCells() []Cell`
-
-GetCells returns the Cells field if non-nil, zero value otherwise.
-
-### GetCellsOk
-
-`func (o *Record) GetCellsOk() (*[]Cell, bool)`
-
-GetCellsOk returns a tuple with the Cells field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetCells
-
-`func (o *Record) SetCells(v []Cell)`
-
-SetCells sets Cells field to given value.
-
-### HasCells
-
-`func (o *Record) HasCells() bool`
-
-HasCells returns a boolean if a field has been set.
 
 ### GetId
 
@@ -78,6 +53,31 @@ SetId sets Id field to given value.
 `func (o *Record) HasId() bool`
 
 HasId returns a boolean if a field has been set.
+
+### GetCells
+
+`func (o *Record) GetCells() []Cell`
+
+GetCells returns the Cells field if non-nil, zero value otherwise.
+
+### GetCellsOk
+
+`func (o *Record) GetCellsOk() (*[]Cell, bool)`
+
+GetCellsOk returns a tuple with the Cells field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetCells
+
+`func (o *Record) SetCells(v []Cell)`
+
+SetCells sets Cells field to given value.
+
+### HasCells
+
+`func (o *Record) HasCells() bool`
+
+HasCells returns a boolean if a field has been set.
 
 ### GetLastModifiedBy
 

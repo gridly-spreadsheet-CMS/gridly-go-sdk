@@ -14,9 +14,11 @@ Method | HTTP request | Description
 
 ## Create
 
-> []Record Create(ctx, viewId).CreateRecords(createRecords).Execute()
+> []Record Create(ctx, viewId).SetRecord(setRecord).Execute()
 
 create
+
+
 
 ### Example
 
@@ -32,11 +34,11 @@ import (
 
 func main() {
     viewId := "viewId_example" // string | viewId
-    createRecords := []gridly.SetRecord{*gridly.NewSetRecord()} // []SetRecord | createRecords
+    setRecord := []gridly.SetRecord{*gridly.NewSetRecord()} // []SetRecord | 
 
     configuration := gridly.NewConfiguration()
-    api_client := gridly.NewAPIClient(configuration)
-    resp, r, err := api_client.RecordApi.Create(context.Background(), viewId).CreateRecords(createRecords).Execute()
+    apiClient := gridly.NewAPIClient(configuration)
+    resp, r, err := apiClient.RecordApi.Create(context.Background(), viewId).SetRecord(setRecord).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `RecordApi.Create``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -62,7 +64,7 @@ Other parameters are passed through a pointer to a apiCreateRequest struct via t
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **createRecords** | [**[]SetRecord**](SetRecord.md) | createRecords | 
+ **setRecord** | [**[]SetRecord**](SetRecord.md) |  | 
 
 ### Return type
 
@@ -88,6 +90,8 @@ Name | Type | Description  | Notes
 
 delete
 
+
+
 ### Example
 
 ```go
@@ -102,11 +106,11 @@ import (
 
 func main() {
     viewId := "viewId_example" // string | viewId
-    deleteRecord := *gridly.NewDeleteRecord() // DeleteRecord | deleteRecord
+    deleteRecord := *gridly.NewDeleteRecord() // DeleteRecord | 
 
     configuration := gridly.NewConfiguration()
-    api_client := gridly.NewAPIClient(configuration)
-    resp, r, err := api_client.RecordApi.Delete(context.Background(), viewId).DeleteRecord(deleteRecord).Execute()
+    apiClient := gridly.NewAPIClient(configuration)
+    resp, r, err := apiClient.RecordApi.Delete(context.Background(), viewId).DeleteRecord(deleteRecord).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `RecordApi.Delete``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -130,7 +134,7 @@ Other parameters are passed through a pointer to a apiDeleteRequest struct via t
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **deleteRecord** | [**DeleteRecord**](DeleteRecord.md) | deleteRecord | 
+ **deleteRecord** | [**DeleteRecord**](DeleteRecord.md) |  | 
 
 ### Return type
 
@@ -152,9 +156,11 @@ Name | Type | Description  | Notes
 
 ## Fetch
 
-> []Record Fetch(ctx, viewId).ColumnIds(columnIds).Page(page).Query(query).Sort(sort).Execute()
+> []Record Fetch(ctx, viewId).ColumnIds(columnIds).Page(page).Query(query).Sort(sort).FetchFileOption(fetchFileOption).Execute()
 
 fetch
+
+
 
 ### Example
 
@@ -170,14 +176,15 @@ import (
 
 func main() {
     viewId := "viewId_example" // string | viewId
-    columnIds := []string{"Inner_example"} // []string | columnIds (optional)
+    columnIds := []string{"Inner_example"} // []string | columnIds (optional) (default to [])
     page := "page_example" // string | page (optional) (default to "{}")
     query := "query_example" // string | query (optional) (default to "{}")
     sort := "sort_example" // string | sort (optional) (default to "{}")
+    fetchFileOption := gridly.FetchFileOption("all") // FetchFileOption | fetchFileOption (optional) (default to "id")
 
     configuration := gridly.NewConfiguration()
-    api_client := gridly.NewAPIClient(configuration)
-    resp, r, err := api_client.RecordApi.Fetch(context.Background(), viewId).ColumnIds(columnIds).Page(page).Query(query).Sort(sort).Execute()
+    apiClient := gridly.NewAPIClient(configuration)
+    resp, r, err := apiClient.RecordApi.Fetch(context.Background(), viewId).ColumnIds(columnIds).Page(page).Query(query).Sort(sort).FetchFileOption(fetchFileOption).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `RecordApi.Fetch``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -203,10 +210,11 @@ Other parameters are passed through a pointer to a apiFetchRequest struct via th
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **columnIds** | **[]string** | columnIds | 
+ **columnIds** | **[]string** | columnIds | [default to []]
  **page** | **string** | page | [default to &quot;{}&quot;]
  **query** | **string** | query | [default to &quot;{}&quot;]
  **sort** | **string** | sort | [default to &quot;{}&quot;]
+ **fetchFileOption** | [**FetchFileOption**](FetchFileOption.md) | fetchFileOption | [default to &quot;id&quot;]
 
 ### Return type
 
@@ -228,9 +236,11 @@ Name | Type | Description  | Notes
 
 ## Update
 
-> []Record Update(ctx, viewId).UpdateRecords(updateRecords).Execute()
+> []Record Update(ctx, viewId).SetRecord(setRecord).Execute()
 
 update
+
+
 
 ### Example
 
@@ -246,11 +256,11 @@ import (
 
 func main() {
     viewId := "viewId_example" // string | viewId
-    updateRecords := []gridly.SetRecord{*gridly.NewSetRecord()} // []SetRecord | updateRecords
+    setRecord := []gridly.SetRecord{*gridly.NewSetRecord()} // []SetRecord | 
 
     configuration := gridly.NewConfiguration()
-    api_client := gridly.NewAPIClient(configuration)
-    resp, r, err := api_client.RecordApi.Update(context.Background(), viewId).UpdateRecords(updateRecords).Execute()
+    apiClient := gridly.NewAPIClient(configuration)
+    resp, r, err := apiClient.RecordApi.Update(context.Background(), viewId).SetRecord(setRecord).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `RecordApi.Update``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -276,7 +286,7 @@ Other parameters are passed through a pointer to a apiUpdateRequest struct via t
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **updateRecords** | [**[]SetRecord**](SetRecord.md) | updateRecords | 
+ **setRecord** | [**[]SetRecord**](SetRecord.md) |  | 
 
 ### Return type
 
@@ -298,9 +308,11 @@ Name | Type | Description  | Notes
 
 ## UpdateRecord
 
-> Record UpdateRecord(ctx, id, viewId).UpdateRecord(updateRecord).Path(path).Execute()
+> Record UpdateRecord(ctx, id, viewId).SetRecord(setRecord).Path(path).Execute()
 
 updateRecord
+
+
 
 ### Example
 
@@ -317,12 +329,12 @@ import (
 func main() {
     id := "id_example" // string | id
     viewId := "viewId_example" // string | viewId
-    updateRecord := *gridly.NewSetRecord() // SetRecord | updateRecord
+    setRecord := *gridly.NewSetRecord() // SetRecord | 
     path := "path_example" // string | path (optional)
 
     configuration := gridly.NewConfiguration()
-    api_client := gridly.NewAPIClient(configuration)
-    resp, r, err := api_client.RecordApi.UpdateRecord(context.Background(), id, viewId).UpdateRecord(updateRecord).Path(path).Execute()
+    apiClient := gridly.NewAPIClient(configuration)
+    resp, r, err := apiClient.RecordApi.UpdateRecord(context.Background(), id, viewId).SetRecord(setRecord).Path(path).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `RecordApi.UpdateRecord``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -350,7 +362,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
 
- **updateRecord** | [**SetRecord**](SetRecord.md) | updateRecord | 
+ **setRecord** | [**SetRecord**](SetRecord.md) |  | 
  **path** | **string** | path | 
 
 ### Return type

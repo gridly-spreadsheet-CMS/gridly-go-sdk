@@ -4,20 +4,20 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**Name** | **string** |  | 
 **Description** | Pointer to **string** |  | [optional] 
-**Id** | Pointer to **string** |  | [optional] 
-**LanguageCode** | Pointer to **string** |  | [optional] 
-**Name** | Pointer to **string** |  | [optional] 
-**NumberFormat** | Pointer to [**NumberFormat**](NumberFormat.md) |  | [optional] 
-**Reference** | Pointer to [**Reference**](Reference.md) |  | [optional] 
-**SelectionOptions** | Pointer to **[]string** |  | [optional] 
 **Type** | **string** |  | 
+**LanguageCode** | Pointer to **string** |  | [optional] 
+**NumberFormat** | Pointer to [**NumberFormat**](NumberFormat.md) |  | [optional] 
+**SelectionOptions** | Pointer to **[]string** |  | [optional] 
+**Reference** | Pointer to [**Reference**](Reference.md) |  | [optional] 
+**Id** | Pointer to **string** |  | [optional] 
 
 ## Methods
 
 ### NewCreateColumn
 
-`func NewCreateColumn(type_ string, ) *CreateColumn`
+`func NewCreateColumn(name string, type_ string, ) *CreateColumn`
 
 NewCreateColumn instantiates a new CreateColumn object
 This constructor will assign default values to properties that have it defined,
@@ -31,6 +31,26 @@ will change when the set of required properties is changed
 NewCreateColumnWithDefaults instantiates a new CreateColumn object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
+
+### GetName
+
+`func (o *CreateColumn) GetName() string`
+
+GetName returns the Name field if non-nil, zero value otherwise.
+
+### GetNameOk
+
+`func (o *CreateColumn) GetNameOk() (*string, bool)`
+
+GetNameOk returns a tuple with the Name field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetName
+
+`func (o *CreateColumn) SetName(v string)`
+
+SetName sets Name field to given value.
+
 
 ### GetDescription
 
@@ -57,30 +77,25 @@ SetDescription sets Description field to given value.
 
 HasDescription returns a boolean if a field has been set.
 
-### GetId
+### GetType
 
-`func (o *CreateColumn) GetId() string`
+`func (o *CreateColumn) GetType() string`
 
-GetId returns the Id field if non-nil, zero value otherwise.
+GetType returns the Type field if non-nil, zero value otherwise.
 
-### GetIdOk
+### GetTypeOk
 
-`func (o *CreateColumn) GetIdOk() (*string, bool)`
+`func (o *CreateColumn) GetTypeOk() (*string, bool)`
 
-GetIdOk returns a tuple with the Id field if it's non-nil, zero value otherwise
+GetTypeOk returns a tuple with the Type field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetId
+### SetType
 
-`func (o *CreateColumn) SetId(v string)`
+`func (o *CreateColumn) SetType(v string)`
 
-SetId sets Id field to given value.
+SetType sets Type field to given value.
 
-### HasId
-
-`func (o *CreateColumn) HasId() bool`
-
-HasId returns a boolean if a field has been set.
 
 ### GetLanguageCode
 
@@ -107,31 +122,6 @@ SetLanguageCode sets LanguageCode field to given value.
 
 HasLanguageCode returns a boolean if a field has been set.
 
-### GetName
-
-`func (o *CreateColumn) GetName() string`
-
-GetName returns the Name field if non-nil, zero value otherwise.
-
-### GetNameOk
-
-`func (o *CreateColumn) GetNameOk() (*string, bool)`
-
-GetNameOk returns a tuple with the Name field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetName
-
-`func (o *CreateColumn) SetName(v string)`
-
-SetName sets Name field to given value.
-
-### HasName
-
-`func (o *CreateColumn) HasName() bool`
-
-HasName returns a boolean if a field has been set.
-
 ### GetNumberFormat
 
 `func (o *CreateColumn) GetNumberFormat() NumberFormat`
@@ -156,31 +146,6 @@ SetNumberFormat sets NumberFormat field to given value.
 `func (o *CreateColumn) HasNumberFormat() bool`
 
 HasNumberFormat returns a boolean if a field has been set.
-
-### GetReference
-
-`func (o *CreateColumn) GetReference() Reference`
-
-GetReference returns the Reference field if non-nil, zero value otherwise.
-
-### GetReferenceOk
-
-`func (o *CreateColumn) GetReferenceOk() (*Reference, bool)`
-
-GetReferenceOk returns a tuple with the Reference field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetReference
-
-`func (o *CreateColumn) SetReference(v Reference)`
-
-SetReference sets Reference field to given value.
-
-### HasReference
-
-`func (o *CreateColumn) HasReference() bool`
-
-HasReference returns a boolean if a field has been set.
 
 ### GetSelectionOptions
 
@@ -207,25 +172,55 @@ SetSelectionOptions sets SelectionOptions field to given value.
 
 HasSelectionOptions returns a boolean if a field has been set.
 
-### GetType
+### GetReference
 
-`func (o *CreateColumn) GetType() string`
+`func (o *CreateColumn) GetReference() Reference`
 
-GetType returns the Type field if non-nil, zero value otherwise.
+GetReference returns the Reference field if non-nil, zero value otherwise.
 
-### GetTypeOk
+### GetReferenceOk
 
-`func (o *CreateColumn) GetTypeOk() (*string, bool)`
+`func (o *CreateColumn) GetReferenceOk() (*Reference, bool)`
 
-GetTypeOk returns a tuple with the Type field if it's non-nil, zero value otherwise
+GetReferenceOk returns a tuple with the Reference field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetType
+### SetReference
 
-`func (o *CreateColumn) SetType(v string)`
+`func (o *CreateColumn) SetReference(v Reference)`
 
-SetType sets Type field to given value.
+SetReference sets Reference field to given value.
 
+### HasReference
+
+`func (o *CreateColumn) HasReference() bool`
+
+HasReference returns a boolean if a field has been set.
+
+### GetId
+
+`func (o *CreateColumn) GetId() string`
+
+GetId returns the Id field if non-nil, zero value otherwise.
+
+### GetIdOk
+
+`func (o *CreateColumn) GetIdOk() (*string, bool)`
+
+GetIdOk returns a tuple with the Id field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetId
+
+`func (o *CreateColumn) SetId(v string)`
+
+SetId sets Id field to given value.
+
+### HasId
+
+`func (o *CreateColumn) HasId() bool`
+
+HasId returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

@@ -4,10 +4,10 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**Id** | Pointer to **string** |  | [optional] 
 **Columns** | Pointer to [**[]ViewColumn**](ViewColumn.md) |  | [optional] 
 **GridId** | Pointer to **string** |  | [optional] 
 **GridStatus** | Pointer to **string** |  | [optional] 
-**Id** | Pointer to **string** |  | [optional] 
 **Name** | Pointer to **string** |  | [optional] 
 **Records** | Pointer to [**[]Record**](Record.md) |  | [optional] 
 
@@ -29,6 +29,31 @@ will change when the set of required properties is changed
 NewViewWithDefaults instantiates a new View object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
+
+### GetId
+
+`func (o *View) GetId() string`
+
+GetId returns the Id field if non-nil, zero value otherwise.
+
+### GetIdOk
+
+`func (o *View) GetIdOk() (*string, bool)`
+
+GetIdOk returns a tuple with the Id field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetId
+
+`func (o *View) SetId(v string)`
+
+SetId sets Id field to given value.
+
+### HasId
+
+`func (o *View) HasId() bool`
+
+HasId returns a boolean if a field has been set.
 
 ### GetColumns
 
@@ -104,31 +129,6 @@ SetGridStatus sets GridStatus field to given value.
 `func (o *View) HasGridStatus() bool`
 
 HasGridStatus returns a boolean if a field has been set.
-
-### GetId
-
-`func (o *View) GetId() string`
-
-GetId returns the Id field if non-nil, zero value otherwise.
-
-### GetIdOk
-
-`func (o *View) GetIdOk() (*string, bool)`
-
-GetIdOk returns a tuple with the Id field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetId
-
-`func (o *View) SetId(v string)`
-
-SetId sets Id field to given value.
-
-### HasId
-
-`func (o *View) HasId() bool`
-
-HasId returns a boolean if a field has been set.
 
 ### GetName
 

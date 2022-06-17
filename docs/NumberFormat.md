@@ -4,9 +4,9 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**CurrencySymbol** | Pointer to **string** |  | [optional] 
-**DecimalPlaces** | Pointer to **int32** |  | [optional] 
 **Type** | Pointer to **string** |  | [optional] 
+**DecimalPlaces** | Pointer to **int32** |  | [optional] 
+**CurrencySymbol** | Pointer to **string** |  | [optional] 
 **Use1000Separator** | Pointer to **bool** |  | [optional] 
 
 ## Methods
@@ -28,30 +28,30 @@ NewNumberFormatWithDefaults instantiates a new NumberFormat object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
 
-### GetCurrencySymbol
+### GetType
 
-`func (o *NumberFormat) GetCurrencySymbol() string`
+`func (o *NumberFormat) GetType() string`
 
-GetCurrencySymbol returns the CurrencySymbol field if non-nil, zero value otherwise.
+GetType returns the Type field if non-nil, zero value otherwise.
 
-### GetCurrencySymbolOk
+### GetTypeOk
 
-`func (o *NumberFormat) GetCurrencySymbolOk() (*string, bool)`
+`func (o *NumberFormat) GetTypeOk() (*string, bool)`
 
-GetCurrencySymbolOk returns a tuple with the CurrencySymbol field if it's non-nil, zero value otherwise
+GetTypeOk returns a tuple with the Type field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetCurrencySymbol
+### SetType
 
-`func (o *NumberFormat) SetCurrencySymbol(v string)`
+`func (o *NumberFormat) SetType(v string)`
 
-SetCurrencySymbol sets CurrencySymbol field to given value.
+SetType sets Type field to given value.
 
-### HasCurrencySymbol
+### HasType
 
-`func (o *NumberFormat) HasCurrencySymbol() bool`
+`func (o *NumberFormat) HasType() bool`
 
-HasCurrencySymbol returns a boolean if a field has been set.
+HasType returns a boolean if a field has been set.
 
 ### GetDecimalPlaces
 
@@ -78,30 +78,30 @@ SetDecimalPlaces sets DecimalPlaces field to given value.
 
 HasDecimalPlaces returns a boolean if a field has been set.
 
-### GetType
+### GetCurrencySymbol
 
-`func (o *NumberFormat) GetType() string`
+`func (o *NumberFormat) GetCurrencySymbol() string`
 
-GetType returns the Type field if non-nil, zero value otherwise.
+GetCurrencySymbol returns the CurrencySymbol field if non-nil, zero value otherwise.
 
-### GetTypeOk
+### GetCurrencySymbolOk
 
-`func (o *NumberFormat) GetTypeOk() (*string, bool)`
+`func (o *NumberFormat) GetCurrencySymbolOk() (*string, bool)`
 
-GetTypeOk returns a tuple with the Type field if it's non-nil, zero value otherwise
+GetCurrencySymbolOk returns a tuple with the CurrencySymbol field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetType
+### SetCurrencySymbol
 
-`func (o *NumberFormat) SetType(v string)`
+`func (o *NumberFormat) SetCurrencySymbol(v string)`
 
-SetType sets Type field to given value.
+SetCurrencySymbol sets CurrencySymbol field to given value.
 
-### HasType
+### HasCurrencySymbol
 
-`func (o *NumberFormat) HasType() bool`
+`func (o *NumberFormat) HasCurrencySymbol() bool`
 
-HasType returns a boolean if a field has been set.
+HasCurrencySymbol returns a boolean if a field has been set.
 
 ### GetUse1000Separator
 

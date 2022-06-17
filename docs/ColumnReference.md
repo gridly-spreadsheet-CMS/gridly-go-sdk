@@ -4,10 +4,10 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Column** | Pointer to [**ReferencedColumn**](ReferencedColumn.md) |  | [optional] 
 **Grid** | Pointer to [**ReferencedGrid**](ReferencedGrid.md) |  | [optional] 
-**SelectionType** | Pointer to **string** |  | [optional] 
+**Column** | Pointer to [**ReferencedColumn**](ReferencedColumn.md) |  | [optional] 
 **Type** | Pointer to **string** |  | [optional] 
+**SelectionType** | Pointer to **string** |  | [optional] 
 
 ## Methods
 
@@ -27,31 +27,6 @@ will change when the set of required properties is changed
 NewColumnReferenceWithDefaults instantiates a new ColumnReference object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
-
-### GetColumn
-
-`func (o *ColumnReference) GetColumn() ReferencedColumn`
-
-GetColumn returns the Column field if non-nil, zero value otherwise.
-
-### GetColumnOk
-
-`func (o *ColumnReference) GetColumnOk() (*ReferencedColumn, bool)`
-
-GetColumnOk returns a tuple with the Column field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetColumn
-
-`func (o *ColumnReference) SetColumn(v ReferencedColumn)`
-
-SetColumn sets Column field to given value.
-
-### HasColumn
-
-`func (o *ColumnReference) HasColumn() bool`
-
-HasColumn returns a boolean if a field has been set.
 
 ### GetGrid
 
@@ -78,30 +53,30 @@ SetGrid sets Grid field to given value.
 
 HasGrid returns a boolean if a field has been set.
 
-### GetSelectionType
+### GetColumn
 
-`func (o *ColumnReference) GetSelectionType() string`
+`func (o *ColumnReference) GetColumn() ReferencedColumn`
 
-GetSelectionType returns the SelectionType field if non-nil, zero value otherwise.
+GetColumn returns the Column field if non-nil, zero value otherwise.
 
-### GetSelectionTypeOk
+### GetColumnOk
 
-`func (o *ColumnReference) GetSelectionTypeOk() (*string, bool)`
+`func (o *ColumnReference) GetColumnOk() (*ReferencedColumn, bool)`
 
-GetSelectionTypeOk returns a tuple with the SelectionType field if it's non-nil, zero value otherwise
+GetColumnOk returns a tuple with the Column field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetSelectionType
+### SetColumn
 
-`func (o *ColumnReference) SetSelectionType(v string)`
+`func (o *ColumnReference) SetColumn(v ReferencedColumn)`
 
-SetSelectionType sets SelectionType field to given value.
+SetColumn sets Column field to given value.
 
-### HasSelectionType
+### HasColumn
 
-`func (o *ColumnReference) HasSelectionType() bool`
+`func (o *ColumnReference) HasColumn() bool`
 
-HasSelectionType returns a boolean if a field has been set.
+HasColumn returns a boolean if a field has been set.
 
 ### GetType
 
@@ -127,6 +102,31 @@ SetType sets Type field to given value.
 `func (o *ColumnReference) HasType() bool`
 
 HasType returns a boolean if a field has been set.
+
+### GetSelectionType
+
+`func (o *ColumnReference) GetSelectionType() string`
+
+GetSelectionType returns the SelectionType field if non-nil, zero value otherwise.
+
+### GetSelectionTypeOk
+
+`func (o *ColumnReference) GetSelectionTypeOk() (*string, bool)`
+
+GetSelectionTypeOk returns a tuple with the SelectionType field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetSelectionType
+
+`func (o *ColumnReference) SetSelectionType(v string)`
+
+SetSelectionType sets SelectionType field to given value.
+
+### HasSelectionType
+
+`func (o *ColumnReference) HasSelectionType() bool`
+
+HasSelectionType returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
