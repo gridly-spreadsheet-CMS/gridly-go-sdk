@@ -29,11 +29,12 @@ type RecordApiCreateRequest struct {
 	ctx context.Context
 	ApiService *RecordApiService
 	viewId string
-	setRecord *[]SetRecord
+	createRecords *[]SetRecord
 }
 
-func (r RecordApiCreateRequest) SetRecord(setRecord []SetRecord) RecordApiCreateRequest {
-	r.setRecord = &setRecord
+// createRecords
+func (r RecordApiCreateRequest) CreateRecords(createRecords []SetRecord) RecordApiCreateRequest {
+	r.createRecords = &createRecords
 	return r
 }
 
@@ -79,8 +80,8 @@ func (a *RecordApiService) CreateExecute(r RecordApiCreateRequest) ([]Record, *h
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.setRecord == nil {
-		return localVarReturnValue, nil, reportError("setRecord is required and must be specified")
+	if r.createRecords == nil {
+		return localVarReturnValue, nil, reportError("createRecords is required and must be specified")
 	}
 
 	// to determine the Content-Type header
@@ -101,7 +102,7 @@ func (a *RecordApiService) CreateExecute(r RecordApiCreateRequest) ([]Record, *h
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.setRecord
+	localVarPostBody = r.createRecords
 	if r.ctx != nil {
 		// API Key Authentication
 		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {

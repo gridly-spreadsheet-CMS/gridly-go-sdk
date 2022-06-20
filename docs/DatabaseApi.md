@@ -15,7 +15,7 @@ Method | HTTP request | Description
 
 ## Create
 
-> Database Create(ctx).ProjectId(projectId).CreateDatabase(createDatabase).Execute()
+> Database Create(ctx).ProjectId(projectId).Body(body).Execute()
 
 create
 
@@ -33,11 +33,11 @@ import (
 
 func main() {
     projectId := int64(789) // int64 | projectId
-    createDatabase := *gridly.NewCreateDatabase("Name_example") // CreateDatabase | 
+    body := *gridly.NewCreateDatabase("Name_example") // CreateDatabase | body
 
     configuration := gridly.NewConfiguration()
     apiClient := gridly.NewAPIClient(configuration)
-    resp, r, err := apiClient.DatabaseApi.Create(context.Background()).ProjectId(projectId).CreateDatabase(createDatabase).Execute()
+    resp, r, err := apiClient.DatabaseApi.Create(context.Background()).ProjectId(projectId).Body(body).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `DatabaseApi.Create``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -59,7 +59,7 @@ Other parameters are passed through a pointer to a apiCreateRequest struct via t
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **projectId** | **int64** | projectId | 
- **createDatabase** | [**CreateDatabase**](CreateDatabase.md) |  | 
+ **body** | [**CreateDatabase**](CreateDatabase.md) | body | 
 
 ### Return type
 
@@ -147,7 +147,7 @@ Name | Type | Description  | Notes
 
 ## Duplicate
 
-> Database Duplicate(ctx, dbId).ProjectId(projectId).CreateDatabase(createDatabase).Execute()
+> Database Duplicate(ctx, dbId).ProjectId(projectId).Body(body).Execute()
 
 duplicate
 
@@ -166,11 +166,11 @@ import (
 func main() {
     dbId := "dbId_example" // string | dbId
     projectId := int64(789) // int64 | projectId
-    createDatabase := *gridly.NewCreateDatabase("Name_example") // CreateDatabase | 
+    body := *gridly.NewCreateDatabase("Name_example") // CreateDatabase | body
 
     configuration := gridly.NewConfiguration()
     apiClient := gridly.NewAPIClient(configuration)
-    resp, r, err := apiClient.DatabaseApi.Duplicate(context.Background(), dbId).ProjectId(projectId).CreateDatabase(createDatabase).Execute()
+    resp, r, err := apiClient.DatabaseApi.Duplicate(context.Background(), dbId).ProjectId(projectId).Body(body).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `DatabaseApi.Duplicate``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -197,7 +197,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
  **projectId** | **int64** | projectId | 
- **createDatabase** | [**CreateDatabase**](CreateDatabase.md) |  | 
+ **body** | [**CreateDatabase**](CreateDatabase.md) | body | 
 
 ### Return type
 
@@ -359,7 +359,7 @@ Name | Type | Description  | Notes
 
 ## Update
 
-> Database Update(ctx, dbId).UpdateDatabase(updateDatabase).Execute()
+> Database Update(ctx, dbId).Body(body).Execute()
 
 update
 
@@ -377,11 +377,11 @@ import (
 
 func main() {
     dbId := "dbId_example" // string | dbId
-    updateDatabase := *gridly.NewUpdateDatabase("Name_example") // UpdateDatabase | 
+    body := *gridly.NewUpdateDatabase("Name_example") // UpdateDatabase | body
 
     configuration := gridly.NewConfiguration()
     apiClient := gridly.NewAPIClient(configuration)
-    resp, r, err := apiClient.DatabaseApi.Update(context.Background(), dbId).UpdateDatabase(updateDatabase).Execute()
+    resp, r, err := apiClient.DatabaseApi.Update(context.Background(), dbId).Body(body).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `DatabaseApi.Update``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -407,7 +407,7 @@ Other parameters are passed through a pointer to a apiUpdateRequest struct via t
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **updateDatabase** | [**UpdateDatabase**](UpdateDatabase.md) |  | 
+ **body** | [**UpdateDatabase**](UpdateDatabase.md) | body | 
 
 ### Return type
 

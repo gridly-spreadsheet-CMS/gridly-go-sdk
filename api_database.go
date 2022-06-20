@@ -29,7 +29,7 @@ type DatabaseApiCreateRequest struct {
 	ctx context.Context
 	ApiService *DatabaseApiService
 	projectId *int64
-	createDatabase *CreateDatabase
+	body *CreateDatabase
 }
 
 // projectId
@@ -38,8 +38,9 @@ func (r DatabaseApiCreateRequest) ProjectId(projectId int64) DatabaseApiCreateRe
 	return r
 }
 
-func (r DatabaseApiCreateRequest) CreateDatabase(createDatabase CreateDatabase) DatabaseApiCreateRequest {
-	r.createDatabase = &createDatabase
+// body
+func (r DatabaseApiCreateRequest) Body(body CreateDatabase) DatabaseApiCreateRequest {
+	r.body = &body
 	return r
 }
 
@@ -83,8 +84,8 @@ func (a *DatabaseApiService) CreateExecute(r DatabaseApiCreateRequest) (*Databas
 	if r.projectId == nil {
 		return localVarReturnValue, nil, reportError("projectId is required and must be specified")
 	}
-	if r.createDatabase == nil {
-		return localVarReturnValue, nil, reportError("createDatabase is required and must be specified")
+	if r.body == nil {
+		return localVarReturnValue, nil, reportError("body is required and must be specified")
 	}
 
 	localVarQueryParams.Add("projectId", parameterToString(*r.projectId, ""))
@@ -106,7 +107,7 @@ func (a *DatabaseApiService) CreateExecute(r DatabaseApiCreateRequest) (*Databas
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.createDatabase
+	localVarPostBody = r.body
 	if r.ctx != nil {
 		// API Key Authentication
 		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
@@ -267,7 +268,7 @@ type DatabaseApiDuplicateRequest struct {
 	ApiService *DatabaseApiService
 	dbId string
 	projectId *int64
-	createDatabase *CreateDatabase
+	body *CreateDatabase
 }
 
 // projectId
@@ -276,8 +277,9 @@ func (r DatabaseApiDuplicateRequest) ProjectId(projectId int64) DatabaseApiDupli
 	return r
 }
 
-func (r DatabaseApiDuplicateRequest) CreateDatabase(createDatabase CreateDatabase) DatabaseApiDuplicateRequest {
-	r.createDatabase = &createDatabase
+// body
+func (r DatabaseApiDuplicateRequest) Body(body CreateDatabase) DatabaseApiDuplicateRequest {
+	r.body = &body
 	return r
 }
 
@@ -324,8 +326,8 @@ func (a *DatabaseApiService) DuplicateExecute(r DatabaseApiDuplicateRequest) (*D
 	if r.projectId == nil {
 		return localVarReturnValue, nil, reportError("projectId is required and must be specified")
 	}
-	if r.createDatabase == nil {
-		return localVarReturnValue, nil, reportError("createDatabase is required and must be specified")
+	if r.body == nil {
+		return localVarReturnValue, nil, reportError("body is required and must be specified")
 	}
 
 	localVarQueryParams.Add("projectId", parameterToString(*r.projectId, ""))
@@ -347,7 +349,7 @@ func (a *DatabaseApiService) DuplicateExecute(r DatabaseApiDuplicateRequest) (*D
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.createDatabase
+	localVarPostBody = r.body
 	if r.ctx != nil {
 		// API Key Authentication
 		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
@@ -687,11 +689,12 @@ type DatabaseApiUpdateRequest struct {
 	ctx context.Context
 	ApiService *DatabaseApiService
 	dbId string
-	updateDatabase *UpdateDatabase
+	body *UpdateDatabase
 }
 
-func (r DatabaseApiUpdateRequest) UpdateDatabase(updateDatabase UpdateDatabase) DatabaseApiUpdateRequest {
-	r.updateDatabase = &updateDatabase
+// body
+func (r DatabaseApiUpdateRequest) Body(body UpdateDatabase) DatabaseApiUpdateRequest {
+	r.body = &body
 	return r
 }
 
@@ -735,8 +738,8 @@ func (a *DatabaseApiService) UpdateExecute(r DatabaseApiUpdateRequest) (*Databas
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.updateDatabase == nil {
-		return localVarReturnValue, nil, reportError("updateDatabase is required and must be specified")
+	if r.body == nil {
+		return localVarReturnValue, nil, reportError("body is required and must be specified")
 	}
 
 	// to determine the Content-Type header
@@ -757,7 +760,7 @@ func (a *DatabaseApiService) UpdateExecute(r DatabaseApiUpdateRequest) (*Databas
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.updateDatabase
+	localVarPostBody = r.body
 	if r.ctx != nil {
 		// API Key Authentication
 		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {

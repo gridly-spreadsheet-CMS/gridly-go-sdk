@@ -361,6 +361,7 @@ paths:
               items:
                 $ref: '#/components/schemas/SetRecord'
               type: array
+        description: createRecords
         required: true
       responses:
         "200":
@@ -376,6 +377,7 @@ paths:
       summary: create
       tags:
       - record
+      x-codegen-request-body-name: createRecords
   /v1/views/{viewId}/merge:
     post:
       description: merge
@@ -455,7 +457,16 @@ paths:
         name: type
         required: false
         schema:
-          $ref: '#/components/schemas/FileType'
+          default: csv
+          enum:
+          - csv
+          - tsv
+          - xls
+          - xlsx
+          - json
+          - po
+          nullable: true
+          type: string
         style: form
       requestBody:
         content:
@@ -1349,7 +1360,16 @@ paths:
         name: type
         required: false
         schema:
-          $ref: '#/components/schemas/FileType'
+          default: csv
+          enum:
+          - csv
+          - tsv
+          - xls
+          - xlsx
+          - json
+          - po
+          nullable: true
+          type: string
         style: form
       responses:
         default:
@@ -1586,6 +1606,7 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/UpdateDatabase'
+        description: body
         required: true
       responses:
         "200":
@@ -1599,6 +1620,7 @@ paths:
       summary: update
       tags:
       - database
+      x-codegen-request-body-name: body
   /v1/projects:
     get:
       operationId: list
@@ -1719,6 +1741,7 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/CreateDatabase'
+        description: body
         required: true
       responses:
         "200":
@@ -1732,6 +1755,7 @@ paths:
       summary: create
       tags:
       - database
+      x-codegen-request-body-name: body
   /v1/databases/{dbId}/duplicate:
     post:
       operationId: duplicate
@@ -1758,6 +1782,7 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/CreateDatabase'
+        description: body
         required: true
       responses:
         "200":
@@ -1771,6 +1796,7 @@ paths:
       summary: duplicate
       tags:
       - database
+      x-codegen-request-body-name: body
 components:
   schemas:
     UpdateDependency:
@@ -2236,22 +2262,6 @@ components:
           - running
           type: string
       type: object
-    FileType:
-      enum:
-      - csv
-      - tsv
-      - xls
-      - xlsx
-      - json
-      - po
-      type: string
-      x-enum-varnames:
-      - csv
-      - tsv
-      - xls
-      - xlsx
-      - json
-      - po
     UploadedFile:
       example:
         originalName: originalName
@@ -3803,6 +3813,7 @@ components:
       - name
       type: object
     CreateDatabase:
+      description: body
       example:
         name: name
         description: description

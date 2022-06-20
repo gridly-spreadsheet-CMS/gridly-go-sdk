@@ -158,7 +158,7 @@ type ViewApiExportRequest struct {
 	fileHeader *ExportFileHeader
 	query *string
 	sort *string
-	type_ *FileType
+	type_ *string
 }
 
 // columnIds
@@ -186,7 +186,7 @@ func (r ViewApiExportRequest) Sort(sort string) ViewApiExportRequest {
 }
 
 // type
-func (r ViewApiExportRequest) Type_(type_ FileType) ViewApiExportRequest {
+func (r ViewApiExportRequest) Type_(type_ string) ViewApiExportRequest {
 	r.type_ = &type_
 	return r
 }
@@ -521,7 +521,7 @@ type ViewApiImportViewRequest struct {
 	viewId string
 	file **os.File
 	importRequest *string
-	type_ *FileType
+	type_ *string
 }
 
 // The following file types are supported: csv, tsv, xls, xlsx and json
@@ -537,7 +537,7 @@ func (r ViewApiImportViewRequest) ImportRequest(importRequest string) ViewApiImp
 }
 
 // type
-func (r ViewApiImportViewRequest) Type_(type_ FileType) ViewApiImportViewRequest {
+func (r ViewApiImportViewRequest) Type_(type_ string) ViewApiImportViewRequest {
 	r.type_ = &type_
 	return r
 }

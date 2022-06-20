@@ -105,7 +105,7 @@ func main() {
     fileHeader := gridly.ExportFileHeader("none") // ExportFileHeader | fileHeader (optional)
     query := "query_example" // string | query (optional) (default to "{}")
     sort := "sort_example" // string | sort (optional) (default to "{}")
-    type_ := gridly.FileType("csv") // FileType | type (optional)
+    type_ := "type__example" // string | type (optional) (default to "csv")
 
     configuration := gridly.NewConfiguration()
     apiClient := gridly.NewAPIClient(configuration)
@@ -139,7 +139,7 @@ Name | Type | Description  | Notes
  **fileHeader** | [**ExportFileHeader**](ExportFileHeader.md) | fileHeader | 
  **query** | **string** | query | [default to &quot;{}&quot;]
  **sort** | **string** | sort | [default to &quot;{}&quot;]
- **type_** | [**FileType**](FileType.md) | type | 
+ **type_** | **string** | type | [default to &quot;csv&quot;]
 
 ### Return type
 
@@ -263,7 +263,7 @@ func main() {
     viewId := "viewId_example" // string | viewId
     file := os.NewFile(1234, "some_file") // *os.File | The following file types are supported: csv, tsv, xls, xlsx and json
     importRequest := "importRequest_example" // string | importRequest (optional) (default to "{}")
-    type_ := gridly.FileType("csv") // FileType | type (optional)
+    type_ := "type__example" // string | type (optional) (default to "csv")
 
     configuration := gridly.NewConfiguration()
     apiClient := gridly.NewAPIClient(configuration)
@@ -293,7 +293,7 @@ Name | Type | Description  | Notes
 
  **file** | ***os.File** | The following file types are supported: csv, tsv, xls, xlsx and json | 
  **importRequest** | **string** | importRequest | [default to &quot;{}&quot;]
- **type_** | [**FileType**](FileType.md) | type | 
+ **type_** | **string** | type | [default to &quot;csv&quot;]
 
 ### Return type
 

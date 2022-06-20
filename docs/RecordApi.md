@@ -14,7 +14,7 @@ Method | HTTP request | Description
 
 ## Create
 
-> []Record Create(ctx, viewId).SetRecord(setRecord).Execute()
+> []Record Create(ctx, viewId).CreateRecords(createRecords).Execute()
 
 create
 
@@ -34,11 +34,11 @@ import (
 
 func main() {
     viewId := "viewId_example" // string | viewId
-    setRecord := []gridly.SetRecord{*gridly.NewSetRecord()} // []SetRecord | 
+    createRecords := []gridly.SetRecord{*gridly.NewSetRecord()} // []SetRecord | createRecords
 
     configuration := gridly.NewConfiguration()
     apiClient := gridly.NewAPIClient(configuration)
-    resp, r, err := apiClient.RecordApi.Create(context.Background(), viewId).SetRecord(setRecord).Execute()
+    resp, r, err := apiClient.RecordApi.Create(context.Background(), viewId).CreateRecords(createRecords).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `RecordApi.Create``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -64,7 +64,7 @@ Other parameters are passed through a pointer to a apiCreateRequest struct via t
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **setRecord** | [**[]SetRecord**](SetRecord.md) |  | 
+ **createRecords** | [**[]SetRecord**](SetRecord.md) | createRecords | 
 
 ### Return type
 

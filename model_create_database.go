@@ -15,7 +15,7 @@ import (
 	"encoding/json"
 )
 
-// CreateDatabase struct for CreateDatabase
+// CreateDatabase body
 type CreateDatabase struct {
 	Name string `json:"name"`
 	Description *string `json:"description,omitempty"`

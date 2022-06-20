@@ -34,7 +34,6 @@ docs/DeleteRecord.md
 docs/Dependency.md
 docs/ExportFileHeader.md
 docs/FetchFileOption.md
-docs/FileType.md
 docs/Grid.md
 docs/GridApi.md
 docs/Group.md
@@ -87,7 +86,6 @@ model_delete_record.go
 model_dependency.go
 model_export_file_header.go
 model_fetch_file_option.go
-model_file_type.go
 model_grid.go
 model_group.go
 model_number_format.go
