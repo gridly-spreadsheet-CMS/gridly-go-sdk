@@ -58,6 +58,7 @@ docs/UpdateDatabase.md
 docs/UpdateDependency.md
 docs/UpdateGrid.md
 docs/UpdateProject.md
+docs/UploadZipRequest.md
 docs/UploadedFile.md
 docs/View.md
 docs/ViewApi.md
@@ -106,6 +107,7 @@ model_update_database.go
 model_update_dependency.go
 model_update_grid.go
 model_update_project.go
+model_upload_zip_request.go
 model_uploaded_file.go
 model_view.go
 model_view_column.go

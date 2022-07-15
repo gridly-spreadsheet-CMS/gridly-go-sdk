@@ -3,7 +3,7 @@ Gridly API
 
 Gridly API documentation
 
-API version: 3.29.0
+API version: 3.30.0
 Contact: 
 */
 

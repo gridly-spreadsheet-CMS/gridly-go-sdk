@@ -10,7 +10,7 @@ info:
     url: ""
   termsOfService: ""
   title: Gridly API
-  version: 3.29.0
+  version: 3.30.0
 servers:
 - description: Generated server url
   url: https://api.gridly.com
@@ -494,25 +494,12 @@ paths:
         schema:
           type: string
         style: simple
-      - description: columnId
-        explode: true
-        in: query
-        name: columnId
-        required: true
-        schema:
-          type: string
-        style: form
-      - description: fileMappings
-        explode: true
-        in: query
-        name: fileMappings
-        required: true
-        schema:
-          type: string
-        style: form
       requestBody:
         content:
           multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/uploadZip_request'
+          application/json:
             schema:
               $ref: '#/components/schemas/uploadZip_request'
       responses:
@@ -604,7 +591,7 @@ paths:
         content:
           multipart/form-data:
             schema:
-              $ref: '#/components/schemas/uploadZip_request'
+              $ref: '#/components/schemas/upload_request'
       responses:
         "201":
           content:
@@ -1863,6 +1850,7 @@ components:
       type: object
     Cell:
       example:
+        sourceStatus: unset
         columnId: columnId
         dependencyStatus: upToDate
         referencedIds:
@@ -1882,6 +1870,14 @@ components:
           items:
             type: string
           type: array
+        sourceStatus:
+          enum:
+          - unset
+          - doNotTranslate
+          - notReadyForTranslation
+          - readyForTranslation
+          - locked
+          type: string
         value:
           type: AnyType
       type: object
@@ -1938,13 +1934,15 @@ components:
       example:
         path: path
         cells:
-        - columnId: columnId
+        - sourceStatus: unset
+          columnId: columnId
           dependencyStatus: upToDate
           referencedIds:
           - referencedIds
           - referencedIds
           value: ""
-        - columnId: columnId
+        - sourceStatus: unset
+          columnId: columnId
           dependencyStatus: upToDate
           referencedIds:
           - referencedIds
@@ -2000,13 +1998,15 @@ components:
         records:
         - path: path
           cells:
-          - columnId: columnId
+          - sourceStatus: unset
+            columnId: columnId
             dependencyStatus: upToDate
             referencedIds:
             - referencedIds
             - referencedIds
             value: ""
-          - columnId: columnId
+          - sourceStatus: unset
+            columnId: columnId
             dependencyStatus: upToDate
             referencedIds:
             - referencedIds
@@ -2017,13 +2017,15 @@ components:
           id: id
         - path: path
           cells:
-          - columnId: columnId
+          - sourceStatus: unset
+            columnId: columnId
             dependencyStatus: upToDate
             referencedIds:
             - referencedIds
             - referencedIds
             value: ""
-          - columnId: columnId
+          - sourceStatus: unset
+            columnId: columnId
             dependencyStatus: upToDate
             referencedIds:
             - referencedIds
@@ -2199,6 +2201,7 @@ components:
       type: object
     SetCell:
       example:
+        sourceStatus: unset
         columnId: columnId
         dependencyStatus: upToDate
         referencedIds:
@@ -2218,6 +2221,14 @@ components:
           items:
             type: string
           type: array
+        sourceStatus:
+          enum:
+          - unset
+          - doNotTranslate
+          - notReadyForTranslation
+          - readyForTranslation
+          - locked
+          type: string
         value:
           type: AnyType
       type: object
@@ -2225,13 +2236,15 @@ components:
       example:
         path: path
         cells:
-        - columnId: columnId
+        - sourceStatus: unset
+          columnId: columnId
           dependencyStatus: upToDate
           referencedIds:
           - referencedIds
           - referencedIds
           value: ""
-        - columnId: columnId
+        - sourceStatus: unset
+          columnId: columnId
           dependencyStatus: upToDate
           referencedIds:
           - referencedIds
@@ -3548,13 +3561,15 @@ components:
         - records:
           - path: path
             cells:
-            - columnId: columnId
+            - sourceStatus: unset
+              columnId: columnId
               dependencyStatus: upToDate
               referencedIds:
               - referencedIds
               - referencedIds
               value: ""
-            - columnId: columnId
+            - sourceStatus: unset
+              columnId: columnId
               dependencyStatus: upToDate
               referencedIds:
               - referencedIds
@@ -3565,13 +3580,15 @@ components:
             id: id
           - path: path
             cells:
-            - columnId: columnId
+            - sourceStatus: unset
+              columnId: columnId
               dependencyStatus: upToDate
               referencedIds:
               - referencedIds
               - referencedIds
               value: ""
-            - columnId: columnId
+            - sourceStatus: unset
+              columnId: columnId
               dependencyStatus: upToDate
               referencedIds:
               - referencedIds
@@ -3644,13 +3661,15 @@ components:
         - records:
           - path: path
             cells:
-            - columnId: columnId
+            - sourceStatus: unset
+              columnId: columnId
               dependencyStatus: upToDate
               referencedIds:
               - referencedIds
               - referencedIds
               value: ""
-            - columnId: columnId
+            - sourceStatus: unset
+              columnId: columnId
               dependencyStatus: upToDate
               referencedIds:
               - referencedIds
@@ -3661,13 +3680,15 @@ components:
             id: id
           - path: path
             cells:
-            - columnId: columnId
+            - sourceStatus: unset
+              columnId: columnId
               dependencyStatus: upToDate
               referencedIds:
               - referencedIds
               - referencedIds
               value: ""
-            - columnId: columnId
+            - sourceStatus: unset
+              columnId: columnId
               dependencyStatus: upToDate
               referencedIds:
               - referencedIds
@@ -4017,13 +4038,15 @@ components:
           - records:
             - path: path
               cells:
-              - columnId: columnId
+              - sourceStatus: unset
+                columnId: columnId
                 dependencyStatus: upToDate
                 referencedIds:
                 - referencedIds
                 - referencedIds
                 value: ""
-              - columnId: columnId
+              - sourceStatus: unset
+                columnId: columnId
                 dependencyStatus: upToDate
                 referencedIds:
                 - referencedIds
@@ -4034,13 +4057,15 @@ components:
               id: id
             - path: path
               cells:
-              - columnId: columnId
+              - sourceStatus: unset
+                columnId: columnId
                 dependencyStatus: upToDate
                 referencedIds:
                 - referencedIds
                 - referencedIds
                 value: ""
-              - columnId: columnId
+              - sourceStatus: unset
+                columnId: columnId
                 dependencyStatus: upToDate
                 referencedIds:
                 - referencedIds
@@ -4113,13 +4138,15 @@ components:
           - records:
             - path: path
               cells:
-              - columnId: columnId
+              - sourceStatus: unset
+                columnId: columnId
                 dependencyStatus: upToDate
                 referencedIds:
                 - referencedIds
                 - referencedIds
                 value: ""
-              - columnId: columnId
+              - sourceStatus: unset
+                columnId: columnId
                 dependencyStatus: upToDate
                 referencedIds:
                 - referencedIds
@@ -4130,13 +4157,15 @@ components:
               id: id
             - path: path
               cells:
-              - columnId: columnId
+              - sourceStatus: unset
+                columnId: columnId
                 dependencyStatus: upToDate
                 referencedIds:
                 - referencedIds
                 - referencedIds
                 value: ""
-              - columnId: columnId
+              - sourceStatus: unset
+                columnId: columnId
                 dependencyStatus: upToDate
                 referencedIds:
                 - referencedIds
@@ -4391,13 +4420,15 @@ components:
           - records:
             - path: path
               cells:
-              - columnId: columnId
+              - sourceStatus: unset
+                columnId: columnId
                 dependencyStatus: upToDate
                 referencedIds:
                 - referencedIds
                 - referencedIds
                 value: ""
-              - columnId: columnId
+              - sourceStatus: unset
+                columnId: columnId
                 dependencyStatus: upToDate
                 referencedIds:
                 - referencedIds
@@ -4408,13 +4439,15 @@ components:
               id: id
             - path: path
               cells:
-              - columnId: columnId
+              - sourceStatus: unset
+                columnId: columnId
                 dependencyStatus: upToDate
                 referencedIds:
                 - referencedIds
                 - referencedIds
                 value: ""
-              - columnId: columnId
+              - sourceStatus: unset
+                columnId: columnId
                 dependencyStatus: upToDate
                 referencedIds:
                 - referencedIds
@@ -4487,13 +4520,15 @@ components:
           - records:
             - path: path
               cells:
-              - columnId: columnId
+              - sourceStatus: unset
+                columnId: columnId
                 dependencyStatus: upToDate
                 referencedIds:
                 - referencedIds
                 - referencedIds
                 value: ""
-              - columnId: columnId
+              - sourceStatus: unset
+                columnId: columnId
                 dependencyStatus: upToDate
                 referencedIds:
                 - referencedIds
@@ -4504,13 +4539,15 @@ components:
               id: id
             - path: path
               cells:
-              - columnId: columnId
+              - sourceStatus: unset
+                columnId: columnId
                 dependencyStatus: upToDate
                 referencedIds:
                 - referencedIds
                 - referencedIds
                 value: ""
-              - columnId: columnId
+              - sourceStatus: unset
+                columnId: columnId
                 dependencyStatus: upToDate
                 referencedIds:
                 - referencedIds
@@ -4657,6 +4694,20 @@ components:
       - file
       type: object
     uploadZip_request:
+      properties:
+        columnId:
+          type: string
+        fileMappings:
+          type: string
+        file:
+          format: binary
+          type: string
+      required:
+      - columnId
+      - file
+      - fileMappings
+      type: object
+    upload_request:
       properties:
         file:
           format: binary

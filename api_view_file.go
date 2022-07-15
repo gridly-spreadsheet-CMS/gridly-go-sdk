@@ -3,7 +3,7 @@ Gridly API
 
 Gridly API documentation
 
-API version: 3.29.0
+API version: 3.30.0
 Contact: 
 */
 
@@ -463,13 +463,11 @@ type ViewFileApiUploadZipRequest struct {
 	file **os.File
 }
 
-// columnId
 func (r ViewFileApiUploadZipRequest) ColumnId(columnId string) ViewFileApiUploadZipRequest {
 	r.columnId = &columnId
 	return r
 }
 
-// fileMappings
 func (r ViewFileApiUploadZipRequest) FileMappings(fileMappings string) ViewFileApiUploadZipRequest {
 	r.fileMappings = &fileMappings
 	return r
@@ -532,10 +530,8 @@ func (a *ViewFileApiService) UploadZipExecute(r ViewFileApiUploadZipRequest) ([]
 		return localVarReturnValue, nil, reportError("file is required and must be specified")
 	}
 
-	localVarQueryParams.Add("columnId", parameterToString(*r.columnId, ""))
-	localVarQueryParams.Add("fileMappings", parameterToString(*r.fileMappings, ""))
 	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{"multipart/form-data"}
+	localVarHTTPContentTypes := []string{"multipart/form-data", "application/json"}
 
 	// set Content-Type header
 	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
@@ -551,6 +547,8 @@ func (a *ViewFileApiService) UploadZipExecute(r ViewFileApiUploadZipRequest) ([]
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
+	localVarFormParams.Add("columnId", parameterToString(*r.columnId, ""))
+	localVarFormParams.Add("fileMappings", parameterToString(*r.fileMappings, ""))
 	var fileLocalVarFormFileName string
 	var fileLocalVarFileName     string
 	var fileLocalVarFileBytes    []byte

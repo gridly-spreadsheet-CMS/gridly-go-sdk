@@ -256,8 +256,8 @@ import (
 
 func main() {
     viewId := "viewId_example" // string | viewId
-    columnId := "columnId_example" // string | columnId
-    fileMappings := "fileMappings_example" // string | fileMappings
+    columnId := "columnId_example" // string | 
+    fileMappings := "fileMappings_example" // string | 
     file := os.NewFile(1234, "some_file") // *os.File | 
 
     configuration := gridly.NewConfiguration()
@@ -288,8 +288,8 @@ Other parameters are passed through a pointer to a apiUploadZipRequest struct vi
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **columnId** | **string** | columnId | 
- **fileMappings** | **string** | fileMappings | 
+ **columnId** | **string** |  | 
+ **fileMappings** | **string** |  | 
  **file** | ***os.File** |  | 
 
 ### Return type
@@ -302,7 +302,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
-- **Content-Type**: multipart/form-data
+- **Content-Type**: multipart/form-data, application/json
 - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)

@@ -3,7 +3,7 @@ Gridly API
 
 Gridly API documentation
 
-API version: 3.29.0
+API version: 3.30.0
 Contact: 
 */
 
@@ -20,6 +20,7 @@ type SetCell struct {
 	ColumnId *string `json:"columnId,omitempty"`
 	DependencyStatus *string `json:"dependencyStatus,omitempty"`
 	ReferencedIds []string `json:"referencedIds,omitempty"`
+	SourceStatus *string `json:"sourceStatus,omitempty"`
 	Value *interface{} `json:"value,omitempty"`
 }
 
@@ -136,6 +137,38 @@ func (o *SetCell) SetReferencedIds(v []string) {
 	o.ReferencedIds = v
 }
 
+// GetSourceStatus returns the SourceStatus field value if set, zero value otherwise.
+func (o *SetCell) GetSourceStatus() string {
+	if o == nil || o.SourceStatus == nil {
+		var ret string
+		return ret
+	}
+	return *o.SourceStatus
+}
+
+// GetSourceStatusOk returns a tuple with the SourceStatus field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *SetCell) GetSourceStatusOk() (*string, bool) {
+	if o == nil || o.SourceStatus == nil {
+		return nil, false
+	}
+	return o.SourceStatus, true
+}
+
+// HasSourceStatus returns a boolean if a field has been set.
+func (o *SetCell) HasSourceStatus() bool {
+	if o != nil && o.SourceStatus != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetSourceStatus gets a reference to the given string and assigns it to the SourceStatus field.
+func (o *SetCell) SetSourceStatus(v string) {
+	o.SourceStatus = &v
+}
+
 // GetValue returns the Value field value if set, zero value otherwise.
 func (o *SetCell) GetValue() interface{} {
 	if o == nil || o.Value == nil {
@@ -178,6 +211,9 @@ func (o SetCell) MarshalJSON() ([]byte, error) {
 	}
 	if o.ReferencedIds != nil {
 		toSerialize["referencedIds"] = o.ReferencedIds
+	}
+	if o.SourceStatus != nil {
+		toSerialize["sourceStatus"] = o.SourceStatus
 	}
 	if o.Value != nil {
 		toSerialize["value"] = o.Value
