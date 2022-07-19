@@ -3,7 +3,7 @@ Gridly API
 
 Gridly API documentation
 
-API version: 3.30.0
+API version: 3.31.0
 Contact: 
 */
 
@@ -23,6 +23,7 @@ type Branch struct {
 	Description *string `json:"description,omitempty"`
 	Metadata *map[string]string `json:"metadata,omitempty"`
 	Name *string `json:"name,omitempty"`
+	RecordIdentifierType *string `json:"recordIdentifierType,omitempty"`
 	Status *string `json:"status,omitempty"`
 	IsMaster *bool `json:"isMaster,omitempty"`
 }
@@ -236,6 +237,38 @@ func (o *Branch) SetName(v string) {
 	o.Name = &v
 }
 
+// GetRecordIdentifierType returns the RecordIdentifierType field value if set, zero value otherwise.
+func (o *Branch) GetRecordIdentifierType() string {
+	if o == nil || o.RecordIdentifierType == nil {
+		var ret string
+		return ret
+	}
+	return *o.RecordIdentifierType
+}
+
+// GetRecordIdentifierTypeOk returns a tuple with the RecordIdentifierType field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *Branch) GetRecordIdentifierTypeOk() (*string, bool) {
+	if o == nil || o.RecordIdentifierType == nil {
+		return nil, false
+	}
+	return o.RecordIdentifierType, true
+}
+
+// HasRecordIdentifierType returns a boolean if a field has been set.
+func (o *Branch) HasRecordIdentifierType() bool {
+	if o != nil && o.RecordIdentifierType != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetRecordIdentifierType gets a reference to the given string and assigns it to the RecordIdentifierType field.
+func (o *Branch) SetRecordIdentifierType(v string) {
+	o.RecordIdentifierType = &v
+}
+
 // GetStatus returns the Status field value if set, zero value otherwise.
 func (o *Branch) GetStatus() string {
 	if o == nil || o.Status == nil {
@@ -319,6 +352,9 @@ func (o Branch) MarshalJSON() ([]byte, error) {
 	}
 	if o.Name != nil {
 		toSerialize["name"] = o.Name
+	}
+	if o.RecordIdentifierType != nil {
+		toSerialize["recordIdentifierType"] = o.RecordIdentifierType
 	}
 	if o.Status != nil {
 		toSerialize["status"] = o.Status

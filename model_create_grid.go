@@ -3,7 +3,7 @@ Gridly API
 
 Gridly API documentation
 
-API version: 3.30.0
+API version: 3.31.0
 Contact: 
 */
 
@@ -19,6 +19,7 @@ import (
 type CreateGrid struct {
 	Name string `json:"name"`
 	TemplateGridId *string `json:"templateGridId,omitempty"`
+	RecordIdentifierType *string `json:"recordIdentifierType,omitempty"`
 	Metadata *map[string]string `json:"metadata,omitempty"`
 }
 
@@ -96,6 +97,38 @@ func (o *CreateGrid) SetTemplateGridId(v string) {
 	o.TemplateGridId = &v
 }
 
+// GetRecordIdentifierType returns the RecordIdentifierType field value if set, zero value otherwise.
+func (o *CreateGrid) GetRecordIdentifierType() string {
+	if o == nil || o.RecordIdentifierType == nil {
+		var ret string
+		return ret
+	}
+	return *o.RecordIdentifierType
+}
+
+// GetRecordIdentifierTypeOk returns a tuple with the RecordIdentifierType field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CreateGrid) GetRecordIdentifierTypeOk() (*string, bool) {
+	if o == nil || o.RecordIdentifierType == nil {
+		return nil, false
+	}
+	return o.RecordIdentifierType, true
+}
+
+// HasRecordIdentifierType returns a boolean if a field has been set.
+func (o *CreateGrid) HasRecordIdentifierType() bool {
+	if o != nil && o.RecordIdentifierType != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetRecordIdentifierType gets a reference to the given string and assigns it to the RecordIdentifierType field.
+func (o *CreateGrid) SetRecordIdentifierType(v string) {
+	o.RecordIdentifierType = &v
+}
+
 // GetMetadata returns the Metadata field value if set, zero value otherwise.
 func (o *CreateGrid) GetMetadata() map[string]string {
 	if o == nil || o.Metadata == nil {
@@ -135,6 +168,9 @@ func (o CreateGrid) MarshalJSON() ([]byte, error) {
 	}
 	if o.TemplateGridId != nil {
 		toSerialize["templateGridId"] = o.TemplateGridId
+	}
+	if o.RecordIdentifierType != nil {
+		toSerialize["recordIdentifierType"] = o.RecordIdentifierType
 	}
 	if o.Metadata != nil {
 		toSerialize["metadata"] = o.Metadata

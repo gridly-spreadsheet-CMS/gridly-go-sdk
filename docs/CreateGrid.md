@@ -6,6 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Name** | **string** |  | 
 **TemplateGridId** | Pointer to **string** |  | [optional] 
+**RecordIdentifierType** | Pointer to **string** |  | [optional] 
 **Metadata** | Pointer to **map[string]string** |  | [optional] 
 
 ## Methods
@@ -71,6 +72,31 @@ SetTemplateGridId sets TemplateGridId field to given value.
 `func (o *CreateGrid) HasTemplateGridId() bool`
 
 HasTemplateGridId returns a boolean if a field has been set.
+
+### GetRecordIdentifierType
+
+`func (o *CreateGrid) GetRecordIdentifierType() string`
+
+GetRecordIdentifierType returns the RecordIdentifierType field if non-nil, zero value otherwise.
+
+### GetRecordIdentifierTypeOk
+
+`func (o *CreateGrid) GetRecordIdentifierTypeOk() (*string, bool)`
+
+GetRecordIdentifierTypeOk returns a tuple with the RecordIdentifierType field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetRecordIdentifierType
+
+`func (o *CreateGrid) SetRecordIdentifierType(v string)`
+
+SetRecordIdentifierType sets RecordIdentifierType field to given value.
+
+### HasRecordIdentifierType
+
+`func (o *CreateGrid) HasRecordIdentifierType() bool`
+
+HasRecordIdentifierType returns a boolean if a field has been set.
 
 ### GetMetadata
 

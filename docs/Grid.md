@@ -10,6 +10,7 @@ Name | Type | Description | Notes
 **Description** | Pointer to **string** |  | [optional] 
 **Metadata** | Pointer to **map[string]string** |  | [optional] 
 **Name** | Pointer to **string** |  | [optional] 
+**RecordIdentifierType** | Pointer to **string** |  | [optional] 
 **Status** | Pointer to **string** |  | [optional] 
 
 ## Methods
@@ -180,6 +181,31 @@ SetName sets Name field to given value.
 `func (o *Grid) HasName() bool`
 
 HasName returns a boolean if a field has been set.
+
+### GetRecordIdentifierType
+
+`func (o *Grid) GetRecordIdentifierType() string`
+
+GetRecordIdentifierType returns the RecordIdentifierType field if non-nil, zero value otherwise.
+
+### GetRecordIdentifierTypeOk
+
+`func (o *Grid) GetRecordIdentifierTypeOk() (*string, bool)`
+
+GetRecordIdentifierTypeOk returns a tuple with the RecordIdentifierType field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetRecordIdentifierType
+
+`func (o *Grid) SetRecordIdentifierType(v string)`
+
+SetRecordIdentifierType sets RecordIdentifierType field to given value.
+
+### HasRecordIdentifierType
+
+`func (o *Grid) HasRecordIdentifierType() bool`
+
+HasRecordIdentifierType returns a boolean if a field has been set.
 
 ### GetStatus
 
