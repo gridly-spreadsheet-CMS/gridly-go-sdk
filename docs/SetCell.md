@@ -6,6 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **ColumnId** | Pointer to **string** |  | [optional] 
 **DependencyStatus** | Pointer to **string** |  | [optional] 
+**LengthLimit** | Pointer to **int32** |  | [optional] 
 **ReferencedIds** | Pointer to **[]string** |  | [optional] 
 **SourceStatus** | Pointer to **string** |  | [optional] 
 **Value** | Pointer to **interface{}** |  | [optional] 
@@ -78,6 +79,31 @@ SetDependencyStatus sets DependencyStatus field to given value.
 `func (o *SetCell) HasDependencyStatus() bool`
 
 HasDependencyStatus returns a boolean if a field has been set.
+
+### GetLengthLimit
+
+`func (o *SetCell) GetLengthLimit() int32`
+
+GetLengthLimit returns the LengthLimit field if non-nil, zero value otherwise.
+
+### GetLengthLimitOk
+
+`func (o *SetCell) GetLengthLimitOk() (*int32, bool)`
+
+GetLengthLimitOk returns a tuple with the LengthLimit field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetLengthLimit
+
+`func (o *SetCell) SetLengthLimit(v int32)`
+
+SetLengthLimit sets LengthLimit field to given value.
+
+### HasLengthLimit
+
+`func (o *SetCell) HasLengthLimit() bool`
+
+HasLengthLimit returns a boolean if a field has been set.
 
 ### GetReferencedIds
 

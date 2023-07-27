@@ -6,6 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Grid** | Pointer to [**ReferencedGrid**](ReferencedGrid.md) |  | [optional] 
 **Column** | Pointer to [**ReferencedColumn**](ReferencedColumn.md) |  | [optional] 
+**Branch** | Pointer to [**ReferencedGrid**](ReferencedGrid.md) |  | [optional] 
 **Type** | Pointer to **string** |  | [optional] 
 **SelectionType** | Pointer to **string** |  | [optional] 
 
@@ -77,6 +78,31 @@ SetColumn sets Column field to given value.
 `func (o *ColumnReference) HasColumn() bool`
 
 HasColumn returns a boolean if a field has been set.
+
+### GetBranch
+
+`func (o *ColumnReference) GetBranch() ReferencedGrid`
+
+GetBranch returns the Branch field if non-nil, zero value otherwise.
+
+### GetBranchOk
+
+`func (o *ColumnReference) GetBranchOk() (*ReferencedGrid, bool)`
+
+GetBranchOk returns a tuple with the Branch field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetBranch
+
+`func (o *ColumnReference) SetBranch(v ReferencedGrid)`
+
+SetBranch sets Branch field to given value.
+
+### HasBranch
+
+`func (o *ColumnReference) HasBranch() bool`
+
+HasBranch returns a boolean if a field has been set.
 
 ### GetType
 

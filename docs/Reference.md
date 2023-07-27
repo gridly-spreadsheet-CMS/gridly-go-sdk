@@ -5,6 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **GridId** | **string** |  | 
+**BranchId** | Pointer to **string** |  | [optional] 
 **ColumnId** | **string** |  | 
 **Type** | Pointer to **string** |  | [optional] 
 **SelectionType** | Pointer to **string** |  | [optional] 
@@ -47,6 +48,31 @@ and a boolean to check if the value has been set.
 
 SetGridId sets GridId field to given value.
 
+
+### GetBranchId
+
+`func (o *Reference) GetBranchId() string`
+
+GetBranchId returns the BranchId field if non-nil, zero value otherwise.
+
+### GetBranchIdOk
+
+`func (o *Reference) GetBranchIdOk() (*string, bool)`
+
+GetBranchIdOk returns a tuple with the BranchId field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetBranchId
+
+`func (o *Reference) SetBranchId(v string)`
+
+SetBranchId sets BranchId field to given value.
+
+### HasBranchId
+
+`func (o *Reference) HasBranchId() bool`
+
+HasBranchId returns a boolean if a field has been set.
 
 ### GetColumnId
 

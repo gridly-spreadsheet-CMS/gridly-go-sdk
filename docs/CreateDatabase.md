@@ -6,6 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Name** | **string** |  | 
 **Description** | Pointer to **string** |  | [optional] 
+**EnableGuidRecord** | Pointer to **bool** |  | [optional] 
 **Id** | Pointer to **string** |  | [optional] 
 
 ## Methods
@@ -71,6 +72,31 @@ SetDescription sets Description field to given value.
 `func (o *CreateDatabase) HasDescription() bool`
 
 HasDescription returns a boolean if a field has been set.
+
+### GetEnableGuidRecord
+
+`func (o *CreateDatabase) GetEnableGuidRecord() bool`
+
+GetEnableGuidRecord returns the EnableGuidRecord field if non-nil, zero value otherwise.
+
+### GetEnableGuidRecordOk
+
+`func (o *CreateDatabase) GetEnableGuidRecordOk() (*bool, bool)`
+
+GetEnableGuidRecordOk returns a tuple with the EnableGuidRecord field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetEnableGuidRecord
+
+`func (o *CreateDatabase) SetEnableGuidRecord(v bool)`
+
+SetEnableGuidRecord sets EnableGuidRecord field to given value.
+
+### HasEnableGuidRecord
+
+`func (o *CreateDatabase) HasEnableGuidRecord() bool`
+
+HasEnableGuidRecord returns a boolean if a field has been set.
 
 ### GetId
 

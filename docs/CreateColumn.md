@@ -8,9 +8,12 @@ Name | Type | Description | Notes
 **Description** | Pointer to **string** |  | [optional] 
 **Type** | **string** |  | 
 **LanguageCode** | Pointer to **string** |  | [optional] 
+**LocalizationType** | Pointer to **string** |  | [optional] 
 **NumberFormat** | Pointer to [**NumberFormat**](NumberFormat.md) |  | [optional] 
 **SelectionOptions** | Pointer to **[]string** |  | [optional] 
 **Reference** | Pointer to [**Reference**](Reference.md) |  | [optional] 
+**Formula** | Pointer to [**Formula**](Formula.md) |  | [optional] 
+**DateTimeFormat** | Pointer to [**DateTimeFormat**](DateTimeFormat.md) |  | [optional] 
 **Id** | Pointer to **string** |  | [optional] 
 
 ## Methods
@@ -122,6 +125,31 @@ SetLanguageCode sets LanguageCode field to given value.
 
 HasLanguageCode returns a boolean if a field has been set.
 
+### GetLocalizationType
+
+`func (o *CreateColumn) GetLocalizationType() string`
+
+GetLocalizationType returns the LocalizationType field if non-nil, zero value otherwise.
+
+### GetLocalizationTypeOk
+
+`func (o *CreateColumn) GetLocalizationTypeOk() (*string, bool)`
+
+GetLocalizationTypeOk returns a tuple with the LocalizationType field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetLocalizationType
+
+`func (o *CreateColumn) SetLocalizationType(v string)`
+
+SetLocalizationType sets LocalizationType field to given value.
+
+### HasLocalizationType
+
+`func (o *CreateColumn) HasLocalizationType() bool`
+
+HasLocalizationType returns a boolean if a field has been set.
+
 ### GetNumberFormat
 
 `func (o *CreateColumn) GetNumberFormat() NumberFormat`
@@ -196,6 +224,56 @@ SetReference sets Reference field to given value.
 `func (o *CreateColumn) HasReference() bool`
 
 HasReference returns a boolean if a field has been set.
+
+### GetFormula
+
+`func (o *CreateColumn) GetFormula() Formula`
+
+GetFormula returns the Formula field if non-nil, zero value otherwise.
+
+### GetFormulaOk
+
+`func (o *CreateColumn) GetFormulaOk() (*Formula, bool)`
+
+GetFormulaOk returns a tuple with the Formula field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetFormula
+
+`func (o *CreateColumn) SetFormula(v Formula)`
+
+SetFormula sets Formula field to given value.
+
+### HasFormula
+
+`func (o *CreateColumn) HasFormula() bool`
+
+HasFormula returns a boolean if a field has been set.
+
+### GetDateTimeFormat
+
+`func (o *CreateColumn) GetDateTimeFormat() DateTimeFormat`
+
+GetDateTimeFormat returns the DateTimeFormat field if non-nil, zero value otherwise.
+
+### GetDateTimeFormatOk
+
+`func (o *CreateColumn) GetDateTimeFormatOk() (*DateTimeFormat, bool)`
+
+GetDateTimeFormatOk returns a tuple with the DateTimeFormat field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetDateTimeFormat
+
+`func (o *CreateColumn) SetDateTimeFormat(v DateTimeFormat)`
+
+SetDateTimeFormat sets DateTimeFormat field to given value.
+
+### HasDateTimeFormat
+
+`func (o *CreateColumn) HasDateTimeFormat() bool`
+
+HasDateTimeFormat returns a boolean if a field has been set.
 
 ### GetId
 

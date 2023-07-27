@@ -5,6 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Id** | Pointer to **int64** |  | [optional] 
+**CompanyId** | Pointer to **int64** |  | [optional] 
 **Name** | Pointer to **string** |  | [optional] 
 **Description** | Pointer to **string** |  | [optional] 
 **Role** | Pointer to [**Role**](Role.md) |  | [optional] 
@@ -52,6 +53,31 @@ SetId sets Id field to given value.
 `func (o *Project) HasId() bool`
 
 HasId returns a boolean if a field has been set.
+
+### GetCompanyId
+
+`func (o *Project) GetCompanyId() int64`
+
+GetCompanyId returns the CompanyId field if non-nil, zero value otherwise.
+
+### GetCompanyIdOk
+
+`func (o *Project) GetCompanyIdOk() (*int64, bool)`
+
+GetCompanyIdOk returns a tuple with the CompanyId field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetCompanyId
+
+`func (o *Project) SetCompanyId(v int64)`
+
+SetCompanyId sets CompanyId field to given value.
+
+### HasCompanyId
+
+`func (o *Project) HasCompanyId() bool`
+
+HasCompanyId returns a boolean if a field has been set.
 
 ### GetName
 

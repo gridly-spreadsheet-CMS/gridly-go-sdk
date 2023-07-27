@@ -6,9 +6,14 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Name** | Pointer to **string** |  | [optional] 
 **Description** | Pointer to **string** |  | [optional] 
+**Type** | Pointer to **string** |  | [optional] 
 **LanguageCode** | Pointer to **string** |  | [optional] 
+**LocalizationType** | Pointer to **string** |  | [optional] 
 **SelectionOptions** | Pointer to **[]string** |  | [optional] 
 **NumberFormat** | Pointer to [**NumberFormat**](NumberFormat.md) |  | [optional] 
+**Reference** | Pointer to [**Reference**](Reference.md) |  | [optional] 
+**Formula** | Pointer to [**Formula**](Formula.md) |  | [optional] 
+**DateTimeFormat** | Pointer to [**DateTimeFormat**](DateTimeFormat.md) |  | [optional] 
 **NewId** | Pointer to **string** |  | [optional] 
 
 ## Methods
@@ -80,6 +85,31 @@ SetDescription sets Description field to given value.
 
 HasDescription returns a boolean if a field has been set.
 
+### GetType
+
+`func (o *UpdateColumn) GetType() string`
+
+GetType returns the Type field if non-nil, zero value otherwise.
+
+### GetTypeOk
+
+`func (o *UpdateColumn) GetTypeOk() (*string, bool)`
+
+GetTypeOk returns a tuple with the Type field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetType
+
+`func (o *UpdateColumn) SetType(v string)`
+
+SetType sets Type field to given value.
+
+### HasType
+
+`func (o *UpdateColumn) HasType() bool`
+
+HasType returns a boolean if a field has been set.
+
 ### GetLanguageCode
 
 `func (o *UpdateColumn) GetLanguageCode() string`
@@ -104,6 +134,31 @@ SetLanguageCode sets LanguageCode field to given value.
 `func (o *UpdateColumn) HasLanguageCode() bool`
 
 HasLanguageCode returns a boolean if a field has been set.
+
+### GetLocalizationType
+
+`func (o *UpdateColumn) GetLocalizationType() string`
+
+GetLocalizationType returns the LocalizationType field if non-nil, zero value otherwise.
+
+### GetLocalizationTypeOk
+
+`func (o *UpdateColumn) GetLocalizationTypeOk() (*string, bool)`
+
+GetLocalizationTypeOk returns a tuple with the LocalizationType field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetLocalizationType
+
+`func (o *UpdateColumn) SetLocalizationType(v string)`
+
+SetLocalizationType sets LocalizationType field to given value.
+
+### HasLocalizationType
+
+`func (o *UpdateColumn) HasLocalizationType() bool`
+
+HasLocalizationType returns a boolean if a field has been set.
 
 ### GetSelectionOptions
 
@@ -154,6 +209,81 @@ SetNumberFormat sets NumberFormat field to given value.
 `func (o *UpdateColumn) HasNumberFormat() bool`
 
 HasNumberFormat returns a boolean if a field has been set.
+
+### GetReference
+
+`func (o *UpdateColumn) GetReference() Reference`
+
+GetReference returns the Reference field if non-nil, zero value otherwise.
+
+### GetReferenceOk
+
+`func (o *UpdateColumn) GetReferenceOk() (*Reference, bool)`
+
+GetReferenceOk returns a tuple with the Reference field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetReference
+
+`func (o *UpdateColumn) SetReference(v Reference)`
+
+SetReference sets Reference field to given value.
+
+### HasReference
+
+`func (o *UpdateColumn) HasReference() bool`
+
+HasReference returns a boolean if a field has been set.
+
+### GetFormula
+
+`func (o *UpdateColumn) GetFormula() Formula`
+
+GetFormula returns the Formula field if non-nil, zero value otherwise.
+
+### GetFormulaOk
+
+`func (o *UpdateColumn) GetFormulaOk() (*Formula, bool)`
+
+GetFormulaOk returns a tuple with the Formula field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetFormula
+
+`func (o *UpdateColumn) SetFormula(v Formula)`
+
+SetFormula sets Formula field to given value.
+
+### HasFormula
+
+`func (o *UpdateColumn) HasFormula() bool`
+
+HasFormula returns a boolean if a field has been set.
+
+### GetDateTimeFormat
+
+`func (o *UpdateColumn) GetDateTimeFormat() DateTimeFormat`
+
+GetDateTimeFormat returns the DateTimeFormat field if non-nil, zero value otherwise.
+
+### GetDateTimeFormatOk
+
+`func (o *UpdateColumn) GetDateTimeFormatOk() (*DateTimeFormat, bool)`
+
+GetDateTimeFormatOk returns a tuple with the DateTimeFormat field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetDateTimeFormat
+
+`func (o *UpdateColumn) SetDateTimeFormat(v DateTimeFormat)`
+
+SetDateTimeFormat sets DateTimeFormat field to given value.
+
+### HasDateTimeFormat
+
+`func (o *UpdateColumn) HasDateTimeFormat() bool`
+
+HasDateTimeFormat returns a boolean if a field has been set.
 
 ### GetNewId
 

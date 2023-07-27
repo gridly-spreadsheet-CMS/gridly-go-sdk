@@ -6,8 +6,10 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **ColumnId** | Pointer to **string** |  | [optional] 
 **DependencyStatus** | Pointer to **string** |  | [optional] 
+**LengthLimit** | Pointer to **int32** |  | [optional] 
 **ReferencedIds** | Pointer to **[]string** |  | [optional] 
 **SourceStatus** | Pointer to **string** |  | [optional] 
+**Tm** | Pointer to **bool** |  | [optional] 
 **Value** | Pointer to **interface{}** |  | [optional] 
 
 ## Methods
@@ -79,6 +81,31 @@ SetDependencyStatus sets DependencyStatus field to given value.
 
 HasDependencyStatus returns a boolean if a field has been set.
 
+### GetLengthLimit
+
+`func (o *Cell) GetLengthLimit() int32`
+
+GetLengthLimit returns the LengthLimit field if non-nil, zero value otherwise.
+
+### GetLengthLimitOk
+
+`func (o *Cell) GetLengthLimitOk() (*int32, bool)`
+
+GetLengthLimitOk returns a tuple with the LengthLimit field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetLengthLimit
+
+`func (o *Cell) SetLengthLimit(v int32)`
+
+SetLengthLimit sets LengthLimit field to given value.
+
+### HasLengthLimit
+
+`func (o *Cell) HasLengthLimit() bool`
+
+HasLengthLimit returns a boolean if a field has been set.
+
 ### GetReferencedIds
 
 `func (o *Cell) GetReferencedIds() []string`
@@ -128,6 +155,31 @@ SetSourceStatus sets SourceStatus field to given value.
 `func (o *Cell) HasSourceStatus() bool`
 
 HasSourceStatus returns a boolean if a field has been set.
+
+### GetTm
+
+`func (o *Cell) GetTm() bool`
+
+GetTm returns the Tm field if non-nil, zero value otherwise.
+
+### GetTmOk
+
+`func (o *Cell) GetTmOk() (*bool, bool)`
+
+GetTmOk returns a tuple with the Tm field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetTm
+
+`func (o *Cell) SetTm(v bool)`
+
+SetTm sets Tm field to given value.
+
+### HasTm
+
+`func (o *Cell) HasTm() bool`
+
+HasTm returns a boolean if a field has been set.
 
 ### GetValue
 

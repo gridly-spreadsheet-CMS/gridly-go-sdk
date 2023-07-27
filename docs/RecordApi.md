@@ -7,6 +7,7 @@ Method | HTTP request | Description
 [**Create**](RecordApi.md#Create) | **Post** /v1/views/{viewId}/records | create
 [**Delete**](RecordApi.md#Delete) | **Delete** /v1/views/{viewId}/records | delete
 [**Fetch**](RecordApi.md#Fetch) | **Get** /v1/views/{viewId}/records | fetch
+[**FetchHistories**](RecordApi.md#FetchHistories) | **Get** /v1/views/{viewId}/records/{recordId}/histories | fetchHistories
 [**Update**](RecordApi.md#Update) | **Patch** /v1/views/{viewId}/records | update
 [**UpdateRecord**](RecordApi.md#UpdateRecord) | **Patch** /v1/views/{viewId}/records/{id} | updateRecord
 
@@ -156,7 +157,7 @@ Name | Type | Description  | Notes
 
 ## Fetch
 
-> []Record Fetch(ctx, viewId).ColumnIds(columnIds).Page(page).Query(query).Sort(sort).FetchFileOption(fetchFileOption).Execute()
+> []Record Fetch(ctx, viewId).ColumnIds(columnIds).Page(page).Query(query).Sort(sort).FetchFileOption(fetchFileOption).AfterRecordId(afterRecordId).BeforeRecordId(beforeRecordId).Execute()
 
 fetch
 
@@ -181,10 +182,12 @@ func main() {
     query := "query_example" // string | query (optional) (default to "{}")
     sort := "sort_example" // string | sort (optional) (default to "{}")
     fetchFileOption := gridly.FetchFileOption("all") // FetchFileOption | fetchFileOption (optional) (default to "id")
+    afterRecordId := "afterRecordId_example" // string | afterRecordId (optional)
+    beforeRecordId := "beforeRecordId_example" // string | beforeRecordId (optional)
 
     configuration := gridly.NewConfiguration()
     apiClient := gridly.NewAPIClient(configuration)
-    resp, r, err := apiClient.RecordApi.Fetch(context.Background(), viewId).ColumnIds(columnIds).Page(page).Query(query).Sort(sort).FetchFileOption(fetchFileOption).Execute()
+    resp, r, err := apiClient.RecordApi.Fetch(context.Background(), viewId).ColumnIds(columnIds).Page(page).Query(query).Sort(sort).FetchFileOption(fetchFileOption).AfterRecordId(afterRecordId).BeforeRecordId(beforeRecordId).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `RecordApi.Fetch``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -215,10 +218,87 @@ Name | Type | Description  | Notes
  **query** | **string** | query | [default to &quot;{}&quot;]
  **sort** | **string** | sort | [default to &quot;{}&quot;]
  **fetchFileOption** | [**FetchFileOption**](FetchFileOption.md) | fetchFileOption | [default to &quot;id&quot;]
+ **afterRecordId** | **string** | afterRecordId | 
+ **beforeRecordId** | **string** | beforeRecordId | 
 
 ### Return type
 
 [**[]Record**](Record.md)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## FetchHistories
+
+> []RecordHistory FetchHistories(ctx, viewId, recordId).Page(page).Execute()
+
+fetchHistories
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    gridly "./openapi"
+)
+
+func main() {
+    viewId := "viewId_example" // string | viewId
+    recordId := "recordId_example" // string | recordId
+    page := "page_example" // string | page (optional) (default to "{}")
+
+    configuration := gridly.NewConfiguration()
+    apiClient := gridly.NewAPIClient(configuration)
+    resp, r, err := apiClient.RecordApi.FetchHistories(context.Background(), viewId, recordId).Page(page).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `RecordApi.FetchHistories``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `FetchHistories`: []RecordHistory
+    fmt.Fprintf(os.Stdout, "Response from `RecordApi.FetchHistories`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**viewId** | **string** | viewId | 
+**recordId** | **string** | recordId | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiFetchHistoriesRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+ **page** | **string** | page | [default to &quot;{}&quot;]
+
+### Return type
+
+[**[]RecordHistory**](RecordHistory.md)
 
 ### Authorization
 
