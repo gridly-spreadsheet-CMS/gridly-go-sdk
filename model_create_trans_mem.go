@@ -3,7 +3,7 @@ Gridly API
 
 Gridly API documentation
 
-API version: 4.15.1
+API version: 4.21.5
 Contact: support@gridly.com
 */
 
@@ -23,6 +23,7 @@ type CreateTransMem struct {
 	FuzzyMatch *bool `json:"fuzzyMatch,omitempty"`
 	IsDisabled *bool `json:"isDisabled,omitempty"`
 	IsPausedConsuming *bool `json:"isPausedConsuming,omitempty"`
+	ContextLookup *bool `json:"contextLookup,omitempty"`
 	PopulateTranslationStatus *TranslationStatus `json:"populateTranslationStatus,omitempty"`
 }
 
@@ -228,6 +229,38 @@ func (o *CreateTransMem) SetIsPausedConsuming(v bool) {
 	o.IsPausedConsuming = &v
 }
 
+// GetContextLookup returns the ContextLookup field value if set, zero value otherwise.
+func (o *CreateTransMem) GetContextLookup() bool {
+	if o == nil || o.ContextLookup == nil {
+		var ret bool
+		return ret
+	}
+	return *o.ContextLookup
+}
+
+// GetContextLookupOk returns a tuple with the ContextLookup field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CreateTransMem) GetContextLookupOk() (*bool, bool) {
+	if o == nil || o.ContextLookup == nil {
+		return nil, false
+	}
+	return o.ContextLookup, true
+}
+
+// HasContextLookup returns a boolean if a field has been set.
+func (o *CreateTransMem) HasContextLookup() bool {
+	if o != nil && o.ContextLookup != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetContextLookup gets a reference to the given bool and assigns it to the ContextLookup field.
+func (o *CreateTransMem) SetContextLookup(v bool) {
+	o.ContextLookup = &v
+}
+
 // GetPopulateTranslationStatus returns the PopulateTranslationStatus field value if set, zero value otherwise.
 func (o *CreateTransMem) GetPopulateTranslationStatus() TranslationStatus {
 	if o == nil || o.PopulateTranslationStatus == nil {
@@ -279,6 +312,9 @@ func (o CreateTransMem) MarshalJSON() ([]byte, error) {
 	}
 	if o.IsPausedConsuming != nil {
 		toSerialize["isPausedConsuming"] = o.IsPausedConsuming
+	}
+	if o.ContextLookup != nil {
+		toSerialize["contextLookup"] = o.ContextLookup
 	}
 	if o.PopulateTranslationStatus != nil {
 		toSerialize["populateTranslationStatus"] = o.PopulateTranslationStatus

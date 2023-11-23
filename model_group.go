@@ -3,7 +3,7 @@ Gridly API
 
 Gridly API documentation
 
-API version: 4.15.1
+API version: 4.21.5
 Contact: support@gridly.com
 */
 
@@ -13,6 +13,7 @@ package gridly
 
 import (
 	"encoding/json"
+	"time"
 )
 
 // Group struct for Group
@@ -23,6 +24,9 @@ type Group struct {
 	Name *string `json:"name,omitempty"`
 	LogoUrl *string `json:"logoUrl,omitempty"`
 	Type *string `json:"type,omitempty"`
+	ShareType *string `json:"shareType,omitempty"`
+	CreatedDate *time.Time `json:"createdDate,omitempty"`
+	LastModifiedDate *time.Time `json:"lastModifiedDate,omitempty"`
 	IsSystemGroup *bool `json:"isSystemGroup,omitempty"`
 	SystemGroup *bool `json:"systemGroup,omitempty"`
 }
@@ -236,6 +240,102 @@ func (o *Group) SetType(v string) {
 	o.Type = &v
 }
 
+// GetShareType returns the ShareType field value if set, zero value otherwise.
+func (o *Group) GetShareType() string {
+	if o == nil || o.ShareType == nil {
+		var ret string
+		return ret
+	}
+	return *o.ShareType
+}
+
+// GetShareTypeOk returns a tuple with the ShareType field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *Group) GetShareTypeOk() (*string, bool) {
+	if o == nil || o.ShareType == nil {
+		return nil, false
+	}
+	return o.ShareType, true
+}
+
+// HasShareType returns a boolean if a field has been set.
+func (o *Group) HasShareType() bool {
+	if o != nil && o.ShareType != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetShareType gets a reference to the given string and assigns it to the ShareType field.
+func (o *Group) SetShareType(v string) {
+	o.ShareType = &v
+}
+
+// GetCreatedDate returns the CreatedDate field value if set, zero value otherwise.
+func (o *Group) GetCreatedDate() time.Time {
+	if o == nil || o.CreatedDate == nil {
+		var ret time.Time
+		return ret
+	}
+	return *o.CreatedDate
+}
+
+// GetCreatedDateOk returns a tuple with the CreatedDate field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *Group) GetCreatedDateOk() (*time.Time, bool) {
+	if o == nil || o.CreatedDate == nil {
+		return nil, false
+	}
+	return o.CreatedDate, true
+}
+
+// HasCreatedDate returns a boolean if a field has been set.
+func (o *Group) HasCreatedDate() bool {
+	if o != nil && o.CreatedDate != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetCreatedDate gets a reference to the given time.Time and assigns it to the CreatedDate field.
+func (o *Group) SetCreatedDate(v time.Time) {
+	o.CreatedDate = &v
+}
+
+// GetLastModifiedDate returns the LastModifiedDate field value if set, zero value otherwise.
+func (o *Group) GetLastModifiedDate() time.Time {
+	if o == nil || o.LastModifiedDate == nil {
+		var ret time.Time
+		return ret
+	}
+	return *o.LastModifiedDate
+}
+
+// GetLastModifiedDateOk returns a tuple with the LastModifiedDate field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *Group) GetLastModifiedDateOk() (*time.Time, bool) {
+	if o == nil || o.LastModifiedDate == nil {
+		return nil, false
+	}
+	return o.LastModifiedDate, true
+}
+
+// HasLastModifiedDate returns a boolean if a field has been set.
+func (o *Group) HasLastModifiedDate() bool {
+	if o != nil && o.LastModifiedDate != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetLastModifiedDate gets a reference to the given time.Time and assigns it to the LastModifiedDate field.
+func (o *Group) SetLastModifiedDate(v time.Time) {
+	o.LastModifiedDate = &v
+}
+
 // GetIsSystemGroup returns the IsSystemGroup field value if set, zero value otherwise.
 func (o *Group) GetIsSystemGroup() bool {
 	if o == nil || o.IsSystemGroup == nil {
@@ -319,6 +419,15 @@ func (o Group) MarshalJSON() ([]byte, error) {
 	}
 	if o.Type != nil {
 		toSerialize["type"] = o.Type
+	}
+	if o.ShareType != nil {
+		toSerialize["shareType"] = o.ShareType
+	}
+	if o.CreatedDate != nil {
+		toSerialize["createdDate"] = o.CreatedDate
+	}
+	if o.LastModifiedDate != nil {
+		toSerialize["lastModifiedDate"] = o.LastModifiedDate
 	}
 	if o.IsSystemGroup != nil {
 		toSerialize["isSystemGroup"] = o.IsSystemGroup

@@ -3,7 +3,7 @@ Gridly API
 
 Gridly API documentation
 
-API version: 4.15.1
+API version: 4.21.5
 Contact: support@gridly.com
 */
 
@@ -17,9 +17,11 @@ import (
 
 // CreateGrid struct for CreateGrid
 type CreateGrid struct {
+	Id *string `json:"id,omitempty"`
 	Name string `json:"name"`
 	TemplateGridId *string `json:"templateGridId,omitempty"`
 	RecordIdentifierType *string `json:"recordIdentifierType,omitempty"`
+	Columns []CreateColumn `json:"columns,omitempty"`
 	Metadata *map[string]string `json:"metadata,omitempty"`
 }
 
@@ -39,6 +41,38 @@ func NewCreateGrid(name string) *CreateGrid {
 func NewCreateGridWithDefaults() *CreateGrid {
 	this := CreateGrid{}
 	return &this
+}
+
+// GetId returns the Id field value if set, zero value otherwise.
+func (o *CreateGrid) GetId() string {
+	if o == nil || o.Id == nil {
+		var ret string
+		return ret
+	}
+	return *o.Id
+}
+
+// GetIdOk returns a tuple with the Id field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CreateGrid) GetIdOk() (*string, bool) {
+	if o == nil || o.Id == nil {
+		return nil, false
+	}
+	return o.Id, true
+}
+
+// HasId returns a boolean if a field has been set.
+func (o *CreateGrid) HasId() bool {
+	if o != nil && o.Id != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetId gets a reference to the given string and assigns it to the Id field.
+func (o *CreateGrid) SetId(v string) {
+	o.Id = &v
 }
 
 // GetName returns the Name field value
@@ -129,6 +163,38 @@ func (o *CreateGrid) SetRecordIdentifierType(v string) {
 	o.RecordIdentifierType = &v
 }
 
+// GetColumns returns the Columns field value if set, zero value otherwise.
+func (o *CreateGrid) GetColumns() []CreateColumn {
+	if o == nil || o.Columns == nil {
+		var ret []CreateColumn
+		return ret
+	}
+	return o.Columns
+}
+
+// GetColumnsOk returns a tuple with the Columns field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CreateGrid) GetColumnsOk() ([]CreateColumn, bool) {
+	if o == nil || o.Columns == nil {
+		return nil, false
+	}
+	return o.Columns, true
+}
+
+// HasColumns returns a boolean if a field has been set.
+func (o *CreateGrid) HasColumns() bool {
+	if o != nil && o.Columns != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetColumns gets a reference to the given []CreateColumn and assigns it to the Columns field.
+func (o *CreateGrid) SetColumns(v []CreateColumn) {
+	o.Columns = v
+}
+
 // GetMetadata returns the Metadata field value if set, zero value otherwise.
 func (o *CreateGrid) GetMetadata() map[string]string {
 	if o == nil || o.Metadata == nil {
@@ -163,6 +229,9 @@ func (o *CreateGrid) SetMetadata(v map[string]string) {
 
 func (o CreateGrid) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
+	if o.Id != nil {
+		toSerialize["id"] = o.Id
+	}
 	if true {
 		toSerialize["name"] = o.Name
 	}
@@ -171,6 +240,9 @@ func (o CreateGrid) MarshalJSON() ([]byte, error) {
 	}
 	if o.RecordIdentifierType != nil {
 		toSerialize["recordIdentifierType"] = o.RecordIdentifierType
+	}
+	if o.Columns != nil {
+		toSerialize["columns"] = o.Columns
 	}
 	if o.Metadata != nil {
 		toSerialize["metadata"] = o.Metadata

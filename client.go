@@ -3,7 +3,7 @@ Gridly API
 
 Gridly API documentation
 
-API version: 4.15.1
+API version: 4.21.5
 Contact: support@gridly.com
 */
 
@@ -42,7 +42,7 @@ var (
 	xmlCheck  = regexp.MustCompile(`(?i:(?:application|text)/xml)`)
 )
 
-// APIClient manages communication with the Gridly API API v4.15.1
+// APIClient manages communication with the Gridly API API v4.21.5
 // In most cases there should be only one, shared, APIClient.
 type APIClient struct {
 	cfg    *Configuration

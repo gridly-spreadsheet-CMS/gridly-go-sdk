@@ -4,9 +4,11 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**Id** | Pointer to **string** |  | [optional] 
 **Name** | **string** |  | 
 **Description** | Pointer to **string** |  | [optional] 
 **Type** | **string** |  | 
+**Editable** | Pointer to **bool** |  | [optional] 
 **LanguageCode** | Pointer to **string** |  | [optional] 
 **LocalizationType** | Pointer to **string** |  | [optional] 
 **NumberFormat** | Pointer to [**NumberFormat**](NumberFormat.md) |  | [optional] 
@@ -14,7 +16,6 @@ Name | Type | Description | Notes
 **Reference** | Pointer to [**Reference**](Reference.md) |  | [optional] 
 **Formula** | Pointer to [**Formula**](Formula.md) |  | [optional] 
 **DateTimeFormat** | Pointer to [**DateTimeFormat**](DateTimeFormat.md) |  | [optional] 
-**Id** | Pointer to **string** |  | [optional] 
 
 ## Methods
 
@@ -34,6 +35,31 @@ will change when the set of required properties is changed
 NewCreateColumnWithDefaults instantiates a new CreateColumn object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
+
+### GetId
+
+`func (o *CreateColumn) GetId() string`
+
+GetId returns the Id field if non-nil, zero value otherwise.
+
+### GetIdOk
+
+`func (o *CreateColumn) GetIdOk() (*string, bool)`
+
+GetIdOk returns a tuple with the Id field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetId
+
+`func (o *CreateColumn) SetId(v string)`
+
+SetId sets Id field to given value.
+
+### HasId
+
+`func (o *CreateColumn) HasId() bool`
+
+HasId returns a boolean if a field has been set.
 
 ### GetName
 
@@ -99,6 +125,31 @@ and a boolean to check if the value has been set.
 
 SetType sets Type field to given value.
 
+
+### GetEditable
+
+`func (o *CreateColumn) GetEditable() bool`
+
+GetEditable returns the Editable field if non-nil, zero value otherwise.
+
+### GetEditableOk
+
+`func (o *CreateColumn) GetEditableOk() (*bool, bool)`
+
+GetEditableOk returns a tuple with the Editable field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetEditable
+
+`func (o *CreateColumn) SetEditable(v bool)`
+
+SetEditable sets Editable field to given value.
+
+### HasEditable
+
+`func (o *CreateColumn) HasEditable() bool`
+
+HasEditable returns a boolean if a field has been set.
 
 ### GetLanguageCode
 
@@ -274,31 +325,6 @@ SetDateTimeFormat sets DateTimeFormat field to given value.
 `func (o *CreateColumn) HasDateTimeFormat() bool`
 
 HasDateTimeFormat returns a boolean if a field has been set.
-
-### GetId
-
-`func (o *CreateColumn) GetId() string`
-
-GetId returns the Id field if non-nil, zero value otherwise.
-
-### GetIdOk
-
-`func (o *CreateColumn) GetIdOk() (*string, bool)`
-
-GetIdOk returns a tuple with the Id field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetId
-
-`func (o *CreateColumn) SetId(v string)`
-
-SetId sets Id field to given value.
-
-### HasId
-
-`func (o *CreateColumn) HasId() bool`
-
-HasId returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

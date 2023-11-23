@@ -3,7 +3,7 @@ Gridly API
 
 Gridly API documentation
 
-API version: 4.15.1
+API version: 4.21.5
 Contact: support@gridly.com
 */
 
@@ -24,6 +24,7 @@ type UpdateTransMem struct {
 	IsDisabled *bool `json:"isDisabled,omitempty"`
 	IsPausedConsuming *bool `json:"isPausedConsuming,omitempty"`
 	PopulateTranslationStatus *TranslationStatus `json:"populateTranslationStatus,omitempty"`
+	ContextLookup *bool `json:"contextLookup,omitempty"`
 }
 
 // NewUpdateTransMem instantiates a new UpdateTransMem object
@@ -267,6 +268,38 @@ func (o *UpdateTransMem) SetPopulateTranslationStatus(v TranslationStatus) {
 	o.PopulateTranslationStatus = &v
 }
 
+// GetContextLookup returns the ContextLookup field value if set, zero value otherwise.
+func (o *UpdateTransMem) GetContextLookup() bool {
+	if o == nil || o.ContextLookup == nil {
+		var ret bool
+		return ret
+	}
+	return *o.ContextLookup
+}
+
+// GetContextLookupOk returns a tuple with the ContextLookup field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *UpdateTransMem) GetContextLookupOk() (*bool, bool) {
+	if o == nil || o.ContextLookup == nil {
+		return nil, false
+	}
+	return o.ContextLookup, true
+}
+
+// HasContextLookup returns a boolean if a field has been set.
+func (o *UpdateTransMem) HasContextLookup() bool {
+	if o != nil && o.ContextLookup != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetContextLookup gets a reference to the given bool and assigns it to the ContextLookup field.
+func (o *UpdateTransMem) SetContextLookup(v bool) {
+	o.ContextLookup = &v
+}
+
 func (o UpdateTransMem) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if o.Name != nil {
@@ -289,6 +322,9 @@ func (o UpdateTransMem) MarshalJSON() ([]byte, error) {
 	}
 	if o.PopulateTranslationStatus != nil {
 		toSerialize["populateTranslationStatus"] = o.PopulateTranslationStatus
+	}
+	if o.ContextLookup != nil {
+		toSerialize["contextLookup"] = o.ContextLookup
 	}
 	return json.Marshal(toSerialize)
 }

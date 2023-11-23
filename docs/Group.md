@@ -10,6 +10,9 @@ Name | Type | Description | Notes
 **Name** | Pointer to **string** |  | [optional] 
 **LogoUrl** | Pointer to **string** |  | [optional] 
 **Type** | Pointer to **string** |  | [optional] 
+**ShareType** | Pointer to **string** |  | [optional] 
+**CreatedDate** | Pointer to **time.Time** |  | [optional] 
+**LastModifiedDate** | Pointer to **time.Time** |  | [optional] 
 **IsSystemGroup** | Pointer to **bool** |  | [optional] 
 **SystemGroup** | Pointer to **bool** |  | [optional] 
 
@@ -181,6 +184,81 @@ SetType sets Type field to given value.
 `func (o *Group) HasType() bool`
 
 HasType returns a boolean if a field has been set.
+
+### GetShareType
+
+`func (o *Group) GetShareType() string`
+
+GetShareType returns the ShareType field if non-nil, zero value otherwise.
+
+### GetShareTypeOk
+
+`func (o *Group) GetShareTypeOk() (*string, bool)`
+
+GetShareTypeOk returns a tuple with the ShareType field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetShareType
+
+`func (o *Group) SetShareType(v string)`
+
+SetShareType sets ShareType field to given value.
+
+### HasShareType
+
+`func (o *Group) HasShareType() bool`
+
+HasShareType returns a boolean if a field has been set.
+
+### GetCreatedDate
+
+`func (o *Group) GetCreatedDate() time.Time`
+
+GetCreatedDate returns the CreatedDate field if non-nil, zero value otherwise.
+
+### GetCreatedDateOk
+
+`func (o *Group) GetCreatedDateOk() (*time.Time, bool)`
+
+GetCreatedDateOk returns a tuple with the CreatedDate field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetCreatedDate
+
+`func (o *Group) SetCreatedDate(v time.Time)`
+
+SetCreatedDate sets CreatedDate field to given value.
+
+### HasCreatedDate
+
+`func (o *Group) HasCreatedDate() bool`
+
+HasCreatedDate returns a boolean if a field has been set.
+
+### GetLastModifiedDate
+
+`func (o *Group) GetLastModifiedDate() time.Time`
+
+GetLastModifiedDate returns the LastModifiedDate field if non-nil, zero value otherwise.
+
+### GetLastModifiedDateOk
+
+`func (o *Group) GetLastModifiedDateOk() (*time.Time, bool)`
+
+GetLastModifiedDateOk returns a tuple with the LastModifiedDate field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetLastModifiedDate
+
+`func (o *Group) SetLastModifiedDate(v time.Time)`
+
+SetLastModifiedDate sets LastModifiedDate field to given value.
+
+### HasLastModifiedDate
+
+`func (o *Group) HasLastModifiedDate() bool`
+
+HasLastModifiedDate returns a boolean if a field has been set.
 
 ### GetIsSystemGroup
 

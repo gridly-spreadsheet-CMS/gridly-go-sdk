@@ -14,6 +14,8 @@ Name | Type | Description | Notes
 **Reference** | Pointer to [**Reference**](Reference.md) |  | [optional] 
 **Formula** | Pointer to [**Formula**](Formula.md) |  | [optional] 
 **DateTimeFormat** | Pointer to [**DateTimeFormat**](DateTimeFormat.md) |  | [optional] 
+**Viewable** | Pointer to **bool** |  | [optional] 
+**Editable** | Pointer to **bool** |  | [optional] 
 **NewId** | Pointer to **string** |  | [optional] 
 
 ## Methods
@@ -284,6 +286,56 @@ SetDateTimeFormat sets DateTimeFormat field to given value.
 `func (o *UpdateColumn) HasDateTimeFormat() bool`
 
 HasDateTimeFormat returns a boolean if a field has been set.
+
+### GetViewable
+
+`func (o *UpdateColumn) GetViewable() bool`
+
+GetViewable returns the Viewable field if non-nil, zero value otherwise.
+
+### GetViewableOk
+
+`func (o *UpdateColumn) GetViewableOk() (*bool, bool)`
+
+GetViewableOk returns a tuple with the Viewable field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetViewable
+
+`func (o *UpdateColumn) SetViewable(v bool)`
+
+SetViewable sets Viewable field to given value.
+
+### HasViewable
+
+`func (o *UpdateColumn) HasViewable() bool`
+
+HasViewable returns a boolean if a field has been set.
+
+### GetEditable
+
+`func (o *UpdateColumn) GetEditable() bool`
+
+GetEditable returns the Editable field if non-nil, zero value otherwise.
+
+### GetEditableOk
+
+`func (o *UpdateColumn) GetEditableOk() (*bool, bool)`
+
+GetEditableOk returns a tuple with the Editable field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetEditable
+
+`func (o *UpdateColumn) SetEditable(v bool)`
+
+SetEditable sets Editable field to given value.
+
+### HasEditable
+
+`func (o *UpdateColumn) HasEditable() bool`
+
+HasEditable returns a boolean if a field has been set.
 
 ### GetNewId
 

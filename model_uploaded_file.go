@@ -3,7 +3,7 @@ Gridly API
 
 Gridly API documentation
 
-API version: 4.15.1
+API version: 4.21.5
 Contact: support@gridly.com
 */
 
@@ -21,6 +21,7 @@ type UploadedFile struct {
 	OriginalName *string `json:"originalName,omitempty"`
 	ContentType *string `json:"contentType,omitempty"`
 	Size *int64 `json:"size,omitempty"`
+	ThumbnailId *string `json:"thumbnailId,omitempty"`
 }
 
 // NewUploadedFile instantiates a new UploadedFile object
@@ -168,6 +169,38 @@ func (o *UploadedFile) SetSize(v int64) {
 	o.Size = &v
 }
 
+// GetThumbnailId returns the ThumbnailId field value if set, zero value otherwise.
+func (o *UploadedFile) GetThumbnailId() string {
+	if o == nil || o.ThumbnailId == nil {
+		var ret string
+		return ret
+	}
+	return *o.ThumbnailId
+}
+
+// GetThumbnailIdOk returns a tuple with the ThumbnailId field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *UploadedFile) GetThumbnailIdOk() (*string, bool) {
+	if o == nil || o.ThumbnailId == nil {
+		return nil, false
+	}
+	return o.ThumbnailId, true
+}
+
+// HasThumbnailId returns a boolean if a field has been set.
+func (o *UploadedFile) HasThumbnailId() bool {
+	if o != nil && o.ThumbnailId != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetThumbnailId gets a reference to the given string and assigns it to the ThumbnailId field.
+func (o *UploadedFile) SetThumbnailId(v string) {
+	o.ThumbnailId = &v
+}
+
 func (o UploadedFile) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if o.Id != nil {
@@ -181,6 +214,9 @@ func (o UploadedFile) MarshalJSON() ([]byte, error) {
 	}
 	if o.Size != nil {
 		toSerialize["size"] = o.Size
+	}
+	if o.ThumbnailId != nil {
+		toSerialize["thumbnailId"] = o.ThumbnailId
 	}
 	return json.Marshal(toSerialize)
 }

@@ -11,6 +11,7 @@ Name | Type | Description | Notes
 **IsDisabled** | Pointer to **bool** |  | [optional] 
 **IsPausedConsuming** | Pointer to **bool** |  | [optional] 
 **PopulateTranslationStatus** | Pointer to [**TranslationStatus**](TranslationStatus.md) |  | [optional] 
+**ContextLookup** | Pointer to **bool** |  | [optional] 
 
 ## Methods
 
@@ -205,6 +206,31 @@ SetPopulateTranslationStatus sets PopulateTranslationStatus field to given value
 `func (o *UpdateTransMem) HasPopulateTranslationStatus() bool`
 
 HasPopulateTranslationStatus returns a boolean if a field has been set.
+
+### GetContextLookup
+
+`func (o *UpdateTransMem) GetContextLookup() bool`
+
+GetContextLookup returns the ContextLookup field if non-nil, zero value otherwise.
+
+### GetContextLookupOk
+
+`func (o *UpdateTransMem) GetContextLookupOk() (*bool, bool)`
+
+GetContextLookupOk returns a tuple with the ContextLookup field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetContextLookup
+
+`func (o *UpdateTransMem) SetContextLookup(v bool)`
+
+SetContextLookup sets ContextLookup field to given value.
+
+### HasContextLookup
+
+`func (o *UpdateTransMem) HasContextLookup() bool`
+
+HasContextLookup returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

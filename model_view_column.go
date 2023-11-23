@@ -3,7 +3,7 @@ Gridly API
 
 Gridly API documentation
 
-API version: 4.15.1
+API version: 4.21.5
 Contact: support@gridly.com
 */
 
@@ -21,6 +21,7 @@ type ViewColumn struct {
 	DateTimeFormat *DateTimeFormat `json:"dateTimeFormat,omitempty"`
 	DependsOn *string `json:"dependsOn,omitempty"`
 	Description *string `json:"description,omitempty"`
+	Editable *bool `json:"editable,omitempty"`
 	Formula *Formula `json:"formula,omitempty"`
 	IsSource *bool `json:"isSource,omitempty"`
 	IsTarget *bool `json:"isTarget,omitempty"`
@@ -176,6 +177,38 @@ func (o *ViewColumn) HasDescription() bool {
 // SetDescription gets a reference to the given string and assigns it to the Description field.
 func (o *ViewColumn) SetDescription(v string) {
 	o.Description = &v
+}
+
+// GetEditable returns the Editable field value if set, zero value otherwise.
+func (o *ViewColumn) GetEditable() bool {
+	if o == nil || o.Editable == nil {
+		var ret bool
+		return ret
+	}
+	return *o.Editable
+}
+
+// GetEditableOk returns a tuple with the Editable field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ViewColumn) GetEditableOk() (*bool, bool) {
+	if o == nil || o.Editable == nil {
+		return nil, false
+	}
+	return o.Editable, true
+}
+
+// HasEditable returns a boolean if a field has been set.
+func (o *ViewColumn) HasEditable() bool {
+	if o != nil && o.Editable != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetEditable gets a reference to the given bool and assigns it to the Editable field.
+func (o *ViewColumn) SetEditable(v bool) {
+	o.Editable = &v
 }
 
 // GetFormula returns the Formula field value if set, zero value otherwise.
@@ -511,6 +544,9 @@ func (o ViewColumn) MarshalJSON() ([]byte, error) {
 	}
 	if o.Description != nil {
 		toSerialize["description"] = o.Description
+	}
+	if o.Editable != nil {
+		toSerialize["editable"] = o.Editable
 	}
 	if o.Formula != nil {
 		toSerialize["formula"] = o.Formula

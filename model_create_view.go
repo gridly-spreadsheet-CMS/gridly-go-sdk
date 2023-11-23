@@ -3,7 +3,7 @@ Gridly API
 
 Gridly API documentation
 
-API version: 4.15.1
+API version: 4.21.5
 Contact: support@gridly.com
 */
 
@@ -18,8 +18,8 @@ import (
 // CreateView struct for CreateView
 type CreateView struct {
 	Name *string `json:"name,omitempty"`
-	Columns []AddViewColumn `json:"columns,omitempty"`
 	GridId *string `json:"gridId,omitempty"`
+	Columns []AddViewColumn `json:"columns,omitempty"`
 }
 
 // NewCreateView instantiates a new CreateView object
@@ -71,38 +71,6 @@ func (o *CreateView) SetName(v string) {
 	o.Name = &v
 }
 
-// GetColumns returns the Columns field value if set, zero value otherwise.
-func (o *CreateView) GetColumns() []AddViewColumn {
-	if o == nil || o.Columns == nil {
-		var ret []AddViewColumn
-		return ret
-	}
-	return o.Columns
-}
-
-// GetColumnsOk returns a tuple with the Columns field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *CreateView) GetColumnsOk() ([]AddViewColumn, bool) {
-	if o == nil || o.Columns == nil {
-		return nil, false
-	}
-	return o.Columns, true
-}
-
-// HasColumns returns a boolean if a field has been set.
-func (o *CreateView) HasColumns() bool {
-	if o != nil && o.Columns != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetColumns gets a reference to the given []AddViewColumn and assigns it to the Columns field.
-func (o *CreateView) SetColumns(v []AddViewColumn) {
-	o.Columns = v
-}
-
 // GetGridId returns the GridId field value if set, zero value otherwise.
 func (o *CreateView) GetGridId() string {
 	if o == nil || o.GridId == nil {
@@ -135,16 +103,48 @@ func (o *CreateView) SetGridId(v string) {
 	o.GridId = &v
 }
 
+// GetColumns returns the Columns field value if set, zero value otherwise.
+func (o *CreateView) GetColumns() []AddViewColumn {
+	if o == nil || o.Columns == nil {
+		var ret []AddViewColumn
+		return ret
+	}
+	return o.Columns
+}
+
+// GetColumnsOk returns a tuple with the Columns field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CreateView) GetColumnsOk() ([]AddViewColumn, bool) {
+	if o == nil || o.Columns == nil {
+		return nil, false
+	}
+	return o.Columns, true
+}
+
+// HasColumns returns a boolean if a field has been set.
+func (o *CreateView) HasColumns() bool {
+	if o != nil && o.Columns != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetColumns gets a reference to the given []AddViewColumn and assigns it to the Columns field.
+func (o *CreateView) SetColumns(v []AddViewColumn) {
+	o.Columns = v
+}
+
 func (o CreateView) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if o.Name != nil {
 		toSerialize["name"] = o.Name
 	}
-	if o.Columns != nil {
-		toSerialize["columns"] = o.Columns
-	}
 	if o.GridId != nil {
 		toSerialize["gridId"] = o.GridId
+	}
+	if o.Columns != nil {
+		toSerialize["columns"] = o.Columns
 	}
 	return json.Marshal(toSerialize)
 }

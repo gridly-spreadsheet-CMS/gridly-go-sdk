@@ -5,8 +5,8 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Name** | Pointer to **string** |  | [optional] 
-**Columns** | Pointer to [**[]AddViewColumn**](AddViewColumn.md) |  | [optional] 
 **GridId** | Pointer to **string** |  | [optional] 
+**Columns** | Pointer to [**[]AddViewColumn**](AddViewColumn.md) |  | [optional] 
 
 ## Methods
 
@@ -52,31 +52,6 @@ SetName sets Name field to given value.
 
 HasName returns a boolean if a field has been set.
 
-### GetColumns
-
-`func (o *CreateView) GetColumns() []AddViewColumn`
-
-GetColumns returns the Columns field if non-nil, zero value otherwise.
-
-### GetColumnsOk
-
-`func (o *CreateView) GetColumnsOk() (*[]AddViewColumn, bool)`
-
-GetColumnsOk returns a tuple with the Columns field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetColumns
-
-`func (o *CreateView) SetColumns(v []AddViewColumn)`
-
-SetColumns sets Columns field to given value.
-
-### HasColumns
-
-`func (o *CreateView) HasColumns() bool`
-
-HasColumns returns a boolean if a field has been set.
-
 ### GetGridId
 
 `func (o *CreateView) GetGridId() string`
@@ -101,6 +76,31 @@ SetGridId sets GridId field to given value.
 `func (o *CreateView) HasGridId() bool`
 
 HasGridId returns a boolean if a field has been set.
+
+### GetColumns
+
+`func (o *CreateView) GetColumns() []AddViewColumn`
+
+GetColumns returns the Columns field if non-nil, zero value otherwise.
+
+### GetColumnsOk
+
+`func (o *CreateView) GetColumnsOk() (*[]AddViewColumn, bool)`
+
+GetColumnsOk returns a tuple with the Columns field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetColumns
+
+`func (o *CreateView) SetColumns(v []AddViewColumn)`
+
+SetColumns sets Columns field to given value.
+
+### HasColumns
+
+`func (o *CreateView) HasColumns() bool`
+
+HasColumns returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

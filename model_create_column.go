@@ -3,7 +3,7 @@ Gridly API
 
 Gridly API documentation
 
-API version: 4.15.1
+API version: 4.21.5
 Contact: support@gridly.com
 */
 
@@ -17,9 +17,11 @@ import (
 
 // CreateColumn struct for CreateColumn
 type CreateColumn struct {
+	Id *string `json:"id,omitempty"`
 	Name string `json:"name"`
 	Description *string `json:"description,omitempty"`
 	Type string `json:"type"`
+	Editable *bool `json:"editable,omitempty"`
 	LanguageCode *string `json:"languageCode,omitempty"`
 	LocalizationType *string `json:"localizationType,omitempty"`
 	NumberFormat *NumberFormat `json:"numberFormat,omitempty"`
@@ -27,7 +29,6 @@ type CreateColumn struct {
 	Reference *Reference `json:"reference,omitempty"`
 	Formula *Formula `json:"formula,omitempty"`
 	DateTimeFormat *DateTimeFormat `json:"dateTimeFormat,omitempty"`
-	Id *string `json:"id,omitempty"`
 }
 
 // NewCreateColumn instantiates a new CreateColumn object
@@ -47,6 +48,38 @@ func NewCreateColumn(name string, type_ string) *CreateColumn {
 func NewCreateColumnWithDefaults() *CreateColumn {
 	this := CreateColumn{}
 	return &this
+}
+
+// GetId returns the Id field value if set, zero value otherwise.
+func (o *CreateColumn) GetId() string {
+	if o == nil || o.Id == nil {
+		var ret string
+		return ret
+	}
+	return *o.Id
+}
+
+// GetIdOk returns a tuple with the Id field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CreateColumn) GetIdOk() (*string, bool) {
+	if o == nil || o.Id == nil {
+		return nil, false
+	}
+	return o.Id, true
+}
+
+// HasId returns a boolean if a field has been set.
+func (o *CreateColumn) HasId() bool {
+	if o != nil && o.Id != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetId gets a reference to the given string and assigns it to the Id field.
+func (o *CreateColumn) SetId(v string) {
+	o.Id = &v
 }
 
 // GetName returns the Name field value
@@ -127,6 +160,38 @@ func (o *CreateColumn) GetTypeOk() (*string, bool) {
 // SetType sets field value
 func (o *CreateColumn) SetType(v string) {
 	o.Type = v
+}
+
+// GetEditable returns the Editable field value if set, zero value otherwise.
+func (o *CreateColumn) GetEditable() bool {
+	if o == nil || o.Editable == nil {
+		var ret bool
+		return ret
+	}
+	return *o.Editable
+}
+
+// GetEditableOk returns a tuple with the Editable field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CreateColumn) GetEditableOk() (*bool, bool) {
+	if o == nil || o.Editable == nil {
+		return nil, false
+	}
+	return o.Editable, true
+}
+
+// HasEditable returns a boolean if a field has been set.
+func (o *CreateColumn) HasEditable() bool {
+	if o != nil && o.Editable != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetEditable gets a reference to the given bool and assigns it to the Editable field.
+func (o *CreateColumn) SetEditable(v bool) {
+	o.Editable = &v
 }
 
 // GetLanguageCode returns the LanguageCode field value if set, zero value otherwise.
@@ -353,40 +418,11 @@ func (o *CreateColumn) SetDateTimeFormat(v DateTimeFormat) {
 	o.DateTimeFormat = &v
 }
 
-// GetId returns the Id field value if set, zero value otherwise.
-func (o *CreateColumn) GetId() string {
-	if o == nil || o.Id == nil {
-		var ret string
-		return ret
-	}
-	return *o.Id
-}
-
-// GetIdOk returns a tuple with the Id field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *CreateColumn) GetIdOk() (*string, bool) {
-	if o == nil || o.Id == nil {
-		return nil, false
-	}
-	return o.Id, true
-}
-
-// HasId returns a boolean if a field has been set.
-func (o *CreateColumn) HasId() bool {
-	if o != nil && o.Id != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetId gets a reference to the given string and assigns it to the Id field.
-func (o *CreateColumn) SetId(v string) {
-	o.Id = &v
-}
-
 func (o CreateColumn) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
+	if o.Id != nil {
+		toSerialize["id"] = o.Id
+	}
 	if true {
 		toSerialize["name"] = o.Name
 	}
@@ -395,6 +431,9 @@ func (o CreateColumn) MarshalJSON() ([]byte, error) {
 	}
 	if true {
 		toSerialize["type"] = o.Type
+	}
+	if o.Editable != nil {
+		toSerialize["editable"] = o.Editable
 	}
 	if o.LanguageCode != nil {
 		toSerialize["languageCode"] = o.LanguageCode
@@ -416,9 +455,6 @@ func (o CreateColumn) MarshalJSON() ([]byte, error) {
 	}
 	if o.DateTimeFormat != nil {
 		toSerialize["dateTimeFormat"] = o.DateTimeFormat
-	}
-	if o.Id != nil {
-		toSerialize["id"] = o.Id
 	}
 	return json.Marshal(toSerialize)
 }

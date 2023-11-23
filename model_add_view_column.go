@@ -3,7 +3,7 @@ Gridly API
 
 Gridly API documentation
 
-API version: 4.15.1
+API version: 4.21.5
 Contact: support@gridly.com
 */
 
@@ -17,8 +17,18 @@ import (
 
 // AddViewColumn struct for AddViewColumn
 type AddViewColumn struct {
-	Editable *bool `json:"editable,omitempty"`
 	Id *string `json:"id,omitempty"`
+	Editable *bool `json:"editable,omitempty"`
+	Name *string `json:"name,omitempty"`
+	Description *string `json:"description,omitempty"`
+	Type *string `json:"type,omitempty"`
+	LanguageCode *string `json:"languageCode,omitempty"`
+	LocalizationType *string `json:"localizationType,omitempty"`
+	NumberFormat *NumberFormat `json:"numberFormat,omitempty"`
+	SelectionOptions []string `json:"selectionOptions,omitempty"`
+	Reference *Reference `json:"reference,omitempty"`
+	Formula *Formula `json:"formula,omitempty"`
+	DateTimeFormat *DateTimeFormat `json:"dateTimeFormat,omitempty"`
 }
 
 // NewAddViewColumn instantiates a new AddViewColumn object
@@ -36,38 +46,6 @@ func NewAddViewColumn() *AddViewColumn {
 func NewAddViewColumnWithDefaults() *AddViewColumn {
 	this := AddViewColumn{}
 	return &this
-}
-
-// GetEditable returns the Editable field value if set, zero value otherwise.
-func (o *AddViewColumn) GetEditable() bool {
-	if o == nil || o.Editable == nil {
-		var ret bool
-		return ret
-	}
-	return *o.Editable
-}
-
-// GetEditableOk returns a tuple with the Editable field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *AddViewColumn) GetEditableOk() (*bool, bool) {
-	if o == nil || o.Editable == nil {
-		return nil, false
-	}
-	return o.Editable, true
-}
-
-// HasEditable returns a boolean if a field has been set.
-func (o *AddViewColumn) HasEditable() bool {
-	if o != nil && o.Editable != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetEditable gets a reference to the given bool and assigns it to the Editable field.
-func (o *AddViewColumn) SetEditable(v bool) {
-	o.Editable = &v
 }
 
 // GetId returns the Id field value if set, zero value otherwise.
@@ -102,13 +80,395 @@ func (o *AddViewColumn) SetId(v string) {
 	o.Id = &v
 }
 
+// GetEditable returns the Editable field value if set, zero value otherwise.
+func (o *AddViewColumn) GetEditable() bool {
+	if o == nil || o.Editable == nil {
+		var ret bool
+		return ret
+	}
+	return *o.Editable
+}
+
+// GetEditableOk returns a tuple with the Editable field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *AddViewColumn) GetEditableOk() (*bool, bool) {
+	if o == nil || o.Editable == nil {
+		return nil, false
+	}
+	return o.Editable, true
+}
+
+// HasEditable returns a boolean if a field has been set.
+func (o *AddViewColumn) HasEditable() bool {
+	if o != nil && o.Editable != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetEditable gets a reference to the given bool and assigns it to the Editable field.
+func (o *AddViewColumn) SetEditable(v bool) {
+	o.Editable = &v
+}
+
+// GetName returns the Name field value if set, zero value otherwise.
+func (o *AddViewColumn) GetName() string {
+	if o == nil || o.Name == nil {
+		var ret string
+		return ret
+	}
+	return *o.Name
+}
+
+// GetNameOk returns a tuple with the Name field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *AddViewColumn) GetNameOk() (*string, bool) {
+	if o == nil || o.Name == nil {
+		return nil, false
+	}
+	return o.Name, true
+}
+
+// HasName returns a boolean if a field has been set.
+func (o *AddViewColumn) HasName() bool {
+	if o != nil && o.Name != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetName gets a reference to the given string and assigns it to the Name field.
+func (o *AddViewColumn) SetName(v string) {
+	o.Name = &v
+}
+
+// GetDescription returns the Description field value if set, zero value otherwise.
+func (o *AddViewColumn) GetDescription() string {
+	if o == nil || o.Description == nil {
+		var ret string
+		return ret
+	}
+	return *o.Description
+}
+
+// GetDescriptionOk returns a tuple with the Description field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *AddViewColumn) GetDescriptionOk() (*string, bool) {
+	if o == nil || o.Description == nil {
+		return nil, false
+	}
+	return o.Description, true
+}
+
+// HasDescription returns a boolean if a field has been set.
+func (o *AddViewColumn) HasDescription() bool {
+	if o != nil && o.Description != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetDescription gets a reference to the given string and assigns it to the Description field.
+func (o *AddViewColumn) SetDescription(v string) {
+	o.Description = &v
+}
+
+// GetType returns the Type field value if set, zero value otherwise.
+func (o *AddViewColumn) GetType() string {
+	if o == nil || o.Type == nil {
+		var ret string
+		return ret
+	}
+	return *o.Type
+}
+
+// GetTypeOk returns a tuple with the Type field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *AddViewColumn) GetTypeOk() (*string, bool) {
+	if o == nil || o.Type == nil {
+		return nil, false
+	}
+	return o.Type, true
+}
+
+// HasType returns a boolean if a field has been set.
+func (o *AddViewColumn) HasType() bool {
+	if o != nil && o.Type != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetType gets a reference to the given string and assigns it to the Type field.
+func (o *AddViewColumn) SetType(v string) {
+	o.Type = &v
+}
+
+// GetLanguageCode returns the LanguageCode field value if set, zero value otherwise.
+func (o *AddViewColumn) GetLanguageCode() string {
+	if o == nil || o.LanguageCode == nil {
+		var ret string
+		return ret
+	}
+	return *o.LanguageCode
+}
+
+// GetLanguageCodeOk returns a tuple with the LanguageCode field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *AddViewColumn) GetLanguageCodeOk() (*string, bool) {
+	if o == nil || o.LanguageCode == nil {
+		return nil, false
+	}
+	return o.LanguageCode, true
+}
+
+// HasLanguageCode returns a boolean if a field has been set.
+func (o *AddViewColumn) HasLanguageCode() bool {
+	if o != nil && o.LanguageCode != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetLanguageCode gets a reference to the given string and assigns it to the LanguageCode field.
+func (o *AddViewColumn) SetLanguageCode(v string) {
+	o.LanguageCode = &v
+}
+
+// GetLocalizationType returns the LocalizationType field value if set, zero value otherwise.
+func (o *AddViewColumn) GetLocalizationType() string {
+	if o == nil || o.LocalizationType == nil {
+		var ret string
+		return ret
+	}
+	return *o.LocalizationType
+}
+
+// GetLocalizationTypeOk returns a tuple with the LocalizationType field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *AddViewColumn) GetLocalizationTypeOk() (*string, bool) {
+	if o == nil || o.LocalizationType == nil {
+		return nil, false
+	}
+	return o.LocalizationType, true
+}
+
+// HasLocalizationType returns a boolean if a field has been set.
+func (o *AddViewColumn) HasLocalizationType() bool {
+	if o != nil && o.LocalizationType != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetLocalizationType gets a reference to the given string and assigns it to the LocalizationType field.
+func (o *AddViewColumn) SetLocalizationType(v string) {
+	o.LocalizationType = &v
+}
+
+// GetNumberFormat returns the NumberFormat field value if set, zero value otherwise.
+func (o *AddViewColumn) GetNumberFormat() NumberFormat {
+	if o == nil || o.NumberFormat == nil {
+		var ret NumberFormat
+		return ret
+	}
+	return *o.NumberFormat
+}
+
+// GetNumberFormatOk returns a tuple with the NumberFormat field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *AddViewColumn) GetNumberFormatOk() (*NumberFormat, bool) {
+	if o == nil || o.NumberFormat == nil {
+		return nil, false
+	}
+	return o.NumberFormat, true
+}
+
+// HasNumberFormat returns a boolean if a field has been set.
+func (o *AddViewColumn) HasNumberFormat() bool {
+	if o != nil && o.NumberFormat != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetNumberFormat gets a reference to the given NumberFormat and assigns it to the NumberFormat field.
+func (o *AddViewColumn) SetNumberFormat(v NumberFormat) {
+	o.NumberFormat = &v
+}
+
+// GetSelectionOptions returns the SelectionOptions field value if set, zero value otherwise.
+func (o *AddViewColumn) GetSelectionOptions() []string {
+	if o == nil || o.SelectionOptions == nil {
+		var ret []string
+		return ret
+	}
+	return o.SelectionOptions
+}
+
+// GetSelectionOptionsOk returns a tuple with the SelectionOptions field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *AddViewColumn) GetSelectionOptionsOk() ([]string, bool) {
+	if o == nil || o.SelectionOptions == nil {
+		return nil, false
+	}
+	return o.SelectionOptions, true
+}
+
+// HasSelectionOptions returns a boolean if a field has been set.
+func (o *AddViewColumn) HasSelectionOptions() bool {
+	if o != nil && o.SelectionOptions != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetSelectionOptions gets a reference to the given []string and assigns it to the SelectionOptions field.
+func (o *AddViewColumn) SetSelectionOptions(v []string) {
+	o.SelectionOptions = v
+}
+
+// GetReference returns the Reference field value if set, zero value otherwise.
+func (o *AddViewColumn) GetReference() Reference {
+	if o == nil || o.Reference == nil {
+		var ret Reference
+		return ret
+	}
+	return *o.Reference
+}
+
+// GetReferenceOk returns a tuple with the Reference field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *AddViewColumn) GetReferenceOk() (*Reference, bool) {
+	if o == nil || o.Reference == nil {
+		return nil, false
+	}
+	return o.Reference, true
+}
+
+// HasReference returns a boolean if a field has been set.
+func (o *AddViewColumn) HasReference() bool {
+	if o != nil && o.Reference != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetReference gets a reference to the given Reference and assigns it to the Reference field.
+func (o *AddViewColumn) SetReference(v Reference) {
+	o.Reference = &v
+}
+
+// GetFormula returns the Formula field value if set, zero value otherwise.
+func (o *AddViewColumn) GetFormula() Formula {
+	if o == nil || o.Formula == nil {
+		var ret Formula
+		return ret
+	}
+	return *o.Formula
+}
+
+// GetFormulaOk returns a tuple with the Formula field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *AddViewColumn) GetFormulaOk() (*Formula, bool) {
+	if o == nil || o.Formula == nil {
+		return nil, false
+	}
+	return o.Formula, true
+}
+
+// HasFormula returns a boolean if a field has been set.
+func (o *AddViewColumn) HasFormula() bool {
+	if o != nil && o.Formula != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetFormula gets a reference to the given Formula and assigns it to the Formula field.
+func (o *AddViewColumn) SetFormula(v Formula) {
+	o.Formula = &v
+}
+
+// GetDateTimeFormat returns the DateTimeFormat field value if set, zero value otherwise.
+func (o *AddViewColumn) GetDateTimeFormat() DateTimeFormat {
+	if o == nil || o.DateTimeFormat == nil {
+		var ret DateTimeFormat
+		return ret
+	}
+	return *o.DateTimeFormat
+}
+
+// GetDateTimeFormatOk returns a tuple with the DateTimeFormat field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *AddViewColumn) GetDateTimeFormatOk() (*DateTimeFormat, bool) {
+	if o == nil || o.DateTimeFormat == nil {
+		return nil, false
+	}
+	return o.DateTimeFormat, true
+}
+
+// HasDateTimeFormat returns a boolean if a field has been set.
+func (o *AddViewColumn) HasDateTimeFormat() bool {
+	if o != nil && o.DateTimeFormat != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetDateTimeFormat gets a reference to the given DateTimeFormat and assigns it to the DateTimeFormat field.
+func (o *AddViewColumn) SetDateTimeFormat(v DateTimeFormat) {
+	o.DateTimeFormat = &v
+}
+
 func (o AddViewColumn) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
+	if o.Id != nil {
+		toSerialize["id"] = o.Id
+	}
 	if o.Editable != nil {
 		toSerialize["editable"] = o.Editable
 	}
-	if o.Id != nil {
-		toSerialize["id"] = o.Id
+	if o.Name != nil {
+		toSerialize["name"] = o.Name
+	}
+	if o.Description != nil {
+		toSerialize["description"] = o.Description
+	}
+	if o.Type != nil {
+		toSerialize["type"] = o.Type
+	}
+	if o.LanguageCode != nil {
+		toSerialize["languageCode"] = o.LanguageCode
+	}
+	if o.LocalizationType != nil {
+		toSerialize["localizationType"] = o.LocalizationType
+	}
+	if o.NumberFormat != nil {
+		toSerialize["numberFormat"] = o.NumberFormat
+	}
+	if o.SelectionOptions != nil {
+		toSerialize["selectionOptions"] = o.SelectionOptions
+	}
+	if o.Reference != nil {
+		toSerialize["reference"] = o.Reference
+	}
+	if o.Formula != nil {
+		toSerialize["formula"] = o.Formula
+	}
+	if o.DateTimeFormat != nil {
+		toSerialize["dateTimeFormat"] = o.DateTimeFormat
 	}
 	return json.Marshal(toSerialize)
 }

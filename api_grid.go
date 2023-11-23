@@ -3,7 +3,7 @@ Gridly API
 
 Gridly API documentation
 
-API version: 4.15.1
+API version: 4.21.5
 Contact: support@gridly.com
 */
 
@@ -18,6 +18,7 @@ import (
 	"net/http"
 	"net/url"
 	"strings"
+	"reflect"
 )
 
 
@@ -159,6 +160,134 @@ func (a *GridApiService) CreateExecute(r GridApiCreateRequest) (*Grid, *http.Res
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
+type GridApiCreateCategoryRequest struct {
+	ctx context.Context
+	ApiService *GridApiService
+	gridId string
+	createFileCategory *CreateFileCategory
+}
+
+func (r GridApiCreateCategoryRequest) CreateFileCategory(createFileCategory CreateFileCategory) GridApiCreateCategoryRequest {
+	r.createFileCategory = &createFileCategory
+	return r
+}
+
+func (r GridApiCreateCategoryRequest) Execute() (*FileCategory, *http.Response, error) {
+	return r.ApiService.CreateCategoryExecute(r)
+}
+
+/*
+CreateCategory createCategory
+
+createCategory
+
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param gridId gridId
+ @return GridApiCreateCategoryRequest
+*/
+func (a *GridApiService) CreateCategory(ctx context.Context, gridId string) GridApiCreateCategoryRequest {
+	return GridApiCreateCategoryRequest{
+		ApiService: a,
+		ctx: ctx,
+		gridId: gridId,
+	}
+}
+
+// Execute executes the request
+//  @return FileCategory
+func (a *GridApiService) CreateCategoryExecute(r GridApiCreateCategoryRequest) (*FileCategory, *http.Response, error) {
+	var (
+		localVarHTTPMethod   = http.MethodPost
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *FileCategory
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "GridApiService.CreateCategory")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/v1/grids/{gridId}/settings/categories"
+	localVarPath = strings.Replace(localVarPath, "{"+"gridId"+"}", url.PathEscape(parameterToString(r.gridId, "")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+	if r.createFileCategory == nil {
+		return localVarReturnValue, nil, reportError("createFileCategory is required and must be specified")
+	}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{"application/json"}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	// body params
+	localVarPostBody = r.createFileCategory
+	if r.ctx != nil {
+		// API Key Authentication
+		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
+			if apiKey, ok := auth["ApiKey"]; ok {
+				var key string
+				if apiKey.Prefix != "" {
+					key = apiKey.Prefix + " " + apiKey.Key
+				} else {
+					key = apiKey.Key
+				}
+				localVarHeaderParams["Authorization"] = key
+			}
+		}
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
 type GridApiDeleteRequest struct {
 	ctx context.Context
 	ApiService *GridApiService
@@ -201,6 +330,230 @@ func (a *GridApiService) DeleteExecute(r GridApiDeleteRequest) (*http.Response, 
 
 	localVarPath := localBasePath + "/v1/grids/{gridId}"
 	localVarPath = strings.Replace(localVarPath, "{"+"gridId"+"}", url.PathEscape(parameterToString(r.gridId, "")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	if r.ctx != nil {
+		// API Key Authentication
+		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
+			if apiKey, ok := auth["ApiKey"]; ok {
+				var key string
+				if apiKey.Prefix != "" {
+					key = apiKey.Prefix + " " + apiKey.Key
+				} else {
+					key = apiKey.Key
+				}
+				localVarHeaderParams["Authorization"] = key
+			}
+		}
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarHTTPResponse, err
+	}
+
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		return localVarHTTPResponse, newErr
+	}
+
+	return localVarHTTPResponse, nil
+}
+
+type GridApiDeleteCategoryRequest struct {
+	ctx context.Context
+	ApiService *GridApiService
+	gridId string
+	categoryId string
+}
+
+func (r GridApiDeleteCategoryRequest) Execute() (*http.Response, error) {
+	return r.ApiService.DeleteCategoryExecute(r)
+}
+
+/*
+DeleteCategory deleteCategory
+
+deleteCategory
+
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param gridId gridId
+ @param categoryId categoryId
+ @return GridApiDeleteCategoryRequest
+*/
+func (a *GridApiService) DeleteCategory(ctx context.Context, gridId string, categoryId string) GridApiDeleteCategoryRequest {
+	return GridApiDeleteCategoryRequest{
+		ApiService: a,
+		ctx: ctx,
+		gridId: gridId,
+		categoryId: categoryId,
+	}
+}
+
+// Execute executes the request
+func (a *GridApiService) DeleteCategoryExecute(r GridApiDeleteCategoryRequest) (*http.Response, error) {
+	var (
+		localVarHTTPMethod   = http.MethodDelete
+		localVarPostBody     interface{}
+		formFiles            []formFile
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "GridApiService.DeleteCategory")
+	if err != nil {
+		return nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/v1/grids/{gridId}/settings/categories/{categoryId}"
+	localVarPath = strings.Replace(localVarPath, "{"+"gridId"+"}", url.PathEscape(parameterToString(r.gridId, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"categoryId"+"}", url.PathEscape(parameterToString(r.categoryId, "")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	if r.ctx != nil {
+		// API Key Authentication
+		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
+			if apiKey, ok := auth["ApiKey"]; ok {
+				var key string
+				if apiKey.Prefix != "" {
+					key = apiKey.Prefix + " " + apiKey.Key
+				} else {
+					key = apiKey.Key
+				}
+				localVarHeaderParams["Authorization"] = key
+			}
+		}
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarHTTPResponse, err
+	}
+
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		return localVarHTTPResponse, newErr
+	}
+
+	return localVarHTTPResponse, nil
+}
+
+type GridApiDeleteFileRequest struct {
+	ctx context.Context
+	ApiService *GridApiService
+	gridId string
+	categoryId string
+	fileId string
+}
+
+func (r GridApiDeleteFileRequest) Execute() (*http.Response, error) {
+	return r.ApiService.DeleteFileExecute(r)
+}
+
+/*
+DeleteFile deleteFile
+
+deleteFile
+
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param gridId gridId
+ @param categoryId categoryId
+ @param fileId fileId
+ @return GridApiDeleteFileRequest
+*/
+func (a *GridApiService) DeleteFile(ctx context.Context, gridId string, categoryId string, fileId string) GridApiDeleteFileRequest {
+	return GridApiDeleteFileRequest{
+		ApiService: a,
+		ctx: ctx,
+		gridId: gridId,
+		categoryId: categoryId,
+		fileId: fileId,
+	}
+}
+
+// Execute executes the request
+func (a *GridApiService) DeleteFileExecute(r GridApiDeleteFileRequest) (*http.Response, error) {
+	var (
+		localVarHTTPMethod   = http.MethodDelete
+		localVarPostBody     interface{}
+		formFiles            []formFile
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "GridApiService.DeleteFile")
+	if err != nil {
+		return nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/v1/grids/{gridId}/settings/categories/{categoryId}/files/{fileId}"
+	localVarPath = strings.Replace(localVarPath, "{"+"gridId"+"}", url.PathEscape(parameterToString(r.gridId, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"categoryId"+"}", url.PathEscape(parameterToString(r.categoryId, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"fileId"+"}", url.PathEscape(parameterToString(r.fileId, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -382,6 +735,123 @@ func (a *GridApiService) GetExecute(r GridApiGetRequest) (*Grid, *http.Response,
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
+type GridApiGetSettingRequest struct {
+	ctx context.Context
+	ApiService *GridApiService
+	gridId string
+}
+
+func (r GridApiGetSettingRequest) Execute() (*GridSetting, *http.Response, error) {
+	return r.ApiService.GetSettingExecute(r)
+}
+
+/*
+GetSetting getSetting
+
+getSetting
+
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param gridId gridId
+ @return GridApiGetSettingRequest
+*/
+func (a *GridApiService) GetSetting(ctx context.Context, gridId string) GridApiGetSettingRequest {
+	return GridApiGetSettingRequest{
+		ApiService: a,
+		ctx: ctx,
+		gridId: gridId,
+	}
+}
+
+// Execute executes the request
+//  @return GridSetting
+func (a *GridApiService) GetSettingExecute(r GridApiGetSettingRequest) (*GridSetting, *http.Response, error) {
+	var (
+		localVarHTTPMethod   = http.MethodGet
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *GridSetting
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "GridApiService.GetSetting")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/v1/grids/{gridId}/settings"
+	localVarPath = strings.Replace(localVarPath, "{"+"gridId"+"}", url.PathEscape(parameterToString(r.gridId, "")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	if r.ctx != nil {
+		// API Key Authentication
+		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
+			if apiKey, ok := auth["ApiKey"]; ok {
+				var key string
+				if apiKey.Prefix != "" {
+					key = apiKey.Prefix + " " + apiKey.Key
+				} else {
+					key = apiKey.Key
+				}
+				localVarHeaderParams["Authorization"] = key
+			}
+		}
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
 type GridApiListRequest struct {
 	ctx context.Context
 	ApiService *GridApiService
@@ -438,6 +908,141 @@ func (a *GridApiService) ListExecute(r GridApiListRequest) ([]Grid, *http.Respon
 	}
 
 	localVarQueryParams.Add("dbId", parameterToString(*r.dbId, ""))
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	if r.ctx != nil {
+		// API Key Authentication
+		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
+			if apiKey, ok := auth["ApiKey"]; ok {
+				var key string
+				if apiKey.Prefix != "" {
+					key = apiKey.Prefix + " " + apiKey.Key
+				} else {
+					key = apiKey.Key
+				}
+				localVarHeaderParams["Authorization"] = key
+			}
+		}
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type GridApiListFilesRequest struct {
+	ctx context.Context
+	ApiService *GridApiService
+	gridId string
+	categoryId *[]string
+}
+
+// categoryId
+func (r GridApiListFilesRequest) CategoryId(categoryId []string) GridApiListFilesRequest {
+	r.categoryId = &categoryId
+	return r
+}
+
+func (r GridApiListFilesRequest) Execute() ([]SettingFile, *http.Response, error) {
+	return r.ApiService.ListFilesExecute(r)
+}
+
+/*
+ListFiles listFiles
+
+listFiles
+
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param gridId gridId
+ @return GridApiListFilesRequest
+*/
+func (a *GridApiService) ListFiles(ctx context.Context, gridId string) GridApiListFilesRequest {
+	return GridApiListFilesRequest{
+		ApiService: a,
+		ctx: ctx,
+		gridId: gridId,
+	}
+}
+
+// Execute executes the request
+//  @return []SettingFile
+func (a *GridApiService) ListFilesExecute(r GridApiListFilesRequest) ([]SettingFile, *http.Response, error) {
+	var (
+		localVarHTTPMethod   = http.MethodGet
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  []SettingFile
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "GridApiService.ListFiles")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/v1/grids/{gridId}/settings/files"
+	localVarPath = strings.Replace(localVarPath, "{"+"gridId"+"}", url.PathEscape(parameterToString(r.gridId, "")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	if r.categoryId != nil {
+		t := *r.categoryId
+		if reflect.TypeOf(t).Kind() == reflect.Slice {
+			s := reflect.ValueOf(t)
+			for i := 0; i < s.Len(); i++ {
+				localVarQueryParams.Add("categoryId", parameterToString(s.Index(i), "multi"))
+			}
+		} else {
+			localVarQueryParams.Add("categoryId", parameterToString(t, "multi"))
+		}
+	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
 
@@ -696,6 +1301,398 @@ func (a *GridApiService) UpdateExecute(r GridApiUpdateRequest) (*Grid, *http.Res
 	}
 	// body params
 	localVarPostBody = r.updateGrid
+	if r.ctx != nil {
+		// API Key Authentication
+		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
+			if apiKey, ok := auth["ApiKey"]; ok {
+				var key string
+				if apiKey.Prefix != "" {
+					key = apiKey.Prefix + " " + apiKey.Key
+				} else {
+					key = apiKey.Key
+				}
+				localVarHeaderParams["Authorization"] = key
+			}
+		}
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type GridApiUpdateCategoryRequest struct {
+	ctx context.Context
+	ApiService *GridApiService
+	gridId string
+	categoryId string
+	updateCategory *UpdateCategory
+}
+
+func (r GridApiUpdateCategoryRequest) UpdateCategory(updateCategory UpdateCategory) GridApiUpdateCategoryRequest {
+	r.updateCategory = &updateCategory
+	return r
+}
+
+func (r GridApiUpdateCategoryRequest) Execute() (*FileCategory, *http.Response, error) {
+	return r.ApiService.UpdateCategoryExecute(r)
+}
+
+/*
+UpdateCategory updateCategory
+
+updateCategory
+
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param gridId gridId
+ @param categoryId categoryId
+ @return GridApiUpdateCategoryRequest
+*/
+func (a *GridApiService) UpdateCategory(ctx context.Context, gridId string, categoryId string) GridApiUpdateCategoryRequest {
+	return GridApiUpdateCategoryRequest{
+		ApiService: a,
+		ctx: ctx,
+		gridId: gridId,
+		categoryId: categoryId,
+	}
+}
+
+// Execute executes the request
+//  @return FileCategory
+func (a *GridApiService) UpdateCategoryExecute(r GridApiUpdateCategoryRequest) (*FileCategory, *http.Response, error) {
+	var (
+		localVarHTTPMethod   = http.MethodPut
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *FileCategory
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "GridApiService.UpdateCategory")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/v1/grids/{gridId}/settings/categories/{categoryId}"
+	localVarPath = strings.Replace(localVarPath, "{"+"gridId"+"}", url.PathEscape(parameterToString(r.gridId, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"categoryId"+"}", url.PathEscape(parameterToString(r.categoryId, "")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+	if r.updateCategory == nil {
+		return localVarReturnValue, nil, reportError("updateCategory is required and must be specified")
+	}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{"application/json"}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	// body params
+	localVarPostBody = r.updateCategory
+	if r.ctx != nil {
+		// API Key Authentication
+		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
+			if apiKey, ok := auth["ApiKey"]; ok {
+				var key string
+				if apiKey.Prefix != "" {
+					key = apiKey.Prefix + " " + apiKey.Key
+				} else {
+					key = apiKey.Key
+				}
+				localVarHeaderParams["Authorization"] = key
+			}
+		}
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type GridApiUpdateSettingRequest struct {
+	ctx context.Context
+	ApiService *GridApiService
+	gridId string
+	updateGridSetting *UpdateGridSetting
+}
+
+func (r GridApiUpdateSettingRequest) UpdateGridSetting(updateGridSetting UpdateGridSetting) GridApiUpdateSettingRequest {
+	r.updateGridSetting = &updateGridSetting
+	return r
+}
+
+func (r GridApiUpdateSettingRequest) Execute() (*GridSetting, *http.Response, error) {
+	return r.ApiService.UpdateSettingExecute(r)
+}
+
+/*
+UpdateSetting updateSetting
+
+updateSetting
+
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param gridId gridId
+ @return GridApiUpdateSettingRequest
+*/
+func (a *GridApiService) UpdateSetting(ctx context.Context, gridId string) GridApiUpdateSettingRequest {
+	return GridApiUpdateSettingRequest{
+		ApiService: a,
+		ctx: ctx,
+		gridId: gridId,
+	}
+}
+
+// Execute executes the request
+//  @return GridSetting
+func (a *GridApiService) UpdateSettingExecute(r GridApiUpdateSettingRequest) (*GridSetting, *http.Response, error) {
+	var (
+		localVarHTTPMethod   = http.MethodPatch
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *GridSetting
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "GridApiService.UpdateSetting")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/v1/grids/{gridId}/settings"
+	localVarPath = strings.Replace(localVarPath, "{"+"gridId"+"}", url.PathEscape(parameterToString(r.gridId, "")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+	if r.updateGridSetting == nil {
+		return localVarReturnValue, nil, reportError("updateGridSetting is required and must be specified")
+	}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{"application/json"}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	// body params
+	localVarPostBody = r.updateGridSetting
+	if r.ctx != nil {
+		// API Key Authentication
+		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
+			if apiKey, ok := auth["ApiKey"]; ok {
+				var key string
+				if apiKey.Prefix != "" {
+					key = apiKey.Prefix + " " + apiKey.Key
+				} else {
+					key = apiKey.Key
+				}
+				localVarHeaderParams["Authorization"] = key
+			}
+		}
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type GridApiUploadSettingFileRequest struct {
+	ctx context.Context
+	ApiService *GridApiService
+	gridId string
+	categoryId string
+	uploadSettingFileRequest *UploadSettingFileRequest
+}
+
+func (r GridApiUploadSettingFileRequest) UploadSettingFileRequest(uploadSettingFileRequest UploadSettingFileRequest) GridApiUploadSettingFileRequest {
+	r.uploadSettingFileRequest = &uploadSettingFileRequest
+	return r
+}
+
+func (r GridApiUploadSettingFileRequest) Execute() (*UploadedFile, *http.Response, error) {
+	return r.ApiService.UploadSettingFileExecute(r)
+}
+
+/*
+UploadSettingFile uploadSettingFile
+
+uploadSettingFile
+
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param gridId gridId
+ @param categoryId categoryId
+ @return GridApiUploadSettingFileRequest
+*/
+func (a *GridApiService) UploadSettingFile(ctx context.Context, gridId string, categoryId string) GridApiUploadSettingFileRequest {
+	return GridApiUploadSettingFileRequest{
+		ApiService: a,
+		ctx: ctx,
+		gridId: gridId,
+		categoryId: categoryId,
+	}
+}
+
+// Execute executes the request
+//  @return UploadedFile
+func (a *GridApiService) UploadSettingFileExecute(r GridApiUploadSettingFileRequest) (*UploadedFile, *http.Response, error) {
+	var (
+		localVarHTTPMethod   = http.MethodPost
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *UploadedFile
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "GridApiService.UploadSettingFile")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/v1/grids/{gridId}/settings/categories/{categoryId}/files"
+	localVarPath = strings.Replace(localVarPath, "{"+"gridId"+"}", url.PathEscape(parameterToString(r.gridId, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"categoryId"+"}", url.PathEscape(parameterToString(r.categoryId, "")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+	if r.uploadSettingFileRequest == nil {
+		return localVarReturnValue, nil, reportError("uploadSettingFileRequest is required and must be specified")
+	}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{"application/json"}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	// body params
+	localVarPostBody = r.uploadSettingFileRequest
 	if r.ctx != nil {
 		// API Key Authentication
 		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {

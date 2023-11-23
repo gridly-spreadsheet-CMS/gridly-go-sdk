@@ -8,6 +8,7 @@ Name | Type | Description | Notes
 **DateTimeFormat** | Pointer to [**DateTimeFormat**](DateTimeFormat.md) |  | [optional] 
 **DependsOn** | Pointer to **string** |  | [optional] 
 **Description** | Pointer to **string** |  | [optional] 
+**Editable** | Pointer to **bool** |  | [optional] 
 **Formula** | Pointer to [**Formula**](Formula.md) |  | [optional] 
 **IsSource** | Pointer to **bool** |  | [optional] 
 **IsTarget** | Pointer to **bool** |  | [optional] 
@@ -137,6 +138,31 @@ SetDescription sets Description field to given value.
 `func (o *ViewColumn) HasDescription() bool`
 
 HasDescription returns a boolean if a field has been set.
+
+### GetEditable
+
+`func (o *ViewColumn) GetEditable() bool`
+
+GetEditable returns the Editable field if non-nil, zero value otherwise.
+
+### GetEditableOk
+
+`func (o *ViewColumn) GetEditableOk() (*bool, bool)`
+
+GetEditableOk returns a tuple with the Editable field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetEditable
+
+`func (o *ViewColumn) SetEditable(v bool)`
+
+SetEditable sets Editable field to given value.
+
+### HasEditable
+
+`func (o *ViewColumn) HasEditable() bool`
+
+HasEditable returns a boolean if a field has been set.
 
 ### GetFormula
 

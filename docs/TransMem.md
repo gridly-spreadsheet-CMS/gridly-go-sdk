@@ -9,6 +9,7 @@ Name | Type | Description | Notes
 **IsDisabled** | Pointer to **bool** |  | [optional] 
 **IsPausedConsuming** | Pointer to **bool** |  | [optional] 
 **PopulateTranslationStatus** | Pointer to [**TranslationStatus**](TranslationStatus.md) |  | [optional] 
+**ContextLookup** | Pointer to **bool** |  | [optional] 
 **Name** | **string** |  | 
 **Description** | Pointer to **string** |  | [optional] 
 **FuzzyMatch** | Pointer to **bool** |  | [optional] 
@@ -156,6 +157,31 @@ SetPopulateTranslationStatus sets PopulateTranslationStatus field to given value
 `func (o *TransMem) HasPopulateTranslationStatus() bool`
 
 HasPopulateTranslationStatus returns a boolean if a field has been set.
+
+### GetContextLookup
+
+`func (o *TransMem) GetContextLookup() bool`
+
+GetContextLookup returns the ContextLookup field if non-nil, zero value otherwise.
+
+### GetContextLookupOk
+
+`func (o *TransMem) GetContextLookupOk() (*bool, bool)`
+
+GetContextLookupOk returns a tuple with the ContextLookup field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetContextLookup
+
+`func (o *TransMem) SetContextLookup(v bool)`
+
+SetContextLookup sets ContextLookup field to given value.
+
+### HasContextLookup
+
+`func (o *TransMem) HasContextLookup() bool`
+
+HasContextLookup returns a boolean if a field has been set.
 
 ### GetName
 

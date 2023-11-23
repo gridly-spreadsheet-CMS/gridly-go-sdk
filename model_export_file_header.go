@@ -3,7 +3,7 @@ Gridly API
 
 Gridly API documentation
 
-API version: 4.15.1
+API version: 4.21.5
 Contact: support@gridly.com
 */
 
@@ -23,12 +23,14 @@ type ExportFileHeader string
 const (
 	none ExportFileHeader = "none"
 	columnName ExportFileHeader = "columnName"
+	columnId ExportFileHeader = "columnId"
 )
 
 // All allowed values of ExportFileHeader enum
 var AllowedExportFileHeaderEnumValues = []ExportFileHeader{
 	"none",
 	"columnName",
+	"columnId",
 }
 
 func (v *ExportFileHeader) UnmarshalJSON(src []byte) error {

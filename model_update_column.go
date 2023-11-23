@@ -3,7 +3,7 @@ Gridly API
 
 Gridly API documentation
 
-API version: 4.15.1
+API version: 4.21.5
 Contact: support@gridly.com
 */
 
@@ -27,6 +27,8 @@ type UpdateColumn struct {
 	Reference *Reference `json:"reference,omitempty"`
 	Formula *Formula `json:"formula,omitempty"`
 	DateTimeFormat *DateTimeFormat `json:"dateTimeFormat,omitempty"`
+	Viewable *bool `json:"viewable,omitempty"`
+	Editable *bool `json:"editable,omitempty"`
 	NewId *string `json:"newId,omitempty"`
 }
 
@@ -367,6 +369,70 @@ func (o *UpdateColumn) SetDateTimeFormat(v DateTimeFormat) {
 	o.DateTimeFormat = &v
 }
 
+// GetViewable returns the Viewable field value if set, zero value otherwise.
+func (o *UpdateColumn) GetViewable() bool {
+	if o == nil || o.Viewable == nil {
+		var ret bool
+		return ret
+	}
+	return *o.Viewable
+}
+
+// GetViewableOk returns a tuple with the Viewable field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *UpdateColumn) GetViewableOk() (*bool, bool) {
+	if o == nil || o.Viewable == nil {
+		return nil, false
+	}
+	return o.Viewable, true
+}
+
+// HasViewable returns a boolean if a field has been set.
+func (o *UpdateColumn) HasViewable() bool {
+	if o != nil && o.Viewable != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetViewable gets a reference to the given bool and assigns it to the Viewable field.
+func (o *UpdateColumn) SetViewable(v bool) {
+	o.Viewable = &v
+}
+
+// GetEditable returns the Editable field value if set, zero value otherwise.
+func (o *UpdateColumn) GetEditable() bool {
+	if o == nil || o.Editable == nil {
+		var ret bool
+		return ret
+	}
+	return *o.Editable
+}
+
+// GetEditableOk returns a tuple with the Editable field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *UpdateColumn) GetEditableOk() (*bool, bool) {
+	if o == nil || o.Editable == nil {
+		return nil, false
+	}
+	return o.Editable, true
+}
+
+// HasEditable returns a boolean if a field has been set.
+func (o *UpdateColumn) HasEditable() bool {
+	if o != nil && o.Editable != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetEditable gets a reference to the given bool and assigns it to the Editable field.
+func (o *UpdateColumn) SetEditable(v bool) {
+	o.Editable = &v
+}
+
 // GetNewId returns the NewId field value if set, zero value otherwise.
 func (o *UpdateColumn) GetNewId() string {
 	if o == nil || o.NewId == nil {
@@ -430,6 +496,12 @@ func (o UpdateColumn) MarshalJSON() ([]byte, error) {
 	}
 	if o.DateTimeFormat != nil {
 		toSerialize["dateTimeFormat"] = o.DateTimeFormat
+	}
+	if o.Viewable != nil {
+		toSerialize["viewable"] = o.Viewable
+	}
+	if o.Editable != nil {
+		toSerialize["editable"] = o.Editable
 	}
 	if o.NewId != nil {
 		toSerialize["newId"] = o.NewId

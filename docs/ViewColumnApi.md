@@ -5,6 +5,7 @@ All URIs are relative to *https://api.gridly.com*
 Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**Add**](ViewColumnApi.md#Add) | **Post** /v1/views/{viewId}/columns/{columnId}/add | add
+[**BulkCreate**](ViewColumnApi.md#BulkCreate) | **Post** /v1/views/{viewId}/columns/bulk | bulkCreate
 [**Create**](ViewColumnApi.md#Create) | **Post** /v1/views/{viewId}/columns | create
 [**Delete**](ViewColumnApi.md#Delete) | **Delete** /v1/views/{viewId}/columns/{columnId} | delete
 [**Get**](ViewColumnApi.md#Get) | **Get** /v1/views/{viewId}/columns/{columnId} | get
@@ -79,6 +80,78 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## BulkCreate
+
+> []ViewColumn BulkCreate(ctx, viewId).CreateColumn(createColumn).Execute()
+
+bulkCreate
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    gridly "./openapi"
+)
+
+func main() {
+    viewId := "viewId_example" // string | viewId
+    createColumn := []gridly.CreateColumn{*gridly.NewCreateColumn("Name_example", "Type_example")} // []CreateColumn | 
+
+    configuration := gridly.NewConfiguration()
+    apiClient := gridly.NewAPIClient(configuration)
+    resp, r, err := apiClient.ViewColumnApi.BulkCreate(context.Background(), viewId).CreateColumn(createColumn).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `ViewColumnApi.BulkCreate``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `BulkCreate`: []ViewColumn
+    fmt.Fprintf(os.Stdout, "Response from `ViewColumnApi.BulkCreate`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**viewId** | **string** | viewId | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiBulkCreateRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+ **createColumn** | [**[]CreateColumn**](CreateColumn.md) |  | 
+
+### Return type
+
+[**[]ViewColumn**](ViewColumn.md)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
 - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)

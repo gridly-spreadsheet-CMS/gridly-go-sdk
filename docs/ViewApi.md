@@ -7,6 +7,7 @@ Method | HTTP request | Description
 [**Create**](ViewApi.md#Create) | **Post** /v1/views | create
 [**Export**](ViewApi.md#Export) | **Get** /v1/views/{viewId}/export | export
 [**Get**](ViewApi.md#Get) | **Get** /v1/views/{viewId} | get
+[**GetStatistic**](ViewApi.md#GetStatistic) | **Get** /v1/views/{viewId}/statistic | getStatistic
 [**ImportView**](ViewApi.md#ImportView) | **Post** /v1/views/{viewId}/import | importView
 [**List**](ViewApi.md#List) | **Get** /v1/views | list
 [**Merge**](ViewApi.md#Merge) | **Post** /v1/views/{viewId}/merge | merge
@@ -224,6 +225,78 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**View**](View.md)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## GetStatistic
+
+> ViewStatistic GetStatistic(ctx, viewId).ColumnIds(columnIds).Execute()
+
+getStatistic
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    gridly "./openapi"
+)
+
+func main() {
+    viewId := "viewId_example" // string | viewId
+    columnIds := []string{"Inner_example"} // []string | columnIds (optional) (default to [])
+
+    configuration := gridly.NewConfiguration()
+    apiClient := gridly.NewAPIClient(configuration)
+    resp, r, err := apiClient.ViewApi.GetStatistic(context.Background(), viewId).ColumnIds(columnIds).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `ViewApi.GetStatistic``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `GetStatistic`: ViewStatistic
+    fmt.Fprintf(os.Stdout, "Response from `ViewApi.GetStatistic`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**viewId** | **string** | viewId | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiGetStatisticRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+ **columnIds** | **[]string** | columnIds | [default to []]
+
+### Return type
+
+[**ViewStatistic**](ViewStatistic.md)
 
 ### Authorization
 

@@ -4,9 +4,11 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**Id** | Pointer to **string** |  | [optional] 
 **Name** | **string** |  | 
 **TemplateGridId** | Pointer to **string** |  | [optional] 
 **RecordIdentifierType** | Pointer to **string** |  | [optional] 
+**Columns** | Pointer to [**[]CreateColumn**](CreateColumn.md) |  | [optional] 
 **Metadata** | Pointer to **map[string]string** |  | [optional] 
 
 ## Methods
@@ -27,6 +29,31 @@ will change when the set of required properties is changed
 NewCreateGridWithDefaults instantiates a new CreateGrid object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
+
+### GetId
+
+`func (o *CreateGrid) GetId() string`
+
+GetId returns the Id field if non-nil, zero value otherwise.
+
+### GetIdOk
+
+`func (o *CreateGrid) GetIdOk() (*string, bool)`
+
+GetIdOk returns a tuple with the Id field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetId
+
+`func (o *CreateGrid) SetId(v string)`
+
+SetId sets Id field to given value.
+
+### HasId
+
+`func (o *CreateGrid) HasId() bool`
+
+HasId returns a boolean if a field has been set.
 
 ### GetName
 
@@ -97,6 +124,31 @@ SetRecordIdentifierType sets RecordIdentifierType field to given value.
 `func (o *CreateGrid) HasRecordIdentifierType() bool`
 
 HasRecordIdentifierType returns a boolean if a field has been set.
+
+### GetColumns
+
+`func (o *CreateGrid) GetColumns() []CreateColumn`
+
+GetColumns returns the Columns field if non-nil, zero value otherwise.
+
+### GetColumnsOk
+
+`func (o *CreateGrid) GetColumnsOk() (*[]CreateColumn, bool)`
+
+GetColumnsOk returns a tuple with the Columns field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetColumns
+
+`func (o *CreateGrid) SetColumns(v []CreateColumn)`
+
+SetColumns sets Columns field to given value.
+
+### HasColumns
+
+`func (o *CreateGrid) HasColumns() bool`
+
+HasColumns returns a boolean if a field has been set.
 
 ### GetMetadata
 

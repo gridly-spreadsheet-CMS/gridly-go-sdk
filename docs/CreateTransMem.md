@@ -10,6 +10,7 @@ Name | Type | Description | Notes
 **FuzzyMatch** | Pointer to **bool** |  | [optional] 
 **IsDisabled** | Pointer to **bool** |  | [optional] 
 **IsPausedConsuming** | Pointer to **bool** |  | [optional] 
+**ContextLookup** | Pointer to **bool** |  | [optional] 
 **PopulateTranslationStatus** | Pointer to [**TranslationStatus**](TranslationStatus.md) |  | [optional] 
 
 ## Methods
@@ -175,6 +176,31 @@ SetIsPausedConsuming sets IsPausedConsuming field to given value.
 `func (o *CreateTransMem) HasIsPausedConsuming() bool`
 
 HasIsPausedConsuming returns a boolean if a field has been set.
+
+### GetContextLookup
+
+`func (o *CreateTransMem) GetContextLookup() bool`
+
+GetContextLookup returns the ContextLookup field if non-nil, zero value otherwise.
+
+### GetContextLookupOk
+
+`func (o *CreateTransMem) GetContextLookupOk() (*bool, bool)`
+
+GetContextLookupOk returns a tuple with the ContextLookup field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetContextLookup
+
+`func (o *CreateTransMem) SetContextLookup(v bool)`
+
+SetContextLookup sets ContextLookup field to given value.
+
+### HasContextLookup
+
+`func (o *CreateTransMem) HasContextLookup() bool`
+
+HasContextLookup returns a boolean if a field has been set.
 
 ### GetPopulateTranslationStatus
 
