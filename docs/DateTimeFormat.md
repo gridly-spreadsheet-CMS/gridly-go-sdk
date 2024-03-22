@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**DateFormat** | Pointer to [**DateFormat**](DateFormat.md) |  | [optional] 
+**DateFormat** | Pointer to **string** |  | [optional] 
 **TimeFormat** | Pointer to **string** |  | [optional] 
 **ZoneOffset** | Pointer to **string** |  | [optional] 
 **ShowTimeZone** | Pointer to **bool** |  | [optional] 
@@ -30,20 +30,20 @@ but it doesn't guarantee that properties required by API are set
 
 ### GetDateFormat
 
-`func (o *DateTimeFormat) GetDateFormat() DateFormat`
+`func (o *DateTimeFormat) GetDateFormat() string`
 
 GetDateFormat returns the DateFormat field if non-nil, zero value otherwise.
 
 ### GetDateFormatOk
 
-`func (o *DateTimeFormat) GetDateFormatOk() (*DateFormat, bool)`
+`func (o *DateTimeFormat) GetDateFormatOk() (*string, bool)`
 
 GetDateFormatOk returns a tuple with the DateFormat field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetDateFormat
 
-`func (o *DateTimeFormat) SetDateFormat(v DateFormat)`
+`func (o *DateTimeFormat) SetDateFormat(v string)`
 
 SetDateFormat sets DateFormat field to given value.
 

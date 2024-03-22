@@ -5,14 +5,14 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Id** | Pointer to **string** |  | [optional] 
-**SourceColumnId** | **string** |  | 
 **TargetColumnId** | **string** |  | 
+**SourceColumnId** | **string** |  | 
 
 ## Methods
 
 ### NewCreateDependency
 
-`func NewCreateDependency(sourceColumnId string, targetColumnId string, ) *CreateDependency`
+`func NewCreateDependency(targetColumnId string, sourceColumnId string, ) *CreateDependency`
 
 NewCreateDependency instantiates a new CreateDependency object
 This constructor will assign default values to properties that have it defined,
@@ -52,26 +52,6 @@ SetId sets Id field to given value.
 
 HasId returns a boolean if a field has been set.
 
-### GetSourceColumnId
-
-`func (o *CreateDependency) GetSourceColumnId() string`
-
-GetSourceColumnId returns the SourceColumnId field if non-nil, zero value otherwise.
-
-### GetSourceColumnIdOk
-
-`func (o *CreateDependency) GetSourceColumnIdOk() (*string, bool)`
-
-GetSourceColumnIdOk returns a tuple with the SourceColumnId field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetSourceColumnId
-
-`func (o *CreateDependency) SetSourceColumnId(v string)`
-
-SetSourceColumnId sets SourceColumnId field to given value.
-
-
 ### GetTargetColumnId
 
 `func (o *CreateDependency) GetTargetColumnId() string`
@@ -90,6 +70,26 @@ and a boolean to check if the value has been set.
 `func (o *CreateDependency) SetTargetColumnId(v string)`
 
 SetTargetColumnId sets TargetColumnId field to given value.
+
+
+### GetSourceColumnId
+
+`func (o *CreateDependency) GetSourceColumnId() string`
+
+GetSourceColumnId returns the SourceColumnId field if non-nil, zero value otherwise.
+
+### GetSourceColumnIdOk
+
+`func (o *CreateDependency) GetSourceColumnIdOk() (*string, bool)`
+
+GetSourceColumnIdOk returns a tuple with the SourceColumnId field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetSourceColumnId
+
+`func (o *CreateDependency) SetSourceColumnId(v string)`
+
+SetSourceColumnId sets SourceColumnId field to given value.
 
 
 

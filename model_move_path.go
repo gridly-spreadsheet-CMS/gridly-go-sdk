@@ -3,7 +3,7 @@ Gridly API
 
 Gridly API documentation
 
-API version: 4.21.5
+API version: 4.29.1
 Contact: support@gridly.com
 */
 
@@ -17,11 +17,11 @@ import (
 
 // MovePath struct for MovePath
 type MovePath struct {
-	FromParentPath *string `json:"fromParentPath,omitempty"`
-	MoveAfter *string `json:"moveAfter,omitempty"`
-	MoveBefore *string `json:"moveBefore,omitempty"`
 	Names []string `json:"names,omitempty"`
+	FromParentPath *string `json:"fromParentPath,omitempty"`
 	ToParentPath *string `json:"toParentPath,omitempty"`
+	MoveBefore *string `json:"moveBefore,omitempty"`
+	MoveAfter *string `json:"moveAfter,omitempty"`
 }
 
 // NewMovePath instantiates a new MovePath object
@@ -39,102 +39,6 @@ func NewMovePath() *MovePath {
 func NewMovePathWithDefaults() *MovePath {
 	this := MovePath{}
 	return &this
-}
-
-// GetFromParentPath returns the FromParentPath field value if set, zero value otherwise.
-func (o *MovePath) GetFromParentPath() string {
-	if o == nil || o.FromParentPath == nil {
-		var ret string
-		return ret
-	}
-	return *o.FromParentPath
-}
-
-// GetFromParentPathOk returns a tuple with the FromParentPath field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *MovePath) GetFromParentPathOk() (*string, bool) {
-	if o == nil || o.FromParentPath == nil {
-		return nil, false
-	}
-	return o.FromParentPath, true
-}
-
-// HasFromParentPath returns a boolean if a field has been set.
-func (o *MovePath) HasFromParentPath() bool {
-	if o != nil && o.FromParentPath != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetFromParentPath gets a reference to the given string and assigns it to the FromParentPath field.
-func (o *MovePath) SetFromParentPath(v string) {
-	o.FromParentPath = &v
-}
-
-// GetMoveAfter returns the MoveAfter field value if set, zero value otherwise.
-func (o *MovePath) GetMoveAfter() string {
-	if o == nil || o.MoveAfter == nil {
-		var ret string
-		return ret
-	}
-	return *o.MoveAfter
-}
-
-// GetMoveAfterOk returns a tuple with the MoveAfter field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *MovePath) GetMoveAfterOk() (*string, bool) {
-	if o == nil || o.MoveAfter == nil {
-		return nil, false
-	}
-	return o.MoveAfter, true
-}
-
-// HasMoveAfter returns a boolean if a field has been set.
-func (o *MovePath) HasMoveAfter() bool {
-	if o != nil && o.MoveAfter != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetMoveAfter gets a reference to the given string and assigns it to the MoveAfter field.
-func (o *MovePath) SetMoveAfter(v string) {
-	o.MoveAfter = &v
-}
-
-// GetMoveBefore returns the MoveBefore field value if set, zero value otherwise.
-func (o *MovePath) GetMoveBefore() string {
-	if o == nil || o.MoveBefore == nil {
-		var ret string
-		return ret
-	}
-	return *o.MoveBefore
-}
-
-// GetMoveBeforeOk returns a tuple with the MoveBefore field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *MovePath) GetMoveBeforeOk() (*string, bool) {
-	if o == nil || o.MoveBefore == nil {
-		return nil, false
-	}
-	return o.MoveBefore, true
-}
-
-// HasMoveBefore returns a boolean if a field has been set.
-func (o *MovePath) HasMoveBefore() bool {
-	if o != nil && o.MoveBefore != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetMoveBefore gets a reference to the given string and assigns it to the MoveBefore field.
-func (o *MovePath) SetMoveBefore(v string) {
-	o.MoveBefore = &v
 }
 
 // GetNames returns the Names field value if set, zero value otherwise.
@@ -169,6 +73,38 @@ func (o *MovePath) SetNames(v []string) {
 	o.Names = v
 }
 
+// GetFromParentPath returns the FromParentPath field value if set, zero value otherwise.
+func (o *MovePath) GetFromParentPath() string {
+	if o == nil || o.FromParentPath == nil {
+		var ret string
+		return ret
+	}
+	return *o.FromParentPath
+}
+
+// GetFromParentPathOk returns a tuple with the FromParentPath field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *MovePath) GetFromParentPathOk() (*string, bool) {
+	if o == nil || o.FromParentPath == nil {
+		return nil, false
+	}
+	return o.FromParentPath, true
+}
+
+// HasFromParentPath returns a boolean if a field has been set.
+func (o *MovePath) HasFromParentPath() bool {
+	if o != nil && o.FromParentPath != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetFromParentPath gets a reference to the given string and assigns it to the FromParentPath field.
+func (o *MovePath) SetFromParentPath(v string) {
+	o.FromParentPath = &v
+}
+
 // GetToParentPath returns the ToParentPath field value if set, zero value otherwise.
 func (o *MovePath) GetToParentPath() string {
 	if o == nil || o.ToParentPath == nil {
@@ -201,22 +137,86 @@ func (o *MovePath) SetToParentPath(v string) {
 	o.ToParentPath = &v
 }
 
+// GetMoveBefore returns the MoveBefore field value if set, zero value otherwise.
+func (o *MovePath) GetMoveBefore() string {
+	if o == nil || o.MoveBefore == nil {
+		var ret string
+		return ret
+	}
+	return *o.MoveBefore
+}
+
+// GetMoveBeforeOk returns a tuple with the MoveBefore field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *MovePath) GetMoveBeforeOk() (*string, bool) {
+	if o == nil || o.MoveBefore == nil {
+		return nil, false
+	}
+	return o.MoveBefore, true
+}
+
+// HasMoveBefore returns a boolean if a field has been set.
+func (o *MovePath) HasMoveBefore() bool {
+	if o != nil && o.MoveBefore != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetMoveBefore gets a reference to the given string and assigns it to the MoveBefore field.
+func (o *MovePath) SetMoveBefore(v string) {
+	o.MoveBefore = &v
+}
+
+// GetMoveAfter returns the MoveAfter field value if set, zero value otherwise.
+func (o *MovePath) GetMoveAfter() string {
+	if o == nil || o.MoveAfter == nil {
+		var ret string
+		return ret
+	}
+	return *o.MoveAfter
+}
+
+// GetMoveAfterOk returns a tuple with the MoveAfter field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *MovePath) GetMoveAfterOk() (*string, bool) {
+	if o == nil || o.MoveAfter == nil {
+		return nil, false
+	}
+	return o.MoveAfter, true
+}
+
+// HasMoveAfter returns a boolean if a field has been set.
+func (o *MovePath) HasMoveAfter() bool {
+	if o != nil && o.MoveAfter != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetMoveAfter gets a reference to the given string and assigns it to the MoveAfter field.
+func (o *MovePath) SetMoveAfter(v string) {
+	o.MoveAfter = &v
+}
+
 func (o MovePath) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
+	if o.Names != nil {
+		toSerialize["names"] = o.Names
+	}
 	if o.FromParentPath != nil {
 		toSerialize["fromParentPath"] = o.FromParentPath
 	}
-	if o.MoveAfter != nil {
-		toSerialize["moveAfter"] = o.MoveAfter
+	if o.ToParentPath != nil {
+		toSerialize["toParentPath"] = o.ToParentPath
 	}
 	if o.MoveBefore != nil {
 		toSerialize["moveBefore"] = o.MoveBefore
 	}
-	if o.Names != nil {
-		toSerialize["names"] = o.Names
-	}
-	if o.ToParentPath != nil {
-		toSerialize["toParentPath"] = o.ToParentPath
+	if o.MoveAfter != nil {
+		toSerialize["moveAfter"] = o.MoveAfter
 	}
 	return json.Marshal(toSerialize)
 }

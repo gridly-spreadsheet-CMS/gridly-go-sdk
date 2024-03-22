@@ -4,6 +4,7 @@ README.md
 api/openapi.yaml
 api_branch.go
 api_database.go
+api_glossary.go
 api_grid.go
 api_path.go
 api_project.go
@@ -20,6 +21,8 @@ configuration.go
 docs/AddViewColumn.md
 docs/Branch.md
 docs/BranchApi.md
+docs/BranchDiffCell.md
+docs/BranchDiffRecord.md
 docs/Cell.md
 docs/CellHistory.md
 docs/ColumnReference.md
@@ -29,6 +32,7 @@ docs/CreateColumn.md
 docs/CreateDatabase.md
 docs/CreateDependency.md
 docs/CreateFileCategory.md
+docs/CreateGlossary.md
 docs/CreateGrid.md
 docs/CreatePath.md
 docs/CreateProject.md
@@ -37,7 +41,6 @@ docs/CreateTransMem.md
 docs/CreateView.md
 docs/Database.md
 docs/DatabaseApi.md
-docs/DateFormat.md
 docs/DateTimeFormat.md
 docs/DeleteDependency.md
 docs/DeleteFile.md
@@ -47,12 +50,22 @@ docs/Dependency.md
 docs/ExportFileHeader.md
 docs/ExportFormat.md
 docs/FetchFileOption.md
+docs/FetchRecordHistoryRequest.md
 docs/FileCategory.md
+docs/FilterField.md
 docs/Formula.md
+docs/Glossary.md
+docs/GlossaryApi.md
+docs/GlossaryExportFormat.md
+docs/GlossaryProject.md
 docs/Grid.md
 docs/GridApi.md
 docs/GridSetting.md
 docs/Group.md
+docs/ImportOption.md
+docs/MergeBranchRequest.md
+docs/MergeCellConflict.md
+docs/MergeRecordConflict.md
 docs/MovePath.md
 docs/NumberFormat.md
 docs/PathApi.md
@@ -86,6 +99,7 @@ docs/UpdateCategory.md
 docs/UpdateColumn.md
 docs/UpdateDatabase.md
 docs/UpdateDependency.md
+docs/UpdateGlossary.md
 docs/UpdateGrid.md
 docs/UpdateGridSetting.md
 docs/UpdatePath.md
@@ -106,6 +120,8 @@ go.mod
 go.sum
 model_add_view_column.go
 model_branch.go
+model_branch_diff_cell.go
+model_branch_diff_record.go
 model_cell.go
 model_cell_history.go
 model_column_reference.go
@@ -115,6 +131,7 @@ model_create_column.go
 model_create_database.go
 model_create_dependency.go
 model_create_file_category.go
+model_create_glossary.go
 model_create_grid.go
 model_create_path.go
 model_create_project.go
@@ -122,7 +139,6 @@ model_create_share_view.go
 model_create_trans_mem.go
 model_create_view.go
 model_database.go
-model_date_format.go
 model_date_time_format.go
 model_delete_dependency.go
 model_delete_file.go
@@ -132,11 +148,20 @@ model_dependency.go
 model_export_file_header.go
 model_export_format.go
 model_fetch_file_option.go
+model_fetch_record_history_request.go
 model_file_category.go
+model_filter_field.go
 model_formula.go
+model_glossary.go
+model_glossary_export_format.go
+model_glossary_project.go
 model_grid.go
 model_grid_setting.go
 model_group.go
+model_import_option.go
+model_merge_branch_request.go
+model_merge_cell_conflict.go
+model_merge_record_conflict.go
 model_move_path.go
 model_number_format.go
 model_path_list.go
@@ -164,6 +189,7 @@ model_update_category.go
 model_update_column.go
 model_update_database.go
 model_update_dependency.go
+model_update_glossary.go
 model_update_grid.go
 model_update_grid_setting.go
 model_update_path.go

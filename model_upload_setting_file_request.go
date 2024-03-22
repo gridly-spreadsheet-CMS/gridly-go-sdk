@@ -3,7 +3,7 @@ Gridly API
 
 Gridly API documentation
 
-API version: 4.21.5
+API version: 4.29.1
 Contact: support@gridly.com
 */
 

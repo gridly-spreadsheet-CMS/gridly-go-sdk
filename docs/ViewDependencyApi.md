@@ -35,7 +35,7 @@ import (
 
 func main() {
     viewId := "viewId_example" // string | viewId
-    createDependency := *gridly.NewCreateDependency("SourceColumnId_example", "TargetColumnId_example") // CreateDependency | 
+    createDependency := *gridly.NewCreateDependency("TargetColumnId_example", "SourceColumnId_example") // CreateDependency | 
 
     configuration := gridly.NewConfiguration()
     apiClient := gridly.NewAPIClient(configuration)
@@ -392,7 +392,7 @@ import (
 func main() {
     dependencyId := "dependencyId_example" // string | dependencyId
     viewId := "viewId_example" // string | viewId
-    updateDependency := *gridly.NewUpdateDependency("SourceColumnId_example", "TargetColumnId_example") // UpdateDependency | 
+    updateDependency := *gridly.NewUpdateDependency("TargetColumnId_example", "SourceColumnId_example") // UpdateDependency | 
 
     configuration := gridly.NewConfiguration()
     apiClient := gridly.NewAPIClient(configuration)

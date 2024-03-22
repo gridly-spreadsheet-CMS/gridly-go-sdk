@@ -3,7 +3,7 @@ Gridly API
 
 Gridly API documentation
 
-API version: 4.21.5
+API version: 4.29.1
 Contact: support@gridly.com
 */
 
@@ -948,12 +948,18 @@ type ViewApiMergeRequest struct {
 	ApiService *ViewApiService
 	destinationViewId *string
 	viewId string
+	mergeBranchRequest *MergeBranchRequest
 	mergeRecordOptions *[]string
 }
 
 // destinationViewId
 func (r ViewApiMergeRequest) DestinationViewId(destinationViewId string) ViewApiMergeRequest {
 	r.destinationViewId = &destinationViewId
+	return r
+}
+
+func (r ViewApiMergeRequest) MergeBranchRequest(mergeBranchRequest MergeBranchRequest) ViewApiMergeRequest {
+	r.mergeBranchRequest = &mergeBranchRequest
 	return r
 }
 
@@ -1008,6 +1014,9 @@ func (a *ViewApiService) MergeExecute(r ViewApiMergeRequest) (*Task, *http.Respo
 	if r.destinationViewId == nil {
 		return localVarReturnValue, nil, reportError("destinationViewId is required and must be specified")
 	}
+	if r.mergeBranchRequest == nil {
+		return localVarReturnValue, nil, reportError("mergeBranchRequest is required and must be specified")
+	}
 
 	localVarQueryParams.Add("destinationViewId", parameterToString(*r.destinationViewId, ""))
 	if r.mergeRecordOptions != nil {
@@ -1022,7 +1031,7 @@ func (a *ViewApiService) MergeExecute(r ViewApiMergeRequest) (*Task, *http.Respo
 		}
 	}
 	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{}
+	localVarHTTPContentTypes := []string{"application/json"}
 
 	// set Content-Type header
 	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
@@ -1038,6 +1047,8 @@ func (a *ViewApiService) MergeExecute(r ViewApiMergeRequest) (*Task, *http.Respo
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
+	// body params
+	localVarPostBody = r.mergeBranchRequest
 	if r.ctx != nil {
 		// API Key Authentication
 		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {

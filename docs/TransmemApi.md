@@ -440,7 +440,7 @@ import (
 
 func main() {
     tmId := "tmId_example" // string | 
-    file := os.NewFile(1234, "some_file") // *os.File | 
+    file := map[string]interface{}{ ... } // map[string]interface{} | 
 
     configuration := gridly.NewConfiguration()
     apiClient := gridly.NewAPIClient(configuration)
@@ -468,7 +468,7 @@ Other parameters are passed through a pointer to a apiImportTmxRequest struct vi
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **file** | ***os.File** |  | 
+ **file** | [**map[string]interface{}**](map[string]interface{}.md) |  | 
 
 ### Return type
 

@@ -5,8 +5,10 @@ All URIs are relative to *https://api.gridly.com*
 Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**Create**](BranchApi.md#Create) | **Post** /v1/branches | create
+[**CreateDiffCheck**](BranchApi.md#CreateDiffCheck) | **Post** /v1/branches/diffcheck | createDiffCheck
 [**Delete**](BranchApi.md#Delete) | **Delete** /v1/branches/{branchId} | delete
 [**Get**](BranchApi.md#Get) | **Get** /v1/branches/{branchId} | get
+[**GetDiffCheck**](BranchApi.md#GetDiffCheck) | **Get** /v1/branches/diffcheck/{taskId} | getDiffCheck
 [**List**](BranchApi.md#List) | **Get** /v1/branches | list
 [**Merge**](BranchApi.md#Merge) | **Post** /v1/branches/{branchId}/merge | merge
 
@@ -75,6 +77,74 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## CreateDiffCheck
+
+> Task CreateDiffCheck(ctx).SourceViewId(sourceViewId).DestinationViewId(destinationViewId).Execute()
+
+createDiffCheck
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    gridly "./openapi"
+)
+
+func main() {
+    sourceViewId := "sourceViewId_example" // string | sourceViewId
+    destinationViewId := "destinationViewId_example" // string | destinationViewId
+
+    configuration := gridly.NewConfiguration()
+    apiClient := gridly.NewAPIClient(configuration)
+    resp, r, err := apiClient.BranchApi.CreateDiffCheck(context.Background()).SourceViewId(sourceViewId).DestinationViewId(destinationViewId).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `BranchApi.CreateDiffCheck``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `CreateDiffCheck`: Task
+    fmt.Fprintf(os.Stdout, "Response from `BranchApi.CreateDiffCheck`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiCreateDiffCheckRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **sourceViewId** | **string** | sourceViewId | 
+ **destinationViewId** | **string** | destinationViewId | 
+
+### Return type
+
+[**Task**](Task.md)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
 - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
@@ -220,6 +290,82 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
+## GetDiffCheck
+
+> []BranchDiffRecord GetDiffCheck(ctx, taskId).MergeRecordOptions(mergeRecordOptions).Query(query).Page(page).Execute()
+
+getDiffCheck
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    gridly "./openapi"
+)
+
+func main() {
+    taskId := "taskId_example" // string | taskId
+    mergeRecordOptions := []string{"MergeRecordOptions_example"} // []string | mergeRecordOptions (optional)
+    query := "query_example" // string | query (optional) (default to "{}")
+    page := "page_example" // string | page (optional) (default to "{}")
+
+    configuration := gridly.NewConfiguration()
+    apiClient := gridly.NewAPIClient(configuration)
+    resp, r, err := apiClient.BranchApi.GetDiffCheck(context.Background(), taskId).MergeRecordOptions(mergeRecordOptions).Query(query).Page(page).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `BranchApi.GetDiffCheck``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `GetDiffCheck`: []BranchDiffRecord
+    fmt.Fprintf(os.Stdout, "Response from `BranchApi.GetDiffCheck`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**taskId** | **string** | taskId | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiGetDiffCheckRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+ **mergeRecordOptions** | **[]string** | mergeRecordOptions | 
+ **query** | **string** | query | [default to &quot;{}&quot;]
+ **page** | **string** | page | [default to &quot;{}&quot;]
+
+### Return type
+
+[**[]BranchDiffRecord**](BranchDiffRecord.md)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
 ## List
 
 > []Branch List(ctx).GridId(gridId).Execute()
@@ -288,7 +434,7 @@ Name | Type | Description  | Notes
 
 ## Merge
 
-> Task Merge(ctx, branchId).DestinationBranchId(destinationBranchId).MergeRecordOptions(mergeRecordOptions).Execute()
+> Task Merge(ctx, branchId).DestinationBranchId(destinationBranchId).MergeBranchRequest(mergeBranchRequest).MergeRecordOptions(mergeRecordOptions).Execute()
 
 merge
 
@@ -309,11 +455,12 @@ import (
 func main() {
     branchId := "branchId_example" // string | branchId
     destinationBranchId := "destinationBranchId_example" // string | destinationBranchId
+    mergeBranchRequest := *gridly.NewMergeBranchRequest() // MergeBranchRequest | 
     mergeRecordOptions := []string{"MergeRecordOptions_example"} // []string | mergeRecordOptions (optional) (default to [])
 
     configuration := gridly.NewConfiguration()
     apiClient := gridly.NewAPIClient(configuration)
-    resp, r, err := apiClient.BranchApi.Merge(context.Background(), branchId).DestinationBranchId(destinationBranchId).MergeRecordOptions(mergeRecordOptions).Execute()
+    resp, r, err := apiClient.BranchApi.Merge(context.Background(), branchId).DestinationBranchId(destinationBranchId).MergeBranchRequest(mergeBranchRequest).MergeRecordOptions(mergeRecordOptions).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `BranchApi.Merge``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -340,6 +487,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
  **destinationBranchId** | **string** | destinationBranchId | 
+ **mergeBranchRequest** | [**MergeBranchRequest**](MergeBranchRequest.md) |  | 
  **mergeRecordOptions** | **[]string** | mergeRecordOptions | [default to []]
 
 ### Return type
@@ -352,7 +500,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
-- **Content-Type**: Not defined
+- **Content-Type**: application/json
 - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)

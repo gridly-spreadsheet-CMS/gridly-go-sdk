@@ -3,7 +3,7 @@ Gridly API
 
 Gridly API documentation
 
-API version: 4.21.5
+API version: 4.29.1
 Contact: support@gridly.com
 */
 
@@ -102,7 +102,7 @@ type Configuration struct {
 func NewConfiguration() *Configuration {
 	cfg := &Configuration{
 		DefaultHeader:    make(map[string]string),
-		UserAgent:        "Gridly Go SDK 1.2.10",
+		UserAgent:        "Gridly Go SDK 1.2.11",
 		Debug:            false,
 		Servers:          ServerConfigurations{
 			{

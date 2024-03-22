@@ -3,7 +3,7 @@ Gridly API
 
 Gridly API documentation
 
-API version: 4.21.5
+API version: 4.29.1
 Contact: support@gridly.com
 */
 
@@ -18,6 +18,11 @@ import (
 // CreateBranch struct for CreateBranch
 type CreateBranch struct {
 	Name string `json:"name"`
+	Description *string `json:"description,omitempty"`
+	CustomProperties map[string]map[string]interface{} `json:"customProperties,omitempty"`
+	InheritGroupAccess *bool `json:"inheritGroupAccess,omitempty"`
+	InheritAutomation *bool `json:"inheritAutomation,omitempty"`
+	ViewId *string `json:"viewId,omitempty"`
 }
 
 // NewCreateBranch instantiates a new CreateBranch object
@@ -62,10 +67,185 @@ func (o *CreateBranch) SetName(v string) {
 	o.Name = v
 }
 
+// GetDescription returns the Description field value if set, zero value otherwise.
+func (o *CreateBranch) GetDescription() string {
+	if o == nil || o.Description == nil {
+		var ret string
+		return ret
+	}
+	return *o.Description
+}
+
+// GetDescriptionOk returns a tuple with the Description field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CreateBranch) GetDescriptionOk() (*string, bool) {
+	if o == nil || o.Description == nil {
+		return nil, false
+	}
+	return o.Description, true
+}
+
+// HasDescription returns a boolean if a field has been set.
+func (o *CreateBranch) HasDescription() bool {
+	if o != nil && o.Description != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetDescription gets a reference to the given string and assigns it to the Description field.
+func (o *CreateBranch) SetDescription(v string) {
+	o.Description = &v
+}
+
+// GetCustomProperties returns the CustomProperties field value if set, zero value otherwise.
+func (o *CreateBranch) GetCustomProperties() map[string]map[string]interface{} {
+	if o == nil || o.CustomProperties == nil {
+		var ret map[string]map[string]interface{}
+		return ret
+	}
+	return o.CustomProperties
+}
+
+// GetCustomPropertiesOk returns a tuple with the CustomProperties field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CreateBranch) GetCustomPropertiesOk() (map[string]map[string]interface{}, bool) {
+	if o == nil || o.CustomProperties == nil {
+		return nil, false
+	}
+	return o.CustomProperties, true
+}
+
+// HasCustomProperties returns a boolean if a field has been set.
+func (o *CreateBranch) HasCustomProperties() bool {
+	if o != nil && o.CustomProperties != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetCustomProperties gets a reference to the given map[string]map[string]interface{} and assigns it to the CustomProperties field.
+func (o *CreateBranch) SetCustomProperties(v map[string]map[string]interface{}) {
+	o.CustomProperties = v
+}
+
+// GetInheritGroupAccess returns the InheritGroupAccess field value if set, zero value otherwise.
+func (o *CreateBranch) GetInheritGroupAccess() bool {
+	if o == nil || o.InheritGroupAccess == nil {
+		var ret bool
+		return ret
+	}
+	return *o.InheritGroupAccess
+}
+
+// GetInheritGroupAccessOk returns a tuple with the InheritGroupAccess field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CreateBranch) GetInheritGroupAccessOk() (*bool, bool) {
+	if o == nil || o.InheritGroupAccess == nil {
+		return nil, false
+	}
+	return o.InheritGroupAccess, true
+}
+
+// HasInheritGroupAccess returns a boolean if a field has been set.
+func (o *CreateBranch) HasInheritGroupAccess() bool {
+	if o != nil && o.InheritGroupAccess != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetInheritGroupAccess gets a reference to the given bool and assigns it to the InheritGroupAccess field.
+func (o *CreateBranch) SetInheritGroupAccess(v bool) {
+	o.InheritGroupAccess = &v
+}
+
+// GetInheritAutomation returns the InheritAutomation field value if set, zero value otherwise.
+func (o *CreateBranch) GetInheritAutomation() bool {
+	if o == nil || o.InheritAutomation == nil {
+		var ret bool
+		return ret
+	}
+	return *o.InheritAutomation
+}
+
+// GetInheritAutomationOk returns a tuple with the InheritAutomation field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CreateBranch) GetInheritAutomationOk() (*bool, bool) {
+	if o == nil || o.InheritAutomation == nil {
+		return nil, false
+	}
+	return o.InheritAutomation, true
+}
+
+// HasInheritAutomation returns a boolean if a field has been set.
+func (o *CreateBranch) HasInheritAutomation() bool {
+	if o != nil && o.InheritAutomation != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetInheritAutomation gets a reference to the given bool and assigns it to the InheritAutomation field.
+func (o *CreateBranch) SetInheritAutomation(v bool) {
+	o.InheritAutomation = &v
+}
+
+// GetViewId returns the ViewId field value if set, zero value otherwise.
+func (o *CreateBranch) GetViewId() string {
+	if o == nil || o.ViewId == nil {
+		var ret string
+		return ret
+	}
+	return *o.ViewId
+}
+
+// GetViewIdOk returns a tuple with the ViewId field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CreateBranch) GetViewIdOk() (*string, bool) {
+	if o == nil || o.ViewId == nil {
+		return nil, false
+	}
+	return o.ViewId, true
+}
+
+// HasViewId returns a boolean if a field has been set.
+func (o *CreateBranch) HasViewId() bool {
+	if o != nil && o.ViewId != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetViewId gets a reference to the given string and assigns it to the ViewId field.
+func (o *CreateBranch) SetViewId(v string) {
+	o.ViewId = &v
+}
+
 func (o CreateBranch) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if true {
 		toSerialize["name"] = o.Name
+	}
+	if o.Description != nil {
+		toSerialize["description"] = o.Description
+	}
+	if o.CustomProperties != nil {
+		toSerialize["customProperties"] = o.CustomProperties
+	}
+	if o.InheritGroupAccess != nil {
+		toSerialize["inheritGroupAccess"] = o.InheritGroupAccess
+	}
+	if o.InheritAutomation != nil {
+		toSerialize["inheritAutomation"] = o.InheritAutomation
+	}
+	if o.ViewId != nil {
+		toSerialize["viewId"] = o.ViewId
 	}
 	return json.Marshal(toSerialize)
 }

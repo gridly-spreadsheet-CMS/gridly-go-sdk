@@ -3,7 +3,7 @@ Gridly API
 
 Gridly API documentation
 
-API version: 4.21.5
+API version: 4.29.1
 Contact: support@gridly.com
 */
 
@@ -471,12 +471,12 @@ type RecordApiFetchHistoriesRequest struct {
 	ApiService *RecordApiService
 	viewId string
 	recordId string
-	page *string
+	fetchRequest *FetchRecordHistoryRequest
 }
 
-// page
-func (r RecordApiFetchHistoriesRequest) Page(page string) RecordApiFetchHistoriesRequest {
-	r.page = &page
+// fetchRequest
+func (r RecordApiFetchHistoriesRequest) FetchRequest(fetchRequest FetchRecordHistoryRequest) RecordApiFetchHistoriesRequest {
+	r.fetchRequest = &fetchRequest
 	return r
 }
 
@@ -525,10 +525,11 @@ func (a *RecordApiService) FetchHistoriesExecute(r RecordApiFetchHistoriesReques
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-
-	if r.page != nil {
-		localVarQueryParams.Add("page", parameterToString(*r.page, ""))
+	if r.fetchRequest == nil {
+		return localVarReturnValue, nil, reportError("fetchRequest is required and must be specified")
 	}
+
+	localVarQueryParams.Add("fetchRequest", parameterToString(*r.fetchRequest, ""))
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
 

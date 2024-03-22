@@ -3,7 +3,7 @@ Gridly API
 
 Gridly API documentation
 
-API version: 4.21.5
+API version: 4.29.1
 Contact: support@gridly.com
 */
 
@@ -42,7 +42,7 @@ var (
 	xmlCheck  = regexp.MustCompile(`(?i:(?:application|text)/xml)`)
 )
 
-// APIClient manages communication with the Gridly API API v4.21.5
+// APIClient manages communication with the Gridly API API v4.29.1
 // In most cases there should be only one, shared, APIClient.
 type APIClient struct {
 	cfg    *Configuration
@@ -53,6 +53,8 @@ type APIClient struct {
 	BranchApi *BranchApiService
 
 	DatabaseApi *DatabaseApiService
+
+	GlossaryApi *GlossaryApiService
 
 	GridApi *GridApiService
 
@@ -95,6 +97,7 @@ func NewAPIClient(cfg *Configuration) *APIClient {
 	// API Services
 	c.BranchApi = (*BranchApiService)(&c.common)
 	c.DatabaseApi = (*DatabaseApiService)(&c.common)
+	c.GlossaryApi = (*GlossaryApiService)(&c.common)
 	c.GridApi = (*GridApiService)(&c.common)
 	c.PathApi = (*PathApiService)(&c.common)
 	c.ProjectApi = (*ProjectApiService)(&c.common)

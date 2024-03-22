@@ -458,7 +458,7 @@ Name | Type | Description  | Notes
 
 ## Merge
 
-> Task Merge(ctx, viewId).DestinationViewId(destinationViewId).MergeRecordOptions(mergeRecordOptions).Execute()
+> Task Merge(ctx, viewId).DestinationViewId(destinationViewId).MergeBranchRequest(mergeBranchRequest).MergeRecordOptions(mergeRecordOptions).Execute()
 
 merge
 
@@ -479,11 +479,12 @@ import (
 func main() {
     destinationViewId := "destinationViewId_example" // string | destinationViewId
     viewId := "viewId_example" // string | viewId
+    mergeBranchRequest := *gridly.NewMergeBranchRequest() // MergeBranchRequest | 
     mergeRecordOptions := []string{"MergeRecordOptions_example"} // []string | mergeRecordOptions (optional) (default to [])
 
     configuration := gridly.NewConfiguration()
     apiClient := gridly.NewAPIClient(configuration)
-    resp, r, err := apiClient.ViewApi.Merge(context.Background(), viewId).DestinationViewId(destinationViewId).MergeRecordOptions(mergeRecordOptions).Execute()
+    resp, r, err := apiClient.ViewApi.Merge(context.Background(), viewId).DestinationViewId(destinationViewId).MergeBranchRequest(mergeBranchRequest).MergeRecordOptions(mergeRecordOptions).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ViewApi.Merge``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -510,6 +511,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **destinationViewId** | **string** | destinationViewId | 
 
+ **mergeBranchRequest** | [**MergeBranchRequest**](MergeBranchRequest.md) |  | 
  **mergeRecordOptions** | **[]string** | mergeRecordOptions | [default to []]
 
 ### Return type
@@ -522,7 +524,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
-- **Content-Type**: Not defined
+- **Content-Type**: application/json
 - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)

@@ -3,7 +3,7 @@ Gridly API
 
 Gridly API documentation
 
-API version: 4.21.5
+API version: 4.29.1
 Contact: support@gridly.com
 */
 
@@ -118,6 +118,141 @@ func (a *BranchApiService) CreateExecute(r BranchApiCreateRequest) (*Branch, *ht
 	}
 	// body params
 	localVarPostBody = r.createBranch
+	if r.ctx != nil {
+		// API Key Authentication
+		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
+			if apiKey, ok := auth["ApiKey"]; ok {
+				var key string
+				if apiKey.Prefix != "" {
+					key = apiKey.Prefix + " " + apiKey.Key
+				} else {
+					key = apiKey.Key
+				}
+				localVarHeaderParams["Authorization"] = key
+			}
+		}
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type BranchApiCreateDiffCheckRequest struct {
+	ctx context.Context
+	ApiService *BranchApiService
+	sourceViewId *string
+	destinationViewId *string
+}
+
+// sourceViewId
+func (r BranchApiCreateDiffCheckRequest) SourceViewId(sourceViewId string) BranchApiCreateDiffCheckRequest {
+	r.sourceViewId = &sourceViewId
+	return r
+}
+
+// destinationViewId
+func (r BranchApiCreateDiffCheckRequest) DestinationViewId(destinationViewId string) BranchApiCreateDiffCheckRequest {
+	r.destinationViewId = &destinationViewId
+	return r
+}
+
+func (r BranchApiCreateDiffCheckRequest) Execute() (*Task, *http.Response, error) {
+	return r.ApiService.CreateDiffCheckExecute(r)
+}
+
+/*
+CreateDiffCheck createDiffCheck
+
+createDiffCheck
+
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return BranchApiCreateDiffCheckRequest
+*/
+func (a *BranchApiService) CreateDiffCheck(ctx context.Context) BranchApiCreateDiffCheckRequest {
+	return BranchApiCreateDiffCheckRequest{
+		ApiService: a,
+		ctx: ctx,
+	}
+}
+
+// Execute executes the request
+//  @return Task
+func (a *BranchApiService) CreateDiffCheckExecute(r BranchApiCreateDiffCheckRequest) (*Task, *http.Response, error) {
+	var (
+		localVarHTTPMethod   = http.MethodPost
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *Task
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "BranchApiService.CreateDiffCheck")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/v1/branches/diffcheck"
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+	if r.sourceViewId == nil {
+		return localVarReturnValue, nil, reportError("sourceViewId is required and must be specified")
+	}
+	if r.destinationViewId == nil {
+		return localVarReturnValue, nil, reportError("destinationViewId is required and must be specified")
+	}
+
+	localVarQueryParams.Add("sourceViewId", parameterToString(*r.sourceViewId, ""))
+	localVarQueryParams.Add("destinationViewId", parameterToString(*r.destinationViewId, ""))
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
 	if r.ctx != nil {
 		// API Key Authentication
 		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
@@ -392,6 +527,161 @@ func (a *BranchApiService) GetExecute(r BranchApiGetRequest) (*Branch, *http.Res
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
+type BranchApiGetDiffCheckRequest struct {
+	ctx context.Context
+	ApiService *BranchApiService
+	taskId string
+	mergeRecordOptions *[]string
+	query *string
+	page *string
+}
+
+// mergeRecordOptions
+func (r BranchApiGetDiffCheckRequest) MergeRecordOptions(mergeRecordOptions []string) BranchApiGetDiffCheckRequest {
+	r.mergeRecordOptions = &mergeRecordOptions
+	return r
+}
+
+// query
+func (r BranchApiGetDiffCheckRequest) Query(query string) BranchApiGetDiffCheckRequest {
+	r.query = &query
+	return r
+}
+
+// page
+func (r BranchApiGetDiffCheckRequest) Page(page string) BranchApiGetDiffCheckRequest {
+	r.page = &page
+	return r
+}
+
+func (r BranchApiGetDiffCheckRequest) Execute() ([]BranchDiffRecord, *http.Response, error) {
+	return r.ApiService.GetDiffCheckExecute(r)
+}
+
+/*
+GetDiffCheck getDiffCheck
+
+getDiffCheck
+
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param taskId taskId
+ @return BranchApiGetDiffCheckRequest
+*/
+func (a *BranchApiService) GetDiffCheck(ctx context.Context, taskId string) BranchApiGetDiffCheckRequest {
+	return BranchApiGetDiffCheckRequest{
+		ApiService: a,
+		ctx: ctx,
+		taskId: taskId,
+	}
+}
+
+// Execute executes the request
+//  @return []BranchDiffRecord
+func (a *BranchApiService) GetDiffCheckExecute(r BranchApiGetDiffCheckRequest) ([]BranchDiffRecord, *http.Response, error) {
+	var (
+		localVarHTTPMethod   = http.MethodGet
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  []BranchDiffRecord
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "BranchApiService.GetDiffCheck")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/v1/branches/diffcheck/{taskId}"
+	localVarPath = strings.Replace(localVarPath, "{"+"taskId"+"}", url.PathEscape(parameterToString(r.taskId, "")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	if r.mergeRecordOptions != nil {
+		t := *r.mergeRecordOptions
+		if reflect.TypeOf(t).Kind() == reflect.Slice {
+			s := reflect.ValueOf(t)
+			for i := 0; i < s.Len(); i++ {
+				localVarQueryParams.Add("mergeRecordOptions", parameterToString(s.Index(i), "multi"))
+			}
+		} else {
+			localVarQueryParams.Add("mergeRecordOptions", parameterToString(t, "multi"))
+		}
+	}
+	if r.query != nil {
+		localVarQueryParams.Add("query", parameterToString(*r.query, ""))
+	}
+	if r.page != nil {
+		localVarQueryParams.Add("page", parameterToString(*r.page, ""))
+	}
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	if r.ctx != nil {
+		// API Key Authentication
+		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
+			if apiKey, ok := auth["ApiKey"]; ok {
+				var key string
+				if apiKey.Prefix != "" {
+					key = apiKey.Prefix + " " + apiKey.Key
+				} else {
+					key = apiKey.Key
+				}
+				localVarHeaderParams["Authorization"] = key
+			}
+		}
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
 type BranchApiListRequest struct {
 	ctx context.Context
 	ApiService *BranchApiService
@@ -521,12 +811,18 @@ type BranchApiMergeRequest struct {
 	ApiService *BranchApiService
 	branchId string
 	destinationBranchId *string
+	mergeBranchRequest *MergeBranchRequest
 	mergeRecordOptions *[]string
 }
 
 // destinationBranchId
 func (r BranchApiMergeRequest) DestinationBranchId(destinationBranchId string) BranchApiMergeRequest {
 	r.destinationBranchId = &destinationBranchId
+	return r
+}
+
+func (r BranchApiMergeRequest) MergeBranchRequest(mergeBranchRequest MergeBranchRequest) BranchApiMergeRequest {
+	r.mergeBranchRequest = &mergeBranchRequest
 	return r
 }
 
@@ -581,6 +877,9 @@ func (a *BranchApiService) MergeExecute(r BranchApiMergeRequest) (*Task, *http.R
 	if r.destinationBranchId == nil {
 		return localVarReturnValue, nil, reportError("destinationBranchId is required and must be specified")
 	}
+	if r.mergeBranchRequest == nil {
+		return localVarReturnValue, nil, reportError("mergeBranchRequest is required and must be specified")
+	}
 
 	localVarQueryParams.Add("destinationBranchId", parameterToString(*r.destinationBranchId, ""))
 	if r.mergeRecordOptions != nil {
@@ -595,7 +894,7 @@ func (a *BranchApiService) MergeExecute(r BranchApiMergeRequest) (*Task, *http.R
 		}
 	}
 	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{}
+	localVarHTTPContentTypes := []string{"application/json"}
 
 	// set Content-Type header
 	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
@@ -611,6 +910,8 @@ func (a *BranchApiService) MergeExecute(r BranchApiMergeRequest) (*Task, *http.R
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
+	// body params
+	localVarPostBody = r.mergeBranchRequest
 	if r.ctx != nil {
 		// API Key Authentication
 		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {

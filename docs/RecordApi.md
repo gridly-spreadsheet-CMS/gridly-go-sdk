@@ -241,7 +241,7 @@ Name | Type | Description  | Notes
 
 ## FetchHistories
 
-> []RecordHistory FetchHistories(ctx, viewId, recordId).Page(page).Execute()
+> []RecordHistory FetchHistories(ctx, viewId, recordId).FetchRequest(fetchRequest).Execute()
 
 fetchHistories
 
@@ -262,11 +262,11 @@ import (
 func main() {
     viewId := "viewId_example" // string | viewId
     recordId := "recordId_example" // string | recordId
-    page := "page_example" // string | page (optional) (default to "{}")
+    fetchRequest := map[string][]gridly.FetchRecordHistoryRequest{ ... } // FetchRecordHistoryRequest | fetchRequest
 
     configuration := gridly.NewConfiguration()
     apiClient := gridly.NewAPIClient(configuration)
-    resp, r, err := apiClient.RecordApi.FetchHistories(context.Background(), viewId, recordId).Page(page).Execute()
+    resp, r, err := apiClient.RecordApi.FetchHistories(context.Background(), viewId, recordId).FetchRequest(fetchRequest).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `RecordApi.FetchHistories``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -294,7 +294,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
 
- **page** | **string** | page | [default to &quot;{}&quot;]
+ **fetchRequest** | [**FetchRecordHistoryRequest**](FetchRecordHistoryRequest.md) | fetchRequest | 
 
 ### Return type
 

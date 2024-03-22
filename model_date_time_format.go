@@ -3,7 +3,7 @@ Gridly API
 
 Gridly API documentation
 
-API version: 4.21.5
+API version: 4.29.1
 Contact: support@gridly.com
 */
 
@@ -17,7 +17,7 @@ import (
 
 // DateTimeFormat struct for DateTimeFormat
 type DateTimeFormat struct {
-	DateFormat *DateFormat `json:"dateFormat,omitempty"`
+	DateFormat *string `json:"dateFormat,omitempty"`
 	TimeFormat *string `json:"timeFormat,omitempty"`
 	ZoneOffset *string `json:"zoneOffset,omitempty"`
 	ShowTimeZone *bool `json:"showTimeZone,omitempty"`
@@ -41,9 +41,9 @@ func NewDateTimeFormatWithDefaults() *DateTimeFormat {
 }
 
 // GetDateFormat returns the DateFormat field value if set, zero value otherwise.
-func (o *DateTimeFormat) GetDateFormat() DateFormat {
+func (o *DateTimeFormat) GetDateFormat() string {
 	if o == nil || o.DateFormat == nil {
-		var ret DateFormat
+		var ret string
 		return ret
 	}
 	return *o.DateFormat
@@ -51,7 +51,7 @@ func (o *DateTimeFormat) GetDateFormat() DateFormat {
 
 // GetDateFormatOk returns a tuple with the DateFormat field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *DateTimeFormat) GetDateFormatOk() (*DateFormat, bool) {
+func (o *DateTimeFormat) GetDateFormatOk() (*string, bool) {
 	if o == nil || o.DateFormat == nil {
 		return nil, false
 	}
@@ -67,8 +67,8 @@ func (o *DateTimeFormat) HasDateFormat() bool {
 	return false
 }
 
-// SetDateFormat gets a reference to the given DateFormat and assigns it to the DateFormat field.
-func (o *DateTimeFormat) SetDateFormat(v DateFormat) {
+// SetDateFormat gets a reference to the given string and assigns it to the DateFormat field.
+func (o *DateTimeFormat) SetDateFormat(v string) {
 	o.DateFormat = &v
 }
 

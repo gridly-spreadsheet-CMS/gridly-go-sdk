@@ -3,7 +3,7 @@ Gridly API
 
 Gridly API documentation
 
-API version: 4.21.5
+API version: 4.29.1
 Contact: support@gridly.com
 */
 
@@ -18,18 +18,18 @@ import (
 // CreateDependency struct for CreateDependency
 type CreateDependency struct {
 	Id *string `json:"id,omitempty"`
-	SourceColumnId string `json:"sourceColumnId"`
 	TargetColumnId string `json:"targetColumnId"`
+	SourceColumnId string `json:"sourceColumnId"`
 }
 
 // NewCreateDependency instantiates a new CreateDependency object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewCreateDependency(sourceColumnId string, targetColumnId string) *CreateDependency {
+func NewCreateDependency(targetColumnId string, sourceColumnId string) *CreateDependency {
 	this := CreateDependency{}
-	this.SourceColumnId = sourceColumnId
 	this.TargetColumnId = targetColumnId
+	this.SourceColumnId = sourceColumnId
 	return &this
 }
 
@@ -73,30 +73,6 @@ func (o *CreateDependency) SetId(v string) {
 	o.Id = &v
 }
 
-// GetSourceColumnId returns the SourceColumnId field value
-func (o *CreateDependency) GetSourceColumnId() string {
-	if o == nil {
-		var ret string
-		return ret
-	}
-
-	return o.SourceColumnId
-}
-
-// GetSourceColumnIdOk returns a tuple with the SourceColumnId field value
-// and a boolean to check if the value has been set.
-func (o *CreateDependency) GetSourceColumnIdOk() (*string, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return &o.SourceColumnId, true
-}
-
-// SetSourceColumnId sets field value
-func (o *CreateDependency) SetSourceColumnId(v string) {
-	o.SourceColumnId = v
-}
-
 // GetTargetColumnId returns the TargetColumnId field value
 func (o *CreateDependency) GetTargetColumnId() string {
 	if o == nil {
@@ -121,16 +97,40 @@ func (o *CreateDependency) SetTargetColumnId(v string) {
 	o.TargetColumnId = v
 }
 
+// GetSourceColumnId returns the SourceColumnId field value
+func (o *CreateDependency) GetSourceColumnId() string {
+	if o == nil {
+		var ret string
+		return ret
+	}
+
+	return o.SourceColumnId
+}
+
+// GetSourceColumnIdOk returns a tuple with the SourceColumnId field value
+// and a boolean to check if the value has been set.
+func (o *CreateDependency) GetSourceColumnIdOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.SourceColumnId, true
+}
+
+// SetSourceColumnId sets field value
+func (o *CreateDependency) SetSourceColumnId(v string) {
+	o.SourceColumnId = v
+}
+
 func (o CreateDependency) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if o.Id != nil {
 		toSerialize["id"] = o.Id
 	}
 	if true {
-		toSerialize["sourceColumnId"] = o.SourceColumnId
+		toSerialize["targetColumnId"] = o.TargetColumnId
 	}
 	if true {
-		toSerialize["targetColumnId"] = o.TargetColumnId
+		toSerialize["sourceColumnId"] = o.SourceColumnId
 	}
 	return json.Marshal(toSerialize)
 }
