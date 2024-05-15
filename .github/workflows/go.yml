@@ -2,7 +2,7 @@ name: Gridly Go
 
 on:
   push:
-    branches: [ master ]
+    branches: [ main ]
     tags: 
       - '*'
 
