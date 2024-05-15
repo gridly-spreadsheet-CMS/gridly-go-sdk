@@ -27,6 +27,7 @@ type TransMem struct {
 	Description *string `json:"description,omitempty"`
 	FuzzyMatch *bool `json:"fuzzyMatch,omitempty"`
 	AllowAlternative *bool `json:"allowAlternative,omitempty"`
+	AllowAlternativeHasSameRecordId *bool `json:"allowAlternativeHasSameRecordId,omitempty"`
 }
 
 // NewTransMem instantiates a new TransMem object
@@ -359,6 +360,38 @@ func (o *TransMem) SetAllowAlternative(v bool) {
 	o.AllowAlternative = &v
 }
 
+// GetAllowAlternativeHasSameRecordId returns the AllowAlternativeHasSameRecordId field value if set, zero value otherwise.
+func (o *TransMem) GetAllowAlternativeHasSameRecordId() bool {
+	if o == nil || isNil(o.AllowAlternativeHasSameRecordId) {
+		var ret bool
+		return ret
+	}
+	return *o.AllowAlternativeHasSameRecordId
+}
+
+// GetAllowAlternativeHasSameRecordIdOk returns a tuple with the AllowAlternativeHasSameRecordId field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *TransMem) GetAllowAlternativeHasSameRecordIdOk() (*bool, bool) {
+	if o == nil || isNil(o.AllowAlternativeHasSameRecordId) {
+    return nil, false
+	}
+	return o.AllowAlternativeHasSameRecordId, true
+}
+
+// HasAllowAlternativeHasSameRecordId returns a boolean if a field has been set.
+func (o *TransMem) HasAllowAlternativeHasSameRecordId() bool {
+	if o != nil && !isNil(o.AllowAlternativeHasSameRecordId) {
+		return true
+	}
+
+	return false
+}
+
+// SetAllowAlternativeHasSameRecordId gets a reference to the given bool and assigns it to the AllowAlternativeHasSameRecordId field.
+func (o *TransMem) SetAllowAlternativeHasSameRecordId(v bool) {
+	o.AllowAlternativeHasSameRecordId = &v
+}
+
 func (o TransMem) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if !isNil(o.Id) {
@@ -390,6 +423,9 @@ func (o TransMem) MarshalJSON() ([]byte, error) {
 	}
 	if !isNil(o.AllowAlternative) {
 		toSerialize["allowAlternative"] = o.AllowAlternative
+	}
+	if !isNil(o.AllowAlternativeHasSameRecordId) {
+		toSerialize["allowAlternativeHasSameRecordId"] = o.AllowAlternativeHasSameRecordId
 	}
 	return json.Marshal(toSerialize)
 }

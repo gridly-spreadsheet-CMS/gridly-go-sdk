@@ -14,6 +14,7 @@ Name | Type | Description | Notes
 **Description** | Pointer to **string** |  | [optional] 
 **FuzzyMatch** | Pointer to **bool** |  | [optional] 
 **AllowAlternative** | Pointer to **bool** |  | [optional] 
+**AllowAlternativeHasSameRecordId** | Pointer to **bool** |  | [optional] 
 
 ## Methods
 
@@ -278,6 +279,31 @@ SetAllowAlternative sets AllowAlternative field to given value.
 `func (o *TransMem) HasAllowAlternative() bool`
 
 HasAllowAlternative returns a boolean if a field has been set.
+
+### GetAllowAlternativeHasSameRecordId
+
+`func (o *TransMem) GetAllowAlternativeHasSameRecordId() bool`
+
+GetAllowAlternativeHasSameRecordId returns the AllowAlternativeHasSameRecordId field if non-nil, zero value otherwise.
+
+### GetAllowAlternativeHasSameRecordIdOk
+
+`func (o *TransMem) GetAllowAlternativeHasSameRecordIdOk() (*bool, bool)`
+
+GetAllowAlternativeHasSameRecordIdOk returns a tuple with the AllowAlternativeHasSameRecordId field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetAllowAlternativeHasSameRecordId
+
+`func (o *TransMem) SetAllowAlternativeHasSameRecordId(v bool)`
+
+SetAllowAlternativeHasSameRecordId sets AllowAlternativeHasSameRecordId field to given value.
+
+### HasAllowAlternativeHasSameRecordId
+
+`func (o *TransMem) HasAllowAlternativeHasSameRecordId() bool`
+
+HasAllowAlternativeHasSameRecordId returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

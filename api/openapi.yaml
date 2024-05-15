@@ -7931,6 +7931,7 @@ components:
     TransMem:
       example:
         isPausedConsuming: true
+        allowAlternativeHasSameRecordId: true
         populateTranslationStatus: null
         contextLookup: true
         name: name
@@ -7966,6 +7967,8 @@ components:
         fuzzyMatch:
           type: boolean
         allowAlternative:
+          type: boolean
+        allowAlternativeHasSameRecordId:
           type: boolean
       required:
       - name
@@ -8009,6 +8012,7 @@ components:
     UpdateTransMem:
       example:
         isPausedConsuming: true
+        allowAlternativeHasSameRecordId: true
         populateTranslationStatus: null
         contextLookup: true
         name: name
@@ -8040,6 +8044,8 @@ components:
         contextLookup:
           type: boolean
         allowAlternative:
+          type: boolean
+        allowAlternativeHasSameRecordId:
           type: boolean
       type: object
     importView_request:
