@@ -3,7 +3,7 @@ Gridly API
 
 Gridly API documentation
 
-API version: 4.29.1
+API version: 4.33.0
 Contact: support@gridly.com
 */
 
@@ -39,7 +39,7 @@ func NewDeleteDependencyWithDefaults() *DeleteDependency {
 
 // GetIds returns the Ids field value if set, zero value otherwise.
 func (o *DeleteDependency) GetIds() []string {
-	if o == nil || o.Ids == nil {
+	if o == nil || isNil(o.Ids) {
 		var ret []string
 		return ret
 	}
@@ -49,15 +49,15 @@ func (o *DeleteDependency) GetIds() []string {
 // GetIdsOk returns a tuple with the Ids field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *DeleteDependency) GetIdsOk() ([]string, bool) {
-	if o == nil || o.Ids == nil {
-		return nil, false
+	if o == nil || isNil(o.Ids) {
+    return nil, false
 	}
 	return o.Ids, true
 }
 
 // HasIds returns a boolean if a field has been set.
 func (o *DeleteDependency) HasIds() bool {
-	if o != nil && o.Ids != nil {
+	if o != nil && !isNil(o.Ids) {
 		return true
 	}
 
@@ -71,7 +71,7 @@ func (o *DeleteDependency) SetIds(v []string) {
 
 func (o DeleteDependency) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
-	if o.Ids != nil {
+	if !isNil(o.Ids) {
 		toSerialize["ids"] = o.Ids
 	}
 	return json.Marshal(toSerialize)

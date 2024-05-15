@@ -3,7 +3,7 @@ Gridly API
 
 Gridly API documentation
 
-API version: 4.29.1
+API version: 4.33.0
 Contact: support@gridly.com
 */
 
@@ -43,7 +43,7 @@ func NewUpdateDependencyWithDefaults() *UpdateDependency {
 
 // GetNewId returns the NewId field value if set, zero value otherwise.
 func (o *UpdateDependency) GetNewId() string {
-	if o == nil || o.NewId == nil {
+	if o == nil || isNil(o.NewId) {
 		var ret string
 		return ret
 	}
@@ -53,15 +53,15 @@ func (o *UpdateDependency) GetNewId() string {
 // GetNewIdOk returns a tuple with the NewId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *UpdateDependency) GetNewIdOk() (*string, bool) {
-	if o == nil || o.NewId == nil {
-		return nil, false
+	if o == nil || isNil(o.NewId) {
+    return nil, false
 	}
 	return o.NewId, true
 }
 
 // HasNewId returns a boolean if a field has been set.
 func (o *UpdateDependency) HasNewId() bool {
-	if o != nil && o.NewId != nil {
+	if o != nil && !isNil(o.NewId) {
 		return true
 	}
 
@@ -87,7 +87,7 @@ func (o *UpdateDependency) GetTargetColumnId() string {
 // and a boolean to check if the value has been set.
 func (o *UpdateDependency) GetTargetColumnIdOk() (*string, bool) {
 	if o == nil {
-		return nil, false
+    return nil, false
 	}
 	return &o.TargetColumnId, true
 }
@@ -111,7 +111,7 @@ func (o *UpdateDependency) GetSourceColumnId() string {
 // and a boolean to check if the value has been set.
 func (o *UpdateDependency) GetSourceColumnIdOk() (*string, bool) {
 	if o == nil {
-		return nil, false
+    return nil, false
 	}
 	return &o.SourceColumnId, true
 }
@@ -123,7 +123,7 @@ func (o *UpdateDependency) SetSourceColumnId(v string) {
 
 func (o UpdateDependency) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
-	if o.NewId != nil {
+	if !isNil(o.NewId) {
 		toSerialize["newId"] = o.NewId
 	}
 	if true {

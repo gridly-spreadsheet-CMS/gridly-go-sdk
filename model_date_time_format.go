@@ -3,7 +3,7 @@ Gridly API
 
 Gridly API documentation
 
-API version: 4.29.1
+API version: 4.33.0
 Contact: support@gridly.com
 */
 
@@ -42,7 +42,7 @@ func NewDateTimeFormatWithDefaults() *DateTimeFormat {
 
 // GetDateFormat returns the DateFormat field value if set, zero value otherwise.
 func (o *DateTimeFormat) GetDateFormat() string {
-	if o == nil || o.DateFormat == nil {
+	if o == nil || isNil(o.DateFormat) {
 		var ret string
 		return ret
 	}
@@ -52,15 +52,15 @@ func (o *DateTimeFormat) GetDateFormat() string {
 // GetDateFormatOk returns a tuple with the DateFormat field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *DateTimeFormat) GetDateFormatOk() (*string, bool) {
-	if o == nil || o.DateFormat == nil {
-		return nil, false
+	if o == nil || isNil(o.DateFormat) {
+    return nil, false
 	}
 	return o.DateFormat, true
 }
 
 // HasDateFormat returns a boolean if a field has been set.
 func (o *DateTimeFormat) HasDateFormat() bool {
-	if o != nil && o.DateFormat != nil {
+	if o != nil && !isNil(o.DateFormat) {
 		return true
 	}
 
@@ -74,7 +74,7 @@ func (o *DateTimeFormat) SetDateFormat(v string) {
 
 // GetTimeFormat returns the TimeFormat field value if set, zero value otherwise.
 func (o *DateTimeFormat) GetTimeFormat() string {
-	if o == nil || o.TimeFormat == nil {
+	if o == nil || isNil(o.TimeFormat) {
 		var ret string
 		return ret
 	}
@@ -84,15 +84,15 @@ func (o *DateTimeFormat) GetTimeFormat() string {
 // GetTimeFormatOk returns a tuple with the TimeFormat field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *DateTimeFormat) GetTimeFormatOk() (*string, bool) {
-	if o == nil || o.TimeFormat == nil {
-		return nil, false
+	if o == nil || isNil(o.TimeFormat) {
+    return nil, false
 	}
 	return o.TimeFormat, true
 }
 
 // HasTimeFormat returns a boolean if a field has been set.
 func (o *DateTimeFormat) HasTimeFormat() bool {
-	if o != nil && o.TimeFormat != nil {
+	if o != nil && !isNil(o.TimeFormat) {
 		return true
 	}
 
@@ -106,7 +106,7 @@ func (o *DateTimeFormat) SetTimeFormat(v string) {
 
 // GetZoneOffset returns the ZoneOffset field value if set, zero value otherwise.
 func (o *DateTimeFormat) GetZoneOffset() string {
-	if o == nil || o.ZoneOffset == nil {
+	if o == nil || isNil(o.ZoneOffset) {
 		var ret string
 		return ret
 	}
@@ -116,15 +116,15 @@ func (o *DateTimeFormat) GetZoneOffset() string {
 // GetZoneOffsetOk returns a tuple with the ZoneOffset field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *DateTimeFormat) GetZoneOffsetOk() (*string, bool) {
-	if o == nil || o.ZoneOffset == nil {
-		return nil, false
+	if o == nil || isNil(o.ZoneOffset) {
+    return nil, false
 	}
 	return o.ZoneOffset, true
 }
 
 // HasZoneOffset returns a boolean if a field has been set.
 func (o *DateTimeFormat) HasZoneOffset() bool {
-	if o != nil && o.ZoneOffset != nil {
+	if o != nil && !isNil(o.ZoneOffset) {
 		return true
 	}
 
@@ -138,7 +138,7 @@ func (o *DateTimeFormat) SetZoneOffset(v string) {
 
 // GetShowTimeZone returns the ShowTimeZone field value if set, zero value otherwise.
 func (o *DateTimeFormat) GetShowTimeZone() bool {
-	if o == nil || o.ShowTimeZone == nil {
+	if o == nil || isNil(o.ShowTimeZone) {
 		var ret bool
 		return ret
 	}
@@ -148,15 +148,15 @@ func (o *DateTimeFormat) GetShowTimeZone() bool {
 // GetShowTimeZoneOk returns a tuple with the ShowTimeZone field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *DateTimeFormat) GetShowTimeZoneOk() (*bool, bool) {
-	if o == nil || o.ShowTimeZone == nil {
-		return nil, false
+	if o == nil || isNil(o.ShowTimeZone) {
+    return nil, false
 	}
 	return o.ShowTimeZone, true
 }
 
 // HasShowTimeZone returns a boolean if a field has been set.
 func (o *DateTimeFormat) HasShowTimeZone() bool {
-	if o != nil && o.ShowTimeZone != nil {
+	if o != nil && !isNil(o.ShowTimeZone) {
 		return true
 	}
 
@@ -170,16 +170,16 @@ func (o *DateTimeFormat) SetShowTimeZone(v bool) {
 
 func (o DateTimeFormat) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
-	if o.DateFormat != nil {
+	if !isNil(o.DateFormat) {
 		toSerialize["dateFormat"] = o.DateFormat
 	}
-	if o.TimeFormat != nil {
+	if !isNil(o.TimeFormat) {
 		toSerialize["timeFormat"] = o.TimeFormat
 	}
-	if o.ZoneOffset != nil {
+	if !isNil(o.ZoneOffset) {
 		toSerialize["zoneOffset"] = o.ZoneOffset
 	}
-	if o.ShowTimeZone != nil {
+	if !isNil(o.ShowTimeZone) {
 		toSerialize["showTimeZone"] = o.ShowTimeZone
 	}
 	return json.Marshal(toSerialize)

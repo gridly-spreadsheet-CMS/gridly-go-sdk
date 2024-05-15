@@ -3,7 +3,7 @@ Gridly API
 
 Gridly API documentation
 
-API version: 4.29.1
+API version: 4.33.0
 Contact: support@gridly.com
 */
 
@@ -57,7 +57,7 @@ func (o *Reference) GetGridId() string {
 // and a boolean to check if the value has been set.
 func (o *Reference) GetGridIdOk() (*string, bool) {
 	if o == nil {
-		return nil, false
+    return nil, false
 	}
 	return &o.GridId, true
 }
@@ -69,7 +69,7 @@ func (o *Reference) SetGridId(v string) {
 
 // GetBranchId returns the BranchId field value if set, zero value otherwise.
 func (o *Reference) GetBranchId() string {
-	if o == nil || o.BranchId == nil {
+	if o == nil || isNil(o.BranchId) {
 		var ret string
 		return ret
 	}
@@ -79,15 +79,15 @@ func (o *Reference) GetBranchId() string {
 // GetBranchIdOk returns a tuple with the BranchId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Reference) GetBranchIdOk() (*string, bool) {
-	if o == nil || o.BranchId == nil {
-		return nil, false
+	if o == nil || isNil(o.BranchId) {
+    return nil, false
 	}
 	return o.BranchId, true
 }
 
 // HasBranchId returns a boolean if a field has been set.
 func (o *Reference) HasBranchId() bool {
-	if o != nil && o.BranchId != nil {
+	if o != nil && !isNil(o.BranchId) {
 		return true
 	}
 
@@ -113,7 +113,7 @@ func (o *Reference) GetColumnId() string {
 // and a boolean to check if the value has been set.
 func (o *Reference) GetColumnIdOk() (*string, bool) {
 	if o == nil {
-		return nil, false
+    return nil, false
 	}
 	return &o.ColumnId, true
 }
@@ -125,7 +125,7 @@ func (o *Reference) SetColumnId(v string) {
 
 // GetType returns the Type field value if set, zero value otherwise.
 func (o *Reference) GetType() string {
-	if o == nil || o.Type == nil {
+	if o == nil || isNil(o.Type) {
 		var ret string
 		return ret
 	}
@@ -135,15 +135,15 @@ func (o *Reference) GetType() string {
 // GetTypeOk returns a tuple with the Type field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Reference) GetTypeOk() (*string, bool) {
-	if o == nil || o.Type == nil {
-		return nil, false
+	if o == nil || isNil(o.Type) {
+    return nil, false
 	}
 	return o.Type, true
 }
 
 // HasType returns a boolean if a field has been set.
 func (o *Reference) HasType() bool {
-	if o != nil && o.Type != nil {
+	if o != nil && !isNil(o.Type) {
 		return true
 	}
 
@@ -157,7 +157,7 @@ func (o *Reference) SetType(v string) {
 
 // GetSelectionType returns the SelectionType field value if set, zero value otherwise.
 func (o *Reference) GetSelectionType() string {
-	if o == nil || o.SelectionType == nil {
+	if o == nil || isNil(o.SelectionType) {
 		var ret string
 		return ret
 	}
@@ -167,15 +167,15 @@ func (o *Reference) GetSelectionType() string {
 // GetSelectionTypeOk returns a tuple with the SelectionType field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Reference) GetSelectionTypeOk() (*string, bool) {
-	if o == nil || o.SelectionType == nil {
-		return nil, false
+	if o == nil || isNil(o.SelectionType) {
+    return nil, false
 	}
 	return o.SelectionType, true
 }
 
 // HasSelectionType returns a boolean if a field has been set.
 func (o *Reference) HasSelectionType() bool {
-	if o != nil && o.SelectionType != nil {
+	if o != nil && !isNil(o.SelectionType) {
 		return true
 	}
 
@@ -192,16 +192,16 @@ func (o Reference) MarshalJSON() ([]byte, error) {
 	if true {
 		toSerialize["gridId"] = o.GridId
 	}
-	if o.BranchId != nil {
+	if !isNil(o.BranchId) {
 		toSerialize["branchId"] = o.BranchId
 	}
 	if true {
 		toSerialize["columnId"] = o.ColumnId
 	}
-	if o.Type != nil {
+	if !isNil(o.Type) {
 		toSerialize["type"] = o.Type
 	}
-	if o.SelectionType != nil {
+	if !isNil(o.SelectionType) {
 		toSerialize["selectionType"] = o.SelectionType
 	}
 	return json.Marshal(toSerialize)

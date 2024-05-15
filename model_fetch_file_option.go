@@ -3,7 +3,7 @@ Gridly API
 
 Gridly API documentation
 
-API version: 4.29.1
+API version: 4.33.0
 Contact: support@gridly.com
 */
 
@@ -21,9 +21,9 @@ type FetchFileOption string
 
 // List of FetchFileOption
 const (
-	all FetchFileOption = "all"
-	id FetchFileOption = "id"
-	name FetchFileOption = "name"
+	FETCHFILEOPTION_all FetchFileOption = "all"
+	FETCHFILEOPTION_id FetchFileOption = "id"
+	FETCHFILEOPTION_name FetchFileOption = "name"
 )
 
 // All allowed values of FetchFileOption enum

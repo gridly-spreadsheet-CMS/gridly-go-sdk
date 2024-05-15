@@ -3,7 +3,7 @@ Gridly API
 
 Gridly API documentation
 
-API version: 4.29.1
+API version: 4.33.0
 Contact: support@gridly.com
 */
 
@@ -42,7 +42,7 @@ func NewUpdateGridSettingWithDefaults() *UpdateGridSetting {
 
 // GetDefaultDateTimeFormat returns the DefaultDateTimeFormat field value if set, zero value otherwise.
 func (o *UpdateGridSetting) GetDefaultDateTimeFormat() DateTimeFormat {
-	if o == nil || o.DefaultDateTimeFormat == nil {
+	if o == nil || isNil(o.DefaultDateTimeFormat) {
 		var ret DateTimeFormat
 		return ret
 	}
@@ -52,15 +52,15 @@ func (o *UpdateGridSetting) GetDefaultDateTimeFormat() DateTimeFormat {
 // GetDefaultDateTimeFormatOk returns a tuple with the DefaultDateTimeFormat field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *UpdateGridSetting) GetDefaultDateTimeFormatOk() (*DateTimeFormat, bool) {
-	if o == nil || o.DefaultDateTimeFormat == nil {
-		return nil, false
+	if o == nil || isNil(o.DefaultDateTimeFormat) {
+    return nil, false
 	}
 	return o.DefaultDateTimeFormat, true
 }
 
 // HasDefaultDateTimeFormat returns a boolean if a field has been set.
 func (o *UpdateGridSetting) HasDefaultDateTimeFormat() bool {
-	if o != nil && o.DefaultDateTimeFormat != nil {
+	if o != nil && !isNil(o.DefaultDateTimeFormat) {
 		return true
 	}
 
@@ -74,7 +74,7 @@ func (o *UpdateGridSetting) SetDefaultDateTimeFormat(v DateTimeFormat) {
 
 // GetDefaultSourceLanguageStatus returns the DefaultSourceLanguageStatus field value if set, zero value otherwise.
 func (o *UpdateGridSetting) GetDefaultSourceLanguageStatus() string {
-	if o == nil || o.DefaultSourceLanguageStatus == nil {
+	if o == nil || isNil(o.DefaultSourceLanguageStatus) {
 		var ret string
 		return ret
 	}
@@ -84,15 +84,15 @@ func (o *UpdateGridSetting) GetDefaultSourceLanguageStatus() string {
 // GetDefaultSourceLanguageStatusOk returns a tuple with the DefaultSourceLanguageStatus field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *UpdateGridSetting) GetDefaultSourceLanguageStatusOk() (*string, bool) {
-	if o == nil || o.DefaultSourceLanguageStatus == nil {
-		return nil, false
+	if o == nil || isNil(o.DefaultSourceLanguageStatus) {
+    return nil, false
 	}
 	return o.DefaultSourceLanguageStatus, true
 }
 
 // HasDefaultSourceLanguageStatus returns a boolean if a field has been set.
 func (o *UpdateGridSetting) HasDefaultSourceLanguageStatus() bool {
-	if o != nil && o.DefaultSourceLanguageStatus != nil {
+	if o != nil && !isNil(o.DefaultSourceLanguageStatus) {
 		return true
 	}
 
@@ -106,7 +106,7 @@ func (o *UpdateGridSetting) SetDefaultSourceLanguageStatus(v string) {
 
 // GetTranslatorCanViewAutomations returns the TranslatorCanViewAutomations field value if set, zero value otherwise.
 func (o *UpdateGridSetting) GetTranslatorCanViewAutomations() bool {
-	if o == nil || o.TranslatorCanViewAutomations == nil {
+	if o == nil || isNil(o.TranslatorCanViewAutomations) {
 		var ret bool
 		return ret
 	}
@@ -116,15 +116,15 @@ func (o *UpdateGridSetting) GetTranslatorCanViewAutomations() bool {
 // GetTranslatorCanViewAutomationsOk returns a tuple with the TranslatorCanViewAutomations field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *UpdateGridSetting) GetTranslatorCanViewAutomationsOk() (*bool, bool) {
-	if o == nil || o.TranslatorCanViewAutomations == nil {
-		return nil, false
+	if o == nil || isNil(o.TranslatorCanViewAutomations) {
+    return nil, false
 	}
 	return o.TranslatorCanViewAutomations, true
 }
 
 // HasTranslatorCanViewAutomations returns a boolean if a field has been set.
 func (o *UpdateGridSetting) HasTranslatorCanViewAutomations() bool {
-	if o != nil && o.TranslatorCanViewAutomations != nil {
+	if o != nil && !isNil(o.TranslatorCanViewAutomations) {
 		return true
 	}
 
@@ -138,7 +138,7 @@ func (o *UpdateGridSetting) SetTranslatorCanViewAutomations(v bool) {
 
 // GetMetadata returns the Metadata field value if set, zero value otherwise.
 func (o *UpdateGridSetting) GetMetadata() map[string]string {
-	if o == nil || o.Metadata == nil {
+	if o == nil || isNil(o.Metadata) {
 		var ret map[string]string
 		return ret
 	}
@@ -148,15 +148,15 @@ func (o *UpdateGridSetting) GetMetadata() map[string]string {
 // GetMetadataOk returns a tuple with the Metadata field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *UpdateGridSetting) GetMetadataOk() (*map[string]string, bool) {
-	if o == nil || o.Metadata == nil {
-		return nil, false
+	if o == nil || isNil(o.Metadata) {
+    return nil, false
 	}
 	return o.Metadata, true
 }
 
 // HasMetadata returns a boolean if a field has been set.
 func (o *UpdateGridSetting) HasMetadata() bool {
-	if o != nil && o.Metadata != nil {
+	if o != nil && !isNil(o.Metadata) {
 		return true
 	}
 
@@ -170,16 +170,16 @@ func (o *UpdateGridSetting) SetMetadata(v map[string]string) {
 
 func (o UpdateGridSetting) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
-	if o.DefaultDateTimeFormat != nil {
+	if !isNil(o.DefaultDateTimeFormat) {
 		toSerialize["defaultDateTimeFormat"] = o.DefaultDateTimeFormat
 	}
-	if o.DefaultSourceLanguageStatus != nil {
+	if !isNil(o.DefaultSourceLanguageStatus) {
 		toSerialize["defaultSourceLanguageStatus"] = o.DefaultSourceLanguageStatus
 	}
-	if o.TranslatorCanViewAutomations != nil {
+	if !isNil(o.TranslatorCanViewAutomations) {
 		toSerialize["translatorCanViewAutomations"] = o.TranslatorCanViewAutomations
 	}
-	if o.Metadata != nil {
+	if !isNil(o.Metadata) {
 		toSerialize["metadata"] = o.Metadata
 	}
 	return json.Marshal(toSerialize)

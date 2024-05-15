@@ -3,7 +3,7 @@ Gridly API
 
 Gridly API documentation
 
-API version: 4.29.1
+API version: 4.33.0
 Contact: support@gridly.com
 */
 
@@ -57,7 +57,7 @@ func (o *CreateBranch) GetName() string {
 // and a boolean to check if the value has been set.
 func (o *CreateBranch) GetNameOk() (*string, bool) {
 	if o == nil {
-		return nil, false
+    return nil, false
 	}
 	return &o.Name, true
 }
@@ -69,7 +69,7 @@ func (o *CreateBranch) SetName(v string) {
 
 // GetDescription returns the Description field value if set, zero value otherwise.
 func (o *CreateBranch) GetDescription() string {
-	if o == nil || o.Description == nil {
+	if o == nil || isNil(o.Description) {
 		var ret string
 		return ret
 	}
@@ -79,15 +79,15 @@ func (o *CreateBranch) GetDescription() string {
 // GetDescriptionOk returns a tuple with the Description field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CreateBranch) GetDescriptionOk() (*string, bool) {
-	if o == nil || o.Description == nil {
-		return nil, false
+	if o == nil || isNil(o.Description) {
+    return nil, false
 	}
 	return o.Description, true
 }
 
 // HasDescription returns a boolean if a field has been set.
 func (o *CreateBranch) HasDescription() bool {
-	if o != nil && o.Description != nil {
+	if o != nil && !isNil(o.Description) {
 		return true
 	}
 
@@ -101,7 +101,7 @@ func (o *CreateBranch) SetDescription(v string) {
 
 // GetCustomProperties returns the CustomProperties field value if set, zero value otherwise.
 func (o *CreateBranch) GetCustomProperties() map[string]map[string]interface{} {
-	if o == nil || o.CustomProperties == nil {
+	if o == nil || isNil(o.CustomProperties) {
 		var ret map[string]map[string]interface{}
 		return ret
 	}
@@ -111,15 +111,15 @@ func (o *CreateBranch) GetCustomProperties() map[string]map[string]interface{} {
 // GetCustomPropertiesOk returns a tuple with the CustomProperties field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CreateBranch) GetCustomPropertiesOk() (map[string]map[string]interface{}, bool) {
-	if o == nil || o.CustomProperties == nil {
-		return nil, false
+	if o == nil || isNil(o.CustomProperties) {
+    return map[string]map[string]interface{}{}, false
 	}
 	return o.CustomProperties, true
 }
 
 // HasCustomProperties returns a boolean if a field has been set.
 func (o *CreateBranch) HasCustomProperties() bool {
-	if o != nil && o.CustomProperties != nil {
+	if o != nil && !isNil(o.CustomProperties) {
 		return true
 	}
 
@@ -133,7 +133,7 @@ func (o *CreateBranch) SetCustomProperties(v map[string]map[string]interface{}) 
 
 // GetInheritGroupAccess returns the InheritGroupAccess field value if set, zero value otherwise.
 func (o *CreateBranch) GetInheritGroupAccess() bool {
-	if o == nil || o.InheritGroupAccess == nil {
+	if o == nil || isNil(o.InheritGroupAccess) {
 		var ret bool
 		return ret
 	}
@@ -143,15 +143,15 @@ func (o *CreateBranch) GetInheritGroupAccess() bool {
 // GetInheritGroupAccessOk returns a tuple with the InheritGroupAccess field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CreateBranch) GetInheritGroupAccessOk() (*bool, bool) {
-	if o == nil || o.InheritGroupAccess == nil {
-		return nil, false
+	if o == nil || isNil(o.InheritGroupAccess) {
+    return nil, false
 	}
 	return o.InheritGroupAccess, true
 }
 
 // HasInheritGroupAccess returns a boolean if a field has been set.
 func (o *CreateBranch) HasInheritGroupAccess() bool {
-	if o != nil && o.InheritGroupAccess != nil {
+	if o != nil && !isNil(o.InheritGroupAccess) {
 		return true
 	}
 
@@ -165,7 +165,7 @@ func (o *CreateBranch) SetInheritGroupAccess(v bool) {
 
 // GetInheritAutomation returns the InheritAutomation field value if set, zero value otherwise.
 func (o *CreateBranch) GetInheritAutomation() bool {
-	if o == nil || o.InheritAutomation == nil {
+	if o == nil || isNil(o.InheritAutomation) {
 		var ret bool
 		return ret
 	}
@@ -175,15 +175,15 @@ func (o *CreateBranch) GetInheritAutomation() bool {
 // GetInheritAutomationOk returns a tuple with the InheritAutomation field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CreateBranch) GetInheritAutomationOk() (*bool, bool) {
-	if o == nil || o.InheritAutomation == nil {
-		return nil, false
+	if o == nil || isNil(o.InheritAutomation) {
+    return nil, false
 	}
 	return o.InheritAutomation, true
 }
 
 // HasInheritAutomation returns a boolean if a field has been set.
 func (o *CreateBranch) HasInheritAutomation() bool {
-	if o != nil && o.InheritAutomation != nil {
+	if o != nil && !isNil(o.InheritAutomation) {
 		return true
 	}
 
@@ -197,7 +197,7 @@ func (o *CreateBranch) SetInheritAutomation(v bool) {
 
 // GetViewId returns the ViewId field value if set, zero value otherwise.
 func (o *CreateBranch) GetViewId() string {
-	if o == nil || o.ViewId == nil {
+	if o == nil || isNil(o.ViewId) {
 		var ret string
 		return ret
 	}
@@ -207,15 +207,15 @@ func (o *CreateBranch) GetViewId() string {
 // GetViewIdOk returns a tuple with the ViewId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CreateBranch) GetViewIdOk() (*string, bool) {
-	if o == nil || o.ViewId == nil {
-		return nil, false
+	if o == nil || isNil(o.ViewId) {
+    return nil, false
 	}
 	return o.ViewId, true
 }
 
 // HasViewId returns a boolean if a field has been set.
 func (o *CreateBranch) HasViewId() bool {
-	if o != nil && o.ViewId != nil {
+	if o != nil && !isNil(o.ViewId) {
 		return true
 	}
 
@@ -232,19 +232,19 @@ func (o CreateBranch) MarshalJSON() ([]byte, error) {
 	if true {
 		toSerialize["name"] = o.Name
 	}
-	if o.Description != nil {
+	if !isNil(o.Description) {
 		toSerialize["description"] = o.Description
 	}
-	if o.CustomProperties != nil {
+	if !isNil(o.CustomProperties) {
 		toSerialize["customProperties"] = o.CustomProperties
 	}
-	if o.InheritGroupAccess != nil {
+	if !isNil(o.InheritGroupAccess) {
 		toSerialize["inheritGroupAccess"] = o.InheritGroupAccess
 	}
-	if o.InheritAutomation != nil {
+	if !isNil(o.InheritAutomation) {
 		toSerialize["inheritAutomation"] = o.InheritAutomation
 	}
-	if o.ViewId != nil {
+	if !isNil(o.ViewId) {
 		toSerialize["viewId"] = o.ViewId
 	}
 	return json.Marshal(toSerialize)

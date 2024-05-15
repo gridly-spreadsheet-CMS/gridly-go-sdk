@@ -12,6 +12,7 @@ Name | Type | Description | Notes
 **IsPausedConsuming** | Pointer to **bool** |  | [optional] 
 **ContextLookup** | Pointer to **bool** |  | [optional] 
 **PopulateTranslationStatus** | Pointer to [**TranslationStatus**](TranslationStatus.md) |  | [optional] 
+**AllowAlternative** | Pointer to **bool** |  | [optional] 
 
 ## Methods
 
@@ -226,6 +227,31 @@ SetPopulateTranslationStatus sets PopulateTranslationStatus field to given value
 `func (o *CreateTransMem) HasPopulateTranslationStatus() bool`
 
 HasPopulateTranslationStatus returns a boolean if a field has been set.
+
+### GetAllowAlternative
+
+`func (o *CreateTransMem) GetAllowAlternative() bool`
+
+GetAllowAlternative returns the AllowAlternative field if non-nil, zero value otherwise.
+
+### GetAllowAlternativeOk
+
+`func (o *CreateTransMem) GetAllowAlternativeOk() (*bool, bool)`
+
+GetAllowAlternativeOk returns a tuple with the AllowAlternative field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetAllowAlternative
+
+`func (o *CreateTransMem) SetAllowAlternative(v bool)`
+
+SetAllowAlternative sets AllowAlternative field to given value.
+
+### HasAllowAlternative
+
+`func (o *CreateTransMem) HasAllowAlternative() bool`
+
+HasAllowAlternative returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

@@ -3,7 +3,7 @@ Gridly API
 
 Gridly API documentation
 
-API version: 4.29.1
+API version: 4.33.0
 Contact: support@gridly.com
 */
 
@@ -21,9 +21,9 @@ type ExportFormat string
 
 // List of ExportFormat
 const (
-	TMX ExportFormat = "tmx"
-	CSV ExportFormat = "csv"
-	XLSX ExportFormat = "xlsx"
+	EXPORTFORMAT_TMX ExportFormat = "tmx"
+	EXPORTFORMAT_CSV ExportFormat = "csv"
+	EXPORTFORMAT_XLSX ExportFormat = "xlsx"
 )
 
 // All allowed values of ExportFormat enum

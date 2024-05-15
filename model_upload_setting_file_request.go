@@ -3,7 +3,7 @@ Gridly API
 
 Gridly API documentation
 
-API version: 4.29.1
+API version: 4.33.0
 Contact: support@gridly.com
 */
 
@@ -40,7 +40,7 @@ func NewUploadSettingFileRequestWithDefaults() *UploadSettingFileRequest {
 
 // GetFile returns the File field value if set, zero value otherwise.
 func (o *UploadSettingFileRequest) GetFile() *os.File {
-	if o == nil || o.File == nil {
+	if o == nil || isNil(o.File) {
 		var ret *os.File
 		return ret
 	}
@@ -50,15 +50,15 @@ func (o *UploadSettingFileRequest) GetFile() *os.File {
 // GetFileOk returns a tuple with the File field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *UploadSettingFileRequest) GetFileOk() (**os.File, bool) {
-	if o == nil || o.File == nil {
-		return nil, false
+	if o == nil || isNil(o.File) {
+    return nil, false
 	}
 	return o.File, true
 }
 
 // HasFile returns a boolean if a field has been set.
 func (o *UploadSettingFileRequest) HasFile() bool {
-	if o != nil && o.File != nil {
+	if o != nil && !isNil(o.File) {
 		return true
 	}
 
@@ -72,7 +72,7 @@ func (o *UploadSettingFileRequest) SetFile(v *os.File) {
 
 func (o UploadSettingFileRequest) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
-	if o.File != nil {
+	if !isNil(o.File) {
 		toSerialize["file"] = o.File
 	}
 	return json.Marshal(toSerialize)

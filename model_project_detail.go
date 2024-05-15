@@ -3,7 +3,7 @@ Gridly API
 
 Gridly API documentation
 
-API version: 4.29.1
+API version: 4.33.0
 Contact: support@gridly.com
 */
 
@@ -45,7 +45,7 @@ func NewProjectDetailWithDefaults() *ProjectDetail {
 
 // GetId returns the Id field value if set, zero value otherwise.
 func (o *ProjectDetail) GetId() int64 {
-	if o == nil || o.Id == nil {
+	if o == nil || isNil(o.Id) {
 		var ret int64
 		return ret
 	}
@@ -55,15 +55,15 @@ func (o *ProjectDetail) GetId() int64 {
 // GetIdOk returns a tuple with the Id field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ProjectDetail) GetIdOk() (*int64, bool) {
-	if o == nil || o.Id == nil {
-		return nil, false
+	if o == nil || isNil(o.Id) {
+    return nil, false
 	}
 	return o.Id, true
 }
 
 // HasId returns a boolean if a field has been set.
 func (o *ProjectDetail) HasId() bool {
-	if o != nil && o.Id != nil {
+	if o != nil && !isNil(o.Id) {
 		return true
 	}
 
@@ -77,7 +77,7 @@ func (o *ProjectDetail) SetId(v int64) {
 
 // GetCompanyId returns the CompanyId field value if set, zero value otherwise.
 func (o *ProjectDetail) GetCompanyId() int64 {
-	if o == nil || o.CompanyId == nil {
+	if o == nil || isNil(o.CompanyId) {
 		var ret int64
 		return ret
 	}
@@ -87,15 +87,15 @@ func (o *ProjectDetail) GetCompanyId() int64 {
 // GetCompanyIdOk returns a tuple with the CompanyId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ProjectDetail) GetCompanyIdOk() (*int64, bool) {
-	if o == nil || o.CompanyId == nil {
-		return nil, false
+	if o == nil || isNil(o.CompanyId) {
+    return nil, false
 	}
 	return o.CompanyId, true
 }
 
 // HasCompanyId returns a boolean if a field has been set.
 func (o *ProjectDetail) HasCompanyId() bool {
-	if o != nil && o.CompanyId != nil {
+	if o != nil && !isNil(o.CompanyId) {
 		return true
 	}
 
@@ -109,7 +109,7 @@ func (o *ProjectDetail) SetCompanyId(v int64) {
 
 // GetName returns the Name field value if set, zero value otherwise.
 func (o *ProjectDetail) GetName() string {
-	if o == nil || o.Name == nil {
+	if o == nil || isNil(o.Name) {
 		var ret string
 		return ret
 	}
@@ -119,15 +119,15 @@ func (o *ProjectDetail) GetName() string {
 // GetNameOk returns a tuple with the Name field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ProjectDetail) GetNameOk() (*string, bool) {
-	if o == nil || o.Name == nil {
-		return nil, false
+	if o == nil || isNil(o.Name) {
+    return nil, false
 	}
 	return o.Name, true
 }
 
 // HasName returns a boolean if a field has been set.
 func (o *ProjectDetail) HasName() bool {
-	if o != nil && o.Name != nil {
+	if o != nil && !isNil(o.Name) {
 		return true
 	}
 
@@ -141,7 +141,7 @@ func (o *ProjectDetail) SetName(v string) {
 
 // GetDescription returns the Description field value if set, zero value otherwise.
 func (o *ProjectDetail) GetDescription() string {
-	if o == nil || o.Description == nil {
+	if o == nil || isNil(o.Description) {
 		var ret string
 		return ret
 	}
@@ -151,15 +151,15 @@ func (o *ProjectDetail) GetDescription() string {
 // GetDescriptionOk returns a tuple with the Description field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ProjectDetail) GetDescriptionOk() (*string, bool) {
-	if o == nil || o.Description == nil {
-		return nil, false
+	if o == nil || isNil(o.Description) {
+    return nil, false
 	}
 	return o.Description, true
 }
 
 // HasDescription returns a boolean if a field has been set.
 func (o *ProjectDetail) HasDescription() bool {
-	if o != nil && o.Description != nil {
+	if o != nil && !isNil(o.Description) {
 		return true
 	}
 
@@ -173,7 +173,7 @@ func (o *ProjectDetail) SetDescription(v string) {
 
 // GetRole returns the Role field value if set, zero value otherwise.
 func (o *ProjectDetail) GetRole() Role {
-	if o == nil || o.Role == nil {
+	if o == nil || isNil(o.Role) {
 		var ret Role
 		return ret
 	}
@@ -183,15 +183,15 @@ func (o *ProjectDetail) GetRole() Role {
 // GetRoleOk returns a tuple with the Role field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ProjectDetail) GetRoleOk() (*Role, bool) {
-	if o == nil || o.Role == nil {
-		return nil, false
+	if o == nil || isNil(o.Role) {
+    return nil, false
 	}
 	return o.Role, true
 }
 
 // HasRole returns a boolean if a field has been set.
 func (o *ProjectDetail) HasRole() bool {
-	if o != nil && o.Role != nil {
+	if o != nil && !isNil(o.Role) {
 		return true
 	}
 
@@ -205,7 +205,7 @@ func (o *ProjectDetail) SetRole(v Role) {
 
 // GetDatabases returns the Databases field value if set, zero value otherwise.
 func (o *ProjectDetail) GetDatabases() []Database {
-	if o == nil || o.Databases == nil {
+	if o == nil || isNil(o.Databases) {
 		var ret []Database
 		return ret
 	}
@@ -215,15 +215,15 @@ func (o *ProjectDetail) GetDatabases() []Database {
 // GetDatabasesOk returns a tuple with the Databases field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ProjectDetail) GetDatabasesOk() ([]Database, bool) {
-	if o == nil || o.Databases == nil {
-		return nil, false
+	if o == nil || isNil(o.Databases) {
+    return nil, false
 	}
 	return o.Databases, true
 }
 
 // HasDatabases returns a boolean if a field has been set.
 func (o *ProjectDetail) HasDatabases() bool {
-	if o != nil && o.Databases != nil {
+	if o != nil && !isNil(o.Databases) {
 		return true
 	}
 
@@ -237,7 +237,7 @@ func (o *ProjectDetail) SetDatabases(v []Database) {
 
 // GetGroups returns the Groups field value if set, zero value otherwise.
 func (o *ProjectDetail) GetGroups() []Group {
-	if o == nil || o.Groups == nil {
+	if o == nil || isNil(o.Groups) {
 		var ret []Group
 		return ret
 	}
@@ -247,15 +247,15 @@ func (o *ProjectDetail) GetGroups() []Group {
 // GetGroupsOk returns a tuple with the Groups field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ProjectDetail) GetGroupsOk() ([]Group, bool) {
-	if o == nil || o.Groups == nil {
-		return nil, false
+	if o == nil || isNil(o.Groups) {
+    return nil, false
 	}
 	return o.Groups, true
 }
 
 // HasGroups returns a boolean if a field has been set.
 func (o *ProjectDetail) HasGroups() bool {
-	if o != nil && o.Groups != nil {
+	if o != nil && !isNil(o.Groups) {
 		return true
 	}
 
@@ -269,25 +269,25 @@ func (o *ProjectDetail) SetGroups(v []Group) {
 
 func (o ProjectDetail) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
-	if o.Id != nil {
+	if !isNil(o.Id) {
 		toSerialize["id"] = o.Id
 	}
-	if o.CompanyId != nil {
+	if !isNil(o.CompanyId) {
 		toSerialize["companyId"] = o.CompanyId
 	}
-	if o.Name != nil {
+	if !isNil(o.Name) {
 		toSerialize["name"] = o.Name
 	}
-	if o.Description != nil {
+	if !isNil(o.Description) {
 		toSerialize["description"] = o.Description
 	}
-	if o.Role != nil {
+	if !isNil(o.Role) {
 		toSerialize["role"] = o.Role
 	}
-	if o.Databases != nil {
+	if !isNil(o.Databases) {
 		toSerialize["databases"] = o.Databases
 	}
-	if o.Groups != nil {
+	if !isNil(o.Groups) {
 		toSerialize["groups"] = o.Groups
 	}
 	return json.Marshal(toSerialize)

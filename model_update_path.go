@@ -3,7 +3,7 @@ Gridly API
 
 Gridly API documentation
 
-API version: 4.29.1
+API version: 4.33.0
 Contact: support@gridly.com
 */
 
@@ -52,7 +52,7 @@ func (o *UpdatePath) GetNewName() string {
 // and a boolean to check if the value has been set.
 func (o *UpdatePath) GetNewNameOk() (*string, bool) {
 	if o == nil {
-		return nil, false
+    return nil, false
 	}
 	return &o.NewName, true
 }

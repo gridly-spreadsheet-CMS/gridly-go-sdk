@@ -3,7 +3,7 @@ Gridly API
 
 Gridly API documentation
 
-API version: 4.29.1
+API version: 4.33.0
 Contact: support@gridly.com
 */
 
@@ -40,7 +40,7 @@ func NewSettingFileWithDefaults() *SettingFile {
 
 // GetCategory returns the Category field value if set, zero value otherwise.
 func (o *SettingFile) GetCategory() FileCategory {
-	if o == nil || o.Category == nil {
+	if o == nil || isNil(o.Category) {
 		var ret FileCategory
 		return ret
 	}
@@ -50,15 +50,15 @@ func (o *SettingFile) GetCategory() FileCategory {
 // GetCategoryOk returns a tuple with the Category field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *SettingFile) GetCategoryOk() (*FileCategory, bool) {
-	if o == nil || o.Category == nil {
-		return nil, false
+	if o == nil || isNil(o.Category) {
+    return nil, false
 	}
 	return o.Category, true
 }
 
 // HasCategory returns a boolean if a field has been set.
 func (o *SettingFile) HasCategory() bool {
-	if o != nil && o.Category != nil {
+	if o != nil && !isNil(o.Category) {
 		return true
 	}
 
@@ -72,7 +72,7 @@ func (o *SettingFile) SetCategory(v FileCategory) {
 
 // GetFiles returns the Files field value if set, zero value otherwise.
 func (o *SettingFile) GetFiles() []UploadedFile {
-	if o == nil || o.Files == nil {
+	if o == nil || isNil(o.Files) {
 		var ret []UploadedFile
 		return ret
 	}
@@ -82,15 +82,15 @@ func (o *SettingFile) GetFiles() []UploadedFile {
 // GetFilesOk returns a tuple with the Files field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *SettingFile) GetFilesOk() ([]UploadedFile, bool) {
-	if o == nil || o.Files == nil {
-		return nil, false
+	if o == nil || isNil(o.Files) {
+    return nil, false
 	}
 	return o.Files, true
 }
 
 // HasFiles returns a boolean if a field has been set.
 func (o *SettingFile) HasFiles() bool {
-	if o != nil && o.Files != nil {
+	if o != nil && !isNil(o.Files) {
 		return true
 	}
 
@@ -104,10 +104,10 @@ func (o *SettingFile) SetFiles(v []UploadedFile) {
 
 func (o SettingFile) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
-	if o.Category != nil {
+	if !isNil(o.Category) {
 		toSerialize["category"] = o.Category
 	}
-	if o.Files != nil {
+	if !isNil(o.Files) {
 		toSerialize["files"] = o.Files
 	}
 	return json.Marshal(toSerialize)

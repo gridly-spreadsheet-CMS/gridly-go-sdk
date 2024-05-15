@@ -3,7 +3,7 @@ Gridly API
 
 Gridly API documentation
 
-API version: 4.29.1
+API version: 4.33.0
 Contact: support@gridly.com
 */
 
@@ -54,7 +54,7 @@ func (o *RecordIdentifierWrapper) GetId() string {
 // and a boolean to check if the value has been set.
 func (o *RecordIdentifierWrapper) GetIdOk() (*string, bool) {
 	if o == nil {
-		return nil, false
+    return nil, false
 	}
 	return &o.Id, true
 }
@@ -78,7 +78,7 @@ func (o *RecordIdentifierWrapper) GetPath() string {
 // and a boolean to check if the value has been set.
 func (o *RecordIdentifierWrapper) GetPathOk() (*string, bool) {
 	if o == nil {
-		return nil, false
+    return nil, false
 	}
 	return &o.Path, true
 }

@@ -3,7 +3,7 @@ Gridly API
 
 Gridly API documentation
 
-API version: 4.29.1
+API version: 4.33.0
 Contact: support@gridly.com
 */
 
@@ -41,7 +41,7 @@ func NewSetRecordWithDefaults() *SetRecord {
 
 // GetId returns the Id field value if set, zero value otherwise.
 func (o *SetRecord) GetId() string {
-	if o == nil || o.Id == nil {
+	if o == nil || isNil(o.Id) {
 		var ret string
 		return ret
 	}
@@ -51,15 +51,15 @@ func (o *SetRecord) GetId() string {
 // GetIdOk returns a tuple with the Id field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *SetRecord) GetIdOk() (*string, bool) {
-	if o == nil || o.Id == nil {
-		return nil, false
+	if o == nil || isNil(o.Id) {
+    return nil, false
 	}
 	return o.Id, true
 }
 
 // HasId returns a boolean if a field has been set.
 func (o *SetRecord) HasId() bool {
-	if o != nil && o.Id != nil {
+	if o != nil && !isNil(o.Id) {
 		return true
 	}
 
@@ -73,7 +73,7 @@ func (o *SetRecord) SetId(v string) {
 
 // GetCells returns the Cells field value if set, zero value otherwise.
 func (o *SetRecord) GetCells() []SetCell {
-	if o == nil || o.Cells == nil {
+	if o == nil || isNil(o.Cells) {
 		var ret []SetCell
 		return ret
 	}
@@ -83,15 +83,15 @@ func (o *SetRecord) GetCells() []SetCell {
 // GetCellsOk returns a tuple with the Cells field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *SetRecord) GetCellsOk() ([]SetCell, bool) {
-	if o == nil || o.Cells == nil {
-		return nil, false
+	if o == nil || isNil(o.Cells) {
+    return nil, false
 	}
 	return o.Cells, true
 }
 
 // HasCells returns a boolean if a field has been set.
 func (o *SetRecord) HasCells() bool {
-	if o != nil && o.Cells != nil {
+	if o != nil && !isNil(o.Cells) {
 		return true
 	}
 
@@ -105,7 +105,7 @@ func (o *SetRecord) SetCells(v []SetCell) {
 
 // GetPath returns the Path field value if set, zero value otherwise.
 func (o *SetRecord) GetPath() string {
-	if o == nil || o.Path == nil {
+	if o == nil || isNil(o.Path) {
 		var ret string
 		return ret
 	}
@@ -115,15 +115,15 @@ func (o *SetRecord) GetPath() string {
 // GetPathOk returns a tuple with the Path field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *SetRecord) GetPathOk() (*string, bool) {
-	if o == nil || o.Path == nil {
-		return nil, false
+	if o == nil || isNil(o.Path) {
+    return nil, false
 	}
 	return o.Path, true
 }
 
 // HasPath returns a boolean if a field has been set.
 func (o *SetRecord) HasPath() bool {
-	if o != nil && o.Path != nil {
+	if o != nil && !isNil(o.Path) {
 		return true
 	}
 
@@ -137,13 +137,13 @@ func (o *SetRecord) SetPath(v string) {
 
 func (o SetRecord) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
-	if o.Id != nil {
+	if !isNil(o.Id) {
 		toSerialize["id"] = o.Id
 	}
-	if o.Cells != nil {
+	if !isNil(o.Cells) {
 		toSerialize["cells"] = o.Cells
 	}
-	if o.Path != nil {
+	if !isNil(o.Path) {
 		toSerialize["path"] = o.Path
 	}
 	return json.Marshal(toSerialize)

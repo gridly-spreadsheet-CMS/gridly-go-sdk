@@ -3,7 +3,7 @@ Gridly API
 
 Gridly API documentation
 
-API version: 4.29.1
+API version: 4.33.0
 Contact: support@gridly.com
 */
 
@@ -39,7 +39,7 @@ func NewPathSingleWithDefaults() *PathSingle {
 
 // GetPath returns the Path field value if set, zero value otherwise.
 func (o *PathSingle) GetPath() string {
-	if o == nil || o.Path == nil {
+	if o == nil || isNil(o.Path) {
 		var ret string
 		return ret
 	}
@@ -49,15 +49,15 @@ func (o *PathSingle) GetPath() string {
 // GetPathOk returns a tuple with the Path field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *PathSingle) GetPathOk() (*string, bool) {
-	if o == nil || o.Path == nil {
-		return nil, false
+	if o == nil || isNil(o.Path) {
+    return nil, false
 	}
 	return o.Path, true
 }
 
 // HasPath returns a boolean if a field has been set.
 func (o *PathSingle) HasPath() bool {
-	if o != nil && o.Path != nil {
+	if o != nil && !isNil(o.Path) {
 		return true
 	}
 
@@ -71,7 +71,7 @@ func (o *PathSingle) SetPath(v string) {
 
 func (o PathSingle) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
-	if o.Path != nil {
+	if !isNil(o.Path) {
 		toSerialize["path"] = o.Path
 	}
 	return json.Marshal(toSerialize)

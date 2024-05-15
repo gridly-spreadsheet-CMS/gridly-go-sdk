@@ -3,7 +3,7 @@ Gridly API
 
 Gridly API documentation
 
-API version: 4.29.1
+API version: 4.33.0
 Contact: support@gridly.com
 */
 
@@ -46,7 +46,7 @@ func NewFilterFieldWithDefaults() *FilterField {
 
 // GetCaseSensitive returns the CaseSensitive field value if set, zero value otherwise.
 func (o *FilterField) GetCaseSensitive() bool {
-	if o == nil || o.CaseSensitive == nil {
+	if o == nil || isNil(o.CaseSensitive) {
 		var ret bool
 		return ret
 	}
@@ -56,15 +56,15 @@ func (o *FilterField) GetCaseSensitive() bool {
 // GetCaseSensitiveOk returns a tuple with the CaseSensitive field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *FilterField) GetCaseSensitiveOk() (*bool, bool) {
-	if o == nil || o.CaseSensitive == nil {
-		return nil, false
+	if o == nil || isNil(o.CaseSensitive) {
+    return nil, false
 	}
 	return o.CaseSensitive, true
 }
 
 // HasCaseSensitive returns a boolean if a field has been set.
 func (o *FilterField) HasCaseSensitive() bool {
-	if o != nil && o.CaseSensitive != nil {
+	if o != nil && !isNil(o.CaseSensitive) {
 		return true
 	}
 
@@ -78,7 +78,7 @@ func (o *FilterField) SetCaseSensitive(v bool) {
 
 // GetColumnId returns the ColumnId field value if set, zero value otherwise.
 func (o *FilterField) GetColumnId() string {
-	if o == nil || o.ColumnId == nil {
+	if o == nil || isNil(o.ColumnId) {
 		var ret string
 		return ret
 	}
@@ -88,15 +88,15 @@ func (o *FilterField) GetColumnId() string {
 // GetColumnIdOk returns a tuple with the ColumnId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *FilterField) GetColumnIdOk() (*string, bool) {
-	if o == nil || o.ColumnId == nil {
-		return nil, false
+	if o == nil || isNil(o.ColumnId) {
+    return nil, false
 	}
 	return o.ColumnId, true
 }
 
 // HasColumnId returns a boolean if a field has been set.
 func (o *FilterField) HasColumnId() bool {
-	if o != nil && o.ColumnId != nil {
+	if o != nil && !isNil(o.ColumnId) {
 		return true
 	}
 
@@ -110,7 +110,7 @@ func (o *FilterField) SetColumnId(v string) {
 
 // GetDynamicColumn returns the DynamicColumn field value if set, zero value otherwise.
 func (o *FilterField) GetDynamicColumn() string {
-	if o == nil || o.DynamicColumn == nil {
+	if o == nil || isNil(o.DynamicColumn) {
 		var ret string
 		return ret
 	}
@@ -120,15 +120,15 @@ func (o *FilterField) GetDynamicColumn() string {
 // GetDynamicColumnOk returns a tuple with the DynamicColumn field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *FilterField) GetDynamicColumnOk() (*string, bool) {
-	if o == nil || o.DynamicColumn == nil {
-		return nil, false
+	if o == nil || isNil(o.DynamicColumn) {
+    return nil, false
 	}
 	return o.DynamicColumn, true
 }
 
 // HasDynamicColumn returns a boolean if a field has been set.
 func (o *FilterField) HasDynamicColumn() bool {
-	if o != nil && o.DynamicColumn != nil {
+	if o != nil && !isNil(o.DynamicColumn) {
 		return true
 	}
 
@@ -154,7 +154,7 @@ func (o *FilterField) GetOperator() string {
 // and a boolean to check if the value has been set.
 func (o *FilterField) GetOperatorOk() (*string, bool) {
 	if o == nil {
-		return nil, false
+    return nil, false
 	}
 	return &o.Operator, true
 }
@@ -166,7 +166,7 @@ func (o *FilterField) SetOperator(v string) {
 
 // GetQueryPathTagViaId returns the QueryPathTagViaId field value if set, zero value otherwise.
 func (o *FilterField) GetQueryPathTagViaId() bool {
-	if o == nil || o.QueryPathTagViaId == nil {
+	if o == nil || isNil(o.QueryPathTagViaId) {
 		var ret bool
 		return ret
 	}
@@ -176,15 +176,15 @@ func (o *FilterField) GetQueryPathTagViaId() bool {
 // GetQueryPathTagViaIdOk returns a tuple with the QueryPathTagViaId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *FilterField) GetQueryPathTagViaIdOk() (*bool, bool) {
-	if o == nil || o.QueryPathTagViaId == nil {
-		return nil, false
+	if o == nil || isNil(o.QueryPathTagViaId) {
+    return nil, false
 	}
 	return o.QueryPathTagViaId, true
 }
 
 // HasQueryPathTagViaId returns a boolean if a field has been set.
 func (o *FilterField) HasQueryPathTagViaId() bool {
-	if o != nil && o.QueryPathTagViaId != nil {
+	if o != nil && !isNil(o.QueryPathTagViaId) {
 		return true
 	}
 
@@ -198,7 +198,7 @@ func (o *FilterField) SetQueryPathTagViaId(v bool) {
 
 // GetSubField returns the SubField field value if set, zero value otherwise.
 func (o *FilterField) GetSubField() string {
-	if o == nil || o.SubField == nil {
+	if o == nil || isNil(o.SubField) {
 		var ret string
 		return ret
 	}
@@ -208,15 +208,15 @@ func (o *FilterField) GetSubField() string {
 // GetSubFieldOk returns a tuple with the SubField field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *FilterField) GetSubFieldOk() (*string, bool) {
-	if o == nil || o.SubField == nil {
-		return nil, false
+	if o == nil || isNil(o.SubField) {
+    return nil, false
 	}
 	return o.SubField, true
 }
 
 // HasSubField returns a boolean if a field has been set.
 func (o *FilterField) HasSubField() bool {
-	if o != nil && o.SubField != nil {
+	if o != nil && !isNil(o.SubField) {
 		return true
 	}
 
@@ -230,7 +230,7 @@ func (o *FilterField) SetSubField(v string) {
 
 // GetValues returns the Values field value if set, zero value otherwise.
 func (o *FilterField) GetValues() []map[string]interface{} {
-	if o == nil || o.Values == nil {
+	if o == nil || isNil(o.Values) {
 		var ret []map[string]interface{}
 		return ret
 	}
@@ -240,15 +240,15 @@ func (o *FilterField) GetValues() []map[string]interface{} {
 // GetValuesOk returns a tuple with the Values field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *FilterField) GetValuesOk() ([]map[string]interface{}, bool) {
-	if o == nil || o.Values == nil {
-		return nil, false
+	if o == nil || isNil(o.Values) {
+    return nil, false
 	}
 	return o.Values, true
 }
 
 // HasValues returns a boolean if a field has been set.
 func (o *FilterField) HasValues() bool {
-	if o != nil && o.Values != nil {
+	if o != nil && !isNil(o.Values) {
 		return true
 	}
 
@@ -262,25 +262,25 @@ func (o *FilterField) SetValues(v []map[string]interface{}) {
 
 func (o FilterField) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
-	if o.CaseSensitive != nil {
+	if !isNil(o.CaseSensitive) {
 		toSerialize["caseSensitive"] = o.CaseSensitive
 	}
-	if o.ColumnId != nil {
+	if !isNil(o.ColumnId) {
 		toSerialize["columnId"] = o.ColumnId
 	}
-	if o.DynamicColumn != nil {
+	if !isNil(o.DynamicColumn) {
 		toSerialize["dynamicColumn"] = o.DynamicColumn
 	}
 	if true {
 		toSerialize["operator"] = o.Operator
 	}
-	if o.QueryPathTagViaId != nil {
+	if !isNil(o.QueryPathTagViaId) {
 		toSerialize["queryPathTagViaId"] = o.QueryPathTagViaId
 	}
-	if o.SubField != nil {
+	if !isNil(o.SubField) {
 		toSerialize["subField"] = o.SubField
 	}
-	if o.Values != nil {
+	if !isNil(o.Values) {
 		toSerialize["values"] = o.Values
 	}
 	return json.Marshal(toSerialize)

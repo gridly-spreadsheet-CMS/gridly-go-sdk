@@ -3,7 +3,7 @@ Gridly API
 
 Gridly API documentation
 
-API version: 4.29.1
+API version: 4.33.0
 Contact: support@gridly.com
 */
 
@@ -21,10 +21,10 @@ type GlossaryExportFormat string
 
 // List of GlossaryExportFormat
 const (
-	CSV GlossaryExportFormat = "csv"
-	XLS GlossaryExportFormat = "xls"
-	XLSX GlossaryExportFormat = "xlsx"
-	TBX GlossaryExportFormat = "tbx"
+	GLOSSARYEXPORTFORMAT_CSV GlossaryExportFormat = "csv"
+	GLOSSARYEXPORTFORMAT_XLS GlossaryExportFormat = "xls"
+	GLOSSARYEXPORTFORMAT_XLSX GlossaryExportFormat = "xlsx"
+	GLOSSARYEXPORTFORMAT_TBX GlossaryExportFormat = "tbx"
 )
 
 // All allowed values of GlossaryExportFormat enum

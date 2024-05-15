@@ -3,7 +3,7 @@ Gridly API
 
 Gridly API documentation
 
-API version: 4.29.1
+API version: 4.33.0
 Contact: support@gridly.com
 */
 
@@ -42,7 +42,7 @@ func NewCellHistoryWithDefaults() *CellHistory {
 
 // GetDependencyStatus returns the DependencyStatus field value if set, zero value otherwise.
 func (o *CellHistory) GetDependencyStatus() string {
-	if o == nil || o.DependencyStatus == nil {
+	if o == nil || isNil(o.DependencyStatus) {
 		var ret string
 		return ret
 	}
@@ -52,15 +52,15 @@ func (o *CellHistory) GetDependencyStatus() string {
 // GetDependencyStatusOk returns a tuple with the DependencyStatus field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CellHistory) GetDependencyStatusOk() (*string, bool) {
-	if o == nil || o.DependencyStatus == nil {
-		return nil, false
+	if o == nil || isNil(o.DependencyStatus) {
+    return nil, false
 	}
 	return o.DependencyStatus, true
 }
 
 // HasDependencyStatus returns a boolean if a field has been set.
 func (o *CellHistory) HasDependencyStatus() bool {
-	if o != nil && o.DependencyStatus != nil {
+	if o != nil && !isNil(o.DependencyStatus) {
 		return true
 	}
 
@@ -74,7 +74,7 @@ func (o *CellHistory) SetDependencyStatus(v string) {
 
 // GetSourceStatus returns the SourceStatus field value if set, zero value otherwise.
 func (o *CellHistory) GetSourceStatus() string {
-	if o == nil || o.SourceStatus == nil {
+	if o == nil || isNil(o.SourceStatus) {
 		var ret string
 		return ret
 	}
@@ -84,15 +84,15 @@ func (o *CellHistory) GetSourceStatus() string {
 // GetSourceStatusOk returns a tuple with the SourceStatus field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CellHistory) GetSourceStatusOk() (*string, bool) {
-	if o == nil || o.SourceStatus == nil {
-		return nil, false
+	if o == nil || isNil(o.SourceStatus) {
+    return nil, false
 	}
 	return o.SourceStatus, true
 }
 
 // HasSourceStatus returns a boolean if a field has been set.
 func (o *CellHistory) HasSourceStatus() bool {
-	if o != nil && o.SourceStatus != nil {
+	if o != nil && !isNil(o.SourceStatus) {
 		return true
 	}
 
@@ -106,7 +106,7 @@ func (o *CellHistory) SetSourceStatus(v string) {
 
 // GetColumnId returns the ColumnId field value if set, zero value otherwise.
 func (o *CellHistory) GetColumnId() string {
-	if o == nil || o.ColumnId == nil {
+	if o == nil || isNil(o.ColumnId) {
 		var ret string
 		return ret
 	}
@@ -116,15 +116,15 @@ func (o *CellHistory) GetColumnId() string {
 // GetColumnIdOk returns a tuple with the ColumnId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CellHistory) GetColumnIdOk() (*string, bool) {
-	if o == nil || o.ColumnId == nil {
-		return nil, false
+	if o == nil || isNil(o.ColumnId) {
+    return nil, false
 	}
 	return o.ColumnId, true
 }
 
 // HasColumnId returns a boolean if a field has been set.
 func (o *CellHistory) HasColumnId() bool {
-	if o != nil && o.ColumnId != nil {
+	if o != nil && !isNil(o.ColumnId) {
 		return true
 	}
 
@@ -138,7 +138,7 @@ func (o *CellHistory) SetColumnId(v string) {
 
 // GetValue returns the Value field value if set, zero value otherwise.
 func (o *CellHistory) GetValue() map[string]interface{} {
-	if o == nil || o.Value == nil {
+	if o == nil || isNil(o.Value) {
 		var ret map[string]interface{}
 		return ret
 	}
@@ -148,15 +148,15 @@ func (o *CellHistory) GetValue() map[string]interface{} {
 // GetValueOk returns a tuple with the Value field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CellHistory) GetValueOk() (map[string]interface{}, bool) {
-	if o == nil || o.Value == nil {
-		return nil, false
+	if o == nil || isNil(o.Value) {
+    return map[string]interface{}{}, false
 	}
 	return o.Value, true
 }
 
 // HasValue returns a boolean if a field has been set.
 func (o *CellHistory) HasValue() bool {
-	if o != nil && o.Value != nil {
+	if o != nil && !isNil(o.Value) {
 		return true
 	}
 
@@ -170,16 +170,16 @@ func (o *CellHistory) SetValue(v map[string]interface{}) {
 
 func (o CellHistory) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
-	if o.DependencyStatus != nil {
+	if !isNil(o.DependencyStatus) {
 		toSerialize["dependencyStatus"] = o.DependencyStatus
 	}
-	if o.SourceStatus != nil {
+	if !isNil(o.SourceStatus) {
 		toSerialize["sourceStatus"] = o.SourceStatus
 	}
-	if o.ColumnId != nil {
+	if !isNil(o.ColumnId) {
 		toSerialize["columnId"] = o.ColumnId
 	}
-	if o.Value != nil {
+	if !isNil(o.Value) {
 		toSerialize["value"] = o.Value
 	}
 	return json.Marshal(toSerialize)

@@ -3,7 +3,7 @@ Gridly API
 
 Gridly API documentation
 
-API version: 4.29.1
+API version: 4.33.0
 Contact: support@gridly.com
 */
 
@@ -40,7 +40,7 @@ func NewGlossaryProjectWithDefaults() *GlossaryProject {
 
 // GetProjectId returns the ProjectId field value if set, zero value otherwise.
 func (o *GlossaryProject) GetProjectId() int64 {
-	if o == nil || o.ProjectId == nil {
+	if o == nil || isNil(o.ProjectId) {
 		var ret int64
 		return ret
 	}
@@ -50,15 +50,15 @@ func (o *GlossaryProject) GetProjectId() int64 {
 // GetProjectIdOk returns a tuple with the ProjectId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *GlossaryProject) GetProjectIdOk() (*int64, bool) {
-	if o == nil || o.ProjectId == nil {
-		return nil, false
+	if o == nil || isNil(o.ProjectId) {
+    return nil, false
 	}
 	return o.ProjectId, true
 }
 
 // HasProjectId returns a boolean if a field has been set.
 func (o *GlossaryProject) HasProjectId() bool {
-	if o != nil && o.ProjectId != nil {
+	if o != nil && !isNil(o.ProjectId) {
 		return true
 	}
 
@@ -72,7 +72,7 @@ func (o *GlossaryProject) SetProjectId(v int64) {
 
 // GetDatabaseIds returns the DatabaseIds field value if set, zero value otherwise.
 func (o *GlossaryProject) GetDatabaseIds() []string {
-	if o == nil || o.DatabaseIds == nil {
+	if o == nil || isNil(o.DatabaseIds) {
 		var ret []string
 		return ret
 	}
@@ -82,15 +82,15 @@ func (o *GlossaryProject) GetDatabaseIds() []string {
 // GetDatabaseIdsOk returns a tuple with the DatabaseIds field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *GlossaryProject) GetDatabaseIdsOk() ([]string, bool) {
-	if o == nil || o.DatabaseIds == nil {
-		return nil, false
+	if o == nil || isNil(o.DatabaseIds) {
+    return nil, false
 	}
 	return o.DatabaseIds, true
 }
 
 // HasDatabaseIds returns a boolean if a field has been set.
 func (o *GlossaryProject) HasDatabaseIds() bool {
-	if o != nil && o.DatabaseIds != nil {
+	if o != nil && !isNil(o.DatabaseIds) {
 		return true
 	}
 
@@ -104,10 +104,10 @@ func (o *GlossaryProject) SetDatabaseIds(v []string) {
 
 func (o GlossaryProject) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
-	if o.ProjectId != nil {
+	if !isNil(o.ProjectId) {
 		toSerialize["projectId"] = o.ProjectId
 	}
-	if o.DatabaseIds != nil {
+	if !isNil(o.DatabaseIds) {
 		toSerialize["databaseIds"] = o.DatabaseIds
 	}
 	return json.Marshal(toSerialize)

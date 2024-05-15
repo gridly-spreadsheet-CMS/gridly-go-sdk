@@ -3,7 +3,7 @@ Gridly API
 
 Gridly API documentation
 
-API version: 4.29.1
+API version: 4.33.0
 Contact: support@gridly.com
 */
 
@@ -39,7 +39,7 @@ func NewDeletePathWithDefaults() *DeletePath {
 
 // GetPaths returns the Paths field value if set, zero value otherwise.
 func (o *DeletePath) GetPaths() []string {
-	if o == nil || o.Paths == nil {
+	if o == nil || isNil(o.Paths) {
 		var ret []string
 		return ret
 	}
@@ -49,15 +49,15 @@ func (o *DeletePath) GetPaths() []string {
 // GetPathsOk returns a tuple with the Paths field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *DeletePath) GetPathsOk() ([]string, bool) {
-	if o == nil || o.Paths == nil {
-		return nil, false
+	if o == nil || isNil(o.Paths) {
+    return nil, false
 	}
 	return o.Paths, true
 }
 
 // HasPaths returns a boolean if a field has been set.
 func (o *DeletePath) HasPaths() bool {
-	if o != nil && o.Paths != nil {
+	if o != nil && !isNil(o.Paths) {
 		return true
 	}
 
@@ -71,7 +71,7 @@ func (o *DeletePath) SetPaths(v []string) {
 
 func (o DeletePath) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
-	if o.Paths != nil {
+	if !isNil(o.Paths) {
 		toSerialize["paths"] = o.Paths
 	}
 	return json.Marshal(toSerialize)

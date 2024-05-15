@@ -3,7 +3,7 @@ Gridly API
 
 Gridly API documentation
 
-API version: 4.29.1
+API version: 4.33.0
 Contact: support@gridly.com
 */
 
@@ -55,7 +55,7 @@ func (o *CreateDatabase) GetName() string {
 // and a boolean to check if the value has been set.
 func (o *CreateDatabase) GetNameOk() (*string, bool) {
 	if o == nil {
-		return nil, false
+    return nil, false
 	}
 	return &o.Name, true
 }
@@ -67,7 +67,7 @@ func (o *CreateDatabase) SetName(v string) {
 
 // GetDescription returns the Description field value if set, zero value otherwise.
 func (o *CreateDatabase) GetDescription() string {
-	if o == nil || o.Description == nil {
+	if o == nil || isNil(o.Description) {
 		var ret string
 		return ret
 	}
@@ -77,15 +77,15 @@ func (o *CreateDatabase) GetDescription() string {
 // GetDescriptionOk returns a tuple with the Description field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CreateDatabase) GetDescriptionOk() (*string, bool) {
-	if o == nil || o.Description == nil {
-		return nil, false
+	if o == nil || isNil(o.Description) {
+    return nil, false
 	}
 	return o.Description, true
 }
 
 // HasDescription returns a boolean if a field has been set.
 func (o *CreateDatabase) HasDescription() bool {
-	if o != nil && o.Description != nil {
+	if o != nil && !isNil(o.Description) {
 		return true
 	}
 
@@ -99,7 +99,7 @@ func (o *CreateDatabase) SetDescription(v string) {
 
 // GetEnableGuidRecord returns the EnableGuidRecord field value if set, zero value otherwise.
 func (o *CreateDatabase) GetEnableGuidRecord() bool {
-	if o == nil || o.EnableGuidRecord == nil {
+	if o == nil || isNil(o.EnableGuidRecord) {
 		var ret bool
 		return ret
 	}
@@ -109,15 +109,15 @@ func (o *CreateDatabase) GetEnableGuidRecord() bool {
 // GetEnableGuidRecordOk returns a tuple with the EnableGuidRecord field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CreateDatabase) GetEnableGuidRecordOk() (*bool, bool) {
-	if o == nil || o.EnableGuidRecord == nil {
-		return nil, false
+	if o == nil || isNil(o.EnableGuidRecord) {
+    return nil, false
 	}
 	return o.EnableGuidRecord, true
 }
 
 // HasEnableGuidRecord returns a boolean if a field has been set.
 func (o *CreateDatabase) HasEnableGuidRecord() bool {
-	if o != nil && o.EnableGuidRecord != nil {
+	if o != nil && !isNil(o.EnableGuidRecord) {
 		return true
 	}
 
@@ -131,7 +131,7 @@ func (o *CreateDatabase) SetEnableGuidRecord(v bool) {
 
 // GetId returns the Id field value if set, zero value otherwise.
 func (o *CreateDatabase) GetId() string {
-	if o == nil || o.Id == nil {
+	if o == nil || isNil(o.Id) {
 		var ret string
 		return ret
 	}
@@ -141,15 +141,15 @@ func (o *CreateDatabase) GetId() string {
 // GetIdOk returns a tuple with the Id field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CreateDatabase) GetIdOk() (*string, bool) {
-	if o == nil || o.Id == nil {
-		return nil, false
+	if o == nil || isNil(o.Id) {
+    return nil, false
 	}
 	return o.Id, true
 }
 
 // HasId returns a boolean if a field has been set.
 func (o *CreateDatabase) HasId() bool {
-	if o != nil && o.Id != nil {
+	if o != nil && !isNil(o.Id) {
 		return true
 	}
 
@@ -166,13 +166,13 @@ func (o CreateDatabase) MarshalJSON() ([]byte, error) {
 	if true {
 		toSerialize["name"] = o.Name
 	}
-	if o.Description != nil {
+	if !isNil(o.Description) {
 		toSerialize["description"] = o.Description
 	}
-	if o.EnableGuidRecord != nil {
+	if !isNil(o.EnableGuidRecord) {
 		toSerialize["enableGuidRecord"] = o.EnableGuidRecord
 	}
-	if o.Id != nil {
+	if !isNil(o.Id) {
 		toSerialize["id"] = o.Id
 	}
 	return json.Marshal(toSerialize)

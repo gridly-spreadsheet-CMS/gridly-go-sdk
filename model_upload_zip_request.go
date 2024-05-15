@@ -3,7 +3,7 @@ Gridly API
 
 Gridly API documentation
 
-API version: 4.29.1
+API version: 4.33.0
 Contact: support@gridly.com
 */
 
@@ -57,7 +57,7 @@ func (o *UploadZipRequest) GetColumnId() string {
 // and a boolean to check if the value has been set.
 func (o *UploadZipRequest) GetColumnIdOk() (*string, bool) {
 	if o == nil {
-		return nil, false
+    return nil, false
 	}
 	return &o.ColumnId, true
 }
@@ -81,7 +81,7 @@ func (o *UploadZipRequest) GetFileMappings() string {
 // and a boolean to check if the value has been set.
 func (o *UploadZipRequest) GetFileMappingsOk() (*string, bool) {
 	if o == nil {
-		return nil, false
+    return nil, false
 	}
 	return &o.FileMappings, true
 }
@@ -105,7 +105,7 @@ func (o *UploadZipRequest) GetFile() *os.File {
 // and a boolean to check if the value has been set.
 func (o *UploadZipRequest) GetFileOk() (**os.File, bool) {
 	if o == nil {
-		return nil, false
+    return nil, false
 	}
 	return &o.File, true
 }

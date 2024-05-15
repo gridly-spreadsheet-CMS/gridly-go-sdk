@@ -3,7 +3,7 @@ Gridly API
 
 Gridly API documentation
 
-API version: 4.29.1
+API version: 4.33.0
 Contact: support@gridly.com
 */
 
@@ -21,9 +21,9 @@ type TranslationStatus string
 
 // List of TranslationStatus
 const (
-	UP_TO_DATE TranslationStatus = "upToDate"
-	OUT_OF_DATE TranslationStatus = "outOfDate"
-	UNSET TranslationStatus = "unset"
+	TRANSLATIONSTATUS_UP_TO_DATE TranslationStatus = "upToDate"
+	TRANSLATIONSTATUS_OUT_OF_DATE TranslationStatus = "outOfDate"
+	TRANSLATIONSTATUS_UNSET TranslationStatus = "unset"
 )
 
 // All allowed values of TranslationStatus enum

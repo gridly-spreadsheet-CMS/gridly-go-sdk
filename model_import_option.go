@@ -3,7 +3,7 @@ Gridly API
 
 Gridly API documentation
 
-API version: 4.29.1
+API version: 4.33.0
 Contact: support@gridly.com
 */
 
@@ -21,9 +21,9 @@ type ImportOption string
 
 // List of ImportOption
 const (
-	ADD ImportOption = "ADD"
-	UPDATE ImportOption = "UPDATE"
-	UPDATE_ONLY ImportOption = "UPDATE_ONLY"
+	IMPORTOPTION_ADD ImportOption = "ADD"
+	IMPORTOPTION_UPDATE ImportOption = "UPDATE"
+	IMPORTOPTION_UPDATE_ONLY ImportOption = "UPDATE_ONLY"
 )
 
 // All allowed values of ImportOption enum

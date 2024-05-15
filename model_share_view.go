@@ -3,7 +3,7 @@ Gridly API
 
 Gridly API documentation
 
-API version: 4.29.1
+API version: 4.33.0
 Contact: support@gridly.com
 */
 
@@ -46,7 +46,7 @@ func NewShareViewWithDefaults() *ShareView {
 
 // GetCompanyId returns the CompanyId field value if set, zero value otherwise.
 func (o *ShareView) GetCompanyId() string {
-	if o == nil || o.CompanyId == nil {
+	if o == nil || isNil(o.CompanyId) {
 		var ret string
 		return ret
 	}
@@ -56,15 +56,15 @@ func (o *ShareView) GetCompanyId() string {
 // GetCompanyIdOk returns a tuple with the CompanyId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ShareView) GetCompanyIdOk() (*string, bool) {
-	if o == nil || o.CompanyId == nil {
-		return nil, false
+	if o == nil || isNil(o.CompanyId) {
+    return nil, false
 	}
 	return o.CompanyId, true
 }
 
 // HasCompanyId returns a boolean if a field has been set.
 func (o *ShareView) HasCompanyId() bool {
-	if o != nil && o.CompanyId != nil {
+	if o != nil && !isNil(o.CompanyId) {
 		return true
 	}
 
@@ -78,7 +78,7 @@ func (o *ShareView) SetCompanyId(v string) {
 
 // GetLink returns the Link field value if set, zero value otherwise.
 func (o *ShareView) GetLink() string {
-	if o == nil || o.Link == nil {
+	if o == nil || isNil(o.Link) {
 		var ret string
 		return ret
 	}
@@ -88,15 +88,15 @@ func (o *ShareView) GetLink() string {
 // GetLinkOk returns a tuple with the Link field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ShareView) GetLinkOk() (*string, bool) {
-	if o == nil || o.Link == nil {
-		return nil, false
+	if o == nil || isNil(o.Link) {
+    return nil, false
 	}
 	return o.Link, true
 }
 
 // HasLink returns a boolean if a field has been set.
 func (o *ShareView) HasLink() bool {
-	if o != nil && o.Link != nil {
+	if o != nil && !isNil(o.Link) {
 		return true
 	}
 
@@ -110,7 +110,7 @@ func (o *ShareView) SetLink(v string) {
 
 // GetActive returns the Active field value if set, zero value otherwise.
 func (o *ShareView) GetActive() bool {
-	if o == nil || o.Active == nil {
+	if o == nil || isNil(o.Active) {
 		var ret bool
 		return ret
 	}
@@ -120,15 +120,15 @@ func (o *ShareView) GetActive() bool {
 // GetActiveOk returns a tuple with the Active field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ShareView) GetActiveOk() (*bool, bool) {
-	if o == nil || o.Active == nil {
-		return nil, false
+	if o == nil || isNil(o.Active) {
+    return nil, false
 	}
 	return o.Active, true
 }
 
 // HasActive returns a boolean if a field has been set.
 func (o *ShareView) HasActive() bool {
-	if o != nil && o.Active != nil {
+	if o != nil && !isNil(o.Active) {
 		return true
 	}
 
@@ -142,7 +142,7 @@ func (o *ShareView) SetActive(v bool) {
 
 // GetViewId returns the ViewId field value if set, zero value otherwise.
 func (o *ShareView) GetViewId() string {
-	if o == nil || o.ViewId == nil {
+	if o == nil || isNil(o.ViewId) {
 		var ret string
 		return ret
 	}
@@ -152,15 +152,15 @@ func (o *ShareView) GetViewId() string {
 // GetViewIdOk returns a tuple with the ViewId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ShareView) GetViewIdOk() (*string, bool) {
-	if o == nil || o.ViewId == nil {
-		return nil, false
+	if o == nil || isNil(o.ViewId) {
+    return nil, false
 	}
 	return o.ViewId, true
 }
 
 // HasViewId returns a boolean if a field has been set.
 func (o *ShareView) HasViewId() bool {
-	if o != nil && o.ViewId != nil {
+	if o != nil && !isNil(o.ViewId) {
 		return true
 	}
 
@@ -174,7 +174,7 @@ func (o *ShareView) SetViewId(v string) {
 
 // GetIncludeGridHistory returns the IncludeGridHistory field value if set, zero value otherwise.
 func (o *ShareView) GetIncludeGridHistory() bool {
-	if o == nil || o.IncludeGridHistory == nil {
+	if o == nil || isNil(o.IncludeGridHistory) {
 		var ret bool
 		return ret
 	}
@@ -184,15 +184,15 @@ func (o *ShareView) GetIncludeGridHistory() bool {
 // GetIncludeGridHistoryOk returns a tuple with the IncludeGridHistory field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ShareView) GetIncludeGridHistoryOk() (*bool, bool) {
-	if o == nil || o.IncludeGridHistory == nil {
-		return nil, false
+	if o == nil || isNil(o.IncludeGridHistory) {
+    return nil, false
 	}
 	return o.IncludeGridHistory, true
 }
 
 // HasIncludeGridHistory returns a boolean if a field has been set.
 func (o *ShareView) HasIncludeGridHistory() bool {
-	if o != nil && o.IncludeGridHistory != nil {
+	if o != nil && !isNil(o.IncludeGridHistory) {
 		return true
 	}
 
@@ -206,7 +206,7 @@ func (o *ShareView) SetIncludeGridHistory(v bool) {
 
 // GetCreatedDate returns the CreatedDate field value if set, zero value otherwise.
 func (o *ShareView) GetCreatedDate() time.Time {
-	if o == nil || o.CreatedDate == nil {
+	if o == nil || isNil(o.CreatedDate) {
 		var ret time.Time
 		return ret
 	}
@@ -216,15 +216,15 @@ func (o *ShareView) GetCreatedDate() time.Time {
 // GetCreatedDateOk returns a tuple with the CreatedDate field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ShareView) GetCreatedDateOk() (*time.Time, bool) {
-	if o == nil || o.CreatedDate == nil {
-		return nil, false
+	if o == nil || isNil(o.CreatedDate) {
+    return nil, false
 	}
 	return o.CreatedDate, true
 }
 
 // HasCreatedDate returns a boolean if a field has been set.
 func (o *ShareView) HasCreatedDate() bool {
-	if o != nil && o.CreatedDate != nil {
+	if o != nil && !isNil(o.CreatedDate) {
 		return true
 	}
 
@@ -238,7 +238,7 @@ func (o *ShareView) SetCreatedDate(v time.Time) {
 
 // GetLastModifiedDate returns the LastModifiedDate field value if set, zero value otherwise.
 func (o *ShareView) GetLastModifiedDate() time.Time {
-	if o == nil || o.LastModifiedDate == nil {
+	if o == nil || isNil(o.LastModifiedDate) {
 		var ret time.Time
 		return ret
 	}
@@ -248,15 +248,15 @@ func (o *ShareView) GetLastModifiedDate() time.Time {
 // GetLastModifiedDateOk returns a tuple with the LastModifiedDate field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ShareView) GetLastModifiedDateOk() (*time.Time, bool) {
-	if o == nil || o.LastModifiedDate == nil {
-		return nil, false
+	if o == nil || isNil(o.LastModifiedDate) {
+    return nil, false
 	}
 	return o.LastModifiedDate, true
 }
 
 // HasLastModifiedDate returns a boolean if a field has been set.
 func (o *ShareView) HasLastModifiedDate() bool {
-	if o != nil && o.LastModifiedDate != nil {
+	if o != nil && !isNil(o.LastModifiedDate) {
 		return true
 	}
 
@@ -270,25 +270,25 @@ func (o *ShareView) SetLastModifiedDate(v time.Time) {
 
 func (o ShareView) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
-	if o.CompanyId != nil {
+	if !isNil(o.CompanyId) {
 		toSerialize["companyId"] = o.CompanyId
 	}
-	if o.Link != nil {
+	if !isNil(o.Link) {
 		toSerialize["link"] = o.Link
 	}
-	if o.Active != nil {
+	if !isNil(o.Active) {
 		toSerialize["active"] = o.Active
 	}
-	if o.ViewId != nil {
+	if !isNil(o.ViewId) {
 		toSerialize["viewId"] = o.ViewId
 	}
-	if o.IncludeGridHistory != nil {
+	if !isNil(o.IncludeGridHistory) {
 		toSerialize["includeGridHistory"] = o.IncludeGridHistory
 	}
-	if o.CreatedDate != nil {
+	if !isNil(o.CreatedDate) {
 		toSerialize["createdDate"] = o.CreatedDate
 	}
-	if o.LastModifiedDate != nil {
+	if !isNil(o.LastModifiedDate) {
 		toSerialize["lastModifiedDate"] = o.LastModifiedDate
 	}
 	return json.Marshal(toSerialize)

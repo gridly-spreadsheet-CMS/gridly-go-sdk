@@ -3,7 +3,7 @@ Gridly API
 
 Gridly API documentation
 
-API version: 4.29.1
+API version: 4.33.0
 Contact: support@gridly.com
 */
 
@@ -40,7 +40,7 @@ func NewViewStatisticWithDefaults() *ViewStatistic {
 
 // GetRecordCount returns the RecordCount field value if set, zero value otherwise.
 func (o *ViewStatistic) GetRecordCount() int64 {
-	if o == nil || o.RecordCount == nil {
+	if o == nil || isNil(o.RecordCount) {
 		var ret int64
 		return ret
 	}
@@ -50,15 +50,15 @@ func (o *ViewStatistic) GetRecordCount() int64 {
 // GetRecordCountOk returns a tuple with the RecordCount field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ViewStatistic) GetRecordCountOk() (*int64, bool) {
-	if o == nil || o.RecordCount == nil {
-		return nil, false
+	if o == nil || isNil(o.RecordCount) {
+    return nil, false
 	}
 	return o.RecordCount, true
 }
 
 // HasRecordCount returns a boolean if a field has been set.
 func (o *ViewStatistic) HasRecordCount() bool {
-	if o != nil && o.RecordCount != nil {
+	if o != nil && !isNil(o.RecordCount) {
 		return true
 	}
 
@@ -72,7 +72,7 @@ func (o *ViewStatistic) SetRecordCount(v int64) {
 
 // GetTranslations returns the Translations field value if set, zero value otherwise.
 func (o *ViewStatistic) GetTranslations() map[string]ColumnStatistic {
-	if o == nil || o.Translations == nil {
+	if o == nil || isNil(o.Translations) {
 		var ret map[string]ColumnStatistic
 		return ret
 	}
@@ -82,15 +82,15 @@ func (o *ViewStatistic) GetTranslations() map[string]ColumnStatistic {
 // GetTranslationsOk returns a tuple with the Translations field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ViewStatistic) GetTranslationsOk() (*map[string]ColumnStatistic, bool) {
-	if o == nil || o.Translations == nil {
-		return nil, false
+	if o == nil || isNil(o.Translations) {
+    return nil, false
 	}
 	return o.Translations, true
 }
 
 // HasTranslations returns a boolean if a field has been set.
 func (o *ViewStatistic) HasTranslations() bool {
-	if o != nil && o.Translations != nil {
+	if o != nil && !isNil(o.Translations) {
 		return true
 	}
 
@@ -104,10 +104,10 @@ func (o *ViewStatistic) SetTranslations(v map[string]ColumnStatistic) {
 
 func (o ViewStatistic) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
-	if o.RecordCount != nil {
+	if !isNil(o.RecordCount) {
 		toSerialize["recordCount"] = o.RecordCount
 	}
-	if o.Translations != nil {
+	if !isNil(o.Translations) {
 		toSerialize["translations"] = o.Translations
 	}
 	return json.Marshal(toSerialize)

@@ -3,7 +3,7 @@ Gridly API
 
 Gridly API documentation
 
-API version: 4.29.1
+API version: 4.33.0
 Contact: support@gridly.com
 */
 
@@ -43,7 +43,7 @@ func NewMovePathWithDefaults() *MovePath {
 
 // GetNames returns the Names field value if set, zero value otherwise.
 func (o *MovePath) GetNames() []string {
-	if o == nil || o.Names == nil {
+	if o == nil || isNil(o.Names) {
 		var ret []string
 		return ret
 	}
@@ -53,15 +53,15 @@ func (o *MovePath) GetNames() []string {
 // GetNamesOk returns a tuple with the Names field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *MovePath) GetNamesOk() ([]string, bool) {
-	if o == nil || o.Names == nil {
-		return nil, false
+	if o == nil || isNil(o.Names) {
+    return nil, false
 	}
 	return o.Names, true
 }
 
 // HasNames returns a boolean if a field has been set.
 func (o *MovePath) HasNames() bool {
-	if o != nil && o.Names != nil {
+	if o != nil && !isNil(o.Names) {
 		return true
 	}
 
@@ -75,7 +75,7 @@ func (o *MovePath) SetNames(v []string) {
 
 // GetFromParentPath returns the FromParentPath field value if set, zero value otherwise.
 func (o *MovePath) GetFromParentPath() string {
-	if o == nil || o.FromParentPath == nil {
+	if o == nil || isNil(o.FromParentPath) {
 		var ret string
 		return ret
 	}
@@ -85,15 +85,15 @@ func (o *MovePath) GetFromParentPath() string {
 // GetFromParentPathOk returns a tuple with the FromParentPath field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *MovePath) GetFromParentPathOk() (*string, bool) {
-	if o == nil || o.FromParentPath == nil {
-		return nil, false
+	if o == nil || isNil(o.FromParentPath) {
+    return nil, false
 	}
 	return o.FromParentPath, true
 }
 
 // HasFromParentPath returns a boolean if a field has been set.
 func (o *MovePath) HasFromParentPath() bool {
-	if o != nil && o.FromParentPath != nil {
+	if o != nil && !isNil(o.FromParentPath) {
 		return true
 	}
 
@@ -107,7 +107,7 @@ func (o *MovePath) SetFromParentPath(v string) {
 
 // GetToParentPath returns the ToParentPath field value if set, zero value otherwise.
 func (o *MovePath) GetToParentPath() string {
-	if o == nil || o.ToParentPath == nil {
+	if o == nil || isNil(o.ToParentPath) {
 		var ret string
 		return ret
 	}
@@ -117,15 +117,15 @@ func (o *MovePath) GetToParentPath() string {
 // GetToParentPathOk returns a tuple with the ToParentPath field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *MovePath) GetToParentPathOk() (*string, bool) {
-	if o == nil || o.ToParentPath == nil {
-		return nil, false
+	if o == nil || isNil(o.ToParentPath) {
+    return nil, false
 	}
 	return o.ToParentPath, true
 }
 
 // HasToParentPath returns a boolean if a field has been set.
 func (o *MovePath) HasToParentPath() bool {
-	if o != nil && o.ToParentPath != nil {
+	if o != nil && !isNil(o.ToParentPath) {
 		return true
 	}
 
@@ -139,7 +139,7 @@ func (o *MovePath) SetToParentPath(v string) {
 
 // GetMoveBefore returns the MoveBefore field value if set, zero value otherwise.
 func (o *MovePath) GetMoveBefore() string {
-	if o == nil || o.MoveBefore == nil {
+	if o == nil || isNil(o.MoveBefore) {
 		var ret string
 		return ret
 	}
@@ -149,15 +149,15 @@ func (o *MovePath) GetMoveBefore() string {
 // GetMoveBeforeOk returns a tuple with the MoveBefore field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *MovePath) GetMoveBeforeOk() (*string, bool) {
-	if o == nil || o.MoveBefore == nil {
-		return nil, false
+	if o == nil || isNil(o.MoveBefore) {
+    return nil, false
 	}
 	return o.MoveBefore, true
 }
 
 // HasMoveBefore returns a boolean if a field has been set.
 func (o *MovePath) HasMoveBefore() bool {
-	if o != nil && o.MoveBefore != nil {
+	if o != nil && !isNil(o.MoveBefore) {
 		return true
 	}
 
@@ -171,7 +171,7 @@ func (o *MovePath) SetMoveBefore(v string) {
 
 // GetMoveAfter returns the MoveAfter field value if set, zero value otherwise.
 func (o *MovePath) GetMoveAfter() string {
-	if o == nil || o.MoveAfter == nil {
+	if o == nil || isNil(o.MoveAfter) {
 		var ret string
 		return ret
 	}
@@ -181,15 +181,15 @@ func (o *MovePath) GetMoveAfter() string {
 // GetMoveAfterOk returns a tuple with the MoveAfter field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *MovePath) GetMoveAfterOk() (*string, bool) {
-	if o == nil || o.MoveAfter == nil {
-		return nil, false
+	if o == nil || isNil(o.MoveAfter) {
+    return nil, false
 	}
 	return o.MoveAfter, true
 }
 
 // HasMoveAfter returns a boolean if a field has been set.
 func (o *MovePath) HasMoveAfter() bool {
-	if o != nil && o.MoveAfter != nil {
+	if o != nil && !isNil(o.MoveAfter) {
 		return true
 	}
 
@@ -203,19 +203,19 @@ func (o *MovePath) SetMoveAfter(v string) {
 
 func (o MovePath) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
-	if o.Names != nil {
+	if !isNil(o.Names) {
 		toSerialize["names"] = o.Names
 	}
-	if o.FromParentPath != nil {
+	if !isNil(o.FromParentPath) {
 		toSerialize["fromParentPath"] = o.FromParentPath
 	}
-	if o.ToParentPath != nil {
+	if !isNil(o.ToParentPath) {
 		toSerialize["toParentPath"] = o.ToParentPath
 	}
-	if o.MoveBefore != nil {
+	if !isNil(o.MoveBefore) {
 		toSerialize["moveBefore"] = o.MoveBefore
 	}
-	if o.MoveAfter != nil {
+	if !isNil(o.MoveAfter) {
 		toSerialize["moveAfter"] = o.MoveAfter
 	}
 	return json.Marshal(toSerialize)

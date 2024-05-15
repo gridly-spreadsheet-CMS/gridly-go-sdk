@@ -3,7 +3,7 @@ Gridly API
 
 Gridly API documentation
 
-API version: 4.29.1
+API version: 4.33.0
 Contact: support@gridly.com
 */
 
@@ -55,7 +55,7 @@ func (o *CreateGlossary) GetName() string {
 // and a boolean to check if the value has been set.
 func (o *CreateGlossary) GetNameOk() (*string, bool) {
 	if o == nil {
-		return nil, false
+    return nil, false
 	}
 	return &o.Name, true
 }
@@ -67,7 +67,7 @@ func (o *CreateGlossary) SetName(v string) {
 
 // GetDescription returns the Description field value if set, zero value otherwise.
 func (o *CreateGlossary) GetDescription() string {
-	if o == nil || o.Description == nil {
+	if o == nil || isNil(o.Description) {
 		var ret string
 		return ret
 	}
@@ -77,15 +77,15 @@ func (o *CreateGlossary) GetDescription() string {
 // GetDescriptionOk returns a tuple with the Description field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CreateGlossary) GetDescriptionOk() (*string, bool) {
-	if o == nil || o.Description == nil {
-		return nil, false
+	if o == nil || isNil(o.Description) {
+    return nil, false
 	}
 	return o.Description, true
 }
 
 // HasDescription returns a boolean if a field has been set.
 func (o *CreateGlossary) HasDescription() bool {
-	if o != nil && o.Description != nil {
+	if o != nil && !isNil(o.Description) {
 		return true
 	}
 
@@ -99,7 +99,7 @@ func (o *CreateGlossary) SetDescription(v string) {
 
 // GetLangs returns the Langs field value if set, zero value otherwise.
 func (o *CreateGlossary) GetLangs() []string {
-	if o == nil || o.Langs == nil {
+	if o == nil || isNil(o.Langs) {
 		var ret []string
 		return ret
 	}
@@ -109,15 +109,15 @@ func (o *CreateGlossary) GetLangs() []string {
 // GetLangsOk returns a tuple with the Langs field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CreateGlossary) GetLangsOk() ([]string, bool) {
-	if o == nil || o.Langs == nil {
-		return nil, false
+	if o == nil || isNil(o.Langs) {
+    return nil, false
 	}
 	return o.Langs, true
 }
 
 // HasLangs returns a boolean if a field has been set.
 func (o *CreateGlossary) HasLangs() bool {
-	if o != nil && o.Langs != nil {
+	if o != nil && !isNil(o.Langs) {
 		return true
 	}
 
@@ -131,7 +131,7 @@ func (o *CreateGlossary) SetLangs(v []string) {
 
 // GetProjects returns the Projects field value if set, zero value otherwise.
 func (o *CreateGlossary) GetProjects() []GlossaryProject {
-	if o == nil || o.Projects == nil {
+	if o == nil || isNil(o.Projects) {
 		var ret []GlossaryProject
 		return ret
 	}
@@ -141,15 +141,15 @@ func (o *CreateGlossary) GetProjects() []GlossaryProject {
 // GetProjectsOk returns a tuple with the Projects field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CreateGlossary) GetProjectsOk() ([]GlossaryProject, bool) {
-	if o == nil || o.Projects == nil {
-		return nil, false
+	if o == nil || isNil(o.Projects) {
+    return nil, false
 	}
 	return o.Projects, true
 }
 
 // HasProjects returns a boolean if a field has been set.
 func (o *CreateGlossary) HasProjects() bool {
-	if o != nil && o.Projects != nil {
+	if o != nil && !isNil(o.Projects) {
 		return true
 	}
 
@@ -166,13 +166,13 @@ func (o CreateGlossary) MarshalJSON() ([]byte, error) {
 	if true {
 		toSerialize["name"] = o.Name
 	}
-	if o.Description != nil {
+	if !isNil(o.Description) {
 		toSerialize["description"] = o.Description
 	}
-	if o.Langs != nil {
+	if !isNil(o.Langs) {
 		toSerialize["langs"] = o.Langs
 	}
-	if o.Projects != nil {
+	if !isNil(o.Projects) {
 		toSerialize["projects"] = o.Projects
 	}
 	return json.Marshal(toSerialize)

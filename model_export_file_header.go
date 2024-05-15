@@ -3,7 +3,7 @@ Gridly API
 
 Gridly API documentation
 
-API version: 4.29.1
+API version: 4.33.0
 Contact: support@gridly.com
 */
 
@@ -21,9 +21,9 @@ type ExportFileHeader string
 
 // List of ExportFileHeader
 const (
-	none ExportFileHeader = "none"
-	columnName ExportFileHeader = "columnName"
-	columnId ExportFileHeader = "columnId"
+	EXPORTFILEHEADER_none ExportFileHeader = "none"
+	EXPORTFILEHEADER_columnName ExportFileHeader = "columnName"
+	EXPORTFILEHEADER_columnId ExportFileHeader = "columnId"
 )
 
 // All allowed values of ExportFileHeader enum

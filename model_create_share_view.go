@@ -3,7 +3,7 @@ Gridly API
 
 Gridly API documentation
 
-API version: 4.29.1
+API version: 4.33.0
 Contact: support@gridly.com
 */
 
@@ -39,7 +39,7 @@ func NewCreateShareViewWithDefaults() *CreateShareView {
 
 // GetIncludeGridHistory returns the IncludeGridHistory field value if set, zero value otherwise.
 func (o *CreateShareView) GetIncludeGridHistory() bool {
-	if o == nil || o.IncludeGridHistory == nil {
+	if o == nil || isNil(o.IncludeGridHistory) {
 		var ret bool
 		return ret
 	}
@@ -49,15 +49,15 @@ func (o *CreateShareView) GetIncludeGridHistory() bool {
 // GetIncludeGridHistoryOk returns a tuple with the IncludeGridHistory field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CreateShareView) GetIncludeGridHistoryOk() (*bool, bool) {
-	if o == nil || o.IncludeGridHistory == nil {
-		return nil, false
+	if o == nil || isNil(o.IncludeGridHistory) {
+    return nil, false
 	}
 	return o.IncludeGridHistory, true
 }
 
 // HasIncludeGridHistory returns a boolean if a field has been set.
 func (o *CreateShareView) HasIncludeGridHistory() bool {
-	if o != nil && o.IncludeGridHistory != nil {
+	if o != nil && !isNil(o.IncludeGridHistory) {
 		return true
 	}
 
@@ -71,7 +71,7 @@ func (o *CreateShareView) SetIncludeGridHistory(v bool) {
 
 func (o CreateShareView) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
-	if o.IncludeGridHistory != nil {
+	if !isNil(o.IncludeGridHistory) {
 		toSerialize["includeGridHistory"] = o.IncludeGridHistory
 	}
 	return json.Marshal(toSerialize)

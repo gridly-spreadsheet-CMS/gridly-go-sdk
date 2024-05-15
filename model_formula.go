@@ -3,7 +3,7 @@ Gridly API
 
 Gridly API documentation
 
-API version: 4.29.1
+API version: 4.33.0
 Contact: support@gridly.com
 */
 
@@ -54,7 +54,7 @@ func (o *Formula) GetFormulaText() string {
 // and a boolean to check if the value has been set.
 func (o *Formula) GetFormulaTextOk() (*string, bool) {
 	if o == nil {
-		return nil, false
+    return nil, false
 	}
 	return &o.FormulaText, true
 }
@@ -66,7 +66,7 @@ func (o *Formula) SetFormulaText(v string) {
 
 // GetAlwaysFormatResultValueAsList returns the AlwaysFormatResultValueAsList field value if set, zero value otherwise.
 func (o *Formula) GetAlwaysFormatResultValueAsList() bool {
-	if o == nil || o.AlwaysFormatResultValueAsList == nil {
+	if o == nil || isNil(o.AlwaysFormatResultValueAsList) {
 		var ret bool
 		return ret
 	}
@@ -76,15 +76,15 @@ func (o *Formula) GetAlwaysFormatResultValueAsList() bool {
 // GetAlwaysFormatResultValueAsListOk returns a tuple with the AlwaysFormatResultValueAsList field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Formula) GetAlwaysFormatResultValueAsListOk() (*bool, bool) {
-	if o == nil || o.AlwaysFormatResultValueAsList == nil {
-		return nil, false
+	if o == nil || isNil(o.AlwaysFormatResultValueAsList) {
+    return nil, false
 	}
 	return o.AlwaysFormatResultValueAsList, true
 }
 
 // HasAlwaysFormatResultValueAsList returns a boolean if a field has been set.
 func (o *Formula) HasAlwaysFormatResultValueAsList() bool {
-	if o != nil && o.AlwaysFormatResultValueAsList != nil {
+	if o != nil && !isNil(o.AlwaysFormatResultValueAsList) {
 		return true
 	}
 
@@ -98,7 +98,7 @@ func (o *Formula) SetAlwaysFormatResultValueAsList(v bool) {
 
 // GetDetectResultValueType returns the DetectResultValueType field value if set, zero value otherwise.
 func (o *Formula) GetDetectResultValueType() string {
-	if o == nil || o.DetectResultValueType == nil {
+	if o == nil || isNil(o.DetectResultValueType) {
 		var ret string
 		return ret
 	}
@@ -108,15 +108,15 @@ func (o *Formula) GetDetectResultValueType() string {
 // GetDetectResultValueTypeOk returns a tuple with the DetectResultValueType field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Formula) GetDetectResultValueTypeOk() (*string, bool) {
-	if o == nil || o.DetectResultValueType == nil {
-		return nil, false
+	if o == nil || isNil(o.DetectResultValueType) {
+    return nil, false
 	}
 	return o.DetectResultValueType, true
 }
 
 // HasDetectResultValueType returns a boolean if a field has been set.
 func (o *Formula) HasDetectResultValueType() bool {
-	if o != nil && o.DetectResultValueType != nil {
+	if o != nil && !isNil(o.DetectResultValueType) {
 		return true
 	}
 
@@ -133,10 +133,10 @@ func (o Formula) MarshalJSON() ([]byte, error) {
 	if true {
 		toSerialize["formulaText"] = o.FormulaText
 	}
-	if o.AlwaysFormatResultValueAsList != nil {
+	if !isNil(o.AlwaysFormatResultValueAsList) {
 		toSerialize["alwaysFormatResultValueAsList"] = o.AlwaysFormatResultValueAsList
 	}
-	if o.DetectResultValueType != nil {
+	if !isNil(o.DetectResultValueType) {
 		toSerialize["detectResultValueType"] = o.DetectResultValueType
 	}
 	return json.Marshal(toSerialize)

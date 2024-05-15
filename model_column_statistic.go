@@ -3,7 +3,7 @@ Gridly API
 
 Gridly API documentation
 
-API version: 4.29.1
+API version: 4.33.0
 Contact: support@gridly.com
 */
 
@@ -40,7 +40,7 @@ func NewColumnStatisticWithDefaults() *ColumnStatistic {
 
 // GetRecordCount returns the RecordCount field value if set, zero value otherwise.
 func (o *ColumnStatistic) GetRecordCount() TranslationCount {
-	if o == nil || o.RecordCount == nil {
+	if o == nil || isNil(o.RecordCount) {
 		var ret TranslationCount
 		return ret
 	}
@@ -50,15 +50,15 @@ func (o *ColumnStatistic) GetRecordCount() TranslationCount {
 // GetRecordCountOk returns a tuple with the RecordCount field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ColumnStatistic) GetRecordCountOk() (*TranslationCount, bool) {
-	if o == nil || o.RecordCount == nil {
-		return nil, false
+	if o == nil || isNil(o.RecordCount) {
+    return nil, false
 	}
 	return o.RecordCount, true
 }
 
 // HasRecordCount returns a boolean if a field has been set.
 func (o *ColumnStatistic) HasRecordCount() bool {
-	if o != nil && o.RecordCount != nil {
+	if o != nil && !isNil(o.RecordCount) {
 		return true
 	}
 
@@ -72,7 +72,7 @@ func (o *ColumnStatistic) SetRecordCount(v TranslationCount) {
 
 // GetWordCount returns the WordCount field value if set, zero value otherwise.
 func (o *ColumnStatistic) GetWordCount() TranslationCount {
-	if o == nil || o.WordCount == nil {
+	if o == nil || isNil(o.WordCount) {
 		var ret TranslationCount
 		return ret
 	}
@@ -82,15 +82,15 @@ func (o *ColumnStatistic) GetWordCount() TranslationCount {
 // GetWordCountOk returns a tuple with the WordCount field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ColumnStatistic) GetWordCountOk() (*TranslationCount, bool) {
-	if o == nil || o.WordCount == nil {
-		return nil, false
+	if o == nil || isNil(o.WordCount) {
+    return nil, false
 	}
 	return o.WordCount, true
 }
 
 // HasWordCount returns a boolean if a field has been set.
 func (o *ColumnStatistic) HasWordCount() bool {
-	if o != nil && o.WordCount != nil {
+	if o != nil && !isNil(o.WordCount) {
 		return true
 	}
 
@@ -104,10 +104,10 @@ func (o *ColumnStatistic) SetWordCount(v TranslationCount) {
 
 func (o ColumnStatistic) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
-	if o.RecordCount != nil {
+	if !isNil(o.RecordCount) {
 		toSerialize["recordCount"] = o.RecordCount
 	}
-	if o.WordCount != nil {
+	if !isNil(o.WordCount) {
 		toSerialize["wordCount"] = o.WordCount
 	}
 	return json.Marshal(toSerialize)

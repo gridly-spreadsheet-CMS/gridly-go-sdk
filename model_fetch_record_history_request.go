@@ -3,7 +3,7 @@ Gridly API
 
 Gridly API documentation
 
-API version: 4.29.1
+API version: 4.33.0
 Contact: support@gridly.com
 */
 
@@ -45,7 +45,7 @@ func NewFetchRecordHistoryRequestWithDefaults() *FetchRecordHistoryRequest {
 
 // GetColumnIds returns the ColumnIds field value if set, zero value otherwise.
 func (o *FetchRecordHistoryRequest) GetColumnIds() []string {
-	if o == nil || o.ColumnIds == nil {
+	if o == nil || isNil(o.ColumnIds) {
 		var ret []string
 		return ret
 	}
@@ -55,15 +55,15 @@ func (o *FetchRecordHistoryRequest) GetColumnIds() []string {
 // GetColumnIdsOk returns a tuple with the ColumnIds field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *FetchRecordHistoryRequest) GetColumnIdsOk() ([]string, bool) {
-	if o == nil || o.ColumnIds == nil {
-		return nil, false
+	if o == nil || isNil(o.ColumnIds) {
+    return nil, false
 	}
 	return o.ColumnIds, true
 }
 
 // HasColumnIds returns a boolean if a field has been set.
 func (o *FetchRecordHistoryRequest) HasColumnIds() bool {
-	if o != nil && o.ColumnIds != nil {
+	if o != nil && !isNil(o.ColumnIds) {
 		return true
 	}
 
@@ -77,7 +77,7 @@ func (o *FetchRecordHistoryRequest) SetColumnIds(v []string) {
 
 // GetQuery returns the Query field value if set, zero value otherwise.
 func (o *FetchRecordHistoryRequest) GetQuery() string {
-	if o == nil || o.Query == nil {
+	if o == nil || isNil(o.Query) {
 		var ret string
 		return ret
 	}
@@ -87,15 +87,15 @@ func (o *FetchRecordHistoryRequest) GetQuery() string {
 // GetQueryOk returns a tuple with the Query field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *FetchRecordHistoryRequest) GetQueryOk() (*string, bool) {
-	if o == nil || o.Query == nil {
-		return nil, false
+	if o == nil || isNil(o.Query) {
+    return nil, false
 	}
 	return o.Query, true
 }
 
 // HasQuery returns a boolean if a field has been set.
 func (o *FetchRecordHistoryRequest) HasQuery() bool {
-	if o != nil && o.Query != nil {
+	if o != nil && !isNil(o.Query) {
 		return true
 	}
 
@@ -109,7 +109,7 @@ func (o *FetchRecordHistoryRequest) SetQuery(v string) {
 
 // GetSort returns the Sort field value if set, zero value otherwise.
 func (o *FetchRecordHistoryRequest) GetSort() string {
-	if o == nil || o.Sort == nil {
+	if o == nil || isNil(o.Sort) {
 		var ret string
 		return ret
 	}
@@ -119,15 +119,15 @@ func (o *FetchRecordHistoryRequest) GetSort() string {
 // GetSortOk returns a tuple with the Sort field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *FetchRecordHistoryRequest) GetSortOk() (*string, bool) {
-	if o == nil || o.Sort == nil {
-		return nil, false
+	if o == nil || isNil(o.Sort) {
+    return nil, false
 	}
 	return o.Sort, true
 }
 
 // HasSort returns a boolean if a field has been set.
 func (o *FetchRecordHistoryRequest) HasSort() bool {
-	if o != nil && o.Sort != nil {
+	if o != nil && !isNil(o.Sort) {
 		return true
 	}
 
@@ -141,7 +141,7 @@ func (o *FetchRecordHistoryRequest) SetSort(v string) {
 
 // GetGroupBy returns the GroupBy field value if set, zero value otherwise.
 func (o *FetchRecordHistoryRequest) GetGroupBy() []string {
-	if o == nil || o.GroupBy == nil {
+	if o == nil || isNil(o.GroupBy) {
 		var ret []string
 		return ret
 	}
@@ -151,15 +151,15 @@ func (o *FetchRecordHistoryRequest) GetGroupBy() []string {
 // GetGroupByOk returns a tuple with the GroupBy field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *FetchRecordHistoryRequest) GetGroupByOk() ([]string, bool) {
-	if o == nil || o.GroupBy == nil {
-		return nil, false
+	if o == nil || isNil(o.GroupBy) {
+    return nil, false
 	}
 	return o.GroupBy, true
 }
 
 // HasGroupBy returns a boolean if a field has been set.
 func (o *FetchRecordHistoryRequest) HasGroupBy() bool {
-	if o != nil && o.GroupBy != nil {
+	if o != nil && !isNil(o.GroupBy) {
 		return true
 	}
 
@@ -173,7 +173,7 @@ func (o *FetchRecordHistoryRequest) SetGroupBy(v []string) {
 
 // GetPage returns the Page field value if set, zero value otherwise.
 func (o *FetchRecordHistoryRequest) GetPage() string {
-	if o == nil || o.Page == nil {
+	if o == nil || isNil(o.Page) {
 		var ret string
 		return ret
 	}
@@ -183,15 +183,15 @@ func (o *FetchRecordHistoryRequest) GetPage() string {
 // GetPageOk returns a tuple with the Page field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *FetchRecordHistoryRequest) GetPageOk() (*string, bool) {
-	if o == nil || o.Page == nil {
-		return nil, false
+	if o == nil || isNil(o.Page) {
+    return nil, false
 	}
 	return o.Page, true
 }
 
 // HasPage returns a boolean if a field has been set.
 func (o *FetchRecordHistoryRequest) HasPage() bool {
-	if o != nil && o.Page != nil {
+	if o != nil && !isNil(o.Page) {
 		return true
 	}
 
@@ -205,7 +205,7 @@ func (o *FetchRecordHistoryRequest) SetPage(v string) {
 
 // GetFetchOptions returns the FetchOptions field value if set, zero value otherwise.
 func (o *FetchRecordHistoryRequest) GetFetchOptions() string {
-	if o == nil || o.FetchOptions == nil {
+	if o == nil || isNil(o.FetchOptions) {
 		var ret string
 		return ret
 	}
@@ -215,15 +215,15 @@ func (o *FetchRecordHistoryRequest) GetFetchOptions() string {
 // GetFetchOptionsOk returns a tuple with the FetchOptions field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *FetchRecordHistoryRequest) GetFetchOptionsOk() (*string, bool) {
-	if o == nil || o.FetchOptions == nil {
-		return nil, false
+	if o == nil || isNil(o.FetchOptions) {
+    return nil, false
 	}
 	return o.FetchOptions, true
 }
 
 // HasFetchOptions returns a boolean if a field has been set.
 func (o *FetchRecordHistoryRequest) HasFetchOptions() bool {
-	if o != nil && o.FetchOptions != nil {
+	if o != nil && !isNil(o.FetchOptions) {
 		return true
 	}
 
@@ -237,7 +237,7 @@ func (o *FetchRecordHistoryRequest) SetFetchOptions(v string) {
 
 // GetIncludeSystemUser returns the IncludeSystemUser field value if set, zero value otherwise.
 func (o *FetchRecordHistoryRequest) GetIncludeSystemUser() bool {
-	if o == nil || o.IncludeSystemUser == nil {
+	if o == nil || isNil(o.IncludeSystemUser) {
 		var ret bool
 		return ret
 	}
@@ -247,15 +247,15 @@ func (o *FetchRecordHistoryRequest) GetIncludeSystemUser() bool {
 // GetIncludeSystemUserOk returns a tuple with the IncludeSystemUser field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *FetchRecordHistoryRequest) GetIncludeSystemUserOk() (*bool, bool) {
-	if o == nil || o.IncludeSystemUser == nil {
-		return nil, false
+	if o == nil || isNil(o.IncludeSystemUser) {
+    return nil, false
 	}
 	return o.IncludeSystemUser, true
 }
 
 // HasIncludeSystemUser returns a boolean if a field has been set.
 func (o *FetchRecordHistoryRequest) HasIncludeSystemUser() bool {
-	if o != nil && o.IncludeSystemUser != nil {
+	if o != nil && !isNil(o.IncludeSystemUser) {
 		return true
 	}
 
@@ -269,25 +269,25 @@ func (o *FetchRecordHistoryRequest) SetIncludeSystemUser(v bool) {
 
 func (o FetchRecordHistoryRequest) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
-	if o.ColumnIds != nil {
+	if !isNil(o.ColumnIds) {
 		toSerialize["columnIds"] = o.ColumnIds
 	}
-	if o.Query != nil {
+	if !isNil(o.Query) {
 		toSerialize["query"] = o.Query
 	}
-	if o.Sort != nil {
+	if !isNil(o.Sort) {
 		toSerialize["sort"] = o.Sort
 	}
-	if o.GroupBy != nil {
+	if !isNil(o.GroupBy) {
 		toSerialize["groupBy"] = o.GroupBy
 	}
-	if o.Page != nil {
+	if !isNil(o.Page) {
 		toSerialize["page"] = o.Page
 	}
-	if o.FetchOptions != nil {
+	if !isNil(o.FetchOptions) {
 		toSerialize["fetchOptions"] = o.FetchOptions
 	}
-	if o.IncludeSystemUser != nil {
+	if !isNil(o.IncludeSystemUser) {
 		toSerialize["includeSystemUser"] = o.IncludeSystemUser
 	}
 	return json.Marshal(toSerialize)

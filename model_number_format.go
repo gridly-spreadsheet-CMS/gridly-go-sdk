@@ -3,7 +3,7 @@ Gridly API
 
 Gridly API documentation
 
-API version: 4.29.1
+API version: 4.33.0
 Contact: support@gridly.com
 */
 
@@ -42,7 +42,7 @@ func NewNumberFormatWithDefaults() *NumberFormat {
 
 // GetType returns the Type field value if set, zero value otherwise.
 func (o *NumberFormat) GetType() string {
-	if o == nil || o.Type == nil {
+	if o == nil || isNil(o.Type) {
 		var ret string
 		return ret
 	}
@@ -52,15 +52,15 @@ func (o *NumberFormat) GetType() string {
 // GetTypeOk returns a tuple with the Type field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *NumberFormat) GetTypeOk() (*string, bool) {
-	if o == nil || o.Type == nil {
-		return nil, false
+	if o == nil || isNil(o.Type) {
+    return nil, false
 	}
 	return o.Type, true
 }
 
 // HasType returns a boolean if a field has been set.
 func (o *NumberFormat) HasType() bool {
-	if o != nil && o.Type != nil {
+	if o != nil && !isNil(o.Type) {
 		return true
 	}
 
@@ -74,7 +74,7 @@ func (o *NumberFormat) SetType(v string) {
 
 // GetDecimalPlaces returns the DecimalPlaces field value if set, zero value otherwise.
 func (o *NumberFormat) GetDecimalPlaces() int32 {
-	if o == nil || o.DecimalPlaces == nil {
+	if o == nil || isNil(o.DecimalPlaces) {
 		var ret int32
 		return ret
 	}
@@ -84,15 +84,15 @@ func (o *NumberFormat) GetDecimalPlaces() int32 {
 // GetDecimalPlacesOk returns a tuple with the DecimalPlaces field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *NumberFormat) GetDecimalPlacesOk() (*int32, bool) {
-	if o == nil || o.DecimalPlaces == nil {
-		return nil, false
+	if o == nil || isNil(o.DecimalPlaces) {
+    return nil, false
 	}
 	return o.DecimalPlaces, true
 }
 
 // HasDecimalPlaces returns a boolean if a field has been set.
 func (o *NumberFormat) HasDecimalPlaces() bool {
-	if o != nil && o.DecimalPlaces != nil {
+	if o != nil && !isNil(o.DecimalPlaces) {
 		return true
 	}
 
@@ -106,7 +106,7 @@ func (o *NumberFormat) SetDecimalPlaces(v int32) {
 
 // GetCurrencySymbol returns the CurrencySymbol field value if set, zero value otherwise.
 func (o *NumberFormat) GetCurrencySymbol() string {
-	if o == nil || o.CurrencySymbol == nil {
+	if o == nil || isNil(o.CurrencySymbol) {
 		var ret string
 		return ret
 	}
@@ -116,15 +116,15 @@ func (o *NumberFormat) GetCurrencySymbol() string {
 // GetCurrencySymbolOk returns a tuple with the CurrencySymbol field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *NumberFormat) GetCurrencySymbolOk() (*string, bool) {
-	if o == nil || o.CurrencySymbol == nil {
-		return nil, false
+	if o == nil || isNil(o.CurrencySymbol) {
+    return nil, false
 	}
 	return o.CurrencySymbol, true
 }
 
 // HasCurrencySymbol returns a boolean if a field has been set.
 func (o *NumberFormat) HasCurrencySymbol() bool {
-	if o != nil && o.CurrencySymbol != nil {
+	if o != nil && !isNil(o.CurrencySymbol) {
 		return true
 	}
 
@@ -138,7 +138,7 @@ func (o *NumberFormat) SetCurrencySymbol(v string) {
 
 // GetUse1000Separator returns the Use1000Separator field value if set, zero value otherwise.
 func (o *NumberFormat) GetUse1000Separator() bool {
-	if o == nil || o.Use1000Separator == nil {
+	if o == nil || isNil(o.Use1000Separator) {
 		var ret bool
 		return ret
 	}
@@ -148,15 +148,15 @@ func (o *NumberFormat) GetUse1000Separator() bool {
 // GetUse1000SeparatorOk returns a tuple with the Use1000Separator field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *NumberFormat) GetUse1000SeparatorOk() (*bool, bool) {
-	if o == nil || o.Use1000Separator == nil {
-		return nil, false
+	if o == nil || isNil(o.Use1000Separator) {
+    return nil, false
 	}
 	return o.Use1000Separator, true
 }
 
 // HasUse1000Separator returns a boolean if a field has been set.
 func (o *NumberFormat) HasUse1000Separator() bool {
-	if o != nil && o.Use1000Separator != nil {
+	if o != nil && !isNil(o.Use1000Separator) {
 		return true
 	}
 
@@ -170,16 +170,16 @@ func (o *NumberFormat) SetUse1000Separator(v bool) {
 
 func (o NumberFormat) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
-	if o.Type != nil {
+	if !isNil(o.Type) {
 		toSerialize["type"] = o.Type
 	}
-	if o.DecimalPlaces != nil {
+	if !isNil(o.DecimalPlaces) {
 		toSerialize["decimalPlaces"] = o.DecimalPlaces
 	}
-	if o.CurrencySymbol != nil {
+	if !isNil(o.CurrencySymbol) {
 		toSerialize["currencySymbol"] = o.CurrencySymbol
 	}
-	if o.Use1000Separator != nil {
+	if !isNil(o.Use1000Separator) {
 		toSerialize["use1000Separator"] = o.Use1000Separator
 	}
 	return json.Marshal(toSerialize)

@@ -3,7 +3,7 @@ Gridly API
 
 Gridly API documentation
 
-API version: 4.29.1
+API version: 4.33.0
 Contact: support@gridly.com
 */
 
@@ -41,7 +41,7 @@ func NewMergeRecordConflictWithDefaults() *MergeRecordConflict {
 
 // GetCells returns the Cells field value if set, zero value otherwise.
 func (o *MergeRecordConflict) GetCells() []MergeCellConflict {
-	if o == nil || o.Cells == nil {
+	if o == nil || isNil(o.Cells) {
 		var ret []MergeCellConflict
 		return ret
 	}
@@ -51,15 +51,15 @@ func (o *MergeRecordConflict) GetCells() []MergeCellConflict {
 // GetCellsOk returns a tuple with the Cells field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *MergeRecordConflict) GetCellsOk() ([]MergeCellConflict, bool) {
-	if o == nil || o.Cells == nil {
-		return nil, false
+	if o == nil || isNil(o.Cells) {
+    return nil, false
 	}
 	return o.Cells, true
 }
 
 // HasCells returns a boolean if a field has been set.
 func (o *MergeRecordConflict) HasCells() bool {
-	if o != nil && o.Cells != nil {
+	if o != nil && !isNil(o.Cells) {
 		return true
 	}
 
@@ -73,7 +73,7 @@ func (o *MergeRecordConflict) SetCells(v []MergeCellConflict) {
 
 // GetPathTag returns the PathTag field value if set, zero value otherwise.
 func (o *MergeRecordConflict) GetPathTag() string {
-	if o == nil || o.PathTag == nil {
+	if o == nil || isNil(o.PathTag) {
 		var ret string
 		return ret
 	}
@@ -83,15 +83,15 @@ func (o *MergeRecordConflict) GetPathTag() string {
 // GetPathTagOk returns a tuple with the PathTag field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *MergeRecordConflict) GetPathTagOk() (*string, bool) {
-	if o == nil || o.PathTag == nil {
-		return nil, false
+	if o == nil || isNil(o.PathTag) {
+    return nil, false
 	}
 	return o.PathTag, true
 }
 
 // HasPathTag returns a boolean if a field has been set.
 func (o *MergeRecordConflict) HasPathTag() bool {
-	if o != nil && o.PathTag != nil {
+	if o != nil && !isNil(o.PathTag) {
 		return true
 	}
 
@@ -105,7 +105,7 @@ func (o *MergeRecordConflict) SetPathTag(v string) {
 
 // GetRecordId returns the RecordId field value if set, zero value otherwise.
 func (o *MergeRecordConflict) GetRecordId() string {
-	if o == nil || o.RecordId == nil {
+	if o == nil || isNil(o.RecordId) {
 		var ret string
 		return ret
 	}
@@ -115,15 +115,15 @@ func (o *MergeRecordConflict) GetRecordId() string {
 // GetRecordIdOk returns a tuple with the RecordId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *MergeRecordConflict) GetRecordIdOk() (*string, bool) {
-	if o == nil || o.RecordId == nil {
-		return nil, false
+	if o == nil || isNil(o.RecordId) {
+    return nil, false
 	}
 	return o.RecordId, true
 }
 
 // HasRecordId returns a boolean if a field has been set.
 func (o *MergeRecordConflict) HasRecordId() bool {
-	if o != nil && o.RecordId != nil {
+	if o != nil && !isNil(o.RecordId) {
 		return true
 	}
 
@@ -137,13 +137,13 @@ func (o *MergeRecordConflict) SetRecordId(v string) {
 
 func (o MergeRecordConflict) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
-	if o.Cells != nil {
+	if !isNil(o.Cells) {
 		toSerialize["cells"] = o.Cells
 	}
-	if o.PathTag != nil {
+	if !isNil(o.PathTag) {
 		toSerialize["pathTag"] = o.PathTag
 	}
-	if o.RecordId != nil {
+	if !isNil(o.RecordId) {
 		toSerialize["recordId"] = o.RecordId
 	}
 	return json.Marshal(toSerialize)

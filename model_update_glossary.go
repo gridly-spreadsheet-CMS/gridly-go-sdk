@@ -3,7 +3,7 @@ Gridly API
 
 Gridly API documentation
 
-API version: 4.29.1
+API version: 4.33.0
 Contact: support@gridly.com
 */
 
@@ -42,7 +42,7 @@ func NewUpdateGlossaryWithDefaults() *UpdateGlossary {
 
 // GetName returns the Name field value if set, zero value otherwise.
 func (o *UpdateGlossary) GetName() string {
-	if o == nil || o.Name == nil {
+	if o == nil || isNil(o.Name) {
 		var ret string
 		return ret
 	}
@@ -52,15 +52,15 @@ func (o *UpdateGlossary) GetName() string {
 // GetNameOk returns a tuple with the Name field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *UpdateGlossary) GetNameOk() (*string, bool) {
-	if o == nil || o.Name == nil {
-		return nil, false
+	if o == nil || isNil(o.Name) {
+    return nil, false
 	}
 	return o.Name, true
 }
 
 // HasName returns a boolean if a field has been set.
 func (o *UpdateGlossary) HasName() bool {
-	if o != nil && o.Name != nil {
+	if o != nil && !isNil(o.Name) {
 		return true
 	}
 
@@ -74,7 +74,7 @@ func (o *UpdateGlossary) SetName(v string) {
 
 // GetDescription returns the Description field value if set, zero value otherwise.
 func (o *UpdateGlossary) GetDescription() string {
-	if o == nil || o.Description == nil {
+	if o == nil || isNil(o.Description) {
 		var ret string
 		return ret
 	}
@@ -84,15 +84,15 @@ func (o *UpdateGlossary) GetDescription() string {
 // GetDescriptionOk returns a tuple with the Description field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *UpdateGlossary) GetDescriptionOk() (*string, bool) {
-	if o == nil || o.Description == nil {
-		return nil, false
+	if o == nil || isNil(o.Description) {
+    return nil, false
 	}
 	return o.Description, true
 }
 
 // HasDescription returns a boolean if a field has been set.
 func (o *UpdateGlossary) HasDescription() bool {
-	if o != nil && o.Description != nil {
+	if o != nil && !isNil(o.Description) {
 		return true
 	}
 
@@ -106,7 +106,7 @@ func (o *UpdateGlossary) SetDescription(v string) {
 
 // GetLangs returns the Langs field value if set, zero value otherwise.
 func (o *UpdateGlossary) GetLangs() []string {
-	if o == nil || o.Langs == nil {
+	if o == nil || isNil(o.Langs) {
 		var ret []string
 		return ret
 	}
@@ -116,15 +116,15 @@ func (o *UpdateGlossary) GetLangs() []string {
 // GetLangsOk returns a tuple with the Langs field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *UpdateGlossary) GetLangsOk() ([]string, bool) {
-	if o == nil || o.Langs == nil {
-		return nil, false
+	if o == nil || isNil(o.Langs) {
+    return nil, false
 	}
 	return o.Langs, true
 }
 
 // HasLangs returns a boolean if a field has been set.
 func (o *UpdateGlossary) HasLangs() bool {
-	if o != nil && o.Langs != nil {
+	if o != nil && !isNil(o.Langs) {
 		return true
 	}
 
@@ -138,7 +138,7 @@ func (o *UpdateGlossary) SetLangs(v []string) {
 
 // GetProjects returns the Projects field value if set, zero value otherwise.
 func (o *UpdateGlossary) GetProjects() []GlossaryProject {
-	if o == nil || o.Projects == nil {
+	if o == nil || isNil(o.Projects) {
 		var ret []GlossaryProject
 		return ret
 	}
@@ -148,15 +148,15 @@ func (o *UpdateGlossary) GetProjects() []GlossaryProject {
 // GetProjectsOk returns a tuple with the Projects field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *UpdateGlossary) GetProjectsOk() ([]GlossaryProject, bool) {
-	if o == nil || o.Projects == nil {
-		return nil, false
+	if o == nil || isNil(o.Projects) {
+    return nil, false
 	}
 	return o.Projects, true
 }
 
 // HasProjects returns a boolean if a field has been set.
 func (o *UpdateGlossary) HasProjects() bool {
-	if o != nil && o.Projects != nil {
+	if o != nil && !isNil(o.Projects) {
 		return true
 	}
 
@@ -170,16 +170,16 @@ func (o *UpdateGlossary) SetProjects(v []GlossaryProject) {
 
 func (o UpdateGlossary) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
-	if o.Name != nil {
+	if !isNil(o.Name) {
 		toSerialize["name"] = o.Name
 	}
-	if o.Description != nil {
+	if !isNil(o.Description) {
 		toSerialize["description"] = o.Description
 	}
-	if o.Langs != nil {
+	if !isNil(o.Langs) {
 		toSerialize["langs"] = o.Langs
 	}
-	if o.Projects != nil {
+	if !isNil(o.Projects) {
 		toSerialize["projects"] = o.Projects
 	}
 	return json.Marshal(toSerialize)

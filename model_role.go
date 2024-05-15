@@ -3,7 +3,7 @@ Gridly API
 
 Gridly API documentation
 
-API version: 4.29.1
+API version: 4.33.0
 Contact: support@gridly.com
 */
 
@@ -46,7 +46,7 @@ func NewRoleWithDefaults() *Role {
 
 // GetId returns the Id field value if set, zero value otherwise.
 func (o *Role) GetId() int64 {
-	if o == nil || o.Id == nil {
+	if o == nil || isNil(o.Id) {
 		var ret int64
 		return ret
 	}
@@ -56,15 +56,15 @@ func (o *Role) GetId() int64 {
 // GetIdOk returns a tuple with the Id field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Role) GetIdOk() (*int64, bool) {
-	if o == nil || o.Id == nil {
-		return nil, false
+	if o == nil || isNil(o.Id) {
+    return nil, false
 	}
 	return o.Id, true
 }
 
 // HasId returns a boolean if a field has been set.
 func (o *Role) HasId() bool {
-	if o != nil && o.Id != nil {
+	if o != nil && !isNil(o.Id) {
 		return true
 	}
 
@@ -78,7 +78,7 @@ func (o *Role) SetId(v int64) {
 
 // GetName returns the Name field value if set, zero value otherwise.
 func (o *Role) GetName() string {
-	if o == nil || o.Name == nil {
+	if o == nil || isNil(o.Name) {
 		var ret string
 		return ret
 	}
@@ -88,15 +88,15 @@ func (o *Role) GetName() string {
 // GetNameOk returns a tuple with the Name field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Role) GetNameOk() (*string, bool) {
-	if o == nil || o.Name == nil {
-		return nil, false
+	if o == nil || isNil(o.Name) {
+    return nil, false
 	}
 	return o.Name, true
 }
 
 // HasName returns a boolean if a field has been set.
 func (o *Role) HasName() bool {
-	if o != nil && o.Name != nil {
+	if o != nil && !isNil(o.Name) {
 		return true
 	}
 
@@ -110,7 +110,7 @@ func (o *Role) SetName(v string) {
 
 // GetTitle returns the Title field value if set, zero value otherwise.
 func (o *Role) GetTitle() string {
-	if o == nil || o.Title == nil {
+	if o == nil || isNil(o.Title) {
 		var ret string
 		return ret
 	}
@@ -120,15 +120,15 @@ func (o *Role) GetTitle() string {
 // GetTitleOk returns a tuple with the Title field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Role) GetTitleOk() (*string, bool) {
-	if o == nil || o.Title == nil {
-		return nil, false
+	if o == nil || isNil(o.Title) {
+    return nil, false
 	}
 	return o.Title, true
 }
 
 // HasTitle returns a boolean if a field has been set.
 func (o *Role) HasTitle() bool {
-	if o != nil && o.Title != nil {
+	if o != nil && !isNil(o.Title) {
 		return true
 	}
 
@@ -142,7 +142,7 @@ func (o *Role) SetTitle(v string) {
 
 // GetType returns the Type field value if set, zero value otherwise.
 func (o *Role) GetType() string {
-	if o == nil || o.Type == nil {
+	if o == nil || isNil(o.Type) {
 		var ret string
 		return ret
 	}
@@ -152,15 +152,15 @@ func (o *Role) GetType() string {
 // GetTypeOk returns a tuple with the Type field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Role) GetTypeOk() (*string, bool) {
-	if o == nil || o.Type == nil {
-		return nil, false
+	if o == nil || isNil(o.Type) {
+    return nil, false
 	}
 	return o.Type, true
 }
 
 // HasType returns a boolean if a field has been set.
 func (o *Role) HasType() bool {
-	if o != nil && o.Type != nil {
+	if o != nil && !isNil(o.Type) {
 		return true
 	}
 
@@ -174,7 +174,7 @@ func (o *Role) SetType(v string) {
 
 // GetLevel returns the Level field value if set, zero value otherwise.
 func (o *Role) GetLevel() string {
-	if o == nil || o.Level == nil {
+	if o == nil || isNil(o.Level) {
 		var ret string
 		return ret
 	}
@@ -184,15 +184,15 @@ func (o *Role) GetLevel() string {
 // GetLevelOk returns a tuple with the Level field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Role) GetLevelOk() (*string, bool) {
-	if o == nil || o.Level == nil {
-		return nil, false
+	if o == nil || isNil(o.Level) {
+    return nil, false
 	}
 	return o.Level, true
 }
 
 // HasLevel returns a boolean if a field has been set.
 func (o *Role) HasLevel() bool {
-	if o != nil && o.Level != nil {
+	if o != nil && !isNil(o.Level) {
 		return true
 	}
 
@@ -206,7 +206,7 @@ func (o *Role) SetLevel(v string) {
 
 // GetPrivileges returns the Privileges field value if set, zero value otherwise.
 func (o *Role) GetPrivileges() []Privilege {
-	if o == nil || o.Privileges == nil {
+	if o == nil || isNil(o.Privileges) {
 		var ret []Privilege
 		return ret
 	}
@@ -216,15 +216,15 @@ func (o *Role) GetPrivileges() []Privilege {
 // GetPrivilegesOk returns a tuple with the Privileges field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Role) GetPrivilegesOk() ([]Privilege, bool) {
-	if o == nil || o.Privileges == nil {
-		return nil, false
+	if o == nil || isNil(o.Privileges) {
+    return nil, false
 	}
 	return o.Privileges, true
 }
 
 // HasPrivileges returns a boolean if a field has been set.
 func (o *Role) HasPrivileges() bool {
-	if o != nil && o.Privileges != nil {
+	if o != nil && !isNil(o.Privileges) {
 		return true
 	}
 
@@ -238,7 +238,7 @@ func (o *Role) SetPrivileges(v []Privilege) {
 
 // GetPrivilegeIds returns the PrivilegeIds field value if set, zero value otherwise.
 func (o *Role) GetPrivilegeIds() []int64 {
-	if o == nil || o.PrivilegeIds == nil {
+	if o == nil || isNil(o.PrivilegeIds) {
 		var ret []int64
 		return ret
 	}
@@ -248,15 +248,15 @@ func (o *Role) GetPrivilegeIds() []int64 {
 // GetPrivilegeIdsOk returns a tuple with the PrivilegeIds field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Role) GetPrivilegeIdsOk() ([]int64, bool) {
-	if o == nil || o.PrivilegeIds == nil {
-		return nil, false
+	if o == nil || isNil(o.PrivilegeIds) {
+    return nil, false
 	}
 	return o.PrivilegeIds, true
 }
 
 // HasPrivilegeIds returns a boolean if a field has been set.
 func (o *Role) HasPrivilegeIds() bool {
-	if o != nil && o.PrivilegeIds != nil {
+	if o != nil && !isNil(o.PrivilegeIds) {
 		return true
 	}
 
@@ -270,7 +270,7 @@ func (o *Role) SetPrivilegeIds(v []int64) {
 
 // GetIsSystemRole returns the IsSystemRole field value if set, zero value otherwise.
 func (o *Role) GetIsSystemRole() bool {
-	if o == nil || o.IsSystemRole == nil {
+	if o == nil || isNil(o.IsSystemRole) {
 		var ret bool
 		return ret
 	}
@@ -280,15 +280,15 @@ func (o *Role) GetIsSystemRole() bool {
 // GetIsSystemRoleOk returns a tuple with the IsSystemRole field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Role) GetIsSystemRoleOk() (*bool, bool) {
-	if o == nil || o.IsSystemRole == nil {
-		return nil, false
+	if o == nil || isNil(o.IsSystemRole) {
+    return nil, false
 	}
 	return o.IsSystemRole, true
 }
 
 // HasIsSystemRole returns a boolean if a field has been set.
 func (o *Role) HasIsSystemRole() bool {
-	if o != nil && o.IsSystemRole != nil {
+	if o != nil && !isNil(o.IsSystemRole) {
 		return true
 	}
 
@@ -302,28 +302,28 @@ func (o *Role) SetIsSystemRole(v bool) {
 
 func (o Role) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
-	if o.Id != nil {
+	if !isNil(o.Id) {
 		toSerialize["id"] = o.Id
 	}
-	if o.Name != nil {
+	if !isNil(o.Name) {
 		toSerialize["name"] = o.Name
 	}
-	if o.Title != nil {
+	if !isNil(o.Title) {
 		toSerialize["title"] = o.Title
 	}
-	if o.Type != nil {
+	if !isNil(o.Type) {
 		toSerialize["type"] = o.Type
 	}
-	if o.Level != nil {
+	if !isNil(o.Level) {
 		toSerialize["level"] = o.Level
 	}
-	if o.Privileges != nil {
+	if !isNil(o.Privileges) {
 		toSerialize["privileges"] = o.Privileges
 	}
-	if o.PrivilegeIds != nil {
+	if !isNil(o.PrivilegeIds) {
 		toSerialize["privilegeIds"] = o.PrivilegeIds
 	}
-	if o.IsSystemRole != nil {
+	if !isNil(o.IsSystemRole) {
 		toSerialize["isSystemRole"] = o.IsSystemRole
 	}
 	return json.Marshal(toSerialize)

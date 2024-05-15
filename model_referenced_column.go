@@ -3,7 +3,7 @@ Gridly API
 
 Gridly API documentation
 
-API version: 4.29.1
+API version: 4.33.0
 Contact: support@gridly.com
 */
 
@@ -41,7 +41,7 @@ func NewReferencedColumnWithDefaults() *ReferencedColumn {
 
 // GetId returns the Id field value if set, zero value otherwise.
 func (o *ReferencedColumn) GetId() string {
-	if o == nil || o.Id == nil {
+	if o == nil || isNil(o.Id) {
 		var ret string
 		return ret
 	}
@@ -51,15 +51,15 @@ func (o *ReferencedColumn) GetId() string {
 // GetIdOk returns a tuple with the Id field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ReferencedColumn) GetIdOk() (*string, bool) {
-	if o == nil || o.Id == nil {
-		return nil, false
+	if o == nil || isNil(o.Id) {
+    return nil, false
 	}
 	return o.Id, true
 }
 
 // HasId returns a boolean if a field has been set.
 func (o *ReferencedColumn) HasId() bool {
-	if o != nil && o.Id != nil {
+	if o != nil && !isNil(o.Id) {
 		return true
 	}
 
@@ -73,7 +73,7 @@ func (o *ReferencedColumn) SetId(v string) {
 
 // GetName returns the Name field value if set, zero value otherwise.
 func (o *ReferencedColumn) GetName() string {
-	if o == nil || o.Name == nil {
+	if o == nil || isNil(o.Name) {
 		var ret string
 		return ret
 	}
@@ -83,15 +83,15 @@ func (o *ReferencedColumn) GetName() string {
 // GetNameOk returns a tuple with the Name field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ReferencedColumn) GetNameOk() (*string, bool) {
-	if o == nil || o.Name == nil {
-		return nil, false
+	if o == nil || isNil(o.Name) {
+    return nil, false
 	}
 	return o.Name, true
 }
 
 // HasName returns a boolean if a field has been set.
 func (o *ReferencedColumn) HasName() bool {
-	if o != nil && o.Name != nil {
+	if o != nil && !isNil(o.Name) {
 		return true
 	}
 
@@ -105,7 +105,7 @@ func (o *ReferencedColumn) SetName(v string) {
 
 // GetSelectionOptions returns the SelectionOptions field value if set, zero value otherwise.
 func (o *ReferencedColumn) GetSelectionOptions() []string {
-	if o == nil || o.SelectionOptions == nil {
+	if o == nil || isNil(o.SelectionOptions) {
 		var ret []string
 		return ret
 	}
@@ -115,15 +115,15 @@ func (o *ReferencedColumn) GetSelectionOptions() []string {
 // GetSelectionOptionsOk returns a tuple with the SelectionOptions field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ReferencedColumn) GetSelectionOptionsOk() ([]string, bool) {
-	if o == nil || o.SelectionOptions == nil {
-		return nil, false
+	if o == nil || isNil(o.SelectionOptions) {
+    return nil, false
 	}
 	return o.SelectionOptions, true
 }
 
 // HasSelectionOptions returns a boolean if a field has been set.
 func (o *ReferencedColumn) HasSelectionOptions() bool {
-	if o != nil && o.SelectionOptions != nil {
+	if o != nil && !isNil(o.SelectionOptions) {
 		return true
 	}
 
@@ -137,13 +137,13 @@ func (o *ReferencedColumn) SetSelectionOptions(v []string) {
 
 func (o ReferencedColumn) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
-	if o.Id != nil {
+	if !isNil(o.Id) {
 		toSerialize["id"] = o.Id
 	}
-	if o.Name != nil {
+	if !isNil(o.Name) {
 		toSerialize["name"] = o.Name
 	}
-	if o.SelectionOptions != nil {
+	if !isNil(o.SelectionOptions) {
 		toSerialize["selectionOptions"] = o.SelectionOptions
 	}
 	return json.Marshal(toSerialize)

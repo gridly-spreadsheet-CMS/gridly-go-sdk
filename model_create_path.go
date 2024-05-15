@@ -3,7 +3,7 @@ Gridly API
 
 Gridly API documentation
 
-API version: 4.29.1
+API version: 4.33.0
 Contact: support@gridly.com
 */
 
@@ -40,7 +40,7 @@ func NewCreatePathWithDefaults() *CreatePath {
 
 // GetParentPath returns the ParentPath field value if set, zero value otherwise.
 func (o *CreatePath) GetParentPath() string {
-	if o == nil || o.ParentPath == nil {
+	if o == nil || isNil(o.ParentPath) {
 		var ret string
 		return ret
 	}
@@ -50,15 +50,15 @@ func (o *CreatePath) GetParentPath() string {
 // GetParentPathOk returns a tuple with the ParentPath field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CreatePath) GetParentPathOk() (*string, bool) {
-	if o == nil || o.ParentPath == nil {
-		return nil, false
+	if o == nil || isNil(o.ParentPath) {
+    return nil, false
 	}
 	return o.ParentPath, true
 }
 
 // HasParentPath returns a boolean if a field has been set.
 func (o *CreatePath) HasParentPath() bool {
-	if o != nil && o.ParentPath != nil {
+	if o != nil && !isNil(o.ParentPath) {
 		return true
 	}
 
@@ -72,7 +72,7 @@ func (o *CreatePath) SetParentPath(v string) {
 
 // GetPaths returns the Paths field value if set, zero value otherwise.
 func (o *CreatePath) GetPaths() []string {
-	if o == nil || o.Paths == nil {
+	if o == nil || isNil(o.Paths) {
 		var ret []string
 		return ret
 	}
@@ -82,15 +82,15 @@ func (o *CreatePath) GetPaths() []string {
 // GetPathsOk returns a tuple with the Paths field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CreatePath) GetPathsOk() ([]string, bool) {
-	if o == nil || o.Paths == nil {
-		return nil, false
+	if o == nil || isNil(o.Paths) {
+    return nil, false
 	}
 	return o.Paths, true
 }
 
 // HasPaths returns a boolean if a field has been set.
 func (o *CreatePath) HasPaths() bool {
-	if o != nil && o.Paths != nil {
+	if o != nil && !isNil(o.Paths) {
 		return true
 	}
 
@@ -104,10 +104,10 @@ func (o *CreatePath) SetPaths(v []string) {
 
 func (o CreatePath) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
-	if o.ParentPath != nil {
+	if !isNil(o.ParentPath) {
 		toSerialize["parentPath"] = o.ParentPath
 	}
-	if o.Paths != nil {
+	if !isNil(o.Paths) {
 		toSerialize["paths"] = o.Paths
 	}
 	return json.Marshal(toSerialize)

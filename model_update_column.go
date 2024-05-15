@@ -3,7 +3,7 @@ Gridly API
 
 Gridly API documentation
 
-API version: 4.29.1
+API version: 4.33.0
 Contact: support@gridly.com
 */
 
@@ -51,7 +51,7 @@ func NewUpdateColumnWithDefaults() *UpdateColumn {
 
 // GetName returns the Name field value if set, zero value otherwise.
 func (o *UpdateColumn) GetName() string {
-	if o == nil || o.Name == nil {
+	if o == nil || isNil(o.Name) {
 		var ret string
 		return ret
 	}
@@ -61,15 +61,15 @@ func (o *UpdateColumn) GetName() string {
 // GetNameOk returns a tuple with the Name field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *UpdateColumn) GetNameOk() (*string, bool) {
-	if o == nil || o.Name == nil {
-		return nil, false
+	if o == nil || isNil(o.Name) {
+    return nil, false
 	}
 	return o.Name, true
 }
 
 // HasName returns a boolean if a field has been set.
 func (o *UpdateColumn) HasName() bool {
-	if o != nil && o.Name != nil {
+	if o != nil && !isNil(o.Name) {
 		return true
 	}
 
@@ -83,7 +83,7 @@ func (o *UpdateColumn) SetName(v string) {
 
 // GetDescription returns the Description field value if set, zero value otherwise.
 func (o *UpdateColumn) GetDescription() string {
-	if o == nil || o.Description == nil {
+	if o == nil || isNil(o.Description) {
 		var ret string
 		return ret
 	}
@@ -93,15 +93,15 @@ func (o *UpdateColumn) GetDescription() string {
 // GetDescriptionOk returns a tuple with the Description field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *UpdateColumn) GetDescriptionOk() (*string, bool) {
-	if o == nil || o.Description == nil {
-		return nil, false
+	if o == nil || isNil(o.Description) {
+    return nil, false
 	}
 	return o.Description, true
 }
 
 // HasDescription returns a boolean if a field has been set.
 func (o *UpdateColumn) HasDescription() bool {
-	if o != nil && o.Description != nil {
+	if o != nil && !isNil(o.Description) {
 		return true
 	}
 
@@ -115,7 +115,7 @@ func (o *UpdateColumn) SetDescription(v string) {
 
 // GetType returns the Type field value if set, zero value otherwise.
 func (o *UpdateColumn) GetType() string {
-	if o == nil || o.Type == nil {
+	if o == nil || isNil(o.Type) {
 		var ret string
 		return ret
 	}
@@ -125,15 +125,15 @@ func (o *UpdateColumn) GetType() string {
 // GetTypeOk returns a tuple with the Type field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *UpdateColumn) GetTypeOk() (*string, bool) {
-	if o == nil || o.Type == nil {
-		return nil, false
+	if o == nil || isNil(o.Type) {
+    return nil, false
 	}
 	return o.Type, true
 }
 
 // HasType returns a boolean if a field has been set.
 func (o *UpdateColumn) HasType() bool {
-	if o != nil && o.Type != nil {
+	if o != nil && !isNil(o.Type) {
 		return true
 	}
 
@@ -147,7 +147,7 @@ func (o *UpdateColumn) SetType(v string) {
 
 // GetLanguageCode returns the LanguageCode field value if set, zero value otherwise.
 func (o *UpdateColumn) GetLanguageCode() string {
-	if o == nil || o.LanguageCode == nil {
+	if o == nil || isNil(o.LanguageCode) {
 		var ret string
 		return ret
 	}
@@ -157,15 +157,15 @@ func (o *UpdateColumn) GetLanguageCode() string {
 // GetLanguageCodeOk returns a tuple with the LanguageCode field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *UpdateColumn) GetLanguageCodeOk() (*string, bool) {
-	if o == nil || o.LanguageCode == nil {
-		return nil, false
+	if o == nil || isNil(o.LanguageCode) {
+    return nil, false
 	}
 	return o.LanguageCode, true
 }
 
 // HasLanguageCode returns a boolean if a field has been set.
 func (o *UpdateColumn) HasLanguageCode() bool {
-	if o != nil && o.LanguageCode != nil {
+	if o != nil && !isNil(o.LanguageCode) {
 		return true
 	}
 
@@ -179,7 +179,7 @@ func (o *UpdateColumn) SetLanguageCode(v string) {
 
 // GetLocalizationType returns the LocalizationType field value if set, zero value otherwise.
 func (o *UpdateColumn) GetLocalizationType() string {
-	if o == nil || o.LocalizationType == nil {
+	if o == nil || isNil(o.LocalizationType) {
 		var ret string
 		return ret
 	}
@@ -189,15 +189,15 @@ func (o *UpdateColumn) GetLocalizationType() string {
 // GetLocalizationTypeOk returns a tuple with the LocalizationType field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *UpdateColumn) GetLocalizationTypeOk() (*string, bool) {
-	if o == nil || o.LocalizationType == nil {
-		return nil, false
+	if o == nil || isNil(o.LocalizationType) {
+    return nil, false
 	}
 	return o.LocalizationType, true
 }
 
 // HasLocalizationType returns a boolean if a field has been set.
 func (o *UpdateColumn) HasLocalizationType() bool {
-	if o != nil && o.LocalizationType != nil {
+	if o != nil && !isNil(o.LocalizationType) {
 		return true
 	}
 
@@ -211,7 +211,7 @@ func (o *UpdateColumn) SetLocalizationType(v string) {
 
 // GetSelectionOptions returns the SelectionOptions field value if set, zero value otherwise.
 func (o *UpdateColumn) GetSelectionOptions() []string {
-	if o == nil || o.SelectionOptions == nil {
+	if o == nil || isNil(o.SelectionOptions) {
 		var ret []string
 		return ret
 	}
@@ -221,15 +221,15 @@ func (o *UpdateColumn) GetSelectionOptions() []string {
 // GetSelectionOptionsOk returns a tuple with the SelectionOptions field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *UpdateColumn) GetSelectionOptionsOk() ([]string, bool) {
-	if o == nil || o.SelectionOptions == nil {
-		return nil, false
+	if o == nil || isNil(o.SelectionOptions) {
+    return nil, false
 	}
 	return o.SelectionOptions, true
 }
 
 // HasSelectionOptions returns a boolean if a field has been set.
 func (o *UpdateColumn) HasSelectionOptions() bool {
-	if o != nil && o.SelectionOptions != nil {
+	if o != nil && !isNil(o.SelectionOptions) {
 		return true
 	}
 
@@ -243,7 +243,7 @@ func (o *UpdateColumn) SetSelectionOptions(v []string) {
 
 // GetNumberFormat returns the NumberFormat field value if set, zero value otherwise.
 func (o *UpdateColumn) GetNumberFormat() NumberFormat {
-	if o == nil || o.NumberFormat == nil {
+	if o == nil || isNil(o.NumberFormat) {
 		var ret NumberFormat
 		return ret
 	}
@@ -253,15 +253,15 @@ func (o *UpdateColumn) GetNumberFormat() NumberFormat {
 // GetNumberFormatOk returns a tuple with the NumberFormat field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *UpdateColumn) GetNumberFormatOk() (*NumberFormat, bool) {
-	if o == nil || o.NumberFormat == nil {
-		return nil, false
+	if o == nil || isNil(o.NumberFormat) {
+    return nil, false
 	}
 	return o.NumberFormat, true
 }
 
 // HasNumberFormat returns a boolean if a field has been set.
 func (o *UpdateColumn) HasNumberFormat() bool {
-	if o != nil && o.NumberFormat != nil {
+	if o != nil && !isNil(o.NumberFormat) {
 		return true
 	}
 
@@ -275,7 +275,7 @@ func (o *UpdateColumn) SetNumberFormat(v NumberFormat) {
 
 // GetReference returns the Reference field value if set, zero value otherwise.
 func (o *UpdateColumn) GetReference() Reference {
-	if o == nil || o.Reference == nil {
+	if o == nil || isNil(o.Reference) {
 		var ret Reference
 		return ret
 	}
@@ -285,15 +285,15 @@ func (o *UpdateColumn) GetReference() Reference {
 // GetReferenceOk returns a tuple with the Reference field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *UpdateColumn) GetReferenceOk() (*Reference, bool) {
-	if o == nil || o.Reference == nil {
-		return nil, false
+	if o == nil || isNil(o.Reference) {
+    return nil, false
 	}
 	return o.Reference, true
 }
 
 // HasReference returns a boolean if a field has been set.
 func (o *UpdateColumn) HasReference() bool {
-	if o != nil && o.Reference != nil {
+	if o != nil && !isNil(o.Reference) {
 		return true
 	}
 
@@ -307,7 +307,7 @@ func (o *UpdateColumn) SetReference(v Reference) {
 
 // GetFormula returns the Formula field value if set, zero value otherwise.
 func (o *UpdateColumn) GetFormula() Formula {
-	if o == nil || o.Formula == nil {
+	if o == nil || isNil(o.Formula) {
 		var ret Formula
 		return ret
 	}
@@ -317,15 +317,15 @@ func (o *UpdateColumn) GetFormula() Formula {
 // GetFormulaOk returns a tuple with the Formula field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *UpdateColumn) GetFormulaOk() (*Formula, bool) {
-	if o == nil || o.Formula == nil {
-		return nil, false
+	if o == nil || isNil(o.Formula) {
+    return nil, false
 	}
 	return o.Formula, true
 }
 
 // HasFormula returns a boolean if a field has been set.
 func (o *UpdateColumn) HasFormula() bool {
-	if o != nil && o.Formula != nil {
+	if o != nil && !isNil(o.Formula) {
 		return true
 	}
 
@@ -339,7 +339,7 @@ func (o *UpdateColumn) SetFormula(v Formula) {
 
 // GetDateTimeFormat returns the DateTimeFormat field value if set, zero value otherwise.
 func (o *UpdateColumn) GetDateTimeFormat() DateTimeFormat {
-	if o == nil || o.DateTimeFormat == nil {
+	if o == nil || isNil(o.DateTimeFormat) {
 		var ret DateTimeFormat
 		return ret
 	}
@@ -349,15 +349,15 @@ func (o *UpdateColumn) GetDateTimeFormat() DateTimeFormat {
 // GetDateTimeFormatOk returns a tuple with the DateTimeFormat field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *UpdateColumn) GetDateTimeFormatOk() (*DateTimeFormat, bool) {
-	if o == nil || o.DateTimeFormat == nil {
-		return nil, false
+	if o == nil || isNil(o.DateTimeFormat) {
+    return nil, false
 	}
 	return o.DateTimeFormat, true
 }
 
 // HasDateTimeFormat returns a boolean if a field has been set.
 func (o *UpdateColumn) HasDateTimeFormat() bool {
-	if o != nil && o.DateTimeFormat != nil {
+	if o != nil && !isNil(o.DateTimeFormat) {
 		return true
 	}
 
@@ -371,7 +371,7 @@ func (o *UpdateColumn) SetDateTimeFormat(v DateTimeFormat) {
 
 // GetViewable returns the Viewable field value if set, zero value otherwise.
 func (o *UpdateColumn) GetViewable() bool {
-	if o == nil || o.Viewable == nil {
+	if o == nil || isNil(o.Viewable) {
 		var ret bool
 		return ret
 	}
@@ -381,15 +381,15 @@ func (o *UpdateColumn) GetViewable() bool {
 // GetViewableOk returns a tuple with the Viewable field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *UpdateColumn) GetViewableOk() (*bool, bool) {
-	if o == nil || o.Viewable == nil {
-		return nil, false
+	if o == nil || isNil(o.Viewable) {
+    return nil, false
 	}
 	return o.Viewable, true
 }
 
 // HasViewable returns a boolean if a field has been set.
 func (o *UpdateColumn) HasViewable() bool {
-	if o != nil && o.Viewable != nil {
+	if o != nil && !isNil(o.Viewable) {
 		return true
 	}
 
@@ -403,7 +403,7 @@ func (o *UpdateColumn) SetViewable(v bool) {
 
 // GetEditable returns the Editable field value if set, zero value otherwise.
 func (o *UpdateColumn) GetEditable() bool {
-	if o == nil || o.Editable == nil {
+	if o == nil || isNil(o.Editable) {
 		var ret bool
 		return ret
 	}
@@ -413,15 +413,15 @@ func (o *UpdateColumn) GetEditable() bool {
 // GetEditableOk returns a tuple with the Editable field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *UpdateColumn) GetEditableOk() (*bool, bool) {
-	if o == nil || o.Editable == nil {
-		return nil, false
+	if o == nil || isNil(o.Editable) {
+    return nil, false
 	}
 	return o.Editable, true
 }
 
 // HasEditable returns a boolean if a field has been set.
 func (o *UpdateColumn) HasEditable() bool {
-	if o != nil && o.Editable != nil {
+	if o != nil && !isNil(o.Editable) {
 		return true
 	}
 
@@ -435,7 +435,7 @@ func (o *UpdateColumn) SetEditable(v bool) {
 
 // GetNewId returns the NewId field value if set, zero value otherwise.
 func (o *UpdateColumn) GetNewId() string {
-	if o == nil || o.NewId == nil {
+	if o == nil || isNil(o.NewId) {
 		var ret string
 		return ret
 	}
@@ -445,15 +445,15 @@ func (o *UpdateColumn) GetNewId() string {
 // GetNewIdOk returns a tuple with the NewId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *UpdateColumn) GetNewIdOk() (*string, bool) {
-	if o == nil || o.NewId == nil {
-		return nil, false
+	if o == nil || isNil(o.NewId) {
+    return nil, false
 	}
 	return o.NewId, true
 }
 
 // HasNewId returns a boolean if a field has been set.
 func (o *UpdateColumn) HasNewId() bool {
-	if o != nil && o.NewId != nil {
+	if o != nil && !isNil(o.NewId) {
 		return true
 	}
 
@@ -467,43 +467,43 @@ func (o *UpdateColumn) SetNewId(v string) {
 
 func (o UpdateColumn) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
-	if o.Name != nil {
+	if !isNil(o.Name) {
 		toSerialize["name"] = o.Name
 	}
-	if o.Description != nil {
+	if !isNil(o.Description) {
 		toSerialize["description"] = o.Description
 	}
-	if o.Type != nil {
+	if !isNil(o.Type) {
 		toSerialize["type"] = o.Type
 	}
-	if o.LanguageCode != nil {
+	if !isNil(o.LanguageCode) {
 		toSerialize["languageCode"] = o.LanguageCode
 	}
-	if o.LocalizationType != nil {
+	if !isNil(o.LocalizationType) {
 		toSerialize["localizationType"] = o.LocalizationType
 	}
-	if o.SelectionOptions != nil {
+	if !isNil(o.SelectionOptions) {
 		toSerialize["selectionOptions"] = o.SelectionOptions
 	}
-	if o.NumberFormat != nil {
+	if !isNil(o.NumberFormat) {
 		toSerialize["numberFormat"] = o.NumberFormat
 	}
-	if o.Reference != nil {
+	if !isNil(o.Reference) {
 		toSerialize["reference"] = o.Reference
 	}
-	if o.Formula != nil {
+	if !isNil(o.Formula) {
 		toSerialize["formula"] = o.Formula
 	}
-	if o.DateTimeFormat != nil {
+	if !isNil(o.DateTimeFormat) {
 		toSerialize["dateTimeFormat"] = o.DateTimeFormat
 	}
-	if o.Viewable != nil {
+	if !isNil(o.Viewable) {
 		toSerialize["viewable"] = o.Viewable
 	}
-	if o.Editable != nil {
+	if !isNil(o.Editable) {
 		toSerialize["editable"] = o.Editable
 	}
-	if o.NewId != nil {
+	if !isNil(o.NewId) {
 		toSerialize["newId"] = o.NewId
 	}
 	return json.Marshal(toSerialize)

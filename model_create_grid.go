@@ -3,7 +3,7 @@ Gridly API
 
 Gridly API documentation
 
-API version: 4.29.1
+API version: 4.33.0
 Contact: support@gridly.com
 */
 
@@ -45,7 +45,7 @@ func NewCreateGridWithDefaults() *CreateGrid {
 
 // GetId returns the Id field value if set, zero value otherwise.
 func (o *CreateGrid) GetId() string {
-	if o == nil || o.Id == nil {
+	if o == nil || isNil(o.Id) {
 		var ret string
 		return ret
 	}
@@ -55,15 +55,15 @@ func (o *CreateGrid) GetId() string {
 // GetIdOk returns a tuple with the Id field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CreateGrid) GetIdOk() (*string, bool) {
-	if o == nil || o.Id == nil {
-		return nil, false
+	if o == nil || isNil(o.Id) {
+    return nil, false
 	}
 	return o.Id, true
 }
 
 // HasId returns a boolean if a field has been set.
 func (o *CreateGrid) HasId() bool {
-	if o != nil && o.Id != nil {
+	if o != nil && !isNil(o.Id) {
 		return true
 	}
 
@@ -89,7 +89,7 @@ func (o *CreateGrid) GetName() string {
 // and a boolean to check if the value has been set.
 func (o *CreateGrid) GetNameOk() (*string, bool) {
 	if o == nil {
-		return nil, false
+    return nil, false
 	}
 	return &o.Name, true
 }
@@ -101,7 +101,7 @@ func (o *CreateGrid) SetName(v string) {
 
 // GetTemplateGridId returns the TemplateGridId field value if set, zero value otherwise.
 func (o *CreateGrid) GetTemplateGridId() string {
-	if o == nil || o.TemplateGridId == nil {
+	if o == nil || isNil(o.TemplateGridId) {
 		var ret string
 		return ret
 	}
@@ -111,15 +111,15 @@ func (o *CreateGrid) GetTemplateGridId() string {
 // GetTemplateGridIdOk returns a tuple with the TemplateGridId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CreateGrid) GetTemplateGridIdOk() (*string, bool) {
-	if o == nil || o.TemplateGridId == nil {
-		return nil, false
+	if o == nil || isNil(o.TemplateGridId) {
+    return nil, false
 	}
 	return o.TemplateGridId, true
 }
 
 // HasTemplateGridId returns a boolean if a field has been set.
 func (o *CreateGrid) HasTemplateGridId() bool {
-	if o != nil && o.TemplateGridId != nil {
+	if o != nil && !isNil(o.TemplateGridId) {
 		return true
 	}
 
@@ -133,7 +133,7 @@ func (o *CreateGrid) SetTemplateGridId(v string) {
 
 // GetRecordIdentifierType returns the RecordIdentifierType field value if set, zero value otherwise.
 func (o *CreateGrid) GetRecordIdentifierType() string {
-	if o == nil || o.RecordIdentifierType == nil {
+	if o == nil || isNil(o.RecordIdentifierType) {
 		var ret string
 		return ret
 	}
@@ -143,15 +143,15 @@ func (o *CreateGrid) GetRecordIdentifierType() string {
 // GetRecordIdentifierTypeOk returns a tuple with the RecordIdentifierType field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CreateGrid) GetRecordIdentifierTypeOk() (*string, bool) {
-	if o == nil || o.RecordIdentifierType == nil {
-		return nil, false
+	if o == nil || isNil(o.RecordIdentifierType) {
+    return nil, false
 	}
 	return o.RecordIdentifierType, true
 }
 
 // HasRecordIdentifierType returns a boolean if a field has been set.
 func (o *CreateGrid) HasRecordIdentifierType() bool {
-	if o != nil && o.RecordIdentifierType != nil {
+	if o != nil && !isNil(o.RecordIdentifierType) {
 		return true
 	}
 
@@ -165,7 +165,7 @@ func (o *CreateGrid) SetRecordIdentifierType(v string) {
 
 // GetColumns returns the Columns field value if set, zero value otherwise.
 func (o *CreateGrid) GetColumns() []CreateColumn {
-	if o == nil || o.Columns == nil {
+	if o == nil || isNil(o.Columns) {
 		var ret []CreateColumn
 		return ret
 	}
@@ -175,15 +175,15 @@ func (o *CreateGrid) GetColumns() []CreateColumn {
 // GetColumnsOk returns a tuple with the Columns field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CreateGrid) GetColumnsOk() ([]CreateColumn, bool) {
-	if o == nil || o.Columns == nil {
-		return nil, false
+	if o == nil || isNil(o.Columns) {
+    return nil, false
 	}
 	return o.Columns, true
 }
 
 // HasColumns returns a boolean if a field has been set.
 func (o *CreateGrid) HasColumns() bool {
-	if o != nil && o.Columns != nil {
+	if o != nil && !isNil(o.Columns) {
 		return true
 	}
 
@@ -197,7 +197,7 @@ func (o *CreateGrid) SetColumns(v []CreateColumn) {
 
 // GetMetadata returns the Metadata field value if set, zero value otherwise.
 func (o *CreateGrid) GetMetadata() map[string]string {
-	if o == nil || o.Metadata == nil {
+	if o == nil || isNil(o.Metadata) {
 		var ret map[string]string
 		return ret
 	}
@@ -207,15 +207,15 @@ func (o *CreateGrid) GetMetadata() map[string]string {
 // GetMetadataOk returns a tuple with the Metadata field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CreateGrid) GetMetadataOk() (*map[string]string, bool) {
-	if o == nil || o.Metadata == nil {
-		return nil, false
+	if o == nil || isNil(o.Metadata) {
+    return nil, false
 	}
 	return o.Metadata, true
 }
 
 // HasMetadata returns a boolean if a field has been set.
 func (o *CreateGrid) HasMetadata() bool {
-	if o != nil && o.Metadata != nil {
+	if o != nil && !isNil(o.Metadata) {
 		return true
 	}
 
@@ -229,22 +229,22 @@ func (o *CreateGrid) SetMetadata(v map[string]string) {
 
 func (o CreateGrid) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
-	if o.Id != nil {
+	if !isNil(o.Id) {
 		toSerialize["id"] = o.Id
 	}
 	if true {
 		toSerialize["name"] = o.Name
 	}
-	if o.TemplateGridId != nil {
+	if !isNil(o.TemplateGridId) {
 		toSerialize["templateGridId"] = o.TemplateGridId
 	}
-	if o.RecordIdentifierType != nil {
+	if !isNil(o.RecordIdentifierType) {
 		toSerialize["recordIdentifierType"] = o.RecordIdentifierType
 	}
-	if o.Columns != nil {
+	if !isNil(o.Columns) {
 		toSerialize["columns"] = o.Columns
 	}
-	if o.Metadata != nil {
+	if !isNil(o.Metadata) {
 		toSerialize["metadata"] = o.Metadata
 	}
 	return json.Marshal(toSerialize)
