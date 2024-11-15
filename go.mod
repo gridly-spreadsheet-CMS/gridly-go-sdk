@@ -1,4 +1,4 @@
-module github.com/GIT_USER_ID/GIT_REPO_ID
+module github.com/gridly-spreadsheet-CMS/gridly-go-sdk/gridly
 
 go 1.13
 
