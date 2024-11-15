@@ -3,7 +3,7 @@ Gridly API
 
 Gridly API documentation
 
-API version: 4.33.0
+API version: 5.9.0
 Contact: support@gridly.com
 */
 
@@ -21,11 +21,11 @@ type Branch struct {
 	Columns []ViewColumn `json:"columns,omitempty"`
 	DefaultAccessViewId *string `json:"defaultAccessViewId,omitempty"`
 	Description *string `json:"description,omitempty"`
+	IsMaster *bool `json:"isMaster,omitempty"`
 	Metadata *map[string]string `json:"metadata,omitempty"`
 	Name *string `json:"name,omitempty"`
 	RecordIdentifierType *string `json:"recordIdentifierType,omitempty"`
 	Status *string `json:"status,omitempty"`
-	IsMaster *bool `json:"isMaster,omitempty"`
 }
 
 // NewBranch instantiates a new Branch object
@@ -173,6 +173,38 @@ func (o *Branch) SetDescription(v string) {
 	o.Description = &v
 }
 
+// GetIsMaster returns the IsMaster field value if set, zero value otherwise.
+func (o *Branch) GetIsMaster() bool {
+	if o == nil || isNil(o.IsMaster) {
+		var ret bool
+		return ret
+	}
+	return *o.IsMaster
+}
+
+// GetIsMasterOk returns a tuple with the IsMaster field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *Branch) GetIsMasterOk() (*bool, bool) {
+	if o == nil || isNil(o.IsMaster) {
+    return nil, false
+	}
+	return o.IsMaster, true
+}
+
+// HasIsMaster returns a boolean if a field has been set.
+func (o *Branch) HasIsMaster() bool {
+	if o != nil && !isNil(o.IsMaster) {
+		return true
+	}
+
+	return false
+}
+
+// SetIsMaster gets a reference to the given bool and assigns it to the IsMaster field.
+func (o *Branch) SetIsMaster(v bool) {
+	o.IsMaster = &v
+}
+
 // GetMetadata returns the Metadata field value if set, zero value otherwise.
 func (o *Branch) GetMetadata() map[string]string {
 	if o == nil || isNil(o.Metadata) {
@@ -301,38 +333,6 @@ func (o *Branch) SetStatus(v string) {
 	o.Status = &v
 }
 
-// GetIsMaster returns the IsMaster field value if set, zero value otherwise.
-func (o *Branch) GetIsMaster() bool {
-	if o == nil || isNil(o.IsMaster) {
-		var ret bool
-		return ret
-	}
-	return *o.IsMaster
-}
-
-// GetIsMasterOk returns a tuple with the IsMaster field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *Branch) GetIsMasterOk() (*bool, bool) {
-	if o == nil || isNil(o.IsMaster) {
-    return nil, false
-	}
-	return o.IsMaster, true
-}
-
-// HasIsMaster returns a boolean if a field has been set.
-func (o *Branch) HasIsMaster() bool {
-	if o != nil && !isNil(o.IsMaster) {
-		return true
-	}
-
-	return false
-}
-
-// SetIsMaster gets a reference to the given bool and assigns it to the IsMaster field.
-func (o *Branch) SetIsMaster(v bool) {
-	o.IsMaster = &v
-}
-
 func (o Branch) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if !isNil(o.Id) {
@@ -347,6 +347,9 @@ func (o Branch) MarshalJSON() ([]byte, error) {
 	if !isNil(o.Description) {
 		toSerialize["description"] = o.Description
 	}
+	if !isNil(o.IsMaster) {
+		toSerialize["isMaster"] = o.IsMaster
+	}
 	if !isNil(o.Metadata) {
 		toSerialize["metadata"] = o.Metadata
 	}
@@ -358,9 +361,6 @@ func (o Branch) MarshalJSON() ([]byte, error) {
 	}
 	if !isNil(o.Status) {
 		toSerialize["status"] = o.Status
-	}
-	if !isNil(o.IsMaster) {
-		toSerialize["isMaster"] = o.IsMaster
 	}
 	return json.Marshal(toSerialize)
 }

@@ -312,7 +312,7 @@ import (
 
 func main() {
     taskId := "taskId_example" // string | taskId
-    mergeRecordOptions := []string{"MergeRecordOptions_example"} // []string | mergeRecordOptions (optional)
+    mergeRecordOptions := []string{"MergeRecordOptions_example"} // []string | mergeRecordOptions (optional) (default to ["add","update","delete"])
     query := "query_example" // string | query (optional) (default to "{}")
     page := "page_example" // string | page (optional) (default to "{}")
 
@@ -344,7 +344,7 @@ Other parameters are passed through a pointer to a apiGetDiffCheckRequest struct
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **mergeRecordOptions** | **[]string** | mergeRecordOptions | 
+ **mergeRecordOptions** | **[]string** | mergeRecordOptions | [default to [&quot;add&quot;,&quot;update&quot;,&quot;delete&quot;]]
  **query** | **string** | query | [default to &quot;{}&quot;]
  **page** | **string** | page | [default to &quot;{}&quot;]
 

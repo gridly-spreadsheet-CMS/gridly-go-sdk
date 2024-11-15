@@ -8,7 +8,7 @@ Name | Type | Description | Notes
 **CompanyId** | Pointer to **int64** |  | [optional] 
 **Name** | Pointer to **string** |  | [optional] 
 **Description** | Pointer to **string** |  | [optional] 
-**Role** | Pointer to [**Role**](Role.md) |  | [optional] 
+**Type** | Pointer to **string** |  | [optional] 
 **Databases** | Pointer to [**[]Database**](Database.md) |  | [optional] 
 **Groups** | Pointer to [**[]Group**](Group.md) |  | [optional] 
 
@@ -131,30 +131,30 @@ SetDescription sets Description field to given value.
 
 HasDescription returns a boolean if a field has been set.
 
-### GetRole
+### GetType
 
-`func (o *ProjectDetail) GetRole() Role`
+`func (o *ProjectDetail) GetType() string`
 
-GetRole returns the Role field if non-nil, zero value otherwise.
+GetType returns the Type field if non-nil, zero value otherwise.
 
-### GetRoleOk
+### GetTypeOk
 
-`func (o *ProjectDetail) GetRoleOk() (*Role, bool)`
+`func (o *ProjectDetail) GetTypeOk() (*string, bool)`
 
-GetRoleOk returns a tuple with the Role field if it's non-nil, zero value otherwise
+GetTypeOk returns a tuple with the Type field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetRole
+### SetType
 
-`func (o *ProjectDetail) SetRole(v Role)`
+`func (o *ProjectDetail) SetType(v string)`
 
-SetRole sets Role field to given value.
+SetType sets Type field to given value.
 
-### HasRole
+### HasType
 
-`func (o *ProjectDetail) HasRole() bool`
+`func (o *ProjectDetail) HasType() bool`
 
-HasRole returns a boolean if a field has been set.
+HasType returns a boolean if a field has been set.
 
 ### GetDatabases
 

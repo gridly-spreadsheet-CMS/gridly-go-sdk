@@ -35,7 +35,7 @@ import (
 )
 
 func main() {
-    createView := *gridly.NewCreateView() // CreateView | 
+    createView := *gridly.NewCreateView("Name_example", "GridId_example") // CreateView | 
 
     configuration := gridly.NewConfiguration()
     apiClient := gridly.NewAPIClient(configuration)
@@ -106,7 +106,7 @@ func main() {
     fileHeader := gridly.ExportFileHeader("none") // ExportFileHeader | fileHeader (optional)
     query := "query_example" // string | query (optional) (default to "{}")
     sort := "sort_example" // string | sort (optional) (default to "{}")
-    type_ := "type__example" // string | type (optional) (default to "csv")
+    type_ := gridly.FileType("csv") // FileType | type (optional)
 
     configuration := gridly.NewConfiguration()
     apiClient := gridly.NewAPIClient(configuration)
@@ -140,7 +140,7 @@ Name | Type | Description  | Notes
  **fileHeader** | [**ExportFileHeader**](ExportFileHeader.md) | fileHeader | 
  **query** | **string** | query | [default to &quot;{}&quot;]
  **sort** | **string** | sort | [default to &quot;{}&quot;]
- **type_** | **string** | type | [default to &quot;csv&quot;]
+ **type_** | [**FileType**](FileType.md) | type | 
 
 ### Return type
 
@@ -336,7 +336,7 @@ func main() {
     viewId := "viewId_example" // string | viewId
     file := os.NewFile(1234, "some_file") // *os.File | The following file types are supported: csv, tsv, xls, xlsx and json
     importRequest := "importRequest_example" // string | importRequest (optional) (default to "{}")
-    type_ := "type__example" // string | type (optional) (default to "csv")
+    type_ := gridly.FileType("csv") // FileType | type (optional)
 
     configuration := gridly.NewConfiguration()
     apiClient := gridly.NewAPIClient(configuration)
@@ -366,7 +366,7 @@ Name | Type | Description  | Notes
 
  **file** | ***os.File** | The following file types are supported: csv, tsv, xls, xlsx and json | 
  **importRequest** | **string** | importRequest | [default to &quot;{}&quot;]
- **type_** | **string** | type | [default to &quot;csv&quot;]
+ **type_** | [**FileType**](FileType.md) | type | 
 
 ### Return type
 

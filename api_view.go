@@ -3,7 +3,7 @@ Gridly API
 
 Gridly API documentation
 
-API version: 4.33.0
+API version: 5.9.0
 Contact: support@gridly.com
 */
 
@@ -158,7 +158,7 @@ type ViewApiExportRequest struct {
 	fileHeader *ExportFileHeader
 	query *string
 	sort *string
-	type_ *string
+	type_ *FileType
 }
 
 // columnIds
@@ -186,7 +186,7 @@ func (r ViewApiExportRequest) Sort(sort string) ViewApiExportRequest {
 }
 
 // type
-func (r ViewApiExportRequest) Type_(type_ string) ViewApiExportRequest {
+func (r ViewApiExportRequest) Type_(type_ FileType) ViewApiExportRequest {
 	r.type_ = &type_
 	return r
 }
@@ -657,7 +657,7 @@ type ViewApiImportViewRequest struct {
 	viewId string
 	file **os.File
 	importRequest *string
-	type_ *string
+	type_ *FileType
 }
 
 // The following file types are supported: csv, tsv, xls, xlsx and json
@@ -673,7 +673,7 @@ func (r ViewApiImportViewRequest) ImportRequest(importRequest string) ViewApiImp
 }
 
 // type
-func (r ViewApiImportViewRequest) Type_(type_ string) ViewApiImportViewRequest {
+func (r ViewApiImportViewRequest) Type_(type_ FileType) ViewApiImportViewRequest {
 	r.type_ = &type_
 	return r
 }

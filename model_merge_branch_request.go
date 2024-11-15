@@ -3,7 +3,7 @@ Gridly API
 
 Gridly API documentation
 
-API version: 4.33.0
+API version: 5.9.0
 Contact: support@gridly.com
 */
 
@@ -20,6 +20,7 @@ type MergeBranchRequest struct {
 	MergeRecordOptions []string `json:"mergeRecordOptions,omitempty"`
 	MergeRecordConflicts []MergeRecordConflict `json:"mergeRecordConflicts,omitempty"`
 	UseLastMergeResolve *bool `json:"useLastMergeResolve,omitempty"`
+	CheckMismatchedColumnType *bool `json:"checkMismatchedColumnType,omitempty"`
 	Query []FilterField `json:"query,omitempty"`
 }
 
@@ -136,6 +137,38 @@ func (o *MergeBranchRequest) SetUseLastMergeResolve(v bool) {
 	o.UseLastMergeResolve = &v
 }
 
+// GetCheckMismatchedColumnType returns the CheckMismatchedColumnType field value if set, zero value otherwise.
+func (o *MergeBranchRequest) GetCheckMismatchedColumnType() bool {
+	if o == nil || isNil(o.CheckMismatchedColumnType) {
+		var ret bool
+		return ret
+	}
+	return *o.CheckMismatchedColumnType
+}
+
+// GetCheckMismatchedColumnTypeOk returns a tuple with the CheckMismatchedColumnType field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *MergeBranchRequest) GetCheckMismatchedColumnTypeOk() (*bool, bool) {
+	if o == nil || isNil(o.CheckMismatchedColumnType) {
+    return nil, false
+	}
+	return o.CheckMismatchedColumnType, true
+}
+
+// HasCheckMismatchedColumnType returns a boolean if a field has been set.
+func (o *MergeBranchRequest) HasCheckMismatchedColumnType() bool {
+	if o != nil && !isNil(o.CheckMismatchedColumnType) {
+		return true
+	}
+
+	return false
+}
+
+// SetCheckMismatchedColumnType gets a reference to the given bool and assigns it to the CheckMismatchedColumnType field.
+func (o *MergeBranchRequest) SetCheckMismatchedColumnType(v bool) {
+	o.CheckMismatchedColumnType = &v
+}
+
 // GetQuery returns the Query field value if set, zero value otherwise.
 func (o *MergeBranchRequest) GetQuery() []FilterField {
 	if o == nil || isNil(o.Query) {
@@ -178,6 +211,9 @@ func (o MergeBranchRequest) MarshalJSON() ([]byte, error) {
 	}
 	if !isNil(o.UseLastMergeResolve) {
 		toSerialize["useLastMergeResolve"] = o.UseLastMergeResolve
+	}
+	if !isNil(o.CheckMismatchedColumnType) {
+		toSerialize["checkMismatchedColumnType"] = o.CheckMismatchedColumnType
 	}
 	if !isNil(o.Query) {
 		toSerialize["query"] = o.Query

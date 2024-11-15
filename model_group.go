@@ -3,7 +3,7 @@ Gridly API
 
 Gridly API documentation
 
-API version: 4.33.0
+API version: 5.9.0
 Contact: support@gridly.com
 */
 
@@ -27,8 +27,8 @@ type Group struct {
 	ShareType *string `json:"shareType,omitempty"`
 	CreatedDate *time.Time `json:"createdDate,omitempty"`
 	LastModifiedDate *time.Time `json:"lastModifiedDate,omitempty"`
-	IsSystemGroup *bool `json:"isSystemGroup,omitempty"`
 	SystemGroup *bool `json:"systemGroup,omitempty"`
+	IsSystemGroup *bool `json:"isSystemGroup,omitempty"`
 }
 
 // NewGroup instantiates a new Group object
@@ -336,38 +336,6 @@ func (o *Group) SetLastModifiedDate(v time.Time) {
 	o.LastModifiedDate = &v
 }
 
-// GetIsSystemGroup returns the IsSystemGroup field value if set, zero value otherwise.
-func (o *Group) GetIsSystemGroup() bool {
-	if o == nil || isNil(o.IsSystemGroup) {
-		var ret bool
-		return ret
-	}
-	return *o.IsSystemGroup
-}
-
-// GetIsSystemGroupOk returns a tuple with the IsSystemGroup field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *Group) GetIsSystemGroupOk() (*bool, bool) {
-	if o == nil || isNil(o.IsSystemGroup) {
-    return nil, false
-	}
-	return o.IsSystemGroup, true
-}
-
-// HasIsSystemGroup returns a boolean if a field has been set.
-func (o *Group) HasIsSystemGroup() bool {
-	if o != nil && !isNil(o.IsSystemGroup) {
-		return true
-	}
-
-	return false
-}
-
-// SetIsSystemGroup gets a reference to the given bool and assigns it to the IsSystemGroup field.
-func (o *Group) SetIsSystemGroup(v bool) {
-	o.IsSystemGroup = &v
-}
-
 // GetSystemGroup returns the SystemGroup field value if set, zero value otherwise.
 func (o *Group) GetSystemGroup() bool {
 	if o == nil || isNil(o.SystemGroup) {
@@ -400,6 +368,38 @@ func (o *Group) SetSystemGroup(v bool) {
 	o.SystemGroup = &v
 }
 
+// GetIsSystemGroup returns the IsSystemGroup field value if set, zero value otherwise.
+func (o *Group) GetIsSystemGroup() bool {
+	if o == nil || isNil(o.IsSystemGroup) {
+		var ret bool
+		return ret
+	}
+	return *o.IsSystemGroup
+}
+
+// GetIsSystemGroupOk returns a tuple with the IsSystemGroup field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *Group) GetIsSystemGroupOk() (*bool, bool) {
+	if o == nil || isNil(o.IsSystemGroup) {
+    return nil, false
+	}
+	return o.IsSystemGroup, true
+}
+
+// HasIsSystemGroup returns a boolean if a field has been set.
+func (o *Group) HasIsSystemGroup() bool {
+	if o != nil && !isNil(o.IsSystemGroup) {
+		return true
+	}
+
+	return false
+}
+
+// SetIsSystemGroup gets a reference to the given bool and assigns it to the IsSystemGroup field.
+func (o *Group) SetIsSystemGroup(v bool) {
+	o.IsSystemGroup = &v
+}
+
 func (o Group) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if !isNil(o.Id) {
@@ -429,11 +429,11 @@ func (o Group) MarshalJSON() ([]byte, error) {
 	if !isNil(o.LastModifiedDate) {
 		toSerialize["lastModifiedDate"] = o.LastModifiedDate
 	}
-	if !isNil(o.IsSystemGroup) {
-		toSerialize["isSystemGroup"] = o.IsSystemGroup
-	}
 	if !isNil(o.SystemGroup) {
 		toSerialize["systemGroup"] = o.SystemGroup
+	}
+	if !isNil(o.IsSystemGroup) {
+		toSerialize["isSystemGroup"] = o.IsSystemGroup
 	}
 	return json.Marshal(toSerialize)
 }

@@ -3,7 +3,7 @@ Gridly API
 
 Gridly API documentation
 
-API version: 4.33.0
+API version: 5.9.0
 Contact: support@gridly.com
 */
 
@@ -532,7 +532,7 @@ func (a *ViewFileApiService) UploadZipExecute(r ViewFileApiUploadZipRequest) ([]
 	}
 
 	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{"multipart/form-data", "application/json"}
+	localVarHTTPContentTypes := []string{"multipart/form-data"}
 
 	// set Content-Type header
 	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)

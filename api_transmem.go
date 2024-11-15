@@ -3,7 +3,7 @@ Gridly API
 
 Gridly API documentation
 
-API version: 4.33.0
+API version: 5.9.0
 Contact: support@gridly.com
 */
 
@@ -767,10 +767,10 @@ type TransmemApiImportTmxRequest struct {
 	ctx context.Context
 	ApiService *TransmemApiService
 	tmId string
-	file *map[string]interface{}
+	file **os.File
 }
 
-func (r TransmemApiImportTmxRequest) File(file map[string]interface{}) TransmemApiImportTmxRequest {
+func (r TransmemApiImportTmxRequest) File(file *os.File) TransmemApiImportTmxRequest {
 	r.file = &file
 	return r
 }
@@ -834,7 +834,20 @@ func (a *TransmemApiService) ImportTmxExecute(r TransmemApiImportTmxRequest) (*h
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
-	localVarFormParams.Add("file", parameterToString(*r.file, ""))
+	var fileLocalVarFormFileName string
+	var fileLocalVarFileName     string
+	var fileLocalVarFileBytes    []byte
+
+	fileLocalVarFormFileName = "file"
+
+	fileLocalVarFile := *r.file
+	if fileLocalVarFile != nil {
+		fbs, _ := ioutil.ReadAll(fileLocalVarFile)
+		fileLocalVarFileBytes = fbs
+		fileLocalVarFileName = fileLocalVarFile.Name()
+		fileLocalVarFile.Close()
+	}
+	formFiles = append(formFiles, formFile{fileBytes: fileLocalVarFileBytes, fileName: fileLocalVarFileName, formFileName: fileLocalVarFormFileName})
 	if r.ctx != nil {
 		// API Key Authentication
 		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {

@@ -8,7 +8,7 @@ Name | Type | Description | Notes
 **CompanyId** | Pointer to **int64** |  | [optional] 
 **Name** | Pointer to **string** |  | [optional] 
 **Description** | Pointer to **string** |  | [optional] 
-**Role** | Pointer to [**Role**](Role.md) |  | [optional] 
+**Type** | Pointer to **string** |  | [optional] 
 
 ## Methods
 
@@ -129,30 +129,30 @@ SetDescription sets Description field to given value.
 
 HasDescription returns a boolean if a field has been set.
 
-### GetRole
+### GetType
 
-`func (o *Project) GetRole() Role`
+`func (o *Project) GetType() string`
 
-GetRole returns the Role field if non-nil, zero value otherwise.
+GetType returns the Type field if non-nil, zero value otherwise.
 
-### GetRoleOk
+### GetTypeOk
 
-`func (o *Project) GetRoleOk() (*Role, bool)`
+`func (o *Project) GetTypeOk() (*string, bool)`
 
-GetRoleOk returns a tuple with the Role field if it's non-nil, zero value otherwise
+GetTypeOk returns a tuple with the Type field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetRole
+### SetType
 
-`func (o *Project) SetRole(v Role)`
+`func (o *Project) SetType(v string)`
 
-SetRole sets Role field to given value.
+SetType sets Type field to given value.
 
-### HasRole
+### HasType
 
-`func (o *Project) HasRole() bool`
+`func (o *Project) HasType() bool`
 
-HasRole returns a boolean if a field has been set.
+HasType returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

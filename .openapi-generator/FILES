@@ -3,6 +3,7 @@
 README.md
 api/openapi.yaml
 api_branch.go
+api_cdn.go
 api_database.go
 api_glossary.go
 api_grid.go
@@ -23,6 +24,8 @@ docs/Branch.md
 docs/BranchApi.md
 docs/BranchDiffCell.md
 docs/BranchDiffRecord.md
+docs/CDN.md
+docs/CdnApi.md
 docs/Cell.md
 docs/CellHistory.md
 docs/ColumnReference.md
@@ -52,6 +55,7 @@ docs/ExportFormat.md
 docs/FetchFileOption.md
 docs/FetchRecordHistoryRequest.md
 docs/FileCategory.md
+docs/FileType.md
 docs/FilterField.md
 docs/Formula.md
 docs/Glossary.md
@@ -72,7 +76,6 @@ docs/PathApi.md
 docs/PathList.md
 docs/PathNode.md
 docs/PathSingle.md
-docs/Privilege.md
 docs/Project.md
 docs/ProjectApi.md
 docs/ProjectDetail.md
@@ -83,7 +86,6 @@ docs/RecordIdentifierWrapper.md
 docs/Reference.md
 docs/ReferencedColumn.md
 docs/ReferencedGrid.md
-docs/Role.md
 docs/SetCell.md
 docs/SetRecord.md
 docs/SettingFile.md
@@ -106,7 +108,6 @@ docs/UpdatePath.md
 docs/UpdateProject.md
 docs/UpdateTransMem.md
 docs/UploadSettingFileRequest.md
-docs/UploadZipRequest.md
 docs/UploadedFile.md
 docs/View.md
 docs/ViewApi.md
@@ -122,6 +123,7 @@ model_add_view_column.go
 model_branch.go
 model_branch_diff_cell.go
 model_branch_diff_record.go
+model_cdn.go
 model_cell.go
 model_cell_history.go
 model_column_reference.go
@@ -150,6 +152,7 @@ model_export_format.go
 model_fetch_file_option.go
 model_fetch_record_history_request.go
 model_file_category.go
+model_file_type.go
 model_filter_field.go
 model_formula.go
 model_glossary.go
@@ -167,7 +170,6 @@ model_number_format.go
 model_path_list.go
 model_path_node.go
 model_path_single.go
-model_privilege.go
 model_project.go
 model_project_detail.go
 model_record.go
@@ -176,7 +178,6 @@ model_record_identifier_wrapper.go
 model_reference.go
 model_referenced_column.go
 model_referenced_grid.go
-model_role.go
 model_set_cell.go
 model_set_record.go
 model_setting_file.go
@@ -196,7 +197,6 @@ model_update_path.go
 model_update_project.go
 model_update_trans_mem.go
 model_upload_setting_file_request.go
-model_upload_zip_request.go
 model_uploaded_file.go
 model_view.go
 model_view_column.go

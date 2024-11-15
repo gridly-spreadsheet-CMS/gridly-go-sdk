@@ -7,6 +7,7 @@ Name | Type | Description | Notes
 **MergeRecordOptions** | Pointer to **[]string** |  | [optional] 
 **MergeRecordConflicts** | Pointer to [**[]MergeRecordConflict**](MergeRecordConflict.md) |  | [optional] 
 **UseLastMergeResolve** | Pointer to **bool** |  | [optional] 
+**CheckMismatchedColumnType** | Pointer to **bool** |  | [optional] 
 **Query** | Pointer to [**[]FilterField**](FilterField.md) |  | [optional] 
 
 ## Methods
@@ -102,6 +103,31 @@ SetUseLastMergeResolve sets UseLastMergeResolve field to given value.
 `func (o *MergeBranchRequest) HasUseLastMergeResolve() bool`
 
 HasUseLastMergeResolve returns a boolean if a field has been set.
+
+### GetCheckMismatchedColumnType
+
+`func (o *MergeBranchRequest) GetCheckMismatchedColumnType() bool`
+
+GetCheckMismatchedColumnType returns the CheckMismatchedColumnType field if non-nil, zero value otherwise.
+
+### GetCheckMismatchedColumnTypeOk
+
+`func (o *MergeBranchRequest) GetCheckMismatchedColumnTypeOk() (*bool, bool)`
+
+GetCheckMismatchedColumnTypeOk returns a tuple with the CheckMismatchedColumnType field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetCheckMismatchedColumnType
+
+`func (o *MergeBranchRequest) SetCheckMismatchedColumnType(v bool)`
+
+SetCheckMismatchedColumnType sets CheckMismatchedColumnType field to given value.
+
+### HasCheckMismatchedColumnType
+
+`func (o *MergeBranchRequest) HasCheckMismatchedColumnType() bool`
+
+HasCheckMismatchedColumnType returns a boolean if a field has been set.
 
 ### GetQuery
 

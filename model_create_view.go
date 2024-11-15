@@ -3,7 +3,7 @@ Gridly API
 
 Gridly API documentation
 
-API version: 4.33.0
+API version: 5.9.0
 Contact: support@gridly.com
 */
 
@@ -17,8 +17,8 @@ import (
 
 // CreateView struct for CreateView
 type CreateView struct {
-	Name *string `json:"name,omitempty"`
-	GridId *string `json:"gridId,omitempty"`
+	Name string `json:"name"`
+	GridId string `json:"gridId"`
 	Columns []AddViewColumn `json:"columns,omitempty"`
 }
 
@@ -26,8 +26,10 @@ type CreateView struct {
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewCreateView() *CreateView {
+func NewCreateView(name string, gridId string) *CreateView {
 	this := CreateView{}
+	this.Name = name
+	this.GridId = gridId
 	return &this
 }
 
@@ -39,68 +41,52 @@ func NewCreateViewWithDefaults() *CreateView {
 	return &this
 }
 
-// GetName returns the Name field value if set, zero value otherwise.
+// GetName returns the Name field value
 func (o *CreateView) GetName() string {
-	if o == nil || isNil(o.Name) {
+	if o == nil {
 		var ret string
 		return ret
 	}
-	return *o.Name
+
+	return o.Name
 }
 
-// GetNameOk returns a tuple with the Name field value if set, nil otherwise
+// GetNameOk returns a tuple with the Name field value
 // and a boolean to check if the value has been set.
 func (o *CreateView) GetNameOk() (*string, bool) {
-	if o == nil || isNil(o.Name) {
+	if o == nil {
     return nil, false
 	}
-	return o.Name, true
+	return &o.Name, true
 }
 
-// HasName returns a boolean if a field has been set.
-func (o *CreateView) HasName() bool {
-	if o != nil && !isNil(o.Name) {
-		return true
-	}
-
-	return false
-}
-
-// SetName gets a reference to the given string and assigns it to the Name field.
+// SetName sets field value
 func (o *CreateView) SetName(v string) {
-	o.Name = &v
+	o.Name = v
 }
 
-// GetGridId returns the GridId field value if set, zero value otherwise.
+// GetGridId returns the GridId field value
 func (o *CreateView) GetGridId() string {
-	if o == nil || isNil(o.GridId) {
+	if o == nil {
 		var ret string
 		return ret
 	}
-	return *o.GridId
+
+	return o.GridId
 }
 
-// GetGridIdOk returns a tuple with the GridId field value if set, nil otherwise
+// GetGridIdOk returns a tuple with the GridId field value
 // and a boolean to check if the value has been set.
 func (o *CreateView) GetGridIdOk() (*string, bool) {
-	if o == nil || isNil(o.GridId) {
+	if o == nil {
     return nil, false
 	}
-	return o.GridId, true
+	return &o.GridId, true
 }
 
-// HasGridId returns a boolean if a field has been set.
-func (o *CreateView) HasGridId() bool {
-	if o != nil && !isNil(o.GridId) {
-		return true
-	}
-
-	return false
-}
-
-// SetGridId gets a reference to the given string and assigns it to the GridId field.
+// SetGridId sets field value
 func (o *CreateView) SetGridId(v string) {
-	o.GridId = &v
+	o.GridId = v
 }
 
 // GetColumns returns the Columns field value if set, zero value otherwise.
@@ -137,10 +123,10 @@ func (o *CreateView) SetColumns(v []AddViewColumn) {
 
 func (o CreateView) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
-	if !isNil(o.Name) {
+	if true {
 		toSerialize["name"] = o.Name
 	}
-	if !isNil(o.GridId) {
+	if true {
 		toSerialize["gridId"] = o.GridId
 	}
 	if !isNil(o.Columns) {

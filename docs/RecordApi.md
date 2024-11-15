@@ -181,7 +181,7 @@ func main() {
     page := "page_example" // string | page (optional) (default to "{}")
     query := "query_example" // string | query (optional) (default to "{}")
     sort := "sort_example" // string | sort (optional) (default to "{}")
-    fetchFileOption := gridly.FetchFileOption("all") // FetchFileOption | fetchFileOption (optional) (default to "id")
+    fetchFileOption := gridly.FetchFileOption("all") // FetchFileOption | fetchFileOption (optional)
     afterRecordId := "afterRecordId_example" // string | afterRecordId (optional)
     beforeRecordId := "beforeRecordId_example" // string | beforeRecordId (optional)
 
@@ -217,7 +217,7 @@ Name | Type | Description  | Notes
  **page** | **string** | page | [default to &quot;{}&quot;]
  **query** | **string** | query | [default to &quot;{}&quot;]
  **sort** | **string** | sort | [default to &quot;{}&quot;]
- **fetchFileOption** | [**FetchFileOption**](FetchFileOption.md) | fetchFileOption | [default to &quot;id&quot;]
+ **fetchFileOption** | [**FetchFileOption**](FetchFileOption.md) | fetchFileOption | 
  **afterRecordId** | **string** | afterRecordId | 
  **beforeRecordId** | **string** | beforeRecordId | 
 

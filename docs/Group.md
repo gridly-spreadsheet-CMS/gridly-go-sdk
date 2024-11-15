@@ -13,8 +13,8 @@ Name | Type | Description | Notes
 **ShareType** | Pointer to **string** |  | [optional] 
 **CreatedDate** | Pointer to **time.Time** |  | [optional] 
 **LastModifiedDate** | Pointer to **time.Time** |  | [optional] 
-**IsSystemGroup** | Pointer to **bool** |  | [optional] 
 **SystemGroup** | Pointer to **bool** |  | [optional] 
+**IsSystemGroup** | Pointer to **bool** |  | [optional] 
 
 ## Methods
 
@@ -260,31 +260,6 @@ SetLastModifiedDate sets LastModifiedDate field to given value.
 
 HasLastModifiedDate returns a boolean if a field has been set.
 
-### GetIsSystemGroup
-
-`func (o *Group) GetIsSystemGroup() bool`
-
-GetIsSystemGroup returns the IsSystemGroup field if non-nil, zero value otherwise.
-
-### GetIsSystemGroupOk
-
-`func (o *Group) GetIsSystemGroupOk() (*bool, bool)`
-
-GetIsSystemGroupOk returns a tuple with the IsSystemGroup field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetIsSystemGroup
-
-`func (o *Group) SetIsSystemGroup(v bool)`
-
-SetIsSystemGroup sets IsSystemGroup field to given value.
-
-### HasIsSystemGroup
-
-`func (o *Group) HasIsSystemGroup() bool`
-
-HasIsSystemGroup returns a boolean if a field has been set.
-
 ### GetSystemGroup
 
 `func (o *Group) GetSystemGroup() bool`
@@ -309,6 +284,31 @@ SetSystemGroup sets SystemGroup field to given value.
 `func (o *Group) HasSystemGroup() bool`
 
 HasSystemGroup returns a boolean if a field has been set.
+
+### GetIsSystemGroup
+
+`func (o *Group) GetIsSystemGroup() bool`
+
+GetIsSystemGroup returns the IsSystemGroup field if non-nil, zero value otherwise.
+
+### GetIsSystemGroupOk
+
+`func (o *Group) GetIsSystemGroupOk() (*bool, bool)`
+
+GetIsSystemGroupOk returns a tuple with the IsSystemGroup field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetIsSystemGroup
+
+`func (o *Group) SetIsSystemGroup(v bool)`
+
+SetIsSystemGroup sets IsSystemGroup field to given value.
+
+### HasIsSystemGroup
+
+`func (o *Group) HasIsSystemGroup() bool`
+
+HasIsSystemGroup returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

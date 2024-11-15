@@ -8,11 +8,11 @@ Name | Type | Description | Notes
 **Columns** | Pointer to [**[]ViewColumn**](ViewColumn.md) |  | [optional] 
 **DefaultAccessViewId** | Pointer to **string** |  | [optional] 
 **Description** | Pointer to **string** |  | [optional] 
+**IsMaster** | Pointer to **bool** |  | [optional] 
 **Metadata** | Pointer to **map[string]string** |  | [optional] 
 **Name** | Pointer to **string** |  | [optional] 
 **RecordIdentifierType** | Pointer to **string** |  | [optional] 
 **Status** | Pointer to **string** |  | [optional] 
-**IsMaster** | Pointer to **bool** |  | [optional] 
 
 ## Methods
 
@@ -133,6 +133,31 @@ SetDescription sets Description field to given value.
 
 HasDescription returns a boolean if a field has been set.
 
+### GetIsMaster
+
+`func (o *Branch) GetIsMaster() bool`
+
+GetIsMaster returns the IsMaster field if non-nil, zero value otherwise.
+
+### GetIsMasterOk
+
+`func (o *Branch) GetIsMasterOk() (*bool, bool)`
+
+GetIsMasterOk returns a tuple with the IsMaster field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetIsMaster
+
+`func (o *Branch) SetIsMaster(v bool)`
+
+SetIsMaster sets IsMaster field to given value.
+
+### HasIsMaster
+
+`func (o *Branch) HasIsMaster() bool`
+
+HasIsMaster returns a boolean if a field has been set.
+
 ### GetMetadata
 
 `func (o *Branch) GetMetadata() map[string]string`
@@ -232,31 +257,6 @@ SetStatus sets Status field to given value.
 `func (o *Branch) HasStatus() bool`
 
 HasStatus returns a boolean if a field has been set.
-
-### GetIsMaster
-
-`func (o *Branch) GetIsMaster() bool`
-
-GetIsMaster returns the IsMaster field if non-nil, zero value otherwise.
-
-### GetIsMasterOk
-
-`func (o *Branch) GetIsMasterOk() (*bool, bool)`
-
-GetIsMasterOk returns a tuple with the IsMaster field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetIsMaster
-
-`func (o *Branch) SetIsMaster(v bool)`
-
-SetIsMaster sets IsMaster field to given value.
-
-### HasIsMaster
-
-`func (o *Branch) HasIsMaster() bool`
-
-HasIsMaster returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

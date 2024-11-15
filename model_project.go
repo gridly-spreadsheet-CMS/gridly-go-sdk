@@ -3,7 +3,7 @@ Gridly API
 
 Gridly API documentation
 
-API version: 4.33.0
+API version: 5.9.0
 Contact: support@gridly.com
 */
 
@@ -21,7 +21,7 @@ type Project struct {
 	CompanyId *int64 `json:"companyId,omitempty"`
 	Name *string `json:"name,omitempty"`
 	Description *string `json:"description,omitempty"`
-	Role *Role `json:"role,omitempty"`
+	Type *string `json:"type,omitempty"`
 }
 
 // NewProject instantiates a new Project object
@@ -169,36 +169,36 @@ func (o *Project) SetDescription(v string) {
 	o.Description = &v
 }
 
-// GetRole returns the Role field value if set, zero value otherwise.
-func (o *Project) GetRole() Role {
-	if o == nil || isNil(o.Role) {
-		var ret Role
+// GetType returns the Type field value if set, zero value otherwise.
+func (o *Project) GetType() string {
+	if o == nil || isNil(o.Type) {
+		var ret string
 		return ret
 	}
-	return *o.Role
+	return *o.Type
 }
 
-// GetRoleOk returns a tuple with the Role field value if set, nil otherwise
+// GetTypeOk returns a tuple with the Type field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *Project) GetRoleOk() (*Role, bool) {
-	if o == nil || isNil(o.Role) {
+func (o *Project) GetTypeOk() (*string, bool) {
+	if o == nil || isNil(o.Type) {
     return nil, false
 	}
-	return o.Role, true
+	return o.Type, true
 }
 
-// HasRole returns a boolean if a field has been set.
-func (o *Project) HasRole() bool {
-	if o != nil && !isNil(o.Role) {
+// HasType returns a boolean if a field has been set.
+func (o *Project) HasType() bool {
+	if o != nil && !isNil(o.Type) {
 		return true
 	}
 
 	return false
 }
 
-// SetRole gets a reference to the given Role and assigns it to the Role field.
-func (o *Project) SetRole(v Role) {
-	o.Role = &v
+// SetType gets a reference to the given string and assigns it to the Type field.
+func (o *Project) SetType(v string) {
+	o.Type = &v
 }
 
 func (o Project) MarshalJSON() ([]byte, error) {
@@ -215,8 +215,8 @@ func (o Project) MarshalJSON() ([]byte, error) {
 	if !isNil(o.Description) {
 		toSerialize["description"] = o.Description
 	}
-	if !isNil(o.Role) {
-		toSerialize["role"] = o.Role
+	if !isNil(o.Type) {
+		toSerialize["type"] = o.Type
 	}
 	return json.Marshal(toSerialize)
 }

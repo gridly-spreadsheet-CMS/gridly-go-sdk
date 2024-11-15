@@ -4,15 +4,15 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Name** | Pointer to **string** |  | [optional] 
-**GridId** | Pointer to **string** |  | [optional] 
+**Name** | **string** |  | 
+**GridId** | **string** |  | 
 **Columns** | Pointer to [**[]AddViewColumn**](AddViewColumn.md) |  | [optional] 
 
 ## Methods
 
 ### NewCreateView
 
-`func NewCreateView() *CreateView`
+`func NewCreateView(name string, gridId string, ) *CreateView`
 
 NewCreateView instantiates a new CreateView object
 This constructor will assign default values to properties that have it defined,
@@ -46,11 +46,6 @@ and a boolean to check if the value has been set.
 
 SetName sets Name field to given value.
 
-### HasName
-
-`func (o *CreateView) HasName() bool`
-
-HasName returns a boolean if a field has been set.
 
 ### GetGridId
 
@@ -71,11 +66,6 @@ and a boolean to check if the value has been set.
 
 SetGridId sets GridId field to given value.
 
-### HasGridId
-
-`func (o *CreateView) HasGridId() bool`
-
-HasGridId returns a boolean if a field has been set.
 
 ### GetColumns
 
