@@ -1,4 +1,4 @@
-module github.com/gridly-spreadsheet-CMS/gridly-go-sdk/gridly
+module github.com/gridly-spreadsheet-CMS/gridly-go-sdk
 
 go 1.13
 
