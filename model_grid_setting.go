@@ -3,7 +3,7 @@ Gridly API
 
 Gridly API documentation
 
-API version: 5.9.0
+API version: 6.13.0
 Contact: support@gridly.com
 */
 
@@ -15,6 +15,9 @@ import (
 	"encoding/json"
 	"time"
 )
+
+// checks if the GridSetting type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &GridSetting{}
 
 // GridSetting struct for GridSetting
 type GridSetting struct {
@@ -47,7 +50,7 @@ func NewGridSettingWithDefaults() *GridSetting {
 
 // GetDefaultSourceLanguageStatus returns the DefaultSourceLanguageStatus field value if set, zero value otherwise.
 func (o *GridSetting) GetDefaultSourceLanguageStatus() string {
-	if o == nil || isNil(o.DefaultSourceLanguageStatus) {
+	if o == nil || IsNil(o.DefaultSourceLanguageStatus) {
 		var ret string
 		return ret
 	}
@@ -57,15 +60,15 @@ func (o *GridSetting) GetDefaultSourceLanguageStatus() string {
 // GetDefaultSourceLanguageStatusOk returns a tuple with the DefaultSourceLanguageStatus field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *GridSetting) GetDefaultSourceLanguageStatusOk() (*string, bool) {
-	if o == nil || isNil(o.DefaultSourceLanguageStatus) {
-    return nil, false
+	if o == nil || IsNil(o.DefaultSourceLanguageStatus) {
+		return nil, false
 	}
 	return o.DefaultSourceLanguageStatus, true
 }
 
 // HasDefaultSourceLanguageStatus returns a boolean if a field has been set.
 func (o *GridSetting) HasDefaultSourceLanguageStatus() bool {
-	if o != nil && !isNil(o.DefaultSourceLanguageStatus) {
+	if o != nil && !IsNil(o.DefaultSourceLanguageStatus) {
 		return true
 	}
 
@@ -79,7 +82,7 @@ func (o *GridSetting) SetDefaultSourceLanguageStatus(v string) {
 
 // GetTranslatorCanViewAutomations returns the TranslatorCanViewAutomations field value if set, zero value otherwise.
 func (o *GridSetting) GetTranslatorCanViewAutomations() bool {
-	if o == nil || isNil(o.TranslatorCanViewAutomations) {
+	if o == nil || IsNil(o.TranslatorCanViewAutomations) {
 		var ret bool
 		return ret
 	}
@@ -89,15 +92,15 @@ func (o *GridSetting) GetTranslatorCanViewAutomations() bool {
 // GetTranslatorCanViewAutomationsOk returns a tuple with the TranslatorCanViewAutomations field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *GridSetting) GetTranslatorCanViewAutomationsOk() (*bool, bool) {
-	if o == nil || isNil(o.TranslatorCanViewAutomations) {
-    return nil, false
+	if o == nil || IsNil(o.TranslatorCanViewAutomations) {
+		return nil, false
 	}
 	return o.TranslatorCanViewAutomations, true
 }
 
 // HasTranslatorCanViewAutomations returns a boolean if a field has been set.
 func (o *GridSetting) HasTranslatorCanViewAutomations() bool {
-	if o != nil && !isNil(o.TranslatorCanViewAutomations) {
+	if o != nil && !IsNil(o.TranslatorCanViewAutomations) {
 		return true
 	}
 
@@ -111,7 +114,7 @@ func (o *GridSetting) SetTranslatorCanViewAutomations(v bool) {
 
 // GetCategories returns the Categories field value if set, zero value otherwise.
 func (o *GridSetting) GetCategories() []FileCategory {
-	if o == nil || isNil(o.Categories) {
+	if o == nil || IsNil(o.Categories) {
 		var ret []FileCategory
 		return ret
 	}
@@ -121,15 +124,15 @@ func (o *GridSetting) GetCategories() []FileCategory {
 // GetCategoriesOk returns a tuple with the Categories field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *GridSetting) GetCategoriesOk() ([]FileCategory, bool) {
-	if o == nil || isNil(o.Categories) {
-    return nil, false
+	if o == nil || IsNil(o.Categories) {
+		return nil, false
 	}
 	return o.Categories, true
 }
 
 // HasCategories returns a boolean if a field has been set.
 func (o *GridSetting) HasCategories() bool {
-	if o != nil && !isNil(o.Categories) {
+	if o != nil && !IsNil(o.Categories) {
 		return true
 	}
 
@@ -143,7 +146,7 @@ func (o *GridSetting) SetCategories(v []FileCategory) {
 
 // GetMetadata returns the Metadata field value if set, zero value otherwise.
 func (o *GridSetting) GetMetadata() map[string]string {
-	if o == nil || isNil(o.Metadata) {
+	if o == nil || IsNil(o.Metadata) {
 		var ret map[string]string
 		return ret
 	}
@@ -153,15 +156,15 @@ func (o *GridSetting) GetMetadata() map[string]string {
 // GetMetadataOk returns a tuple with the Metadata field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *GridSetting) GetMetadataOk() (*map[string]string, bool) {
-	if o == nil || isNil(o.Metadata) {
-    return nil, false
+	if o == nil || IsNil(o.Metadata) {
+		return nil, false
 	}
 	return o.Metadata, true
 }
 
 // HasMetadata returns a boolean if a field has been set.
 func (o *GridSetting) HasMetadata() bool {
-	if o != nil && !isNil(o.Metadata) {
+	if o != nil && !IsNil(o.Metadata) {
 		return true
 	}
 
@@ -175,7 +178,7 @@ func (o *GridSetting) SetMetadata(v map[string]string) {
 
 // GetCreatedTime returns the CreatedTime field value if set, zero value otherwise.
 func (o *GridSetting) GetCreatedTime() time.Time {
-	if o == nil || isNil(o.CreatedTime) {
+	if o == nil || IsNil(o.CreatedTime) {
 		var ret time.Time
 		return ret
 	}
@@ -185,15 +188,15 @@ func (o *GridSetting) GetCreatedTime() time.Time {
 // GetCreatedTimeOk returns a tuple with the CreatedTime field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *GridSetting) GetCreatedTimeOk() (*time.Time, bool) {
-	if o == nil || isNil(o.CreatedTime) {
-    return nil, false
+	if o == nil || IsNil(o.CreatedTime) {
+		return nil, false
 	}
 	return o.CreatedTime, true
 }
 
 // HasCreatedTime returns a boolean if a field has been set.
 func (o *GridSetting) HasCreatedTime() bool {
-	if o != nil && !isNil(o.CreatedTime) {
+	if o != nil && !IsNil(o.CreatedTime) {
 		return true
 	}
 
@@ -207,7 +210,7 @@ func (o *GridSetting) SetCreatedTime(v time.Time) {
 
 // GetLastModifiedTime returns the LastModifiedTime field value if set, zero value otherwise.
 func (o *GridSetting) GetLastModifiedTime() time.Time {
-	if o == nil || isNil(o.LastModifiedTime) {
+	if o == nil || IsNil(o.LastModifiedTime) {
 		var ret time.Time
 		return ret
 	}
@@ -217,15 +220,15 @@ func (o *GridSetting) GetLastModifiedTime() time.Time {
 // GetLastModifiedTimeOk returns a tuple with the LastModifiedTime field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *GridSetting) GetLastModifiedTimeOk() (*time.Time, bool) {
-	if o == nil || isNil(o.LastModifiedTime) {
-    return nil, false
+	if o == nil || IsNil(o.LastModifiedTime) {
+		return nil, false
 	}
 	return o.LastModifiedTime, true
 }
 
 // HasLastModifiedTime returns a boolean if a field has been set.
 func (o *GridSetting) HasLastModifiedTime() bool {
-	if o != nil && !isNil(o.LastModifiedTime) {
+	if o != nil && !IsNil(o.LastModifiedTime) {
 		return true
 	}
 
@@ -239,7 +242,7 @@ func (o *GridSetting) SetLastModifiedTime(v time.Time) {
 
 // GetCreatedBy returns the CreatedBy field value if set, zero value otherwise.
 func (o *GridSetting) GetCreatedBy() string {
-	if o == nil || isNil(o.CreatedBy) {
+	if o == nil || IsNil(o.CreatedBy) {
 		var ret string
 		return ret
 	}
@@ -249,15 +252,15 @@ func (o *GridSetting) GetCreatedBy() string {
 // GetCreatedByOk returns a tuple with the CreatedBy field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *GridSetting) GetCreatedByOk() (*string, bool) {
-	if o == nil || isNil(o.CreatedBy) {
-    return nil, false
+	if o == nil || IsNil(o.CreatedBy) {
+		return nil, false
 	}
 	return o.CreatedBy, true
 }
 
 // HasCreatedBy returns a boolean if a field has been set.
 func (o *GridSetting) HasCreatedBy() bool {
-	if o != nil && !isNil(o.CreatedBy) {
+	if o != nil && !IsNil(o.CreatedBy) {
 		return true
 	}
 
@@ -271,7 +274,7 @@ func (o *GridSetting) SetCreatedBy(v string) {
 
 // GetLastModifiedBy returns the LastModifiedBy field value if set, zero value otherwise.
 func (o *GridSetting) GetLastModifiedBy() string {
-	if o == nil || isNil(o.LastModifiedBy) {
+	if o == nil || IsNil(o.LastModifiedBy) {
 		var ret string
 		return ret
 	}
@@ -281,15 +284,15 @@ func (o *GridSetting) GetLastModifiedBy() string {
 // GetLastModifiedByOk returns a tuple with the LastModifiedBy field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *GridSetting) GetLastModifiedByOk() (*string, bool) {
-	if o == nil || isNil(o.LastModifiedBy) {
-    return nil, false
+	if o == nil || IsNil(o.LastModifiedBy) {
+		return nil, false
 	}
 	return o.LastModifiedBy, true
 }
 
 // HasLastModifiedBy returns a boolean if a field has been set.
 func (o *GridSetting) HasLastModifiedBy() bool {
-	if o != nil && !isNil(o.LastModifiedBy) {
+	if o != nil && !IsNil(o.LastModifiedBy) {
 		return true
 	}
 
@@ -302,32 +305,40 @@ func (o *GridSetting) SetLastModifiedBy(v string) {
 }
 
 func (o GridSetting) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if !isNil(o.DefaultSourceLanguageStatus) {
-		toSerialize["defaultSourceLanguageStatus"] = o.DefaultSourceLanguageStatus
-	}
-	if !isNil(o.TranslatorCanViewAutomations) {
-		toSerialize["translatorCanViewAutomations"] = o.TranslatorCanViewAutomations
-	}
-	if !isNil(o.Categories) {
-		toSerialize["categories"] = o.Categories
-	}
-	if !isNil(o.Metadata) {
-		toSerialize["metadata"] = o.Metadata
-	}
-	if !isNil(o.CreatedTime) {
-		toSerialize["createdTime"] = o.CreatedTime
-	}
-	if !isNil(o.LastModifiedTime) {
-		toSerialize["lastModifiedTime"] = o.LastModifiedTime
-	}
-	if !isNil(o.CreatedBy) {
-		toSerialize["createdBy"] = o.CreatedBy
-	}
-	if !isNil(o.LastModifiedBy) {
-		toSerialize["lastModifiedBy"] = o.LastModifiedBy
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o GridSetting) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.DefaultSourceLanguageStatus) {
+		toSerialize["defaultSourceLanguageStatus"] = o.DefaultSourceLanguageStatus
+	}
+	if !IsNil(o.TranslatorCanViewAutomations) {
+		toSerialize["translatorCanViewAutomations"] = o.TranslatorCanViewAutomations
+	}
+	if !IsNil(o.Categories) {
+		toSerialize["categories"] = o.Categories
+	}
+	if !IsNil(o.Metadata) {
+		toSerialize["metadata"] = o.Metadata
+	}
+	if !IsNil(o.CreatedTime) {
+		toSerialize["createdTime"] = o.CreatedTime
+	}
+	if !IsNil(o.LastModifiedTime) {
+		toSerialize["lastModifiedTime"] = o.LastModifiedTime
+	}
+	if !IsNil(o.CreatedBy) {
+		toSerialize["createdBy"] = o.CreatedBy
+	}
+	if !IsNil(o.LastModifiedBy) {
+		toSerialize["lastModifiedBy"] = o.LastModifiedBy
+	}
+	return toSerialize, nil
 }
 
 type NullableGridSetting struct {

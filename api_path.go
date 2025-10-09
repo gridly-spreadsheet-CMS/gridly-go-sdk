@@ -3,7 +3,7 @@ Gridly API
 
 Gridly API documentation
 
-API version: 5.9.0
+API version: 6.13.0
 Contact: support@gridly.com
 */
 
@@ -14,7 +14,7 @@ package gridly
 import (
 	"bytes"
 	"context"
-	"io/ioutil"
+	"io"
 	"net/http"
 	"net/url"
 	"strings"
@@ -73,7 +73,7 @@ func (a *PathApiService) CreateExecute(r PathApiCreateRequest) (*PathList, *http
 	}
 
 	localVarPath := localBasePath + "/v1/views/{viewId}/paths"
-	localVarPath = strings.Replace(localVarPath, "{"+"viewId"+"}", url.PathEscape(parameterToString(r.viewId, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"viewId"+"}", url.PathEscape(parameterValueToString(r.viewId, "viewId")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -125,9 +125,9 @@ func (a *PathApiService) CreateExecute(r PathApiCreateRequest) (*PathList, *http
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -199,7 +199,7 @@ func (a *PathApiService) DeleteExecute(r PathApiDeleteRequest) (*http.Response, 
 	}
 
 	localVarPath := localBasePath + "/v1/views/{viewId}/paths"
-	localVarPath = strings.Replace(localVarPath, "{"+"viewId"+"}", url.PathEscape(parameterToString(r.viewId, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"viewId"+"}", url.PathEscape(parameterValueToString(r.viewId, "viewId")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -251,9 +251,9 @@ func (a *PathApiService) DeleteExecute(r PathApiDeleteRequest) (*http.Response, 
 		return localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarHTTPResponse, err
 	}
@@ -319,14 +319,14 @@ func (a *PathApiService) ListExecute(r PathApiListRequest) ([]PathNode, *http.Re
 	}
 
 	localVarPath := localBasePath + "/v1/views/{viewId}/paths/tree"
-	localVarPath = strings.Replace(localVarPath, "{"+"viewId"+"}", url.PathEscape(parameterToString(r.viewId, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"viewId"+"}", url.PathEscape(parameterValueToString(r.viewId, "viewId")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
 
 	if r.rootPath != nil {
-		localVarQueryParams.Add("rootPath", parameterToString(*r.rootPath, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "rootPath", r.rootPath, "form", "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -369,9 +369,9 @@ func (a *PathApiService) ListExecute(r PathApiListRequest) ([]PathNode, *http.Re
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -445,7 +445,7 @@ func (a *PathApiService) MoveExecute(r PathApiMoveRequest) (*PathList, *http.Res
 	}
 
 	localVarPath := localBasePath + "/v1/views/{viewId}/paths/move"
-	localVarPath = strings.Replace(localVarPath, "{"+"viewId"+"}", url.PathEscape(parameterToString(r.viewId, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"viewId"+"}", url.PathEscape(parameterValueToString(r.viewId, "viewId")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -497,9 +497,9 @@ func (a *PathApiService) MoveExecute(r PathApiMoveRequest) (*PathList, *http.Res
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -550,6 +550,8 @@ update
  @param viewId viewId
  @param path path
  @return PathApiUpdateRequest
+
+Deprecated
 */
 func (a *PathApiService) Update(ctx context.Context, viewId string, path string) PathApiUpdateRequest {
 	return PathApiUpdateRequest{
@@ -562,6 +564,7 @@ func (a *PathApiService) Update(ctx context.Context, viewId string, path string)
 
 // Execute executes the request
 //  @return PathSingle
+// Deprecated
 func (a *PathApiService) UpdateExecute(r PathApiUpdateRequest) (*PathSingle, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPut
@@ -576,8 +579,8 @@ func (a *PathApiService) UpdateExecute(r PathApiUpdateRequest) (*PathSingle, *ht
 	}
 
 	localVarPath := localBasePath + "/v1/views/{viewId}/paths/{path}"
-	localVarPath = strings.Replace(localVarPath, "{"+"viewId"+"}", url.PathEscape(parameterToString(r.viewId, "")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"path"+"}", url.PathEscape(parameterToString(r.path, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"viewId"+"}", url.PathEscape(parameterValueToString(r.viewId, "viewId")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"path"+"}", url.PathEscape(parameterValueToString(r.path, "path")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -629,9 +632,137 @@ func (a *PathApiService) UpdateExecute(r PathApiUpdateRequest) (*PathSingle, *ht
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type PathApiUpdatePathNodeRequest struct {
+	ctx context.Context
+	ApiService *PathApiService
+	viewId string
+	updatePath *UpdatePath
+}
+
+func (r PathApiUpdatePathNodeRequest) UpdatePath(updatePath UpdatePath) PathApiUpdatePathNodeRequest {
+	r.updatePath = &updatePath
+	return r
+}
+
+func (r PathApiUpdatePathNodeRequest) Execute() (*PathSingle, *http.Response, error) {
+	return r.ApiService.UpdatePathNodeExecute(r)
+}
+
+/*
+UpdatePathNode updatePathNode
+
+updatePathNode
+
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param viewId viewId
+ @return PathApiUpdatePathNodeRequest
+*/
+func (a *PathApiService) UpdatePathNode(ctx context.Context, viewId string) PathApiUpdatePathNodeRequest {
+	return PathApiUpdatePathNodeRequest{
+		ApiService: a,
+		ctx: ctx,
+		viewId: viewId,
+	}
+}
+
+// Execute executes the request
+//  @return PathSingle
+func (a *PathApiService) UpdatePathNodeExecute(r PathApiUpdatePathNodeRequest) (*PathSingle, *http.Response, error) {
+	var (
+		localVarHTTPMethod   = http.MethodPut
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *PathSingle
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "PathApiService.UpdatePathNode")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/v1/views/{viewId}/paths"
+	localVarPath = strings.Replace(localVarPath, "{"+"viewId"+"}", url.PathEscape(parameterValueToString(r.viewId, "viewId")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+	if r.updatePath == nil {
+		return localVarReturnValue, nil, reportError("updatePath is required and must be specified")
+	}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{"application/json"}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	// body params
+	localVarPostBody = r.updatePath
+	if r.ctx != nil {
+		// API Key Authentication
+		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
+			if apiKey, ok := auth["ApiKey"]; ok {
+				var key string
+				if apiKey.Prefix != "" {
+					key = apiKey.Prefix + " " + apiKey.Key
+				} else {
+					key = apiKey.Key
+				}
+				localVarHeaderParams["Authorization"] = key
+			}
+		}
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}

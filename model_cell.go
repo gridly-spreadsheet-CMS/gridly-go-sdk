@@ -3,7 +3,7 @@ Gridly API
 
 Gridly API documentation
 
-API version: 5.9.0
+API version: 6.13.0
 Contact: support@gridly.com
 */
 
@@ -15,11 +15,17 @@ import (
 	"encoding/json"
 )
 
+// checks if the Cell type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &Cell{}
+
 // Cell struct for Cell
 type Cell struct {
 	ColumnId *string `json:"columnId,omitempty"`
 	DependencyStatus *string `json:"dependencyStatus,omitempty"`
 	LengthLimit *int32 `json:"lengthLimit,omitempty"`
+	LineLimit *int32 `json:"lineLimit,omitempty"`
+	Mt *bool `json:"mt,omitempty"`
+	ReadOnly *bool `json:"readOnly,omitempty"`
 	ReferencedIds []string `json:"referencedIds,omitempty"`
 	SourceStatus *string `json:"sourceStatus,omitempty"`
 	Tm *bool `json:"tm,omitempty"`
@@ -45,7 +51,7 @@ func NewCellWithDefaults() *Cell {
 
 // GetColumnId returns the ColumnId field value if set, zero value otherwise.
 func (o *Cell) GetColumnId() string {
-	if o == nil || isNil(o.ColumnId) {
+	if o == nil || IsNil(o.ColumnId) {
 		var ret string
 		return ret
 	}
@@ -55,15 +61,15 @@ func (o *Cell) GetColumnId() string {
 // GetColumnIdOk returns a tuple with the ColumnId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Cell) GetColumnIdOk() (*string, bool) {
-	if o == nil || isNil(o.ColumnId) {
-    return nil, false
+	if o == nil || IsNil(o.ColumnId) {
+		return nil, false
 	}
 	return o.ColumnId, true
 }
 
 // HasColumnId returns a boolean if a field has been set.
 func (o *Cell) HasColumnId() bool {
-	if o != nil && !isNil(o.ColumnId) {
+	if o != nil && !IsNil(o.ColumnId) {
 		return true
 	}
 
@@ -77,7 +83,7 @@ func (o *Cell) SetColumnId(v string) {
 
 // GetDependencyStatus returns the DependencyStatus field value if set, zero value otherwise.
 func (o *Cell) GetDependencyStatus() string {
-	if o == nil || isNil(o.DependencyStatus) {
+	if o == nil || IsNil(o.DependencyStatus) {
 		var ret string
 		return ret
 	}
@@ -87,15 +93,15 @@ func (o *Cell) GetDependencyStatus() string {
 // GetDependencyStatusOk returns a tuple with the DependencyStatus field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Cell) GetDependencyStatusOk() (*string, bool) {
-	if o == nil || isNil(o.DependencyStatus) {
-    return nil, false
+	if o == nil || IsNil(o.DependencyStatus) {
+		return nil, false
 	}
 	return o.DependencyStatus, true
 }
 
 // HasDependencyStatus returns a boolean if a field has been set.
 func (o *Cell) HasDependencyStatus() bool {
-	if o != nil && !isNil(o.DependencyStatus) {
+	if o != nil && !IsNil(o.DependencyStatus) {
 		return true
 	}
 
@@ -109,7 +115,7 @@ func (o *Cell) SetDependencyStatus(v string) {
 
 // GetLengthLimit returns the LengthLimit field value if set, zero value otherwise.
 func (o *Cell) GetLengthLimit() int32 {
-	if o == nil || isNil(o.LengthLimit) {
+	if o == nil || IsNil(o.LengthLimit) {
 		var ret int32
 		return ret
 	}
@@ -119,15 +125,15 @@ func (o *Cell) GetLengthLimit() int32 {
 // GetLengthLimitOk returns a tuple with the LengthLimit field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Cell) GetLengthLimitOk() (*int32, bool) {
-	if o == nil || isNil(o.LengthLimit) {
-    return nil, false
+	if o == nil || IsNil(o.LengthLimit) {
+		return nil, false
 	}
 	return o.LengthLimit, true
 }
 
 // HasLengthLimit returns a boolean if a field has been set.
 func (o *Cell) HasLengthLimit() bool {
-	if o != nil && !isNil(o.LengthLimit) {
+	if o != nil && !IsNil(o.LengthLimit) {
 		return true
 	}
 
@@ -139,9 +145,105 @@ func (o *Cell) SetLengthLimit(v int32) {
 	o.LengthLimit = &v
 }
 
+// GetLineLimit returns the LineLimit field value if set, zero value otherwise.
+func (o *Cell) GetLineLimit() int32 {
+	if o == nil || IsNil(o.LineLimit) {
+		var ret int32
+		return ret
+	}
+	return *o.LineLimit
+}
+
+// GetLineLimitOk returns a tuple with the LineLimit field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *Cell) GetLineLimitOk() (*int32, bool) {
+	if o == nil || IsNil(o.LineLimit) {
+		return nil, false
+	}
+	return o.LineLimit, true
+}
+
+// HasLineLimit returns a boolean if a field has been set.
+func (o *Cell) HasLineLimit() bool {
+	if o != nil && !IsNil(o.LineLimit) {
+		return true
+	}
+
+	return false
+}
+
+// SetLineLimit gets a reference to the given int32 and assigns it to the LineLimit field.
+func (o *Cell) SetLineLimit(v int32) {
+	o.LineLimit = &v
+}
+
+// GetMt returns the Mt field value if set, zero value otherwise.
+func (o *Cell) GetMt() bool {
+	if o == nil || IsNil(o.Mt) {
+		var ret bool
+		return ret
+	}
+	return *o.Mt
+}
+
+// GetMtOk returns a tuple with the Mt field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *Cell) GetMtOk() (*bool, bool) {
+	if o == nil || IsNil(o.Mt) {
+		return nil, false
+	}
+	return o.Mt, true
+}
+
+// HasMt returns a boolean if a field has been set.
+func (o *Cell) HasMt() bool {
+	if o != nil && !IsNil(o.Mt) {
+		return true
+	}
+
+	return false
+}
+
+// SetMt gets a reference to the given bool and assigns it to the Mt field.
+func (o *Cell) SetMt(v bool) {
+	o.Mt = &v
+}
+
+// GetReadOnly returns the ReadOnly field value if set, zero value otherwise.
+func (o *Cell) GetReadOnly() bool {
+	if o == nil || IsNil(o.ReadOnly) {
+		var ret bool
+		return ret
+	}
+	return *o.ReadOnly
+}
+
+// GetReadOnlyOk returns a tuple with the ReadOnly field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *Cell) GetReadOnlyOk() (*bool, bool) {
+	if o == nil || IsNil(o.ReadOnly) {
+		return nil, false
+	}
+	return o.ReadOnly, true
+}
+
+// HasReadOnly returns a boolean if a field has been set.
+func (o *Cell) HasReadOnly() bool {
+	if o != nil && !IsNil(o.ReadOnly) {
+		return true
+	}
+
+	return false
+}
+
+// SetReadOnly gets a reference to the given bool and assigns it to the ReadOnly field.
+func (o *Cell) SetReadOnly(v bool) {
+	o.ReadOnly = &v
+}
+
 // GetReferencedIds returns the ReferencedIds field value if set, zero value otherwise.
 func (o *Cell) GetReferencedIds() []string {
-	if o == nil || isNil(o.ReferencedIds) {
+	if o == nil || IsNil(o.ReferencedIds) {
 		var ret []string
 		return ret
 	}
@@ -151,15 +253,15 @@ func (o *Cell) GetReferencedIds() []string {
 // GetReferencedIdsOk returns a tuple with the ReferencedIds field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Cell) GetReferencedIdsOk() ([]string, bool) {
-	if o == nil || isNil(o.ReferencedIds) {
-    return nil, false
+	if o == nil || IsNil(o.ReferencedIds) {
+		return nil, false
 	}
 	return o.ReferencedIds, true
 }
 
 // HasReferencedIds returns a boolean if a field has been set.
 func (o *Cell) HasReferencedIds() bool {
-	if o != nil && !isNil(o.ReferencedIds) {
+	if o != nil && !IsNil(o.ReferencedIds) {
 		return true
 	}
 
@@ -173,7 +275,7 @@ func (o *Cell) SetReferencedIds(v []string) {
 
 // GetSourceStatus returns the SourceStatus field value if set, zero value otherwise.
 func (o *Cell) GetSourceStatus() string {
-	if o == nil || isNil(o.SourceStatus) {
+	if o == nil || IsNil(o.SourceStatus) {
 		var ret string
 		return ret
 	}
@@ -183,15 +285,15 @@ func (o *Cell) GetSourceStatus() string {
 // GetSourceStatusOk returns a tuple with the SourceStatus field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Cell) GetSourceStatusOk() (*string, bool) {
-	if o == nil || isNil(o.SourceStatus) {
-    return nil, false
+	if o == nil || IsNil(o.SourceStatus) {
+		return nil, false
 	}
 	return o.SourceStatus, true
 }
 
 // HasSourceStatus returns a boolean if a field has been set.
 func (o *Cell) HasSourceStatus() bool {
-	if o != nil && !isNil(o.SourceStatus) {
+	if o != nil && !IsNil(o.SourceStatus) {
 		return true
 	}
 
@@ -205,7 +307,7 @@ func (o *Cell) SetSourceStatus(v string) {
 
 // GetTm returns the Tm field value if set, zero value otherwise.
 func (o *Cell) GetTm() bool {
-	if o == nil || isNil(o.Tm) {
+	if o == nil || IsNil(o.Tm) {
 		var ret bool
 		return ret
 	}
@@ -215,15 +317,15 @@ func (o *Cell) GetTm() bool {
 // GetTmOk returns a tuple with the Tm field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Cell) GetTmOk() (*bool, bool) {
-	if o == nil || isNil(o.Tm) {
-    return nil, false
+	if o == nil || IsNil(o.Tm) {
+		return nil, false
 	}
 	return o.Tm, true
 }
 
 // HasTm returns a boolean if a field has been set.
 func (o *Cell) HasTm() bool {
-	if o != nil && !isNil(o.Tm) {
+	if o != nil && !IsNil(o.Tm) {
 		return true
 	}
 
@@ -237,7 +339,7 @@ func (o *Cell) SetTm(v bool) {
 
 // GetValue returns the Value field value if set, zero value otherwise.
 func (o *Cell) GetValue() interface{} {
-	if o == nil || isNil(o.Value) {
+	if o == nil || IsNil(o.Value) {
 		var ret interface{}
 		return ret
 	}
@@ -247,15 +349,15 @@ func (o *Cell) GetValue() interface{} {
 // GetValueOk returns a tuple with the Value field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Cell) GetValueOk() (*interface{}, bool) {
-	if o == nil || isNil(o.Value) {
-    return nil, false
+	if o == nil || IsNil(o.Value) {
+		return nil, false
 	}
 	return o.Value, true
 }
 
 // HasValue returns a boolean if a field has been set.
 func (o *Cell) HasValue() bool {
-	if o != nil && !isNil(o.Value) {
+	if o != nil && !IsNil(o.Value) {
 		return true
 	}
 
@@ -268,29 +370,46 @@ func (o *Cell) SetValue(v interface{}) {
 }
 
 func (o Cell) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if !isNil(o.ColumnId) {
-		toSerialize["columnId"] = o.ColumnId
-	}
-	if !isNil(o.DependencyStatus) {
-		toSerialize["dependencyStatus"] = o.DependencyStatus
-	}
-	if !isNil(o.LengthLimit) {
-		toSerialize["lengthLimit"] = o.LengthLimit
-	}
-	if !isNil(o.ReferencedIds) {
-		toSerialize["referencedIds"] = o.ReferencedIds
-	}
-	if !isNil(o.SourceStatus) {
-		toSerialize["sourceStatus"] = o.SourceStatus
-	}
-	if !isNil(o.Tm) {
-		toSerialize["tm"] = o.Tm
-	}
-	if !isNil(o.Value) {
-		toSerialize["value"] = o.Value
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o Cell) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.ColumnId) {
+		toSerialize["columnId"] = o.ColumnId
+	}
+	if !IsNil(o.DependencyStatus) {
+		toSerialize["dependencyStatus"] = o.DependencyStatus
+	}
+	if !IsNil(o.LengthLimit) {
+		toSerialize["lengthLimit"] = o.LengthLimit
+	}
+	if !IsNil(o.LineLimit) {
+		toSerialize["lineLimit"] = o.LineLimit
+	}
+	if !IsNil(o.Mt) {
+		toSerialize["mt"] = o.Mt
+	}
+	if !IsNil(o.ReadOnly) {
+		toSerialize["readOnly"] = o.ReadOnly
+	}
+	if !IsNil(o.ReferencedIds) {
+		toSerialize["referencedIds"] = o.ReferencedIds
+	}
+	if !IsNil(o.SourceStatus) {
+		toSerialize["sourceStatus"] = o.SourceStatus
+	}
+	if !IsNil(o.Tm) {
+		toSerialize["tm"] = o.Tm
+	}
+	if !IsNil(o.Value) {
+		toSerialize["value"] = o.Value
+	}
+	return toSerialize, nil
 }
 
 type NullableCell struct {

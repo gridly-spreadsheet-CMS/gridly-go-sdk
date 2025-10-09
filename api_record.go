@@ -3,7 +3,7 @@ Gridly API
 
 Gridly API documentation
 
-API version: 5.9.0
+API version: 6.13.0
 Contact: support@gridly.com
 */
 
@@ -14,10 +14,11 @@ package gridly
 import (
 	"bytes"
 	"context"
-	"io/ioutil"
+	"io"
 	"net/http"
 	"net/url"
 	"strings"
+	"os"
 	"reflect"
 )
 
@@ -75,7 +76,7 @@ func (a *RecordApiService) CreateExecute(r RecordApiCreateRequest) ([]Record, *h
 	}
 
 	localVarPath := localBasePath + "/v1/views/{viewId}/records"
-	localVarPath = strings.Replace(localVarPath, "{"+"viewId"+"}", url.PathEscape(parameterToString(r.viewId, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"viewId"+"}", url.PathEscape(parameterValueToString(r.viewId, "viewId")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -127,9 +128,9 @@ func (a *RecordApiService) CreateExecute(r RecordApiCreateRequest) ([]Record, *h
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -201,7 +202,7 @@ func (a *RecordApiService) DeleteExecute(r RecordApiDeleteRequest) (*http.Respon
 	}
 
 	localVarPath := localBasePath + "/v1/views/{viewId}/records"
-	localVarPath = strings.Replace(localVarPath, "{"+"viewId"+"}", url.PathEscape(parameterToString(r.viewId, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"viewId"+"}", url.PathEscape(parameterValueToString(r.viewId, "viewId")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -253,9 +254,9 @@ func (a *RecordApiService) DeleteExecute(r RecordApiDeleteRequest) (*http.Respon
 		return localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarHTTPResponse, err
 	}
@@ -269,6 +270,263 @@ func (a *RecordApiService) DeleteExecute(r RecordApiDeleteRequest) (*http.Respon
 	}
 
 	return localVarHTTPResponse, nil
+}
+
+type RecordApiDownloadRecordHistoriesRequest struct {
+	ctx context.Context
+	ApiService *RecordApiService
+	viewId string
+	taskId string
+}
+
+func (r RecordApiDownloadRecordHistoriesRequest) Execute() (**os.File, *http.Response, error) {
+	return r.ApiService.DownloadRecordHistoriesExecute(r)
+}
+
+/*
+DownloadRecordHistories downloadRecordHistories
+
+downloadRecordHistories
+
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param viewId viewId
+ @param taskId taskId
+ @return RecordApiDownloadRecordHistoriesRequest
+*/
+func (a *RecordApiService) DownloadRecordHistories(ctx context.Context, viewId string, taskId string) RecordApiDownloadRecordHistoriesRequest {
+	return RecordApiDownloadRecordHistoriesRequest{
+		ApiService: a,
+		ctx: ctx,
+		viewId: viewId,
+		taskId: taskId,
+	}
+}
+
+// Execute executes the request
+//  @return *os.File
+func (a *RecordApiService) DownloadRecordHistoriesExecute(r RecordApiDownloadRecordHistoriesRequest) (**os.File, *http.Response, error) {
+	var (
+		localVarHTTPMethod   = http.MethodGet
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  **os.File
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "RecordApiService.DownloadRecordHistories")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/v1/views/{viewId}/record-histories/export/{taskId}"
+	localVarPath = strings.Replace(localVarPath, "{"+"viewId"+"}", url.PathEscape(parameterValueToString(r.viewId, "viewId")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"taskId"+"}", url.PathEscape(parameterValueToString(r.taskId, "taskId")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/octet-stream"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	if r.ctx != nil {
+		// API Key Authentication
+		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
+			if apiKey, ok := auth["ApiKey"]; ok {
+				var key string
+				if apiKey.Prefix != "" {
+					key = apiKey.Prefix + " " + apiKey.Key
+				} else {
+					key = apiKey.Key
+				}
+				localVarHeaderParams["Authorization"] = key
+			}
+		}
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+			var v *os.File
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type RecordApiExportRecordHistoriesRequest struct {
+	ctx context.Context
+	ApiService *RecordApiService
+	viewId string
+	exportRecordHistory *ExportRecordHistory
+}
+
+func (r RecordApiExportRecordHistoriesRequest) ExportRecordHistory(exportRecordHistory ExportRecordHistory) RecordApiExportRecordHistoriesRequest {
+	r.exportRecordHistory = &exportRecordHistory
+	return r
+}
+
+func (r RecordApiExportRecordHistoriesRequest) Execute() (*Task, *http.Response, error) {
+	return r.ApiService.ExportRecordHistoriesExecute(r)
+}
+
+/*
+ExportRecordHistories exportRecordHistories
+
+exportRecordHistories
+
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param viewId viewId
+ @return RecordApiExportRecordHistoriesRequest
+*/
+func (a *RecordApiService) ExportRecordHistories(ctx context.Context, viewId string) RecordApiExportRecordHistoriesRequest {
+	return RecordApiExportRecordHistoriesRequest{
+		ApiService: a,
+		ctx: ctx,
+		viewId: viewId,
+	}
+}
+
+// Execute executes the request
+//  @return Task
+func (a *RecordApiService) ExportRecordHistoriesExecute(r RecordApiExportRecordHistoriesRequest) (*Task, *http.Response, error) {
+	var (
+		localVarHTTPMethod   = http.MethodPost
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *Task
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "RecordApiService.ExportRecordHistories")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/v1/views/{viewId}/record-histories/export"
+	localVarPath = strings.Replace(localVarPath, "{"+"viewId"+"}", url.PathEscape(parameterValueToString(r.viewId, "viewId")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+	if r.exportRecordHistory == nil {
+		return localVarReturnValue, nil, reportError("exportRecordHistory is required and must be specified")
+	}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{"application/json"}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	// body params
+	localVarPostBody = r.exportRecordHistory
+	if r.ctx != nil {
+		// API Key Authentication
+		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
+			if apiKey, ok := auth["ApiKey"]; ok {
+				var key string
+				if apiKey.Prefix != "" {
+					key = apiKey.Prefix + " " + apiKey.Key
+				} else {
+					key = apiKey.Key
+				}
+				localVarHeaderParams["Authorization"] = key
+			}
+		}
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
 type RecordApiFetchRequest struct {
@@ -363,7 +621,7 @@ func (a *RecordApiService) FetchExecute(r RecordApiFetchRequest) ([]Record, *htt
 	}
 
 	localVarPath := localBasePath + "/v1/views/{viewId}/records"
-	localVarPath = strings.Replace(localVarPath, "{"+"viewId"+"}", url.PathEscape(parameterToString(r.viewId, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"viewId"+"}", url.PathEscape(parameterValueToString(r.viewId, "viewId")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -374,29 +632,41 @@ func (a *RecordApiService) FetchExecute(r RecordApiFetchRequest) ([]Record, *htt
 		if reflect.TypeOf(t).Kind() == reflect.Slice {
 			s := reflect.ValueOf(t)
 			for i := 0; i < s.Len(); i++ {
-				localVarQueryParams.Add("columnIds", parameterToString(s.Index(i), "multi"))
+				parameterAddToHeaderOrQuery(localVarQueryParams, "columnIds", s.Index(i).Interface(), "form", "multi")
 			}
 		} else {
-			localVarQueryParams.Add("columnIds", parameterToString(t, "multi"))
+			parameterAddToHeaderOrQuery(localVarQueryParams, "columnIds", t, "form", "multi")
 		}
+	} else {
+		var defaultValue []string = []string{}
+		r.columnIds = &defaultValue
 	}
 	if r.page != nil {
-		localVarQueryParams.Add("page", parameterToString(*r.page, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "page", r.page, "form", "")
+	} else {
+		var defaultValue string = "{}"
+		r.page = &defaultValue
 	}
 	if r.query != nil {
-		localVarQueryParams.Add("query", parameterToString(*r.query, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "query", r.query, "form", "")
+	} else {
+		var defaultValue string = "{}"
+		r.query = &defaultValue
 	}
 	if r.sort != nil {
-		localVarQueryParams.Add("sort", parameterToString(*r.sort, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "sort", r.sort, "form", "")
+	} else {
+		var defaultValue string = "{}"
+		r.sort = &defaultValue
 	}
 	if r.fetchFileOption != nil {
-		localVarQueryParams.Add("fetchFileOption", parameterToString(*r.fetchFileOption, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "fetchFileOption", r.fetchFileOption, "form", "")
 	}
 	if r.afterRecordId != nil {
-		localVarQueryParams.Add("afterRecordId", parameterToString(*r.afterRecordId, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "afterRecordId", r.afterRecordId, "form", "")
 	}
 	if r.beforeRecordId != nil {
-		localVarQueryParams.Add("beforeRecordId", parameterToString(*r.beforeRecordId, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "beforeRecordId", r.beforeRecordId, "form", "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -439,9 +709,9 @@ func (a *RecordApiService) FetchExecute(r RecordApiFetchRequest) ([]Record, *htt
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -519,8 +789,8 @@ func (a *RecordApiService) FetchHistoriesExecute(r RecordApiFetchHistoriesReques
 	}
 
 	localVarPath := localBasePath + "/v1/views/{viewId}/records/{recordId}/histories"
-	localVarPath = strings.Replace(localVarPath, "{"+"viewId"+"}", url.PathEscape(parameterToString(r.viewId, "")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"recordId"+"}", url.PathEscape(parameterToString(r.recordId, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"viewId"+"}", url.PathEscape(parameterValueToString(r.viewId, "viewId")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"recordId"+"}", url.PathEscape(parameterValueToString(r.recordId, "recordId")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -529,7 +799,7 @@ func (a *RecordApiService) FetchHistoriesExecute(r RecordApiFetchHistoriesReques
 		return localVarReturnValue, nil, reportError("fetchRequest is required and must be specified")
 	}
 
-	localVarQueryParams.Add("fetchRequest", parameterToString(*r.fetchRequest, ""))
+	parameterAddToHeaderOrQuery(localVarQueryParams, "fetchRequest", r.fetchRequest, "form", "")
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
 
@@ -571,9 +841,9 @@ func (a *RecordApiService) FetchHistoriesExecute(r RecordApiFetchHistoriesReques
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -647,7 +917,7 @@ func (a *RecordApiService) UpdateExecute(r RecordApiUpdateRequest) ([]Record, *h
 	}
 
 	localVarPath := localBasePath + "/v1/views/{viewId}/records"
-	localVarPath = strings.Replace(localVarPath, "{"+"viewId"+"}", url.PathEscape(parameterToString(r.viewId, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"viewId"+"}", url.PathEscape(parameterValueToString(r.viewId, "viewId")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -699,9 +969,9 @@ func (a *RecordApiService) UpdateExecute(r RecordApiUpdateRequest) ([]Record, *h
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -785,8 +1055,8 @@ func (a *RecordApiService) UpdateRecordExecute(r RecordApiUpdateRecordRequest) (
 	}
 
 	localVarPath := localBasePath + "/v1/views/{viewId}/records/{id}"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"viewId"+"}", url.PathEscape(parameterToString(r.viewId, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"viewId"+"}", url.PathEscape(parameterValueToString(r.viewId, "viewId")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -796,7 +1066,7 @@ func (a *RecordApiService) UpdateRecordExecute(r RecordApiUpdateRecordRequest) (
 	}
 
 	if r.path != nil {
-		localVarQueryParams.Add("path", parameterToString(*r.path, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "path", r.path, "form", "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{"application/json"}
@@ -841,9 +1111,9 @@ func (a *RecordApiService) UpdateRecordExecute(r RecordApiUpdateRecordRequest) (
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}

@@ -6,6 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Id** | Pointer to **string** |  | [optional] 
 **Cells** | Pointer to [**[]SetCell**](SetCell.md) |  | [optional] 
+**MarkUpdatedCellsWithMTFlag** | Pointer to **bool** |  | [optional] 
 **Path** | Pointer to **string** |  | [optional] 
 
 ## Methods
@@ -76,6 +77,31 @@ SetCells sets Cells field to given value.
 `func (o *SetRecord) HasCells() bool`
 
 HasCells returns a boolean if a field has been set.
+
+### GetMarkUpdatedCellsWithMTFlag
+
+`func (o *SetRecord) GetMarkUpdatedCellsWithMTFlag() bool`
+
+GetMarkUpdatedCellsWithMTFlag returns the MarkUpdatedCellsWithMTFlag field if non-nil, zero value otherwise.
+
+### GetMarkUpdatedCellsWithMTFlagOk
+
+`func (o *SetRecord) GetMarkUpdatedCellsWithMTFlagOk() (*bool, bool)`
+
+GetMarkUpdatedCellsWithMTFlagOk returns a tuple with the MarkUpdatedCellsWithMTFlag field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetMarkUpdatedCellsWithMTFlag
+
+`func (o *SetRecord) SetMarkUpdatedCellsWithMTFlag(v bool)`
+
+SetMarkUpdatedCellsWithMTFlag sets MarkUpdatedCellsWithMTFlag field to given value.
+
+### HasMarkUpdatedCellsWithMTFlag
+
+`func (o *SetRecord) HasMarkUpdatedCellsWithMTFlag() bool`
+
+HasMarkUpdatedCellsWithMTFlag returns a boolean if a field has been set.
 
 ### GetPath
 

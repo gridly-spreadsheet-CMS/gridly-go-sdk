@@ -3,7 +3,7 @@ Gridly API
 
 Gridly API documentation
 
-API version: 5.9.0
+API version: 6.13.0
 Contact: support@gridly.com
 */
 
@@ -14,7 +14,7 @@ package gridly
 import (
 	"bytes"
 	"context"
-	"io/ioutil"
+	"io"
 	"net/http"
 	"net/url"
 	"strings"
@@ -89,7 +89,7 @@ func (a *GridApiService) CreateExecute(r GridApiCreateRequest) (*Grid, *http.Res
 		return localVarReturnValue, nil, reportError("createGrid is required and must be specified")
 	}
 
-	localVarQueryParams.Add("dbId", parameterToString(*r.dbId, ""))
+	parameterAddToHeaderOrQuery(localVarQueryParams, "dbId", r.dbId, "form", "")
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{"application/json"}
 
@@ -133,9 +133,9 @@ func (a *GridApiService) CreateExecute(r GridApiCreateRequest) (*Grid, *http.Res
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -209,7 +209,7 @@ func (a *GridApiService) CreateCategoryExecute(r GridApiCreateCategoryRequest) (
 	}
 
 	localVarPath := localBasePath + "/v1/grids/{gridId}/settings/categories"
-	localVarPath = strings.Replace(localVarPath, "{"+"gridId"+"}", url.PathEscape(parameterToString(r.gridId, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"gridId"+"}", url.PathEscape(parameterValueToString(r.gridId, "gridId")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -261,9 +261,9 @@ func (a *GridApiService) CreateCategoryExecute(r GridApiCreateCategoryRequest) (
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -329,7 +329,7 @@ func (a *GridApiService) DeleteExecute(r GridApiDeleteRequest) (*http.Response, 
 	}
 
 	localVarPath := localBasePath + "/v1/grids/{gridId}"
-	localVarPath = strings.Replace(localVarPath, "{"+"gridId"+"}", url.PathEscape(parameterToString(r.gridId, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"gridId"+"}", url.PathEscape(parameterValueToString(r.gridId, "gridId")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -376,9 +376,9 @@ func (a *GridApiService) DeleteExecute(r GridApiDeleteRequest) (*http.Response, 
 		return localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarHTTPResponse, err
 	}
@@ -438,8 +438,8 @@ func (a *GridApiService) DeleteCategoryExecute(r GridApiDeleteCategoryRequest) (
 	}
 
 	localVarPath := localBasePath + "/v1/grids/{gridId}/settings/categories/{categoryId}"
-	localVarPath = strings.Replace(localVarPath, "{"+"gridId"+"}", url.PathEscape(parameterToString(r.gridId, "")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"categoryId"+"}", url.PathEscape(parameterToString(r.categoryId, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"gridId"+"}", url.PathEscape(parameterValueToString(r.gridId, "gridId")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"categoryId"+"}", url.PathEscape(parameterValueToString(r.categoryId, "categoryId")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -486,9 +486,9 @@ func (a *GridApiService) DeleteCategoryExecute(r GridApiDeleteCategoryRequest) (
 		return localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarHTTPResponse, err
 	}
@@ -551,9 +551,9 @@ func (a *GridApiService) DeleteFileExecute(r GridApiDeleteFileRequest) (*http.Re
 	}
 
 	localVarPath := localBasePath + "/v1/grids/{gridId}/settings/categories/{categoryId}/files/{fileId}"
-	localVarPath = strings.Replace(localVarPath, "{"+"gridId"+"}", url.PathEscape(parameterToString(r.gridId, "")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"categoryId"+"}", url.PathEscape(parameterToString(r.categoryId, "")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"fileId"+"}", url.PathEscape(parameterToString(r.fileId, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"gridId"+"}", url.PathEscape(parameterValueToString(r.gridId, "gridId")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"categoryId"+"}", url.PathEscape(parameterValueToString(r.categoryId, "categoryId")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"fileId"+"}", url.PathEscape(parameterValueToString(r.fileId, "fileId")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -600,9 +600,9 @@ func (a *GridApiService) DeleteFileExecute(r GridApiDeleteFileRequest) (*http.Re
 		return localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarHTTPResponse, err
 	}
@@ -661,7 +661,7 @@ func (a *GridApiService) GetExecute(r GridApiGetRequest) (*Grid, *http.Response,
 	}
 
 	localVarPath := localBasePath + "/v1/grids/{gridId}"
-	localVarPath = strings.Replace(localVarPath, "{"+"gridId"+"}", url.PathEscape(parameterToString(r.gridId, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"gridId"+"}", url.PathEscape(parameterValueToString(r.gridId, "gridId")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -708,9 +708,9 @@ func (a *GridApiService) GetExecute(r GridApiGetRequest) (*Grid, *http.Response,
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -778,7 +778,7 @@ func (a *GridApiService) GetSettingExecute(r GridApiGetSettingRequest) (*GridSet
 	}
 
 	localVarPath := localBasePath + "/v1/grids/{gridId}/settings"
-	localVarPath = strings.Replace(localVarPath, "{"+"gridId"+"}", url.PathEscape(parameterToString(r.gridId, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"gridId"+"}", url.PathEscape(parameterValueToString(r.gridId, "gridId")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -825,9 +825,9 @@ func (a *GridApiService) GetSettingExecute(r GridApiGetSettingRequest) (*GridSet
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -856,11 +856,18 @@ type GridApiListRequest struct {
 	ctx context.Context
 	ApiService *GridApiService
 	dbId *string
+	query *string
 }
 
 // dbId
 func (r GridApiListRequest) DbId(dbId string) GridApiListRequest {
 	r.dbId = &dbId
+	return r
+}
+
+// query
+func (r GridApiListRequest) Query(query string) GridApiListRequest {
+	r.query = &query
 	return r
 }
 
@@ -907,7 +914,13 @@ func (a *GridApiService) ListExecute(r GridApiListRequest) ([]Grid, *http.Respon
 		return localVarReturnValue, nil, reportError("dbId is required and must be specified")
 	}
 
-	localVarQueryParams.Add("dbId", parameterToString(*r.dbId, ""))
+	if r.query != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "query", r.query, "form", "")
+	} else {
+		var defaultValue string = "{}"
+		r.query = &defaultValue
+	}
+	parameterAddToHeaderOrQuery(localVarQueryParams, "dbId", r.dbId, "form", "")
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
 
@@ -949,9 +962,9 @@ func (a *GridApiService) ListExecute(r GridApiListRequest) ([]Grid, *http.Respon
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -1026,7 +1039,7 @@ func (a *GridApiService) ListFilesExecute(r GridApiListFilesRequest) ([]SettingF
 	}
 
 	localVarPath := localBasePath + "/v1/grids/{gridId}/settings/files"
-	localVarPath = strings.Replace(localVarPath, "{"+"gridId"+"}", url.PathEscape(parameterToString(r.gridId, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"gridId"+"}", url.PathEscape(parameterValueToString(r.gridId, "gridId")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -1037,10 +1050,10 @@ func (a *GridApiService) ListFilesExecute(r GridApiListFilesRequest) ([]SettingF
 		if reflect.TypeOf(t).Kind() == reflect.Slice {
 			s := reflect.ValueOf(t)
 			for i := 0; i < s.Len(); i++ {
-				localVarQueryParams.Add("categoryId", parameterToString(s.Index(i), "multi"))
+				parameterAddToHeaderOrQuery(localVarQueryParams, "categoryId", s.Index(i).Interface(), "form", "multi")
 			}
 		} else {
-			localVarQueryParams.Add("categoryId", parameterToString(t, "multi"))
+			parameterAddToHeaderOrQuery(localVarQueryParams, "categoryId", t, "form", "multi")
 		}
 	}
 	// to determine the Content-Type header
@@ -1084,9 +1097,9 @@ func (a *GridApiService) ListFilesExecute(r GridApiListFilesRequest) ([]SettingF
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -1197,9 +1210,9 @@ func (a *GridApiService) ListTemplateGridsExecute(r GridApiListTemplateGridsRequ
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -1273,7 +1286,7 @@ func (a *GridApiService) UpdateExecute(r GridApiUpdateRequest) (*Grid, *http.Res
 	}
 
 	localVarPath := localBasePath + "/v1/grids/{gridId}"
-	localVarPath = strings.Replace(localVarPath, "{"+"gridId"+"}", url.PathEscape(parameterToString(r.gridId, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"gridId"+"}", url.PathEscape(parameterValueToString(r.gridId, "gridId")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -1325,9 +1338,9 @@ func (a *GridApiService) UpdateExecute(r GridApiUpdateRequest) (*Grid, *http.Res
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -1404,8 +1417,8 @@ func (a *GridApiService) UpdateCategoryExecute(r GridApiUpdateCategoryRequest) (
 	}
 
 	localVarPath := localBasePath + "/v1/grids/{gridId}/settings/categories/{categoryId}"
-	localVarPath = strings.Replace(localVarPath, "{"+"gridId"+"}", url.PathEscape(parameterToString(r.gridId, "")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"categoryId"+"}", url.PathEscape(parameterToString(r.categoryId, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"gridId"+"}", url.PathEscape(parameterValueToString(r.gridId, "gridId")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"categoryId"+"}", url.PathEscape(parameterValueToString(r.categoryId, "categoryId")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -1457,9 +1470,9 @@ func (a *GridApiService) UpdateCategoryExecute(r GridApiUpdateCategoryRequest) (
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -1533,7 +1546,7 @@ func (a *GridApiService) UpdateSettingExecute(r GridApiUpdateSettingRequest) (*G
 	}
 
 	localVarPath := localBasePath + "/v1/grids/{gridId}/settings"
-	localVarPath = strings.Replace(localVarPath, "{"+"gridId"+"}", url.PathEscape(parameterToString(r.gridId, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"gridId"+"}", url.PathEscape(parameterValueToString(r.gridId, "gridId")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -1585,9 +1598,9 @@ func (a *GridApiService) UpdateSettingExecute(r GridApiUpdateSettingRequest) (*G
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -1664,8 +1677,8 @@ func (a *GridApiService) UploadSettingFileExecute(r GridApiUploadSettingFileRequ
 	}
 
 	localVarPath := localBasePath + "/v1/grids/{gridId}/settings/categories/{categoryId}/files"
-	localVarPath = strings.Replace(localVarPath, "{"+"gridId"+"}", url.PathEscape(parameterToString(r.gridId, "")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"categoryId"+"}", url.PathEscape(parameterToString(r.categoryId, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"gridId"+"}", url.PathEscape(parameterValueToString(r.gridId, "gridId")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"categoryId"+"}", url.PathEscape(parameterValueToString(r.categoryId, "categoryId")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -1717,9 +1730,9 @@ func (a *GridApiService) UploadSettingFileExecute(r GridApiUploadSettingFileRequ
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}

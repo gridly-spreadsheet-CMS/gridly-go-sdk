@@ -3,7 +3,7 @@ Gridly API
 
 Gridly API documentation
 
-API version: 5.9.0
+API version: 6.13.0
 Contact: support@gridly.com
 */
 
@@ -14,6 +14,9 @@ package gridly
 import (
 	"encoding/json"
 )
+
+// checks if the UploadedFile type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &UploadedFile{}
 
 // UploadedFile struct for UploadedFile
 type UploadedFile struct {
@@ -43,7 +46,7 @@ func NewUploadedFileWithDefaults() *UploadedFile {
 
 // GetId returns the Id field value if set, zero value otherwise.
 func (o *UploadedFile) GetId() string {
-	if o == nil || isNil(o.Id) {
+	if o == nil || IsNil(o.Id) {
 		var ret string
 		return ret
 	}
@@ -53,15 +56,15 @@ func (o *UploadedFile) GetId() string {
 // GetIdOk returns a tuple with the Id field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *UploadedFile) GetIdOk() (*string, bool) {
-	if o == nil || isNil(o.Id) {
-    return nil, false
+	if o == nil || IsNil(o.Id) {
+		return nil, false
 	}
 	return o.Id, true
 }
 
 // HasId returns a boolean if a field has been set.
 func (o *UploadedFile) HasId() bool {
-	if o != nil && !isNil(o.Id) {
+	if o != nil && !IsNil(o.Id) {
 		return true
 	}
 
@@ -75,7 +78,7 @@ func (o *UploadedFile) SetId(v string) {
 
 // GetOriginalName returns the OriginalName field value if set, zero value otherwise.
 func (o *UploadedFile) GetOriginalName() string {
-	if o == nil || isNil(o.OriginalName) {
+	if o == nil || IsNil(o.OriginalName) {
 		var ret string
 		return ret
 	}
@@ -85,15 +88,15 @@ func (o *UploadedFile) GetOriginalName() string {
 // GetOriginalNameOk returns a tuple with the OriginalName field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *UploadedFile) GetOriginalNameOk() (*string, bool) {
-	if o == nil || isNil(o.OriginalName) {
-    return nil, false
+	if o == nil || IsNil(o.OriginalName) {
+		return nil, false
 	}
 	return o.OriginalName, true
 }
 
 // HasOriginalName returns a boolean if a field has been set.
 func (o *UploadedFile) HasOriginalName() bool {
-	if o != nil && !isNil(o.OriginalName) {
+	if o != nil && !IsNil(o.OriginalName) {
 		return true
 	}
 
@@ -107,7 +110,7 @@ func (o *UploadedFile) SetOriginalName(v string) {
 
 // GetContentType returns the ContentType field value if set, zero value otherwise.
 func (o *UploadedFile) GetContentType() string {
-	if o == nil || isNil(o.ContentType) {
+	if o == nil || IsNil(o.ContentType) {
 		var ret string
 		return ret
 	}
@@ -117,15 +120,15 @@ func (o *UploadedFile) GetContentType() string {
 // GetContentTypeOk returns a tuple with the ContentType field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *UploadedFile) GetContentTypeOk() (*string, bool) {
-	if o == nil || isNil(o.ContentType) {
-    return nil, false
+	if o == nil || IsNil(o.ContentType) {
+		return nil, false
 	}
 	return o.ContentType, true
 }
 
 // HasContentType returns a boolean if a field has been set.
 func (o *UploadedFile) HasContentType() bool {
-	if o != nil && !isNil(o.ContentType) {
+	if o != nil && !IsNil(o.ContentType) {
 		return true
 	}
 
@@ -139,7 +142,7 @@ func (o *UploadedFile) SetContentType(v string) {
 
 // GetSize returns the Size field value if set, zero value otherwise.
 func (o *UploadedFile) GetSize() int64 {
-	if o == nil || isNil(o.Size) {
+	if o == nil || IsNil(o.Size) {
 		var ret int64
 		return ret
 	}
@@ -149,15 +152,15 @@ func (o *UploadedFile) GetSize() int64 {
 // GetSizeOk returns a tuple with the Size field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *UploadedFile) GetSizeOk() (*int64, bool) {
-	if o == nil || isNil(o.Size) {
-    return nil, false
+	if o == nil || IsNil(o.Size) {
+		return nil, false
 	}
 	return o.Size, true
 }
 
 // HasSize returns a boolean if a field has been set.
 func (o *UploadedFile) HasSize() bool {
-	if o != nil && !isNil(o.Size) {
+	if o != nil && !IsNil(o.Size) {
 		return true
 	}
 
@@ -171,7 +174,7 @@ func (o *UploadedFile) SetSize(v int64) {
 
 // GetThumbnailId returns the ThumbnailId field value if set, zero value otherwise.
 func (o *UploadedFile) GetThumbnailId() string {
-	if o == nil || isNil(o.ThumbnailId) {
+	if o == nil || IsNil(o.ThumbnailId) {
 		var ret string
 		return ret
 	}
@@ -181,15 +184,15 @@ func (o *UploadedFile) GetThumbnailId() string {
 // GetThumbnailIdOk returns a tuple with the ThumbnailId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *UploadedFile) GetThumbnailIdOk() (*string, bool) {
-	if o == nil || isNil(o.ThumbnailId) {
-    return nil, false
+	if o == nil || IsNil(o.ThumbnailId) {
+		return nil, false
 	}
 	return o.ThumbnailId, true
 }
 
 // HasThumbnailId returns a boolean if a field has been set.
 func (o *UploadedFile) HasThumbnailId() bool {
-	if o != nil && !isNil(o.ThumbnailId) {
+	if o != nil && !IsNil(o.ThumbnailId) {
 		return true
 	}
 
@@ -202,23 +205,31 @@ func (o *UploadedFile) SetThumbnailId(v string) {
 }
 
 func (o UploadedFile) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if !isNil(o.Id) {
-		toSerialize["id"] = o.Id
-	}
-	if !isNil(o.OriginalName) {
-		toSerialize["originalName"] = o.OriginalName
-	}
-	if !isNil(o.ContentType) {
-		toSerialize["contentType"] = o.ContentType
-	}
-	if !isNil(o.Size) {
-		toSerialize["size"] = o.Size
-	}
-	if !isNil(o.ThumbnailId) {
-		toSerialize["thumbnailId"] = o.ThumbnailId
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o UploadedFile) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.Id) {
+		toSerialize["id"] = o.Id
+	}
+	if !IsNil(o.OriginalName) {
+		toSerialize["originalName"] = o.OriginalName
+	}
+	if !IsNil(o.ContentType) {
+		toSerialize["contentType"] = o.ContentType
+	}
+	if !IsNil(o.Size) {
+		toSerialize["size"] = o.Size
+	}
+	if !IsNil(o.ThumbnailId) {
+		toSerialize["thumbnailId"] = o.ThumbnailId
+	}
+	return toSerialize, nil
 }
 
 type NullableUploadedFile struct {

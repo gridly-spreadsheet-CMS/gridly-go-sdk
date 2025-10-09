@@ -3,7 +3,7 @@ Gridly API
 
 Gridly API documentation
 
-API version: 5.9.0
+API version: 6.13.0
 Contact: support@gridly.com
 */
 
@@ -15,10 +15,12 @@ import (
 	"encoding/json"
 )
 
+// checks if the GlossaryProject type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &GlossaryProject{}
+
 // GlossaryProject struct for GlossaryProject
 type GlossaryProject struct {
 	ProjectId *int64 `json:"projectId,omitempty"`
-	DatabaseIds []string `json:"databaseIds,omitempty"`
 }
 
 // NewGlossaryProject instantiates a new GlossaryProject object
@@ -40,7 +42,7 @@ func NewGlossaryProjectWithDefaults() *GlossaryProject {
 
 // GetProjectId returns the ProjectId field value if set, zero value otherwise.
 func (o *GlossaryProject) GetProjectId() int64 {
-	if o == nil || isNil(o.ProjectId) {
+	if o == nil || IsNil(o.ProjectId) {
 		var ret int64
 		return ret
 	}
@@ -50,15 +52,15 @@ func (o *GlossaryProject) GetProjectId() int64 {
 // GetProjectIdOk returns a tuple with the ProjectId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *GlossaryProject) GetProjectIdOk() (*int64, bool) {
-	if o == nil || isNil(o.ProjectId) {
-    return nil, false
+	if o == nil || IsNil(o.ProjectId) {
+		return nil, false
 	}
 	return o.ProjectId, true
 }
 
 // HasProjectId returns a boolean if a field has been set.
 func (o *GlossaryProject) HasProjectId() bool {
-	if o != nil && !isNil(o.ProjectId) {
+	if o != nil && !IsNil(o.ProjectId) {
 		return true
 	}
 
@@ -70,47 +72,20 @@ func (o *GlossaryProject) SetProjectId(v int64) {
 	o.ProjectId = &v
 }
 
-// GetDatabaseIds returns the DatabaseIds field value if set, zero value otherwise.
-func (o *GlossaryProject) GetDatabaseIds() []string {
-	if o == nil || isNil(o.DatabaseIds) {
-		var ret []string
-		return ret
-	}
-	return o.DatabaseIds
-}
-
-// GetDatabaseIdsOk returns a tuple with the DatabaseIds field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *GlossaryProject) GetDatabaseIdsOk() ([]string, bool) {
-	if o == nil || isNil(o.DatabaseIds) {
-    return nil, false
-	}
-	return o.DatabaseIds, true
-}
-
-// HasDatabaseIds returns a boolean if a field has been set.
-func (o *GlossaryProject) HasDatabaseIds() bool {
-	if o != nil && !isNil(o.DatabaseIds) {
-		return true
-	}
-
-	return false
-}
-
-// SetDatabaseIds gets a reference to the given []string and assigns it to the DatabaseIds field.
-func (o *GlossaryProject) SetDatabaseIds(v []string) {
-	o.DatabaseIds = v
-}
-
 func (o GlossaryProject) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if !isNil(o.ProjectId) {
-		toSerialize["projectId"] = o.ProjectId
-	}
-	if !isNil(o.DatabaseIds) {
-		toSerialize["databaseIds"] = o.DatabaseIds
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o GlossaryProject) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.ProjectId) {
+		toSerialize["projectId"] = o.ProjectId
+	}
+	return toSerialize, nil
 }
 
 type NullableGlossaryProject struct {

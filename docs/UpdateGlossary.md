@@ -8,6 +8,7 @@ Name | Type | Description | Notes
 **Description** | Pointer to **string** |  | [optional] 
 **Langs** | Pointer to **[]string** |  | [optional] 
 **Projects** | Pointer to [**[]GlossaryProject**](GlossaryProject.md) |  | [optional] 
+**ProjectIds** | Pointer to **[]int64** |  | [optional] 
 
 ## Methods
 
@@ -127,6 +128,31 @@ SetProjects sets Projects field to given value.
 `func (o *UpdateGlossary) HasProjects() bool`
 
 HasProjects returns a boolean if a field has been set.
+
+### GetProjectIds
+
+`func (o *UpdateGlossary) GetProjectIds() []int64`
+
+GetProjectIds returns the ProjectIds field if non-nil, zero value otherwise.
+
+### GetProjectIdsOk
+
+`func (o *UpdateGlossary) GetProjectIdsOk() (*[]int64, bool)`
+
+GetProjectIdsOk returns a tuple with the ProjectIds field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetProjectIds
+
+`func (o *UpdateGlossary) SetProjectIds(v []int64)`
+
+SetProjectIds sets ProjectIds field to given value.
+
+### HasProjectIds
+
+`func (o *UpdateGlossary) HasProjectIds() bool`
+
+HasProjectIds returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

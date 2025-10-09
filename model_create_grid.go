@@ -3,7 +3,7 @@ Gridly API
 
 Gridly API documentation
 
-API version: 5.9.0
+API version: 6.13.0
 Contact: support@gridly.com
 */
 
@@ -13,25 +13,33 @@ package gridly
 
 import (
 	"encoding/json"
+	"bytes"
+	"fmt"
 )
+
+// checks if the CreateGrid type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &CreateGrid{}
 
 // CreateGrid struct for CreateGrid
 type CreateGrid struct {
-	Id *string `json:"id,omitempty"`
+	Id *string `json:"id,omitempty" validate:"regexp=^\\\\w+$"`
 	Name string `json:"name"`
 	TemplateGridId *string `json:"templateGridId,omitempty"`
-	RecordIdentifierType *string `json:"recordIdentifierType,omitempty"`
-	Columns []CreateColumn `json:"columns,omitempty"`
 	Metadata *map[string]string `json:"metadata,omitempty"`
+	RecordIdentifierType string `json:"recordIdentifierType"`
+	Columns []CreateColumn `json:"columns,omitempty"`
 }
+
+type _CreateGrid CreateGrid
 
 // NewCreateGrid instantiates a new CreateGrid object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewCreateGrid(name string) *CreateGrid {
+func NewCreateGrid(name string, recordIdentifierType string) *CreateGrid {
 	this := CreateGrid{}
 	this.Name = name
+	this.RecordIdentifierType = recordIdentifierType
 	return &this
 }
 
@@ -40,12 +48,14 @@ func NewCreateGrid(name string) *CreateGrid {
 // but it doesn't guarantee that properties required by API are set
 func NewCreateGridWithDefaults() *CreateGrid {
 	this := CreateGrid{}
+	var recordIdentifierType string = "recordId"
+	this.RecordIdentifierType = recordIdentifierType
 	return &this
 }
 
 // GetId returns the Id field value if set, zero value otherwise.
 func (o *CreateGrid) GetId() string {
-	if o == nil || isNil(o.Id) {
+	if o == nil || IsNil(o.Id) {
 		var ret string
 		return ret
 	}
@@ -55,15 +65,15 @@ func (o *CreateGrid) GetId() string {
 // GetIdOk returns a tuple with the Id field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CreateGrid) GetIdOk() (*string, bool) {
-	if o == nil || isNil(o.Id) {
-    return nil, false
+	if o == nil || IsNil(o.Id) {
+		return nil, false
 	}
 	return o.Id, true
 }
 
 // HasId returns a boolean if a field has been set.
 func (o *CreateGrid) HasId() bool {
-	if o != nil && !isNil(o.Id) {
+	if o != nil && !IsNil(o.Id) {
 		return true
 	}
 
@@ -89,7 +99,7 @@ func (o *CreateGrid) GetName() string {
 // and a boolean to check if the value has been set.
 func (o *CreateGrid) GetNameOk() (*string, bool) {
 	if o == nil {
-    return nil, false
+		return nil, false
 	}
 	return &o.Name, true
 }
@@ -99,9 +109,10 @@ func (o *CreateGrid) SetName(v string) {
 	o.Name = v
 }
 
+
 // GetTemplateGridId returns the TemplateGridId field value if set, zero value otherwise.
 func (o *CreateGrid) GetTemplateGridId() string {
-	if o == nil || isNil(o.TemplateGridId) {
+	if o == nil || IsNil(o.TemplateGridId) {
 		var ret string
 		return ret
 	}
@@ -111,15 +122,15 @@ func (o *CreateGrid) GetTemplateGridId() string {
 // GetTemplateGridIdOk returns a tuple with the TemplateGridId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CreateGrid) GetTemplateGridIdOk() (*string, bool) {
-	if o == nil || isNil(o.TemplateGridId) {
-    return nil, false
+	if o == nil || IsNil(o.TemplateGridId) {
+		return nil, false
 	}
 	return o.TemplateGridId, true
 }
 
 // HasTemplateGridId returns a boolean if a field has been set.
 func (o *CreateGrid) HasTemplateGridId() bool {
-	if o != nil && !isNil(o.TemplateGridId) {
+	if o != nil && !IsNil(o.TemplateGridId) {
 		return true
 	}
 
@@ -131,73 +142,9 @@ func (o *CreateGrid) SetTemplateGridId(v string) {
 	o.TemplateGridId = &v
 }
 
-// GetRecordIdentifierType returns the RecordIdentifierType field value if set, zero value otherwise.
-func (o *CreateGrid) GetRecordIdentifierType() string {
-	if o == nil || isNil(o.RecordIdentifierType) {
-		var ret string
-		return ret
-	}
-	return *o.RecordIdentifierType
-}
-
-// GetRecordIdentifierTypeOk returns a tuple with the RecordIdentifierType field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *CreateGrid) GetRecordIdentifierTypeOk() (*string, bool) {
-	if o == nil || isNil(o.RecordIdentifierType) {
-    return nil, false
-	}
-	return o.RecordIdentifierType, true
-}
-
-// HasRecordIdentifierType returns a boolean if a field has been set.
-func (o *CreateGrid) HasRecordIdentifierType() bool {
-	if o != nil && !isNil(o.RecordIdentifierType) {
-		return true
-	}
-
-	return false
-}
-
-// SetRecordIdentifierType gets a reference to the given string and assigns it to the RecordIdentifierType field.
-func (o *CreateGrid) SetRecordIdentifierType(v string) {
-	o.RecordIdentifierType = &v
-}
-
-// GetColumns returns the Columns field value if set, zero value otherwise.
-func (o *CreateGrid) GetColumns() []CreateColumn {
-	if o == nil || isNil(o.Columns) {
-		var ret []CreateColumn
-		return ret
-	}
-	return o.Columns
-}
-
-// GetColumnsOk returns a tuple with the Columns field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *CreateGrid) GetColumnsOk() ([]CreateColumn, bool) {
-	if o == nil || isNil(o.Columns) {
-    return nil, false
-	}
-	return o.Columns, true
-}
-
-// HasColumns returns a boolean if a field has been set.
-func (o *CreateGrid) HasColumns() bool {
-	if o != nil && !isNil(o.Columns) {
-		return true
-	}
-
-	return false
-}
-
-// SetColumns gets a reference to the given []CreateColumn and assigns it to the Columns field.
-func (o *CreateGrid) SetColumns(v []CreateColumn) {
-	o.Columns = v
-}
-
 // GetMetadata returns the Metadata field value if set, zero value otherwise.
 func (o *CreateGrid) GetMetadata() map[string]string {
-	if o == nil || isNil(o.Metadata) {
+	if o == nil || IsNil(o.Metadata) {
 		var ret map[string]string
 		return ret
 	}
@@ -207,15 +154,15 @@ func (o *CreateGrid) GetMetadata() map[string]string {
 // GetMetadataOk returns a tuple with the Metadata field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CreateGrid) GetMetadataOk() (*map[string]string, bool) {
-	if o == nil || isNil(o.Metadata) {
-    return nil, false
+	if o == nil || IsNil(o.Metadata) {
+		return nil, false
 	}
 	return o.Metadata, true
 }
 
 // HasMetadata returns a boolean if a field has been set.
 func (o *CreateGrid) HasMetadata() bool {
-	if o != nil && !isNil(o.Metadata) {
+	if o != nil && !IsNil(o.Metadata) {
 		return true
 	}
 
@@ -227,27 +174,151 @@ func (o *CreateGrid) SetMetadata(v map[string]string) {
 	o.Metadata = &v
 }
 
+// GetRecordIdentifierType returns the RecordIdentifierType field value
+func (o *CreateGrid) GetRecordIdentifierType() string {
+	if o == nil {
+		var ret string
+		return ret
+	}
+
+	return o.RecordIdentifierType
+}
+
+// GetRecordIdentifierTypeOk returns a tuple with the RecordIdentifierType field value
+// and a boolean to check if the value has been set.
+func (o *CreateGrid) GetRecordIdentifierTypeOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.RecordIdentifierType, true
+}
+
+// SetRecordIdentifierType sets field value
+func (o *CreateGrid) SetRecordIdentifierType(v string) {
+	o.RecordIdentifierType = v
+}
+
+// GetDefaultRecordIdentifierType returns the default value "recordId" of the RecordIdentifierType field.
+func (o *CreateGrid) GetDefaultRecordIdentifierType() interface{}  {
+	return "recordId"
+}
+
+// GetColumns returns the Columns field value if set, zero value otherwise.
+func (o *CreateGrid) GetColumns() []CreateColumn {
+	if o == nil || IsNil(o.Columns) {
+		var ret []CreateColumn
+		return ret
+	}
+	return o.Columns
+}
+
+// GetColumnsOk returns a tuple with the Columns field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CreateGrid) GetColumnsOk() ([]CreateColumn, bool) {
+	if o == nil || IsNil(o.Columns) {
+		return nil, false
+	}
+	return o.Columns, true
+}
+
+// HasColumns returns a boolean if a field has been set.
+func (o *CreateGrid) HasColumns() bool {
+	if o != nil && !IsNil(o.Columns) {
+		return true
+	}
+
+	return false
+}
+
+// SetColumns gets a reference to the given []CreateColumn and assigns it to the Columns field.
+func (o *CreateGrid) SetColumns(v []CreateColumn) {
+	o.Columns = v
+}
+
 func (o CreateGrid) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if !isNil(o.Id) {
-		toSerialize["id"] = o.Id
-	}
-	if true {
-		toSerialize["name"] = o.Name
-	}
-	if !isNil(o.TemplateGridId) {
-		toSerialize["templateGridId"] = o.TemplateGridId
-	}
-	if !isNil(o.RecordIdentifierType) {
-		toSerialize["recordIdentifierType"] = o.RecordIdentifierType
-	}
-	if !isNil(o.Columns) {
-		toSerialize["columns"] = o.Columns
-	}
-	if !isNil(o.Metadata) {
-		toSerialize["metadata"] = o.Metadata
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o CreateGrid) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.Id) {
+		toSerialize["id"] = o.Id
+	}
+	toSerialize["name"] = o.Name
+	if !IsNil(o.TemplateGridId) {
+		toSerialize["templateGridId"] = o.TemplateGridId
+	}
+	if !IsNil(o.Metadata) {
+		toSerialize["metadata"] = o.Metadata
+	}
+	if _, exists := toSerialize["recordIdentifierType"]; !exists {
+		toSerialize["recordIdentifierType"] = o.GetDefaultRecordIdentifierType()
+	}
+	toSerialize["recordIdentifierType"] = o.RecordIdentifierType
+	if !IsNil(o.Columns) {
+		toSerialize["columns"] = o.Columns
+	}
+	return toSerialize, nil
+}
+
+func (o *CreateGrid) UnmarshalJSON(data []byte) (err error) {
+	// This validates that all required properties are included in the JSON object
+	// by unmarshalling the object into a generic map with string keys and checking
+	// that every required field exists as a key in the generic map.
+	requiredProperties := []string{
+		"name",
+		"recordIdentifierType",
+	}
+
+	// defaultValueFuncMap captures the default values for required properties.
+	// These values are used when required properties are missing from the payload.
+	defaultValueFuncMap := map[string]func() interface{} {
+		"recordIdentifierType": o.GetDefaultRecordIdentifierType,
+	}
+	var defaultValueApplied bool
+	allProperties := make(map[string]interface{})
+
+	err = json.Unmarshal(data, &allProperties)
+
+	if err != nil {
+		return err;
+	}
+
+	for _, requiredProperty := range(requiredProperties) {
+		if value, exists := allProperties[requiredProperty]; !exists || value == "" {
+			if _, ok := defaultValueFuncMap[requiredProperty]; ok {
+				allProperties[requiredProperty] = defaultValueFuncMap[requiredProperty]()
+				defaultValueApplied = true
+			}
+		}
+		if value, exists := allProperties[requiredProperty]; !exists || value == ""{
+			return fmt.Errorf("no value given for required property %v", requiredProperty)
+		}
+	}
+
+	if defaultValueApplied {
+		data, err = json.Marshal(allProperties)
+		if err != nil{
+			return err
+		}
+	}
+	varCreateGrid := _CreateGrid{}
+
+	decoder := json.NewDecoder(bytes.NewReader(data))
+	decoder.DisallowUnknownFields()
+	err = decoder.Decode(&varCreateGrid)
+
+	if err != nil {
+		return err
+	}
+
+	*o = CreateGrid(varCreateGrid)
+
+	return err
 }
 
 type NullableCreateGrid struct {

@@ -27,25 +27,25 @@ create
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    gridly "./openapi"
+	"context"
+	"fmt"
+	"os"
+	gridly "github.com/gridly-spreadsheet-CMS/gridly-go-sdk"
 )
 
 func main() {
-    viewId := "viewId_example" // string | viewId
-    createDependency := *gridly.NewCreateDependency("TargetColumnId_example", "SourceColumnId_example") // CreateDependency | 
+	viewId := "viewId_example" // string | viewId
+	createDependency := *gridly.NewCreateDependency("TargetColumnId_example", "SourceColumnId_example") // CreateDependency | 
 
-    configuration := gridly.NewConfiguration()
-    apiClient := gridly.NewAPIClient(configuration)
-    resp, r, err := apiClient.ViewDependencyApi.Create(context.Background(), viewId).CreateDependency(createDependency).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `ViewDependencyApi.Create``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `Create`: Dependency
-    fmt.Fprintf(os.Stdout, "Response from `ViewDependencyApi.Create`: %v\n", resp)
+	configuration := gridly.NewConfiguration()
+	apiClient := gridly.NewAPIClient(configuration)
+	resp, r, err := apiClient.ViewDependencyApi.Create(context.Background(), viewId).CreateDependency(createDependency).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `ViewDependencyApi.Create``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `Create`: Dependency
+	fmt.Fprintf(os.Stdout, "Response from `ViewDependencyApi.Create`: %v\n", resp)
 }
 ```
 
@@ -99,23 +99,23 @@ delete
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    gridly "./openapi"
+	"context"
+	"fmt"
+	"os"
+	gridly "github.com/gridly-spreadsheet-CMS/gridly-go-sdk"
 )
 
 func main() {
-    viewId := "viewId_example" // string | viewId
-    deleteDependency := *gridly.NewDeleteDependency() // DeleteDependency | 
+	viewId := "viewId_example" // string | viewId
+	deleteDependency := *gridly.NewDeleteDependency() // DeleteDependency | 
 
-    configuration := gridly.NewConfiguration()
-    apiClient := gridly.NewAPIClient(configuration)
-    resp, r, err := apiClient.ViewDependencyApi.Delete(context.Background(), viewId).DeleteDependency(deleteDependency).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `ViewDependencyApi.Delete``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
+	configuration := gridly.NewConfiguration()
+	apiClient := gridly.NewAPIClient(configuration)
+	r, err := apiClient.ViewDependencyApi.Delete(context.Background(), viewId).DeleteDependency(deleteDependency).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `ViewDependencyApi.Delete``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
 }
 ```
 
@@ -169,23 +169,23 @@ deleteById
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    gridly "./openapi"
+	"context"
+	"fmt"
+	"os"
+	gridly "github.com/gridly-spreadsheet-CMS/gridly-go-sdk"
 )
 
 func main() {
-    viewId := "viewId_example" // string | viewId
-    dependencyId := "dependencyId_example" // string | dependencyId
+	viewId := "viewId_example" // string | viewId
+	dependencyId := "dependencyId_example" // string | dependencyId
 
-    configuration := gridly.NewConfiguration()
-    apiClient := gridly.NewAPIClient(configuration)
-    resp, r, err := apiClient.ViewDependencyApi.DeleteById(context.Background(), viewId, dependencyId).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `ViewDependencyApi.DeleteById``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
+	configuration := gridly.NewConfiguration()
+	apiClient := gridly.NewAPIClient(configuration)
+	r, err := apiClient.ViewDependencyApi.DeleteById(context.Background(), viewId, dependencyId).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `ViewDependencyApi.DeleteById``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
 }
 ```
 
@@ -240,25 +240,25 @@ get
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    gridly "./openapi"
+	"context"
+	"fmt"
+	"os"
+	gridly "github.com/gridly-spreadsheet-CMS/gridly-go-sdk"
 )
 
 func main() {
-    dependencyId := "dependencyId_example" // string | dependencyId
-    viewId := "viewId_example" // string | viewId
+	dependencyId := "dependencyId_example" // string | dependencyId
+	viewId := "viewId_example" // string | viewId
 
-    configuration := gridly.NewConfiguration()
-    apiClient := gridly.NewAPIClient(configuration)
-    resp, r, err := apiClient.ViewDependencyApi.Get(context.Background(), dependencyId, viewId).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `ViewDependencyApi.Get``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `Get`: Dependency
-    fmt.Fprintf(os.Stdout, "Response from `ViewDependencyApi.Get`: %v\n", resp)
+	configuration := gridly.NewConfiguration()
+	apiClient := gridly.NewAPIClient(configuration)
+	resp, r, err := apiClient.ViewDependencyApi.Get(context.Background(), dependencyId, viewId).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `ViewDependencyApi.Get``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `Get`: Dependency
+	fmt.Fprintf(os.Stdout, "Response from `ViewDependencyApi.Get`: %v\n", resp)
 }
 ```
 
@@ -313,24 +313,24 @@ list
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    gridly "./openapi"
+	"context"
+	"fmt"
+	"os"
+	gridly "github.com/gridly-spreadsheet-CMS/gridly-go-sdk"
 )
 
 func main() {
-    viewId := "viewId_example" // string | viewId
+	viewId := "viewId_example" // string | viewId
 
-    configuration := gridly.NewConfiguration()
-    apiClient := gridly.NewAPIClient(configuration)
-    resp, r, err := apiClient.ViewDependencyApi.List(context.Background(), viewId).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `ViewDependencyApi.List``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `List`: []Dependency
-    fmt.Fprintf(os.Stdout, "Response from `ViewDependencyApi.List`: %v\n", resp)
+	configuration := gridly.NewConfiguration()
+	apiClient := gridly.NewAPIClient(configuration)
+	resp, r, err := apiClient.ViewDependencyApi.List(context.Background(), viewId).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `ViewDependencyApi.List``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `List`: []Dependency
+	fmt.Fprintf(os.Stdout, "Response from `ViewDependencyApi.List`: %v\n", resp)
 }
 ```
 
@@ -383,26 +383,26 @@ update
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    gridly "./openapi"
+	"context"
+	"fmt"
+	"os"
+	gridly "github.com/gridly-spreadsheet-CMS/gridly-go-sdk"
 )
 
 func main() {
-    dependencyId := "dependencyId_example" // string | dependencyId
-    viewId := "viewId_example" // string | viewId
-    updateDependency := *gridly.NewUpdateDependency("TargetColumnId_example", "SourceColumnId_example") // UpdateDependency | 
+	dependencyId := "dependencyId_example" // string | dependencyId
+	viewId := "viewId_example" // string | viewId
+	updateDependency := *gridly.NewUpdateDependency("TargetColumnId_example", "SourceColumnId_example") // UpdateDependency | 
 
-    configuration := gridly.NewConfiguration()
-    apiClient := gridly.NewAPIClient(configuration)
-    resp, r, err := apiClient.ViewDependencyApi.Update(context.Background(), dependencyId, viewId).UpdateDependency(updateDependency).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `ViewDependencyApi.Update``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `Update`: Dependency
-    fmt.Fprintf(os.Stdout, "Response from `ViewDependencyApi.Update`: %v\n", resp)
+	configuration := gridly.NewConfiguration()
+	apiClient := gridly.NewAPIClient(configuration)
+	resp, r, err := apiClient.ViewDependencyApi.Update(context.Background(), dependencyId, viewId).UpdateDependency(updateDependency).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `ViewDependencyApi.Update``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `Update`: Dependency
+	fmt.Fprintf(os.Stdout, "Response from `ViewDependencyApi.Update`: %v\n", resp)
 }
 ```
 

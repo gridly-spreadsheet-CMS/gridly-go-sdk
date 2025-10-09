@@ -3,7 +3,7 @@ Gridly API
 
 Gridly API documentation
 
-API version: 5.9.0
+API version: 6.13.0
 Contact: support@gridly.com
 */
 
@@ -14,7 +14,7 @@ package gridly
 import (
 	"bytes"
 	"context"
-	"io/ioutil"
+	"io"
 	"net/http"
 	"net/url"
 	"strings"
@@ -73,7 +73,7 @@ func (a *ViewDependencyApiService) CreateExecute(r ViewDependencyApiCreateReques
 	}
 
 	localVarPath := localBasePath + "/v1/views/{viewId}/dependencies"
-	localVarPath = strings.Replace(localVarPath, "{"+"viewId"+"}", url.PathEscape(parameterToString(r.viewId, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"viewId"+"}", url.PathEscape(parameterValueToString(r.viewId, "viewId")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -125,9 +125,9 @@ func (a *ViewDependencyApiService) CreateExecute(r ViewDependencyApiCreateReques
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -199,7 +199,7 @@ func (a *ViewDependencyApiService) DeleteExecute(r ViewDependencyApiDeleteReques
 	}
 
 	localVarPath := localBasePath + "/v1/views/{viewId}/dependencies"
-	localVarPath = strings.Replace(localVarPath, "{"+"viewId"+"}", url.PathEscape(parameterToString(r.viewId, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"viewId"+"}", url.PathEscape(parameterValueToString(r.viewId, "viewId")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -251,9 +251,9 @@ func (a *ViewDependencyApiService) DeleteExecute(r ViewDependencyApiDeleteReques
 		return localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarHTTPResponse, err
 	}
@@ -313,8 +313,8 @@ func (a *ViewDependencyApiService) DeleteByIdExecute(r ViewDependencyApiDeleteBy
 	}
 
 	localVarPath := localBasePath + "/v1/views/{viewId}/dependencies/{dependencyId}"
-	localVarPath = strings.Replace(localVarPath, "{"+"viewId"+"}", url.PathEscape(parameterToString(r.viewId, "")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"dependencyId"+"}", url.PathEscape(parameterToString(r.dependencyId, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"viewId"+"}", url.PathEscape(parameterValueToString(r.viewId, "viewId")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"dependencyId"+"}", url.PathEscape(parameterValueToString(r.dependencyId, "dependencyId")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -361,9 +361,9 @@ func (a *ViewDependencyApiService) DeleteByIdExecute(r ViewDependencyApiDeleteBy
 		return localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarHTTPResponse, err
 	}
@@ -425,8 +425,8 @@ func (a *ViewDependencyApiService) GetExecute(r ViewDependencyApiGetRequest) (*D
 	}
 
 	localVarPath := localBasePath + "/v1/views/{viewId}/dependencies/{dependencyId}"
-	localVarPath = strings.Replace(localVarPath, "{"+"dependencyId"+"}", url.PathEscape(parameterToString(r.dependencyId, "")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"viewId"+"}", url.PathEscape(parameterToString(r.viewId, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"dependencyId"+"}", url.PathEscape(parameterValueToString(r.dependencyId, "dependencyId")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"viewId"+"}", url.PathEscape(parameterValueToString(r.viewId, "viewId")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -473,9 +473,9 @@ func (a *ViewDependencyApiService) GetExecute(r ViewDependencyApiGetRequest) (*D
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -543,7 +543,7 @@ func (a *ViewDependencyApiService) ListExecute(r ViewDependencyApiListRequest) (
 	}
 
 	localVarPath := localBasePath + "/v1/views/{viewId}/dependencies"
-	localVarPath = strings.Replace(localVarPath, "{"+"viewId"+"}", url.PathEscape(parameterToString(r.viewId, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"viewId"+"}", url.PathEscape(parameterValueToString(r.viewId, "viewId")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -590,9 +590,9 @@ func (a *ViewDependencyApiService) ListExecute(r ViewDependencyApiListRequest) (
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -669,8 +669,8 @@ func (a *ViewDependencyApiService) UpdateExecute(r ViewDependencyApiUpdateReques
 	}
 
 	localVarPath := localBasePath + "/v1/views/{viewId}/dependencies/{dependencyId}"
-	localVarPath = strings.Replace(localVarPath, "{"+"dependencyId"+"}", url.PathEscape(parameterToString(r.dependencyId, "")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"viewId"+"}", url.PathEscape(parameterToString(r.viewId, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"dependencyId"+"}", url.PathEscape(parameterValueToString(r.dependencyId, "dependencyId")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"viewId"+"}", url.PathEscape(parameterValueToString(r.viewId, "viewId")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -722,9 +722,9 @@ func (a *ViewDependencyApiService) UpdateExecute(r ViewDependencyApiUpdateReques
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}

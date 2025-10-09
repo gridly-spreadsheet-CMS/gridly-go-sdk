@@ -22,24 +22,24 @@ get
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    gridly "./openapi"
+	"context"
+	"fmt"
+	"os"
+	gridly "github.com/gridly-spreadsheet-CMS/gridly-go-sdk"
 )
 
 func main() {
-    taskId := "taskId_example" // string | taskId
+	taskId := "taskId_example" // string | taskId
 
-    configuration := gridly.NewConfiguration()
-    apiClient := gridly.NewAPIClient(configuration)
-    resp, r, err := apiClient.TaskApi.Get(context.Background(), taskId).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `TaskApi.Get``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `Get`: Task
-    fmt.Fprintf(os.Stdout, "Response from `TaskApi.Get`: %v\n", resp)
+	configuration := gridly.NewConfiguration()
+	apiClient := gridly.NewAPIClient(configuration)
+	resp, r, err := apiClient.TaskApi.Get(context.Background(), taskId).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `TaskApi.Get``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `Get`: Task
+	fmt.Fprintf(os.Stdout, "Response from `TaskApi.Get`: %v\n", resp)
 }
 ```
 

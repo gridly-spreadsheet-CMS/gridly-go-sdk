@@ -1,0 +1,160 @@
+# FileInfoResponse
+
+## Properties
+
+Name | Type | Description | Notes
+------------ | ------------- | ------------- | -------------
+**Id** | Pointer to **string** |  | [optional] 
+**OriginalName** | Pointer to **string** |  | [optional] 
+**ContentType** | Pointer to **string** |  | [optional] 
+**Size** | Pointer to **int64** |  | [optional] 
+**ThumbnailId** | Pointer to **string** |  | [optional] 
+
+## Methods
+
+### NewFileInfoResponse
+
+`func NewFileInfoResponse() *FileInfoResponse`
+
+NewFileInfoResponse instantiates a new FileInfoResponse object
+This constructor will assign default values to properties that have it defined,
+and makes sure properties required by API are set, but the set of arguments
+will change when the set of required properties is changed
+
+### NewFileInfoResponseWithDefaults
+
+`func NewFileInfoResponseWithDefaults() *FileInfoResponse`
+
+NewFileInfoResponseWithDefaults instantiates a new FileInfoResponse object
+This constructor will only assign default values to properties that have it defined,
+but it doesn't guarantee that properties required by API are set
+
+### GetId
+
+`func (o *FileInfoResponse) GetId() string`
+
+GetId returns the Id field if non-nil, zero value otherwise.
+
+### GetIdOk
+
+`func (o *FileInfoResponse) GetIdOk() (*string, bool)`
+
+GetIdOk returns a tuple with the Id field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetId
+
+`func (o *FileInfoResponse) SetId(v string)`
+
+SetId sets Id field to given value.
+
+### HasId
+
+`func (o *FileInfoResponse) HasId() bool`
+
+HasId returns a boolean if a field has been set.
+
+### GetOriginalName
+
+`func (o *FileInfoResponse) GetOriginalName() string`
+
+GetOriginalName returns the OriginalName field if non-nil, zero value otherwise.
+
+### GetOriginalNameOk
+
+`func (o *FileInfoResponse) GetOriginalNameOk() (*string, bool)`
+
+GetOriginalNameOk returns a tuple with the OriginalName field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetOriginalName
+
+`func (o *FileInfoResponse) SetOriginalName(v string)`
+
+SetOriginalName sets OriginalName field to given value.
+
+### HasOriginalName
+
+`func (o *FileInfoResponse) HasOriginalName() bool`
+
+HasOriginalName returns a boolean if a field has been set.
+
+### GetContentType
+
+`func (o *FileInfoResponse) GetContentType() string`
+
+GetContentType returns the ContentType field if non-nil, zero value otherwise.
+
+### GetContentTypeOk
+
+`func (o *FileInfoResponse) GetContentTypeOk() (*string, bool)`
+
+GetContentTypeOk returns a tuple with the ContentType field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetContentType
+
+`func (o *FileInfoResponse) SetContentType(v string)`
+
+SetContentType sets ContentType field to given value.
+
+### HasContentType
+
+`func (o *FileInfoResponse) HasContentType() bool`
+
+HasContentType returns a boolean if a field has been set.
+
+### GetSize
+
+`func (o *FileInfoResponse) GetSize() int64`
+
+GetSize returns the Size field if non-nil, zero value otherwise.
+
+### GetSizeOk
+
+`func (o *FileInfoResponse) GetSizeOk() (*int64, bool)`
+
+GetSizeOk returns a tuple with the Size field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetSize
+
+`func (o *FileInfoResponse) SetSize(v int64)`
+
+SetSize sets Size field to given value.
+
+### HasSize
+
+`func (o *FileInfoResponse) HasSize() bool`
+
+HasSize returns a boolean if a field has been set.
+
+### GetThumbnailId
+
+`func (o *FileInfoResponse) GetThumbnailId() string`
+
+GetThumbnailId returns the ThumbnailId field if non-nil, zero value otherwise.
+
+### GetThumbnailIdOk
+
+`func (o *FileInfoResponse) GetThumbnailIdOk() (*string, bool)`
+
+GetThumbnailIdOk returns a tuple with the ThumbnailId field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetThumbnailId
+
+`func (o *FileInfoResponse) SetThumbnailId(v string)`
+
+SetThumbnailId sets ThumbnailId field to given value.
+
+### HasThumbnailId
+
+`func (o *FileInfoResponse) HasThumbnailId() bool`
+
+HasThumbnailId returns a boolean if a field has been set.
+
+
+[[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
+
+

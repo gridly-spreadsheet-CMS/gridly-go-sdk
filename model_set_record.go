@@ -3,7 +3,7 @@ Gridly API
 
 Gridly API documentation
 
-API version: 5.9.0
+API version: 6.13.0
 Contact: support@gridly.com
 */
 
@@ -15,10 +15,14 @@ import (
 	"encoding/json"
 )
 
+// checks if the SetRecord type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &SetRecord{}
+
 // SetRecord struct for SetRecord
 type SetRecord struct {
 	Id *string `json:"id,omitempty"`
 	Cells []SetCell `json:"cells,omitempty"`
+	MarkUpdatedCellsWithMTFlag *bool `json:"markUpdatedCellsWithMTFlag,omitempty"`
 	Path *string `json:"path,omitempty"`
 }
 
@@ -41,7 +45,7 @@ func NewSetRecordWithDefaults() *SetRecord {
 
 // GetId returns the Id field value if set, zero value otherwise.
 func (o *SetRecord) GetId() string {
-	if o == nil || isNil(o.Id) {
+	if o == nil || IsNil(o.Id) {
 		var ret string
 		return ret
 	}
@@ -51,15 +55,15 @@ func (o *SetRecord) GetId() string {
 // GetIdOk returns a tuple with the Id field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *SetRecord) GetIdOk() (*string, bool) {
-	if o == nil || isNil(o.Id) {
-    return nil, false
+	if o == nil || IsNil(o.Id) {
+		return nil, false
 	}
 	return o.Id, true
 }
 
 // HasId returns a boolean if a field has been set.
 func (o *SetRecord) HasId() bool {
-	if o != nil && !isNil(o.Id) {
+	if o != nil && !IsNil(o.Id) {
 		return true
 	}
 
@@ -73,7 +77,7 @@ func (o *SetRecord) SetId(v string) {
 
 // GetCells returns the Cells field value if set, zero value otherwise.
 func (o *SetRecord) GetCells() []SetCell {
-	if o == nil || isNil(o.Cells) {
+	if o == nil || IsNil(o.Cells) {
 		var ret []SetCell
 		return ret
 	}
@@ -83,15 +87,15 @@ func (o *SetRecord) GetCells() []SetCell {
 // GetCellsOk returns a tuple with the Cells field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *SetRecord) GetCellsOk() ([]SetCell, bool) {
-	if o == nil || isNil(o.Cells) {
-    return nil, false
+	if o == nil || IsNil(o.Cells) {
+		return nil, false
 	}
 	return o.Cells, true
 }
 
 // HasCells returns a boolean if a field has been set.
 func (o *SetRecord) HasCells() bool {
-	if o != nil && !isNil(o.Cells) {
+	if o != nil && !IsNil(o.Cells) {
 		return true
 	}
 
@@ -103,9 +107,41 @@ func (o *SetRecord) SetCells(v []SetCell) {
 	o.Cells = v
 }
 
+// GetMarkUpdatedCellsWithMTFlag returns the MarkUpdatedCellsWithMTFlag field value if set, zero value otherwise.
+func (o *SetRecord) GetMarkUpdatedCellsWithMTFlag() bool {
+	if o == nil || IsNil(o.MarkUpdatedCellsWithMTFlag) {
+		var ret bool
+		return ret
+	}
+	return *o.MarkUpdatedCellsWithMTFlag
+}
+
+// GetMarkUpdatedCellsWithMTFlagOk returns a tuple with the MarkUpdatedCellsWithMTFlag field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *SetRecord) GetMarkUpdatedCellsWithMTFlagOk() (*bool, bool) {
+	if o == nil || IsNil(o.MarkUpdatedCellsWithMTFlag) {
+		return nil, false
+	}
+	return o.MarkUpdatedCellsWithMTFlag, true
+}
+
+// HasMarkUpdatedCellsWithMTFlag returns a boolean if a field has been set.
+func (o *SetRecord) HasMarkUpdatedCellsWithMTFlag() bool {
+	if o != nil && !IsNil(o.MarkUpdatedCellsWithMTFlag) {
+		return true
+	}
+
+	return false
+}
+
+// SetMarkUpdatedCellsWithMTFlag gets a reference to the given bool and assigns it to the MarkUpdatedCellsWithMTFlag field.
+func (o *SetRecord) SetMarkUpdatedCellsWithMTFlag(v bool) {
+	o.MarkUpdatedCellsWithMTFlag = &v
+}
+
 // GetPath returns the Path field value if set, zero value otherwise.
 func (o *SetRecord) GetPath() string {
-	if o == nil || isNil(o.Path) {
+	if o == nil || IsNil(o.Path) {
 		var ret string
 		return ret
 	}
@@ -115,15 +151,15 @@ func (o *SetRecord) GetPath() string {
 // GetPathOk returns a tuple with the Path field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *SetRecord) GetPathOk() (*string, bool) {
-	if o == nil || isNil(o.Path) {
-    return nil, false
+	if o == nil || IsNil(o.Path) {
+		return nil, false
 	}
 	return o.Path, true
 }
 
 // HasPath returns a boolean if a field has been set.
 func (o *SetRecord) HasPath() bool {
-	if o != nil && !isNil(o.Path) {
+	if o != nil && !IsNil(o.Path) {
 		return true
 	}
 
@@ -136,17 +172,28 @@ func (o *SetRecord) SetPath(v string) {
 }
 
 func (o SetRecord) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if !isNil(o.Id) {
-		toSerialize["id"] = o.Id
-	}
-	if !isNil(o.Cells) {
-		toSerialize["cells"] = o.Cells
-	}
-	if !isNil(o.Path) {
-		toSerialize["path"] = o.Path
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o SetRecord) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.Id) {
+		toSerialize["id"] = o.Id
+	}
+	if !IsNil(o.Cells) {
+		toSerialize["cells"] = o.Cells
+	}
+	if !IsNil(o.MarkUpdatedCellsWithMTFlag) {
+		toSerialize["markUpdatedCellsWithMTFlag"] = o.MarkUpdatedCellsWithMTFlag
+	}
+	if !IsNil(o.Path) {
+		toSerialize["path"] = o.Path
+	}
+	return toSerialize, nil
 }
 
 type NullableSetRecord struct {

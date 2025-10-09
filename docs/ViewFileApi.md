@@ -25,25 +25,25 @@ delete
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    gridly "./openapi"
+	"context"
+	"fmt"
+	"os"
+	gridly "github.com/gridly-spreadsheet-CMS/gridly-go-sdk"
 )
 
 func main() {
-    columnId := "columnId_example" // string | columnId
-    recordId := "recordId_example" // string | recordId
-    viewId := "viewId_example" // string | viewId
-    deleteFile := *gridly.NewDeleteFile([]string{"Ids_example"}) // DeleteFile | 
+	columnId := "columnId_example" // string | columnId
+	recordId := "recordId_example" // string | recordId
+	viewId := "viewId_example" // string | viewId
+	deleteFile := *gridly.NewDeleteFile([]string{"Ids_example"}) // DeleteFile | 
 
-    configuration := gridly.NewConfiguration()
-    apiClient := gridly.NewAPIClient(configuration)
-    resp, r, err := apiClient.ViewFileApi.Delete(context.Background(), viewId).ColumnId(columnId).RecordId(recordId).DeleteFile(deleteFile).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `ViewFileApi.Delete``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
+	configuration := gridly.NewConfiguration()
+	apiClient := gridly.NewAPIClient(configuration)
+	r, err := apiClient.ViewFileApi.Delete(context.Background(), viewId).ColumnId(columnId).RecordId(recordId).DeleteFile(deleteFile).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `ViewFileApi.Delete``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
 }
 ```
 
@@ -99,25 +99,25 @@ download
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    gridly "./openapi"
+	"context"
+	"fmt"
+	"os"
+	gridly "github.com/gridly-spreadsheet-CMS/gridly-go-sdk"
 )
 
 func main() {
-    fileId := "fileId_example" // string | fileId
-    viewId := "viewId_example" // string | viewId
+	fileId := "fileId_example" // string | fileId
+	viewId := "viewId_example" // string | viewId
 
-    configuration := gridly.NewConfiguration()
-    apiClient := gridly.NewAPIClient(configuration)
-    resp, r, err := apiClient.ViewFileApi.Download(context.Background(), fileId, viewId).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `ViewFileApi.Download``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `Download`: *os.File
-    fmt.Fprintf(os.Stdout, "Response from `ViewFileApi.Download`: %v\n", resp)
+	configuration := gridly.NewConfiguration()
+	apiClient := gridly.NewAPIClient(configuration)
+	resp, r, err := apiClient.ViewFileApi.Download(context.Background(), fileId, viewId).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `ViewFileApi.Download``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `Download`: *os.File
+	fmt.Fprintf(os.Stdout, "Response from `ViewFileApi.Download`: %v\n", resp)
 }
 ```
 
@@ -172,27 +172,27 @@ upload
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    gridly "./openapi"
+	"context"
+	"fmt"
+	"os"
+	gridly "github.com/gridly-spreadsheet-CMS/gridly-go-sdk"
 )
 
 func main() {
-    viewId := "viewId_example" // string | viewId
-    columnId := "columnId_example" // string | columnId
-    recordId := "recordId_example" // string | recordId
-    file := os.NewFile(1234, "some_file") // *os.File | 
+	viewId := "viewId_example" // string | viewId
+	columnId := "columnId_example" // string | columnId
+	recordId := "recordId_example" // string | recordId
+	file := os.NewFile(1234, "some_file") // *os.File | 
 
-    configuration := gridly.NewConfiguration()
-    apiClient := gridly.NewAPIClient(configuration)
-    resp, r, err := apiClient.ViewFileApi.Upload(context.Background(), viewId).ColumnId(columnId).RecordId(recordId).File(file).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `ViewFileApi.Upload``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `Upload`: UploadedFile
-    fmt.Fprintf(os.Stdout, "Response from `ViewFileApi.Upload`: %v\n", resp)
+	configuration := gridly.NewConfiguration()
+	apiClient := gridly.NewAPIClient(configuration)
+	resp, r, err := apiClient.ViewFileApi.Upload(context.Background(), viewId).ColumnId(columnId).RecordId(recordId).File(file).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `ViewFileApi.Upload``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `Upload`: UploadedFile
+	fmt.Fprintf(os.Stdout, "Response from `ViewFileApi.Upload`: %v\n", resp)
 }
 ```
 
@@ -248,27 +248,27 @@ uploadZip
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    gridly "./openapi"
+	"context"
+	"fmt"
+	"os"
+	gridly "github.com/gridly-spreadsheet-CMS/gridly-go-sdk"
 )
 
 func main() {
-    viewId := "viewId_example" // string | viewId
-    columnId := "columnId_example" // string | 
-    fileMappings := "fileMappings_example" // string | 
-    file := os.NewFile(1234, "some_file") // *os.File | 
+	viewId := "viewId_example" // string | viewId
+	columnId := "columnId_example" // string | 
+	fileMappings := "fileMappings_example" // string | 
+	file := os.NewFile(1234, "some_file") // *os.File | 
 
-    configuration := gridly.NewConfiguration()
-    apiClient := gridly.NewAPIClient(configuration)
-    resp, r, err := apiClient.ViewFileApi.UploadZip(context.Background(), viewId).ColumnId(columnId).FileMappings(fileMappings).File(file).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `ViewFileApi.UploadZip``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `UploadZip`: []Record
-    fmt.Fprintf(os.Stdout, "Response from `ViewFileApi.UploadZip`: %v\n", resp)
+	configuration := gridly.NewConfiguration()
+	apiClient := gridly.NewAPIClient(configuration)
+	resp, r, err := apiClient.ViewFileApi.UploadZip(context.Background(), viewId).ColumnId(columnId).FileMappings(fileMappings).File(file).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `ViewFileApi.UploadZip``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `UploadZip`: []Record
+	fmt.Fprintf(os.Stdout, "Response from `ViewFileApi.UploadZip`: %v\n", resp)
 }
 ```
 

@@ -25,25 +25,25 @@ create
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    gridly "./openapi"
+	"context"
+	"fmt"
+	"os"
+	gridly "github.com/gridly-spreadsheet-CMS/gridly-go-sdk"
 )
 
 func main() {
-    projectId := int64(789) // int64 | projectId
-    body := *gridly.NewCreateDatabase("Name_example") // CreateDatabase | body
+	projectId := int64(789) // int64 | projectId
+	body := *gridly.NewCreateDatabase("Name_example") // CreateDatabase | body
 
-    configuration := gridly.NewConfiguration()
-    apiClient := gridly.NewAPIClient(configuration)
-    resp, r, err := apiClient.DatabaseApi.Create(context.Background()).ProjectId(projectId).Body(body).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `DatabaseApi.Create``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `Create`: Database
-    fmt.Fprintf(os.Stdout, "Response from `DatabaseApi.Create`: %v\n", resp)
+	configuration := gridly.NewConfiguration()
+	apiClient := gridly.NewAPIClient(configuration)
+	resp, r, err := apiClient.DatabaseApi.Create(context.Background()).ProjectId(projectId).Body(body).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `DatabaseApi.Create``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `Create`: Database
+	fmt.Fprintf(os.Stdout, "Response from `DatabaseApi.Create`: %v\n", resp)
 }
 ```
 
@@ -91,22 +91,22 @@ delete
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    gridly "./openapi"
+	"context"
+	"fmt"
+	"os"
+	gridly "github.com/gridly-spreadsheet-CMS/gridly-go-sdk"
 )
 
 func main() {
-    dbId := "dbId_example" // string | dbId
+	dbId := "dbId_example" // string | dbId
 
-    configuration := gridly.NewConfiguration()
-    apiClient := gridly.NewAPIClient(configuration)
-    resp, r, err := apiClient.DatabaseApi.Delete(context.Background(), dbId).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `DatabaseApi.Delete``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
+	configuration := gridly.NewConfiguration()
+	apiClient := gridly.NewAPIClient(configuration)
+	r, err := apiClient.DatabaseApi.Delete(context.Background(), dbId).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `DatabaseApi.Delete``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
 }
 ```
 
@@ -157,26 +157,26 @@ duplicate
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    gridly "./openapi"
+	"context"
+	"fmt"
+	"os"
+	gridly "github.com/gridly-spreadsheet-CMS/gridly-go-sdk"
 )
 
 func main() {
-    dbId := "dbId_example" // string | dbId
-    projectId := int64(789) // int64 | projectId
-    body := *gridly.NewCreateDatabase("Name_example") // CreateDatabase | body
+	dbId := "dbId_example" // string | dbId
+	projectId := int64(789) // int64 | projectId
+	body := *gridly.NewCreateDatabase("Name_example") // CreateDatabase | body
 
-    configuration := gridly.NewConfiguration()
-    apiClient := gridly.NewAPIClient(configuration)
-    resp, r, err := apiClient.DatabaseApi.Duplicate(context.Background(), dbId).ProjectId(projectId).Body(body).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `DatabaseApi.Duplicate``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `Duplicate`: Database
-    fmt.Fprintf(os.Stdout, "Response from `DatabaseApi.Duplicate`: %v\n", resp)
+	configuration := gridly.NewConfiguration()
+	apiClient := gridly.NewAPIClient(configuration)
+	resp, r, err := apiClient.DatabaseApi.Duplicate(context.Background(), dbId).ProjectId(projectId).Body(body).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `DatabaseApi.Duplicate``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `Duplicate`: Database
+	fmt.Fprintf(os.Stdout, "Response from `DatabaseApi.Duplicate`: %v\n", resp)
 }
 ```
 
@@ -229,24 +229,24 @@ get
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    gridly "./openapi"
+	"context"
+	"fmt"
+	"os"
+	gridly "github.com/gridly-spreadsheet-CMS/gridly-go-sdk"
 )
 
 func main() {
-    dbId := "dbId_example" // string | dbId
+	dbId := "dbId_example" // string | dbId
 
-    configuration := gridly.NewConfiguration()
-    apiClient := gridly.NewAPIClient(configuration)
-    resp, r, err := apiClient.DatabaseApi.Get(context.Background(), dbId).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `DatabaseApi.Get``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `Get`: Database
-    fmt.Fprintf(os.Stdout, "Response from `DatabaseApi.Get`: %v\n", resp)
+	configuration := gridly.NewConfiguration()
+	apiClient := gridly.NewAPIClient(configuration)
+	resp, r, err := apiClient.DatabaseApi.Get(context.Background(), dbId).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `DatabaseApi.Get``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `Get`: Database
+	fmt.Fprintf(os.Stdout, "Response from `DatabaseApi.Get`: %v\n", resp)
 }
 ```
 
@@ -297,28 +297,28 @@ list
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    gridly "./openapi"
+	"context"
+	"fmt"
+	"os"
+	gridly "github.com/gridly-spreadsheet-CMS/gridly-go-sdk"
 )
 
 func main() {
-    expand := []string{"Expand_example"} // []string | expand (optional)
-    page := "page_example" // string | page (optional) (default to "")
-    projectId := int64(789) // int64 | projectId (optional)
-    search := "search_example" // string | search (optional)
-    sort := "sort_example" // string | sort (optional) (default to "")
+	expand := []string{"Expand_example"} // []string | expand (optional)
+	page := "page_example" // string | page (optional) (default to "")
+	projectId := int64(789) // int64 | projectId (optional)
+	search := "search_example" // string | search (optional)
+	sort := "sort_example" // string | sort (optional) (default to "")
 
-    configuration := gridly.NewConfiguration()
-    apiClient := gridly.NewAPIClient(configuration)
-    resp, r, err := apiClient.DatabaseApi.List(context.Background()).Expand(expand).Page(page).ProjectId(projectId).Search(search).Sort(sort).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `DatabaseApi.List``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `List`: []Database
-    fmt.Fprintf(os.Stdout, "Response from `DatabaseApi.List`: %v\n", resp)
+	configuration := gridly.NewConfiguration()
+	apiClient := gridly.NewAPIClient(configuration)
+	resp, r, err := apiClient.DatabaseApi.List(context.Background()).Expand(expand).Page(page).ProjectId(projectId).Search(search).Sort(sort).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `DatabaseApi.List``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `List`: []Database
+	fmt.Fprintf(os.Stdout, "Response from `DatabaseApi.List`: %v\n", resp)
 }
 ```
 
@@ -369,25 +369,25 @@ update
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    gridly "./openapi"
+	"context"
+	"fmt"
+	"os"
+	gridly "github.com/gridly-spreadsheet-CMS/gridly-go-sdk"
 )
 
 func main() {
-    dbId := "dbId_example" // string | dbId
-    body := *gridly.NewUpdateDatabase("Name_example") // UpdateDatabase | body
+	dbId := "dbId_example" // string | dbId
+	body := *gridly.NewUpdateDatabase("Name_example") // UpdateDatabase | body
 
-    configuration := gridly.NewConfiguration()
-    apiClient := gridly.NewAPIClient(configuration)
-    resp, r, err := apiClient.DatabaseApi.Update(context.Background(), dbId).Body(body).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `DatabaseApi.Update``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `Update`: Database
-    fmt.Fprintf(os.Stdout, "Response from `DatabaseApi.Update`: %v\n", resp)
+	configuration := gridly.NewConfiguration()
+	apiClient := gridly.NewAPIClient(configuration)
+	resp, r, err := apiClient.DatabaseApi.Update(context.Background(), dbId).Body(body).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `DatabaseApi.Update``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `Update`: Database
+	fmt.Fprintf(os.Stdout, "Response from `DatabaseApi.Update`: %v\n", resp)
 }
 ```
 

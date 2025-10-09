@@ -3,7 +3,7 @@ Gridly API
 
 Gridly API documentation
 
-API version: 5.9.0
+API version: 6.13.0
 Contact: support@gridly.com
 */
 
@@ -14,6 +14,9 @@ package gridly
 import (
 	"encoding/json"
 )
+
+// checks if the MovePath type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &MovePath{}
 
 // MovePath struct for MovePath
 type MovePath struct {
@@ -43,7 +46,7 @@ func NewMovePathWithDefaults() *MovePath {
 
 // GetNames returns the Names field value if set, zero value otherwise.
 func (o *MovePath) GetNames() []string {
-	if o == nil || isNil(o.Names) {
+	if o == nil || IsNil(o.Names) {
 		var ret []string
 		return ret
 	}
@@ -53,15 +56,15 @@ func (o *MovePath) GetNames() []string {
 // GetNamesOk returns a tuple with the Names field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *MovePath) GetNamesOk() ([]string, bool) {
-	if o == nil || isNil(o.Names) {
-    return nil, false
+	if o == nil || IsNil(o.Names) {
+		return nil, false
 	}
 	return o.Names, true
 }
 
 // HasNames returns a boolean if a field has been set.
 func (o *MovePath) HasNames() bool {
-	if o != nil && !isNil(o.Names) {
+	if o != nil && !IsNil(o.Names) {
 		return true
 	}
 
@@ -75,7 +78,7 @@ func (o *MovePath) SetNames(v []string) {
 
 // GetFromParentPath returns the FromParentPath field value if set, zero value otherwise.
 func (o *MovePath) GetFromParentPath() string {
-	if o == nil || isNil(o.FromParentPath) {
+	if o == nil || IsNil(o.FromParentPath) {
 		var ret string
 		return ret
 	}
@@ -85,15 +88,15 @@ func (o *MovePath) GetFromParentPath() string {
 // GetFromParentPathOk returns a tuple with the FromParentPath field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *MovePath) GetFromParentPathOk() (*string, bool) {
-	if o == nil || isNil(o.FromParentPath) {
-    return nil, false
+	if o == nil || IsNil(o.FromParentPath) {
+		return nil, false
 	}
 	return o.FromParentPath, true
 }
 
 // HasFromParentPath returns a boolean if a field has been set.
 func (o *MovePath) HasFromParentPath() bool {
-	if o != nil && !isNil(o.FromParentPath) {
+	if o != nil && !IsNil(o.FromParentPath) {
 		return true
 	}
 
@@ -107,7 +110,7 @@ func (o *MovePath) SetFromParentPath(v string) {
 
 // GetToParentPath returns the ToParentPath field value if set, zero value otherwise.
 func (o *MovePath) GetToParentPath() string {
-	if o == nil || isNil(o.ToParentPath) {
+	if o == nil || IsNil(o.ToParentPath) {
 		var ret string
 		return ret
 	}
@@ -117,15 +120,15 @@ func (o *MovePath) GetToParentPath() string {
 // GetToParentPathOk returns a tuple with the ToParentPath field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *MovePath) GetToParentPathOk() (*string, bool) {
-	if o == nil || isNil(o.ToParentPath) {
-    return nil, false
+	if o == nil || IsNil(o.ToParentPath) {
+		return nil, false
 	}
 	return o.ToParentPath, true
 }
 
 // HasToParentPath returns a boolean if a field has been set.
 func (o *MovePath) HasToParentPath() bool {
-	if o != nil && !isNil(o.ToParentPath) {
+	if o != nil && !IsNil(o.ToParentPath) {
 		return true
 	}
 
@@ -139,7 +142,7 @@ func (o *MovePath) SetToParentPath(v string) {
 
 // GetMoveBefore returns the MoveBefore field value if set, zero value otherwise.
 func (o *MovePath) GetMoveBefore() string {
-	if o == nil || isNil(o.MoveBefore) {
+	if o == nil || IsNil(o.MoveBefore) {
 		var ret string
 		return ret
 	}
@@ -149,15 +152,15 @@ func (o *MovePath) GetMoveBefore() string {
 // GetMoveBeforeOk returns a tuple with the MoveBefore field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *MovePath) GetMoveBeforeOk() (*string, bool) {
-	if o == nil || isNil(o.MoveBefore) {
-    return nil, false
+	if o == nil || IsNil(o.MoveBefore) {
+		return nil, false
 	}
 	return o.MoveBefore, true
 }
 
 // HasMoveBefore returns a boolean if a field has been set.
 func (o *MovePath) HasMoveBefore() bool {
-	if o != nil && !isNil(o.MoveBefore) {
+	if o != nil && !IsNil(o.MoveBefore) {
 		return true
 	}
 
@@ -171,7 +174,7 @@ func (o *MovePath) SetMoveBefore(v string) {
 
 // GetMoveAfter returns the MoveAfter field value if set, zero value otherwise.
 func (o *MovePath) GetMoveAfter() string {
-	if o == nil || isNil(o.MoveAfter) {
+	if o == nil || IsNil(o.MoveAfter) {
 		var ret string
 		return ret
 	}
@@ -181,15 +184,15 @@ func (o *MovePath) GetMoveAfter() string {
 // GetMoveAfterOk returns a tuple with the MoveAfter field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *MovePath) GetMoveAfterOk() (*string, bool) {
-	if o == nil || isNil(o.MoveAfter) {
-    return nil, false
+	if o == nil || IsNil(o.MoveAfter) {
+		return nil, false
 	}
 	return o.MoveAfter, true
 }
 
 // HasMoveAfter returns a boolean if a field has been set.
 func (o *MovePath) HasMoveAfter() bool {
-	if o != nil && !isNil(o.MoveAfter) {
+	if o != nil && !IsNil(o.MoveAfter) {
 		return true
 	}
 
@@ -202,23 +205,31 @@ func (o *MovePath) SetMoveAfter(v string) {
 }
 
 func (o MovePath) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if !isNil(o.Names) {
-		toSerialize["names"] = o.Names
-	}
-	if !isNil(o.FromParentPath) {
-		toSerialize["fromParentPath"] = o.FromParentPath
-	}
-	if !isNil(o.ToParentPath) {
-		toSerialize["toParentPath"] = o.ToParentPath
-	}
-	if !isNil(o.MoveBefore) {
-		toSerialize["moveBefore"] = o.MoveBefore
-	}
-	if !isNil(o.MoveAfter) {
-		toSerialize["moveAfter"] = o.MoveAfter
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o MovePath) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.Names) {
+		toSerialize["names"] = o.Names
+	}
+	if !IsNil(o.FromParentPath) {
+		toSerialize["fromParentPath"] = o.FromParentPath
+	}
+	if !IsNil(o.ToParentPath) {
+		toSerialize["toParentPath"] = o.ToParentPath
+	}
+	if !IsNil(o.MoveBefore) {
+		toSerialize["moveBefore"] = o.MoveBefore
+	}
+	if !IsNil(o.MoveAfter) {
+		toSerialize["moveAfter"] = o.MoveAfter
+	}
+	return toSerialize, nil
 }
 
 type NullableMovePath struct {

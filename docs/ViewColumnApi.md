@@ -28,25 +28,25 @@ add
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    gridly "./openapi"
+	"context"
+	"fmt"
+	"os"
+	gridly "github.com/gridly-spreadsheet-CMS/gridly-go-sdk"
 )
 
 func main() {
-    columnId := "columnId_example" // string | columnId
-    viewId := "viewId_example" // string | viewId
+	columnId := "columnId_example" // string | columnId
+	viewId := "viewId_example" // string | viewId
 
-    configuration := gridly.NewConfiguration()
-    apiClient := gridly.NewAPIClient(configuration)
-    resp, r, err := apiClient.ViewColumnApi.Add(context.Background(), columnId, viewId).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `ViewColumnApi.Add``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `Add`: ViewColumn
-    fmt.Fprintf(os.Stdout, "Response from `ViewColumnApi.Add`: %v\n", resp)
+	configuration := gridly.NewConfiguration()
+	apiClient := gridly.NewAPIClient(configuration)
+	resp, r, err := apiClient.ViewColumnApi.Add(context.Background(), columnId, viewId).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `ViewColumnApi.Add``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `Add`: ViewColumn
+	fmt.Fprintf(os.Stdout, "Response from `ViewColumnApi.Add`: %v\n", resp)
 }
 ```
 
@@ -101,25 +101,25 @@ bulkCreate
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    gridly "./openapi"
+	"context"
+	"fmt"
+	"os"
+	gridly "github.com/gridly-spreadsheet-CMS/gridly-go-sdk"
 )
 
 func main() {
-    viewId := "viewId_example" // string | viewId
-    createColumn := []gridly.CreateColumn{*gridly.NewCreateColumn("Name_example", "Type_example")} // []CreateColumn | 
+	viewId := "viewId_example" // string | viewId
+	createColumn := []gridly.CreateColumn{*gridly.NewCreateColumn("Name_example", "Type_example")} // []CreateColumn | 
 
-    configuration := gridly.NewConfiguration()
-    apiClient := gridly.NewAPIClient(configuration)
-    resp, r, err := apiClient.ViewColumnApi.BulkCreate(context.Background(), viewId).CreateColumn(createColumn).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `ViewColumnApi.BulkCreate``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `BulkCreate`: []ViewColumn
-    fmt.Fprintf(os.Stdout, "Response from `ViewColumnApi.BulkCreate`: %v\n", resp)
+	configuration := gridly.NewConfiguration()
+	apiClient := gridly.NewAPIClient(configuration)
+	resp, r, err := apiClient.ViewColumnApi.BulkCreate(context.Background(), viewId).CreateColumn(createColumn).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `ViewColumnApi.BulkCreate``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `BulkCreate`: []ViewColumn
+	fmt.Fprintf(os.Stdout, "Response from `ViewColumnApi.BulkCreate`: %v\n", resp)
 }
 ```
 
@@ -173,25 +173,25 @@ create
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    gridly "./openapi"
+	"context"
+	"fmt"
+	"os"
+	gridly "github.com/gridly-spreadsheet-CMS/gridly-go-sdk"
 )
 
 func main() {
-    viewId := "viewId_example" // string | viewId
-    createColumn := *gridly.NewCreateColumn("Name_example", "Type_example") // CreateColumn | 
+	viewId := "viewId_example" // string | viewId
+	createColumn := *gridly.NewCreateColumn("Name_example", "Type_example") // CreateColumn | 
 
-    configuration := gridly.NewConfiguration()
-    apiClient := gridly.NewAPIClient(configuration)
-    resp, r, err := apiClient.ViewColumnApi.Create(context.Background(), viewId).CreateColumn(createColumn).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `ViewColumnApi.Create``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `Create`: ViewColumn
-    fmt.Fprintf(os.Stdout, "Response from `ViewColumnApi.Create`: %v\n", resp)
+	configuration := gridly.NewConfiguration()
+	apiClient := gridly.NewAPIClient(configuration)
+	resp, r, err := apiClient.ViewColumnApi.Create(context.Background(), viewId).CreateColumn(createColumn).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `ViewColumnApi.Create``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `Create`: ViewColumn
+	fmt.Fprintf(os.Stdout, "Response from `ViewColumnApi.Create`: %v\n", resp)
 }
 ```
 
@@ -245,23 +245,23 @@ delete
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    gridly "./openapi"
+	"context"
+	"fmt"
+	"os"
+	gridly "github.com/gridly-spreadsheet-CMS/gridly-go-sdk"
 )
 
 func main() {
-    columnId := "columnId_example" // string | columnId
-    viewId := "viewId_example" // string | viewId
+	columnId := "columnId_example" // string | columnId
+	viewId := "viewId_example" // string | viewId
 
-    configuration := gridly.NewConfiguration()
-    apiClient := gridly.NewAPIClient(configuration)
-    resp, r, err := apiClient.ViewColumnApi.Delete(context.Background(), columnId, viewId).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `ViewColumnApi.Delete``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
+	configuration := gridly.NewConfiguration()
+	apiClient := gridly.NewAPIClient(configuration)
+	r, err := apiClient.ViewColumnApi.Delete(context.Background(), columnId, viewId).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `ViewColumnApi.Delete``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
 }
 ```
 
@@ -316,25 +316,25 @@ get
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    gridly "./openapi"
+	"context"
+	"fmt"
+	"os"
+	gridly "github.com/gridly-spreadsheet-CMS/gridly-go-sdk"
 )
 
 func main() {
-    columnId := "columnId_example" // string | columnId
-    viewId := "viewId_example" // string | viewId
+	columnId := "columnId_example" // string | columnId
+	viewId := "viewId_example" // string | viewId
 
-    configuration := gridly.NewConfiguration()
-    apiClient := gridly.NewAPIClient(configuration)
-    resp, r, err := apiClient.ViewColumnApi.Get(context.Background(), columnId, viewId).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `ViewColumnApi.Get``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `Get`: ViewColumn
-    fmt.Fprintf(os.Stdout, "Response from `ViewColumnApi.Get`: %v\n", resp)
+	configuration := gridly.NewConfiguration()
+	apiClient := gridly.NewAPIClient(configuration)
+	resp, r, err := apiClient.ViewColumnApi.Get(context.Background(), columnId, viewId).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `ViewColumnApi.Get``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `Get`: ViewColumn
+	fmt.Fprintf(os.Stdout, "Response from `ViewColumnApi.Get`: %v\n", resp)
 }
 ```
 
@@ -389,23 +389,23 @@ remove
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    gridly "./openapi"
+	"context"
+	"fmt"
+	"os"
+	gridly "github.com/gridly-spreadsheet-CMS/gridly-go-sdk"
 )
 
 func main() {
-    columnId := "columnId_example" // string | columnId
-    viewId := "viewId_example" // string | viewId
+	columnId := "columnId_example" // string | columnId
+	viewId := "viewId_example" // string | viewId
 
-    configuration := gridly.NewConfiguration()
-    apiClient := gridly.NewAPIClient(configuration)
-    resp, r, err := apiClient.ViewColumnApi.Remove(context.Background(), columnId, viewId).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `ViewColumnApi.Remove``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
+	configuration := gridly.NewConfiguration()
+	apiClient := gridly.NewAPIClient(configuration)
+	r, err := apiClient.ViewColumnApi.Remove(context.Background(), columnId, viewId).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `ViewColumnApi.Remove``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
 }
 ```
 
@@ -460,26 +460,26 @@ update
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    gridly "./openapi"
+	"context"
+	"fmt"
+	"os"
+	gridly "github.com/gridly-spreadsheet-CMS/gridly-go-sdk"
 )
 
 func main() {
-    columnId := "columnId_example" // string | columnId
-    viewId := "viewId_example" // string | viewId
-    updateColumn := *gridly.NewUpdateColumn() // UpdateColumn | 
+	columnId := "columnId_example" // string | columnId
+	viewId := "viewId_example" // string | viewId
+	updateColumn := *gridly.NewUpdateColumn() // UpdateColumn | 
 
-    configuration := gridly.NewConfiguration()
-    apiClient := gridly.NewAPIClient(configuration)
-    resp, r, err := apiClient.ViewColumnApi.Update(context.Background(), columnId, viewId).UpdateColumn(updateColumn).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `ViewColumnApi.Update``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `Update`: ViewColumn
-    fmt.Fprintf(os.Stdout, "Response from `ViewColumnApi.Update`: %v\n", resp)
+	configuration := gridly.NewConfiguration()
+	apiClient := gridly.NewAPIClient(configuration)
+	resp, r, err := apiClient.ViewColumnApi.Update(context.Background(), columnId, viewId).UpdateColumn(updateColumn).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `ViewColumnApi.Update``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `Update`: ViewColumn
+	fmt.Fprintf(os.Stdout, "Response from `ViewColumnApi.Update`: %v\n", resp)
 }
 ```
 

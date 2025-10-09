@@ -7,10 +7,10 @@ info:
   description: Gridly API documentation
   license:
     name: MIT
-    url: ""
+    url: https://opensource.org/licenses/MIT
   termsOfService: https://www.gridly.com
   title: Gridly API
-  version: 5.9.0
+  version: 6.13.0
 servers:
 - description: Generated server url
   url: https://api.gridly.com
@@ -25,6 +25,8 @@ tags:
   name: project
 - description: Glossary API
   name: glossary
+- description: LQA Model API
+  name: lqa-model
 - description: Translation Memory API
   name: transmem
 paths:
@@ -66,7 +68,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ShareView'
+                $ref: "#/components/schemas/ShareView"
           description: OK
       security:
       - ApiKey: []
@@ -89,22 +91,110 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/CreateShareView'
+              $ref: "#/components/schemas/CreateShareView"
         required: true
       responses:
         "200":
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ShareView'
+                $ref: "#/components/schemas/ShareView"
           description: OK
       security:
       - ApiKey: []
       summary: create
       tags:
       - share-view
+  /v1/views/{viewId}/paths:
+    delete:
+      description: delete
+      operationId: delete
+      parameters:
+      - description: viewId
+        explode: false
+        in: path
+        name: viewId
+        required: true
+        schema:
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/DeletePath"
+        required: true
+      responses:
+        "204":
+          description: No Content
+      security:
+      - ApiKey: []
+      summary: delete
+      tags:
+      - path
+    post:
+      description: create
+      operationId: create
+      parameters:
+      - description: viewId
+        explode: false
+        in: path
+        name: viewId
+        required: true
+        schema:
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/CreatePath"
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/PathList"
+          description: OK
+      security:
+      - ApiKey: []
+      summary: create
+      tags:
+      - path
+    put:
+      description: updatePathNode
+      operationId: updatePathNode
+      parameters:
+      - description: viewId
+        explode: false
+        in: path
+        name: viewId
+        required: true
+        schema:
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/UpdatePath"
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/PathSingle"
+          description: OK
+      security:
+      - ApiKey: []
+      summary: updatePathNode
+      tags:
+      - path
   /v1/views/{viewId}/paths/{path}:
     put:
+      deprecated: true
       description: update
       operationId: update
       parameters:
@@ -128,20 +218,20 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/UpdatePath'
+              $ref: "#/components/schemas/UpdatePath"
         required: true
       responses:
         "200":
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/PathSingle'
+                $ref: "#/components/schemas/PathSingle"
           description: OK
       security:
       - ApiKey: []
       summary: update
       tags:
-      - Path
+      - path
   /v1/views/{viewId}/dependencies/{dependencyId}:
     delete:
       description: deleteById
@@ -196,7 +286,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Dependency'
+                $ref: "#/components/schemas/Dependency"
           description: OK
       security:
       - ApiKey: []
@@ -227,14 +317,14 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/UpdateDependency'
+              $ref: "#/components/schemas/UpdateDependency"
         required: true
       responses:
         "200":
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Dependency'
+                $ref: "#/components/schemas/Dependency"
           description: OK
       security:
       - ApiKey: []
@@ -294,14 +384,14 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/UpdateCategory'
+              $ref: "#/components/schemas/UpdateCategory"
         required: true
       responses:
         "200":
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/FileCategory'
+                $ref: "#/components/schemas/FileCategory"
           description: OK
       security:
       - ApiKey: []
@@ -326,7 +416,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/CDN'
+                $ref: "#/components/schemas/CDN"
           description: OK
       security:
       - ApiKey: []
@@ -351,7 +441,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/CDN'
+                $ref: "#/components/schemas/CDN"
           description: OK
       security:
       - ApiKey: []
@@ -399,7 +489,7 @@ paths:
             application/json:
               schema:
                 items:
-                  $ref: '#/components/schemas/View'
+                  $ref: "#/components/schemas/View"
                 type: array
           description: OK
       security:
@@ -414,14 +504,14 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/CreateView'
+              $ref: "#/components/schemas/CreateView"
         required: true
       responses:
         "200":
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/View'
+                $ref: "#/components/schemas/View"
           description: OK
       security:
       - ApiKey: []
@@ -445,7 +535,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/DeleteRecord'
+              $ref: "#/components/schemas/DeleteRecord"
         required: true
       responses:
         "204":
@@ -515,7 +605,7 @@ paths:
         name: fetchFileOption
         required: false
         schema:
-          $ref: '#/components/schemas/FetchFileOption'
+          $ref: "#/components/schemas/FetchFileOption"
         style: form
       - description: afterRecordId
         explode: true
@@ -539,7 +629,7 @@ paths:
             application/json:
               schema:
                 items:
-                  $ref: '#/components/schemas/Record'
+                  $ref: "#/components/schemas/Record"
                 type: array
           description: OK
       security:
@@ -564,7 +654,7 @@ paths:
           application/json:
             schema:
               items:
-                $ref: '#/components/schemas/SetRecord'
+                $ref: "#/components/schemas/SetRecord"
               type: array
         required: true
       responses:
@@ -573,7 +663,7 @@ paths:
             application/json:
               schema:
                 items:
-                  $ref: '#/components/schemas/Record'
+                  $ref: "#/components/schemas/Record"
                 type: array
           description: OK
       security:
@@ -583,6 +673,7 @@ paths:
       - record
     post:
       description: create
+      x-codegen-request-body-name: createRecords
       operationId: create
       parameters:
       - description: viewId
@@ -598,7 +689,7 @@ paths:
           application/json:
             schema:
               items:
-                $ref: '#/components/schemas/SetRecord'
+                $ref: "#/components/schemas/SetRecord"
               type: array
         description: createRecords
         required: true
@@ -608,7 +699,7 @@ paths:
             application/json:
               schema:
                 items:
-                  $ref: '#/components/schemas/Record'
+                  $ref: "#/components/schemas/Record"
                 type: array
           description: OK
       security:
@@ -616,37 +707,10 @@ paths:
       summary: create
       tags:
       - record
-      x-codegen-request-body-name: createRecords
-  /v1/views/{viewId}/paths:
-    delete:
-      description: delete
-      operationId: delete
-      parameters:
-      - description: viewId
-        explode: false
-        in: path
-        name: viewId
-        required: true
-        schema:
-          type: string
-        style: simple
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/DeletePath'
-        required: true
-      responses:
-        "204":
-          description: No Content
-      security:
-      - ApiKey: []
-      summary: delete
-      tags:
-      - Path
+  /v1/views/{viewId}/record-histories/export:
     post:
-      description: create
-      operationId: create
+      description: exportRecordHistories
+      operationId: exportRecordHistories
       parameters:
       - description: viewId
         explode: false
@@ -660,20 +724,20 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/CreatePath'
+              $ref: "#/components/schemas/ExportRecordHistory"
         required: true
       responses:
-        "200":
+        "201":
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/PathList'
-          description: OK
+                $ref: "#/components/schemas/Task"
+          description: Created
       security:
       - ApiKey: []
-      summary: create
+      summary: exportRecordHistories
       tags:
-      - Path
+      - record
   /v1/views/{viewId}/paths/move:
     post:
       description: move
@@ -691,20 +755,20 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/MovePath'
+              $ref: "#/components/schemas/MovePath"
         required: true
       responses:
         "200":
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/PathList'
+                $ref: "#/components/schemas/PathList"
           description: OK
       security:
       - ApiKey: []
       summary: move
       tags:
-      - Path
+      - path
   /v1/views/{viewId}/merge:
     post:
       description: merge
@@ -747,14 +811,14 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/MergeBranchRequest'
+              $ref: "#/components/schemas/MergeBranchRequest"
         required: true
       responses:
         "202":
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Task'
+                $ref: "#/components/schemas/Task"
           description: Accepted
       security:
       - ApiKey: []
@@ -790,13 +854,13 @@ paths:
         name: type
         required: false
         schema:
-          $ref: '#/components/schemas/FileType'
+          $ref: "#/components/schemas/FileType"
         style: form
       requestBody:
         content:
           multipart/form-data:
             schema:
-              $ref: '#/components/schemas/importView_request'
+              $ref: "#/components/schemas/importView_request"
       responses:
         "202":
           description: Accepted
@@ -838,7 +902,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/DeleteFile'
+              $ref: "#/components/schemas/DeleteFile"
         required: true
       responses:
         "204":
@@ -880,13 +944,13 @@ paths:
         content:
           multipart/form-data:
             schema:
-              $ref: '#/components/schemas/upload_request'
+              $ref: "#/components/schemas/upload_request"
       responses:
         "201":
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/UploadedFile'
+                $ref: "#/components/schemas/UploadedFile"
           description: Created
       security:
       - ApiKey: []
@@ -910,14 +974,14 @@ paths:
         content:
           multipart/form-data:
             schema:
-              $ref: '#/components/schemas/uploadZip_request'
+              $ref: "#/components/schemas/uploadZip_request"
       responses:
         default:
           content:
             application/json:
               schema:
                 items:
-                  $ref: '#/components/schemas/Record'
+                  $ref: "#/components/schemas/Record"
                 type: array
           description: default response
       security:
@@ -942,7 +1006,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/DeleteDependency'
+              $ref: "#/components/schemas/DeleteDependency"
         required: true
       responses:
         "204":
@@ -970,7 +1034,7 @@ paths:
             application/json:
               schema:
                 items:
-                  $ref: '#/components/schemas/Dependency'
+                  $ref: "#/components/schemas/Dependency"
                 type: array
           description: OK
       security:
@@ -994,14 +1058,14 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/CreateDependency'
+              $ref: "#/components/schemas/CreateDependency"
         required: true
       responses:
         "201":
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Dependency'
+                $ref: "#/components/schemas/Dependency"
           description: Created
       security:
       - ApiKey: []
@@ -1025,14 +1089,14 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/CreateColumn'
+              $ref: "#/components/schemas/CreateColumn"
         required: true
       responses:
         "201":
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ViewColumn'
+                $ref: "#/components/schemas/ViewColumn"
           description: Created
       security:
       - ApiKey: []
@@ -1094,7 +1158,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ViewColumn'
+                $ref: "#/components/schemas/ViewColumn"
           description: OK
       security:
       - ApiKey: []
@@ -1119,7 +1183,7 @@ paths:
           application/json:
             schema:
               items:
-                $ref: '#/components/schemas/CreateColumn'
+                $ref: "#/components/schemas/CreateColumn"
               type: array
         required: true
       responses:
@@ -1128,7 +1192,7 @@ paths:
             application/json:
               schema:
                 items:
-                  $ref: '#/components/schemas/ViewColumn'
+                  $ref: "#/components/schemas/ViewColumn"
                 type: array
           description: Created
       security:
@@ -1141,6 +1205,16 @@ paths:
       description: Get a Grid
       operationId: list
       parameters:
+      - description: query
+        explode: true
+        in: query
+        name: query
+        required: false
+        schema:
+          default: "{}"
+          nullable: true
+          type: string
+        style: form
       - description: dbId
         explode: true
         in: query
@@ -1155,7 +1229,7 @@ paths:
             application/json:
               schema:
                 items:
-                  $ref: '#/components/schemas/Grid'
+                  $ref: "#/components/schemas/Grid"
                 type: array
           description: OK
       security:
@@ -1179,14 +1253,14 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/CreateGrid'
+              $ref: "#/components/schemas/CreateGrid"
         required: true
       responses:
         "201":
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Grid'
+                $ref: "#/components/schemas/Grid"
           description: Created
       security:
       - ApiKey: []
@@ -1210,14 +1284,14 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/CreateFileCategory'
+              $ref: "#/components/schemas/CreateFileCategory"
         required: true
       responses:
         "200":
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/FileCategory'
+                $ref: "#/components/schemas/FileCategory"
           description: OK
       security:
       - ApiKey: []
@@ -1249,14 +1323,14 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/uploadSettingFile_request'
+              $ref: "#/components/schemas/uploadSettingFile_request"
         required: true
       responses:
         "200":
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/UploadedFile'
+                $ref: "#/components/schemas/UploadedFile"
           description: OK
       security:
       - ApiKey: []
@@ -1282,7 +1356,7 @@ paths:
             application/json:
               schema:
                 items:
-                  $ref: '#/components/schemas/Branch'
+                  $ref: "#/components/schemas/Branch"
                 type: array
           description: OK
       security:
@@ -1314,14 +1388,14 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/CreateBranch'
+              $ref: "#/components/schemas/CreateBranch"
         required: true
       responses:
         "201":
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Branch'
+                $ref: "#/components/schemas/Branch"
           description: Created
       security:
       - ApiKey: []
@@ -1370,14 +1444,14 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/MergeBranchRequest'
+              $ref: "#/components/schemas/MergeBranchRequest"
         required: true
       responses:
         "202":
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Task'
+                $ref: "#/components/schemas/Task"
           description: Accepted
       security:
       - ApiKey: []
@@ -1410,7 +1484,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Task'
+                $ref: "#/components/schemas/Task"
           description: Accepted
       security:
       - ApiKey: []
@@ -1450,14 +1524,14 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/SetRecord'
+              $ref: "#/components/schemas/SetRecord"
         required: true
       responses:
         "200":
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Record'
+                $ref: "#/components/schemas/Record"
           description: OK
       security:
       - ApiKey: []
@@ -1518,7 +1592,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ViewColumn'
+                $ref: "#/components/schemas/ViewColumn"
           description: OK
       security:
       - ApiKey: []
@@ -1549,14 +1623,14 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/UpdateColumn'
+              $ref: "#/components/schemas/UpdateColumn"
         required: true
       responses:
         "200":
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ViewColumn'
+                $ref: "#/components/schemas/ViewColumn"
           description: OK
       security:
       - ApiKey: []
@@ -1601,7 +1675,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Grid'
+                $ref: "#/components/schemas/Grid"
           description: OK
       security:
       - ApiKey: []
@@ -1624,14 +1698,14 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/UpdateGrid'
+              $ref: "#/components/schemas/UpdateGrid"
         required: true
       responses:
         "200":
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Grid'
+                $ref: "#/components/schemas/Grid"
           description: OK
       security:
       - ApiKey: []
@@ -1656,7 +1730,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/GridSetting'
+                $ref: "#/components/schemas/GridSetting"
           description: OK
       security:
       - ApiKey: []
@@ -1679,14 +1753,14 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/UpdateGridSetting'
+              $ref: "#/components/schemas/UpdateGridSetting"
         required: true
       responses:
         "200":
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/GridSetting'
+                $ref: "#/components/schemas/GridSetting"
           description: OK
       security:
       - ApiKey: []
@@ -1694,6 +1768,26 @@ paths:
       tags:
       - grid
   /v1/views/{viewId}:
+    delete:
+      description: delete
+      operationId: delete
+      parameters:
+      - description: viewId
+        explode: false
+        in: path
+        name: viewId
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "204":
+          description: No Content
+      security:
+      - ApiKey: []
+      summary: delete
+      tags:
+      - view
     get:
       description: get
       operationId: get
@@ -1767,7 +1861,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/View'
+                $ref: "#/components/schemas/View"
           description: OK
       security:
       - ApiKey: []
@@ -1804,7 +1898,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ViewStatistic'
+                $ref: "#/components/schemas/ViewStatistic"
           description: OK
       security:
       - ApiKey: []
@@ -1838,7 +1932,7 @@ paths:
         name: fetchRequest
         required: true
         schema:
-          $ref: '#/components/schemas/FetchRecordHistoryRequest'
+          $ref: "#/components/schemas/FetchRecordHistoryRequest"
         style: form
       responses:
         "200":
@@ -1846,12 +1940,46 @@ paths:
             application/json:
               schema:
                 items:
-                  $ref: '#/components/schemas/RecordHistory'
+                  $ref: "#/components/schemas/RecordHistory"
                 type: array
           description: OK
       security:
       - ApiKey: []
       summary: fetchHistories
+      tags:
+      - record
+  /v1/views/{viewId}/record-histories/export/{taskId}:
+    get:
+      description: downloadRecordHistories
+      operationId: downloadRecordHistories
+      parameters:
+      - description: viewId
+        explode: false
+        in: path
+        name: viewId
+        required: true
+        schema:
+          type: string
+        style: simple
+      - description: taskId
+        explode: false
+        in: path
+        name: taskId
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        default:
+          content:
+            application/octet-stream:
+              schema:
+                format: binary
+                type: string
+          description: default response
+      security:
+      - ApiKey: []
+      summary: downloadRecordHistories
       tags:
       - record
   /v1/views/{viewId}/paths/tree:
@@ -1881,14 +2009,14 @@ paths:
             application/json:
               schema:
                 items:
-                  $ref: '#/components/schemas/PathNode'
+                  $ref: "#/components/schemas/PathNode"
                 type: array
           description: OK
       security:
       - ApiKey: []
       summary: list
       tags:
-      - Path
+      - path
   /v1/views/{viewId}/files/{fileId}:
     get:
       description: download
@@ -1954,7 +2082,7 @@ paths:
         name: fileHeader
         required: false
         schema:
-          $ref: '#/components/schemas/ExportFileHeader'
+          $ref: "#/components/schemas/ExportFileHeader"
         style: form
       - description: query
         explode: true
@@ -1982,7 +2110,7 @@ paths:
         name: type
         required: false
         schema:
-          $ref: '#/components/schemas/FileType'
+          $ref: "#/components/schemas/FileType"
         style: form
       responses:
         default:
@@ -2007,7 +2135,7 @@ paths:
             application/json:
               schema:
                 items:
-                  $ref: '#/components/schemas/Grid'
+                  $ref: "#/components/schemas/Grid"
                 type: array
           description: OK
       security:
@@ -2033,13 +2161,31 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Task'
+                $ref: "#/components/schemas/Task"
           description: OK
       security:
       - ApiKey: []
       summary: get
       tags:
       - task
+  /v1/locales/all:
+    get:
+      description: create
+      operationId: create
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                additionalProperties:
+                  type: string
+                type: object
+          description: OK
+      security:
+      - ApiKey: []
+      summary: create
+      tags:
+      - locale
   /v1/grids/{gridId}/settings/files:
     get:
       description: listFiles
@@ -2069,7 +2215,7 @@ paths:
             application/json:
               schema:
                 items:
-                  $ref: '#/components/schemas/SettingFile'
+                  $ref: "#/components/schemas/SettingFile"
                 type: array
           description: OK
       security:
@@ -2136,7 +2282,7 @@ paths:
             application/json:
               schema:
                 items:
-                  $ref: '#/components/schemas/CDN'
+                  $ref: "#/components/schemas/CDN"
                 type: array
           description: OK
       security:
@@ -2182,7 +2328,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Branch'
+                $ref: "#/components/schemas/Branch"
           description: OK
       security:
       - ApiKey: []
@@ -2248,7 +2394,7 @@ paths:
             application/json:
               schema:
                 items:
-                  $ref: '#/components/schemas/BranchDiffRecord'
+                  $ref: "#/components/schemas/BranchDiffRecord"
                 type: array
           description: OK
       security:
@@ -2331,7 +2477,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ProjectDetail'
+                $ref: "#/components/schemas/ProjectDetail"
           description: OK
       security:
       - ApiKey: []
@@ -2354,14 +2500,14 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/UpdateProject'
+              $ref: "#/components/schemas/UpdateProject"
         required: true
       responses:
         "200":
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Project'
+                $ref: "#/components/schemas/Project"
           description: OK
       security:
       - ApiKey: []
@@ -2404,7 +2550,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Database'
+                $ref: "#/components/schemas/Database"
           description: OK
       security:
       - ApiKey: []
@@ -2412,6 +2558,7 @@ paths:
       tags:
       - database
     put:
+      x-codegen-request-body-name: body
       operationId: update
       parameters:
       - description: dbId
@@ -2426,7 +2573,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/UpdateDatabase'
+              $ref: "#/components/schemas/UpdateDatabase"
         description: body
         required: true
       responses:
@@ -2434,14 +2581,13 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Database'
+                $ref: "#/components/schemas/Database"
           description: OK
       security:
       - ApiKey: []
       summary: update
       tags:
       - database
-      x-codegen-request-body-name: body
   /v1/projects:
     get:
       operationId: list
@@ -2451,7 +2597,7 @@ paths:
             application/json:
               schema:
                 items:
-                  $ref: '#/components/schemas/Project'
+                  $ref: "#/components/schemas/Project"
                 type: array
           description: OK
       security:
@@ -2465,14 +2611,14 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/CreateProject'
+              $ref: "#/components/schemas/CreateProject"
         required: true
       responses:
         "200":
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Project'
+                $ref: "#/components/schemas/Project"
           description: OK
       security:
       - ApiKey: []
@@ -2537,7 +2683,7 @@ paths:
             application/json:
               schema:
                 items:
-                  $ref: '#/components/schemas/Database'
+                  $ref: "#/components/schemas/Database"
                 type: array
           description: OK
       security:
@@ -2546,6 +2692,7 @@ paths:
       tags:
       - database
     post:
+      x-codegen-request-body-name: body
       operationId: create
       parameters:
       - description: projectId
@@ -2561,7 +2708,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/CreateDatabase'
+              $ref: "#/components/schemas/CreateDatabase"
         description: body
         required: true
       responses:
@@ -2569,16 +2716,16 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Database'
+                $ref: "#/components/schemas/Database"
           description: OK
       security:
       - ApiKey: []
       summary: create
       tags:
       - database
-      x-codegen-request-body-name: body
   /v1/databases/{dbId}/duplicate:
     post:
+      x-codegen-request-body-name: body
       operationId: duplicate
       parameters:
       - description: dbId
@@ -2602,7 +2749,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/CreateDatabase'
+              $ref: "#/components/schemas/CreateDatabase"
         description: body
         required: true
       responses:
@@ -2610,14 +2757,13 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Database'
+                $ref: "#/components/schemas/Database"
           description: OK
       security:
       - ApiKey: []
       summary: duplicate
       tags:
       - database
-      x-codegen-request-body-name: body
   /v1/glossaries:
     get:
       operationId: getAll
@@ -2627,7 +2773,7 @@ paths:
             application/json:
               schema:
                 items:
-                  $ref: '#/components/schemas/Glossary'
+                  $ref: "#/components/schemas/Glossary"
                 type: array
           description: OK
       summary: List all glossaries
@@ -2639,14 +2785,16 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/CreateGlossary'
+              $ref: "#/components/schemas/CreateGlossary"
+        required: true
       responses:
         "201":
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Glossary'
-          description: Create a new glossary successful !
+                $ref: "#/components/schemas/Glossary"
+        "400":
+          description: Bad Request
       summary: Create a new glossary
       tags:
       - glossary
@@ -2659,8 +2807,7 @@ paths:
         name: id
         required: true
         schema:
-          format: int64
-          type: integer
+          type: string
         style: simple
       responses:
         "204":
@@ -2676,17 +2823,15 @@ paths:
         name: id
         required: true
         schema:
-          format: int64
-          type: integer
+          type: string
         style: simple
       responses:
         "200":
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Glossary'
-          description: OK
-      summary: get glossary info
+                $ref: "#/components/schemas/Glossary"
+      summary: Get glossary info
       tags:
       - glossary
     put:
@@ -2697,17 +2842,22 @@ paths:
         name: id
         required: true
         schema:
-          format: int64
-          type: integer
+          type: string
         style: simple
       requestBody:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/UpdateGlossary'
+              $ref: "#/components/schemas/UpdateGlossary"
+        required: true
       responses:
+        "400":
+          description: Bad Request
         "200":
-          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Glossary"
       summary: Update glossary info
       tags:
       - glossary
@@ -2720,8 +2870,7 @@ paths:
         name: id
         required: true
         schema:
-          format: int64
-          type: integer
+          type: string
         style: simple
       - explode: true
         in: query
@@ -2738,8 +2887,8 @@ paths:
         required: false
         schema:
           allOf:
-          - $ref: '#/components/schemas/GlossaryExportFormat'
-          - default: tbx
+          - $ref: "#/components/schemas/ExportGlossaryFormat"
+          default: tbx
         style: form
       - explode: true
         in: query
@@ -2752,7 +2901,11 @@ paths:
         style: form
       responses:
         "200":
-          description: OK
+          content:
+            application/octet-stream:
+              schema:
+                format: binary
+                type: string
       summary: Export a glossary
       tags:
       - glossary
@@ -2765,8 +2918,7 @@ paths:
         name: id
         required: true
         schema:
-          format: int64
-          type: integer
+          type: string
         style: simple
       - explode: true
         in: query
@@ -2774,20 +2926,44 @@ paths:
         required: false
         schema:
           allOf:
-          - $ref: '#/components/schemas/ImportOption'
-          - default: UPDATE
+          - $ref: "#/components/schemas/ImportGlossaryOption"
+          default: UPDATE
         style: form
       requestBody:
         content:
           multipart/form-data:
             schema:
-              $ref: '#/components/schemas/importFile_request'
+              $ref: "#/components/schemas/uploadSettingFile_request"
+        required: true
       responses:
-        "201":
-          description: Created
+        "204":
+          content:
+            application/json: {}
       summary: Import a glossary from file
       tags:
       - glossary
+  /v1/lqa-models:
+    get:
+      operationId: getLQAModel
+      parameters:
+      - explode: true
+        in: query
+        name: projectId
+        required: false
+        schema:
+          format: int64
+          type: integer
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/LQAModelResponse"
+          description: OK
+      summary: Get default lqa model
+      tags:
+      - lqa-model
   /v1/transmems:
     get:
       operationId: listTM
@@ -2806,7 +2982,7 @@ paths:
             application/json:
               schema:
                 items:
-                  $ref: '#/components/schemas/TransMem'
+                  $ref: "#/components/schemas/TransMem"
                 type: array
           description: OK
       summary: List all available translation memories or create default one if there
@@ -2819,14 +2995,17 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/CreateTransMem'
+              $ref: "#/components/schemas/CreateTransMem"
+        required: true
       responses:
         "201":
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/TransMem'
+                $ref: "#/components/schemas/TransMem"
           description: Create a new translation memory successful !
+        "400":
+          description: Bad Request
       summary: Create a new translation memory
       tags:
       - transmem
@@ -2837,7 +3016,7 @@ paths:
         content:
           multipart/form-data:
             schema:
-              $ref: '#/components/schemas/createWithFile_request'
+              $ref: "#/components/schemas/createWithFile_request"
         description: Based tmx file to create translation memory
         required: true
       responses:
@@ -2845,7 +3024,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/TransMem'
+                $ref: "#/components/schemas/TransMem"
           description: Create a new translation memory based on provided tmx file
             successfully !
       summary: Create a new translation memory by uploading tmx file
@@ -2867,7 +3046,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/TransMem'
+                $ref: "#/components/schemas/TransMem"
           description: OK
       summary: Delete a translation memory by id
       tags:
@@ -2887,7 +3066,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/TransMem'
+                $ref: "#/components/schemas/TransMem"
           description: OK
       summary: Get translation memory info by id
       tags:
@@ -2906,14 +3085,17 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/UpdateTransMem'
+              $ref: "#/components/schemas/UpdateTransMem"
+        required: true
       responses:
         "200":
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/TransMem'
+                $ref: "#/components/schemas/TransMem"
           description: OK
+        "400":
+          description: Bad Request
       summary: Update a translation memory
       tags:
       - transmem
@@ -2951,8 +3133,8 @@ paths:
         required: false
         schema:
           allOf:
-          - $ref: '#/components/schemas/ExportFormat'
-          - default: tmx
+          - $ref: "#/components/schemas/ExportTransMemFormat"
+          default: tmx
         style: form
       - explode: true
         in: query
@@ -2996,7 +3178,7 @@ paths:
         content:
           multipart/form-data:
             schema:
-              $ref: '#/components/schemas/createWithFile_request'
+              $ref: "#/components/schemas/createWithFile_request"
         description: tmx file to upload
         required: true
       responses:
@@ -3005,13 +3187,183 @@ paths:
       summary: Import a translation memory from tmx file
       tags:
       - transmem
+  /v1/automations/{automationId}/trigger:
+    post:
+      operationId: trigger
+      parameters:
+      - explode: false
+        in: path
+        name: automationId
+        required: true
+        schema:
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/ExecutionTriggerRequest"
+        required: true
+      responses:
+        "200":
+          content:
+            '*/*':
+              schema:
+                $ref: "#/components/schemas/ExecutionResponse"
+          description: OK
+      security:
+      - ApiKey: []
+      tags:
+      - automation
+  /v1/automations/trigger:
+    post:
+      operationId: bulkTrigger
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/BulkExecutionTriggerRequest"
+        required: true
+      responses:
+        "200":
+          content:
+            '*/*':
+              schema:
+                items:
+                  $ref: "#/components/schemas/ExecutionResponse"
+                type: array
+          description: OK
+      security:
+      - ApiKey: []
+      tags:
+      - automation
+  /v1/automations:
+    get:
+      operationId: list
+      parameters:
+      - explode: true
+        in: query
+        name: viewId
+        required: true
+        schema:
+          type: string
+        style: form
+      responses:
+        "200":
+          content:
+            '*/*':
+              schema:
+                items:
+                  $ref: "#/components/schemas/Automation"
+                type: array
+          description: OK
+      security:
+      - ApiKey: []
+      tags:
+      - automation
+  /v1/automations/{automationId}:
+    get:
+      operationId: get
+      parameters:
+      - explode: false
+        in: path
+        name: automationId
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            '*/*':
+              schema:
+                $ref: "#/components/schemas/Automation"
+          description: OK
+      security:
+      - ApiKey: []
+      tags:
+      - automation
+  /v1/automations/{automationId}/executions:
+    get:
+      operationId: getExecutions
+      parameters:
+      - explode: false
+        in: path
+        name: automationId
+        required: true
+        schema:
+          type: string
+        style: simple
+      - explode: true
+        in: query
+        name: page
+        required: false
+        schema:
+          default: 0
+          format: int32
+          type: integer
+        style: form
+      - explode: true
+        in: query
+        name: size
+        required: false
+        schema:
+          default: 10
+          format: int32
+          type: integer
+        style: form
+      responses:
+        "200":
+          content:
+            '*/*':
+              schema:
+                items:
+                  $ref: "#/components/schemas/ExecutionResponse"
+                type: array
+          description: OK
+      security:
+      - ApiKey: []
+      tags:
+      - automation
+  /v1/automations/{automationId}/executions/{executionId}:
+    get:
+      operationId: getExecution
+      parameters:
+      - explode: false
+        in: path
+        name: automationId
+        required: true
+        schema:
+          type: string
+        style: simple
+      - explode: false
+        in: path
+        name: executionId
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            '*/*':
+              schema:
+                $ref: "#/components/schemas/ExecutionResponse"
+          description: OK
+      security:
+      - ApiKey: []
+      tags:
+      - automation
 components:
   schemas:
     CreateShareView:
       example:
+        regenerate: true
         includeGridHistory: true
       properties:
         includeGridHistory:
+          type: boolean
+        regenerate:
           type: boolean
       type: object
     ShareView:
@@ -3043,8 +3395,11 @@ components:
       type: object
     UpdatePath:
       example:
+        path: path
         newName: newName
       properties:
+        path:
+          type: string
         newName:
           pattern: "^[^/\\\\]+$"
           type: string
@@ -3180,24 +3535,7 @@ components:
       type: object
     AddViewColumn:
       example:
-        reference:
-          branchId: branchId
-          selectionType: single
-          columnId: columnId
-          gridId: gridId
-          type: row
-        numberFormat:
-          decimalPlaces: 0
-          currencySymbol: currencySymbol
-          type: decimal
-          use1000Separator: true
-        dateTimeFormat:
-          zoneOffset: zoneOffset
-          dateFormat: dateFormat
-          timeFormat: timeFormat
-          showTimeZone: true
         editable: true
-        name: name
         selectionOptions:
         - selectionOptions
         - selectionOptions
@@ -3206,13 +3544,42 @@ components:
         - selectionOptions
         description: description
         localizationType: sourceLanguage
+        type: singleLine
+        languageCode: enUS
+        reference:
+          branchId: branchId
+          selectionType: single
+          columnId: columnId
+          gridId: gridId
+          type: row
+        numberFormat:
+          decimalPlaces: 6
+          currencySymbol: currencySymbol
+          type: decimal
+          use1000Separator: true
+        selection:
+          options:
+          - color: color
+            value: value
+          - color: color
+            value: value
+          - color: color
+            value: value
+          - color: color
+            value: value
+          - color: color
+            value: value
+        dateTimeFormat:
+          zoneOffset: zoneOffset
+          dateFormat: dateFormat
+          timeFormat: timeFormat
+          showTimeZone: true
+        name: name
         formula:
           formulaText: formulaText
           detectResultValueType: list
           alwaysFormatResultValueAsList: true
         id: id
-        type: singleLine
-        languageCode: enUS
       properties:
         id:
           type: string
@@ -3291,6 +3658,7 @@ components:
           - urIN
           - viVN
           - afZA
+          - arMO
           - arAE
           - arBH
           - arDZ
@@ -3333,6 +3701,7 @@ components:
           - enZM
           - enKE
           - enNG
+          - esWO
           - esAR
           - esBO
           - esCL
@@ -3408,6 +3777,7 @@ components:
           - zhMO
           - zhSG
           - zuZA
+          - myMM
           - am
           - hy
           - az
@@ -3491,6 +3861,7 @@ components:
           - cy
           - zu
           - "no"
+          - my
           type: string
         localizationType:
           enum:
@@ -3498,43 +3869,32 @@ components:
           - targetLanguage
           type: string
         numberFormat:
-          $ref: '#/components/schemas/NumberFormat'
+          $ref: "#/components/schemas/NumberFormat"
         selectionOptions:
+          deprecated: true
+          description: Please use selection
           items:
+            deprecated: true
+            description: Please use selection
             maxLength: 100
             minLength: 0
             type: string
           maxItems: 1000
           minItems: 0
           type: array
+        selection:
+          $ref: "#/components/schemas/Selection"
         reference:
-          $ref: '#/components/schemas/Reference'
+          $ref: "#/components/schemas/Reference"
         formula:
-          $ref: '#/components/schemas/Formula'
+          $ref: "#/components/schemas/Formula"
         dateTimeFormat:
-          $ref: '#/components/schemas/DateTimeFormat'
+          $ref: "#/components/schemas/DateTimeFormat"
       type: object
     CreateView:
       example:
         columns:
-        - reference:
-            branchId: branchId
-            selectionType: single
-            columnId: columnId
-            gridId: gridId
-            type: row
-          numberFormat:
-            decimalPlaces: 0
-            currencySymbol: currencySymbol
-            type: decimal
-            use1000Separator: true
-          dateTimeFormat:
-            zoneOffset: zoneOffset
-            dateFormat: dateFormat
-            timeFormat: timeFormat
-            showTimeZone: true
-          editable: true
-          name: name
+        - editable: true
           selectionOptions:
           - selectionOptions
           - selectionOptions
@@ -3543,31 +3903,43 @@ components:
           - selectionOptions
           description: description
           localizationType: sourceLanguage
-          formula:
-            formulaText: formulaText
-            detectResultValueType: list
-            alwaysFormatResultValueAsList: true
-          id: id
           type: singleLine
           languageCode: enUS
-        - reference:
+          reference:
             branchId: branchId
             selectionType: single
             columnId: columnId
             gridId: gridId
             type: row
           numberFormat:
-            decimalPlaces: 0
+            decimalPlaces: 6
             currencySymbol: currencySymbol
             type: decimal
             use1000Separator: true
+          selection:
+            options:
+            - color: color
+              value: value
+            - color: color
+              value: value
+            - color: color
+              value: value
+            - color: color
+              value: value
+            - color: color
+              value: value
           dateTimeFormat:
             zoneOffset: zoneOffset
             dateFormat: dateFormat
             timeFormat: timeFormat
             showTimeZone: true
-          editable: true
           name: name
+          formula:
+            formulaText: formulaText
+            detectResultValueType: list
+            alwaysFormatResultValueAsList: true
+          id: id
+        - editable: true
           selectionOptions:
           - selectionOptions
           - selectionOptions
@@ -3576,13 +3948,42 @@ components:
           - selectionOptions
           description: description
           localizationType: sourceLanguage
+          type: singleLine
+          languageCode: enUS
+          reference:
+            branchId: branchId
+            selectionType: single
+            columnId: columnId
+            gridId: gridId
+            type: row
+          numberFormat:
+            decimalPlaces: 6
+            currencySymbol: currencySymbol
+            type: decimal
+            use1000Separator: true
+          selection:
+            options:
+            - color: color
+              value: value
+            - color: color
+              value: value
+            - color: color
+              value: value
+            - color: color
+              value: value
+            - color: color
+              value: value
+          dateTimeFormat:
+            zoneOffset: zoneOffset
+            dateFormat: dateFormat
+            timeFormat: timeFormat
+            showTimeZone: true
+          name: name
           formula:
             formulaText: formulaText
             detectResultValueType: list
             alwaysFormatResultValueAsList: true
           id: id
-          type: singleLine
-          languageCode: enUS
         name: name
         gridId: gridId
       properties:
@@ -3592,7 +3993,7 @@ components:
           type: string
         columns:
           items:
-            $ref: '#/components/schemas/AddViewColumn'
+            $ref: "#/components/schemas/AddViewColumn"
           type: array
       required:
       - gridId
@@ -3638,7 +4039,7 @@ components:
       type: object
     NumberFormat:
       example:
-        decimalPlaces: 0
+        decimalPlaces: 6
         currencySymbol: currencySymbol
         type: decimal
         use1000Separator: true
@@ -3684,13 +4085,53 @@ components:
       - columnId
       - gridId
       type: object
+    Selection:
+      example:
+        options:
+        - color: color
+          value: value
+        - color: color
+          value: value
+        - color: color
+          value: value
+        - color: color
+          value: value
+        - color: color
+          value: value
+      properties:
+        options:
+          items:
+            $ref: "#/components/schemas/SelectionOption"
+          maxItems: 1000
+          minItems: 0
+          type: array
+      type: object
+    SelectionOption:
+      example:
+        color: color
+        value: value
+      properties:
+        color:
+          maxLength: 20
+          minLength: 0
+          type: string
+        value:
+          maxLength: 100
+          minLength: 0
+          type: string
+      required:
+      - value
+      type: object
     Cell:
       example:
         sourceStatus: unset
-        lengthLimit: 6
+        lengthLimit: 1
         columnId: columnId
+        lineLimit: 5
         dependencyStatus: upToDate
+        mt: true
         tm: true
+        readOnly: true
         referencedIds:
         - referencedIds
         - referencedIds
@@ -3707,6 +4148,13 @@ components:
         lengthLimit:
           format: int32
           type: integer
+        lineLimit:
+          format: int32
+          type: integer
+        mt:
+          type: boolean
+        readOnly:
+          type: boolean
         referencedIds:
           items:
             type: string
@@ -3743,11 +4191,11 @@ components:
           id: id
       properties:
         grid:
-          $ref: '#/components/schemas/ReferencedGrid'
+          $ref: "#/components/schemas/ReferencedGrid"
         column:
-          $ref: '#/components/schemas/ReferencedColumn'
+          $ref: "#/components/schemas/ReferencedColumn"
         branch:
-          $ref: '#/components/schemas/ReferencedGrid'
+          $ref: "#/components/schemas/ReferencedGrid"
         type:
           enum:
           - row
@@ -3759,24 +4207,49 @@ components:
           - multiple
           type: string
       type: object
+    LengthLimitSetting:
+      example:
+        unit: percent
+        useSourceTextLength: true
+        value: 0
+      properties:
+        value:
+          format: int32
+          type: integer
+        unit:
+          enum:
+          - percent
+          - number
+          type: string
+        useSourceTextLength:
+          type: boolean
+      required:
+      - unit
+      type: object
     Record:
       example:
         path: path
         cells:
         - sourceStatus: unset
-          lengthLimit: 6
+          lengthLimit: 1
           columnId: columnId
+          lineLimit: 5
           dependencyStatus: upToDate
+          mt: true
           tm: true
+          readOnly: true
           referencedIds:
           - referencedIds
           - referencedIds
           value: ""
         - sourceStatus: unset
-          lengthLimit: 6
+          lengthLimit: 1
           columnId: columnId
+          lineLimit: 5
           dependencyStatus: upToDate
+          mt: true
           tm: true
+          readOnly: true
           referencedIds:
           - referencedIds
           - referencedIds
@@ -3789,7 +4262,7 @@ components:
           type: string
         cells:
           items:
-            $ref: '#/components/schemas/Cell'
+            $ref: "#/components/schemas/Cell"
           type: array
         lastModifiedBy:
           type: string
@@ -3832,19 +4305,25 @@ components:
         - path: path
           cells:
           - sourceStatus: unset
-            lengthLimit: 6
+            lengthLimit: 1
             columnId: columnId
+            lineLimit: 5
             dependencyStatus: upToDate
+            mt: true
             tm: true
+            readOnly: true
             referencedIds:
             - referencedIds
             - referencedIds
             value: ""
           - sourceStatus: unset
-            lengthLimit: 6
+            lengthLimit: 1
             columnId: columnId
+            lineLimit: 5
             dependencyStatus: upToDate
+            mt: true
             tm: true
+            readOnly: true
             referencedIds:
             - referencedIds
             - referencedIds
@@ -3855,19 +4334,25 @@ components:
         - path: path
           cells:
           - sourceStatus: unset
-            lengthLimit: 6
+            lengthLimit: 1
             columnId: columnId
+            lineLimit: 5
             dependencyStatus: upToDate
+            mt: true
             tm: true
+            readOnly: true
             referencedIds:
             - referencedIds
             - referencedIds
             value: ""
           - sourceStatus: unset
-            lengthLimit: 6
+            lengthLimit: 1
             columnId: columnId
+            lineLimit: 5
             dependencyStatus: upToDate
+            mt: true
             tm: true
+            readOnly: true
             referencedIds:
             - referencedIds
             - referencedIds
@@ -3885,6 +4370,7 @@ components:
           localizationType: sourceLanguage
           languageCode: languageCode
           type: singleLine
+          languageName: languageName
           isTarget: true
           reference:
             selectionType: single
@@ -3907,10 +4393,22 @@ components:
             timeFormat: timeFormat
             showTimeZone: true
           numberFormat:
-            decimalPlaces: 0
+            decimalPlaces: 6
             currencySymbol: currencySymbol
             type: decimal
             use1000Separator: true
+          selection:
+            options:
+            - color: color
+              value: value
+            - color: color
+              value: value
+            - color: color
+              value: value
+            - color: color
+              value: value
+            - color: color
+              value: value
           isSource: true
           name: name
           formula:
@@ -3918,6 +4416,10 @@ components:
             detectResultValueType: list
             alwaysFormatResultValueAsList: true
           id: id
+          lengthLimitSetting:
+            unit: percent
+            useSourceTextLength: true
+            value: 0
         - dependsOn: dependsOn
           editable: true
           selectionOptions:
@@ -3927,6 +4429,7 @@ components:
           localizationType: sourceLanguage
           languageCode: languageCode
           type: singleLine
+          languageName: languageName
           isTarget: true
           reference:
             selectionType: single
@@ -3949,10 +4452,22 @@ components:
             timeFormat: timeFormat
             showTimeZone: true
           numberFormat:
-            decimalPlaces: 0
+            decimalPlaces: 6
             currencySymbol: currencySymbol
             type: decimal
             use1000Separator: true
+          selection:
+            options:
+            - color: color
+              value: value
+            - color: color
+              value: value
+            - color: color
+              value: value
+            - color: color
+              value: value
+            - color: color
+              value: value
           isSource: true
           name: name
           formula:
@@ -3960,6 +4475,10 @@ components:
             detectResultValueType: list
             alwaysFormatResultValueAsList: true
           id: id
+          lengthLimitSetting:
+            unit: percent
+            useSourceTextLength: true
+            value: 0
         name: name
         id: id
         gridId: gridId
@@ -3969,7 +4488,7 @@ components:
           type: string
         columns:
           items:
-            $ref: '#/components/schemas/ViewColumn'
+            $ref: "#/components/schemas/ViewColumn"
           type: array
         gridId:
           type: string
@@ -3988,12 +4507,13 @@ components:
           - clearingRecords
           - copying
           - updatingWorkflow
+          - archived
           type: string
         name:
           type: string
         records:
           items:
-            $ref: '#/components/schemas/Record'
+            $ref: "#/components/schemas/Record"
           type: array
       type: object
     ViewColumn:
@@ -4007,6 +4527,7 @@ components:
         localizationType: sourceLanguage
         languageCode: languageCode
         type: singleLine
+        languageName: languageName
         isTarget: true
         reference:
           selectionType: single
@@ -4029,10 +4550,22 @@ components:
           timeFormat: timeFormat
           showTimeZone: true
         numberFormat:
-          decimalPlaces: 0
+          decimalPlaces: 6
           currencySymbol: currencySymbol
           type: decimal
           use1000Separator: true
+        selection:
+          options:
+          - color: color
+            value: value
+          - color: color
+            value: value
+          - color: color
+            value: value
+          - color: color
+            value: value
+          - color: color
+            value: value
         isSource: true
         name: name
         formula:
@@ -4040,11 +4573,15 @@ components:
           detectResultValueType: list
           alwaysFormatResultValueAsList: true
         id: id
+        lengthLimitSetting:
+          unit: percent
+          useSourceTextLength: true
+          value: 0
       properties:
         id:
           type: string
         dateTimeFormat:
-          $ref: '#/components/schemas/DateTimeFormat'
+          $ref: "#/components/schemas/DateTimeFormat"
         dependsOn:
           type: string
         description:
@@ -4052,13 +4589,17 @@ components:
         editable:
           type: boolean
         formula:
-          $ref: '#/components/schemas/Formula'
+          $ref: "#/components/schemas/Formula"
         isSource:
           type: boolean
         isTarget:
           type: boolean
         languageCode:
           type: string
+        languageName:
+          type: string
+        lengthLimitSetting:
+          $ref: "#/components/schemas/LengthLimitSetting"
         localizationType:
           enum:
           - sourceLanguage
@@ -4067,9 +4608,11 @@ components:
         name:
           type: string
         numberFormat:
-          $ref: '#/components/schemas/NumberFormat'
+          $ref: "#/components/schemas/NumberFormat"
         reference:
-          $ref: '#/components/schemas/ColumnReference'
+          $ref: "#/components/schemas/ColumnReference"
+        selection:
+          $ref: "#/components/schemas/Selection"
         selectionOptions:
           items:
             type: string
@@ -4154,15 +4697,75 @@ components:
           - referencedIds
           - referencedIds
           value: ""
+        markUpdatedCellsWithMTFlag: true
         id: id
       properties:
         id:
           type: string
         cells:
           items:
-            $ref: '#/components/schemas/SetCell'
+            $ref: "#/components/schemas/SetCell"
           type: array
+        markUpdatedCellsWithMTFlag:
+          type: boolean
         path:
+          type: string
+      type: object
+    ExportRecordHistory:
+      example:
+        mode: standard
+        lastModifiedByUsers:
+        - lastModifiedByUsers
+        - lastModifiedByUsers
+        columnIds:
+        - columnIds
+        - columnIds
+        fromTime: 2000-01-23T04:56:07.000+00:00
+        format: csv
+        toTime: 2000-01-23T04:56:07.000+00:00
+      properties:
+        columnIds:
+          items:
+            type: string
+          type: array
+        fromTime:
+          format: date-time
+          type: string
+        toTime:
+          format: date-time
+          type: string
+        format:
+          enum:
+          - csv
+          - xlsx
+          type: string
+        mode:
+          enum:
+          - standard
+          - enhanced
+          type: string
+        lastModifiedByUsers:
+          items:
+            type: string
+          type: array
+      required:
+      - fromTime
+      - toTime
+      type: object
+    Task:
+      example:
+        id: id
+        status: failed
+      properties:
+        id:
+          type: string
+        status:
+          enum:
+          - failed
+          - successful
+          - running
+          - retrySuccessful
+          - cancel
           type: string
       type: object
     CreatePath:
@@ -4220,11 +4823,14 @@ components:
         values:
         - "{}"
         - "{}"
+        accentSensitive: true
         queryPathTagViaId: true
         dynamicColumn: dynamicColumn
         subField: _dependencyStatus
         operator: isNull
       properties:
+        accentSensitive:
+          type: boolean
         caseSensitive:
           type: boolean
         columnId:
@@ -4264,6 +4870,7 @@ components:
           - spellCheck
           - qaCheck
           - isMt
+          - isAI
           type: string
         queryPathTagViaId:
           type: boolean
@@ -4274,7 +4881,10 @@ components:
           - _targetStatus
           - _flowStatus
           - _tm
+          - _readOnly
           - _mt
+          - _ai
+          - _mtContentId
           - _ticket
           - _color
           - _metadata
@@ -4285,10 +4895,13 @@ components:
           - _previewStatus
           - _previewMergeOption
           - _relativeTime
+          - _dateOnly
           - _length_violated
           - _lengthSetting
           - _workflow
+          - _workflowStatusName
           - _workflowStepTransitioned
+          - _workflowStepOrder
           - _repetition
           - _qaCheckStatus
           - _spellCheckStatus
@@ -4349,6 +4962,7 @@ components:
           values:
           - "{}"
           - "{}"
+          accentSensitive: true
           queryPathTagViaId: true
           dynamicColumn: dynamicColumn
           subField: _dependencyStatus
@@ -4358,6 +4972,7 @@ components:
           values:
           - "{}"
           - "{}"
+          accentSensitive: true
           queryPathTagViaId: true
           dynamicColumn: dynamicColumn
           subField: _dependencyStatus
@@ -4375,7 +4990,7 @@ components:
           type: array
         mergeRecordConflicts:
           items:
-            $ref: '#/components/schemas/MergeRecordConflict'
+            $ref: "#/components/schemas/MergeRecordConflict"
           maxItems: 2000
           minItems: 0
           type: array
@@ -4385,7 +5000,7 @@ components:
           type: boolean
         query:
           items:
-            $ref: '#/components/schemas/FilterField'
+            $ref: "#/components/schemas/FilterField"
           type: array
       type: object
     MergeCellConflict:
@@ -4423,27 +5038,11 @@ components:
       properties:
         cells:
           items:
-            $ref: '#/components/schemas/MergeCellConflict'
+            $ref: "#/components/schemas/MergeCellConflict"
           type: array
         pathTag:
           type: string
         recordId:
-          type: string
-      type: object
-    Task:
-      example:
-        id: id
-        status: failed
-      properties:
-        id:
-          type: string
-        status:
-          enum:
-          - failed
-          - successful
-          - running
-          - retrySuccessful
-          - cancel
           type: string
       type: object
     FileType:
@@ -4455,7 +5054,6 @@ components:
       - json
       - po
       - html
-      type: string
       x-enum-varnames:
       - csv
       - tsv
@@ -4464,6 +5062,7 @@ components:
       - json
       - po
       - html
+      type: string
     UploadedFile:
       example:
         originalName: originalName
@@ -4503,24 +5102,7 @@ components:
       type: object
     CreateColumn:
       example:
-        reference:
-          branchId: branchId
-          selectionType: single
-          columnId: columnId
-          gridId: gridId
-          type: row
-        numberFormat:
-          decimalPlaces: 0
-          currencySymbol: currencySymbol
-          type: decimal
-          use1000Separator: true
-        dateTimeFormat:
-          zoneOffset: zoneOffset
-          dateFormat: dateFormat
-          timeFormat: timeFormat
-          showTimeZone: true
         editable: true
-        name: name
         selectionOptions:
         - selectionOptions
         - selectionOptions
@@ -4529,13 +5111,46 @@ components:
         - selectionOptions
         description: description
         localizationType: sourceLanguage
+        type: singleLine
+        languageCode: enUS
+        reference:
+          branchId: branchId
+          selectionType: single
+          columnId: columnId
+          gridId: gridId
+          type: row
+        numberFormat:
+          decimalPlaces: 6
+          currencySymbol: currencySymbol
+          type: decimal
+          use1000Separator: true
+        selection:
+          options:
+          - color: color
+            value: value
+          - color: color
+            value: value
+          - color: color
+            value: value
+          - color: color
+            value: value
+          - color: color
+            value: value
+        dateTimeFormat:
+          zoneOffset: zoneOffset
+          dateFormat: dateFormat
+          timeFormat: timeFormat
+          showTimeZone: true
+        name: name
         formula:
           formulaText: formulaText
           detectResultValueType: list
           alwaysFormatResultValueAsList: true
         id: id
-        type: singleLine
-        languageCode: enUS
+        lengthLimitSetting:
+          unit: percent
+          useSourceTextLength: true
+          value: 0
       properties:
         id:
           pattern: ^(?!_)\w+$
@@ -4615,6 +5230,7 @@ components:
           - urIN
           - viVN
           - afZA
+          - arMO
           - arAE
           - arBH
           - arDZ
@@ -4657,6 +5273,7 @@ components:
           - enZM
           - enKE
           - enNG
+          - esWO
           - esAR
           - esBO
           - esCL
@@ -4732,6 +5349,7 @@ components:
           - zhMO
           - zhSG
           - zuZA
+          - myMM
           - am
           - hy
           - az
@@ -4815,6 +5433,7 @@ components:
           - cy
           - zu
           - "no"
+          - my
           type: string
         localizationType:
           enum:
@@ -4822,21 +5441,29 @@ components:
           - targetLanguage
           type: string
         numberFormat:
-          $ref: '#/components/schemas/NumberFormat'
+          $ref: "#/components/schemas/NumberFormat"
         selectionOptions:
+          deprecated: true
+          description: Please use selection
           items:
+            deprecated: true
+            description: Please use selection
             maxLength: 100
             minLength: 0
             type: string
           maxItems: 1000
           minItems: 0
           type: array
+        selection:
+          $ref: "#/components/schemas/Selection"
         reference:
-          $ref: '#/components/schemas/Reference'
+          $ref: "#/components/schemas/Reference"
         formula:
-          $ref: '#/components/schemas/Formula'
+          $ref: "#/components/schemas/Formula"
         dateTimeFormat:
-          $ref: '#/components/schemas/DateTimeFormat'
+          $ref: "#/components/schemas/DateTimeFormat"
+        lengthLimitSetting:
+          $ref: "#/components/schemas/LengthLimitSetting"
       required:
       - name
       - type
@@ -4848,24 +5475,7 @@ components:
         metadata:
           key: metadata
         columns:
-        - reference:
-            branchId: branchId
-            selectionType: single
-            columnId: columnId
-            gridId: gridId
-            type: row
-          numberFormat:
-            decimalPlaces: 0
-            currencySymbol: currencySymbol
-            type: decimal
-            use1000Separator: true
-          dateTimeFormat:
-            zoneOffset: zoneOffset
-            dateFormat: dateFormat
-            timeFormat: timeFormat
-            showTimeZone: true
-          editable: true
-          name: name
+        - editable: true
           selectionOptions:
           - selectionOptions
           - selectionOptions
@@ -4874,31 +5484,47 @@ components:
           - selectionOptions
           description: description
           localizationType: sourceLanguage
-          formula:
-            formulaText: formulaText
-            detectResultValueType: list
-            alwaysFormatResultValueAsList: true
-          id: id
           type: singleLine
           languageCode: enUS
-        - reference:
+          reference:
             branchId: branchId
             selectionType: single
             columnId: columnId
             gridId: gridId
             type: row
           numberFormat:
-            decimalPlaces: 0
+            decimalPlaces: 6
             currencySymbol: currencySymbol
             type: decimal
             use1000Separator: true
+          selection:
+            options:
+            - color: color
+              value: value
+            - color: color
+              value: value
+            - color: color
+              value: value
+            - color: color
+              value: value
+            - color: color
+              value: value
           dateTimeFormat:
             zoneOffset: zoneOffset
             dateFormat: dateFormat
             timeFormat: timeFormat
             showTimeZone: true
-          editable: true
           name: name
+          formula:
+            formulaText: formulaText
+            detectResultValueType: list
+            alwaysFormatResultValueAsList: true
+          id: id
+          lengthLimitSetting:
+            unit: percent
+            useSourceTextLength: true
+            value: 0
+        - editable: true
           selectionOptions:
           - selectionOptions
           - selectionOptions
@@ -4907,13 +5533,46 @@ components:
           - selectionOptions
           description: description
           localizationType: sourceLanguage
+          type: singleLine
+          languageCode: enUS
+          reference:
+            branchId: branchId
+            selectionType: single
+            columnId: columnId
+            gridId: gridId
+            type: row
+          numberFormat:
+            decimalPlaces: 6
+            currencySymbol: currencySymbol
+            type: decimal
+            use1000Separator: true
+          selection:
+            options:
+            - color: color
+              value: value
+            - color: color
+              value: value
+            - color: color
+              value: value
+            - color: color
+              value: value
+            - color: color
+              value: value
+          dateTimeFormat:
+            zoneOffset: zoneOffset
+            dateFormat: dateFormat
+            timeFormat: timeFormat
+            showTimeZone: true
+          name: name
           formula:
             formulaText: formulaText
             detectResultValueType: list
             alwaysFormatResultValueAsList: true
           id: id
-          type: singleLine
-          languageCode: enUS
+          lengthLimitSetting:
+            unit: percent
+            useSourceTextLength: true
+            value: 0
         name: name
         id: id
       properties:
@@ -4924,21 +5583,23 @@ components:
           type: string
         templateGridId:
           type: string
+        metadata:
+          additionalProperties:
+            type: string
+          type: object
         recordIdentifierType:
+          default: recordId
           enum:
           - recordId
           - pathTagRecordId
           type: string
         columns:
           items:
-            $ref: '#/components/schemas/CreateColumn'
+            $ref: "#/components/schemas/CreateColumn"
           type: array
-        metadata:
-          additionalProperties:
-            type: string
-          type: object
       required:
       - name
+      - recordIdentifierType
       type: object
     Grid:
       example:
@@ -4956,6 +5617,7 @@ components:
           localizationType: sourceLanguage
           languageCode: languageCode
           type: singleLine
+          languageName: languageName
           isTarget: true
           reference:
             selectionType: single
@@ -4978,10 +5640,22 @@ components:
             timeFormat: timeFormat
             showTimeZone: true
           numberFormat:
-            decimalPlaces: 0
+            decimalPlaces: 6
             currencySymbol: currencySymbol
             type: decimal
             use1000Separator: true
+          selection:
+            options:
+            - color: color
+              value: value
+            - color: color
+              value: value
+            - color: color
+              value: value
+            - color: color
+              value: value
+            - color: color
+              value: value
           isSource: true
           name: name
           formula:
@@ -4989,6 +5663,10 @@ components:
             detectResultValueType: list
             alwaysFormatResultValueAsList: true
           id: id
+          lengthLimitSetting:
+            unit: percent
+            useSourceTextLength: true
+            value: 0
         - dependsOn: dependsOn
           editable: true
           selectionOptions:
@@ -4998,6 +5676,7 @@ components:
           localizationType: sourceLanguage
           languageCode: languageCode
           type: singleLine
+          languageName: languageName
           isTarget: true
           reference:
             selectionType: single
@@ -5020,10 +5699,22 @@ components:
             timeFormat: timeFormat
             showTimeZone: true
           numberFormat:
-            decimalPlaces: 0
+            decimalPlaces: 6
             currencySymbol: currencySymbol
             type: decimal
             use1000Separator: true
+          selection:
+            options:
+            - color: color
+              value: value
+            - color: color
+              value: value
+            - color: color
+              value: value
+            - color: color
+              value: value
+            - color: color
+              value: value
           isSource: true
           name: name
           formula:
@@ -5031,6 +5722,10 @@ components:
             detectResultValueType: list
             alwaysFormatResultValueAsList: true
           id: id
+          lengthLimitSetting:
+            unit: percent
+            useSourceTextLength: true
+            value: 0
         name: name
         description: description
         id: id
@@ -5040,7 +5735,7 @@ components:
           type: string
         columns:
           items:
-            $ref: '#/components/schemas/ViewColumn'
+            $ref: "#/components/schemas/ViewColumn"
           type: array
         defaultAccessViewId:
           type: string
@@ -5072,6 +5767,7 @@ components:
           - clearingRecords
           - copying
           - updatingWorkflow
+          - archived
           type: string
       type: object
     CreateFileCategory:
@@ -5126,6 +5822,7 @@ components:
           localizationType: sourceLanguage
           languageCode: languageCode
           type: singleLine
+          languageName: languageName
           isTarget: true
           reference:
             selectionType: single
@@ -5148,10 +5845,22 @@ components:
             timeFormat: timeFormat
             showTimeZone: true
           numberFormat:
-            decimalPlaces: 0
+            decimalPlaces: 6
             currencySymbol: currencySymbol
             type: decimal
             use1000Separator: true
+          selection:
+            options:
+            - color: color
+              value: value
+            - color: color
+              value: value
+            - color: color
+              value: value
+            - color: color
+              value: value
+            - color: color
+              value: value
           isSource: true
           name: name
           formula:
@@ -5159,6 +5868,10 @@ components:
             detectResultValueType: list
             alwaysFormatResultValueAsList: true
           id: id
+          lengthLimitSetting:
+            unit: percent
+            useSourceTextLength: true
+            value: 0
         - dependsOn: dependsOn
           editable: true
           selectionOptions:
@@ -5168,6 +5881,7 @@ components:
           localizationType: sourceLanguage
           languageCode: languageCode
           type: singleLine
+          languageName: languageName
           isTarget: true
           reference:
             selectionType: single
@@ -5190,10 +5904,22 @@ components:
             timeFormat: timeFormat
             showTimeZone: true
           numberFormat:
-            decimalPlaces: 0
+            decimalPlaces: 6
             currencySymbol: currencySymbol
             type: decimal
             use1000Separator: true
+          selection:
+            options:
+            - color: color
+              value: value
+            - color: color
+              value: value
+            - color: color
+              value: value
+            - color: color
+              value: value
+            - color: color
+              value: value
           isSource: true
           name: name
           formula:
@@ -5201,6 +5927,10 @@ components:
             detectResultValueType: list
             alwaysFormatResultValueAsList: true
           id: id
+          lengthLimitSetting:
+            unit: percent
+            useSourceTextLength: true
+            value: 0
         isMaster: true
         name: name
         description: description
@@ -5211,7 +5941,7 @@ components:
           type: string
         columns:
           items:
-            $ref: '#/components/schemas/ViewColumn'
+            $ref: "#/components/schemas/ViewColumn"
           type: array
         defaultAccessViewId:
           type: string
@@ -5245,6 +5975,7 @@ components:
           - clearingRecords
           - copying
           - updatingWorkflow
+          - archived
           type: string
       type: object
     UpdateColumn:
@@ -5268,8 +5999,20 @@ components:
           gridId: gridId
           type: row
         viewable: true
+        selection:
+          options:
+          - color: color
+            value: value
+          - color: color
+            value: value
+          - color: color
+            value: value
+          - color: color
+            value: value
+          - color: color
+            value: value
         numberFormat:
-          decimalPlaces: 0
+          decimalPlaces: 6
           currencySymbol: currencySymbol
           type: decimal
           use1000Separator: true
@@ -5283,6 +6026,10 @@ components:
           formulaText: formulaText
           detectResultValueType: list
           alwaysFormatResultValueAsList: true
+        lengthLimitSetting:
+          unit: percent
+          useSourceTextLength: true
+          value: 0
       properties:
         name:
           type: string
@@ -5357,6 +6104,7 @@ components:
           - urIN
           - viVN
           - afZA
+          - arMO
           - arAE
           - arBH
           - arDZ
@@ -5399,6 +6147,7 @@ components:
           - enZM
           - enKE
           - enNG
+          - esWO
           - esAR
           - esBO
           - esCL
@@ -5474,6 +6223,7 @@ components:
           - zhMO
           - zhSG
           - zuZA
+          - myMM
           - am
           - hy
           - az
@@ -5557,6 +6307,7 @@ components:
           - cy
           - zu
           - "no"
+          - my
           type: string
         localizationType:
           enum:
@@ -5564,25 +6315,33 @@ components:
           - targetLanguage
           type: string
         selectionOptions:
+          deprecated: true
+          description: Please use selection
           items:
+            deprecated: true
+            description: Please use selection
             maxLength: 100
             minLength: 0
             type: string
           maxItems: 1000
           minItems: 0
           type: array
+        selection:
+          $ref: "#/components/schemas/Selection"
         numberFormat:
-          $ref: '#/components/schemas/NumberFormat'
+          $ref: "#/components/schemas/NumberFormat"
         reference:
-          $ref: '#/components/schemas/Reference'
+          $ref: "#/components/schemas/Reference"
         formula:
-          $ref: '#/components/schemas/Formula'
+          $ref: "#/components/schemas/Formula"
         dateTimeFormat:
-          $ref: '#/components/schemas/DateTimeFormat'
+          $ref: "#/components/schemas/DateTimeFormat"
         viewable:
           type: boolean
         editable:
           type: boolean
+        lengthLimitSetting:
+          $ref: "#/components/schemas/LengthLimitSetting"
         newId:
           type: string
       type: object
@@ -5612,7 +6371,7 @@ components:
         defaultSourceLanguageStatus: unset
       properties:
         defaultDateTimeFormat:
-          $ref: '#/components/schemas/DateTimeFormat'
+          $ref: "#/components/schemas/DateTimeFormat"
         defaultSourceLanguageStatus:
           enum:
           - unset
@@ -5658,7 +6417,7 @@ components:
           type: boolean
         categories:
           items:
-            $ref: '#/components/schemas/FileCategory'
+            $ref: "#/components/schemas/FileCategory"
           type: array
         metadata:
           additionalProperties:
@@ -5689,9 +6448,9 @@ components:
           unset: 5
       properties:
         recordCount:
-          $ref: '#/components/schemas/TranslationCount'
+          $ref: "#/components/schemas/TranslationCount"
         wordCount:
-          $ref: '#/components/schemas/TranslationCount'
+          $ref: "#/components/schemas/TranslationCount"
       type: object
     TranslationCount:
       example:
@@ -5734,7 +6493,7 @@ components:
           type: integer
         translations:
           additionalProperties:
-            $ref: '#/components/schemas/ColumnStatistic'
+            $ref: "#/components/schemas/ColumnStatistic"
           type: object
       type: object
     FetchFileOption:
@@ -5742,11 +6501,11 @@ components:
       - all
       - id
       - name
-      type: string
       x-enum-varnames:
       - all
       - id
       - name
+      type: string
     FetchRecordHistoryRequest:
       properties:
         columnIds:
@@ -5814,7 +6573,7 @@ components:
           type: string
         cells:
           items:
-            $ref: '#/components/schemas/CellHistory'
+            $ref: "#/components/schemas/CellHistory"
           type: array
         lastModifiedBy:
           type: string
@@ -5837,11 +6596,11 @@ components:
       - none
       - columnName
       - columnId
-      type: string
       x-enum-varnames:
       - none
       - columnName
       - columnId
+      type: string
     SettingFile:
       example:
         files:
@@ -5860,10 +6619,10 @@ components:
           id: id
       properties:
         category:
-          $ref: '#/components/schemas/FileCategory'
+          $ref: "#/components/schemas/FileCategory"
         files:
           items:
-            $ref: '#/components/schemas/UploadedFile'
+            $ref: "#/components/schemas/UploadedFile"
           type: array
       type: object
     BranchDiffCell:
@@ -5936,6 +6695,7 @@ components:
           - translationNotChanged
           - notChanged
           - warningOff
+          - targetChangedSinceExport
           type: string
         columnId:
           type: string
@@ -5989,7 +6749,7 @@ components:
           type: string
         cells:
           items:
-            $ref: '#/components/schemas/BranchDiffCell'
+            $ref: "#/components/schemas/BranchDiffCell"
           type: array
         lastModifiedBy:
           type: string
@@ -6014,7 +6774,7 @@ components:
           type: array
         identifiers:
           items:
-            $ref: '#/components/schemas/RecordIdentifierWrapper'
+            $ref: "#/components/schemas/RecordIdentifierWrapper"
           type: array
       type: object
     RecordIdentifierWrapper:
@@ -6168,6 +6928,7 @@ components:
             localizationType: sourceLanguage
             languageCode: languageCode
             type: singleLine
+            languageName: languageName
             isTarget: true
             reference:
               selectionType: single
@@ -6190,10 +6951,22 @@ components:
               timeFormat: timeFormat
               showTimeZone: true
             numberFormat:
-              decimalPlaces: 0
+              decimalPlaces: 6
               currencySymbol: currencySymbol
               type: decimal
               use1000Separator: true
+            selection:
+              options:
+              - color: color
+                value: value
+              - color: color
+                value: value
+              - color: color
+                value: value
+              - color: color
+                value: value
+              - color: color
+                value: value
             isSource: true
             name: name
             formula:
@@ -6201,6 +6974,10 @@ components:
               detectResultValueType: list
               alwaysFormatResultValueAsList: true
             id: id
+            lengthLimitSetting:
+              unit: percent
+              useSourceTextLength: true
+              value: 0
           - dependsOn: dependsOn
             editable: true
             selectionOptions:
@@ -6210,6 +6987,7 @@ components:
             localizationType: sourceLanguage
             languageCode: languageCode
             type: singleLine
+            languageName: languageName
             isTarget: true
             reference:
               selectionType: single
@@ -6232,10 +7010,22 @@ components:
               timeFormat: timeFormat
               showTimeZone: true
             numberFormat:
-              decimalPlaces: 0
+              decimalPlaces: 6
               currencySymbol: currencySymbol
               type: decimal
               use1000Separator: true
+            selection:
+              options:
+              - color: color
+                value: value
+              - color: color
+                value: value
+              - color: color
+                value: value
+              - color: color
+                value: value
+              - color: color
+                value: value
             isSource: true
             name: name
             formula:
@@ -6243,6 +7033,10 @@ components:
               detectResultValueType: list
               alwaysFormatResultValueAsList: true
             id: id
+            lengthLimitSetting:
+              unit: percent
+              useSourceTextLength: true
+              value: 0
           name: name
           description: description
           id: id
@@ -6261,6 +7055,7 @@ components:
             localizationType: sourceLanguage
             languageCode: languageCode
             type: singleLine
+            languageName: languageName
             isTarget: true
             reference:
               selectionType: single
@@ -6283,10 +7078,22 @@ components:
               timeFormat: timeFormat
               showTimeZone: true
             numberFormat:
-              decimalPlaces: 0
+              decimalPlaces: 6
               currencySymbol: currencySymbol
               type: decimal
               use1000Separator: true
+            selection:
+              options:
+              - color: color
+                value: value
+              - color: color
+                value: value
+              - color: color
+                value: value
+              - color: color
+                value: value
+              - color: color
+                value: value
             isSource: true
             name: name
             formula:
@@ -6294,6 +7101,10 @@ components:
               detectResultValueType: list
               alwaysFormatResultValueAsList: true
             id: id
+            lengthLimitSetting:
+              unit: percent
+              useSourceTextLength: true
+              value: 0
           - dependsOn: dependsOn
             editable: true
             selectionOptions:
@@ -6303,6 +7114,7 @@ components:
             localizationType: sourceLanguage
             languageCode: languageCode
             type: singleLine
+            languageName: languageName
             isTarget: true
             reference:
               selectionType: single
@@ -6325,10 +7137,22 @@ components:
               timeFormat: timeFormat
               showTimeZone: true
             numberFormat:
-              decimalPlaces: 0
+              decimalPlaces: 6
               currencySymbol: currencySymbol
               type: decimal
               use1000Separator: true
+            selection:
+              options:
+              - color: color
+                value: value
+              - color: color
+                value: value
+              - color: color
+                value: value
+              - color: color
+                value: value
+              - color: color
+                value: value
             isSource: true
             name: name
             formula:
@@ -6336,6 +7160,10 @@ components:
               detectResultValueType: list
               alwaysFormatResultValueAsList: true
             id: id
+            lengthLimitSetting:
+              unit: percent
+              useSourceTextLength: true
+              value: 0
           name: name
           description: description
           id: id
@@ -6345,19 +7173,25 @@ components:
           - path: path
             cells:
             - sourceStatus: unset
-              lengthLimit: 6
+              lengthLimit: 1
               columnId: columnId
+              lineLimit: 5
               dependencyStatus: upToDate
+              mt: true
               tm: true
+              readOnly: true
               referencedIds:
               - referencedIds
               - referencedIds
               value: ""
             - sourceStatus: unset
-              lengthLimit: 6
+              lengthLimit: 1
               columnId: columnId
+              lineLimit: 5
               dependencyStatus: upToDate
+              mt: true
               tm: true
+              readOnly: true
               referencedIds:
               - referencedIds
               - referencedIds
@@ -6368,19 +7202,25 @@ components:
           - path: path
             cells:
             - sourceStatus: unset
-              lengthLimit: 6
+              lengthLimit: 1
               columnId: columnId
+              lineLimit: 5
               dependencyStatus: upToDate
+              mt: true
               tm: true
+              readOnly: true
               referencedIds:
               - referencedIds
               - referencedIds
               value: ""
             - sourceStatus: unset
-              lengthLimit: 6
+              lengthLimit: 1
               columnId: columnId
+              lineLimit: 5
               dependencyStatus: upToDate
+              mt: true
               tm: true
+              readOnly: true
               referencedIds:
               - referencedIds
               - referencedIds
@@ -6398,6 +7238,7 @@ components:
             localizationType: sourceLanguage
             languageCode: languageCode
             type: singleLine
+            languageName: languageName
             isTarget: true
             reference:
               selectionType: single
@@ -6420,10 +7261,22 @@ components:
               timeFormat: timeFormat
               showTimeZone: true
             numberFormat:
-              decimalPlaces: 0
+              decimalPlaces: 6
               currencySymbol: currencySymbol
               type: decimal
               use1000Separator: true
+            selection:
+              options:
+              - color: color
+                value: value
+              - color: color
+                value: value
+              - color: color
+                value: value
+              - color: color
+                value: value
+              - color: color
+                value: value
             isSource: true
             name: name
             formula:
@@ -6431,6 +7284,10 @@ components:
               detectResultValueType: list
               alwaysFormatResultValueAsList: true
             id: id
+            lengthLimitSetting:
+              unit: percent
+              useSourceTextLength: true
+              value: 0
           - dependsOn: dependsOn
             editable: true
             selectionOptions:
@@ -6440,6 +7297,7 @@ components:
             localizationType: sourceLanguage
             languageCode: languageCode
             type: singleLine
+            languageName: languageName
             isTarget: true
             reference:
               selectionType: single
@@ -6462,10 +7320,22 @@ components:
               timeFormat: timeFormat
               showTimeZone: true
             numberFormat:
-              decimalPlaces: 0
+              decimalPlaces: 6
               currencySymbol: currencySymbol
               type: decimal
               use1000Separator: true
+            selection:
+              options:
+              - color: color
+                value: value
+              - color: color
+                value: value
+              - color: color
+                value: value
+              - color: color
+                value: value
+              - color: color
+                value: value
             isSource: true
             name: name
             formula:
@@ -6473,6 +7343,10 @@ components:
               detectResultValueType: list
               alwaysFormatResultValueAsList: true
             id: id
+            lengthLimitSetting:
+              unit: percent
+              useSourceTextLength: true
+              value: 0
           name: name
           id: id
           gridId: gridId
@@ -6481,19 +7355,25 @@ components:
           - path: path
             cells:
             - sourceStatus: unset
-              lengthLimit: 6
+              lengthLimit: 1
               columnId: columnId
+              lineLimit: 5
               dependencyStatus: upToDate
+              mt: true
               tm: true
+              readOnly: true
               referencedIds:
               - referencedIds
               - referencedIds
               value: ""
             - sourceStatus: unset
-              lengthLimit: 6
+              lengthLimit: 1
               columnId: columnId
+              lineLimit: 5
               dependencyStatus: upToDate
+              mt: true
               tm: true
+              readOnly: true
               referencedIds:
               - referencedIds
               - referencedIds
@@ -6504,19 +7384,25 @@ components:
           - path: path
             cells:
             - sourceStatus: unset
-              lengthLimit: 6
+              lengthLimit: 1
               columnId: columnId
+              lineLimit: 5
               dependencyStatus: upToDate
+              mt: true
               tm: true
+              readOnly: true
               referencedIds:
               - referencedIds
               - referencedIds
               value: ""
             - sourceStatus: unset
-              lengthLimit: 6
+              lengthLimit: 1
               columnId: columnId
+              lineLimit: 5
               dependencyStatus: upToDate
+              mt: true
               tm: true
+              readOnly: true
               referencedIds:
               - referencedIds
               - referencedIds
@@ -6534,6 +7420,7 @@ components:
             localizationType: sourceLanguage
             languageCode: languageCode
             type: singleLine
+            languageName: languageName
             isTarget: true
             reference:
               selectionType: single
@@ -6556,10 +7443,22 @@ components:
               timeFormat: timeFormat
               showTimeZone: true
             numberFormat:
-              decimalPlaces: 0
+              decimalPlaces: 6
               currencySymbol: currencySymbol
               type: decimal
               use1000Separator: true
+            selection:
+              options:
+              - color: color
+                value: value
+              - color: color
+                value: value
+              - color: color
+                value: value
+              - color: color
+                value: value
+              - color: color
+                value: value
             isSource: true
             name: name
             formula:
@@ -6567,6 +7466,10 @@ components:
               detectResultValueType: list
               alwaysFormatResultValueAsList: true
             id: id
+            lengthLimitSetting:
+              unit: percent
+              useSourceTextLength: true
+              value: 0
           - dependsOn: dependsOn
             editable: true
             selectionOptions:
@@ -6576,6 +7479,7 @@ components:
             localizationType: sourceLanguage
             languageCode: languageCode
             type: singleLine
+            languageName: languageName
             isTarget: true
             reference:
               selectionType: single
@@ -6598,10 +7502,22 @@ components:
               timeFormat: timeFormat
               showTimeZone: true
             numberFormat:
-              decimalPlaces: 0
+              decimalPlaces: 6
               currencySymbol: currencySymbol
               type: decimal
               use1000Separator: true
+            selection:
+              options:
+              - color: color
+                value: value
+              - color: color
+                value: value
+              - color: color
+                value: value
+              - color: color
+                value: value
+              - color: color
+                value: value
             isSource: true
             name: name
             formula:
@@ -6609,6 +7525,10 @@ components:
               detectResultValueType: list
               alwaysFormatResultValueAsList: true
             id: id
+            lengthLimitSetting:
+              unit: percent
+              useSourceTextLength: true
+              value: 0
           name: name
           id: id
           gridId: gridId
@@ -6625,17 +7545,17 @@ components:
           type: integer
         grids:
           items:
-            $ref: '#/components/schemas/Grid'
+            $ref: "#/components/schemas/Grid"
           type: array
         views:
           items:
-            $ref: '#/components/schemas/View'
+            $ref: "#/components/schemas/View"
           type: array
         project:
-          $ref: '#/components/schemas/Project'
+          $ref: "#/components/schemas/Project"
         groups:
           items:
-            $ref: '#/components/schemas/Group'
+            $ref: "#/components/schemas/Group"
           type: array
           uniqueItems: true
       type: object
@@ -6784,6 +7704,7 @@ components:
               localizationType: sourceLanguage
               languageCode: languageCode
               type: singleLine
+              languageName: languageName
               isTarget: true
               reference:
                 selectionType: single
@@ -6806,10 +7727,22 @@ components:
                 timeFormat: timeFormat
                 showTimeZone: true
               numberFormat:
-                decimalPlaces: 0
+                decimalPlaces: 6
                 currencySymbol: currencySymbol
                 type: decimal
                 use1000Separator: true
+              selection:
+                options:
+                - color: color
+                  value: value
+                - color: color
+                  value: value
+                - color: color
+                  value: value
+                - color: color
+                  value: value
+                - color: color
+                  value: value
               isSource: true
               name: name
               formula:
@@ -6817,6 +7750,10 @@ components:
                 detectResultValueType: list
                 alwaysFormatResultValueAsList: true
               id: id
+              lengthLimitSetting:
+                unit: percent
+                useSourceTextLength: true
+                value: 0
             - dependsOn: dependsOn
               editable: true
               selectionOptions:
@@ -6826,6 +7763,7 @@ components:
               localizationType: sourceLanguage
               languageCode: languageCode
               type: singleLine
+              languageName: languageName
               isTarget: true
               reference:
                 selectionType: single
@@ -6848,10 +7786,22 @@ components:
                 timeFormat: timeFormat
                 showTimeZone: true
               numberFormat:
-                decimalPlaces: 0
+                decimalPlaces: 6
                 currencySymbol: currencySymbol
                 type: decimal
                 use1000Separator: true
+              selection:
+                options:
+                - color: color
+                  value: value
+                - color: color
+                  value: value
+                - color: color
+                  value: value
+                - color: color
+                  value: value
+                - color: color
+                  value: value
               isSource: true
               name: name
               formula:
@@ -6859,6 +7809,10 @@ components:
                 detectResultValueType: list
                 alwaysFormatResultValueAsList: true
               id: id
+              lengthLimitSetting:
+                unit: percent
+                useSourceTextLength: true
+                value: 0
             name: name
             description: description
             id: id
@@ -6877,6 +7831,7 @@ components:
               localizationType: sourceLanguage
               languageCode: languageCode
               type: singleLine
+              languageName: languageName
               isTarget: true
               reference:
                 selectionType: single
@@ -6899,10 +7854,22 @@ components:
                 timeFormat: timeFormat
                 showTimeZone: true
               numberFormat:
-                decimalPlaces: 0
+                decimalPlaces: 6
                 currencySymbol: currencySymbol
                 type: decimal
                 use1000Separator: true
+              selection:
+                options:
+                - color: color
+                  value: value
+                - color: color
+                  value: value
+                - color: color
+                  value: value
+                - color: color
+                  value: value
+                - color: color
+                  value: value
               isSource: true
               name: name
               formula:
@@ -6910,6 +7877,10 @@ components:
                 detectResultValueType: list
                 alwaysFormatResultValueAsList: true
               id: id
+              lengthLimitSetting:
+                unit: percent
+                useSourceTextLength: true
+                value: 0
             - dependsOn: dependsOn
               editable: true
               selectionOptions:
@@ -6919,6 +7890,7 @@ components:
               localizationType: sourceLanguage
               languageCode: languageCode
               type: singleLine
+              languageName: languageName
               isTarget: true
               reference:
                 selectionType: single
@@ -6941,10 +7913,22 @@ components:
                 timeFormat: timeFormat
                 showTimeZone: true
               numberFormat:
-                decimalPlaces: 0
+                decimalPlaces: 6
                 currencySymbol: currencySymbol
                 type: decimal
                 use1000Separator: true
+              selection:
+                options:
+                - color: color
+                  value: value
+                - color: color
+                  value: value
+                - color: color
+                  value: value
+                - color: color
+                  value: value
+                - color: color
+                  value: value
               isSource: true
               name: name
               formula:
@@ -6952,6 +7936,10 @@ components:
                 detectResultValueType: list
                 alwaysFormatResultValueAsList: true
               id: id
+              lengthLimitSetting:
+                unit: percent
+                useSourceTextLength: true
+                value: 0
             name: name
             description: description
             id: id
@@ -6961,19 +7949,25 @@ components:
             - path: path
               cells:
               - sourceStatus: unset
-                lengthLimit: 6
+                lengthLimit: 1
                 columnId: columnId
+                lineLimit: 5
                 dependencyStatus: upToDate
+                mt: true
                 tm: true
+                readOnly: true
                 referencedIds:
                 - referencedIds
                 - referencedIds
                 value: ""
               - sourceStatus: unset
-                lengthLimit: 6
+                lengthLimit: 1
                 columnId: columnId
+                lineLimit: 5
                 dependencyStatus: upToDate
+                mt: true
                 tm: true
+                readOnly: true
                 referencedIds:
                 - referencedIds
                 - referencedIds
@@ -6984,19 +7978,25 @@ components:
             - path: path
               cells:
               - sourceStatus: unset
-                lengthLimit: 6
+                lengthLimit: 1
                 columnId: columnId
+                lineLimit: 5
                 dependencyStatus: upToDate
+                mt: true
                 tm: true
+                readOnly: true
                 referencedIds:
                 - referencedIds
                 - referencedIds
                 value: ""
               - sourceStatus: unset
-                lengthLimit: 6
+                lengthLimit: 1
                 columnId: columnId
+                lineLimit: 5
                 dependencyStatus: upToDate
+                mt: true
                 tm: true
+                readOnly: true
                 referencedIds:
                 - referencedIds
                 - referencedIds
@@ -7014,6 +8014,7 @@ components:
               localizationType: sourceLanguage
               languageCode: languageCode
               type: singleLine
+              languageName: languageName
               isTarget: true
               reference:
                 selectionType: single
@@ -7036,10 +8037,22 @@ components:
                 timeFormat: timeFormat
                 showTimeZone: true
               numberFormat:
-                decimalPlaces: 0
+                decimalPlaces: 6
                 currencySymbol: currencySymbol
                 type: decimal
                 use1000Separator: true
+              selection:
+                options:
+                - color: color
+                  value: value
+                - color: color
+                  value: value
+                - color: color
+                  value: value
+                - color: color
+                  value: value
+                - color: color
+                  value: value
               isSource: true
               name: name
               formula:
@@ -7047,6 +8060,10 @@ components:
                 detectResultValueType: list
                 alwaysFormatResultValueAsList: true
               id: id
+              lengthLimitSetting:
+                unit: percent
+                useSourceTextLength: true
+                value: 0
             - dependsOn: dependsOn
               editable: true
               selectionOptions:
@@ -7056,6 +8073,7 @@ components:
               localizationType: sourceLanguage
               languageCode: languageCode
               type: singleLine
+              languageName: languageName
               isTarget: true
               reference:
                 selectionType: single
@@ -7078,10 +8096,22 @@ components:
                 timeFormat: timeFormat
                 showTimeZone: true
               numberFormat:
-                decimalPlaces: 0
+                decimalPlaces: 6
                 currencySymbol: currencySymbol
                 type: decimal
                 use1000Separator: true
+              selection:
+                options:
+                - color: color
+                  value: value
+                - color: color
+                  value: value
+                - color: color
+                  value: value
+                - color: color
+                  value: value
+                - color: color
+                  value: value
               isSource: true
               name: name
               formula:
@@ -7089,6 +8119,10 @@ components:
                 detectResultValueType: list
                 alwaysFormatResultValueAsList: true
               id: id
+              lengthLimitSetting:
+                unit: percent
+                useSourceTextLength: true
+                value: 0
             name: name
             id: id
             gridId: gridId
@@ -7097,19 +8131,25 @@ components:
             - path: path
               cells:
               - sourceStatus: unset
-                lengthLimit: 6
+                lengthLimit: 1
                 columnId: columnId
+                lineLimit: 5
                 dependencyStatus: upToDate
+                mt: true
                 tm: true
+                readOnly: true
                 referencedIds:
                 - referencedIds
                 - referencedIds
                 value: ""
               - sourceStatus: unset
-                lengthLimit: 6
+                lengthLimit: 1
                 columnId: columnId
+                lineLimit: 5
                 dependencyStatus: upToDate
+                mt: true
                 tm: true
+                readOnly: true
                 referencedIds:
                 - referencedIds
                 - referencedIds
@@ -7120,19 +8160,25 @@ components:
             - path: path
               cells:
               - sourceStatus: unset
-                lengthLimit: 6
+                lengthLimit: 1
                 columnId: columnId
+                lineLimit: 5
                 dependencyStatus: upToDate
+                mt: true
                 tm: true
+                readOnly: true
                 referencedIds:
                 - referencedIds
                 - referencedIds
                 value: ""
               - sourceStatus: unset
-                lengthLimit: 6
+                lengthLimit: 1
                 columnId: columnId
+                lineLimit: 5
                 dependencyStatus: upToDate
+                mt: true
                 tm: true
+                readOnly: true
                 referencedIds:
                 - referencedIds
                 - referencedIds
@@ -7150,6 +8196,7 @@ components:
               localizationType: sourceLanguage
               languageCode: languageCode
               type: singleLine
+              languageName: languageName
               isTarget: true
               reference:
                 selectionType: single
@@ -7172,10 +8219,22 @@ components:
                 timeFormat: timeFormat
                 showTimeZone: true
               numberFormat:
-                decimalPlaces: 0
+                decimalPlaces: 6
                 currencySymbol: currencySymbol
                 type: decimal
                 use1000Separator: true
+              selection:
+                options:
+                - color: color
+                  value: value
+                - color: color
+                  value: value
+                - color: color
+                  value: value
+                - color: color
+                  value: value
+                - color: color
+                  value: value
               isSource: true
               name: name
               formula:
@@ -7183,6 +8242,10 @@ components:
                 detectResultValueType: list
                 alwaysFormatResultValueAsList: true
               id: id
+              lengthLimitSetting:
+                unit: percent
+                useSourceTextLength: true
+                value: 0
             - dependsOn: dependsOn
               editable: true
               selectionOptions:
@@ -7192,6 +8255,7 @@ components:
               localizationType: sourceLanguage
               languageCode: languageCode
               type: singleLine
+              languageName: languageName
               isTarget: true
               reference:
                 selectionType: single
@@ -7214,10 +8278,22 @@ components:
                 timeFormat: timeFormat
                 showTimeZone: true
               numberFormat:
-                decimalPlaces: 0
+                decimalPlaces: 6
                 currencySymbol: currencySymbol
                 type: decimal
                 use1000Separator: true
+              selection:
+                options:
+                - color: color
+                  value: value
+                - color: color
+                  value: value
+                - color: color
+                  value: value
+                - color: color
+                  value: value
+                - color: color
+                  value: value
               isSource: true
               name: name
               formula:
@@ -7225,6 +8301,10 @@ components:
                 detectResultValueType: list
                 alwaysFormatResultValueAsList: true
               id: id
+              lengthLimitSetting:
+                unit: percent
+                useSourceTextLength: true
+                value: 0
             name: name
             id: id
             gridId: gridId
@@ -7277,6 +8357,7 @@ components:
               localizationType: sourceLanguage
               languageCode: languageCode
               type: singleLine
+              languageName: languageName
               isTarget: true
               reference:
                 selectionType: single
@@ -7299,10 +8380,22 @@ components:
                 timeFormat: timeFormat
                 showTimeZone: true
               numberFormat:
-                decimalPlaces: 0
+                decimalPlaces: 6
                 currencySymbol: currencySymbol
                 type: decimal
                 use1000Separator: true
+              selection:
+                options:
+                - color: color
+                  value: value
+                - color: color
+                  value: value
+                - color: color
+                  value: value
+                - color: color
+                  value: value
+                - color: color
+                  value: value
               isSource: true
               name: name
               formula:
@@ -7310,6 +8403,10 @@ components:
                 detectResultValueType: list
                 alwaysFormatResultValueAsList: true
               id: id
+              lengthLimitSetting:
+                unit: percent
+                useSourceTextLength: true
+                value: 0
             - dependsOn: dependsOn
               editable: true
               selectionOptions:
@@ -7319,6 +8416,7 @@ components:
               localizationType: sourceLanguage
               languageCode: languageCode
               type: singleLine
+              languageName: languageName
               isTarget: true
               reference:
                 selectionType: single
@@ -7341,10 +8439,22 @@ components:
                 timeFormat: timeFormat
                 showTimeZone: true
               numberFormat:
-                decimalPlaces: 0
+                decimalPlaces: 6
                 currencySymbol: currencySymbol
                 type: decimal
                 use1000Separator: true
+              selection:
+                options:
+                - color: color
+                  value: value
+                - color: color
+                  value: value
+                - color: color
+                  value: value
+                - color: color
+                  value: value
+                - color: color
+                  value: value
               isSource: true
               name: name
               formula:
@@ -7352,6 +8462,10 @@ components:
                 detectResultValueType: list
                 alwaysFormatResultValueAsList: true
               id: id
+              lengthLimitSetting:
+                unit: percent
+                useSourceTextLength: true
+                value: 0
             name: name
             description: description
             id: id
@@ -7370,6 +8484,7 @@ components:
               localizationType: sourceLanguage
               languageCode: languageCode
               type: singleLine
+              languageName: languageName
               isTarget: true
               reference:
                 selectionType: single
@@ -7392,10 +8507,22 @@ components:
                 timeFormat: timeFormat
                 showTimeZone: true
               numberFormat:
-                decimalPlaces: 0
+                decimalPlaces: 6
                 currencySymbol: currencySymbol
                 type: decimal
                 use1000Separator: true
+              selection:
+                options:
+                - color: color
+                  value: value
+                - color: color
+                  value: value
+                - color: color
+                  value: value
+                - color: color
+                  value: value
+                - color: color
+                  value: value
               isSource: true
               name: name
               formula:
@@ -7403,6 +8530,10 @@ components:
                 detectResultValueType: list
                 alwaysFormatResultValueAsList: true
               id: id
+              lengthLimitSetting:
+                unit: percent
+                useSourceTextLength: true
+                value: 0
             - dependsOn: dependsOn
               editable: true
               selectionOptions:
@@ -7412,6 +8543,7 @@ components:
               localizationType: sourceLanguage
               languageCode: languageCode
               type: singleLine
+              languageName: languageName
               isTarget: true
               reference:
                 selectionType: single
@@ -7434,10 +8566,22 @@ components:
                 timeFormat: timeFormat
                 showTimeZone: true
               numberFormat:
-                decimalPlaces: 0
+                decimalPlaces: 6
                 currencySymbol: currencySymbol
                 type: decimal
                 use1000Separator: true
+              selection:
+                options:
+                - color: color
+                  value: value
+                - color: color
+                  value: value
+                - color: color
+                  value: value
+                - color: color
+                  value: value
+                - color: color
+                  value: value
               isSource: true
               name: name
               formula:
@@ -7445,6 +8589,10 @@ components:
                 detectResultValueType: list
                 alwaysFormatResultValueAsList: true
               id: id
+              lengthLimitSetting:
+                unit: percent
+                useSourceTextLength: true
+                value: 0
             name: name
             description: description
             id: id
@@ -7454,19 +8602,25 @@ components:
             - path: path
               cells:
               - sourceStatus: unset
-                lengthLimit: 6
+                lengthLimit: 1
                 columnId: columnId
+                lineLimit: 5
                 dependencyStatus: upToDate
+                mt: true
                 tm: true
+                readOnly: true
                 referencedIds:
                 - referencedIds
                 - referencedIds
                 value: ""
               - sourceStatus: unset
-                lengthLimit: 6
+                lengthLimit: 1
                 columnId: columnId
+                lineLimit: 5
                 dependencyStatus: upToDate
+                mt: true
                 tm: true
+                readOnly: true
                 referencedIds:
                 - referencedIds
                 - referencedIds
@@ -7477,19 +8631,25 @@ components:
             - path: path
               cells:
               - sourceStatus: unset
-                lengthLimit: 6
+                lengthLimit: 1
                 columnId: columnId
+                lineLimit: 5
                 dependencyStatus: upToDate
+                mt: true
                 tm: true
+                readOnly: true
                 referencedIds:
                 - referencedIds
                 - referencedIds
                 value: ""
               - sourceStatus: unset
-                lengthLimit: 6
+                lengthLimit: 1
                 columnId: columnId
+                lineLimit: 5
                 dependencyStatus: upToDate
+                mt: true
                 tm: true
+                readOnly: true
                 referencedIds:
                 - referencedIds
                 - referencedIds
@@ -7507,6 +8667,7 @@ components:
               localizationType: sourceLanguage
               languageCode: languageCode
               type: singleLine
+              languageName: languageName
               isTarget: true
               reference:
                 selectionType: single
@@ -7529,10 +8690,22 @@ components:
                 timeFormat: timeFormat
                 showTimeZone: true
               numberFormat:
-                decimalPlaces: 0
+                decimalPlaces: 6
                 currencySymbol: currencySymbol
                 type: decimal
                 use1000Separator: true
+              selection:
+                options:
+                - color: color
+                  value: value
+                - color: color
+                  value: value
+                - color: color
+                  value: value
+                - color: color
+                  value: value
+                - color: color
+                  value: value
               isSource: true
               name: name
               formula:
@@ -7540,6 +8713,10 @@ components:
                 detectResultValueType: list
                 alwaysFormatResultValueAsList: true
               id: id
+              lengthLimitSetting:
+                unit: percent
+                useSourceTextLength: true
+                value: 0
             - dependsOn: dependsOn
               editable: true
               selectionOptions:
@@ -7549,6 +8726,7 @@ components:
               localizationType: sourceLanguage
               languageCode: languageCode
               type: singleLine
+              languageName: languageName
               isTarget: true
               reference:
                 selectionType: single
@@ -7571,10 +8749,22 @@ components:
                 timeFormat: timeFormat
                 showTimeZone: true
               numberFormat:
-                decimalPlaces: 0
+                decimalPlaces: 6
                 currencySymbol: currencySymbol
                 type: decimal
                 use1000Separator: true
+              selection:
+                options:
+                - color: color
+                  value: value
+                - color: color
+                  value: value
+                - color: color
+                  value: value
+                - color: color
+                  value: value
+                - color: color
+                  value: value
               isSource: true
               name: name
               formula:
@@ -7582,6 +8772,10 @@ components:
                 detectResultValueType: list
                 alwaysFormatResultValueAsList: true
               id: id
+              lengthLimitSetting:
+                unit: percent
+                useSourceTextLength: true
+                value: 0
             name: name
             id: id
             gridId: gridId
@@ -7590,19 +8784,25 @@ components:
             - path: path
               cells:
               - sourceStatus: unset
-                lengthLimit: 6
+                lengthLimit: 1
                 columnId: columnId
+                lineLimit: 5
                 dependencyStatus: upToDate
+                mt: true
                 tm: true
+                readOnly: true
                 referencedIds:
                 - referencedIds
                 - referencedIds
                 value: ""
               - sourceStatus: unset
-                lengthLimit: 6
+                lengthLimit: 1
                 columnId: columnId
+                lineLimit: 5
                 dependencyStatus: upToDate
+                mt: true
                 tm: true
+                readOnly: true
                 referencedIds:
                 - referencedIds
                 - referencedIds
@@ -7613,19 +8813,25 @@ components:
             - path: path
               cells:
               - sourceStatus: unset
-                lengthLimit: 6
+                lengthLimit: 1
                 columnId: columnId
+                lineLimit: 5
                 dependencyStatus: upToDate
+                mt: true
                 tm: true
+                readOnly: true
                 referencedIds:
                 - referencedIds
                 - referencedIds
                 value: ""
               - sourceStatus: unset
-                lengthLimit: 6
+                lengthLimit: 1
                 columnId: columnId
+                lineLimit: 5
                 dependencyStatus: upToDate
+                mt: true
                 tm: true
+                readOnly: true
                 referencedIds:
                 - referencedIds
                 - referencedIds
@@ -7643,6 +8849,7 @@ components:
               localizationType: sourceLanguage
               languageCode: languageCode
               type: singleLine
+              languageName: languageName
               isTarget: true
               reference:
                 selectionType: single
@@ -7665,10 +8872,22 @@ components:
                 timeFormat: timeFormat
                 showTimeZone: true
               numberFormat:
-                decimalPlaces: 0
+                decimalPlaces: 6
                 currencySymbol: currencySymbol
                 type: decimal
                 use1000Separator: true
+              selection:
+                options:
+                - color: color
+                  value: value
+                - color: color
+                  value: value
+                - color: color
+                  value: value
+                - color: color
+                  value: value
+                - color: color
+                  value: value
               isSource: true
               name: name
               formula:
@@ -7676,6 +8895,10 @@ components:
                 detectResultValueType: list
                 alwaysFormatResultValueAsList: true
               id: id
+              lengthLimitSetting:
+                unit: percent
+                useSourceTextLength: true
+                value: 0
             - dependsOn: dependsOn
               editable: true
               selectionOptions:
@@ -7685,6 +8908,7 @@ components:
               localizationType: sourceLanguage
               languageCode: languageCode
               type: singleLine
+              languageName: languageName
               isTarget: true
               reference:
                 selectionType: single
@@ -7707,10 +8931,22 @@ components:
                 timeFormat: timeFormat
                 showTimeZone: true
               numberFormat:
-                decimalPlaces: 0
+                decimalPlaces: 6
                 currencySymbol: currencySymbol
                 type: decimal
                 use1000Separator: true
+              selection:
+                options:
+                - color: color
+                  value: value
+                - color: color
+                  value: value
+                - color: color
+                  value: value
+                - color: color
+                  value: value
+                - color: color
+                  value: value
               isSource: true
               name: name
               formula:
@@ -7718,6 +8954,10 @@ components:
                 detectResultValueType: list
                 alwaysFormatResultValueAsList: true
               id: id
+              lengthLimitSetting:
+                unit: percent
+                useSourceTextLength: true
+                value: 0
             name: name
             id: id
             gridId: gridId
@@ -7769,165 +9009,37 @@ components:
           type: string
         databases:
           items:
-            $ref: '#/components/schemas/Database'
+            $ref: "#/components/schemas/Database"
           type: array
         groups:
           items:
-            $ref: '#/components/schemas/Group'
+            $ref: "#/components/schemas/Group"
           type: array
       type: object
-    CreateGlossary:
-      example:
-        projects:
-        - databaseIds:
-          - databaseIds
-          - databaseIds
-          projectId: 0
-        - databaseIds:
-          - databaseIds
-          - databaseIds
-          projectId: 0
-        name: name
-        description: description
-        langs:
-        - langs
-        - langs
-      properties:
-        name:
-          maxLength: 100
-          pattern: \S
-          type: string
-        description:
-          type: string
-        langs:
-          items:
-            type: string
-          type: array
-        projects:
-          items:
-            $ref: '#/components/schemas/GlossaryProject'
-          type: array
-      required:
-      - name
-      type: object
-    CreateTransMem:
-      example:
-        isPausedConsuming: true
-        contextLookup: true
-        populateTranslationStatus: null
-        name: name
-        description: description
-        projectIds:
-        - 0
-        - 0
-        isDisabled: true
-        fuzzyMatch: true
-        allowAlternative: true
-      properties:
-        name:
-          maxLength: 100
-          pattern: \S
-          type: string
-        description:
-          type: string
-        projectIds:
-          items:
-            format: int64
-            type: integer
-          type: array
-        fuzzyMatch:
-          type: boolean
-        isDisabled:
-          type: boolean
-        isPausedConsuming:
-          type: boolean
-        contextLookup:
-          type: boolean
-        populateTranslationStatus:
-          $ref: '#/components/schemas/TranslationStatus'
-        allowAlternative:
-          type: boolean
-      required:
-      - name
-      type: object
-    ExportFormat:
-      enum:
-      - tmx
-      - csv
-      - xlsx
-      type: string
-    FileUpload:
-      type: object
-    FileUploadSchema:
-      format: binary
-      type: string
-    Glossary:
-      example:
-        projects:
-        - databaseIds:
-          - databaseIds
-          - databaseIds
-          projectId: 0
-        - databaseIds:
-          - databaseIds
-          - databaseIds
-          projectId: 0
-        name: name
-        description: description
-        langs:
-        - langs
-        - langs
-        id: id
-      properties:
-        id:
-          type: string
-        name:
-          type: string
-        description:
-          type: string
-        langs:
-          items:
-            type: string
-          type: array
-        projects:
-          items:
-            $ref: '#/components/schemas/GlossaryProject'
-          type: array
-      type: object
-    GlossaryExportFormat:
+    ExportGlossaryFormat:
       enum:
       - csv
       - xls
       - xlsx
       - tbx
       type: string
-    GlossaryProject:
-      example:
-        databaseIds:
-        - databaseIds
-        - databaseIds
-        projectId: 0
-      properties:
-        projectId:
-          format: int64
-          type: integer
-        databaseIds:
-          items:
-            type: string
-          type: array
-          uniqueItems: true
-      type: object
-    ImportOption:
+    ImportGlossaryOption:
       enum:
       - ADD
       - UPDATE
       - UPDATE_ONLY
       type: string
+    ExportTransMemFormat:
+      enum:
+      - tmx
+      - csv
+      - xlsx
+      type: string
     TransMem:
       example:
         isPausedConsuming: true
         allowAlternativeHasSameRecordId: true
-        populateTranslationStatus: null
+        populateTranslationStatus: upToDate
         contextLookup: true
         name: name
         description: description
@@ -7951,11 +9063,10 @@ components:
         isPausedConsuming:
           type: boolean
         populateTranslationStatus:
-          $ref: '#/components/schemas/TranslationStatus'
+          $ref: "#/components/schemas/TranslationStatus"
         contextLookup:
           type: boolean
         name:
-          pattern: \S
           type: string
         description:
           type: string
@@ -7965,8 +9076,6 @@ components:
           type: boolean
         allowAlternativeHasSameRecordId:
           type: boolean
-      required:
-      - name
       type: object
     TranslationStatus:
       enum:
@@ -7974,41 +9083,36 @@ components:
       - outOfDate
       - unset
       type: string
-    UpdateGlossary:
+    LQAModelSeverityResponse:
       example:
-        projects:
-        - databaseIds:
-          - databaseIds
-          - databaseIds
-          projectId: 0
-        - databaseIds:
-          - databaseIds
-          - databaseIds
-          projectId: 0
         name: name
-        description: description
-        langs:
-        - langs
-        - langs
+        id: 2
       properties:
+        id:
+          format: int64
+          type: integer
         name:
           type: string
-        description:
+      type: object
+    FileInfoResponse:
+      properties:
+        id:
           type: string
-        langs:
-          items:
-            type: string
-          type: array
-        projects:
-          items:
-            $ref: '#/components/schemas/GlossaryProject'
-          type: array
+        originalName:
+          type: string
+        contentType:
+          type: string
+        size:
+          format: int64
+          type: integer
+        thumbnailId:
+          type: string
       type: object
     UpdateTransMem:
       example:
         isPausedConsuming: true
         allowAlternativeHasSameRecordId: true
-        populateTranslationStatus: null
+        populateTranslationStatus: upToDate
         contextLookup: true
         name: name
         description: description
@@ -8035,12 +9139,502 @@ components:
         isPausedConsuming:
           type: boolean
         populateTranslationStatus:
-          $ref: '#/components/schemas/TranslationStatus'
+          $ref: "#/components/schemas/TranslationStatus"
         contextLookup:
           type: boolean
         allowAlternative:
           type: boolean
         allowAlternativeHasSameRecordId:
+          type: boolean
+      type: object
+    LQAModelProjectResponse:
+      example:
+        name: name
+        id: 7
+      properties:
+        id:
+          format: int64
+          type: integer
+        name:
+          type: string
+      type: object
+    LQAModelCategoryResponse:
+      example:
+        name: name
+        id: 6
+        subCategories:
+        - name: name
+          id: 1
+          severities:
+          - score: 5.637376656633329
+            name: name
+            severityId: 5
+          - score: 5.637376656633329
+            name: name
+            severityId: 5
+        - name: name
+          id: 1
+          severities:
+          - score: 5.637376656633329
+            name: name
+            severityId: 5
+          - score: 5.637376656633329
+            name: name
+            severityId: 5
+      properties:
+        id:
+          format: int64
+          type: integer
+        name:
+          type: string
+        subCategories:
+          items:
+            $ref: "#/components/schemas/LQAModelSubCategoryResponse"
+          type: array
+      type: object
+    LQAModelStatus:
+      enum:
+      - 0
+      - 1
+      format: int32
+      type: integer
+    CreateGlossary:
+      example:
+        name: name
+        description: description
+        langs:
+        - langs
+        - langs
+        projectIds:
+        - 0
+        - 0
+      properties:
+        name:
+          maxLength: 100
+          pattern: \S
+          type: string
+        description:
+          type: string
+        langs:
+          items:
+            type: string
+          type: array
+        projectIds:
+          items:
+            format: int64
+            type: integer
+          type: array
+      required:
+      - name
+      type: object
+    GlossaryProject:
+      example:
+        projectId: 0
+      properties:
+        projectId:
+          format: int64
+          type: integer
+      type: object
+    LQAModelResponse:
+      example:
+        isSystem: true
+        isDefault: true
+        projects:
+        - name: name
+          id: 7
+        - name: name
+          id: 7
+        name: name
+        id: id
+        categories:
+        - name: name
+          id: 6
+          subCategories:
+          - name: name
+            id: 1
+            severities:
+            - score: 5.637376656633329
+              name: name
+              severityId: 5
+            - score: 5.637376656633329
+              name: name
+              severityId: 5
+          - name: name
+            id: 1
+            severities:
+            - score: 5.637376656633329
+              name: name
+              severityId: 5
+            - score: 5.637376656633329
+              name: name
+              severityId: 5
+        - name: name
+          id: 6
+          subCategories:
+          - name: name
+            id: 1
+            severities:
+            - score: 5.637376656633329
+              name: name
+              severityId: 5
+            - score: 5.637376656633329
+              name: name
+              severityId: 5
+          - name: name
+            id: 1
+            severities:
+            - score: 5.637376656633329
+              name: name
+              severityId: 5
+            - score: 5.637376656633329
+              name: name
+              severityId: 5
+        status: 0
+        severities:
+        - name: name
+          id: 2
+        - name: name
+          id: 2
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+        isDefault:
+          type: boolean
+        isSystem:
+          type: boolean
+        status:
+          $ref: "#/components/schemas/LQAModelStatus"
+        categories:
+          items:
+            $ref: "#/components/schemas/LQAModelCategoryResponse"
+          type: array
+        severities:
+          items:
+            $ref: "#/components/schemas/LQAModelSeverityResponse"
+          type: array
+        projects:
+          items:
+            $ref: "#/components/schemas/LQAModelProjectResponse"
+          type: array
+      type: object
+    Glossary:
+      example:
+        projects:
+        - projectId: 0
+        - projectId: 0
+        name: name
+        description: description
+        langs:
+        - langs
+        - langs
+        id: id
+        projectIds:
+        - 6
+        - 6
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+        description:
+          type: string
+        langs:
+          items:
+            type: string
+          type: array
+        projects:
+          deprecated: true
+          items:
+            $ref: "#/components/schemas/GlossaryProject"
+          type: array
+        projectIds:
+          items:
+            format: int64
+            type: integer
+          type: array
+      type: object
+    CreateTransMem:
+      example:
+        isPausedConsuming: true
+        contextLookup: true
+        populateTranslationStatus: upToDate
+        name: name
+        description: description
+        projectIds:
+        - 0
+        - 0
+        isDisabled: true
+        fuzzyMatch: true
+        allowAlternative: true
+      properties:
+        name:
+          maxLength: 100
+          pattern: \S
+          type: string
+        description:
+          type: string
+        projectIds:
+          items:
+            format: int64
+            type: integer
+          type: array
+        fuzzyMatch:
+          type: boolean
+        isDisabled:
+          type: boolean
+        isPausedConsuming:
+          type: boolean
+        contextLookup:
+          type: boolean
+        populateTranslationStatus:
+          $ref: "#/components/schemas/TranslationStatus"
+        allowAlternative:
+          type: boolean
+      required:
+      - name
+      type: object
+    SubCategorySeverityResponse:
+      example:
+        score: 5.637376656633329
+        name: name
+        severityId: 5
+      properties:
+        severityId:
+          format: int64
+          type: integer
+        name:
+          type: string
+        score:
+          format: double
+          type: number
+      type: object
+    LQAModelSubCategoryResponse:
+      example:
+        name: name
+        id: 1
+        severities:
+        - score: 5.637376656633329
+          name: name
+          severityId: 5
+        - score: 5.637376656633329
+          name: name
+          severityId: 5
+      properties:
+        id:
+          format: int64
+          type: integer
+        name:
+          type: string
+        severities:
+          items:
+            $ref: "#/components/schemas/SubCategorySeverityResponse"
+          type: array
+      type: object
+    UpdateGlossary:
+      example:
+        projects:
+        - projectId: 0
+        - projectId: 0
+        name: name
+        description: description
+        langs:
+        - langs
+        - langs
+        projectIds:
+        - 0
+        - 0
+      properties:
+        name:
+          type: string
+        description:
+          type: string
+        langs:
+          items:
+            type: string
+          type: array
+        projects:
+          items:
+            $ref: "#/components/schemas/GlossaryProject"
+          type: array
+        projectIds:
+          items:
+            format: int64
+            type: integer
+          type: array
+      type: object
+    ExecutionTriggerRequest:
+      example:
+        await: true
+      properties:
+        await:
+          type: boolean
+      type: object
+    ExecutionResponse:
+      example:
+        automationId: automationId
+        startedTime: 2000-01-23T04:56:07.000+00:00
+        id: id
+        status: STARTED
+      properties:
+        id:
+          type: string
+        automationId:
+          type: string
+        status:
+          enum:
+          - STARTED
+          - RUNNING
+          - FAILED
+          - SUCCESS
+          type: string
+        startedTime:
+          format: date-time
+          type: string
+      type: object
+    BulkExecutionTriggerRequest:
+      example:
+        automationIds:
+        - automationIds
+        - automationIds
+        - automationIds
+        - automationIds
+        - automationIds
+        await: true
+      properties:
+        automationIds:
+          items:
+            type: string
+          maxItems: 5
+          minItems: 1
+          type: array
+        await:
+          type: boolean
+      type: object
+    Automation:
+      example:
+        description: description
+        active: true
+        id: id
+        completed: true
+        title: title
+        triggers:
+        - watchingAll: true
+          name: name
+          description: description
+          id: id
+          triggerType: triggerType
+          type: type
+          watchingColumns:
+          - watchingColumns
+          - watchingColumns
+          enabled: true
+        - watchingAll: true
+          name: name
+          description: description
+          id: id
+          triggerType: triggerType
+          type: type
+          watchingColumns:
+          - watchingColumns
+          - watchingColumns
+          enabled: true
+        actions:
+        - name: name
+          description: description
+          id: id
+          completed: true
+          type: type
+          params:
+            key: "{}"
+          enabled: true
+        - name: name
+          description: description
+          id: id
+          completed: true
+          type: type
+          params:
+            key: "{}"
+          enabled: true
+      properties:
+        id:
+          type: string
+        title:
+          type: string
+        description:
+          type: string
+        active:
+          type: boolean
+        completed:
+          type: boolean
+        triggers:
+          items:
+            $ref: "#/components/schemas/AutomationTrigger"
+          type: array
+        actions:
+          items:
+            $ref: "#/components/schemas/AutomationNode"
+          type: array
+      type: object
+    AutomationNode:
+      example:
+        name: name
+        description: description
+        id: id
+        completed: true
+        type: type
+        params:
+          key: "{}"
+        enabled: true
+      properties:
+        id:
+          type: string
+        type:
+          type: string
+        name:
+          type: string
+        description:
+          type: string
+        params:
+          additionalProperties:
+            type: object
+          type: object
+        enabled:
+          type: boolean
+        completed:
+          type: boolean
+      type: object
+    AutomationTrigger:
+      example:
+        watchingAll: true
+        name: name
+        description: description
+        id: id
+        triggerType: triggerType
+        type: type
+        watchingColumns:
+        - watchingColumns
+        - watchingColumns
+        enabled: true
+      properties:
+        id:
+          type: string
+        type:
+          type: string
+        name:
+          type: string
+        description:
+          type: string
+        triggerType:
+          type: string
+        watchingColumns:
+          items:
+            type: string
+          type: array
+        watchingAll:
+          type: boolean
+        enabled:
           type: boolean
       type: object
     importView_request:
@@ -8081,18 +9675,14 @@ components:
           format: binary
           type: string
       type: object
-    importFile_request:
-      properties:
-        file:
-          $ref: '#/components/schemas/FileUpload'
-      type: object
     createWithFile_request:
+      format: binary
       properties:
         file:
-          $ref: '#/components/schemas/FileUploadSchema'
+          format: binary
+          type: string
       required:
       - file
-      type: object
   securitySchemes:
     ApiKey:
       bearerFormat: ApiKey

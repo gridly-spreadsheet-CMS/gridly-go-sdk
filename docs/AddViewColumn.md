@@ -12,7 +12,8 @@ Name | Type | Description | Notes
 **LanguageCode** | Pointer to **string** |  | [optional] 
 **LocalizationType** | Pointer to **string** |  | [optional] 
 **NumberFormat** | Pointer to [**NumberFormat**](NumberFormat.md) |  | [optional] 
-**SelectionOptions** | Pointer to **[]string** |  | [optional] 
+**SelectionOptions** | Pointer to **[]string** | Please use selection | [optional] 
+**Selection** | Pointer to [**Selection**](Selection.md) |  | [optional] 
 **Reference** | Pointer to [**Reference**](Reference.md) |  | [optional] 
 **Formula** | Pointer to [**Formula**](Formula.md) |  | [optional] 
 **DateTimeFormat** | Pointer to [**DateTimeFormat**](DateTimeFormat.md) |  | [optional] 
@@ -260,6 +261,31 @@ SetSelectionOptions sets SelectionOptions field to given value.
 `func (o *AddViewColumn) HasSelectionOptions() bool`
 
 HasSelectionOptions returns a boolean if a field has been set.
+
+### GetSelection
+
+`func (o *AddViewColumn) GetSelection() Selection`
+
+GetSelection returns the Selection field if non-nil, zero value otherwise.
+
+### GetSelectionOk
+
+`func (o *AddViewColumn) GetSelectionOk() (*Selection, bool)`
+
+GetSelectionOk returns a tuple with the Selection field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetSelection
+
+`func (o *AddViewColumn) SetSelection(v Selection)`
+
+SetSelection sets Selection field to given value.
+
+### HasSelection
+
+`func (o *AddViewColumn) HasSelection() bool`
+
+HasSelection returns a boolean if a field has been set.
 
 ### GetReference
 

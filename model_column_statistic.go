@@ -3,7 +3,7 @@ Gridly API
 
 Gridly API documentation
 
-API version: 5.9.0
+API version: 6.13.0
 Contact: support@gridly.com
 */
 
@@ -14,6 +14,9 @@ package gridly
 import (
 	"encoding/json"
 )
+
+// checks if the ColumnStatistic type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &ColumnStatistic{}
 
 // ColumnStatistic struct for ColumnStatistic
 type ColumnStatistic struct {
@@ -40,7 +43,7 @@ func NewColumnStatisticWithDefaults() *ColumnStatistic {
 
 // GetRecordCount returns the RecordCount field value if set, zero value otherwise.
 func (o *ColumnStatistic) GetRecordCount() TranslationCount {
-	if o == nil || isNil(o.RecordCount) {
+	if o == nil || IsNil(o.RecordCount) {
 		var ret TranslationCount
 		return ret
 	}
@@ -50,15 +53,15 @@ func (o *ColumnStatistic) GetRecordCount() TranslationCount {
 // GetRecordCountOk returns a tuple with the RecordCount field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ColumnStatistic) GetRecordCountOk() (*TranslationCount, bool) {
-	if o == nil || isNil(o.RecordCount) {
-    return nil, false
+	if o == nil || IsNil(o.RecordCount) {
+		return nil, false
 	}
 	return o.RecordCount, true
 }
 
 // HasRecordCount returns a boolean if a field has been set.
 func (o *ColumnStatistic) HasRecordCount() bool {
-	if o != nil && !isNil(o.RecordCount) {
+	if o != nil && !IsNil(o.RecordCount) {
 		return true
 	}
 
@@ -72,7 +75,7 @@ func (o *ColumnStatistic) SetRecordCount(v TranslationCount) {
 
 // GetWordCount returns the WordCount field value if set, zero value otherwise.
 func (o *ColumnStatistic) GetWordCount() TranslationCount {
-	if o == nil || isNil(o.WordCount) {
+	if o == nil || IsNil(o.WordCount) {
 		var ret TranslationCount
 		return ret
 	}
@@ -82,15 +85,15 @@ func (o *ColumnStatistic) GetWordCount() TranslationCount {
 // GetWordCountOk returns a tuple with the WordCount field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ColumnStatistic) GetWordCountOk() (*TranslationCount, bool) {
-	if o == nil || isNil(o.WordCount) {
-    return nil, false
+	if o == nil || IsNil(o.WordCount) {
+		return nil, false
 	}
 	return o.WordCount, true
 }
 
 // HasWordCount returns a boolean if a field has been set.
 func (o *ColumnStatistic) HasWordCount() bool {
-	if o != nil && !isNil(o.WordCount) {
+	if o != nil && !IsNil(o.WordCount) {
 		return true
 	}
 
@@ -103,14 +106,22 @@ func (o *ColumnStatistic) SetWordCount(v TranslationCount) {
 }
 
 func (o ColumnStatistic) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if !isNil(o.RecordCount) {
-		toSerialize["recordCount"] = o.RecordCount
-	}
-	if !isNil(o.WordCount) {
-		toSerialize["wordCount"] = o.WordCount
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o ColumnStatistic) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.RecordCount) {
+		toSerialize["recordCount"] = o.RecordCount
+	}
+	if !IsNil(o.WordCount) {
+		toSerialize["wordCount"] = o.WordCount
+	}
+	return toSerialize, nil
 }
 
 type NullableColumnStatistic struct {

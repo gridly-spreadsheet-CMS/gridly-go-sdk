@@ -10,7 +10,7 @@ Name | Type | Description | Notes
 **IsPausedConsuming** | Pointer to **bool** |  | [optional] 
 **PopulateTranslationStatus** | Pointer to [**TranslationStatus**](TranslationStatus.md) |  | [optional] 
 **ContextLookup** | Pointer to **bool** |  | [optional] 
-**Name** | **string** |  | 
+**Name** | Pointer to **string** |  | [optional] 
 **Description** | Pointer to **string** |  | [optional] 
 **FuzzyMatch** | Pointer to **bool** |  | [optional] 
 **AllowAlternative** | Pointer to **bool** |  | [optional] 
@@ -20,7 +20,7 @@ Name | Type | Description | Notes
 
 ### NewTransMem
 
-`func NewTransMem(name string, ) *TransMem`
+`func NewTransMem() *TransMem`
 
 NewTransMem instantiates a new TransMem object
 This constructor will assign default values to properties that have it defined,
@@ -204,6 +204,11 @@ and a boolean to check if the value has been set.
 
 SetName sets Name field to given value.
 
+### HasName
+
+`func (o *TransMem) HasName() bool`
+
+HasName returns a boolean if a field has been set.
 
 ### GetDescription
 

@@ -3,7 +3,7 @@ Gridly API
 
 Gridly API documentation
 
-API version: 5.9.0
+API version: 6.13.0
 Contact: support@gridly.com
 */
 
@@ -14,6 +14,9 @@ package gridly
 import (
 	"encoding/json"
 )
+
+// checks if the CreatePath type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &CreatePath{}
 
 // CreatePath struct for CreatePath
 type CreatePath struct {
@@ -40,7 +43,7 @@ func NewCreatePathWithDefaults() *CreatePath {
 
 // GetParentPath returns the ParentPath field value if set, zero value otherwise.
 func (o *CreatePath) GetParentPath() string {
-	if o == nil || isNil(o.ParentPath) {
+	if o == nil || IsNil(o.ParentPath) {
 		var ret string
 		return ret
 	}
@@ -50,15 +53,15 @@ func (o *CreatePath) GetParentPath() string {
 // GetParentPathOk returns a tuple with the ParentPath field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CreatePath) GetParentPathOk() (*string, bool) {
-	if o == nil || isNil(o.ParentPath) {
-    return nil, false
+	if o == nil || IsNil(o.ParentPath) {
+		return nil, false
 	}
 	return o.ParentPath, true
 }
 
 // HasParentPath returns a boolean if a field has been set.
 func (o *CreatePath) HasParentPath() bool {
-	if o != nil && !isNil(o.ParentPath) {
+	if o != nil && !IsNil(o.ParentPath) {
 		return true
 	}
 
@@ -72,7 +75,7 @@ func (o *CreatePath) SetParentPath(v string) {
 
 // GetPaths returns the Paths field value if set, zero value otherwise.
 func (o *CreatePath) GetPaths() []string {
-	if o == nil || isNil(o.Paths) {
+	if o == nil || IsNil(o.Paths) {
 		var ret []string
 		return ret
 	}
@@ -82,15 +85,15 @@ func (o *CreatePath) GetPaths() []string {
 // GetPathsOk returns a tuple with the Paths field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CreatePath) GetPathsOk() ([]string, bool) {
-	if o == nil || isNil(o.Paths) {
-    return nil, false
+	if o == nil || IsNil(o.Paths) {
+		return nil, false
 	}
 	return o.Paths, true
 }
 
 // HasPaths returns a boolean if a field has been set.
 func (o *CreatePath) HasPaths() bool {
-	if o != nil && !isNil(o.Paths) {
+	if o != nil && !IsNil(o.Paths) {
 		return true
 	}
 
@@ -103,14 +106,22 @@ func (o *CreatePath) SetPaths(v []string) {
 }
 
 func (o CreatePath) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if !isNil(o.ParentPath) {
-		toSerialize["parentPath"] = o.ParentPath
-	}
-	if !isNil(o.Paths) {
-		toSerialize["paths"] = o.Paths
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o CreatePath) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.ParentPath) {
+		toSerialize["parentPath"] = o.ParentPath
+	}
+	if !IsNil(o.Paths) {
+		toSerialize["paths"] = o.Paths
+	}
+	return toSerialize, nil
 }
 
 type NullableCreatePath struct {

@@ -3,7 +3,7 @@ Gridly API
 
 Gridly API documentation
 
-API version: 5.9.0
+API version: 6.13.0
 Contact: support@gridly.com
 */
 
@@ -15,6 +15,9 @@ import (
 	"encoding/json"
 	"time"
 )
+
+// checks if the Group type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &Group{}
 
 // Group struct for Group
 type Group struct {
@@ -50,7 +53,7 @@ func NewGroupWithDefaults() *Group {
 
 // GetId returns the Id field value if set, zero value otherwise.
 func (o *Group) GetId() string {
-	if o == nil || isNil(o.Id) {
+	if o == nil || IsNil(o.Id) {
 		var ret string
 		return ret
 	}
@@ -60,15 +63,15 @@ func (o *Group) GetId() string {
 // GetIdOk returns a tuple with the Id field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Group) GetIdOk() (*string, bool) {
-	if o == nil || isNil(o.Id) {
-    return nil, false
+	if o == nil || IsNil(o.Id) {
+		return nil, false
 	}
 	return o.Id, true
 }
 
 // HasId returns a boolean if a field has been set.
 func (o *Group) HasId() bool {
-	if o != nil && !isNil(o.Id) {
+	if o != nil && !IsNil(o.Id) {
 		return true
 	}
 
@@ -82,7 +85,7 @@ func (o *Group) SetId(v string) {
 
 // GetGroupId returns the GroupId field value if set, zero value otherwise.
 func (o *Group) GetGroupId() int64 {
-	if o == nil || isNil(o.GroupId) {
+	if o == nil || IsNil(o.GroupId) {
 		var ret int64
 		return ret
 	}
@@ -92,15 +95,15 @@ func (o *Group) GetGroupId() int64 {
 // GetGroupIdOk returns a tuple with the GroupId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Group) GetGroupIdOk() (*int64, bool) {
-	if o == nil || isNil(o.GroupId) {
-    return nil, false
+	if o == nil || IsNil(o.GroupId) {
+		return nil, false
 	}
 	return o.GroupId, true
 }
 
 // HasGroupId returns a boolean if a field has been set.
 func (o *Group) HasGroupId() bool {
-	if o != nil && !isNil(o.GroupId) {
+	if o != nil && !IsNil(o.GroupId) {
 		return true
 	}
 
@@ -114,7 +117,7 @@ func (o *Group) SetGroupId(v int64) {
 
 // GetCompanyId returns the CompanyId field value if set, zero value otherwise.
 func (o *Group) GetCompanyId() int64 {
-	if o == nil || isNil(o.CompanyId) {
+	if o == nil || IsNil(o.CompanyId) {
 		var ret int64
 		return ret
 	}
@@ -124,15 +127,15 @@ func (o *Group) GetCompanyId() int64 {
 // GetCompanyIdOk returns a tuple with the CompanyId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Group) GetCompanyIdOk() (*int64, bool) {
-	if o == nil || isNil(o.CompanyId) {
-    return nil, false
+	if o == nil || IsNil(o.CompanyId) {
+		return nil, false
 	}
 	return o.CompanyId, true
 }
 
 // HasCompanyId returns a boolean if a field has been set.
 func (o *Group) HasCompanyId() bool {
-	if o != nil && !isNil(o.CompanyId) {
+	if o != nil && !IsNil(o.CompanyId) {
 		return true
 	}
 
@@ -146,7 +149,7 @@ func (o *Group) SetCompanyId(v int64) {
 
 // GetName returns the Name field value if set, zero value otherwise.
 func (o *Group) GetName() string {
-	if o == nil || isNil(o.Name) {
+	if o == nil || IsNil(o.Name) {
 		var ret string
 		return ret
 	}
@@ -156,15 +159,15 @@ func (o *Group) GetName() string {
 // GetNameOk returns a tuple with the Name field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Group) GetNameOk() (*string, bool) {
-	if o == nil || isNil(o.Name) {
-    return nil, false
+	if o == nil || IsNil(o.Name) {
+		return nil, false
 	}
 	return o.Name, true
 }
 
 // HasName returns a boolean if a field has been set.
 func (o *Group) HasName() bool {
-	if o != nil && !isNil(o.Name) {
+	if o != nil && !IsNil(o.Name) {
 		return true
 	}
 
@@ -178,7 +181,7 @@ func (o *Group) SetName(v string) {
 
 // GetLogoUrl returns the LogoUrl field value if set, zero value otherwise.
 func (o *Group) GetLogoUrl() string {
-	if o == nil || isNil(o.LogoUrl) {
+	if o == nil || IsNil(o.LogoUrl) {
 		var ret string
 		return ret
 	}
@@ -188,15 +191,15 @@ func (o *Group) GetLogoUrl() string {
 // GetLogoUrlOk returns a tuple with the LogoUrl field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Group) GetLogoUrlOk() (*string, bool) {
-	if o == nil || isNil(o.LogoUrl) {
-    return nil, false
+	if o == nil || IsNil(o.LogoUrl) {
+		return nil, false
 	}
 	return o.LogoUrl, true
 }
 
 // HasLogoUrl returns a boolean if a field has been set.
 func (o *Group) HasLogoUrl() bool {
-	if o != nil && !isNil(o.LogoUrl) {
+	if o != nil && !IsNil(o.LogoUrl) {
 		return true
 	}
 
@@ -210,7 +213,7 @@ func (o *Group) SetLogoUrl(v string) {
 
 // GetType returns the Type field value if set, zero value otherwise.
 func (o *Group) GetType() string {
-	if o == nil || isNil(o.Type) {
+	if o == nil || IsNil(o.Type) {
 		var ret string
 		return ret
 	}
@@ -220,15 +223,15 @@ func (o *Group) GetType() string {
 // GetTypeOk returns a tuple with the Type field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Group) GetTypeOk() (*string, bool) {
-	if o == nil || isNil(o.Type) {
-    return nil, false
+	if o == nil || IsNil(o.Type) {
+		return nil, false
 	}
 	return o.Type, true
 }
 
 // HasType returns a boolean if a field has been set.
 func (o *Group) HasType() bool {
-	if o != nil && !isNil(o.Type) {
+	if o != nil && !IsNil(o.Type) {
 		return true
 	}
 
@@ -242,7 +245,7 @@ func (o *Group) SetType(v string) {
 
 // GetShareType returns the ShareType field value if set, zero value otherwise.
 func (o *Group) GetShareType() string {
-	if o == nil || isNil(o.ShareType) {
+	if o == nil || IsNil(o.ShareType) {
 		var ret string
 		return ret
 	}
@@ -252,15 +255,15 @@ func (o *Group) GetShareType() string {
 // GetShareTypeOk returns a tuple with the ShareType field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Group) GetShareTypeOk() (*string, bool) {
-	if o == nil || isNil(o.ShareType) {
-    return nil, false
+	if o == nil || IsNil(o.ShareType) {
+		return nil, false
 	}
 	return o.ShareType, true
 }
 
 // HasShareType returns a boolean if a field has been set.
 func (o *Group) HasShareType() bool {
-	if o != nil && !isNil(o.ShareType) {
+	if o != nil && !IsNil(o.ShareType) {
 		return true
 	}
 
@@ -274,7 +277,7 @@ func (o *Group) SetShareType(v string) {
 
 // GetCreatedDate returns the CreatedDate field value if set, zero value otherwise.
 func (o *Group) GetCreatedDate() time.Time {
-	if o == nil || isNil(o.CreatedDate) {
+	if o == nil || IsNil(o.CreatedDate) {
 		var ret time.Time
 		return ret
 	}
@@ -284,15 +287,15 @@ func (o *Group) GetCreatedDate() time.Time {
 // GetCreatedDateOk returns a tuple with the CreatedDate field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Group) GetCreatedDateOk() (*time.Time, bool) {
-	if o == nil || isNil(o.CreatedDate) {
-    return nil, false
+	if o == nil || IsNil(o.CreatedDate) {
+		return nil, false
 	}
 	return o.CreatedDate, true
 }
 
 // HasCreatedDate returns a boolean if a field has been set.
 func (o *Group) HasCreatedDate() bool {
-	if o != nil && !isNil(o.CreatedDate) {
+	if o != nil && !IsNil(o.CreatedDate) {
 		return true
 	}
 
@@ -306,7 +309,7 @@ func (o *Group) SetCreatedDate(v time.Time) {
 
 // GetLastModifiedDate returns the LastModifiedDate field value if set, zero value otherwise.
 func (o *Group) GetLastModifiedDate() time.Time {
-	if o == nil || isNil(o.LastModifiedDate) {
+	if o == nil || IsNil(o.LastModifiedDate) {
 		var ret time.Time
 		return ret
 	}
@@ -316,15 +319,15 @@ func (o *Group) GetLastModifiedDate() time.Time {
 // GetLastModifiedDateOk returns a tuple with the LastModifiedDate field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Group) GetLastModifiedDateOk() (*time.Time, bool) {
-	if o == nil || isNil(o.LastModifiedDate) {
-    return nil, false
+	if o == nil || IsNil(o.LastModifiedDate) {
+		return nil, false
 	}
 	return o.LastModifiedDate, true
 }
 
 // HasLastModifiedDate returns a boolean if a field has been set.
 func (o *Group) HasLastModifiedDate() bool {
-	if o != nil && !isNil(o.LastModifiedDate) {
+	if o != nil && !IsNil(o.LastModifiedDate) {
 		return true
 	}
 
@@ -338,7 +341,7 @@ func (o *Group) SetLastModifiedDate(v time.Time) {
 
 // GetSystemGroup returns the SystemGroup field value if set, zero value otherwise.
 func (o *Group) GetSystemGroup() bool {
-	if o == nil || isNil(o.SystemGroup) {
+	if o == nil || IsNil(o.SystemGroup) {
 		var ret bool
 		return ret
 	}
@@ -348,15 +351,15 @@ func (o *Group) GetSystemGroup() bool {
 // GetSystemGroupOk returns a tuple with the SystemGroup field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Group) GetSystemGroupOk() (*bool, bool) {
-	if o == nil || isNil(o.SystemGroup) {
-    return nil, false
+	if o == nil || IsNil(o.SystemGroup) {
+		return nil, false
 	}
 	return o.SystemGroup, true
 }
 
 // HasSystemGroup returns a boolean if a field has been set.
 func (o *Group) HasSystemGroup() bool {
-	if o != nil && !isNil(o.SystemGroup) {
+	if o != nil && !IsNil(o.SystemGroup) {
 		return true
 	}
 
@@ -370,7 +373,7 @@ func (o *Group) SetSystemGroup(v bool) {
 
 // GetIsSystemGroup returns the IsSystemGroup field value if set, zero value otherwise.
 func (o *Group) GetIsSystemGroup() bool {
-	if o == nil || isNil(o.IsSystemGroup) {
+	if o == nil || IsNil(o.IsSystemGroup) {
 		var ret bool
 		return ret
 	}
@@ -380,15 +383,15 @@ func (o *Group) GetIsSystemGroup() bool {
 // GetIsSystemGroupOk returns a tuple with the IsSystemGroup field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Group) GetIsSystemGroupOk() (*bool, bool) {
-	if o == nil || isNil(o.IsSystemGroup) {
-    return nil, false
+	if o == nil || IsNil(o.IsSystemGroup) {
+		return nil, false
 	}
 	return o.IsSystemGroup, true
 }
 
 // HasIsSystemGroup returns a boolean if a field has been set.
 func (o *Group) HasIsSystemGroup() bool {
-	if o != nil && !isNil(o.IsSystemGroup) {
+	if o != nil && !IsNil(o.IsSystemGroup) {
 		return true
 	}
 
@@ -401,41 +404,49 @@ func (o *Group) SetIsSystemGroup(v bool) {
 }
 
 func (o Group) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if !isNil(o.Id) {
-		toSerialize["id"] = o.Id
-	}
-	if !isNil(o.GroupId) {
-		toSerialize["groupId"] = o.GroupId
-	}
-	if !isNil(o.CompanyId) {
-		toSerialize["companyId"] = o.CompanyId
-	}
-	if !isNil(o.Name) {
-		toSerialize["name"] = o.Name
-	}
-	if !isNil(o.LogoUrl) {
-		toSerialize["logoUrl"] = o.LogoUrl
-	}
-	if !isNil(o.Type) {
-		toSerialize["type"] = o.Type
-	}
-	if !isNil(o.ShareType) {
-		toSerialize["shareType"] = o.ShareType
-	}
-	if !isNil(o.CreatedDate) {
-		toSerialize["createdDate"] = o.CreatedDate
-	}
-	if !isNil(o.LastModifiedDate) {
-		toSerialize["lastModifiedDate"] = o.LastModifiedDate
-	}
-	if !isNil(o.SystemGroup) {
-		toSerialize["systemGroup"] = o.SystemGroup
-	}
-	if !isNil(o.IsSystemGroup) {
-		toSerialize["isSystemGroup"] = o.IsSystemGroup
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o Group) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.Id) {
+		toSerialize["id"] = o.Id
+	}
+	if !IsNil(o.GroupId) {
+		toSerialize["groupId"] = o.GroupId
+	}
+	if !IsNil(o.CompanyId) {
+		toSerialize["companyId"] = o.CompanyId
+	}
+	if !IsNil(o.Name) {
+		toSerialize["name"] = o.Name
+	}
+	if !IsNil(o.LogoUrl) {
+		toSerialize["logoUrl"] = o.LogoUrl
+	}
+	if !IsNil(o.Type) {
+		toSerialize["type"] = o.Type
+	}
+	if !IsNil(o.ShareType) {
+		toSerialize["shareType"] = o.ShareType
+	}
+	if !IsNil(o.CreatedDate) {
+		toSerialize["createdDate"] = o.CreatedDate
+	}
+	if !IsNil(o.LastModifiedDate) {
+		toSerialize["lastModifiedDate"] = o.LastModifiedDate
+	}
+	if !IsNil(o.SystemGroup) {
+		toSerialize["systemGroup"] = o.SystemGroup
+	}
+	if !IsNil(o.IsSystemGroup) {
+		toSerialize["isSystemGroup"] = o.IsSystemGroup
+	}
+	return toSerialize, nil
 }
 
 type NullableGroup struct {

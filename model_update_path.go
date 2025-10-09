@@ -3,7 +3,7 @@ Gridly API
 
 Gridly API documentation
 
-API version: 5.9.0
+API version: 6.13.0
 Contact: support@gridly.com
 */
 
@@ -13,12 +13,20 @@ package gridly
 
 import (
 	"encoding/json"
+	"bytes"
+	"fmt"
 )
+
+// checks if the UpdatePath type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &UpdatePath{}
 
 // UpdatePath struct for UpdatePath
 type UpdatePath struct {
-	NewName string `json:"newName"`
+	Path *string `json:"path,omitempty"`
+	NewName string `json:"newName" validate:"regexp=^[^\\/\\\\\\\\]+$"`
 }
+
+type _UpdatePath UpdatePath
 
 // NewUpdatePath instantiates a new UpdatePath object
 // This constructor will assign default values to properties that have it defined,
@@ -38,6 +46,38 @@ func NewUpdatePathWithDefaults() *UpdatePath {
 	return &this
 }
 
+// GetPath returns the Path field value if set, zero value otherwise.
+func (o *UpdatePath) GetPath() string {
+	if o == nil || IsNil(o.Path) {
+		var ret string
+		return ret
+	}
+	return *o.Path
+}
+
+// GetPathOk returns a tuple with the Path field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *UpdatePath) GetPathOk() (*string, bool) {
+	if o == nil || IsNil(o.Path) {
+		return nil, false
+	}
+	return o.Path, true
+}
+
+// HasPath returns a boolean if a field has been set.
+func (o *UpdatePath) HasPath() bool {
+	if o != nil && !IsNil(o.Path) {
+		return true
+	}
+
+	return false
+}
+
+// SetPath gets a reference to the given string and assigns it to the Path field.
+func (o *UpdatePath) SetPath(v string) {
+	o.Path = &v
+}
+
 // GetNewName returns the NewName field value
 func (o *UpdatePath) GetNewName() string {
 	if o == nil {
@@ -52,7 +92,7 @@ func (o *UpdatePath) GetNewName() string {
 // and a boolean to check if the value has been set.
 func (o *UpdatePath) GetNewNameOk() (*string, bool) {
 	if o == nil {
-    return nil, false
+		return nil, false
 	}
 	return &o.NewName, true
 }
@@ -62,12 +102,76 @@ func (o *UpdatePath) SetNewName(v string) {
 	o.NewName = v
 }
 
+
 func (o UpdatePath) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if true {
-		toSerialize["newName"] = o.NewName
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o UpdatePath) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.Path) {
+		toSerialize["path"] = o.Path
+	}
+	toSerialize["newName"] = o.NewName
+	return toSerialize, nil
+}
+
+func (o *UpdatePath) UnmarshalJSON(data []byte) (err error) {
+	// This validates that all required properties are included in the JSON object
+	// by unmarshalling the object into a generic map with string keys and checking
+	// that every required field exists as a key in the generic map.
+	requiredProperties := []string{
+		"newName",
+	}
+
+	// defaultValueFuncMap captures the default values for required properties.
+	// These values are used when required properties are missing from the payload.
+	defaultValueFuncMap := map[string]func() interface{} {
+	}
+	var defaultValueApplied bool
+	allProperties := make(map[string]interface{})
+
+	err = json.Unmarshal(data, &allProperties)
+
+	if err != nil {
+		return err;
+	}
+
+	for _, requiredProperty := range(requiredProperties) {
+		if value, exists := allProperties[requiredProperty]; !exists || value == "" {
+			if _, ok := defaultValueFuncMap[requiredProperty]; ok {
+				allProperties[requiredProperty] = defaultValueFuncMap[requiredProperty]()
+				defaultValueApplied = true
+			}
+		}
+		if value, exists := allProperties[requiredProperty]; !exists || value == ""{
+			return fmt.Errorf("no value given for required property %v", requiredProperty)
+		}
+	}
+
+	if defaultValueApplied {
+		data, err = json.Marshal(allProperties)
+		if err != nil{
+			return err
+		}
+	}
+	varUpdatePath := _UpdatePath{}
+
+	decoder := json.NewDecoder(bytes.NewReader(data))
+	decoder.DisallowUnknownFields()
+	err = decoder.Decode(&varUpdatePath)
+
+	if err != nil {
+		return err
+	}
+
+	*o = UpdatePath(varUpdatePath)
+
+	return err
 }
 
 type NullableUpdatePath struct {

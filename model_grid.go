@@ -3,7 +3,7 @@ Gridly API
 
 Gridly API documentation
 
-API version: 5.9.0
+API version: 6.13.0
 Contact: support@gridly.com
 */
 
@@ -14,6 +14,9 @@ package gridly
 import (
 	"encoding/json"
 )
+
+// checks if the Grid type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &Grid{}
 
 // Grid struct for Grid
 type Grid struct {
@@ -46,7 +49,7 @@ func NewGridWithDefaults() *Grid {
 
 // GetId returns the Id field value if set, zero value otherwise.
 func (o *Grid) GetId() string {
-	if o == nil || isNil(o.Id) {
+	if o == nil || IsNil(o.Id) {
 		var ret string
 		return ret
 	}
@@ -56,15 +59,15 @@ func (o *Grid) GetId() string {
 // GetIdOk returns a tuple with the Id field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Grid) GetIdOk() (*string, bool) {
-	if o == nil || isNil(o.Id) {
-    return nil, false
+	if o == nil || IsNil(o.Id) {
+		return nil, false
 	}
 	return o.Id, true
 }
 
 // HasId returns a boolean if a field has been set.
 func (o *Grid) HasId() bool {
-	if o != nil && !isNil(o.Id) {
+	if o != nil && !IsNil(o.Id) {
 		return true
 	}
 
@@ -78,7 +81,7 @@ func (o *Grid) SetId(v string) {
 
 // GetColumns returns the Columns field value if set, zero value otherwise.
 func (o *Grid) GetColumns() []ViewColumn {
-	if o == nil || isNil(o.Columns) {
+	if o == nil || IsNil(o.Columns) {
 		var ret []ViewColumn
 		return ret
 	}
@@ -88,15 +91,15 @@ func (o *Grid) GetColumns() []ViewColumn {
 // GetColumnsOk returns a tuple with the Columns field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Grid) GetColumnsOk() ([]ViewColumn, bool) {
-	if o == nil || isNil(o.Columns) {
-    return nil, false
+	if o == nil || IsNil(o.Columns) {
+		return nil, false
 	}
 	return o.Columns, true
 }
 
 // HasColumns returns a boolean if a field has been set.
 func (o *Grid) HasColumns() bool {
-	if o != nil && !isNil(o.Columns) {
+	if o != nil && !IsNil(o.Columns) {
 		return true
 	}
 
@@ -110,7 +113,7 @@ func (o *Grid) SetColumns(v []ViewColumn) {
 
 // GetDefaultAccessViewId returns the DefaultAccessViewId field value if set, zero value otherwise.
 func (o *Grid) GetDefaultAccessViewId() string {
-	if o == nil || isNil(o.DefaultAccessViewId) {
+	if o == nil || IsNil(o.DefaultAccessViewId) {
 		var ret string
 		return ret
 	}
@@ -120,15 +123,15 @@ func (o *Grid) GetDefaultAccessViewId() string {
 // GetDefaultAccessViewIdOk returns a tuple with the DefaultAccessViewId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Grid) GetDefaultAccessViewIdOk() (*string, bool) {
-	if o == nil || isNil(o.DefaultAccessViewId) {
-    return nil, false
+	if o == nil || IsNil(o.DefaultAccessViewId) {
+		return nil, false
 	}
 	return o.DefaultAccessViewId, true
 }
 
 // HasDefaultAccessViewId returns a boolean if a field has been set.
 func (o *Grid) HasDefaultAccessViewId() bool {
-	if o != nil && !isNil(o.DefaultAccessViewId) {
+	if o != nil && !IsNil(o.DefaultAccessViewId) {
 		return true
 	}
 
@@ -142,7 +145,7 @@ func (o *Grid) SetDefaultAccessViewId(v string) {
 
 // GetDescription returns the Description field value if set, zero value otherwise.
 func (o *Grid) GetDescription() string {
-	if o == nil || isNil(o.Description) {
+	if o == nil || IsNil(o.Description) {
 		var ret string
 		return ret
 	}
@@ -152,15 +155,15 @@ func (o *Grid) GetDescription() string {
 // GetDescriptionOk returns a tuple with the Description field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Grid) GetDescriptionOk() (*string, bool) {
-	if o == nil || isNil(o.Description) {
-    return nil, false
+	if o == nil || IsNil(o.Description) {
+		return nil, false
 	}
 	return o.Description, true
 }
 
 // HasDescription returns a boolean if a field has been set.
 func (o *Grid) HasDescription() bool {
-	if o != nil && !isNil(o.Description) {
+	if o != nil && !IsNil(o.Description) {
 		return true
 	}
 
@@ -174,7 +177,7 @@ func (o *Grid) SetDescription(v string) {
 
 // GetMetadata returns the Metadata field value if set, zero value otherwise.
 func (o *Grid) GetMetadata() map[string]string {
-	if o == nil || isNil(o.Metadata) {
+	if o == nil || IsNil(o.Metadata) {
 		var ret map[string]string
 		return ret
 	}
@@ -184,15 +187,15 @@ func (o *Grid) GetMetadata() map[string]string {
 // GetMetadataOk returns a tuple with the Metadata field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Grid) GetMetadataOk() (*map[string]string, bool) {
-	if o == nil || isNil(o.Metadata) {
-    return nil, false
+	if o == nil || IsNil(o.Metadata) {
+		return nil, false
 	}
 	return o.Metadata, true
 }
 
 // HasMetadata returns a boolean if a field has been set.
 func (o *Grid) HasMetadata() bool {
-	if o != nil && !isNil(o.Metadata) {
+	if o != nil && !IsNil(o.Metadata) {
 		return true
 	}
 
@@ -206,7 +209,7 @@ func (o *Grid) SetMetadata(v map[string]string) {
 
 // GetName returns the Name field value if set, zero value otherwise.
 func (o *Grid) GetName() string {
-	if o == nil || isNil(o.Name) {
+	if o == nil || IsNil(o.Name) {
 		var ret string
 		return ret
 	}
@@ -216,15 +219,15 @@ func (o *Grid) GetName() string {
 // GetNameOk returns a tuple with the Name field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Grid) GetNameOk() (*string, bool) {
-	if o == nil || isNil(o.Name) {
-    return nil, false
+	if o == nil || IsNil(o.Name) {
+		return nil, false
 	}
 	return o.Name, true
 }
 
 // HasName returns a boolean if a field has been set.
 func (o *Grid) HasName() bool {
-	if o != nil && !isNil(o.Name) {
+	if o != nil && !IsNil(o.Name) {
 		return true
 	}
 
@@ -238,7 +241,7 @@ func (o *Grid) SetName(v string) {
 
 // GetRecordIdentifierType returns the RecordIdentifierType field value if set, zero value otherwise.
 func (o *Grid) GetRecordIdentifierType() string {
-	if o == nil || isNil(o.RecordIdentifierType) {
+	if o == nil || IsNil(o.RecordIdentifierType) {
 		var ret string
 		return ret
 	}
@@ -248,15 +251,15 @@ func (o *Grid) GetRecordIdentifierType() string {
 // GetRecordIdentifierTypeOk returns a tuple with the RecordIdentifierType field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Grid) GetRecordIdentifierTypeOk() (*string, bool) {
-	if o == nil || isNil(o.RecordIdentifierType) {
-    return nil, false
+	if o == nil || IsNil(o.RecordIdentifierType) {
+		return nil, false
 	}
 	return o.RecordIdentifierType, true
 }
 
 // HasRecordIdentifierType returns a boolean if a field has been set.
 func (o *Grid) HasRecordIdentifierType() bool {
-	if o != nil && !isNil(o.RecordIdentifierType) {
+	if o != nil && !IsNil(o.RecordIdentifierType) {
 		return true
 	}
 
@@ -270,7 +273,7 @@ func (o *Grid) SetRecordIdentifierType(v string) {
 
 // GetStatus returns the Status field value if set, zero value otherwise.
 func (o *Grid) GetStatus() string {
-	if o == nil || isNil(o.Status) {
+	if o == nil || IsNil(o.Status) {
 		var ret string
 		return ret
 	}
@@ -280,15 +283,15 @@ func (o *Grid) GetStatus() string {
 // GetStatusOk returns a tuple with the Status field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Grid) GetStatusOk() (*string, bool) {
-	if o == nil || isNil(o.Status) {
-    return nil, false
+	if o == nil || IsNil(o.Status) {
+		return nil, false
 	}
 	return o.Status, true
 }
 
 // HasStatus returns a boolean if a field has been set.
 func (o *Grid) HasStatus() bool {
-	if o != nil && !isNil(o.Status) {
+	if o != nil && !IsNil(o.Status) {
 		return true
 	}
 
@@ -301,32 +304,40 @@ func (o *Grid) SetStatus(v string) {
 }
 
 func (o Grid) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if !isNil(o.Id) {
-		toSerialize["id"] = o.Id
-	}
-	if !isNil(o.Columns) {
-		toSerialize["columns"] = o.Columns
-	}
-	if !isNil(o.DefaultAccessViewId) {
-		toSerialize["defaultAccessViewId"] = o.DefaultAccessViewId
-	}
-	if !isNil(o.Description) {
-		toSerialize["description"] = o.Description
-	}
-	if !isNil(o.Metadata) {
-		toSerialize["metadata"] = o.Metadata
-	}
-	if !isNil(o.Name) {
-		toSerialize["name"] = o.Name
-	}
-	if !isNil(o.RecordIdentifierType) {
-		toSerialize["recordIdentifierType"] = o.RecordIdentifierType
-	}
-	if !isNil(o.Status) {
-		toSerialize["status"] = o.Status
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o Grid) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.Id) {
+		toSerialize["id"] = o.Id
+	}
+	if !IsNil(o.Columns) {
+		toSerialize["columns"] = o.Columns
+	}
+	if !IsNil(o.DefaultAccessViewId) {
+		toSerialize["defaultAccessViewId"] = o.DefaultAccessViewId
+	}
+	if !IsNil(o.Description) {
+		toSerialize["description"] = o.Description
+	}
+	if !IsNil(o.Metadata) {
+		toSerialize["metadata"] = o.Metadata
+	}
+	if !IsNil(o.Name) {
+		toSerialize["name"] = o.Name
+	}
+	if !IsNil(o.RecordIdentifierType) {
+		toSerialize["recordIdentifierType"] = o.RecordIdentifierType
+	}
+	if !IsNil(o.Status) {
+		toSerialize["status"] = o.Status
+	}
+	return toSerialize, nil
 }
 
 type NullableGrid struct {

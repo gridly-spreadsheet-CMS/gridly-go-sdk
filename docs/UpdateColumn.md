@@ -9,13 +9,15 @@ Name | Type | Description | Notes
 **Type** | Pointer to **string** |  | [optional] 
 **LanguageCode** | Pointer to **string** |  | [optional] 
 **LocalizationType** | Pointer to **string** |  | [optional] 
-**SelectionOptions** | Pointer to **[]string** |  | [optional] 
+**SelectionOptions** | Pointer to **[]string** | Please use selection | [optional] 
+**Selection** | Pointer to [**Selection**](Selection.md) |  | [optional] 
 **NumberFormat** | Pointer to [**NumberFormat**](NumberFormat.md) |  | [optional] 
 **Reference** | Pointer to [**Reference**](Reference.md) |  | [optional] 
 **Formula** | Pointer to [**Formula**](Formula.md) |  | [optional] 
 **DateTimeFormat** | Pointer to [**DateTimeFormat**](DateTimeFormat.md) |  | [optional] 
 **Viewable** | Pointer to **bool** |  | [optional] 
 **Editable** | Pointer to **bool** |  | [optional] 
+**LengthLimitSetting** | Pointer to [**LengthLimitSetting**](LengthLimitSetting.md) |  | [optional] 
 **NewId** | Pointer to **string** |  | [optional] 
 
 ## Methods
@@ -187,6 +189,31 @@ SetSelectionOptions sets SelectionOptions field to given value.
 
 HasSelectionOptions returns a boolean if a field has been set.
 
+### GetSelection
+
+`func (o *UpdateColumn) GetSelection() Selection`
+
+GetSelection returns the Selection field if non-nil, zero value otherwise.
+
+### GetSelectionOk
+
+`func (o *UpdateColumn) GetSelectionOk() (*Selection, bool)`
+
+GetSelectionOk returns a tuple with the Selection field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetSelection
+
+`func (o *UpdateColumn) SetSelection(v Selection)`
+
+SetSelection sets Selection field to given value.
+
+### HasSelection
+
+`func (o *UpdateColumn) HasSelection() bool`
+
+HasSelection returns a boolean if a field has been set.
+
 ### GetNumberFormat
 
 `func (o *UpdateColumn) GetNumberFormat() NumberFormat`
@@ -336,6 +363,31 @@ SetEditable sets Editable field to given value.
 `func (o *UpdateColumn) HasEditable() bool`
 
 HasEditable returns a boolean if a field has been set.
+
+### GetLengthLimitSetting
+
+`func (o *UpdateColumn) GetLengthLimitSetting() LengthLimitSetting`
+
+GetLengthLimitSetting returns the LengthLimitSetting field if non-nil, zero value otherwise.
+
+### GetLengthLimitSettingOk
+
+`func (o *UpdateColumn) GetLengthLimitSettingOk() (*LengthLimitSetting, bool)`
+
+GetLengthLimitSettingOk returns a tuple with the LengthLimitSetting field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetLengthLimitSetting
+
+`func (o *UpdateColumn) SetLengthLimitSetting(v LengthLimitSetting)`
+
+SetLengthLimitSetting sets LengthLimitSetting field to given value.
+
+### HasLengthLimitSetting
+
+`func (o *UpdateColumn) HasLengthLimitSetting() bool`
+
+HasLengthLimitSetting returns a boolean if a field has been set.
 
 ### GetNewId
 

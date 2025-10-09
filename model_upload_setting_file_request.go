@@ -3,7 +3,7 @@ Gridly API
 
 Gridly API documentation
 
-API version: 5.9.0
+API version: 6.13.0
 Contact: support@gridly.com
 */
 
@@ -15,6 +15,9 @@ import (
 	"encoding/json"
 	"os"
 )
+
+// checks if the UploadSettingFileRequest type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &UploadSettingFileRequest{}
 
 // UploadSettingFileRequest struct for UploadSettingFileRequest
 type UploadSettingFileRequest struct {
@@ -40,7 +43,7 @@ func NewUploadSettingFileRequestWithDefaults() *UploadSettingFileRequest {
 
 // GetFile returns the File field value if set, zero value otherwise.
 func (o *UploadSettingFileRequest) GetFile() *os.File {
-	if o == nil || isNil(o.File) {
+	if o == nil || IsNil(o.File) {
 		var ret *os.File
 		return ret
 	}
@@ -50,15 +53,15 @@ func (o *UploadSettingFileRequest) GetFile() *os.File {
 // GetFileOk returns a tuple with the File field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *UploadSettingFileRequest) GetFileOk() (**os.File, bool) {
-	if o == nil || isNil(o.File) {
-    return nil, false
+	if o == nil || IsNil(o.File) {
+		return nil, false
 	}
 	return o.File, true
 }
 
 // HasFile returns a boolean if a field has been set.
 func (o *UploadSettingFileRequest) HasFile() bool {
-	if o != nil && !isNil(o.File) {
+	if o != nil && !IsNil(o.File) {
 		return true
 	}
 
@@ -71,11 +74,19 @@ func (o *UploadSettingFileRequest) SetFile(v *os.File) {
 }
 
 func (o UploadSettingFileRequest) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if !isNil(o.File) {
-		toSerialize["file"] = o.File
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o UploadSettingFileRequest) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.File) {
+		toSerialize["file"] = o.File
+	}
+	return toSerialize, nil
 }
 
 type NullableUploadSettingFileRequest struct {

@@ -3,7 +3,7 @@ Gridly API
 
 Gridly API documentation
 
-API version: 5.9.0
+API version: 6.13.0
 Contact: support@gridly.com
 */
 
@@ -14,7 +14,7 @@ package gridly
 import (
 	"bytes"
 	"context"
-	"io/ioutil"
+	"io"
 	"net/http"
 	"net/url"
 	"strings"
@@ -70,9 +70,9 @@ func (a *ViewColumnApiService) AddExecute(r ViewColumnApiAddRequest) (*ViewColum
 	}
 
 	localVarPath := localBasePath + "/v1/views/{viewId}/columns/{columnId}/add"
-	localVarPath = strings.Replace(localVarPath, "{"+"columnId"+"}", url.PathEscape(parameterToString(r.columnId, "")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"viewId"+"}", url.PathEscape(parameterToString(r.viewId, "")), -1)
-
+	localVarPath = strings.Replace(localVarPath, "{"+"columnId"+"}", url.PathEscape(parameterValueToString(r.columnId, "columnId")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"viewId"+"}", url.PathEscape(parameterValueToString(r.viewId, "viewId")), -1)
+	
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
@@ -118,9 +118,9 @@ func (a *ViewColumnApiService) AddExecute(r ViewColumnApiAddRequest) (*ViewColum
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -194,7 +194,7 @@ func (a *ViewColumnApiService) BulkCreateExecute(r ViewColumnApiBulkCreateReques
 	}
 
 	localVarPath := localBasePath + "/v1/views/{viewId}/columns/bulk"
-	localVarPath = strings.Replace(localVarPath, "{"+"viewId"+"}", url.PathEscape(parameterToString(r.viewId, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"viewId"+"}", url.PathEscape(parameterValueToString(r.viewId, "viewId")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -246,9 +246,9 @@ func (a *ViewColumnApiService) BulkCreateExecute(r ViewColumnApiBulkCreateReques
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -322,7 +322,7 @@ func (a *ViewColumnApiService) CreateExecute(r ViewColumnApiCreateRequest) (*Vie
 	}
 
 	localVarPath := localBasePath + "/v1/views/{viewId}/columns"
-	localVarPath = strings.Replace(localVarPath, "{"+"viewId"+"}", url.PathEscape(parameterToString(r.viewId, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"viewId"+"}", url.PathEscape(parameterValueToString(r.viewId, "viewId")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -374,9 +374,9 @@ func (a *ViewColumnApiService) CreateExecute(r ViewColumnApiCreateRequest) (*Vie
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -445,8 +445,8 @@ func (a *ViewColumnApiService) DeleteExecute(r ViewColumnApiDeleteRequest) (*htt
 	}
 
 	localVarPath := localBasePath + "/v1/views/{viewId}/columns/{columnId}"
-	localVarPath = strings.Replace(localVarPath, "{"+"columnId"+"}", url.PathEscape(parameterToString(r.columnId, "")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"viewId"+"}", url.PathEscape(parameterToString(r.viewId, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"columnId"+"}", url.PathEscape(parameterValueToString(r.columnId, "columnId")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"viewId"+"}", url.PathEscape(parameterValueToString(r.viewId, "viewId")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -493,9 +493,9 @@ func (a *ViewColumnApiService) DeleteExecute(r ViewColumnApiDeleteRequest) (*htt
 		return localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarHTTPResponse, err
 	}
@@ -557,8 +557,8 @@ func (a *ViewColumnApiService) GetExecute(r ViewColumnApiGetRequest) (*ViewColum
 	}
 
 	localVarPath := localBasePath + "/v1/views/{viewId}/columns/{columnId}"
-	localVarPath = strings.Replace(localVarPath, "{"+"columnId"+"}", url.PathEscape(parameterToString(r.columnId, "")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"viewId"+"}", url.PathEscape(parameterToString(r.viewId, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"columnId"+"}", url.PathEscape(parameterValueToString(r.columnId, "columnId")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"viewId"+"}", url.PathEscape(parameterValueToString(r.viewId, "viewId")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -605,9 +605,9 @@ func (a *ViewColumnApiService) GetExecute(r ViewColumnApiGetRequest) (*ViewColum
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -676,8 +676,8 @@ func (a *ViewColumnApiService) RemoveExecute(r ViewColumnApiRemoveRequest) (*htt
 	}
 
 	localVarPath := localBasePath + "/v1/views/{viewId}/columns/{columnId}/remove"
-	localVarPath = strings.Replace(localVarPath, "{"+"columnId"+"}", url.PathEscape(parameterToString(r.columnId, "")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"viewId"+"}", url.PathEscape(parameterToString(r.viewId, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"columnId"+"}", url.PathEscape(parameterValueToString(r.columnId, "columnId")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"viewId"+"}", url.PathEscape(parameterValueToString(r.viewId, "viewId")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -724,9 +724,9 @@ func (a *ViewColumnApiService) RemoveExecute(r ViewColumnApiRemoveRequest) (*htt
 		return localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarHTTPResponse, err
 	}
@@ -794,8 +794,8 @@ func (a *ViewColumnApiService) UpdateExecute(r ViewColumnApiUpdateRequest) (*Vie
 	}
 
 	localVarPath := localBasePath + "/v1/views/{viewId}/columns/{columnId}"
-	localVarPath = strings.Replace(localVarPath, "{"+"columnId"+"}", url.PathEscape(parameterToString(r.columnId, "")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"viewId"+"}", url.PathEscape(parameterToString(r.viewId, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"columnId"+"}", url.PathEscape(parameterValueToString(r.columnId, "columnId")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"viewId"+"}", url.PathEscape(parameterValueToString(r.viewId, "viewId")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -847,9 +847,9 @@ func (a *ViewColumnApiService) UpdateExecute(r ViewColumnApiUpdateRequest) (*Vie
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}

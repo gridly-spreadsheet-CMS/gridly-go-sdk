@@ -9,6 +9,7 @@ Method | HTTP request | Description
 [**List**](PathApi.md#List) | **Get** /v1/views/{viewId}/paths/tree | list
 [**Move**](PathApi.md#Move) | **Post** /v1/views/{viewId}/paths/move | move
 [**Update**](PathApi.md#Update) | **Put** /v1/views/{viewId}/paths/{path} | update
+[**UpdatePathNode**](PathApi.md#UpdatePathNode) | **Put** /v1/views/{viewId}/paths | updatePathNode
 
 
 
@@ -26,25 +27,25 @@ create
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    gridly "./openapi"
+	"context"
+	"fmt"
+	"os"
+	gridly "github.com/gridly-spreadsheet-CMS/gridly-go-sdk"
 )
 
 func main() {
-    viewId := "viewId_example" // string | viewId
-    createPath := *gridly.NewCreatePath() // CreatePath | 
+	viewId := "viewId_example" // string | viewId
+	createPath := *gridly.NewCreatePath() // CreatePath | 
 
-    configuration := gridly.NewConfiguration()
-    apiClient := gridly.NewAPIClient(configuration)
-    resp, r, err := apiClient.PathApi.Create(context.Background(), viewId).CreatePath(createPath).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `PathApi.Create``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `Create`: PathList
-    fmt.Fprintf(os.Stdout, "Response from `PathApi.Create`: %v\n", resp)
+	configuration := gridly.NewConfiguration()
+	apiClient := gridly.NewAPIClient(configuration)
+	resp, r, err := apiClient.PathApi.Create(context.Background(), viewId).CreatePath(createPath).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `PathApi.Create``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `Create`: PathList
+	fmt.Fprintf(os.Stdout, "Response from `PathApi.Create`: %v\n", resp)
 }
 ```
 
@@ -98,23 +99,23 @@ delete
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    gridly "./openapi"
+	"context"
+	"fmt"
+	"os"
+	gridly "github.com/gridly-spreadsheet-CMS/gridly-go-sdk"
 )
 
 func main() {
-    viewId := "viewId_example" // string | viewId
-    deletePath := *gridly.NewDeletePath() // DeletePath | 
+	viewId := "viewId_example" // string | viewId
+	deletePath := *gridly.NewDeletePath() // DeletePath | 
 
-    configuration := gridly.NewConfiguration()
-    apiClient := gridly.NewAPIClient(configuration)
-    resp, r, err := apiClient.PathApi.Delete(context.Background(), viewId).DeletePath(deletePath).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `PathApi.Delete``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
+	configuration := gridly.NewConfiguration()
+	apiClient := gridly.NewAPIClient(configuration)
+	r, err := apiClient.PathApi.Delete(context.Background(), viewId).DeletePath(deletePath).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `PathApi.Delete``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
 }
 ```
 
@@ -168,25 +169,25 @@ list
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    gridly "./openapi"
+	"context"
+	"fmt"
+	"os"
+	gridly "github.com/gridly-spreadsheet-CMS/gridly-go-sdk"
 )
 
 func main() {
-    viewId := "viewId_example" // string | viewId
-    rootPath := "rootPath_example" // string | rootPath (optional)
+	viewId := "viewId_example" // string | viewId
+	rootPath := "rootPath_example" // string | rootPath (optional)
 
-    configuration := gridly.NewConfiguration()
-    apiClient := gridly.NewAPIClient(configuration)
-    resp, r, err := apiClient.PathApi.List(context.Background(), viewId).RootPath(rootPath).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `PathApi.List``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `List`: []PathNode
-    fmt.Fprintf(os.Stdout, "Response from `PathApi.List`: %v\n", resp)
+	configuration := gridly.NewConfiguration()
+	apiClient := gridly.NewAPIClient(configuration)
+	resp, r, err := apiClient.PathApi.List(context.Background(), viewId).RootPath(rootPath).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `PathApi.List``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `List`: []PathNode
+	fmt.Fprintf(os.Stdout, "Response from `PathApi.List`: %v\n", resp)
 }
 ```
 
@@ -240,25 +241,25 @@ move
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    gridly "./openapi"
+	"context"
+	"fmt"
+	"os"
+	gridly "github.com/gridly-spreadsheet-CMS/gridly-go-sdk"
 )
 
 func main() {
-    viewId := "viewId_example" // string | viewId
-    movePath := *gridly.NewMovePath() // MovePath | 
+	viewId := "viewId_example" // string | viewId
+	movePath := *gridly.NewMovePath() // MovePath | 
 
-    configuration := gridly.NewConfiguration()
-    apiClient := gridly.NewAPIClient(configuration)
-    resp, r, err := apiClient.PathApi.Move(context.Background(), viewId).MovePath(movePath).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `PathApi.Move``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `Move`: PathList
-    fmt.Fprintf(os.Stdout, "Response from `PathApi.Move`: %v\n", resp)
+	configuration := gridly.NewConfiguration()
+	apiClient := gridly.NewAPIClient(configuration)
+	resp, r, err := apiClient.PathApi.Move(context.Background(), viewId).MovePath(movePath).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `PathApi.Move``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `Move`: PathList
+	fmt.Fprintf(os.Stdout, "Response from `PathApi.Move`: %v\n", resp)
 }
 ```
 
@@ -312,26 +313,26 @@ update
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    gridly "./openapi"
+	"context"
+	"fmt"
+	"os"
+	gridly "github.com/gridly-spreadsheet-CMS/gridly-go-sdk"
 )
 
 func main() {
-    viewId := "viewId_example" // string | viewId
-    path := "path_example" // string | path
-    updatePath := *gridly.NewUpdatePath("NewName_example") // UpdatePath | 
+	viewId := "viewId_example" // string | viewId
+	path := "path_example" // string | path
+	updatePath := *gridly.NewUpdatePath("NewName_example") // UpdatePath | 
 
-    configuration := gridly.NewConfiguration()
-    apiClient := gridly.NewAPIClient(configuration)
-    resp, r, err := apiClient.PathApi.Update(context.Background(), viewId, path).UpdatePath(updatePath).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `PathApi.Update``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `Update`: PathSingle
-    fmt.Fprintf(os.Stdout, "Response from `PathApi.Update`: %v\n", resp)
+	configuration := gridly.NewConfiguration()
+	apiClient := gridly.NewAPIClient(configuration)
+	resp, r, err := apiClient.PathApi.Update(context.Background(), viewId, path).UpdatePath(updatePath).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `PathApi.Update``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `Update`: PathSingle
+	fmt.Fprintf(os.Stdout, "Response from `PathApi.Update`: %v\n", resp)
 }
 ```
 
@@ -352,6 +353,78 @@ Other parameters are passed through a pointer to a apiUpdateRequest struct via t
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
+
+ **updatePath** | [**UpdatePath**](UpdatePath.md) |  | 
+
+### Return type
+
+[**PathSingle**](PathSingle.md)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## UpdatePathNode
+
+> PathSingle UpdatePathNode(ctx, viewId).UpdatePath(updatePath).Execute()
+
+updatePathNode
+
+
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+	gridly "github.com/gridly-spreadsheet-CMS/gridly-go-sdk"
+)
+
+func main() {
+	viewId := "viewId_example" // string | viewId
+	updatePath := *gridly.NewUpdatePath("NewName_example") // UpdatePath | 
+
+	configuration := gridly.NewConfiguration()
+	apiClient := gridly.NewAPIClient(configuration)
+	resp, r, err := apiClient.PathApi.UpdatePathNode(context.Background(), viewId).UpdatePath(updatePath).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `PathApi.UpdatePathNode``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `UpdatePathNode`: PathSingle
+	fmt.Fprintf(os.Stdout, "Response from `PathApi.UpdatePathNode`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**viewId** | **string** | viewId | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiUpdatePathNodeRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
 
  **updatePath** | [**UpdatePath**](UpdatePath.md) |  | 
 

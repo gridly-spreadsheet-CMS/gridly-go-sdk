@@ -3,7 +3,7 @@ Gridly API
 
 Gridly API documentation
 
-API version: 5.9.0
+API version: 6.13.0
 Contact: support@gridly.com
 */
 
@@ -14,6 +14,9 @@ package gridly
 import (
 	"encoding/json"
 )
+
+// checks if the TranslationCount type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &TranslationCount{}
 
 // TranslationCount struct for TranslationCount
 type TranslationCount struct {
@@ -42,7 +45,7 @@ func NewTranslationCountWithDefaults() *TranslationCount {
 
 // GetAll returns the All field value if set, zero value otherwise.
 func (o *TranslationCount) GetAll() int64 {
-	if o == nil || isNil(o.All) {
+	if o == nil || IsNil(o.All) {
 		var ret int64
 		return ret
 	}
@@ -52,15 +55,15 @@ func (o *TranslationCount) GetAll() int64 {
 // GetAllOk returns a tuple with the All field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *TranslationCount) GetAllOk() (*int64, bool) {
-	if o == nil || isNil(o.All) {
-    return nil, false
+	if o == nil || IsNil(o.All) {
+		return nil, false
 	}
 	return o.All, true
 }
 
 // HasAll returns a boolean if a field has been set.
 func (o *TranslationCount) HasAll() bool {
-	if o != nil && !isNil(o.All) {
+	if o != nil && !IsNil(o.All) {
 		return true
 	}
 
@@ -74,7 +77,7 @@ func (o *TranslationCount) SetAll(v int64) {
 
 // GetOutOfDate returns the OutOfDate field value if set, zero value otherwise.
 func (o *TranslationCount) GetOutOfDate() int64 {
-	if o == nil || isNil(o.OutOfDate) {
+	if o == nil || IsNil(o.OutOfDate) {
 		var ret int64
 		return ret
 	}
@@ -84,15 +87,15 @@ func (o *TranslationCount) GetOutOfDate() int64 {
 // GetOutOfDateOk returns a tuple with the OutOfDate field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *TranslationCount) GetOutOfDateOk() (*int64, bool) {
-	if o == nil || isNil(o.OutOfDate) {
-    return nil, false
+	if o == nil || IsNil(o.OutOfDate) {
+		return nil, false
 	}
 	return o.OutOfDate, true
 }
 
 // HasOutOfDate returns a boolean if a field has been set.
 func (o *TranslationCount) HasOutOfDate() bool {
-	if o != nil && !isNil(o.OutOfDate) {
+	if o != nil && !IsNil(o.OutOfDate) {
 		return true
 	}
 
@@ -106,7 +109,7 @@ func (o *TranslationCount) SetOutOfDate(v int64) {
 
 // GetUnset returns the Unset field value if set, zero value otherwise.
 func (o *TranslationCount) GetUnset() int64 {
-	if o == nil || isNil(o.Unset) {
+	if o == nil || IsNil(o.Unset) {
 		var ret int64
 		return ret
 	}
@@ -116,15 +119,15 @@ func (o *TranslationCount) GetUnset() int64 {
 // GetUnsetOk returns a tuple with the Unset field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *TranslationCount) GetUnsetOk() (*int64, bool) {
-	if o == nil || isNil(o.Unset) {
-    return nil, false
+	if o == nil || IsNil(o.Unset) {
+		return nil, false
 	}
 	return o.Unset, true
 }
 
 // HasUnset returns a boolean if a field has been set.
 func (o *TranslationCount) HasUnset() bool {
-	if o != nil && !isNil(o.Unset) {
+	if o != nil && !IsNil(o.Unset) {
 		return true
 	}
 
@@ -138,7 +141,7 @@ func (o *TranslationCount) SetUnset(v int64) {
 
 // GetUpToDate returns the UpToDate field value if set, zero value otherwise.
 func (o *TranslationCount) GetUpToDate() int64 {
-	if o == nil || isNil(o.UpToDate) {
+	if o == nil || IsNil(o.UpToDate) {
 		var ret int64
 		return ret
 	}
@@ -148,15 +151,15 @@ func (o *TranslationCount) GetUpToDate() int64 {
 // GetUpToDateOk returns a tuple with the UpToDate field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *TranslationCount) GetUpToDateOk() (*int64, bool) {
-	if o == nil || isNil(o.UpToDate) {
-    return nil, false
+	if o == nil || IsNil(o.UpToDate) {
+		return nil, false
 	}
 	return o.UpToDate, true
 }
 
 // HasUpToDate returns a boolean if a field has been set.
 func (o *TranslationCount) HasUpToDate() bool {
-	if o != nil && !isNil(o.UpToDate) {
+	if o != nil && !IsNil(o.UpToDate) {
 		return true
 	}
 
@@ -169,20 +172,28 @@ func (o *TranslationCount) SetUpToDate(v int64) {
 }
 
 func (o TranslationCount) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if !isNil(o.All) {
-		toSerialize["all"] = o.All
-	}
-	if !isNil(o.OutOfDate) {
-		toSerialize["outOfDate"] = o.OutOfDate
-	}
-	if !isNil(o.Unset) {
-		toSerialize["unset"] = o.Unset
-	}
-	if !isNil(o.UpToDate) {
-		toSerialize["upToDate"] = o.UpToDate
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o TranslationCount) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.All) {
+		toSerialize["all"] = o.All
+	}
+	if !IsNil(o.OutOfDate) {
+		toSerialize["outOfDate"] = o.OutOfDate
+	}
+	if !IsNil(o.Unset) {
+		toSerialize["unset"] = o.Unset
+	}
+	if !IsNil(o.UpToDate) {
+		toSerialize["upToDate"] = o.UpToDate
+	}
+	return toSerialize, nil
 }
 
 type NullableTranslationCount struct {

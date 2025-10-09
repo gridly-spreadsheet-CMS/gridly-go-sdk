@@ -3,7 +3,7 @@ Gridly API
 
 Gridly API documentation
 
-API version: 5.9.0
+API version: 6.13.0
 Contact: support@gridly.com
 */
 
@@ -14,6 +14,9 @@ package gridly
 import (
 	"encoding/json"
 )
+
+// checks if the DeleteRecord type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &DeleteRecord{}
 
 // DeleteRecord struct for DeleteRecord
 type DeleteRecord struct {
@@ -40,7 +43,7 @@ func NewDeleteRecordWithDefaults() *DeleteRecord {
 
 // GetIds returns the Ids field value if set, zero value otherwise.
 func (o *DeleteRecord) GetIds() []string {
-	if o == nil || isNil(o.Ids) {
+	if o == nil || IsNil(o.Ids) {
 		var ret []string
 		return ret
 	}
@@ -50,15 +53,15 @@ func (o *DeleteRecord) GetIds() []string {
 // GetIdsOk returns a tuple with the Ids field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *DeleteRecord) GetIdsOk() ([]string, bool) {
-	if o == nil || isNil(o.Ids) {
-    return nil, false
+	if o == nil || IsNil(o.Ids) {
+		return nil, false
 	}
 	return o.Ids, true
 }
 
 // HasIds returns a boolean if a field has been set.
 func (o *DeleteRecord) HasIds() bool {
-	if o != nil && !isNil(o.Ids) {
+	if o != nil && !IsNil(o.Ids) {
 		return true
 	}
 
@@ -72,7 +75,7 @@ func (o *DeleteRecord) SetIds(v []string) {
 
 // GetIdentifiers returns the Identifiers field value if set, zero value otherwise.
 func (o *DeleteRecord) GetIdentifiers() []RecordIdentifierWrapper {
-	if o == nil || isNil(o.Identifiers) {
+	if o == nil || IsNil(o.Identifiers) {
 		var ret []RecordIdentifierWrapper
 		return ret
 	}
@@ -82,15 +85,15 @@ func (o *DeleteRecord) GetIdentifiers() []RecordIdentifierWrapper {
 // GetIdentifiersOk returns a tuple with the Identifiers field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *DeleteRecord) GetIdentifiersOk() ([]RecordIdentifierWrapper, bool) {
-	if o == nil || isNil(o.Identifiers) {
-    return nil, false
+	if o == nil || IsNil(o.Identifiers) {
+		return nil, false
 	}
 	return o.Identifiers, true
 }
 
 // HasIdentifiers returns a boolean if a field has been set.
 func (o *DeleteRecord) HasIdentifiers() bool {
-	if o != nil && !isNil(o.Identifiers) {
+	if o != nil && !IsNil(o.Identifiers) {
 		return true
 	}
 
@@ -103,14 +106,22 @@ func (o *DeleteRecord) SetIdentifiers(v []RecordIdentifierWrapper) {
 }
 
 func (o DeleteRecord) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if !isNil(o.Ids) {
-		toSerialize["ids"] = o.Ids
-	}
-	if !isNil(o.Identifiers) {
-		toSerialize["identifiers"] = o.Identifiers
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o DeleteRecord) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.Ids) {
+		toSerialize["ids"] = o.Ids
+	}
+	if !IsNil(o.Identifiers) {
+		toSerialize["identifiers"] = o.Identifiers
+	}
+	return toSerialize, nil
 }
 
 type NullableDeleteRecord struct {

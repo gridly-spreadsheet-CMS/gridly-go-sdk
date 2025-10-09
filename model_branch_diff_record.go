@@ -3,7 +3,7 @@ Gridly API
 
 Gridly API documentation
 
-API version: 5.9.0
+API version: 6.13.0
 Contact: support@gridly.com
 */
 
@@ -15,6 +15,9 @@ import (
 	"encoding/json"
 	"time"
 )
+
+// checks if the BranchDiffRecord type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &BranchDiffRecord{}
 
 // BranchDiffRecord struct for BranchDiffRecord
 type BranchDiffRecord struct {
@@ -45,7 +48,7 @@ func NewBranchDiffRecordWithDefaults() *BranchDiffRecord {
 
 // GetId returns the Id field value if set, zero value otherwise.
 func (o *BranchDiffRecord) GetId() string {
-	if o == nil || isNil(o.Id) {
+	if o == nil || IsNil(o.Id) {
 		var ret string
 		return ret
 	}
@@ -55,15 +58,15 @@ func (o *BranchDiffRecord) GetId() string {
 // GetIdOk returns a tuple with the Id field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *BranchDiffRecord) GetIdOk() (*string, bool) {
-	if o == nil || isNil(o.Id) {
-    return nil, false
+	if o == nil || IsNil(o.Id) {
+		return nil, false
 	}
 	return o.Id, true
 }
 
 // HasId returns a boolean if a field has been set.
 func (o *BranchDiffRecord) HasId() bool {
-	if o != nil && !isNil(o.Id) {
+	if o != nil && !IsNil(o.Id) {
 		return true
 	}
 
@@ -77,7 +80,7 @@ func (o *BranchDiffRecord) SetId(v string) {
 
 // GetPath returns the Path field value if set, zero value otherwise.
 func (o *BranchDiffRecord) GetPath() string {
-	if o == nil || isNil(o.Path) {
+	if o == nil || IsNil(o.Path) {
 		var ret string
 		return ret
 	}
@@ -87,15 +90,15 @@ func (o *BranchDiffRecord) GetPath() string {
 // GetPathOk returns a tuple with the Path field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *BranchDiffRecord) GetPathOk() (*string, bool) {
-	if o == nil || isNil(o.Path) {
-    return nil, false
+	if o == nil || IsNil(o.Path) {
+		return nil, false
 	}
 	return o.Path, true
 }
 
 // HasPath returns a boolean if a field has been set.
 func (o *BranchDiffRecord) HasPath() bool {
-	if o != nil && !isNil(o.Path) {
+	if o != nil && !IsNil(o.Path) {
 		return true
 	}
 
@@ -109,7 +112,7 @@ func (o *BranchDiffRecord) SetPath(v string) {
 
 // GetStatus returns the Status field value if set, zero value otherwise.
 func (o *BranchDiffRecord) GetStatus() string {
-	if o == nil || isNil(o.Status) {
+	if o == nil || IsNil(o.Status) {
 		var ret string
 		return ret
 	}
@@ -119,15 +122,15 @@ func (o *BranchDiffRecord) GetStatus() string {
 // GetStatusOk returns a tuple with the Status field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *BranchDiffRecord) GetStatusOk() (*string, bool) {
-	if o == nil || isNil(o.Status) {
-    return nil, false
+	if o == nil || IsNil(o.Status) {
+		return nil, false
 	}
 	return o.Status, true
 }
 
 // HasStatus returns a boolean if a field has been set.
 func (o *BranchDiffRecord) HasStatus() bool {
-	if o != nil && !isNil(o.Status) {
+	if o != nil && !IsNil(o.Status) {
 		return true
 	}
 
@@ -141,7 +144,7 @@ func (o *BranchDiffRecord) SetStatus(v string) {
 
 // GetCells returns the Cells field value if set, zero value otherwise.
 func (o *BranchDiffRecord) GetCells() []BranchDiffCell {
-	if o == nil || isNil(o.Cells) {
+	if o == nil || IsNil(o.Cells) {
 		var ret []BranchDiffCell
 		return ret
 	}
@@ -151,15 +154,15 @@ func (o *BranchDiffRecord) GetCells() []BranchDiffCell {
 // GetCellsOk returns a tuple with the Cells field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *BranchDiffRecord) GetCellsOk() ([]BranchDiffCell, bool) {
-	if o == nil || isNil(o.Cells) {
-    return nil, false
+	if o == nil || IsNil(o.Cells) {
+		return nil, false
 	}
 	return o.Cells, true
 }
 
 // HasCells returns a boolean if a field has been set.
 func (o *BranchDiffRecord) HasCells() bool {
-	if o != nil && !isNil(o.Cells) {
+	if o != nil && !IsNil(o.Cells) {
 		return true
 	}
 
@@ -173,7 +176,7 @@ func (o *BranchDiffRecord) SetCells(v []BranchDiffCell) {
 
 // GetLastModifiedBy returns the LastModifiedBy field value if set, zero value otherwise.
 func (o *BranchDiffRecord) GetLastModifiedBy() string {
-	if o == nil || isNil(o.LastModifiedBy) {
+	if o == nil || IsNil(o.LastModifiedBy) {
 		var ret string
 		return ret
 	}
@@ -183,15 +186,15 @@ func (o *BranchDiffRecord) GetLastModifiedBy() string {
 // GetLastModifiedByOk returns a tuple with the LastModifiedBy field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *BranchDiffRecord) GetLastModifiedByOk() (*string, bool) {
-	if o == nil || isNil(o.LastModifiedBy) {
-    return nil, false
+	if o == nil || IsNil(o.LastModifiedBy) {
+		return nil, false
 	}
 	return o.LastModifiedBy, true
 }
 
 // HasLastModifiedBy returns a boolean if a field has been set.
 func (o *BranchDiffRecord) HasLastModifiedBy() bool {
-	if o != nil && !isNil(o.LastModifiedBy) {
+	if o != nil && !IsNil(o.LastModifiedBy) {
 		return true
 	}
 
@@ -205,7 +208,7 @@ func (o *BranchDiffRecord) SetLastModifiedBy(v string) {
 
 // GetLastModifiedTime returns the LastModifiedTime field value if set, zero value otherwise.
 func (o *BranchDiffRecord) GetLastModifiedTime() time.Time {
-	if o == nil || isNil(o.LastModifiedTime) {
+	if o == nil || IsNil(o.LastModifiedTime) {
 		var ret time.Time
 		return ret
 	}
@@ -215,15 +218,15 @@ func (o *BranchDiffRecord) GetLastModifiedTime() time.Time {
 // GetLastModifiedTimeOk returns a tuple with the LastModifiedTime field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *BranchDiffRecord) GetLastModifiedTimeOk() (*time.Time, bool) {
-	if o == nil || isNil(o.LastModifiedTime) {
-    return nil, false
+	if o == nil || IsNil(o.LastModifiedTime) {
+		return nil, false
 	}
 	return o.LastModifiedTime, true
 }
 
 // HasLastModifiedTime returns a boolean if a field has been set.
 func (o *BranchDiffRecord) HasLastModifiedTime() bool {
-	if o != nil && !isNil(o.LastModifiedTime) {
+	if o != nil && !IsNil(o.LastModifiedTime) {
 		return true
 	}
 
@@ -236,26 +239,34 @@ func (o *BranchDiffRecord) SetLastModifiedTime(v time.Time) {
 }
 
 func (o BranchDiffRecord) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if !isNil(o.Id) {
-		toSerialize["id"] = o.Id
-	}
-	if !isNil(o.Path) {
-		toSerialize["path"] = o.Path
-	}
-	if !isNil(o.Status) {
-		toSerialize["status"] = o.Status
-	}
-	if !isNil(o.Cells) {
-		toSerialize["cells"] = o.Cells
-	}
-	if !isNil(o.LastModifiedBy) {
-		toSerialize["lastModifiedBy"] = o.LastModifiedBy
-	}
-	if !isNil(o.LastModifiedTime) {
-		toSerialize["lastModifiedTime"] = o.LastModifiedTime
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o BranchDiffRecord) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.Id) {
+		toSerialize["id"] = o.Id
+	}
+	if !IsNil(o.Path) {
+		toSerialize["path"] = o.Path
+	}
+	if !IsNil(o.Status) {
+		toSerialize["status"] = o.Status
+	}
+	if !IsNil(o.Cells) {
+		toSerialize["cells"] = o.Cells
+	}
+	if !IsNil(o.LastModifiedBy) {
+		toSerialize["lastModifiedBy"] = o.LastModifiedBy
+	}
+	if !IsNil(o.LastModifiedTime) {
+		toSerialize["lastModifiedTime"] = o.LastModifiedTime
+	}
+	return toSerialize, nil
 }
 
 type NullableBranchDiffRecord struct {

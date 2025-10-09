@@ -7,15 +7,15 @@ Name | Type | Description | Notes
 **Id** | Pointer to **string** |  | [optional] 
 **Name** | **string** |  | 
 **TemplateGridId** | Pointer to **string** |  | [optional] 
-**RecordIdentifierType** | Pointer to **string** |  | [optional] 
-**Columns** | Pointer to [**[]CreateColumn**](CreateColumn.md) |  | [optional] 
 **Metadata** | Pointer to **map[string]string** |  | [optional] 
+**RecordIdentifierType** | **string** |  | [default to "recordId"]
+**Columns** | Pointer to [**[]CreateColumn**](CreateColumn.md) |  | [optional] 
 
 ## Methods
 
 ### NewCreateGrid
 
-`func NewCreateGrid(name string, ) *CreateGrid`
+`func NewCreateGrid(name string, recordIdentifierType string, ) *CreateGrid`
 
 NewCreateGrid instantiates a new CreateGrid object
 This constructor will assign default values to properties that have it defined,
@@ -100,6 +100,31 @@ SetTemplateGridId sets TemplateGridId field to given value.
 
 HasTemplateGridId returns a boolean if a field has been set.
 
+### GetMetadata
+
+`func (o *CreateGrid) GetMetadata() map[string]string`
+
+GetMetadata returns the Metadata field if non-nil, zero value otherwise.
+
+### GetMetadataOk
+
+`func (o *CreateGrid) GetMetadataOk() (*map[string]string, bool)`
+
+GetMetadataOk returns a tuple with the Metadata field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetMetadata
+
+`func (o *CreateGrid) SetMetadata(v map[string]string)`
+
+SetMetadata sets Metadata field to given value.
+
+### HasMetadata
+
+`func (o *CreateGrid) HasMetadata() bool`
+
+HasMetadata returns a boolean if a field has been set.
+
 ### GetRecordIdentifierType
 
 `func (o *CreateGrid) GetRecordIdentifierType() string`
@@ -119,11 +144,6 @@ and a boolean to check if the value has been set.
 
 SetRecordIdentifierType sets RecordIdentifierType field to given value.
 
-### HasRecordIdentifierType
-
-`func (o *CreateGrid) HasRecordIdentifierType() bool`
-
-HasRecordIdentifierType returns a boolean if a field has been set.
 
 ### GetColumns
 
@@ -149,31 +169,6 @@ SetColumns sets Columns field to given value.
 `func (o *CreateGrid) HasColumns() bool`
 
 HasColumns returns a boolean if a field has been set.
-
-### GetMetadata
-
-`func (o *CreateGrid) GetMetadata() map[string]string`
-
-GetMetadata returns the Metadata field if non-nil, zero value otherwise.
-
-### GetMetadataOk
-
-`func (o *CreateGrid) GetMetadataOk() (*map[string]string, bool)`
-
-GetMetadataOk returns a tuple with the Metadata field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetMetadata
-
-`func (o *CreateGrid) SetMetadata(v map[string]string)`
-
-SetMetadata sets Metadata field to given value.
-
-### HasMetadata
-
-`func (o *CreateGrid) HasMetadata() bool`
-
-HasMetadata returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

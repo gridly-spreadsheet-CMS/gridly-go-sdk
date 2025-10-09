@@ -24,28 +24,28 @@ list
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    gridly "./openapi"
+	"context"
+	"fmt"
+	"os"
+	gridly "github.com/gridly-spreadsheet-CMS/gridly-go-sdk"
 )
 
 func main() {
-    gridId := "gridId_example" // string | gridId
-    offset := int32(56) // int32 | offset (optional) (default to 0)
-    limit := int32(56) // int32 | limit (optional) (default to 128)
-    ids := []string{"Inner_example"} // []string | ids (optional)
-    published := true // bool | published (optional)
+	gridId := "gridId_example" // string | gridId
+	offset := int32(56) // int32 | offset (optional) (default to 0)
+	limit := int32(56) // int32 | limit (optional) (default to 128)
+	ids := []string{"Inner_example"} // []string | ids (optional)
+	published := true // bool | published (optional)
 
-    configuration := gridly.NewConfiguration()
-    apiClient := gridly.NewAPIClient(configuration)
-    resp, r, err := apiClient.CdnApi.List(context.Background()).GridId(gridId).Offset(offset).Limit(limit).Ids(ids).Published(published).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `CdnApi.List``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `List`: []CDN
-    fmt.Fprintf(os.Stdout, "Response from `CdnApi.List`: %v\n", resp)
+	configuration := gridly.NewConfiguration()
+	apiClient := gridly.NewAPIClient(configuration)
+	resp, r, err := apiClient.CdnApi.List(context.Background()).GridId(gridId).Offset(offset).Limit(limit).Ids(ids).Published(published).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `CdnApi.List``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `List`: []CDN
+	fmt.Fprintf(os.Stdout, "Response from `CdnApi.List`: %v\n", resp)
 }
 ```
 
@@ -98,24 +98,24 @@ publish
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    gridly "./openapi"
+	"context"
+	"fmt"
+	"os"
+	gridly "github.com/gridly-spreadsheet-CMS/gridly-go-sdk"
 )
 
 func main() {
-    cdnId := "cdnId_example" // string | cdnId
+	cdnId := "cdnId_example" // string | cdnId
 
-    configuration := gridly.NewConfiguration()
-    apiClient := gridly.NewAPIClient(configuration)
-    resp, r, err := apiClient.CdnApi.Publish(context.Background(), cdnId).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `CdnApi.Publish``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `Publish`: CDN
-    fmt.Fprintf(os.Stdout, "Response from `CdnApi.Publish`: %v\n", resp)
+	configuration := gridly.NewConfiguration()
+	apiClient := gridly.NewAPIClient(configuration)
+	resp, r, err := apiClient.CdnApi.Publish(context.Background(), cdnId).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `CdnApi.Publish``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `Publish`: CDN
+	fmt.Fprintf(os.Stdout, "Response from `CdnApi.Publish`: %v\n", resp)
 }
 ```
 
@@ -168,24 +168,24 @@ unPublish
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    gridly "./openapi"
+	"context"
+	"fmt"
+	"os"
+	gridly "github.com/gridly-spreadsheet-CMS/gridly-go-sdk"
 )
 
 func main() {
-    cdnId := "cdnId_example" // string | cdnId
+	cdnId := "cdnId_example" // string | cdnId
 
-    configuration := gridly.NewConfiguration()
-    apiClient := gridly.NewAPIClient(configuration)
-    resp, r, err := apiClient.CdnApi.UnPublish(context.Background(), cdnId).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `CdnApi.UnPublish``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `UnPublish`: CDN
-    fmt.Fprintf(os.Stdout, "Response from `CdnApi.UnPublish`: %v\n", resp)
+	configuration := gridly.NewConfiguration()
+	apiClient := gridly.NewAPIClient(configuration)
+	resp, r, err := apiClient.CdnApi.UnPublish(context.Background(), cdnId).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `CdnApi.UnPublish``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `UnPublish`: CDN
+	fmt.Fprintf(os.Stdout, "Response from `CdnApi.UnPublish`: %v\n", resp)
 }
 ```
 

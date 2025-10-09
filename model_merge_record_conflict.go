@@ -3,7 +3,7 @@ Gridly API
 
 Gridly API documentation
 
-API version: 5.9.0
+API version: 6.13.0
 Contact: support@gridly.com
 */
 
@@ -14,6 +14,9 @@ package gridly
 import (
 	"encoding/json"
 )
+
+// checks if the MergeRecordConflict type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &MergeRecordConflict{}
 
 // MergeRecordConflict struct for MergeRecordConflict
 type MergeRecordConflict struct {
@@ -41,7 +44,7 @@ func NewMergeRecordConflictWithDefaults() *MergeRecordConflict {
 
 // GetCells returns the Cells field value if set, zero value otherwise.
 func (o *MergeRecordConflict) GetCells() []MergeCellConflict {
-	if o == nil || isNil(o.Cells) {
+	if o == nil || IsNil(o.Cells) {
 		var ret []MergeCellConflict
 		return ret
 	}
@@ -51,15 +54,15 @@ func (o *MergeRecordConflict) GetCells() []MergeCellConflict {
 // GetCellsOk returns a tuple with the Cells field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *MergeRecordConflict) GetCellsOk() ([]MergeCellConflict, bool) {
-	if o == nil || isNil(o.Cells) {
-    return nil, false
+	if o == nil || IsNil(o.Cells) {
+		return nil, false
 	}
 	return o.Cells, true
 }
 
 // HasCells returns a boolean if a field has been set.
 func (o *MergeRecordConflict) HasCells() bool {
-	if o != nil && !isNil(o.Cells) {
+	if o != nil && !IsNil(o.Cells) {
 		return true
 	}
 
@@ -73,7 +76,7 @@ func (o *MergeRecordConflict) SetCells(v []MergeCellConflict) {
 
 // GetPathTag returns the PathTag field value if set, zero value otherwise.
 func (o *MergeRecordConflict) GetPathTag() string {
-	if o == nil || isNil(o.PathTag) {
+	if o == nil || IsNil(o.PathTag) {
 		var ret string
 		return ret
 	}
@@ -83,15 +86,15 @@ func (o *MergeRecordConflict) GetPathTag() string {
 // GetPathTagOk returns a tuple with the PathTag field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *MergeRecordConflict) GetPathTagOk() (*string, bool) {
-	if o == nil || isNil(o.PathTag) {
-    return nil, false
+	if o == nil || IsNil(o.PathTag) {
+		return nil, false
 	}
 	return o.PathTag, true
 }
 
 // HasPathTag returns a boolean if a field has been set.
 func (o *MergeRecordConflict) HasPathTag() bool {
-	if o != nil && !isNil(o.PathTag) {
+	if o != nil && !IsNil(o.PathTag) {
 		return true
 	}
 
@@ -105,7 +108,7 @@ func (o *MergeRecordConflict) SetPathTag(v string) {
 
 // GetRecordId returns the RecordId field value if set, zero value otherwise.
 func (o *MergeRecordConflict) GetRecordId() string {
-	if o == nil || isNil(o.RecordId) {
+	if o == nil || IsNil(o.RecordId) {
 		var ret string
 		return ret
 	}
@@ -115,15 +118,15 @@ func (o *MergeRecordConflict) GetRecordId() string {
 // GetRecordIdOk returns a tuple with the RecordId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *MergeRecordConflict) GetRecordIdOk() (*string, bool) {
-	if o == nil || isNil(o.RecordId) {
-    return nil, false
+	if o == nil || IsNil(o.RecordId) {
+		return nil, false
 	}
 	return o.RecordId, true
 }
 
 // HasRecordId returns a boolean if a field has been set.
 func (o *MergeRecordConflict) HasRecordId() bool {
-	if o != nil && !isNil(o.RecordId) {
+	if o != nil && !IsNil(o.RecordId) {
 		return true
 	}
 
@@ -136,17 +139,25 @@ func (o *MergeRecordConflict) SetRecordId(v string) {
 }
 
 func (o MergeRecordConflict) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if !isNil(o.Cells) {
-		toSerialize["cells"] = o.Cells
-	}
-	if !isNil(o.PathTag) {
-		toSerialize["pathTag"] = o.PathTag
-	}
-	if !isNil(o.RecordId) {
-		toSerialize["recordId"] = o.RecordId
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o MergeRecordConflict) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.Cells) {
+		toSerialize["cells"] = o.Cells
+	}
+	if !IsNil(o.PathTag) {
+		toSerialize["pathTag"] = o.PathTag
+	}
+	if !IsNil(o.RecordId) {
+		toSerialize["recordId"] = o.RecordId
+	}
+	return toSerialize, nil
 }
 
 type NullableMergeRecordConflict struct {

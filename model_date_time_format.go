@@ -3,7 +3,7 @@ Gridly API
 
 Gridly API documentation
 
-API version: 5.9.0
+API version: 6.13.0
 Contact: support@gridly.com
 */
 
@@ -14,6 +14,9 @@ package gridly
 import (
 	"encoding/json"
 )
+
+// checks if the DateTimeFormat type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &DateTimeFormat{}
 
 // DateTimeFormat struct for DateTimeFormat
 type DateTimeFormat struct {
@@ -42,7 +45,7 @@ func NewDateTimeFormatWithDefaults() *DateTimeFormat {
 
 // GetDateFormat returns the DateFormat field value if set, zero value otherwise.
 func (o *DateTimeFormat) GetDateFormat() string {
-	if o == nil || isNil(o.DateFormat) {
+	if o == nil || IsNil(o.DateFormat) {
 		var ret string
 		return ret
 	}
@@ -52,15 +55,15 @@ func (o *DateTimeFormat) GetDateFormat() string {
 // GetDateFormatOk returns a tuple with the DateFormat field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *DateTimeFormat) GetDateFormatOk() (*string, bool) {
-	if o == nil || isNil(o.DateFormat) {
-    return nil, false
+	if o == nil || IsNil(o.DateFormat) {
+		return nil, false
 	}
 	return o.DateFormat, true
 }
 
 // HasDateFormat returns a boolean if a field has been set.
 func (o *DateTimeFormat) HasDateFormat() bool {
-	if o != nil && !isNil(o.DateFormat) {
+	if o != nil && !IsNil(o.DateFormat) {
 		return true
 	}
 
@@ -74,7 +77,7 @@ func (o *DateTimeFormat) SetDateFormat(v string) {
 
 // GetTimeFormat returns the TimeFormat field value if set, zero value otherwise.
 func (o *DateTimeFormat) GetTimeFormat() string {
-	if o == nil || isNil(o.TimeFormat) {
+	if o == nil || IsNil(o.TimeFormat) {
 		var ret string
 		return ret
 	}
@@ -84,15 +87,15 @@ func (o *DateTimeFormat) GetTimeFormat() string {
 // GetTimeFormatOk returns a tuple with the TimeFormat field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *DateTimeFormat) GetTimeFormatOk() (*string, bool) {
-	if o == nil || isNil(o.TimeFormat) {
-    return nil, false
+	if o == nil || IsNil(o.TimeFormat) {
+		return nil, false
 	}
 	return o.TimeFormat, true
 }
 
 // HasTimeFormat returns a boolean if a field has been set.
 func (o *DateTimeFormat) HasTimeFormat() bool {
-	if o != nil && !isNil(o.TimeFormat) {
+	if o != nil && !IsNil(o.TimeFormat) {
 		return true
 	}
 
@@ -106,7 +109,7 @@ func (o *DateTimeFormat) SetTimeFormat(v string) {
 
 // GetZoneOffset returns the ZoneOffset field value if set, zero value otherwise.
 func (o *DateTimeFormat) GetZoneOffset() string {
-	if o == nil || isNil(o.ZoneOffset) {
+	if o == nil || IsNil(o.ZoneOffset) {
 		var ret string
 		return ret
 	}
@@ -116,15 +119,15 @@ func (o *DateTimeFormat) GetZoneOffset() string {
 // GetZoneOffsetOk returns a tuple with the ZoneOffset field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *DateTimeFormat) GetZoneOffsetOk() (*string, bool) {
-	if o == nil || isNil(o.ZoneOffset) {
-    return nil, false
+	if o == nil || IsNil(o.ZoneOffset) {
+		return nil, false
 	}
 	return o.ZoneOffset, true
 }
 
 // HasZoneOffset returns a boolean if a field has been set.
 func (o *DateTimeFormat) HasZoneOffset() bool {
-	if o != nil && !isNil(o.ZoneOffset) {
+	if o != nil && !IsNil(o.ZoneOffset) {
 		return true
 	}
 
@@ -138,7 +141,7 @@ func (o *DateTimeFormat) SetZoneOffset(v string) {
 
 // GetShowTimeZone returns the ShowTimeZone field value if set, zero value otherwise.
 func (o *DateTimeFormat) GetShowTimeZone() bool {
-	if o == nil || isNil(o.ShowTimeZone) {
+	if o == nil || IsNil(o.ShowTimeZone) {
 		var ret bool
 		return ret
 	}
@@ -148,15 +151,15 @@ func (o *DateTimeFormat) GetShowTimeZone() bool {
 // GetShowTimeZoneOk returns a tuple with the ShowTimeZone field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *DateTimeFormat) GetShowTimeZoneOk() (*bool, bool) {
-	if o == nil || isNil(o.ShowTimeZone) {
-    return nil, false
+	if o == nil || IsNil(o.ShowTimeZone) {
+		return nil, false
 	}
 	return o.ShowTimeZone, true
 }
 
 // HasShowTimeZone returns a boolean if a field has been set.
 func (o *DateTimeFormat) HasShowTimeZone() bool {
-	if o != nil && !isNil(o.ShowTimeZone) {
+	if o != nil && !IsNil(o.ShowTimeZone) {
 		return true
 	}
 
@@ -169,20 +172,28 @@ func (o *DateTimeFormat) SetShowTimeZone(v bool) {
 }
 
 func (o DateTimeFormat) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if !isNil(o.DateFormat) {
-		toSerialize["dateFormat"] = o.DateFormat
-	}
-	if !isNil(o.TimeFormat) {
-		toSerialize["timeFormat"] = o.TimeFormat
-	}
-	if !isNil(o.ZoneOffset) {
-		toSerialize["zoneOffset"] = o.ZoneOffset
-	}
-	if !isNil(o.ShowTimeZone) {
-		toSerialize["showTimeZone"] = o.ShowTimeZone
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o DateTimeFormat) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.DateFormat) {
+		toSerialize["dateFormat"] = o.DateFormat
+	}
+	if !IsNil(o.TimeFormat) {
+		toSerialize["timeFormat"] = o.TimeFormat
+	}
+	if !IsNil(o.ZoneOffset) {
+		toSerialize["zoneOffset"] = o.ZoneOffset
+	}
+	if !IsNil(o.ShowTimeZone) {
+		toSerialize["showTimeZone"] = o.ShowTimeZone
+	}
+	return toSerialize, nil
 }
 
 type NullableDateTimeFormat struct {

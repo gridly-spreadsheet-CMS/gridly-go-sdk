@@ -3,7 +3,7 @@ Gridly API
 
 Gridly API documentation
 
-API version: 5.9.0
+API version: 6.13.0
 Contact: support@gridly.com
 */
 
@@ -14,7 +14,7 @@ package gridly
 import (
 	"bytes"
 	"context"
-	"io/ioutil"
+	"io"
 	"net/http"
 	"net/url"
 	"strings"
@@ -65,7 +65,7 @@ func (a *TransmemApiService) CleanupExecute(r TransmemApiCleanupRequest) (*http.
 	}
 
 	localVarPath := localBasePath + "/v1/transmems/{tmId}/cleanup"
-	localVarPath = strings.Replace(localVarPath, "{"+"tmId"+"}", url.PathEscape(parameterToString(r.tmId, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"tmId"+"}", url.PathEscape(parameterValueToString(r.tmId, "tmId")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -112,9 +112,9 @@ func (a *TransmemApiService) CleanupExecute(r TransmemApiCleanupRequest) (*http.
 		return localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarHTTPResponse, err
 	}
@@ -178,6 +178,9 @@ func (a *TransmemApiService) CreateExecute(r TransmemApiCreateRequest) (*TransMe
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
+	if r.createTransMem == nil {
+		return localVarReturnValue, nil, reportError("createTransMem is required and must be specified")
+	}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{"application/json"}
@@ -222,9 +225,9 @@ func (a *TransmemApiService) CreateExecute(r TransmemApiCreateRequest) (*TransMe
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -252,11 +255,11 @@ func (a *TransmemApiService) CreateExecute(r TransmemApiCreateRequest) (*TransMe
 type TransmemApiCreateWithFileRequest struct {
 	ctx context.Context
 	ApiService *TransmemApiService
-	file **os.File
+	file *os.File
 }
 
 func (r TransmemApiCreateWithFileRequest) File(file *os.File) TransmemApiCreateWithFileRequest {
-	r.file = &file
+	r.file = file
 	return r
 }
 
@@ -323,15 +326,16 @@ func (a *TransmemApiService) CreateWithFileExecute(r TransmemApiCreateWithFileRe
 	var fileLocalVarFileBytes    []byte
 
 	fileLocalVarFormFileName = "file"
+	fileLocalVarFile := r.file
 
-	fileLocalVarFile := *r.file
 	if fileLocalVarFile != nil {
-		fbs, _ := ioutil.ReadAll(fileLocalVarFile)
+		fbs, _ := io.ReadAll(fileLocalVarFile)
+
 		fileLocalVarFileBytes = fbs
 		fileLocalVarFileName = fileLocalVarFile.Name()
 		fileLocalVarFile.Close()
+		formFiles = append(formFiles, formFile{fileBytes: fileLocalVarFileBytes, fileName: fileLocalVarFileName, formFileName: fileLocalVarFormFileName})
 	}
-	formFiles = append(formFiles, formFile{fileBytes: fileLocalVarFileBytes, fileName: fileLocalVarFileName, formFileName: fileLocalVarFormFileName})
 	if r.ctx != nil {
 		// API Key Authentication
 		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
@@ -356,9 +360,9 @@ func (a *TransmemApiService) CreateWithFileExecute(r TransmemApiCreateWithFileRe
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -424,7 +428,7 @@ func (a *TransmemApiService) DeleteExecute(r TransmemApiDeleteRequest) (*TransMe
 	}
 
 	localVarPath := localBasePath + "/v1/transmems/{tmId}"
-	localVarPath = strings.Replace(localVarPath, "{"+"tmId"+"}", url.PathEscape(parameterToString(r.tmId, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"tmId"+"}", url.PathEscape(parameterValueToString(r.tmId, "tmId")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -471,9 +475,9 @@ func (a *TransmemApiService) DeleteExecute(r TransmemApiDeleteRequest) (*TransMe
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -502,12 +506,12 @@ type TransmemApiExportRequest struct {
 	ctx context.Context
 	ApiService *TransmemApiService
 	tmId string
-	format *ExportFormat
+	format *ExportTransMemFormat
 	sourceLang *string
 	targetLangs *[]string
 }
 
-func (r TransmemApiExportRequest) Format(format ExportFormat) TransmemApiExportRequest {
+func (r TransmemApiExportRequest) Format(format ExportTransMemFormat) TransmemApiExportRequest {
 	r.format = &format
 	return r
 }
@@ -522,7 +526,7 @@ func (r TransmemApiExportRequest) TargetLangs(targetLangs []string) TransmemApiE
 	return r
 }
 
-func (r TransmemApiExportRequest) Execute() (**os.File, *http.Response, error) {
+func (r TransmemApiExportRequest) Execute() (*os.File, *http.Response, error) {
 	return r.ApiService.ExportExecute(r)
 }
 
@@ -543,12 +547,12 @@ func (a *TransmemApiService) Export(ctx context.Context, tmId string) TransmemAp
 
 // Execute executes the request
 //  @return *os.File
-func (a *TransmemApiService) ExportExecute(r TransmemApiExportRequest) (**os.File, *http.Response, error) {
+func (a *TransmemApiService) ExportExecute(r TransmemApiExportRequest) (*os.File, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  **os.File
+		localVarReturnValue  *os.File
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "TransmemApiService.Export")
@@ -557,27 +561,30 @@ func (a *TransmemApiService) ExportExecute(r TransmemApiExportRequest) (**os.Fil
 	}
 
 	localVarPath := localBasePath + "/v1/transmems/{tmId}/export"
-	localVarPath = strings.Replace(localVarPath, "{"+"tmId"+"}", url.PathEscape(parameterToString(r.tmId, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"tmId"+"}", url.PathEscape(parameterValueToString(r.tmId, "tmId")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
 
 	if r.format != nil {
-		localVarQueryParams.Add("format", parameterToString(*r.format, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "format", r.format, "form", "")
+	} else {
+		var defaultValue ExportTransMemFormat = "tmx"
+		r.format = &defaultValue
 	}
 	if r.sourceLang != nil {
-		localVarQueryParams.Add("sourceLang", parameterToString(*r.sourceLang, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "sourceLang", r.sourceLang, "form", "")
 	}
 	if r.targetLangs != nil {
 		t := *r.targetLangs
 		if reflect.TypeOf(t).Kind() == reflect.Slice {
 			s := reflect.ValueOf(t)
 			for i := 0; i < s.Len(); i++ {
-				localVarQueryParams.Add("targetLangs", parameterToString(s.Index(i), "multi"))
+				parameterAddToHeaderOrQuery(localVarQueryParams, "targetLangs", s.Index(i).Interface(), "form", "multi")
 			}
 		} else {
-			localVarQueryParams.Add("targetLangs", parameterToString(t, "multi"))
+			parameterAddToHeaderOrQuery(localVarQueryParams, "targetLangs", t, "form", "multi")
 		}
 	}
 	// to determine the Content-Type header
@@ -621,9 +628,9 @@ func (a *TransmemApiService) ExportExecute(r TransmemApiExportRequest) (**os.Fil
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -689,7 +696,7 @@ func (a *TransmemApiService) GetExecute(r TransmemApiGetRequest) (*TransMem, *ht
 	}
 
 	localVarPath := localBasePath + "/v1/transmems/{tmId}"
-	localVarPath = strings.Replace(localVarPath, "{"+"tmId"+"}", url.PathEscape(parameterToString(r.tmId, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"tmId"+"}", url.PathEscape(parameterValueToString(r.tmId, "tmId")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -736,9 +743,9 @@ func (a *TransmemApiService) GetExecute(r TransmemApiGetRequest) (*TransMem, *ht
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -767,11 +774,11 @@ type TransmemApiImportTmxRequest struct {
 	ctx context.Context
 	ApiService *TransmemApiService
 	tmId string
-	file **os.File
+	file *os.File
 }
 
 func (r TransmemApiImportTmxRequest) File(file *os.File) TransmemApiImportTmxRequest {
-	r.file = &file
+	r.file = file
 	return r
 }
 
@@ -808,7 +815,7 @@ func (a *TransmemApiService) ImportTmxExecute(r TransmemApiImportTmxRequest) (*h
 	}
 
 	localVarPath := localBasePath + "/v1/transmems/{tmId}/import"
-	localVarPath = strings.Replace(localVarPath, "{"+"tmId"+"}", url.PathEscape(parameterToString(r.tmId, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"tmId"+"}", url.PathEscape(parameterValueToString(r.tmId, "tmId")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -839,15 +846,16 @@ func (a *TransmemApiService) ImportTmxExecute(r TransmemApiImportTmxRequest) (*h
 	var fileLocalVarFileBytes    []byte
 
 	fileLocalVarFormFileName = "file"
+	fileLocalVarFile := r.file
 
-	fileLocalVarFile := *r.file
 	if fileLocalVarFile != nil {
-		fbs, _ := ioutil.ReadAll(fileLocalVarFile)
+		fbs, _ := io.ReadAll(fileLocalVarFile)
+
 		fileLocalVarFileBytes = fbs
 		fileLocalVarFileName = fileLocalVarFile.Name()
 		fileLocalVarFile.Close()
+		formFiles = append(formFiles, formFile{fileBytes: fileLocalVarFileBytes, fileName: fileLocalVarFileName, formFileName: fileLocalVarFormFileName})
 	}
-	formFiles = append(formFiles, formFile{fileBytes: fileLocalVarFileBytes, fileName: fileLocalVarFileName, formFileName: fileLocalVarFormFileName})
 	if r.ctx != nil {
 		// API Key Authentication
 		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
@@ -872,9 +880,9 @@ func (a *TransmemApiService) ImportTmxExecute(r TransmemApiImportTmxRequest) (*h
 		return localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarHTTPResponse, err
 	}
@@ -940,7 +948,7 @@ func (a *TransmemApiService) ListTMExecute(r TransmemApiListTMRequest) ([]TransM
 	localVarFormParams := url.Values{}
 
 	if r.projectId != nil {
-		localVarQueryParams.Add("projectId", parameterToString(*r.projectId, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "projectId", r.projectId, "form", "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -983,9 +991,9 @@ func (a *TransmemApiService) ListTMExecute(r TransmemApiListTMRequest) ([]TransM
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -1057,11 +1065,14 @@ func (a *TransmemApiService) UpdateExecute(r TransmemApiUpdateRequest) (*TransMe
 	}
 
 	localVarPath := localBasePath + "/v1/transmems/{tmId}"
-	localVarPath = strings.Replace(localVarPath, "{"+"tmId"+"}", url.PathEscape(parameterToString(r.tmId, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"tmId"+"}", url.PathEscape(parameterValueToString(r.tmId, "tmId")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
+	if r.updateTransMem == nil {
+		return localVarReturnValue, nil, reportError("updateTransMem is required and must be specified")
+	}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{"application/json"}
@@ -1106,9 +1117,9 @@ func (a *TransmemApiService) UpdateExecute(r TransmemApiUpdateRequest) (*TransMe
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}

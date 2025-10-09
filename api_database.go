@@ -3,7 +3,7 @@ Gridly API
 
 Gridly API documentation
 
-API version: 5.9.0
+API version: 6.13.0
 Contact: support@gridly.com
 */
 
@@ -14,7 +14,7 @@ package gridly
 import (
 	"bytes"
 	"context"
-	"io/ioutil"
+	"io"
 	"net/http"
 	"net/url"
 	"strings"
@@ -88,7 +88,7 @@ func (a *DatabaseApiService) CreateExecute(r DatabaseApiCreateRequest) (*Databas
 		return localVarReturnValue, nil, reportError("body is required and must be specified")
 	}
 
-	localVarQueryParams.Add("projectId", parameterToString(*r.projectId, ""))
+	parameterAddToHeaderOrQuery(localVarQueryParams, "projectId", r.projectId, "form", "")
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{"application/json"}
 
@@ -132,9 +132,9 @@ func (a *DatabaseApiService) CreateExecute(r DatabaseApiCreateRequest) (*Databas
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -198,7 +198,7 @@ func (a *DatabaseApiService) DeleteExecute(r DatabaseApiDeleteRequest) (*http.Re
 	}
 
 	localVarPath := localBasePath + "/v1/databases/{dbId}"
-	localVarPath = strings.Replace(localVarPath, "{"+"dbId"+"}", url.PathEscape(parameterToString(r.dbId, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"dbId"+"}", url.PathEscape(parameterValueToString(r.dbId, "dbId")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -245,9 +245,9 @@ func (a *DatabaseApiService) DeleteExecute(r DatabaseApiDeleteRequest) (*http.Re
 		return localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarHTTPResponse, err
 	}
@@ -318,7 +318,7 @@ func (a *DatabaseApiService) DuplicateExecute(r DatabaseApiDuplicateRequest) (*D
 	}
 
 	localVarPath := localBasePath + "/v1/databases/{dbId}/duplicate"
-	localVarPath = strings.Replace(localVarPath, "{"+"dbId"+"}", url.PathEscape(parameterToString(r.dbId, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"dbId"+"}", url.PathEscape(parameterValueToString(r.dbId, "dbId")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -330,7 +330,7 @@ func (a *DatabaseApiService) DuplicateExecute(r DatabaseApiDuplicateRequest) (*D
 		return localVarReturnValue, nil, reportError("body is required and must be specified")
 	}
 
-	localVarQueryParams.Add("projectId", parameterToString(*r.projectId, ""))
+	parameterAddToHeaderOrQuery(localVarQueryParams, "projectId", r.projectId, "form", "")
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{"application/json"}
 
@@ -374,9 +374,9 @@ func (a *DatabaseApiService) DuplicateExecute(r DatabaseApiDuplicateRequest) (*D
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -442,7 +442,7 @@ func (a *DatabaseApiService) GetExecute(r DatabaseApiGetRequest) (*Database, *ht
 	}
 
 	localVarPath := localBasePath + "/v1/databases/{dbId}"
-	localVarPath = strings.Replace(localVarPath, "{"+"dbId"+"}", url.PathEscape(parameterToString(r.dbId, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"dbId"+"}", url.PathEscape(parameterValueToString(r.dbId, "dbId")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -489,9 +489,9 @@ func (a *DatabaseApiService) GetExecute(r DatabaseApiGetRequest) (*Database, *ht
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -599,23 +599,29 @@ func (a *DatabaseApiService) ListExecute(r DatabaseApiListRequest) ([]Database, 
 		if reflect.TypeOf(t).Kind() == reflect.Slice {
 			s := reflect.ValueOf(t)
 			for i := 0; i < s.Len(); i++ {
-				localVarQueryParams.Add("expand", parameterToString(s.Index(i), "multi"))
+				parameterAddToHeaderOrQuery(localVarQueryParams, "expand", s.Index(i).Interface(), "form", "multi")
 			}
 		} else {
-			localVarQueryParams.Add("expand", parameterToString(t, "multi"))
+			parameterAddToHeaderOrQuery(localVarQueryParams, "expand", t, "form", "multi")
 		}
 	}
 	if r.page != nil {
-		localVarQueryParams.Add("page", parameterToString(*r.page, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "page", r.page, "form", "")
+	} else {
+		var defaultValue string = ""
+		r.page = &defaultValue
 	}
 	if r.projectId != nil {
-		localVarQueryParams.Add("projectId", parameterToString(*r.projectId, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "projectId", r.projectId, "form", "")
 	}
 	if r.search != nil {
-		localVarQueryParams.Add("search", parameterToString(*r.search, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "search", r.search, "form", "")
 	}
 	if r.sort != nil {
-		localVarQueryParams.Add("sort", parameterToString(*r.sort, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "sort", r.sort, "form", "")
+	} else {
+		var defaultValue string = ""
+		r.sort = &defaultValue
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -658,9 +664,9 @@ func (a *DatabaseApiService) ListExecute(r DatabaseApiListRequest) ([]Database, 
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -733,7 +739,7 @@ func (a *DatabaseApiService) UpdateExecute(r DatabaseApiUpdateRequest) (*Databas
 	}
 
 	localVarPath := localBasePath + "/v1/databases/{dbId}"
-	localVarPath = strings.Replace(localVarPath, "{"+"dbId"+"}", url.PathEscape(parameterToString(r.dbId, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"dbId"+"}", url.PathEscape(parameterValueToString(r.dbId, "dbId")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -785,9 +791,9 @@ func (a *DatabaseApiService) UpdateExecute(r DatabaseApiUpdateRequest) (*Databas
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}

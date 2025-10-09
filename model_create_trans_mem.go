@@ -3,7 +3,7 @@ Gridly API
 
 Gridly API documentation
 
-API version: 5.9.0
+API version: 6.13.0
 Contact: support@gridly.com
 */
 
@@ -13,11 +13,16 @@ package gridly
 
 import (
 	"encoding/json"
+	"bytes"
+	"fmt"
 )
+
+// checks if the CreateTransMem type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &CreateTransMem{}
 
 // CreateTransMem struct for CreateTransMem
 type CreateTransMem struct {
-	Name string `json:"name"`
+	Name string `json:"name" validate:"regexp=\\\\S"`
 	Description *string `json:"description,omitempty"`
 	ProjectIds []int64 `json:"projectIds,omitempty"`
 	FuzzyMatch *bool `json:"fuzzyMatch,omitempty"`
@@ -27,6 +32,8 @@ type CreateTransMem struct {
 	PopulateTranslationStatus *TranslationStatus `json:"populateTranslationStatus,omitempty"`
 	AllowAlternative *bool `json:"allowAlternative,omitempty"`
 }
+
+type _CreateTransMem CreateTransMem
 
 // NewCreateTransMem instantiates a new CreateTransMem object
 // This constructor will assign default values to properties that have it defined,
@@ -60,7 +67,7 @@ func (o *CreateTransMem) GetName() string {
 // and a boolean to check if the value has been set.
 func (o *CreateTransMem) GetNameOk() (*string, bool) {
 	if o == nil {
-    return nil, false
+		return nil, false
 	}
 	return &o.Name, true
 }
@@ -70,9 +77,10 @@ func (o *CreateTransMem) SetName(v string) {
 	o.Name = v
 }
 
+
 // GetDescription returns the Description field value if set, zero value otherwise.
 func (o *CreateTransMem) GetDescription() string {
-	if o == nil || isNil(o.Description) {
+	if o == nil || IsNil(o.Description) {
 		var ret string
 		return ret
 	}
@@ -82,15 +90,15 @@ func (o *CreateTransMem) GetDescription() string {
 // GetDescriptionOk returns a tuple with the Description field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CreateTransMem) GetDescriptionOk() (*string, bool) {
-	if o == nil || isNil(o.Description) {
-    return nil, false
+	if o == nil || IsNil(o.Description) {
+		return nil, false
 	}
 	return o.Description, true
 }
 
 // HasDescription returns a boolean if a field has been set.
 func (o *CreateTransMem) HasDescription() bool {
-	if o != nil && !isNil(o.Description) {
+	if o != nil && !IsNil(o.Description) {
 		return true
 	}
 
@@ -104,7 +112,7 @@ func (o *CreateTransMem) SetDescription(v string) {
 
 // GetProjectIds returns the ProjectIds field value if set, zero value otherwise.
 func (o *CreateTransMem) GetProjectIds() []int64 {
-	if o == nil || isNil(o.ProjectIds) {
+	if o == nil || IsNil(o.ProjectIds) {
 		var ret []int64
 		return ret
 	}
@@ -114,15 +122,15 @@ func (o *CreateTransMem) GetProjectIds() []int64 {
 // GetProjectIdsOk returns a tuple with the ProjectIds field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CreateTransMem) GetProjectIdsOk() ([]int64, bool) {
-	if o == nil || isNil(o.ProjectIds) {
-    return nil, false
+	if o == nil || IsNil(o.ProjectIds) {
+		return nil, false
 	}
 	return o.ProjectIds, true
 }
 
 // HasProjectIds returns a boolean if a field has been set.
 func (o *CreateTransMem) HasProjectIds() bool {
-	if o != nil && !isNil(o.ProjectIds) {
+	if o != nil && !IsNil(o.ProjectIds) {
 		return true
 	}
 
@@ -136,7 +144,7 @@ func (o *CreateTransMem) SetProjectIds(v []int64) {
 
 // GetFuzzyMatch returns the FuzzyMatch field value if set, zero value otherwise.
 func (o *CreateTransMem) GetFuzzyMatch() bool {
-	if o == nil || isNil(o.FuzzyMatch) {
+	if o == nil || IsNil(o.FuzzyMatch) {
 		var ret bool
 		return ret
 	}
@@ -146,15 +154,15 @@ func (o *CreateTransMem) GetFuzzyMatch() bool {
 // GetFuzzyMatchOk returns a tuple with the FuzzyMatch field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CreateTransMem) GetFuzzyMatchOk() (*bool, bool) {
-	if o == nil || isNil(o.FuzzyMatch) {
-    return nil, false
+	if o == nil || IsNil(o.FuzzyMatch) {
+		return nil, false
 	}
 	return o.FuzzyMatch, true
 }
 
 // HasFuzzyMatch returns a boolean if a field has been set.
 func (o *CreateTransMem) HasFuzzyMatch() bool {
-	if o != nil && !isNil(o.FuzzyMatch) {
+	if o != nil && !IsNil(o.FuzzyMatch) {
 		return true
 	}
 
@@ -168,7 +176,7 @@ func (o *CreateTransMem) SetFuzzyMatch(v bool) {
 
 // GetIsDisabled returns the IsDisabled field value if set, zero value otherwise.
 func (o *CreateTransMem) GetIsDisabled() bool {
-	if o == nil || isNil(o.IsDisabled) {
+	if o == nil || IsNil(o.IsDisabled) {
 		var ret bool
 		return ret
 	}
@@ -178,15 +186,15 @@ func (o *CreateTransMem) GetIsDisabled() bool {
 // GetIsDisabledOk returns a tuple with the IsDisabled field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CreateTransMem) GetIsDisabledOk() (*bool, bool) {
-	if o == nil || isNil(o.IsDisabled) {
-    return nil, false
+	if o == nil || IsNil(o.IsDisabled) {
+		return nil, false
 	}
 	return o.IsDisabled, true
 }
 
 // HasIsDisabled returns a boolean if a field has been set.
 func (o *CreateTransMem) HasIsDisabled() bool {
-	if o != nil && !isNil(o.IsDisabled) {
+	if o != nil && !IsNil(o.IsDisabled) {
 		return true
 	}
 
@@ -200,7 +208,7 @@ func (o *CreateTransMem) SetIsDisabled(v bool) {
 
 // GetIsPausedConsuming returns the IsPausedConsuming field value if set, zero value otherwise.
 func (o *CreateTransMem) GetIsPausedConsuming() bool {
-	if o == nil || isNil(o.IsPausedConsuming) {
+	if o == nil || IsNil(o.IsPausedConsuming) {
 		var ret bool
 		return ret
 	}
@@ -210,15 +218,15 @@ func (o *CreateTransMem) GetIsPausedConsuming() bool {
 // GetIsPausedConsumingOk returns a tuple with the IsPausedConsuming field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CreateTransMem) GetIsPausedConsumingOk() (*bool, bool) {
-	if o == nil || isNil(o.IsPausedConsuming) {
-    return nil, false
+	if o == nil || IsNil(o.IsPausedConsuming) {
+		return nil, false
 	}
 	return o.IsPausedConsuming, true
 }
 
 // HasIsPausedConsuming returns a boolean if a field has been set.
 func (o *CreateTransMem) HasIsPausedConsuming() bool {
-	if o != nil && !isNil(o.IsPausedConsuming) {
+	if o != nil && !IsNil(o.IsPausedConsuming) {
 		return true
 	}
 
@@ -232,7 +240,7 @@ func (o *CreateTransMem) SetIsPausedConsuming(v bool) {
 
 // GetContextLookup returns the ContextLookup field value if set, zero value otherwise.
 func (o *CreateTransMem) GetContextLookup() bool {
-	if o == nil || isNil(o.ContextLookup) {
+	if o == nil || IsNil(o.ContextLookup) {
 		var ret bool
 		return ret
 	}
@@ -242,15 +250,15 @@ func (o *CreateTransMem) GetContextLookup() bool {
 // GetContextLookupOk returns a tuple with the ContextLookup field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CreateTransMem) GetContextLookupOk() (*bool, bool) {
-	if o == nil || isNil(o.ContextLookup) {
-    return nil, false
+	if o == nil || IsNil(o.ContextLookup) {
+		return nil, false
 	}
 	return o.ContextLookup, true
 }
 
 // HasContextLookup returns a boolean if a field has been set.
 func (o *CreateTransMem) HasContextLookup() bool {
-	if o != nil && !isNil(o.ContextLookup) {
+	if o != nil && !IsNil(o.ContextLookup) {
 		return true
 	}
 
@@ -264,7 +272,7 @@ func (o *CreateTransMem) SetContextLookup(v bool) {
 
 // GetPopulateTranslationStatus returns the PopulateTranslationStatus field value if set, zero value otherwise.
 func (o *CreateTransMem) GetPopulateTranslationStatus() TranslationStatus {
-	if o == nil || isNil(o.PopulateTranslationStatus) {
+	if o == nil || IsNil(o.PopulateTranslationStatus) {
 		var ret TranslationStatus
 		return ret
 	}
@@ -274,15 +282,15 @@ func (o *CreateTransMem) GetPopulateTranslationStatus() TranslationStatus {
 // GetPopulateTranslationStatusOk returns a tuple with the PopulateTranslationStatus field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CreateTransMem) GetPopulateTranslationStatusOk() (*TranslationStatus, bool) {
-	if o == nil || isNil(o.PopulateTranslationStatus) {
-    return nil, false
+	if o == nil || IsNil(o.PopulateTranslationStatus) {
+		return nil, false
 	}
 	return o.PopulateTranslationStatus, true
 }
 
 // HasPopulateTranslationStatus returns a boolean if a field has been set.
 func (o *CreateTransMem) HasPopulateTranslationStatus() bool {
-	if o != nil && !isNil(o.PopulateTranslationStatus) {
+	if o != nil && !IsNil(o.PopulateTranslationStatus) {
 		return true
 	}
 
@@ -296,7 +304,7 @@ func (o *CreateTransMem) SetPopulateTranslationStatus(v TranslationStatus) {
 
 // GetAllowAlternative returns the AllowAlternative field value if set, zero value otherwise.
 func (o *CreateTransMem) GetAllowAlternative() bool {
-	if o == nil || isNil(o.AllowAlternative) {
+	if o == nil || IsNil(o.AllowAlternative) {
 		var ret bool
 		return ret
 	}
@@ -306,15 +314,15 @@ func (o *CreateTransMem) GetAllowAlternative() bool {
 // GetAllowAlternativeOk returns a tuple with the AllowAlternative field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CreateTransMem) GetAllowAlternativeOk() (*bool, bool) {
-	if o == nil || isNil(o.AllowAlternative) {
-    return nil, false
+	if o == nil || IsNil(o.AllowAlternative) {
+		return nil, false
 	}
 	return o.AllowAlternative, true
 }
 
 // HasAllowAlternative returns a boolean if a field has been set.
 func (o *CreateTransMem) HasAllowAlternative() bool {
-	if o != nil && !isNil(o.AllowAlternative) {
+	if o != nil && !IsNil(o.AllowAlternative) {
 		return true
 	}
 
@@ -327,35 +335,95 @@ func (o *CreateTransMem) SetAllowAlternative(v bool) {
 }
 
 func (o CreateTransMem) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if true {
-		toSerialize["name"] = o.Name
-	}
-	if !isNil(o.Description) {
-		toSerialize["description"] = o.Description
-	}
-	if !isNil(o.ProjectIds) {
-		toSerialize["projectIds"] = o.ProjectIds
-	}
-	if !isNil(o.FuzzyMatch) {
-		toSerialize["fuzzyMatch"] = o.FuzzyMatch
-	}
-	if !isNil(o.IsDisabled) {
-		toSerialize["isDisabled"] = o.IsDisabled
-	}
-	if !isNil(o.IsPausedConsuming) {
-		toSerialize["isPausedConsuming"] = o.IsPausedConsuming
-	}
-	if !isNil(o.ContextLookup) {
-		toSerialize["contextLookup"] = o.ContextLookup
-	}
-	if !isNil(o.PopulateTranslationStatus) {
-		toSerialize["populateTranslationStatus"] = o.PopulateTranslationStatus
-	}
-	if !isNil(o.AllowAlternative) {
-		toSerialize["allowAlternative"] = o.AllowAlternative
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o CreateTransMem) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	toSerialize["name"] = o.Name
+	if !IsNil(o.Description) {
+		toSerialize["description"] = o.Description
+	}
+	if !IsNil(o.ProjectIds) {
+		toSerialize["projectIds"] = o.ProjectIds
+	}
+	if !IsNil(o.FuzzyMatch) {
+		toSerialize["fuzzyMatch"] = o.FuzzyMatch
+	}
+	if !IsNil(o.IsDisabled) {
+		toSerialize["isDisabled"] = o.IsDisabled
+	}
+	if !IsNil(o.IsPausedConsuming) {
+		toSerialize["isPausedConsuming"] = o.IsPausedConsuming
+	}
+	if !IsNil(o.ContextLookup) {
+		toSerialize["contextLookup"] = o.ContextLookup
+	}
+	if !IsNil(o.PopulateTranslationStatus) {
+		toSerialize["populateTranslationStatus"] = o.PopulateTranslationStatus
+	}
+	if !IsNil(o.AllowAlternative) {
+		toSerialize["allowAlternative"] = o.AllowAlternative
+	}
+	return toSerialize, nil
+}
+
+func (o *CreateTransMem) UnmarshalJSON(data []byte) (err error) {
+	// This validates that all required properties are included in the JSON object
+	// by unmarshalling the object into a generic map with string keys and checking
+	// that every required field exists as a key in the generic map.
+	requiredProperties := []string{
+		"name",
+	}
+
+	// defaultValueFuncMap captures the default values for required properties.
+	// These values are used when required properties are missing from the payload.
+	defaultValueFuncMap := map[string]func() interface{} {
+	}
+	var defaultValueApplied bool
+	allProperties := make(map[string]interface{})
+
+	err = json.Unmarshal(data, &allProperties)
+
+	if err != nil {
+		return err;
+	}
+
+	for _, requiredProperty := range(requiredProperties) {
+		if value, exists := allProperties[requiredProperty]; !exists || value == "" {
+			if _, ok := defaultValueFuncMap[requiredProperty]; ok {
+				allProperties[requiredProperty] = defaultValueFuncMap[requiredProperty]()
+				defaultValueApplied = true
+			}
+		}
+		if value, exists := allProperties[requiredProperty]; !exists || value == ""{
+			return fmt.Errorf("no value given for required property %v", requiredProperty)
+		}
+	}
+
+	if defaultValueApplied {
+		data, err = json.Marshal(allProperties)
+		if err != nil{
+			return err
+		}
+	}
+	varCreateTransMem := _CreateTransMem{}
+
+	decoder := json.NewDecoder(bytes.NewReader(data))
+	decoder.DisallowUnknownFields()
+	err = decoder.Decode(&varCreateTransMem)
+
+	if err != nil {
+		return err
+	}
+
+	*o = CreateTransMem(varCreateTransMem)
+
+	return err
 }
 
 type NullableCreateTransMem struct {

@@ -3,7 +3,7 @@ Gridly API
 
 Gridly API documentation
 
-API version: 5.9.0
+API version: 6.13.0
 Contact: support@gridly.com
 */
 
@@ -14,7 +14,7 @@ package gridly
 import (
 	"bytes"
 	"context"
-	"io/ioutil"
+	"io"
 	"net/http"
 	"net/url"
 	"strings"
@@ -86,7 +86,7 @@ func (a *ViewFileApiService) DeleteExecute(r ViewFileApiDeleteRequest) (*http.Re
 	}
 
 	localVarPath := localBasePath + "/v1/views/{viewId}/files"
-	localVarPath = strings.Replace(localVarPath, "{"+"viewId"+"}", url.PathEscape(parameterToString(r.viewId, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"viewId"+"}", url.PathEscape(parameterValueToString(r.viewId, "viewId")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -101,8 +101,8 @@ func (a *ViewFileApiService) DeleteExecute(r ViewFileApiDeleteRequest) (*http.Re
 		return nil, reportError("deleteFile is required and must be specified")
 	}
 
-	localVarQueryParams.Add("columnId", parameterToString(*r.columnId, ""))
-	localVarQueryParams.Add("recordId", parameterToString(*r.recordId, ""))
+	parameterAddToHeaderOrQuery(localVarQueryParams, "columnId", r.columnId, "form", "")
+	parameterAddToHeaderOrQuery(localVarQueryParams, "recordId", r.recordId, "form", "")
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{"application/json"}
 
@@ -146,9 +146,9 @@ func (a *ViewFileApiService) DeleteExecute(r ViewFileApiDeleteRequest) (*http.Re
 		return localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarHTTPResponse, err
 	}
@@ -210,8 +210,8 @@ func (a *ViewFileApiService) DownloadExecute(r ViewFileApiDownloadRequest) (**os
 	}
 
 	localVarPath := localBasePath + "/v1/views/{viewId}/files/{fileId}"
-	localVarPath = strings.Replace(localVarPath, "{"+"fileId"+"}", url.PathEscape(parameterToString(r.fileId, "")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"viewId"+"}", url.PathEscape(parameterToString(r.viewId, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"fileId"+"}", url.PathEscape(parameterValueToString(r.fileId, "fileId")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"viewId"+"}", url.PathEscape(parameterValueToString(r.viewId, "viewId")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -258,9 +258,9 @@ func (a *ViewFileApiService) DownloadExecute(r ViewFileApiDownloadRequest) (**os
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -276,8 +276,8 @@ func (a *ViewFileApiService) DownloadExecute(r ViewFileApiDownloadRequest) (**os
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-            		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-            		newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
 
@@ -299,7 +299,7 @@ type ViewFileApiUploadRequest struct {
 	viewId string
 	columnId *string
 	recordId *string
-	file **os.File
+	file *os.File
 }
 
 // columnId
@@ -315,7 +315,7 @@ func (r ViewFileApiUploadRequest) RecordId(recordId string) ViewFileApiUploadReq
 }
 
 func (r ViewFileApiUploadRequest) File(file *os.File) ViewFileApiUploadRequest {
-	r.file = &file
+	r.file = file
 	return r
 }
 
@@ -356,7 +356,7 @@ func (a *ViewFileApiService) UploadExecute(r ViewFileApiUploadRequest) (*Uploade
 	}
 
 	localVarPath := localBasePath + "/v1/views/{viewId}/files"
-	localVarPath = strings.Replace(localVarPath, "{"+"viewId"+"}", url.PathEscape(parameterToString(r.viewId, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"viewId"+"}", url.PathEscape(parameterValueToString(r.viewId, "viewId")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -371,8 +371,8 @@ func (a *ViewFileApiService) UploadExecute(r ViewFileApiUploadRequest) (*Uploade
 		return localVarReturnValue, nil, reportError("file is required and must be specified")
 	}
 
-	localVarQueryParams.Add("columnId", parameterToString(*r.columnId, ""))
-	localVarQueryParams.Add("recordId", parameterToString(*r.recordId, ""))
+	parameterAddToHeaderOrQuery(localVarQueryParams, "columnId", r.columnId, "form", "")
+	parameterAddToHeaderOrQuery(localVarQueryParams, "recordId", r.recordId, "form", "")
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{"multipart/form-data"}
 
@@ -395,15 +395,16 @@ func (a *ViewFileApiService) UploadExecute(r ViewFileApiUploadRequest) (*Uploade
 	var fileLocalVarFileBytes    []byte
 
 	fileLocalVarFormFileName = "file"
+	fileLocalVarFile := r.file
 
-	fileLocalVarFile := *r.file
 	if fileLocalVarFile != nil {
-		fbs, _ := ioutil.ReadAll(fileLocalVarFile)
+		fbs, _ := io.ReadAll(fileLocalVarFile)
+
 		fileLocalVarFileBytes = fbs
 		fileLocalVarFileName = fileLocalVarFile.Name()
 		fileLocalVarFile.Close()
+		formFiles = append(formFiles, formFile{fileBytes: fileLocalVarFileBytes, fileName: fileLocalVarFileName, formFileName: fileLocalVarFormFileName})
 	}
-	formFiles = append(formFiles, formFile{fileBytes: fileLocalVarFileBytes, fileName: fileLocalVarFileName, formFileName: fileLocalVarFormFileName})
 	if r.ctx != nil {
 		// API Key Authentication
 		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
@@ -428,9 +429,9 @@ func (a *ViewFileApiService) UploadExecute(r ViewFileApiUploadRequest) (*Uploade
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -461,7 +462,7 @@ type ViewFileApiUploadZipRequest struct {
 	viewId string
 	columnId *string
 	fileMappings *string
-	file **os.File
+	file *os.File
 }
 
 func (r ViewFileApiUploadZipRequest) ColumnId(columnId string) ViewFileApiUploadZipRequest {
@@ -475,7 +476,7 @@ func (r ViewFileApiUploadZipRequest) FileMappings(fileMappings string) ViewFileA
 }
 
 func (r ViewFileApiUploadZipRequest) File(file *os.File) ViewFileApiUploadZipRequest {
-	r.file = &file
+	r.file = file
 	return r
 }
 
@@ -516,7 +517,7 @@ func (a *ViewFileApiService) UploadZipExecute(r ViewFileApiUploadZipRequest) ([]
 	}
 
 	localVarPath := localBasePath + "/v1/views/{viewId}/files/zip"
-	localVarPath = strings.Replace(localVarPath, "{"+"viewId"+"}", url.PathEscape(parameterToString(r.viewId, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"viewId"+"}", url.PathEscape(parameterValueToString(r.viewId, "viewId")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -548,22 +549,23 @@ func (a *ViewFileApiService) UploadZipExecute(r ViewFileApiUploadZipRequest) ([]
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
-	localVarFormParams.Add("columnId", parameterToString(*r.columnId, ""))
-	localVarFormParams.Add("fileMappings", parameterToString(*r.fileMappings, ""))
+	parameterAddToHeaderOrQuery(localVarFormParams, "columnId", r.columnId, "", "")
+	parameterAddToHeaderOrQuery(localVarFormParams, "fileMappings", r.fileMappings, "", "")
 	var fileLocalVarFormFileName string
 	var fileLocalVarFileName     string
 	var fileLocalVarFileBytes    []byte
 
 	fileLocalVarFormFileName = "file"
+	fileLocalVarFile := r.file
 
-	fileLocalVarFile := *r.file
 	if fileLocalVarFile != nil {
-		fbs, _ := ioutil.ReadAll(fileLocalVarFile)
+		fbs, _ := io.ReadAll(fileLocalVarFile)
+
 		fileLocalVarFileBytes = fbs
 		fileLocalVarFileName = fileLocalVarFile.Name()
 		fileLocalVarFile.Close()
+		formFiles = append(formFiles, formFile{fileBytes: fileLocalVarFileBytes, fileName: fileLocalVarFileName, formFileName: fileLocalVarFormFileName})
 	}
-	formFiles = append(formFiles, formFile{fileBytes: fileLocalVarFileBytes, fileName: fileLocalVarFileName, formFileName: fileLocalVarFormFileName})
 	if r.ctx != nil {
 		// API Key Authentication
 		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
@@ -588,9 +590,9 @@ func (a *ViewFileApiService) UploadZipExecute(r ViewFileApiUploadZipRequest) ([]
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -606,8 +608,8 @@ func (a *ViewFileApiService) UploadZipExecute(r ViewFileApiUploadZipRequest) ([]
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-            		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-            		newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
 

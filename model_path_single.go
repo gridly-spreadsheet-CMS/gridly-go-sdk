@@ -3,7 +3,7 @@ Gridly API
 
 Gridly API documentation
 
-API version: 5.9.0
+API version: 6.13.0
 Contact: support@gridly.com
 */
 
@@ -14,6 +14,9 @@ package gridly
 import (
 	"encoding/json"
 )
+
+// checks if the PathSingle type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &PathSingle{}
 
 // PathSingle struct for PathSingle
 type PathSingle struct {
@@ -39,7 +42,7 @@ func NewPathSingleWithDefaults() *PathSingle {
 
 // GetPath returns the Path field value if set, zero value otherwise.
 func (o *PathSingle) GetPath() string {
-	if o == nil || isNil(o.Path) {
+	if o == nil || IsNil(o.Path) {
 		var ret string
 		return ret
 	}
@@ -49,15 +52,15 @@ func (o *PathSingle) GetPath() string {
 // GetPathOk returns a tuple with the Path field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *PathSingle) GetPathOk() (*string, bool) {
-	if o == nil || isNil(o.Path) {
-    return nil, false
+	if o == nil || IsNil(o.Path) {
+		return nil, false
 	}
 	return o.Path, true
 }
 
 // HasPath returns a boolean if a field has been set.
 func (o *PathSingle) HasPath() bool {
-	if o != nil && !isNil(o.Path) {
+	if o != nil && !IsNil(o.Path) {
 		return true
 	}
 
@@ -70,11 +73,19 @@ func (o *PathSingle) SetPath(v string) {
 }
 
 func (o PathSingle) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if !isNil(o.Path) {
-		toSerialize["path"] = o.Path
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o PathSingle) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.Path) {
+		toSerialize["path"] = o.Path
+	}
+	return toSerialize, nil
 }
 
 type NullablePathSingle struct {

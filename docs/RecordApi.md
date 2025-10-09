@@ -6,6 +6,8 @@ Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**Create**](RecordApi.md#Create) | **Post** /v1/views/{viewId}/records | create
 [**Delete**](RecordApi.md#Delete) | **Delete** /v1/views/{viewId}/records | delete
+[**DownloadRecordHistories**](RecordApi.md#DownloadRecordHistories) | **Get** /v1/views/{viewId}/record-histories/export/{taskId} | downloadRecordHistories
+[**ExportRecordHistories**](RecordApi.md#ExportRecordHistories) | **Post** /v1/views/{viewId}/record-histories/export | exportRecordHistories
 [**Fetch**](RecordApi.md#Fetch) | **Get** /v1/views/{viewId}/records | fetch
 [**FetchHistories**](RecordApi.md#FetchHistories) | **Get** /v1/views/{viewId}/records/{recordId}/histories | fetchHistories
 [**Update**](RecordApi.md#Update) | **Patch** /v1/views/{viewId}/records | update
@@ -27,25 +29,25 @@ create
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    gridly "./openapi"
+	"context"
+	"fmt"
+	"os"
+	gridly "github.com/gridly-spreadsheet-CMS/gridly-go-sdk"
 )
 
 func main() {
-    viewId := "viewId_example" // string | viewId
-    createRecords := []gridly.SetRecord{*gridly.NewSetRecord()} // []SetRecord | createRecords
+	viewId := "viewId_example" // string | viewId
+	createRecords := []gridly.SetRecord{*gridly.NewSetRecord()} // []SetRecord | createRecords
 
-    configuration := gridly.NewConfiguration()
-    apiClient := gridly.NewAPIClient(configuration)
-    resp, r, err := apiClient.RecordApi.Create(context.Background(), viewId).CreateRecords(createRecords).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `RecordApi.Create``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `Create`: []Record
-    fmt.Fprintf(os.Stdout, "Response from `RecordApi.Create`: %v\n", resp)
+	configuration := gridly.NewConfiguration()
+	apiClient := gridly.NewAPIClient(configuration)
+	resp, r, err := apiClient.RecordApi.Create(context.Background(), viewId).CreateRecords(createRecords).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `RecordApi.Create``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `Create`: []Record
+	fmt.Fprintf(os.Stdout, "Response from `RecordApi.Create`: %v\n", resp)
 }
 ```
 
@@ -99,23 +101,23 @@ delete
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    gridly "./openapi"
+	"context"
+	"fmt"
+	"os"
+	gridly "github.com/gridly-spreadsheet-CMS/gridly-go-sdk"
 )
 
 func main() {
-    viewId := "viewId_example" // string | viewId
-    deleteRecord := *gridly.NewDeleteRecord() // DeleteRecord | 
+	viewId := "viewId_example" // string | viewId
+	deleteRecord := *gridly.NewDeleteRecord() // DeleteRecord | 
 
-    configuration := gridly.NewConfiguration()
-    apiClient := gridly.NewAPIClient(configuration)
-    resp, r, err := apiClient.RecordApi.Delete(context.Background(), viewId).DeleteRecord(deleteRecord).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `RecordApi.Delete``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
+	configuration := gridly.NewConfiguration()
+	apiClient := gridly.NewAPIClient(configuration)
+	r, err := apiClient.RecordApi.Delete(context.Background(), viewId).DeleteRecord(deleteRecord).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `RecordApi.Delete``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
 }
 ```
 
@@ -155,6 +157,152 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
+## DownloadRecordHistories
+
+> *os.File DownloadRecordHistories(ctx, viewId, taskId).Execute()
+
+downloadRecordHistories
+
+
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+	gridly "github.com/gridly-spreadsheet-CMS/gridly-go-sdk"
+)
+
+func main() {
+	viewId := "viewId_example" // string | viewId
+	taskId := "taskId_example" // string | taskId
+
+	configuration := gridly.NewConfiguration()
+	apiClient := gridly.NewAPIClient(configuration)
+	resp, r, err := apiClient.RecordApi.DownloadRecordHistories(context.Background(), viewId, taskId).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `RecordApi.DownloadRecordHistories``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `DownloadRecordHistories`: *os.File
+	fmt.Fprintf(os.Stdout, "Response from `RecordApi.DownloadRecordHistories`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**viewId** | **string** | viewId | 
+**taskId** | **string** | taskId | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiDownloadRecordHistoriesRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+
+### Return type
+
+[***os.File**](*os.File.md)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/octet-stream
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## ExportRecordHistories
+
+> Task ExportRecordHistories(ctx, viewId).ExportRecordHistory(exportRecordHistory).Execute()
+
+exportRecordHistories
+
+
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+    "time"
+	gridly "github.com/gridly-spreadsheet-CMS/gridly-go-sdk"
+)
+
+func main() {
+	viewId := "viewId_example" // string | viewId
+	exportRecordHistory := *gridly.NewExportRecordHistory(time.Now(), time.Now()) // ExportRecordHistory | 
+
+	configuration := gridly.NewConfiguration()
+	apiClient := gridly.NewAPIClient(configuration)
+	resp, r, err := apiClient.RecordApi.ExportRecordHistories(context.Background(), viewId).ExportRecordHistory(exportRecordHistory).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `RecordApi.ExportRecordHistories``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `ExportRecordHistories`: Task
+	fmt.Fprintf(os.Stdout, "Response from `RecordApi.ExportRecordHistories`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**viewId** | **string** | viewId | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiExportRecordHistoriesRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+ **exportRecordHistory** | [**ExportRecordHistory**](ExportRecordHistory.md) |  | 
+
+### Return type
+
+[**Task**](Task.md)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
 ## Fetch
 
 > []Record Fetch(ctx, viewId).ColumnIds(columnIds).Page(page).Query(query).Sort(sort).FetchFileOption(fetchFileOption).AfterRecordId(afterRecordId).BeforeRecordId(beforeRecordId).Execute()
@@ -169,31 +317,31 @@ fetch
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    gridly "./openapi"
+	"context"
+	"fmt"
+	"os"
+	gridly "github.com/gridly-spreadsheet-CMS/gridly-go-sdk"
 )
 
 func main() {
-    viewId := "viewId_example" // string | viewId
-    columnIds := []string{"Inner_example"} // []string | columnIds (optional) (default to [])
-    page := "page_example" // string | page (optional) (default to "{}")
-    query := "query_example" // string | query (optional) (default to "{}")
-    sort := "sort_example" // string | sort (optional) (default to "{}")
-    fetchFileOption := gridly.FetchFileOption("all") // FetchFileOption | fetchFileOption (optional)
-    afterRecordId := "afterRecordId_example" // string | afterRecordId (optional)
-    beforeRecordId := "beforeRecordId_example" // string | beforeRecordId (optional)
+	viewId := "viewId_example" // string | viewId
+	columnIds := []string{"Inner_example"} // []string | columnIds (optional) (default to [])
+	page := "page_example" // string | page (optional) (default to "{}")
+	query := "query_example" // string | query (optional) (default to "{}")
+	sort := "sort_example" // string | sort (optional) (default to "{}")
+	fetchFileOption := gridly.FetchFileOption("all") // FetchFileOption | fetchFileOption (optional)
+	afterRecordId := "afterRecordId_example" // string | afterRecordId (optional)
+	beforeRecordId := "beforeRecordId_example" // string | beforeRecordId (optional)
 
-    configuration := gridly.NewConfiguration()
-    apiClient := gridly.NewAPIClient(configuration)
-    resp, r, err := apiClient.RecordApi.Fetch(context.Background(), viewId).ColumnIds(columnIds).Page(page).Query(query).Sort(sort).FetchFileOption(fetchFileOption).AfterRecordId(afterRecordId).BeforeRecordId(beforeRecordId).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `RecordApi.Fetch``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `Fetch`: []Record
-    fmt.Fprintf(os.Stdout, "Response from `RecordApi.Fetch`: %v\n", resp)
+	configuration := gridly.NewConfiguration()
+	apiClient := gridly.NewAPIClient(configuration)
+	resp, r, err := apiClient.RecordApi.Fetch(context.Background(), viewId).ColumnIds(columnIds).Page(page).Query(query).Sort(sort).FetchFileOption(fetchFileOption).AfterRecordId(afterRecordId).BeforeRecordId(beforeRecordId).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `RecordApi.Fetch``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `Fetch`: []Record
+	fmt.Fprintf(os.Stdout, "Response from `RecordApi.Fetch`: %v\n", resp)
 }
 ```
 
@@ -253,26 +401,26 @@ fetchHistories
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    gridly "./openapi"
+	"context"
+	"fmt"
+	"os"
+	gridly "github.com/gridly-spreadsheet-CMS/gridly-go-sdk"
 )
 
 func main() {
-    viewId := "viewId_example" // string | viewId
-    recordId := "recordId_example" // string | recordId
-    fetchRequest := map[string][]gridly.FetchRecordHistoryRequest{ ... } // FetchRecordHistoryRequest | fetchRequest
+	viewId := "viewId_example" // string | viewId
+	recordId := "recordId_example" // string | recordId
+	fetchRequest := *gridly.NewFetchRecordHistoryRequest() // FetchRecordHistoryRequest | fetchRequest
 
-    configuration := gridly.NewConfiguration()
-    apiClient := gridly.NewAPIClient(configuration)
-    resp, r, err := apiClient.RecordApi.FetchHistories(context.Background(), viewId, recordId).FetchRequest(fetchRequest).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `RecordApi.FetchHistories``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `FetchHistories`: []RecordHistory
-    fmt.Fprintf(os.Stdout, "Response from `RecordApi.FetchHistories`: %v\n", resp)
+	configuration := gridly.NewConfiguration()
+	apiClient := gridly.NewAPIClient(configuration)
+	resp, r, err := apiClient.RecordApi.FetchHistories(context.Background(), viewId, recordId).FetchRequest(fetchRequest).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `RecordApi.FetchHistories``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `FetchHistories`: []RecordHistory
+	fmt.Fprintf(os.Stdout, "Response from `RecordApi.FetchHistories`: %v\n", resp)
 }
 ```
 
@@ -328,25 +476,25 @@ update
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    gridly "./openapi"
+	"context"
+	"fmt"
+	"os"
+	gridly "github.com/gridly-spreadsheet-CMS/gridly-go-sdk"
 )
 
 func main() {
-    viewId := "viewId_example" // string | viewId
-    setRecord := []gridly.SetRecord{*gridly.NewSetRecord()} // []SetRecord | 
+	viewId := "viewId_example" // string | viewId
+	setRecord := []gridly.SetRecord{*gridly.NewSetRecord()} // []SetRecord | 
 
-    configuration := gridly.NewConfiguration()
-    apiClient := gridly.NewAPIClient(configuration)
-    resp, r, err := apiClient.RecordApi.Update(context.Background(), viewId).SetRecord(setRecord).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `RecordApi.Update``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `Update`: []Record
-    fmt.Fprintf(os.Stdout, "Response from `RecordApi.Update`: %v\n", resp)
+	configuration := gridly.NewConfiguration()
+	apiClient := gridly.NewAPIClient(configuration)
+	resp, r, err := apiClient.RecordApi.Update(context.Background(), viewId).SetRecord(setRecord).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `RecordApi.Update``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `Update`: []Record
+	fmt.Fprintf(os.Stdout, "Response from `RecordApi.Update`: %v\n", resp)
 }
 ```
 
@@ -400,27 +548,27 @@ updateRecord
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    gridly "./openapi"
+	"context"
+	"fmt"
+	"os"
+	gridly "github.com/gridly-spreadsheet-CMS/gridly-go-sdk"
 )
 
 func main() {
-    id := "id_example" // string | id
-    viewId := "viewId_example" // string | viewId
-    setRecord := *gridly.NewSetRecord() // SetRecord | 
-    path := "path_example" // string | path (optional)
+	id := "id_example" // string | id
+	viewId := "viewId_example" // string | viewId
+	setRecord := *gridly.NewSetRecord() // SetRecord | 
+	path := "path_example" // string | path (optional)
 
-    configuration := gridly.NewConfiguration()
-    apiClient := gridly.NewAPIClient(configuration)
-    resp, r, err := apiClient.RecordApi.UpdateRecord(context.Background(), id, viewId).SetRecord(setRecord).Path(path).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `RecordApi.UpdateRecord``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `UpdateRecord`: Record
-    fmt.Fprintf(os.Stdout, "Response from `RecordApi.UpdateRecord`: %v\n", resp)
+	configuration := gridly.NewConfiguration()
+	apiClient := gridly.NewAPIClient(configuration)
+	resp, r, err := apiClient.RecordApi.UpdateRecord(context.Background(), id, viewId).SetRecord(setRecord).Path(path).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `RecordApi.UpdateRecord``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `UpdateRecord`: Record
+	fmt.Fprintf(os.Stdout, "Response from `RecordApi.UpdateRecord`: %v\n", resp)
 }
 ```
 

@@ -3,7 +3,7 @@ Gridly API
 
 Gridly API documentation
 
-API version: 5.9.0
+API version: 6.13.0
 Contact: support@gridly.com
 */
 
@@ -14,7 +14,7 @@ package gridly
 import (
 	"bytes"
 	"context"
-	"io/ioutil"
+	"io"
 	"net/http"
 	"net/url"
 	"strings"
@@ -94,10 +94,10 @@ func (a *BranchApiService) CreateExecute(r BranchApiCreateRequest) (*Branch, *ht
 	}
 
 	if r.gridId != nil {
-		localVarQueryParams.Add("gridId", parameterToString(*r.gridId, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "gridId", r.gridId, "form", "")
 	}
 	if r.branchId != nil {
-		localVarQueryParams.Add("branchId", parameterToString(*r.branchId, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "branchId", r.branchId, "form", "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{"application/json"}
@@ -142,9 +142,9 @@ func (a *BranchApiService) CreateExecute(r BranchApiCreateRequest) (*Branch, *ht
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -234,8 +234,8 @@ func (a *BranchApiService) CreateDiffCheckExecute(r BranchApiCreateDiffCheckRequ
 		return localVarReturnValue, nil, reportError("destinationViewId is required and must be specified")
 	}
 
-	localVarQueryParams.Add("sourceViewId", parameterToString(*r.sourceViewId, ""))
-	localVarQueryParams.Add("destinationViewId", parameterToString(*r.destinationViewId, ""))
+	parameterAddToHeaderOrQuery(localVarQueryParams, "sourceViewId", r.sourceViewId, "form", "")
+	parameterAddToHeaderOrQuery(localVarQueryParams, "destinationViewId", r.destinationViewId, "form", "")
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
 
@@ -277,9 +277,9 @@ func (a *BranchApiService) CreateDiffCheckExecute(r BranchApiCreateDiffCheckRequ
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -345,7 +345,7 @@ func (a *BranchApiService) DeleteExecute(r BranchApiDeleteRequest) (*http.Respon
 	}
 
 	localVarPath := localBasePath + "/v1/branches/{branchId}"
-	localVarPath = strings.Replace(localVarPath, "{"+"branchId"+"}", url.PathEscape(parameterToString(r.branchId, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"branchId"+"}", url.PathEscape(parameterValueToString(r.branchId, "branchId")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -392,9 +392,9 @@ func (a *BranchApiService) DeleteExecute(r BranchApiDeleteRequest) (*http.Respon
 		return localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarHTTPResponse, err
 	}
@@ -453,7 +453,7 @@ func (a *BranchApiService) GetExecute(r BranchApiGetRequest) (*Branch, *http.Res
 	}
 
 	localVarPath := localBasePath + "/v1/branches/{branchId}"
-	localVarPath = strings.Replace(localVarPath, "{"+"branchId"+"}", url.PathEscape(parameterToString(r.branchId, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"branchId"+"}", url.PathEscape(parameterValueToString(r.branchId, "branchId")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -500,9 +500,9 @@ func (a *BranchApiService) GetExecute(r BranchApiGetRequest) (*Branch, *http.Res
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -591,7 +591,7 @@ func (a *BranchApiService) GetDiffCheckExecute(r BranchApiGetDiffCheckRequest) (
 	}
 
 	localVarPath := localBasePath + "/v1/branches/diffcheck/{taskId}"
-	localVarPath = strings.Replace(localVarPath, "{"+"taskId"+"}", url.PathEscape(parameterToString(r.taskId, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"taskId"+"}", url.PathEscape(parameterValueToString(r.taskId, "taskId")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -602,17 +602,26 @@ func (a *BranchApiService) GetDiffCheckExecute(r BranchApiGetDiffCheckRequest) (
 		if reflect.TypeOf(t).Kind() == reflect.Slice {
 			s := reflect.ValueOf(t)
 			for i := 0; i < s.Len(); i++ {
-				localVarQueryParams.Add("mergeRecordOptions", parameterToString(s.Index(i), "multi"))
+				parameterAddToHeaderOrQuery(localVarQueryParams, "mergeRecordOptions", s.Index(i).Interface(), "form", "multi")
 			}
 		} else {
-			localVarQueryParams.Add("mergeRecordOptions", parameterToString(t, "multi"))
+			parameterAddToHeaderOrQuery(localVarQueryParams, "mergeRecordOptions", t, "form", "multi")
 		}
+	} else {
+		var defaultValue []string = []string{"add","update","delete"}
+		r.mergeRecordOptions = &defaultValue
 	}
 	if r.query != nil {
-		localVarQueryParams.Add("query", parameterToString(*r.query, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "query", r.query, "form", "")
+	} else {
+		var defaultValue string = "{}"
+		r.query = &defaultValue
 	}
 	if r.page != nil {
-		localVarQueryParams.Add("page", parameterToString(*r.page, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "page", r.page, "form", "")
+	} else {
+		var defaultValue string = "{}"
+		r.page = &defaultValue
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -655,9 +664,9 @@ func (a *BranchApiService) GetDiffCheckExecute(r BranchApiGetDiffCheckRequest) (
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -737,7 +746,7 @@ func (a *BranchApiService) ListExecute(r BranchApiListRequest) ([]Branch, *http.
 		return localVarReturnValue, nil, reportError("gridId is required and must be specified")
 	}
 
-	localVarQueryParams.Add("gridId", parameterToString(*r.gridId, ""))
+	parameterAddToHeaderOrQuery(localVarQueryParams, "gridId", r.gridId, "form", "")
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
 
@@ -779,9 +788,9 @@ func (a *BranchApiService) ListExecute(r BranchApiListRequest) ([]Branch, *http.
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -869,7 +878,7 @@ func (a *BranchApiService) MergeExecute(r BranchApiMergeRequest) (*Task, *http.R
 	}
 
 	localVarPath := localBasePath + "/v1/branches/{branchId}/merge"
-	localVarPath = strings.Replace(localVarPath, "{"+"branchId"+"}", url.PathEscape(parameterToString(r.branchId, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"branchId"+"}", url.PathEscape(parameterValueToString(r.branchId, "branchId")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -881,17 +890,20 @@ func (a *BranchApiService) MergeExecute(r BranchApiMergeRequest) (*Task, *http.R
 		return localVarReturnValue, nil, reportError("mergeBranchRequest is required and must be specified")
 	}
 
-	localVarQueryParams.Add("destinationBranchId", parameterToString(*r.destinationBranchId, ""))
+	parameterAddToHeaderOrQuery(localVarQueryParams, "destinationBranchId", r.destinationBranchId, "form", "")
 	if r.mergeRecordOptions != nil {
 		t := *r.mergeRecordOptions
 		if reflect.TypeOf(t).Kind() == reflect.Slice {
 			s := reflect.ValueOf(t)
 			for i := 0; i < s.Len(); i++ {
-				localVarQueryParams.Add("mergeRecordOptions", parameterToString(s.Index(i), "multi"))
+				parameterAddToHeaderOrQuery(localVarQueryParams, "mergeRecordOptions", s.Index(i).Interface(), "form", "multi")
 			}
 		} else {
-			localVarQueryParams.Add("mergeRecordOptions", parameterToString(t, "multi"))
+			parameterAddToHeaderOrQuery(localVarQueryParams, "mergeRecordOptions", t, "form", "multi")
 		}
+	} else {
+		var defaultValue []string = []string{}
+		r.mergeRecordOptions = &defaultValue
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{"application/json"}
@@ -936,9 +948,9 @@ func (a *BranchApiService) MergeExecute(r BranchApiMergeRequest) (*Task, *http.R
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}

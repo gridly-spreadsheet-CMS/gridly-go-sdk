@@ -3,7 +3,7 @@ Gridly API
 
 Gridly API documentation
 
-API version: 5.9.0
+API version: 6.13.0
 Contact: support@gridly.com
 */
 
@@ -13,15 +13,22 @@ package gridly
 
 import (
 	"encoding/json"
+	"bytes"
+	"fmt"
 )
+
+// checks if the CreateDatabase type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &CreateDatabase{}
 
 // CreateDatabase body
 type CreateDatabase struct {
 	Name string `json:"name"`
 	Description *string `json:"description,omitempty"`
 	EnableGuidRecord *bool `json:"enableGuidRecord,omitempty"`
-	Id *string `json:"id,omitempty"`
+	Id *string `json:"id,omitempty" validate:"regexp=^\\\\w+$"`
 }
+
+type _CreateDatabase CreateDatabase
 
 // NewCreateDatabase instantiates a new CreateDatabase object
 // This constructor will assign default values to properties that have it defined,
@@ -55,7 +62,7 @@ func (o *CreateDatabase) GetName() string {
 // and a boolean to check if the value has been set.
 func (o *CreateDatabase) GetNameOk() (*string, bool) {
 	if o == nil {
-    return nil, false
+		return nil, false
 	}
 	return &o.Name, true
 }
@@ -65,9 +72,10 @@ func (o *CreateDatabase) SetName(v string) {
 	o.Name = v
 }
 
+
 // GetDescription returns the Description field value if set, zero value otherwise.
 func (o *CreateDatabase) GetDescription() string {
-	if o == nil || isNil(o.Description) {
+	if o == nil || IsNil(o.Description) {
 		var ret string
 		return ret
 	}
@@ -77,15 +85,15 @@ func (o *CreateDatabase) GetDescription() string {
 // GetDescriptionOk returns a tuple with the Description field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CreateDatabase) GetDescriptionOk() (*string, bool) {
-	if o == nil || isNil(o.Description) {
-    return nil, false
+	if o == nil || IsNil(o.Description) {
+		return nil, false
 	}
 	return o.Description, true
 }
 
 // HasDescription returns a boolean if a field has been set.
 func (o *CreateDatabase) HasDescription() bool {
-	if o != nil && !isNil(o.Description) {
+	if o != nil && !IsNil(o.Description) {
 		return true
 	}
 
@@ -99,7 +107,7 @@ func (o *CreateDatabase) SetDescription(v string) {
 
 // GetEnableGuidRecord returns the EnableGuidRecord field value if set, zero value otherwise.
 func (o *CreateDatabase) GetEnableGuidRecord() bool {
-	if o == nil || isNil(o.EnableGuidRecord) {
+	if o == nil || IsNil(o.EnableGuidRecord) {
 		var ret bool
 		return ret
 	}
@@ -109,15 +117,15 @@ func (o *CreateDatabase) GetEnableGuidRecord() bool {
 // GetEnableGuidRecordOk returns a tuple with the EnableGuidRecord field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CreateDatabase) GetEnableGuidRecordOk() (*bool, bool) {
-	if o == nil || isNil(o.EnableGuidRecord) {
-    return nil, false
+	if o == nil || IsNil(o.EnableGuidRecord) {
+		return nil, false
 	}
 	return o.EnableGuidRecord, true
 }
 
 // HasEnableGuidRecord returns a boolean if a field has been set.
 func (o *CreateDatabase) HasEnableGuidRecord() bool {
-	if o != nil && !isNil(o.EnableGuidRecord) {
+	if o != nil && !IsNil(o.EnableGuidRecord) {
 		return true
 	}
 
@@ -131,7 +139,7 @@ func (o *CreateDatabase) SetEnableGuidRecord(v bool) {
 
 // GetId returns the Id field value if set, zero value otherwise.
 func (o *CreateDatabase) GetId() string {
-	if o == nil || isNil(o.Id) {
+	if o == nil || IsNil(o.Id) {
 		var ret string
 		return ret
 	}
@@ -141,15 +149,15 @@ func (o *CreateDatabase) GetId() string {
 // GetIdOk returns a tuple with the Id field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CreateDatabase) GetIdOk() (*string, bool) {
-	if o == nil || isNil(o.Id) {
-    return nil, false
+	if o == nil || IsNil(o.Id) {
+		return nil, false
 	}
 	return o.Id, true
 }
 
 // HasId returns a boolean if a field has been set.
 func (o *CreateDatabase) HasId() bool {
-	if o != nil && !isNil(o.Id) {
+	if o != nil && !IsNil(o.Id) {
 		return true
 	}
 
@@ -162,20 +170,80 @@ func (o *CreateDatabase) SetId(v string) {
 }
 
 func (o CreateDatabase) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if true {
-		toSerialize["name"] = o.Name
-	}
-	if !isNil(o.Description) {
-		toSerialize["description"] = o.Description
-	}
-	if !isNil(o.EnableGuidRecord) {
-		toSerialize["enableGuidRecord"] = o.EnableGuidRecord
-	}
-	if !isNil(o.Id) {
-		toSerialize["id"] = o.Id
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o CreateDatabase) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	toSerialize["name"] = o.Name
+	if !IsNil(o.Description) {
+		toSerialize["description"] = o.Description
+	}
+	if !IsNil(o.EnableGuidRecord) {
+		toSerialize["enableGuidRecord"] = o.EnableGuidRecord
+	}
+	if !IsNil(o.Id) {
+		toSerialize["id"] = o.Id
+	}
+	return toSerialize, nil
+}
+
+func (o *CreateDatabase) UnmarshalJSON(data []byte) (err error) {
+	// This validates that all required properties are included in the JSON object
+	// by unmarshalling the object into a generic map with string keys and checking
+	// that every required field exists as a key in the generic map.
+	requiredProperties := []string{
+		"name",
+	}
+
+	// defaultValueFuncMap captures the default values for required properties.
+	// These values are used when required properties are missing from the payload.
+	defaultValueFuncMap := map[string]func() interface{} {
+	}
+	var defaultValueApplied bool
+	allProperties := make(map[string]interface{})
+
+	err = json.Unmarshal(data, &allProperties)
+
+	if err != nil {
+		return err;
+	}
+
+	for _, requiredProperty := range(requiredProperties) {
+		if value, exists := allProperties[requiredProperty]; !exists || value == "" {
+			if _, ok := defaultValueFuncMap[requiredProperty]; ok {
+				allProperties[requiredProperty] = defaultValueFuncMap[requiredProperty]()
+				defaultValueApplied = true
+			}
+		}
+		if value, exists := allProperties[requiredProperty]; !exists || value == ""{
+			return fmt.Errorf("no value given for required property %v", requiredProperty)
+		}
+	}
+
+	if defaultValueApplied {
+		data, err = json.Marshal(allProperties)
+		if err != nil{
+			return err
+		}
+	}
+	varCreateDatabase := _CreateDatabase{}
+
+	decoder := json.NewDecoder(bytes.NewReader(data))
+	decoder.DisallowUnknownFields()
+	err = decoder.Decode(&varCreateDatabase)
+
+	if err != nil {
+		return err
+	}
+
+	*o = CreateDatabase(varCreateDatabase)
+
+	return err
 }
 
 type NullableCreateDatabase struct {

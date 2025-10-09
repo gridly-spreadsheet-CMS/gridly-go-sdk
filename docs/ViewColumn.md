@@ -13,10 +13,13 @@ Name | Type | Description | Notes
 **IsSource** | Pointer to **bool** |  | [optional] 
 **IsTarget** | Pointer to **bool** |  | [optional] 
 **LanguageCode** | Pointer to **string** |  | [optional] 
+**LanguageName** | Pointer to **string** |  | [optional] 
+**LengthLimitSetting** | Pointer to [**LengthLimitSetting**](LengthLimitSetting.md) |  | [optional] 
 **LocalizationType** | Pointer to **string** |  | [optional] 
 **Name** | Pointer to **string** |  | [optional] 
 **NumberFormat** | Pointer to [**NumberFormat**](NumberFormat.md) |  | [optional] 
 **Reference** | Pointer to [**ColumnReference**](ColumnReference.md) |  | [optional] 
+**Selection** | Pointer to [**Selection**](Selection.md) |  | [optional] 
 **SelectionOptions** | Pointer to **[]string** |  | [optional] 
 **Type** | Pointer to **string** |  | [optional] 
 
@@ -264,6 +267,56 @@ SetLanguageCode sets LanguageCode field to given value.
 
 HasLanguageCode returns a boolean if a field has been set.
 
+### GetLanguageName
+
+`func (o *ViewColumn) GetLanguageName() string`
+
+GetLanguageName returns the LanguageName field if non-nil, zero value otherwise.
+
+### GetLanguageNameOk
+
+`func (o *ViewColumn) GetLanguageNameOk() (*string, bool)`
+
+GetLanguageNameOk returns a tuple with the LanguageName field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetLanguageName
+
+`func (o *ViewColumn) SetLanguageName(v string)`
+
+SetLanguageName sets LanguageName field to given value.
+
+### HasLanguageName
+
+`func (o *ViewColumn) HasLanguageName() bool`
+
+HasLanguageName returns a boolean if a field has been set.
+
+### GetLengthLimitSetting
+
+`func (o *ViewColumn) GetLengthLimitSetting() LengthLimitSetting`
+
+GetLengthLimitSetting returns the LengthLimitSetting field if non-nil, zero value otherwise.
+
+### GetLengthLimitSettingOk
+
+`func (o *ViewColumn) GetLengthLimitSettingOk() (*LengthLimitSetting, bool)`
+
+GetLengthLimitSettingOk returns a tuple with the LengthLimitSetting field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetLengthLimitSetting
+
+`func (o *ViewColumn) SetLengthLimitSetting(v LengthLimitSetting)`
+
+SetLengthLimitSetting sets LengthLimitSetting field to given value.
+
+### HasLengthLimitSetting
+
+`func (o *ViewColumn) HasLengthLimitSetting() bool`
+
+HasLengthLimitSetting returns a boolean if a field has been set.
+
 ### GetLocalizationType
 
 `func (o *ViewColumn) GetLocalizationType() string`
@@ -363,6 +416,31 @@ SetReference sets Reference field to given value.
 `func (o *ViewColumn) HasReference() bool`
 
 HasReference returns a boolean if a field has been set.
+
+### GetSelection
+
+`func (o *ViewColumn) GetSelection() Selection`
+
+GetSelection returns the Selection field if non-nil, zero value otherwise.
+
+### GetSelectionOk
+
+`func (o *ViewColumn) GetSelectionOk() (*Selection, bool)`
+
+GetSelectionOk returns a tuple with the Selection field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetSelection
+
+`func (o *ViewColumn) SetSelection(v Selection)`
+
+SetSelection sets Selection field to given value.
+
+### HasSelection
+
+`func (o *ViewColumn) HasSelection() bool`
+
+HasSelection returns a boolean if a field has been set.
 
 ### GetSelectionOptions
 

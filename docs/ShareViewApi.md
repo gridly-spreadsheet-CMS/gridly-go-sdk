@@ -24,25 +24,25 @@ create
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    gridly "./openapi"
+	"context"
+	"fmt"
+	"os"
+	gridly "github.com/gridly-spreadsheet-CMS/gridly-go-sdk"
 )
 
 func main() {
-    viewId := "viewId_example" // string | viewId
-    createShareView := *gridly.NewCreateShareView() // CreateShareView | 
+	viewId := "viewId_example" // string | viewId
+	createShareView := *gridly.NewCreateShareView() // CreateShareView | 
 
-    configuration := gridly.NewConfiguration()
-    apiClient := gridly.NewAPIClient(configuration)
-    resp, r, err := apiClient.ShareViewApi.Create(context.Background(), viewId).CreateShareView(createShareView).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `ShareViewApi.Create``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `Create`: ShareView
-    fmt.Fprintf(os.Stdout, "Response from `ShareViewApi.Create`: %v\n", resp)
+	configuration := gridly.NewConfiguration()
+	apiClient := gridly.NewAPIClient(configuration)
+	resp, r, err := apiClient.ShareViewApi.Create(context.Background(), viewId).CreateShareView(createShareView).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `ShareViewApi.Create``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `Create`: ShareView
+	fmt.Fprintf(os.Stdout, "Response from `ShareViewApi.Create`: %v\n", resp)
 }
 ```
 
@@ -96,22 +96,22 @@ delete
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    gridly "./openapi"
+	"context"
+	"fmt"
+	"os"
+	gridly "github.com/gridly-spreadsheet-CMS/gridly-go-sdk"
 )
 
 func main() {
-    viewId := "viewId_example" // string | viewId
+	viewId := "viewId_example" // string | viewId
 
-    configuration := gridly.NewConfiguration()
-    apiClient := gridly.NewAPIClient(configuration)
-    resp, r, err := apiClient.ShareViewApi.Delete(context.Background(), viewId).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `ShareViewApi.Delete``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
+	configuration := gridly.NewConfiguration()
+	apiClient := gridly.NewAPIClient(configuration)
+	r, err := apiClient.ShareViewApi.Delete(context.Background(), viewId).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `ShareViewApi.Delete``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
 }
 ```
 
@@ -164,24 +164,24 @@ get
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    gridly "./openapi"
+	"context"
+	"fmt"
+	"os"
+	gridly "github.com/gridly-spreadsheet-CMS/gridly-go-sdk"
 )
 
 func main() {
-    viewId := "viewId_example" // string | viewId
+	viewId := "viewId_example" // string | viewId
 
-    configuration := gridly.NewConfiguration()
-    apiClient := gridly.NewAPIClient(configuration)
-    resp, r, err := apiClient.ShareViewApi.Get(context.Background(), viewId).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `ShareViewApi.Get``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `Get`: ShareView
-    fmt.Fprintf(os.Stdout, "Response from `ShareViewApi.Get`: %v\n", resp)
+	configuration := gridly.NewConfiguration()
+	apiClient := gridly.NewAPIClient(configuration)
+	resp, r, err := apiClient.ShareViewApi.Get(context.Background(), viewId).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `ShareViewApi.Get``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `Get`: ShareView
+	fmt.Fprintf(os.Stdout, "Response from `ShareViewApi.Get`: %v\n", resp)
 }
 ```
 
