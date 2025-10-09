@@ -3,7 +3,7 @@ Gridly API
 
 Gridly API documentation
 
-API version: 5.9.0
+API version: 6.13.0
 Contact: support@gridly.com
 */
 
@@ -15,9 +15,13 @@ import (
 	"encoding/json"
 )
 
+// checks if the CreateShareView type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &CreateShareView{}
+
 // CreateShareView struct for CreateShareView
 type CreateShareView struct {
 	IncludeGridHistory *bool `json:"includeGridHistory,omitempty"`
+	Regenerate *bool `json:"regenerate,omitempty"`
 }
 
 // NewCreateShareView instantiates a new CreateShareView object
@@ -39,7 +43,7 @@ func NewCreateShareViewWithDefaults() *CreateShareView {
 
 // GetIncludeGridHistory returns the IncludeGridHistory field value if set, zero value otherwise.
 func (o *CreateShareView) GetIncludeGridHistory() bool {
-	if o == nil || isNil(o.IncludeGridHistory) {
+	if o == nil || IsNil(o.IncludeGridHistory) {
 		var ret bool
 		return ret
 	}
@@ -49,15 +53,15 @@ func (o *CreateShareView) GetIncludeGridHistory() bool {
 // GetIncludeGridHistoryOk returns a tuple with the IncludeGridHistory field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CreateShareView) GetIncludeGridHistoryOk() (*bool, bool) {
-	if o == nil || isNil(o.IncludeGridHistory) {
-    return nil, false
+	if o == nil || IsNil(o.IncludeGridHistory) {
+		return nil, false
 	}
 	return o.IncludeGridHistory, true
 }
 
 // HasIncludeGridHistory returns a boolean if a field has been set.
 func (o *CreateShareView) HasIncludeGridHistory() bool {
-	if o != nil && !isNil(o.IncludeGridHistory) {
+	if o != nil && !IsNil(o.IncludeGridHistory) {
 		return true
 	}
 
@@ -69,12 +73,55 @@ func (o *CreateShareView) SetIncludeGridHistory(v bool) {
 	o.IncludeGridHistory = &v
 }
 
+// GetRegenerate returns the Regenerate field value if set, zero value otherwise.
+func (o *CreateShareView) GetRegenerate() bool {
+	if o == nil || IsNil(o.Regenerate) {
+		var ret bool
+		return ret
+	}
+	return *o.Regenerate
+}
+
+// GetRegenerateOk returns a tuple with the Regenerate field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CreateShareView) GetRegenerateOk() (*bool, bool) {
+	if o == nil || IsNil(o.Regenerate) {
+		return nil, false
+	}
+	return o.Regenerate, true
+}
+
+// HasRegenerate returns a boolean if a field has been set.
+func (o *CreateShareView) HasRegenerate() bool {
+	if o != nil && !IsNil(o.Regenerate) {
+		return true
+	}
+
+	return false
+}
+
+// SetRegenerate gets a reference to the given bool and assigns it to the Regenerate field.
+func (o *CreateShareView) SetRegenerate(v bool) {
+	o.Regenerate = &v
+}
+
 func (o CreateShareView) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if !isNil(o.IncludeGridHistory) {
-		toSerialize["includeGridHistory"] = o.IncludeGridHistory
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o CreateShareView) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.IncludeGridHistory) {
+		toSerialize["includeGridHistory"] = o.IncludeGridHistory
+	}
+	if !IsNil(o.Regenerate) {
+		toSerialize["regenerate"] = o.Regenerate
+	}
+	return toSerialize, nil
 }
 
 type NullableCreateShareView struct {

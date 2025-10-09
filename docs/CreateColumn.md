@@ -12,10 +12,12 @@ Name | Type | Description | Notes
 **LanguageCode** | Pointer to **string** |  | [optional] 
 **LocalizationType** | Pointer to **string** |  | [optional] 
 **NumberFormat** | Pointer to [**NumberFormat**](NumberFormat.md) |  | [optional] 
-**SelectionOptions** | Pointer to **[]string** |  | [optional] 
+**SelectionOptions** | Pointer to **[]string** | Please use selection | [optional] 
+**Selection** | Pointer to [**Selection**](Selection.md) |  | [optional] 
 **Reference** | Pointer to [**Reference**](Reference.md) |  | [optional] 
 **Formula** | Pointer to [**Formula**](Formula.md) |  | [optional] 
 **DateTimeFormat** | Pointer to [**DateTimeFormat**](DateTimeFormat.md) |  | [optional] 
+**LengthLimitSetting** | Pointer to [**LengthLimitSetting**](LengthLimitSetting.md) |  | [optional] 
 
 ## Methods
 
@@ -251,6 +253,31 @@ SetSelectionOptions sets SelectionOptions field to given value.
 
 HasSelectionOptions returns a boolean if a field has been set.
 
+### GetSelection
+
+`func (o *CreateColumn) GetSelection() Selection`
+
+GetSelection returns the Selection field if non-nil, zero value otherwise.
+
+### GetSelectionOk
+
+`func (o *CreateColumn) GetSelectionOk() (*Selection, bool)`
+
+GetSelectionOk returns a tuple with the Selection field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetSelection
+
+`func (o *CreateColumn) SetSelection(v Selection)`
+
+SetSelection sets Selection field to given value.
+
+### HasSelection
+
+`func (o *CreateColumn) HasSelection() bool`
+
+HasSelection returns a boolean if a field has been set.
+
 ### GetReference
 
 `func (o *CreateColumn) GetReference() Reference`
@@ -325,6 +352,31 @@ SetDateTimeFormat sets DateTimeFormat field to given value.
 `func (o *CreateColumn) HasDateTimeFormat() bool`
 
 HasDateTimeFormat returns a boolean if a field has been set.
+
+### GetLengthLimitSetting
+
+`func (o *CreateColumn) GetLengthLimitSetting() LengthLimitSetting`
+
+GetLengthLimitSetting returns the LengthLimitSetting field if non-nil, zero value otherwise.
+
+### GetLengthLimitSettingOk
+
+`func (o *CreateColumn) GetLengthLimitSettingOk() (*LengthLimitSetting, bool)`
+
+GetLengthLimitSettingOk returns a tuple with the LengthLimitSetting field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetLengthLimitSetting
+
+`func (o *CreateColumn) SetLengthLimitSetting(v LengthLimitSetting)`
+
+SetLengthLimitSetting sets LengthLimitSetting field to given value.
+
+### HasLengthLimitSetting
+
+`func (o *CreateColumn) HasLengthLimitSetting() bool`
+
+HasLengthLimitSetting returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

@@ -4,6 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**AccentSensitive** | Pointer to **bool** |  | [optional] 
 **CaseSensitive** | Pointer to **bool** |  | [optional] 
 **ColumnId** | Pointer to **string** |  | [optional] 
 **DynamicColumn** | Pointer to **string** |  | [optional] [readonly] 
@@ -30,6 +31,31 @@ will change when the set of required properties is changed
 NewFilterFieldWithDefaults instantiates a new FilterField object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
+
+### GetAccentSensitive
+
+`func (o *FilterField) GetAccentSensitive() bool`
+
+GetAccentSensitive returns the AccentSensitive field if non-nil, zero value otherwise.
+
+### GetAccentSensitiveOk
+
+`func (o *FilterField) GetAccentSensitiveOk() (*bool, bool)`
+
+GetAccentSensitiveOk returns a tuple with the AccentSensitive field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetAccentSensitive
+
+`func (o *FilterField) SetAccentSensitive(v bool)`
+
+SetAccentSensitive sets AccentSensitive field to given value.
+
+### HasAccentSensitive
+
+`func (o *FilterField) HasAccentSensitive() bool`
+
+HasAccentSensitive returns a boolean if a field has been set.
 
 ### GetCaseSensitive
 

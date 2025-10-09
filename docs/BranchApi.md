@@ -28,26 +28,26 @@ create
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    gridly "./openapi"
+	"context"
+	"fmt"
+	"os"
+	gridly "github.com/gridly-spreadsheet-CMS/gridly-go-sdk"
 )
 
 func main() {
-    createBranch := *gridly.NewCreateBranch("Name_example") // CreateBranch | 
-    gridId := "gridId_example" // string | gridId (optional)
-    branchId := "branchId_example" // string | branchId (optional)
+	createBranch := *gridly.NewCreateBranch("Name_example") // CreateBranch | 
+	gridId := "gridId_example" // string | gridId (optional)
+	branchId := "branchId_example" // string | branchId (optional)
 
-    configuration := gridly.NewConfiguration()
-    apiClient := gridly.NewAPIClient(configuration)
-    resp, r, err := apiClient.BranchApi.Create(context.Background()).CreateBranch(createBranch).GridId(gridId).BranchId(branchId).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `BranchApi.Create``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `Create`: Branch
-    fmt.Fprintf(os.Stdout, "Response from `BranchApi.Create`: %v\n", resp)
+	configuration := gridly.NewConfiguration()
+	apiClient := gridly.NewAPIClient(configuration)
+	resp, r, err := apiClient.BranchApi.Create(context.Background()).CreateBranch(createBranch).GridId(gridId).BranchId(branchId).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `BranchApi.Create``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `Create`: Branch
+	fmt.Fprintf(os.Stdout, "Response from `BranchApi.Create`: %v\n", resp)
 }
 ```
 
@@ -98,25 +98,25 @@ createDiffCheck
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    gridly "./openapi"
+	"context"
+	"fmt"
+	"os"
+	gridly "github.com/gridly-spreadsheet-CMS/gridly-go-sdk"
 )
 
 func main() {
-    sourceViewId := "sourceViewId_example" // string | sourceViewId
-    destinationViewId := "destinationViewId_example" // string | destinationViewId
+	sourceViewId := "sourceViewId_example" // string | sourceViewId
+	destinationViewId := "destinationViewId_example" // string | destinationViewId
 
-    configuration := gridly.NewConfiguration()
-    apiClient := gridly.NewAPIClient(configuration)
-    resp, r, err := apiClient.BranchApi.CreateDiffCheck(context.Background()).SourceViewId(sourceViewId).DestinationViewId(destinationViewId).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `BranchApi.CreateDiffCheck``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `CreateDiffCheck`: Task
-    fmt.Fprintf(os.Stdout, "Response from `BranchApi.CreateDiffCheck`: %v\n", resp)
+	configuration := gridly.NewConfiguration()
+	apiClient := gridly.NewAPIClient(configuration)
+	resp, r, err := apiClient.BranchApi.CreateDiffCheck(context.Background()).SourceViewId(sourceViewId).DestinationViewId(destinationViewId).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `BranchApi.CreateDiffCheck``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `CreateDiffCheck`: Task
+	fmt.Fprintf(os.Stdout, "Response from `BranchApi.CreateDiffCheck`: %v\n", resp)
 }
 ```
 
@@ -166,22 +166,22 @@ delete
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    gridly "./openapi"
+	"context"
+	"fmt"
+	"os"
+	gridly "github.com/gridly-spreadsheet-CMS/gridly-go-sdk"
 )
 
 func main() {
-    branchId := "branchId_example" // string | branchId
+	branchId := "branchId_example" // string | branchId
 
-    configuration := gridly.NewConfiguration()
-    apiClient := gridly.NewAPIClient(configuration)
-    resp, r, err := apiClient.BranchApi.Delete(context.Background(), branchId).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `BranchApi.Delete``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
+	configuration := gridly.NewConfiguration()
+	apiClient := gridly.NewAPIClient(configuration)
+	r, err := apiClient.BranchApi.Delete(context.Background(), branchId).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `BranchApi.Delete``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
 }
 ```
 
@@ -234,24 +234,24 @@ get
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    gridly "./openapi"
+	"context"
+	"fmt"
+	"os"
+	gridly "github.com/gridly-spreadsheet-CMS/gridly-go-sdk"
 )
 
 func main() {
-    branchId := "branchId_example" // string | branchId
+	branchId := "branchId_example" // string | branchId
 
-    configuration := gridly.NewConfiguration()
-    apiClient := gridly.NewAPIClient(configuration)
-    resp, r, err := apiClient.BranchApi.Get(context.Background(), branchId).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `BranchApi.Get``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `Get`: Branch
-    fmt.Fprintf(os.Stdout, "Response from `BranchApi.Get`: %v\n", resp)
+	configuration := gridly.NewConfiguration()
+	apiClient := gridly.NewAPIClient(configuration)
+	resp, r, err := apiClient.BranchApi.Get(context.Background(), branchId).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `BranchApi.Get``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `Get`: Branch
+	fmt.Fprintf(os.Stdout, "Response from `BranchApi.Get`: %v\n", resp)
 }
 ```
 
@@ -304,27 +304,27 @@ getDiffCheck
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    gridly "./openapi"
+	"context"
+	"fmt"
+	"os"
+	gridly "github.com/gridly-spreadsheet-CMS/gridly-go-sdk"
 )
 
 func main() {
-    taskId := "taskId_example" // string | taskId
-    mergeRecordOptions := []string{"MergeRecordOptions_example"} // []string | mergeRecordOptions (optional) (default to ["add","update","delete"])
-    query := "query_example" // string | query (optional) (default to "{}")
-    page := "page_example" // string | page (optional) (default to "{}")
+	taskId := "taskId_example" // string | taskId
+	mergeRecordOptions := []string{"MergeRecordOptions_example"} // []string | mergeRecordOptions (optional) (default to ["add","update","delete"])
+	query := "query_example" // string | query (optional) (default to "{}")
+	page := "page_example" // string | page (optional) (default to "{}")
 
-    configuration := gridly.NewConfiguration()
-    apiClient := gridly.NewAPIClient(configuration)
-    resp, r, err := apiClient.BranchApi.GetDiffCheck(context.Background(), taskId).MergeRecordOptions(mergeRecordOptions).Query(query).Page(page).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `BranchApi.GetDiffCheck``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `GetDiffCheck`: []BranchDiffRecord
-    fmt.Fprintf(os.Stdout, "Response from `BranchApi.GetDiffCheck`: %v\n", resp)
+	configuration := gridly.NewConfiguration()
+	apiClient := gridly.NewAPIClient(configuration)
+	resp, r, err := apiClient.BranchApi.GetDiffCheck(context.Background(), taskId).MergeRecordOptions(mergeRecordOptions).Query(query).Page(page).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `BranchApi.GetDiffCheck``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `GetDiffCheck`: []BranchDiffRecord
+	fmt.Fprintf(os.Stdout, "Response from `BranchApi.GetDiffCheck`: %v\n", resp)
 }
 ```
 
@@ -380,24 +380,24 @@ list
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    gridly "./openapi"
+	"context"
+	"fmt"
+	"os"
+	gridly "github.com/gridly-spreadsheet-CMS/gridly-go-sdk"
 )
 
 func main() {
-    gridId := "gridId_example" // string | gridId
+	gridId := "gridId_example" // string | gridId
 
-    configuration := gridly.NewConfiguration()
-    apiClient := gridly.NewAPIClient(configuration)
-    resp, r, err := apiClient.BranchApi.List(context.Background()).GridId(gridId).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `BranchApi.List``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `List`: []Branch
-    fmt.Fprintf(os.Stdout, "Response from `BranchApi.List`: %v\n", resp)
+	configuration := gridly.NewConfiguration()
+	apiClient := gridly.NewAPIClient(configuration)
+	resp, r, err := apiClient.BranchApi.List(context.Background()).GridId(gridId).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `BranchApi.List``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `List`: []Branch
+	fmt.Fprintf(os.Stdout, "Response from `BranchApi.List`: %v\n", resp)
 }
 ```
 
@@ -446,27 +446,27 @@ merge
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    gridly "./openapi"
+	"context"
+	"fmt"
+	"os"
+	gridly "github.com/gridly-spreadsheet-CMS/gridly-go-sdk"
 )
 
 func main() {
-    branchId := "branchId_example" // string | branchId
-    destinationBranchId := "destinationBranchId_example" // string | destinationBranchId
-    mergeBranchRequest := *gridly.NewMergeBranchRequest() // MergeBranchRequest | 
-    mergeRecordOptions := []string{"MergeRecordOptions_example"} // []string | mergeRecordOptions (optional) (default to [])
+	branchId := "branchId_example" // string | branchId
+	destinationBranchId := "destinationBranchId_example" // string | destinationBranchId
+	mergeBranchRequest := *gridly.NewMergeBranchRequest() // MergeBranchRequest | 
+	mergeRecordOptions := []string{"MergeRecordOptions_example"} // []string | mergeRecordOptions (optional) (default to [])
 
-    configuration := gridly.NewConfiguration()
-    apiClient := gridly.NewAPIClient(configuration)
-    resp, r, err := apiClient.BranchApi.Merge(context.Background(), branchId).DestinationBranchId(destinationBranchId).MergeBranchRequest(mergeBranchRequest).MergeRecordOptions(mergeRecordOptions).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `BranchApi.Merge``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `Merge`: Task
-    fmt.Fprintf(os.Stdout, "Response from `BranchApi.Merge`: %v\n", resp)
+	configuration := gridly.NewConfiguration()
+	apiClient := gridly.NewAPIClient(configuration)
+	resp, r, err := apiClient.BranchApi.Merge(context.Background(), branchId).DestinationBranchId(destinationBranchId).MergeBranchRequest(mergeBranchRequest).MergeRecordOptions(mergeRecordOptions).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `BranchApi.Merge``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `Merge`: Task
+	fmt.Fprintf(os.Stdout, "Response from `BranchApi.Merge`: %v\n", resp)
 }
 ```
 

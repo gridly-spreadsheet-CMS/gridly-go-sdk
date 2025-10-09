@@ -1,4 +1,4 @@
-# GlossaryExportFormat
+# ExportGlossaryFormat
 
 ## Enum
 

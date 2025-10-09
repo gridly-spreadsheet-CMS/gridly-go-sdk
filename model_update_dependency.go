@@ -3,7 +3,7 @@ Gridly API
 
 Gridly API documentation
 
-API version: 5.9.0
+API version: 6.13.0
 Contact: support@gridly.com
 */
 
@@ -13,14 +13,21 @@ package gridly
 
 import (
 	"encoding/json"
+	"bytes"
+	"fmt"
 )
+
+// checks if the UpdateDependency type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &UpdateDependency{}
 
 // UpdateDependency struct for UpdateDependency
 type UpdateDependency struct {
-	NewId *string `json:"newId,omitempty"`
+	NewId *string `json:"newId,omitempty" validate:"regexp=^(?!_)\\\\w+$"`
 	TargetColumnId string `json:"targetColumnId"`
 	SourceColumnId string `json:"sourceColumnId"`
 }
+
+type _UpdateDependency UpdateDependency
 
 // NewUpdateDependency instantiates a new UpdateDependency object
 // This constructor will assign default values to properties that have it defined,
@@ -43,7 +50,7 @@ func NewUpdateDependencyWithDefaults() *UpdateDependency {
 
 // GetNewId returns the NewId field value if set, zero value otherwise.
 func (o *UpdateDependency) GetNewId() string {
-	if o == nil || isNil(o.NewId) {
+	if o == nil || IsNil(o.NewId) {
 		var ret string
 		return ret
 	}
@@ -53,15 +60,15 @@ func (o *UpdateDependency) GetNewId() string {
 // GetNewIdOk returns a tuple with the NewId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *UpdateDependency) GetNewIdOk() (*string, bool) {
-	if o == nil || isNil(o.NewId) {
-    return nil, false
+	if o == nil || IsNil(o.NewId) {
+		return nil, false
 	}
 	return o.NewId, true
 }
 
 // HasNewId returns a boolean if a field has been set.
 func (o *UpdateDependency) HasNewId() bool {
-	if o != nil && !isNil(o.NewId) {
+	if o != nil && !IsNil(o.NewId) {
 		return true
 	}
 
@@ -87,7 +94,7 @@ func (o *UpdateDependency) GetTargetColumnId() string {
 // and a boolean to check if the value has been set.
 func (o *UpdateDependency) GetTargetColumnIdOk() (*string, bool) {
 	if o == nil {
-    return nil, false
+		return nil, false
 	}
 	return &o.TargetColumnId, true
 }
@@ -96,6 +103,7 @@ func (o *UpdateDependency) GetTargetColumnIdOk() (*string, bool) {
 func (o *UpdateDependency) SetTargetColumnId(v string) {
 	o.TargetColumnId = v
 }
+
 
 // GetSourceColumnId returns the SourceColumnId field value
 func (o *UpdateDependency) GetSourceColumnId() string {
@@ -111,7 +119,7 @@ func (o *UpdateDependency) GetSourceColumnId() string {
 // and a boolean to check if the value has been set.
 func (o *UpdateDependency) GetSourceColumnIdOk() (*string, bool) {
 	if o == nil {
-    return nil, false
+		return nil, false
 	}
 	return &o.SourceColumnId, true
 }
@@ -121,18 +129,78 @@ func (o *UpdateDependency) SetSourceColumnId(v string) {
 	o.SourceColumnId = v
 }
 
+
 func (o UpdateDependency) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if !isNil(o.NewId) {
-		toSerialize["newId"] = o.NewId
-	}
-	if true {
-		toSerialize["targetColumnId"] = o.TargetColumnId
-	}
-	if true {
-		toSerialize["sourceColumnId"] = o.SourceColumnId
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o UpdateDependency) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.NewId) {
+		toSerialize["newId"] = o.NewId
+	}
+	toSerialize["targetColumnId"] = o.TargetColumnId
+	toSerialize["sourceColumnId"] = o.SourceColumnId
+	return toSerialize, nil
+}
+
+func (o *UpdateDependency) UnmarshalJSON(data []byte) (err error) {
+	// This validates that all required properties are included in the JSON object
+	// by unmarshalling the object into a generic map with string keys and checking
+	// that every required field exists as a key in the generic map.
+	requiredProperties := []string{
+		"targetColumnId",
+		"sourceColumnId",
+	}
+
+	// defaultValueFuncMap captures the default values for required properties.
+	// These values are used when required properties are missing from the payload.
+	defaultValueFuncMap := map[string]func() interface{} {
+	}
+	var defaultValueApplied bool
+	allProperties := make(map[string]interface{})
+
+	err = json.Unmarshal(data, &allProperties)
+
+	if err != nil {
+		return err;
+	}
+
+	for _, requiredProperty := range(requiredProperties) {
+		if value, exists := allProperties[requiredProperty]; !exists || value == "" {
+			if _, ok := defaultValueFuncMap[requiredProperty]; ok {
+				allProperties[requiredProperty] = defaultValueFuncMap[requiredProperty]()
+				defaultValueApplied = true
+			}
+		}
+		if value, exists := allProperties[requiredProperty]; !exists || value == ""{
+			return fmt.Errorf("no value given for required property %v", requiredProperty)
+		}
+	}
+
+	if defaultValueApplied {
+		data, err = json.Marshal(allProperties)
+		if err != nil{
+			return err
+		}
+	}
+	varUpdateDependency := _UpdateDependency{}
+
+	decoder := json.NewDecoder(bytes.NewReader(data))
+	decoder.DisallowUnknownFields()
+	err = decoder.Decode(&varUpdateDependency)
+
+	if err != nil {
+		return err
+	}
+
+	*o = UpdateDependency(varUpdateDependency)
+
+	return err
 }
 
 type NullableUpdateDependency struct {

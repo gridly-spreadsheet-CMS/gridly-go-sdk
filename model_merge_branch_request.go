@@ -3,7 +3,7 @@ Gridly API
 
 Gridly API documentation
 
-API version: 5.9.0
+API version: 6.13.0
 Contact: support@gridly.com
 */
 
@@ -14,6 +14,9 @@ package gridly
 import (
 	"encoding/json"
 )
+
+// checks if the MergeBranchRequest type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &MergeBranchRequest{}
 
 // MergeBranchRequest struct for MergeBranchRequest
 type MergeBranchRequest struct {
@@ -43,7 +46,7 @@ func NewMergeBranchRequestWithDefaults() *MergeBranchRequest {
 
 // GetMergeRecordOptions returns the MergeRecordOptions field value if set, zero value otherwise.
 func (o *MergeBranchRequest) GetMergeRecordOptions() []string {
-	if o == nil || isNil(o.MergeRecordOptions) {
+	if o == nil || IsNil(o.MergeRecordOptions) {
 		var ret []string
 		return ret
 	}
@@ -53,15 +56,15 @@ func (o *MergeBranchRequest) GetMergeRecordOptions() []string {
 // GetMergeRecordOptionsOk returns a tuple with the MergeRecordOptions field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *MergeBranchRequest) GetMergeRecordOptionsOk() ([]string, bool) {
-	if o == nil || isNil(o.MergeRecordOptions) {
-    return nil, false
+	if o == nil || IsNil(o.MergeRecordOptions) {
+		return nil, false
 	}
 	return o.MergeRecordOptions, true
 }
 
 // HasMergeRecordOptions returns a boolean if a field has been set.
 func (o *MergeBranchRequest) HasMergeRecordOptions() bool {
-	if o != nil && !isNil(o.MergeRecordOptions) {
+	if o != nil && !IsNil(o.MergeRecordOptions) {
 		return true
 	}
 
@@ -75,7 +78,7 @@ func (o *MergeBranchRequest) SetMergeRecordOptions(v []string) {
 
 // GetMergeRecordConflicts returns the MergeRecordConflicts field value if set, zero value otherwise.
 func (o *MergeBranchRequest) GetMergeRecordConflicts() []MergeRecordConflict {
-	if o == nil || isNil(o.MergeRecordConflicts) {
+	if o == nil || IsNil(o.MergeRecordConflicts) {
 		var ret []MergeRecordConflict
 		return ret
 	}
@@ -85,15 +88,15 @@ func (o *MergeBranchRequest) GetMergeRecordConflicts() []MergeRecordConflict {
 // GetMergeRecordConflictsOk returns a tuple with the MergeRecordConflicts field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *MergeBranchRequest) GetMergeRecordConflictsOk() ([]MergeRecordConflict, bool) {
-	if o == nil || isNil(o.MergeRecordConflicts) {
-    return nil, false
+	if o == nil || IsNil(o.MergeRecordConflicts) {
+		return nil, false
 	}
 	return o.MergeRecordConflicts, true
 }
 
 // HasMergeRecordConflicts returns a boolean if a field has been set.
 func (o *MergeBranchRequest) HasMergeRecordConflicts() bool {
-	if o != nil && !isNil(o.MergeRecordConflicts) {
+	if o != nil && !IsNil(o.MergeRecordConflicts) {
 		return true
 	}
 
@@ -107,7 +110,7 @@ func (o *MergeBranchRequest) SetMergeRecordConflicts(v []MergeRecordConflict) {
 
 // GetUseLastMergeResolve returns the UseLastMergeResolve field value if set, zero value otherwise.
 func (o *MergeBranchRequest) GetUseLastMergeResolve() bool {
-	if o == nil || isNil(o.UseLastMergeResolve) {
+	if o == nil || IsNil(o.UseLastMergeResolve) {
 		var ret bool
 		return ret
 	}
@@ -117,15 +120,15 @@ func (o *MergeBranchRequest) GetUseLastMergeResolve() bool {
 // GetUseLastMergeResolveOk returns a tuple with the UseLastMergeResolve field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *MergeBranchRequest) GetUseLastMergeResolveOk() (*bool, bool) {
-	if o == nil || isNil(o.UseLastMergeResolve) {
-    return nil, false
+	if o == nil || IsNil(o.UseLastMergeResolve) {
+		return nil, false
 	}
 	return o.UseLastMergeResolve, true
 }
 
 // HasUseLastMergeResolve returns a boolean if a field has been set.
 func (o *MergeBranchRequest) HasUseLastMergeResolve() bool {
-	if o != nil && !isNil(o.UseLastMergeResolve) {
+	if o != nil && !IsNil(o.UseLastMergeResolve) {
 		return true
 	}
 
@@ -139,7 +142,7 @@ func (o *MergeBranchRequest) SetUseLastMergeResolve(v bool) {
 
 // GetCheckMismatchedColumnType returns the CheckMismatchedColumnType field value if set, zero value otherwise.
 func (o *MergeBranchRequest) GetCheckMismatchedColumnType() bool {
-	if o == nil || isNil(o.CheckMismatchedColumnType) {
+	if o == nil || IsNil(o.CheckMismatchedColumnType) {
 		var ret bool
 		return ret
 	}
@@ -149,15 +152,15 @@ func (o *MergeBranchRequest) GetCheckMismatchedColumnType() bool {
 // GetCheckMismatchedColumnTypeOk returns a tuple with the CheckMismatchedColumnType field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *MergeBranchRequest) GetCheckMismatchedColumnTypeOk() (*bool, bool) {
-	if o == nil || isNil(o.CheckMismatchedColumnType) {
-    return nil, false
+	if o == nil || IsNil(o.CheckMismatchedColumnType) {
+		return nil, false
 	}
 	return o.CheckMismatchedColumnType, true
 }
 
 // HasCheckMismatchedColumnType returns a boolean if a field has been set.
 func (o *MergeBranchRequest) HasCheckMismatchedColumnType() bool {
-	if o != nil && !isNil(o.CheckMismatchedColumnType) {
+	if o != nil && !IsNil(o.CheckMismatchedColumnType) {
 		return true
 	}
 
@@ -171,7 +174,7 @@ func (o *MergeBranchRequest) SetCheckMismatchedColumnType(v bool) {
 
 // GetQuery returns the Query field value if set, zero value otherwise.
 func (o *MergeBranchRequest) GetQuery() []FilterField {
-	if o == nil || isNil(o.Query) {
+	if o == nil || IsNil(o.Query) {
 		var ret []FilterField
 		return ret
 	}
@@ -181,15 +184,15 @@ func (o *MergeBranchRequest) GetQuery() []FilterField {
 // GetQueryOk returns a tuple with the Query field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *MergeBranchRequest) GetQueryOk() ([]FilterField, bool) {
-	if o == nil || isNil(o.Query) {
-    return nil, false
+	if o == nil || IsNil(o.Query) {
+		return nil, false
 	}
 	return o.Query, true
 }
 
 // HasQuery returns a boolean if a field has been set.
 func (o *MergeBranchRequest) HasQuery() bool {
-	if o != nil && !isNil(o.Query) {
+	if o != nil && !IsNil(o.Query) {
 		return true
 	}
 
@@ -202,23 +205,31 @@ func (o *MergeBranchRequest) SetQuery(v []FilterField) {
 }
 
 func (o MergeBranchRequest) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if !isNil(o.MergeRecordOptions) {
-		toSerialize["mergeRecordOptions"] = o.MergeRecordOptions
-	}
-	if !isNil(o.MergeRecordConflicts) {
-		toSerialize["mergeRecordConflicts"] = o.MergeRecordConflicts
-	}
-	if !isNil(o.UseLastMergeResolve) {
-		toSerialize["useLastMergeResolve"] = o.UseLastMergeResolve
-	}
-	if !isNil(o.CheckMismatchedColumnType) {
-		toSerialize["checkMismatchedColumnType"] = o.CheckMismatchedColumnType
-	}
-	if !isNil(o.Query) {
-		toSerialize["query"] = o.Query
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o MergeBranchRequest) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.MergeRecordOptions) {
+		toSerialize["mergeRecordOptions"] = o.MergeRecordOptions
+	}
+	if !IsNil(o.MergeRecordConflicts) {
+		toSerialize["mergeRecordConflicts"] = o.MergeRecordConflicts
+	}
+	if !IsNil(o.UseLastMergeResolve) {
+		toSerialize["useLastMergeResolve"] = o.UseLastMergeResolve
+	}
+	if !IsNil(o.CheckMismatchedColumnType) {
+		toSerialize["checkMismatchedColumnType"] = o.CheckMismatchedColumnType
+	}
+	if !IsNil(o.Query) {
+		toSerialize["query"] = o.Query
+	}
+	return toSerialize, nil
 }
 
 type NullableMergeBranchRequest struct {

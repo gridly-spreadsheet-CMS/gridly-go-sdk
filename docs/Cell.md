@@ -7,6 +7,9 @@ Name | Type | Description | Notes
 **ColumnId** | Pointer to **string** |  | [optional] 
 **DependencyStatus** | Pointer to **string** |  | [optional] 
 **LengthLimit** | Pointer to **int32** |  | [optional] 
+**LineLimit** | Pointer to **int32** |  | [optional] 
+**Mt** | Pointer to **bool** |  | [optional] 
+**ReadOnly** | Pointer to **bool** |  | [optional] 
 **ReferencedIds** | Pointer to **[]string** |  | [optional] 
 **SourceStatus** | Pointer to **string** |  | [optional] 
 **Tm** | Pointer to **bool** |  | [optional] 
@@ -105,6 +108,81 @@ SetLengthLimit sets LengthLimit field to given value.
 `func (o *Cell) HasLengthLimit() bool`
 
 HasLengthLimit returns a boolean if a field has been set.
+
+### GetLineLimit
+
+`func (o *Cell) GetLineLimit() int32`
+
+GetLineLimit returns the LineLimit field if non-nil, zero value otherwise.
+
+### GetLineLimitOk
+
+`func (o *Cell) GetLineLimitOk() (*int32, bool)`
+
+GetLineLimitOk returns a tuple with the LineLimit field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetLineLimit
+
+`func (o *Cell) SetLineLimit(v int32)`
+
+SetLineLimit sets LineLimit field to given value.
+
+### HasLineLimit
+
+`func (o *Cell) HasLineLimit() bool`
+
+HasLineLimit returns a boolean if a field has been set.
+
+### GetMt
+
+`func (o *Cell) GetMt() bool`
+
+GetMt returns the Mt field if non-nil, zero value otherwise.
+
+### GetMtOk
+
+`func (o *Cell) GetMtOk() (*bool, bool)`
+
+GetMtOk returns a tuple with the Mt field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetMt
+
+`func (o *Cell) SetMt(v bool)`
+
+SetMt sets Mt field to given value.
+
+### HasMt
+
+`func (o *Cell) HasMt() bool`
+
+HasMt returns a boolean if a field has been set.
+
+### GetReadOnly
+
+`func (o *Cell) GetReadOnly() bool`
+
+GetReadOnly returns the ReadOnly field if non-nil, zero value otherwise.
+
+### GetReadOnlyOk
+
+`func (o *Cell) GetReadOnlyOk() (*bool, bool)`
+
+GetReadOnlyOk returns a tuple with the ReadOnly field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetReadOnly
+
+`func (o *Cell) SetReadOnly(v bool)`
+
+SetReadOnly sets ReadOnly field to given value.
+
+### HasReadOnly
+
+`func (o *Cell) HasReadOnly() bool`
+
+HasReadOnly returns a boolean if a field has been set.
 
 ### GetReferencedIds
 

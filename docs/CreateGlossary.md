@@ -7,7 +7,7 @@ Name | Type | Description | Notes
 **Name** | **string** |  | 
 **Description** | Pointer to **string** |  | [optional] 
 **Langs** | Pointer to **[]string** |  | [optional] 
-**Projects** | Pointer to [**[]GlossaryProject**](GlossaryProject.md) |  | [optional] 
+**ProjectIds** | Pointer to **[]int64** |  | [optional] 
 
 ## Methods
 
@@ -98,30 +98,30 @@ SetLangs sets Langs field to given value.
 
 HasLangs returns a boolean if a field has been set.
 
-### GetProjects
+### GetProjectIds
 
-`func (o *CreateGlossary) GetProjects() []GlossaryProject`
+`func (o *CreateGlossary) GetProjectIds() []int64`
 
-GetProjects returns the Projects field if non-nil, zero value otherwise.
+GetProjectIds returns the ProjectIds field if non-nil, zero value otherwise.
 
-### GetProjectsOk
+### GetProjectIdsOk
 
-`func (o *CreateGlossary) GetProjectsOk() (*[]GlossaryProject, bool)`
+`func (o *CreateGlossary) GetProjectIdsOk() (*[]int64, bool)`
 
-GetProjectsOk returns a tuple with the Projects field if it's non-nil, zero value otherwise
+GetProjectIdsOk returns a tuple with the ProjectIds field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetProjects
+### SetProjectIds
 
-`func (o *CreateGlossary) SetProjects(v []GlossaryProject)`
+`func (o *CreateGlossary) SetProjectIds(v []int64)`
 
-SetProjects sets Projects field to given value.
+SetProjectIds sets ProjectIds field to given value.
 
-### HasProjects
+### HasProjectIds
 
-`func (o *CreateGlossary) HasProjects() bool`
+`func (o *CreateGlossary) HasProjectIds() bool`
 
-HasProjects returns a boolean if a field has been set.
+HasProjectIds returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

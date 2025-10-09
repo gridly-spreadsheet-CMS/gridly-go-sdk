@@ -3,7 +3,7 @@ Gridly API
 
 Gridly API documentation
 
-API version: 5.9.0
+API version: 6.13.0
 Contact: support@gridly.com
 */
 
@@ -15,13 +15,18 @@ import (
 	"encoding/json"
 )
 
+// checks if the Glossary type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &Glossary{}
+
 // Glossary struct for Glossary
 type Glossary struct {
 	Id *string `json:"id,omitempty"`
 	Name *string `json:"name,omitempty"`
 	Description *string `json:"description,omitempty"`
 	Langs []string `json:"langs,omitempty"`
+	// Deprecated
 	Projects []GlossaryProject `json:"projects,omitempty"`
+	ProjectIds []int64 `json:"projectIds,omitempty"`
 }
 
 // NewGlossary instantiates a new Glossary object
@@ -43,7 +48,7 @@ func NewGlossaryWithDefaults() *Glossary {
 
 // GetId returns the Id field value if set, zero value otherwise.
 func (o *Glossary) GetId() string {
-	if o == nil || isNil(o.Id) {
+	if o == nil || IsNil(o.Id) {
 		var ret string
 		return ret
 	}
@@ -53,15 +58,15 @@ func (o *Glossary) GetId() string {
 // GetIdOk returns a tuple with the Id field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Glossary) GetIdOk() (*string, bool) {
-	if o == nil || isNil(o.Id) {
-    return nil, false
+	if o == nil || IsNil(o.Id) {
+		return nil, false
 	}
 	return o.Id, true
 }
 
 // HasId returns a boolean if a field has been set.
 func (o *Glossary) HasId() bool {
-	if o != nil && !isNil(o.Id) {
+	if o != nil && !IsNil(o.Id) {
 		return true
 	}
 
@@ -75,7 +80,7 @@ func (o *Glossary) SetId(v string) {
 
 // GetName returns the Name field value if set, zero value otherwise.
 func (o *Glossary) GetName() string {
-	if o == nil || isNil(o.Name) {
+	if o == nil || IsNil(o.Name) {
 		var ret string
 		return ret
 	}
@@ -85,15 +90,15 @@ func (o *Glossary) GetName() string {
 // GetNameOk returns a tuple with the Name field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Glossary) GetNameOk() (*string, bool) {
-	if o == nil || isNil(o.Name) {
-    return nil, false
+	if o == nil || IsNil(o.Name) {
+		return nil, false
 	}
 	return o.Name, true
 }
 
 // HasName returns a boolean if a field has been set.
 func (o *Glossary) HasName() bool {
-	if o != nil && !isNil(o.Name) {
+	if o != nil && !IsNil(o.Name) {
 		return true
 	}
 
@@ -107,7 +112,7 @@ func (o *Glossary) SetName(v string) {
 
 // GetDescription returns the Description field value if set, zero value otherwise.
 func (o *Glossary) GetDescription() string {
-	if o == nil || isNil(o.Description) {
+	if o == nil || IsNil(o.Description) {
 		var ret string
 		return ret
 	}
@@ -117,15 +122,15 @@ func (o *Glossary) GetDescription() string {
 // GetDescriptionOk returns a tuple with the Description field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Glossary) GetDescriptionOk() (*string, bool) {
-	if o == nil || isNil(o.Description) {
-    return nil, false
+	if o == nil || IsNil(o.Description) {
+		return nil, false
 	}
 	return o.Description, true
 }
 
 // HasDescription returns a boolean if a field has been set.
 func (o *Glossary) HasDescription() bool {
-	if o != nil && !isNil(o.Description) {
+	if o != nil && !IsNil(o.Description) {
 		return true
 	}
 
@@ -139,7 +144,7 @@ func (o *Glossary) SetDescription(v string) {
 
 // GetLangs returns the Langs field value if set, zero value otherwise.
 func (o *Glossary) GetLangs() []string {
-	if o == nil || isNil(o.Langs) {
+	if o == nil || IsNil(o.Langs) {
 		var ret []string
 		return ret
 	}
@@ -149,15 +154,15 @@ func (o *Glossary) GetLangs() []string {
 // GetLangsOk returns a tuple with the Langs field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Glossary) GetLangsOk() ([]string, bool) {
-	if o == nil || isNil(o.Langs) {
-    return nil, false
+	if o == nil || IsNil(o.Langs) {
+		return nil, false
 	}
 	return o.Langs, true
 }
 
 // HasLangs returns a boolean if a field has been set.
 func (o *Glossary) HasLangs() bool {
-	if o != nil && !isNil(o.Langs) {
+	if o != nil && !IsNil(o.Langs) {
 		return true
 	}
 
@@ -170,8 +175,9 @@ func (o *Glossary) SetLangs(v []string) {
 }
 
 // GetProjects returns the Projects field value if set, zero value otherwise.
+// Deprecated
 func (o *Glossary) GetProjects() []GlossaryProject {
-	if o == nil || isNil(o.Projects) {
+	if o == nil || IsNil(o.Projects) {
 		var ret []GlossaryProject
 		return ret
 	}
@@ -180,16 +186,17 @@ func (o *Glossary) GetProjects() []GlossaryProject {
 
 // GetProjectsOk returns a tuple with the Projects field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// Deprecated
 func (o *Glossary) GetProjectsOk() ([]GlossaryProject, bool) {
-	if o == nil || isNil(o.Projects) {
-    return nil, false
+	if o == nil || IsNil(o.Projects) {
+		return nil, false
 	}
 	return o.Projects, true
 }
 
 // HasProjects returns a boolean if a field has been set.
 func (o *Glossary) HasProjects() bool {
-	if o != nil && !isNil(o.Projects) {
+	if o != nil && !IsNil(o.Projects) {
 		return true
 	}
 
@@ -197,28 +204,72 @@ func (o *Glossary) HasProjects() bool {
 }
 
 // SetProjects gets a reference to the given []GlossaryProject and assigns it to the Projects field.
+// Deprecated
 func (o *Glossary) SetProjects(v []GlossaryProject) {
 	o.Projects = v
 }
 
+// GetProjectIds returns the ProjectIds field value if set, zero value otherwise.
+func (o *Glossary) GetProjectIds() []int64 {
+	if o == nil || IsNil(o.ProjectIds) {
+		var ret []int64
+		return ret
+	}
+	return o.ProjectIds
+}
+
+// GetProjectIdsOk returns a tuple with the ProjectIds field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *Glossary) GetProjectIdsOk() ([]int64, bool) {
+	if o == nil || IsNil(o.ProjectIds) {
+		return nil, false
+	}
+	return o.ProjectIds, true
+}
+
+// HasProjectIds returns a boolean if a field has been set.
+func (o *Glossary) HasProjectIds() bool {
+	if o != nil && !IsNil(o.ProjectIds) {
+		return true
+	}
+
+	return false
+}
+
+// SetProjectIds gets a reference to the given []int64 and assigns it to the ProjectIds field.
+func (o *Glossary) SetProjectIds(v []int64) {
+	o.ProjectIds = v
+}
+
 func (o Glossary) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if !isNil(o.Id) {
-		toSerialize["id"] = o.Id
-	}
-	if !isNil(o.Name) {
-		toSerialize["name"] = o.Name
-	}
-	if !isNil(o.Description) {
-		toSerialize["description"] = o.Description
-	}
-	if !isNil(o.Langs) {
-		toSerialize["langs"] = o.Langs
-	}
-	if !isNil(o.Projects) {
-		toSerialize["projects"] = o.Projects
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o Glossary) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.Id) {
+		toSerialize["id"] = o.Id
+	}
+	if !IsNil(o.Name) {
+		toSerialize["name"] = o.Name
+	}
+	if !IsNil(o.Description) {
+		toSerialize["description"] = o.Description
+	}
+	if !IsNil(o.Langs) {
+		toSerialize["langs"] = o.Langs
+	}
+	if !IsNil(o.Projects) {
+		toSerialize["projects"] = o.Projects
+	}
+	if !IsNil(o.ProjectIds) {
+		toSerialize["projectIds"] = o.ProjectIds
+	}
+	return toSerialize, nil
 }
 
 type NullableGlossary struct {

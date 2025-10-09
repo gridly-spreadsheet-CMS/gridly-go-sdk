@@ -3,7 +3,7 @@ Gridly API
 
 Gridly API documentation
 
-API version: 5.9.0
+API version: 6.13.0
 Contact: support@gridly.com
 */
 
@@ -15,6 +15,9 @@ import (
 	"encoding/json"
 	"time"
 )
+
+// checks if the CDN type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &CDN{}
 
 // CDN struct for CDN
 type CDN struct {
@@ -56,7 +59,7 @@ func NewCDNWithDefaults() *CDN {
 
 // GetId returns the Id field value if set, zero value otherwise.
 func (o *CDN) GetId() string {
-	if o == nil || isNil(o.Id) {
+	if o == nil || IsNil(o.Id) {
 		var ret string
 		return ret
 	}
@@ -66,15 +69,15 @@ func (o *CDN) GetId() string {
 // GetIdOk returns a tuple with the Id field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CDN) GetIdOk() (*string, bool) {
-	if o == nil || isNil(o.Id) {
-    return nil, false
+	if o == nil || IsNil(o.Id) {
+		return nil, false
 	}
 	return o.Id, true
 }
 
 // HasId returns a boolean if a field has been set.
 func (o *CDN) HasId() bool {
-	if o != nil && !isNil(o.Id) {
+	if o != nil && !IsNil(o.Id) {
 		return true
 	}
 
@@ -88,7 +91,7 @@ func (o *CDN) SetId(v string) {
 
 // GetName returns the Name field value if set, zero value otherwise.
 func (o *CDN) GetName() string {
-	if o == nil || isNil(o.Name) {
+	if o == nil || IsNil(o.Name) {
 		var ret string
 		return ret
 	}
@@ -98,15 +101,15 @@ func (o *CDN) GetName() string {
 // GetNameOk returns a tuple with the Name field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CDN) GetNameOk() (*string, bool) {
-	if o == nil || isNil(o.Name) {
-    return nil, false
+	if o == nil || IsNil(o.Name) {
+		return nil, false
 	}
 	return o.Name, true
 }
 
 // HasName returns a boolean if a field has been set.
 func (o *CDN) HasName() bool {
-	if o != nil && !isNil(o.Name) {
+	if o != nil && !IsNil(o.Name) {
 		return true
 	}
 
@@ -120,7 +123,7 @@ func (o *CDN) SetName(v string) {
 
 // GetDescription returns the Description field value if set, zero value otherwise.
 func (o *CDN) GetDescription() string {
-	if o == nil || isNil(o.Description) {
+	if o == nil || IsNil(o.Description) {
 		var ret string
 		return ret
 	}
@@ -130,15 +133,15 @@ func (o *CDN) GetDescription() string {
 // GetDescriptionOk returns a tuple with the Description field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CDN) GetDescriptionOk() (*string, bool) {
-	if o == nil || isNil(o.Description) {
-    return nil, false
+	if o == nil || IsNil(o.Description) {
+		return nil, false
 	}
 	return o.Description, true
 }
 
 // HasDescription returns a boolean if a field has been set.
 func (o *CDN) HasDescription() bool {
-	if o != nil && !isNil(o.Description) {
+	if o != nil && !IsNil(o.Description) {
 		return true
 	}
 
@@ -152,7 +155,7 @@ func (o *CDN) SetDescription(v string) {
 
 // GetUrl returns the Url field value if set, zero value otherwise.
 func (o *CDN) GetUrl() string {
-	if o == nil || isNil(o.Url) {
+	if o == nil || IsNil(o.Url) {
 		var ret string
 		return ret
 	}
@@ -162,15 +165,15 @@ func (o *CDN) GetUrl() string {
 // GetUrlOk returns a tuple with the Url field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CDN) GetUrlOk() (*string, bool) {
-	if o == nil || isNil(o.Url) {
-    return nil, false
+	if o == nil || IsNil(o.Url) {
+		return nil, false
 	}
 	return o.Url, true
 }
 
 // HasUrl returns a boolean if a field has been set.
 func (o *CDN) HasUrl() bool {
-	if o != nil && !isNil(o.Url) {
+	if o != nil && !IsNil(o.Url) {
 		return true
 	}
 
@@ -184,7 +187,7 @@ func (o *CDN) SetUrl(v string) {
 
 // GetGridId returns the GridId field value if set, zero value otherwise.
 func (o *CDN) GetGridId() string {
-	if o == nil || isNil(o.GridId) {
+	if o == nil || IsNil(o.GridId) {
 		var ret string
 		return ret
 	}
@@ -194,15 +197,15 @@ func (o *CDN) GetGridId() string {
 // GetGridIdOk returns a tuple with the GridId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CDN) GetGridIdOk() (*string, bool) {
-	if o == nil || isNil(o.GridId) {
-    return nil, false
+	if o == nil || IsNil(o.GridId) {
+		return nil, false
 	}
 	return o.GridId, true
 }
 
 // HasGridId returns a boolean if a field has been set.
 func (o *CDN) HasGridId() bool {
-	if o != nil && !isNil(o.GridId) {
+	if o != nil && !IsNil(o.GridId) {
 		return true
 	}
 
@@ -216,7 +219,7 @@ func (o *CDN) SetGridId(v string) {
 
 // GetStatus returns the Status field value if set, zero value otherwise.
 func (o *CDN) GetStatus() string {
-	if o == nil || isNil(o.Status) {
+	if o == nil || IsNil(o.Status) {
 		var ret string
 		return ret
 	}
@@ -226,15 +229,15 @@ func (o *CDN) GetStatus() string {
 // GetStatusOk returns a tuple with the Status field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CDN) GetStatusOk() (*string, bool) {
-	if o == nil || isNil(o.Status) {
-    return nil, false
+	if o == nil || IsNil(o.Status) {
+		return nil, false
 	}
 	return o.Status, true
 }
 
 // HasStatus returns a boolean if a field has been set.
 func (o *CDN) HasStatus() bool {
-	if o != nil && !isNil(o.Status) {
+	if o != nil && !IsNil(o.Status) {
 		return true
 	}
 
@@ -248,7 +251,7 @@ func (o *CDN) SetStatus(v string) {
 
 // GetLastGeneratedTime returns the LastGeneratedTime field value if set, zero value otherwise.
 func (o *CDN) GetLastGeneratedTime() time.Time {
-	if o == nil || isNil(o.LastGeneratedTime) {
+	if o == nil || IsNil(o.LastGeneratedTime) {
 		var ret time.Time
 		return ret
 	}
@@ -258,15 +261,15 @@ func (o *CDN) GetLastGeneratedTime() time.Time {
 // GetLastGeneratedTimeOk returns a tuple with the LastGeneratedTime field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CDN) GetLastGeneratedTimeOk() (*time.Time, bool) {
-	if o == nil || isNil(o.LastGeneratedTime) {
-    return nil, false
+	if o == nil || IsNil(o.LastGeneratedTime) {
+		return nil, false
 	}
 	return o.LastGeneratedTime, true
 }
 
 // HasLastGeneratedTime returns a boolean if a field has been set.
 func (o *CDN) HasLastGeneratedTime() bool {
-	if o != nil && !isNil(o.LastGeneratedTime) {
+	if o != nil && !IsNil(o.LastGeneratedTime) {
 		return true
 	}
 
@@ -280,7 +283,7 @@ func (o *CDN) SetLastGeneratedTime(v time.Time) {
 
 // GetLastPublishedTime returns the LastPublishedTime field value if set, zero value otherwise.
 func (o *CDN) GetLastPublishedTime() time.Time {
-	if o == nil || isNil(o.LastPublishedTime) {
+	if o == nil || IsNil(o.LastPublishedTime) {
 		var ret time.Time
 		return ret
 	}
@@ -290,15 +293,15 @@ func (o *CDN) GetLastPublishedTime() time.Time {
 // GetLastPublishedTimeOk returns a tuple with the LastPublishedTime field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CDN) GetLastPublishedTimeOk() (*time.Time, bool) {
-	if o == nil || isNil(o.LastPublishedTime) {
-    return nil, false
+	if o == nil || IsNil(o.LastPublishedTime) {
+		return nil, false
 	}
 	return o.LastPublishedTime, true
 }
 
 // HasLastPublishedTime returns a boolean if a field has been set.
 func (o *CDN) HasLastPublishedTime() bool {
-	if o != nil && !isNil(o.LastPublishedTime) {
+	if o != nil && !IsNil(o.LastPublishedTime) {
 		return true
 	}
 
@@ -312,7 +315,7 @@ func (o *CDN) SetLastPublishedTime(v time.Time) {
 
 // GetPermission returns the Permission field value if set, zero value otherwise.
 func (o *CDN) GetPermission() string {
-	if o == nil || isNil(o.Permission) {
+	if o == nil || IsNil(o.Permission) {
 		var ret string
 		return ret
 	}
@@ -322,15 +325,15 @@ func (o *CDN) GetPermission() string {
 // GetPermissionOk returns a tuple with the Permission field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CDN) GetPermissionOk() (*string, bool) {
-	if o == nil || isNil(o.Permission) {
-    return nil, false
+	if o == nil || IsNil(o.Permission) {
+		return nil, false
 	}
 	return o.Permission, true
 }
 
 // HasPermission returns a boolean if a field has been set.
 func (o *CDN) HasPermission() bool {
-	if o != nil && !isNil(o.Permission) {
+	if o != nil && !IsNil(o.Permission) {
 		return true
 	}
 
@@ -344,7 +347,7 @@ func (o *CDN) SetPermission(v string) {
 
 // GetType returns the Type field value if set, zero value otherwise.
 func (o *CDN) GetType() string {
-	if o == nil || isNil(o.Type) {
+	if o == nil || IsNil(o.Type) {
 		var ret string
 		return ret
 	}
@@ -354,15 +357,15 @@ func (o *CDN) GetType() string {
 // GetTypeOk returns a tuple with the Type field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CDN) GetTypeOk() (*string, bool) {
-	if o == nil || isNil(o.Type) {
-    return nil, false
+	if o == nil || IsNil(o.Type) {
+		return nil, false
 	}
 	return o.Type, true
 }
 
 // HasType returns a boolean if a field has been set.
 func (o *CDN) HasType() bool {
-	if o != nil && !isNil(o.Type) {
+	if o != nil && !IsNil(o.Type) {
 		return true
 	}
 
@@ -376,7 +379,7 @@ func (o *CDN) SetType(v string) {
 
 // GetCreatedTime returns the CreatedTime field value if set, zero value otherwise.
 func (o *CDN) GetCreatedTime() time.Time {
-	if o == nil || isNil(o.CreatedTime) {
+	if o == nil || IsNil(o.CreatedTime) {
 		var ret time.Time
 		return ret
 	}
@@ -386,15 +389,15 @@ func (o *CDN) GetCreatedTime() time.Time {
 // GetCreatedTimeOk returns a tuple with the CreatedTime field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CDN) GetCreatedTimeOk() (*time.Time, bool) {
-	if o == nil || isNil(o.CreatedTime) {
-    return nil, false
+	if o == nil || IsNil(o.CreatedTime) {
+		return nil, false
 	}
 	return o.CreatedTime, true
 }
 
 // HasCreatedTime returns a boolean if a field has been set.
 func (o *CDN) HasCreatedTime() bool {
-	if o != nil && !isNil(o.CreatedTime) {
+	if o != nil && !IsNil(o.CreatedTime) {
 		return true
 	}
 
@@ -408,7 +411,7 @@ func (o *CDN) SetCreatedTime(v time.Time) {
 
 // GetLastModifiedTime returns the LastModifiedTime field value if set, zero value otherwise.
 func (o *CDN) GetLastModifiedTime() time.Time {
-	if o == nil || isNil(o.LastModifiedTime) {
+	if o == nil || IsNil(o.LastModifiedTime) {
 		var ret time.Time
 		return ret
 	}
@@ -418,15 +421,15 @@ func (o *CDN) GetLastModifiedTime() time.Time {
 // GetLastModifiedTimeOk returns a tuple with the LastModifiedTime field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CDN) GetLastModifiedTimeOk() (*time.Time, bool) {
-	if o == nil || isNil(o.LastModifiedTime) {
-    return nil, false
+	if o == nil || IsNil(o.LastModifiedTime) {
+		return nil, false
 	}
 	return o.LastModifiedTime, true
 }
 
 // HasLastModifiedTime returns a boolean if a field has been set.
 func (o *CDN) HasLastModifiedTime() bool {
-	if o != nil && !isNil(o.LastModifiedTime) {
+	if o != nil && !IsNil(o.LastModifiedTime) {
 		return true
 	}
 
@@ -440,7 +443,7 @@ func (o *CDN) SetLastModifiedTime(v time.Time) {
 
 // GetCreatedBy returns the CreatedBy field value if set, zero value otherwise.
 func (o *CDN) GetCreatedBy() string {
-	if o == nil || isNil(o.CreatedBy) {
+	if o == nil || IsNil(o.CreatedBy) {
 		var ret string
 		return ret
 	}
@@ -450,15 +453,15 @@ func (o *CDN) GetCreatedBy() string {
 // GetCreatedByOk returns a tuple with the CreatedBy field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CDN) GetCreatedByOk() (*string, bool) {
-	if o == nil || isNil(o.CreatedBy) {
-    return nil, false
+	if o == nil || IsNil(o.CreatedBy) {
+		return nil, false
 	}
 	return o.CreatedBy, true
 }
 
 // HasCreatedBy returns a boolean if a field has been set.
 func (o *CDN) HasCreatedBy() bool {
-	if o != nil && !isNil(o.CreatedBy) {
+	if o != nil && !IsNil(o.CreatedBy) {
 		return true
 	}
 
@@ -472,7 +475,7 @@ func (o *CDN) SetCreatedBy(v string) {
 
 // GetLastModifiedBy returns the LastModifiedBy field value if set, zero value otherwise.
 func (o *CDN) GetLastModifiedBy() string {
-	if o == nil || isNil(o.LastModifiedBy) {
+	if o == nil || IsNil(o.LastModifiedBy) {
 		var ret string
 		return ret
 	}
@@ -482,15 +485,15 @@ func (o *CDN) GetLastModifiedBy() string {
 // GetLastModifiedByOk returns a tuple with the LastModifiedBy field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CDN) GetLastModifiedByOk() (*string, bool) {
-	if o == nil || isNil(o.LastModifiedBy) {
-    return nil, false
+	if o == nil || IsNil(o.LastModifiedBy) {
+		return nil, false
 	}
 	return o.LastModifiedBy, true
 }
 
 // HasLastModifiedBy returns a boolean if a field has been set.
 func (o *CDN) HasLastModifiedBy() bool {
-	if o != nil && !isNil(o.LastModifiedBy) {
+	if o != nil && !IsNil(o.LastModifiedBy) {
 		return true
 	}
 
@@ -504,7 +507,7 @@ func (o *CDN) SetLastModifiedBy(v string) {
 
 // GetStartTime returns the StartTime field value if set, zero value otherwise.
 func (o *CDN) GetStartTime() time.Time {
-	if o == nil || isNil(o.StartTime) {
+	if o == nil || IsNil(o.StartTime) {
 		var ret time.Time
 		return ret
 	}
@@ -514,15 +517,15 @@ func (o *CDN) GetStartTime() time.Time {
 // GetStartTimeOk returns a tuple with the StartTime field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CDN) GetStartTimeOk() (*time.Time, bool) {
-	if o == nil || isNil(o.StartTime) {
-    return nil, false
+	if o == nil || IsNil(o.StartTime) {
+		return nil, false
 	}
 	return o.StartTime, true
 }
 
 // HasStartTime returns a boolean if a field has been set.
 func (o *CDN) HasStartTime() bool {
-	if o != nil && !isNil(o.StartTime) {
+	if o != nil && !IsNil(o.StartTime) {
 		return true
 	}
 
@@ -536,7 +539,7 @@ func (o *CDN) SetStartTime(v time.Time) {
 
 // GetEndTime returns the EndTime field value if set, zero value otherwise.
 func (o *CDN) GetEndTime() time.Time {
-	if o == nil || isNil(o.EndTime) {
+	if o == nil || IsNil(o.EndTime) {
 		var ret time.Time
 		return ret
 	}
@@ -546,15 +549,15 @@ func (o *CDN) GetEndTime() time.Time {
 // GetEndTimeOk returns a tuple with the EndTime field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CDN) GetEndTimeOk() (*time.Time, bool) {
-	if o == nil || isNil(o.EndTime) {
-    return nil, false
+	if o == nil || IsNil(o.EndTime) {
+		return nil, false
 	}
 	return o.EndTime, true
 }
 
 // HasEndTime returns a boolean if a field has been set.
 func (o *CDN) HasEndTime() bool {
-	if o != nil && !isNil(o.EndTime) {
+	if o != nil && !IsNil(o.EndTime) {
 		return true
 	}
 
@@ -568,7 +571,7 @@ func (o *CDN) SetEndTime(v time.Time) {
 
 // GetWhiteListIP returns the WhiteListIP field value if set, zero value otherwise.
 func (o *CDN) GetWhiteListIP() string {
-	if o == nil || isNil(o.WhiteListIP) {
+	if o == nil || IsNil(o.WhiteListIP) {
 		var ret string
 		return ret
 	}
@@ -578,15 +581,15 @@ func (o *CDN) GetWhiteListIP() string {
 // GetWhiteListIPOk returns a tuple with the WhiteListIP field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CDN) GetWhiteListIPOk() (*string, bool) {
-	if o == nil || isNil(o.WhiteListIP) {
-    return nil, false
+	if o == nil || IsNil(o.WhiteListIP) {
+		return nil, false
 	}
 	return o.WhiteListIP, true
 }
 
 // HasWhiteListIP returns a boolean if a field has been set.
 func (o *CDN) HasWhiteListIP() bool {
-	if o != nil && !isNil(o.WhiteListIP) {
+	if o != nil && !IsNil(o.WhiteListIP) {
 		return true
 	}
 
@@ -599,59 +602,67 @@ func (o *CDN) SetWhiteListIP(v string) {
 }
 
 func (o CDN) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if !isNil(o.Id) {
-		toSerialize["id"] = o.Id
-	}
-	if !isNil(o.Name) {
-		toSerialize["name"] = o.Name
-	}
-	if !isNil(o.Description) {
-		toSerialize["description"] = o.Description
-	}
-	if !isNil(o.Url) {
-		toSerialize["url"] = o.Url
-	}
-	if !isNil(o.GridId) {
-		toSerialize["gridId"] = o.GridId
-	}
-	if !isNil(o.Status) {
-		toSerialize["status"] = o.Status
-	}
-	if !isNil(o.LastGeneratedTime) {
-		toSerialize["lastGeneratedTime"] = o.LastGeneratedTime
-	}
-	if !isNil(o.LastPublishedTime) {
-		toSerialize["lastPublishedTime"] = o.LastPublishedTime
-	}
-	if !isNil(o.Permission) {
-		toSerialize["permission"] = o.Permission
-	}
-	if !isNil(o.Type) {
-		toSerialize["type"] = o.Type
-	}
-	if !isNil(o.CreatedTime) {
-		toSerialize["createdTime"] = o.CreatedTime
-	}
-	if !isNil(o.LastModifiedTime) {
-		toSerialize["lastModifiedTime"] = o.LastModifiedTime
-	}
-	if !isNil(o.CreatedBy) {
-		toSerialize["createdBy"] = o.CreatedBy
-	}
-	if !isNil(o.LastModifiedBy) {
-		toSerialize["lastModifiedBy"] = o.LastModifiedBy
-	}
-	if !isNil(o.StartTime) {
-		toSerialize["startTime"] = o.StartTime
-	}
-	if !isNil(o.EndTime) {
-		toSerialize["endTime"] = o.EndTime
-	}
-	if !isNil(o.WhiteListIP) {
-		toSerialize["whiteListIP"] = o.WhiteListIP
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o CDN) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.Id) {
+		toSerialize["id"] = o.Id
+	}
+	if !IsNil(o.Name) {
+		toSerialize["name"] = o.Name
+	}
+	if !IsNil(o.Description) {
+		toSerialize["description"] = o.Description
+	}
+	if !IsNil(o.Url) {
+		toSerialize["url"] = o.Url
+	}
+	if !IsNil(o.GridId) {
+		toSerialize["gridId"] = o.GridId
+	}
+	if !IsNil(o.Status) {
+		toSerialize["status"] = o.Status
+	}
+	if !IsNil(o.LastGeneratedTime) {
+		toSerialize["lastGeneratedTime"] = o.LastGeneratedTime
+	}
+	if !IsNil(o.LastPublishedTime) {
+		toSerialize["lastPublishedTime"] = o.LastPublishedTime
+	}
+	if !IsNil(o.Permission) {
+		toSerialize["permission"] = o.Permission
+	}
+	if !IsNil(o.Type) {
+		toSerialize["type"] = o.Type
+	}
+	if !IsNil(o.CreatedTime) {
+		toSerialize["createdTime"] = o.CreatedTime
+	}
+	if !IsNil(o.LastModifiedTime) {
+		toSerialize["lastModifiedTime"] = o.LastModifiedTime
+	}
+	if !IsNil(o.CreatedBy) {
+		toSerialize["createdBy"] = o.CreatedBy
+	}
+	if !IsNil(o.LastModifiedBy) {
+		toSerialize["lastModifiedBy"] = o.LastModifiedBy
+	}
+	if !IsNil(o.StartTime) {
+		toSerialize["startTime"] = o.StartTime
+	}
+	if !IsNil(o.EndTime) {
+		toSerialize["endTime"] = o.EndTime
+	}
+	if !IsNil(o.WhiteListIP) {
+		toSerialize["whiteListIP"] = o.WhiteListIP
+	}
+	return toSerialize, nil
 }
 
 type NullableCDN struct {

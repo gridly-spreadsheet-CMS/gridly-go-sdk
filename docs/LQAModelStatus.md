@@ -1,13 +1,11 @@
-# ImportOption
+# LQAModelStatus
 
 ## Enum
 
 
-* `ADD` (value: `"ADD"`)
+* `_0` (value: `0`)
 
-* `UPDATE` (value: `"UPDATE"`)
-
-* `UPDATE_ONLY` (value: `"UPDATE_ONLY"`)
+* `_1` (value: `1`)
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

@@ -3,7 +3,7 @@ Gridly API
 
 Gridly API documentation
 
-API version: 5.9.0
+API version: 6.13.0
 Contact: support@gridly.com
 */
 
@@ -13,10 +13,16 @@ package gridly
 
 import (
 	"encoding/json"
+	"bytes"
+	"fmt"
 )
+
+// checks if the FilterField type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &FilterField{}
 
 // FilterField struct for FilterField
 type FilterField struct {
+	AccentSensitive *bool `json:"accentSensitive,omitempty"`
 	CaseSensitive *bool `json:"caseSensitive,omitempty"`
 	ColumnId *string `json:"columnId,omitempty"`
 	DynamicColumn *string `json:"dynamicColumn,omitempty"`
@@ -25,6 +31,8 @@ type FilterField struct {
 	SubField *string `json:"subField,omitempty"`
 	Values []map[string]interface{} `json:"values,omitempty"`
 }
+
+type _FilterField FilterField
 
 // NewFilterField instantiates a new FilterField object
 // This constructor will assign default values to properties that have it defined,
@@ -44,9 +52,41 @@ func NewFilterFieldWithDefaults() *FilterField {
 	return &this
 }
 
+// GetAccentSensitive returns the AccentSensitive field value if set, zero value otherwise.
+func (o *FilterField) GetAccentSensitive() bool {
+	if o == nil || IsNil(o.AccentSensitive) {
+		var ret bool
+		return ret
+	}
+	return *o.AccentSensitive
+}
+
+// GetAccentSensitiveOk returns a tuple with the AccentSensitive field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *FilterField) GetAccentSensitiveOk() (*bool, bool) {
+	if o == nil || IsNil(o.AccentSensitive) {
+		return nil, false
+	}
+	return o.AccentSensitive, true
+}
+
+// HasAccentSensitive returns a boolean if a field has been set.
+func (o *FilterField) HasAccentSensitive() bool {
+	if o != nil && !IsNil(o.AccentSensitive) {
+		return true
+	}
+
+	return false
+}
+
+// SetAccentSensitive gets a reference to the given bool and assigns it to the AccentSensitive field.
+func (o *FilterField) SetAccentSensitive(v bool) {
+	o.AccentSensitive = &v
+}
+
 // GetCaseSensitive returns the CaseSensitive field value if set, zero value otherwise.
 func (o *FilterField) GetCaseSensitive() bool {
-	if o == nil || isNil(o.CaseSensitive) {
+	if o == nil || IsNil(o.CaseSensitive) {
 		var ret bool
 		return ret
 	}
@@ -56,15 +96,15 @@ func (o *FilterField) GetCaseSensitive() bool {
 // GetCaseSensitiveOk returns a tuple with the CaseSensitive field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *FilterField) GetCaseSensitiveOk() (*bool, bool) {
-	if o == nil || isNil(o.CaseSensitive) {
-    return nil, false
+	if o == nil || IsNil(o.CaseSensitive) {
+		return nil, false
 	}
 	return o.CaseSensitive, true
 }
 
 // HasCaseSensitive returns a boolean if a field has been set.
 func (o *FilterField) HasCaseSensitive() bool {
-	if o != nil && !isNil(o.CaseSensitive) {
+	if o != nil && !IsNil(o.CaseSensitive) {
 		return true
 	}
 
@@ -78,7 +118,7 @@ func (o *FilterField) SetCaseSensitive(v bool) {
 
 // GetColumnId returns the ColumnId field value if set, zero value otherwise.
 func (o *FilterField) GetColumnId() string {
-	if o == nil || isNil(o.ColumnId) {
+	if o == nil || IsNil(o.ColumnId) {
 		var ret string
 		return ret
 	}
@@ -88,15 +128,15 @@ func (o *FilterField) GetColumnId() string {
 // GetColumnIdOk returns a tuple with the ColumnId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *FilterField) GetColumnIdOk() (*string, bool) {
-	if o == nil || isNil(o.ColumnId) {
-    return nil, false
+	if o == nil || IsNil(o.ColumnId) {
+		return nil, false
 	}
 	return o.ColumnId, true
 }
 
 // HasColumnId returns a boolean if a field has been set.
 func (o *FilterField) HasColumnId() bool {
-	if o != nil && !isNil(o.ColumnId) {
+	if o != nil && !IsNil(o.ColumnId) {
 		return true
 	}
 
@@ -110,7 +150,7 @@ func (o *FilterField) SetColumnId(v string) {
 
 // GetDynamicColumn returns the DynamicColumn field value if set, zero value otherwise.
 func (o *FilterField) GetDynamicColumn() string {
-	if o == nil || isNil(o.DynamicColumn) {
+	if o == nil || IsNil(o.DynamicColumn) {
 		var ret string
 		return ret
 	}
@@ -120,15 +160,15 @@ func (o *FilterField) GetDynamicColumn() string {
 // GetDynamicColumnOk returns a tuple with the DynamicColumn field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *FilterField) GetDynamicColumnOk() (*string, bool) {
-	if o == nil || isNil(o.DynamicColumn) {
-    return nil, false
+	if o == nil || IsNil(o.DynamicColumn) {
+		return nil, false
 	}
 	return o.DynamicColumn, true
 }
 
 // HasDynamicColumn returns a boolean if a field has been set.
 func (o *FilterField) HasDynamicColumn() bool {
-	if o != nil && !isNil(o.DynamicColumn) {
+	if o != nil && !IsNil(o.DynamicColumn) {
 		return true
 	}
 
@@ -154,7 +194,7 @@ func (o *FilterField) GetOperator() string {
 // and a boolean to check if the value has been set.
 func (o *FilterField) GetOperatorOk() (*string, bool) {
 	if o == nil {
-    return nil, false
+		return nil, false
 	}
 	return &o.Operator, true
 }
@@ -164,9 +204,10 @@ func (o *FilterField) SetOperator(v string) {
 	o.Operator = v
 }
 
+
 // GetQueryPathTagViaId returns the QueryPathTagViaId field value if set, zero value otherwise.
 func (o *FilterField) GetQueryPathTagViaId() bool {
-	if o == nil || isNil(o.QueryPathTagViaId) {
+	if o == nil || IsNil(o.QueryPathTagViaId) {
 		var ret bool
 		return ret
 	}
@@ -176,15 +217,15 @@ func (o *FilterField) GetQueryPathTagViaId() bool {
 // GetQueryPathTagViaIdOk returns a tuple with the QueryPathTagViaId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *FilterField) GetQueryPathTagViaIdOk() (*bool, bool) {
-	if o == nil || isNil(o.QueryPathTagViaId) {
-    return nil, false
+	if o == nil || IsNil(o.QueryPathTagViaId) {
+		return nil, false
 	}
 	return o.QueryPathTagViaId, true
 }
 
 // HasQueryPathTagViaId returns a boolean if a field has been set.
 func (o *FilterField) HasQueryPathTagViaId() bool {
-	if o != nil && !isNil(o.QueryPathTagViaId) {
+	if o != nil && !IsNil(o.QueryPathTagViaId) {
 		return true
 	}
 
@@ -198,7 +239,7 @@ func (o *FilterField) SetQueryPathTagViaId(v bool) {
 
 // GetSubField returns the SubField field value if set, zero value otherwise.
 func (o *FilterField) GetSubField() string {
-	if o == nil || isNil(o.SubField) {
+	if o == nil || IsNil(o.SubField) {
 		var ret string
 		return ret
 	}
@@ -208,15 +249,15 @@ func (o *FilterField) GetSubField() string {
 // GetSubFieldOk returns a tuple with the SubField field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *FilterField) GetSubFieldOk() (*string, bool) {
-	if o == nil || isNil(o.SubField) {
-    return nil, false
+	if o == nil || IsNil(o.SubField) {
+		return nil, false
 	}
 	return o.SubField, true
 }
 
 // HasSubField returns a boolean if a field has been set.
 func (o *FilterField) HasSubField() bool {
-	if o != nil && !isNil(o.SubField) {
+	if o != nil && !IsNil(o.SubField) {
 		return true
 	}
 
@@ -230,7 +271,7 @@ func (o *FilterField) SetSubField(v string) {
 
 // GetValues returns the Values field value if set, zero value otherwise.
 func (o *FilterField) GetValues() []map[string]interface{} {
-	if o == nil || isNil(o.Values) {
+	if o == nil || IsNil(o.Values) {
 		var ret []map[string]interface{}
 		return ret
 	}
@@ -240,15 +281,15 @@ func (o *FilterField) GetValues() []map[string]interface{} {
 // GetValuesOk returns a tuple with the Values field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *FilterField) GetValuesOk() ([]map[string]interface{}, bool) {
-	if o == nil || isNil(o.Values) {
-    return nil, false
+	if o == nil || IsNil(o.Values) {
+		return nil, false
 	}
 	return o.Values, true
 }
 
 // HasValues returns a boolean if a field has been set.
 func (o *FilterField) HasValues() bool {
-	if o != nil && !isNil(o.Values) {
+	if o != nil && !IsNil(o.Values) {
 		return true
 	}
 
@@ -261,29 +302,92 @@ func (o *FilterField) SetValues(v []map[string]interface{}) {
 }
 
 func (o FilterField) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if !isNil(o.CaseSensitive) {
-		toSerialize["caseSensitive"] = o.CaseSensitive
-	}
-	if !isNil(o.ColumnId) {
-		toSerialize["columnId"] = o.ColumnId
-	}
-	if !isNil(o.DynamicColumn) {
-		toSerialize["dynamicColumn"] = o.DynamicColumn
-	}
-	if true {
-		toSerialize["operator"] = o.Operator
-	}
-	if !isNil(o.QueryPathTagViaId) {
-		toSerialize["queryPathTagViaId"] = o.QueryPathTagViaId
-	}
-	if !isNil(o.SubField) {
-		toSerialize["subField"] = o.SubField
-	}
-	if !isNil(o.Values) {
-		toSerialize["values"] = o.Values
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o FilterField) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.AccentSensitive) {
+		toSerialize["accentSensitive"] = o.AccentSensitive
+	}
+	if !IsNil(o.CaseSensitive) {
+		toSerialize["caseSensitive"] = o.CaseSensitive
+	}
+	if !IsNil(o.ColumnId) {
+		toSerialize["columnId"] = o.ColumnId
+	}
+	if !IsNil(o.DynamicColumn) {
+		toSerialize["dynamicColumn"] = o.DynamicColumn
+	}
+	toSerialize["operator"] = o.Operator
+	if !IsNil(o.QueryPathTagViaId) {
+		toSerialize["queryPathTagViaId"] = o.QueryPathTagViaId
+	}
+	if !IsNil(o.SubField) {
+		toSerialize["subField"] = o.SubField
+	}
+	if !IsNil(o.Values) {
+		toSerialize["values"] = o.Values
+	}
+	return toSerialize, nil
+}
+
+func (o *FilterField) UnmarshalJSON(data []byte) (err error) {
+	// This validates that all required properties are included in the JSON object
+	// by unmarshalling the object into a generic map with string keys and checking
+	// that every required field exists as a key in the generic map.
+	requiredProperties := []string{
+		"operator",
+	}
+
+	// defaultValueFuncMap captures the default values for required properties.
+	// These values are used when required properties are missing from the payload.
+	defaultValueFuncMap := map[string]func() interface{} {
+	}
+	var defaultValueApplied bool
+	allProperties := make(map[string]interface{})
+
+	err = json.Unmarshal(data, &allProperties)
+
+	if err != nil {
+		return err;
+	}
+
+	for _, requiredProperty := range(requiredProperties) {
+		if value, exists := allProperties[requiredProperty]; !exists || value == "" {
+			if _, ok := defaultValueFuncMap[requiredProperty]; ok {
+				allProperties[requiredProperty] = defaultValueFuncMap[requiredProperty]()
+				defaultValueApplied = true
+			}
+		}
+		if value, exists := allProperties[requiredProperty]; !exists || value == ""{
+			return fmt.Errorf("no value given for required property %v", requiredProperty)
+		}
+	}
+
+	if defaultValueApplied {
+		data, err = json.Marshal(allProperties)
+		if err != nil{
+			return err
+		}
+	}
+	varFilterField := _FilterField{}
+
+	decoder := json.NewDecoder(bytes.NewReader(data))
+	decoder.DisallowUnknownFields()
+	err = decoder.Decode(&varFilterField)
+
+	if err != nil {
+		return err
+	}
+
+	*o = FilterField(varFilterField)
+
+	return err
 }
 
 type NullableFilterField struct {

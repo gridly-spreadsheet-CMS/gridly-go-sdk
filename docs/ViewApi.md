@@ -5,6 +5,7 @@ All URIs are relative to *https://api.gridly.com*
 Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**Create**](ViewApi.md#Create) | **Post** /v1/views | create
+[**Delete**](ViewApi.md#Delete) | **Delete** /v1/views/{viewId} | delete
 [**Export**](ViewApi.md#Export) | **Get** /v1/views/{viewId}/export | export
 [**Get**](ViewApi.md#Get) | **Get** /v1/views/{viewId} | get
 [**GetStatistic**](ViewApi.md#GetStatistic) | **Get** /v1/views/{viewId}/statistic | getStatistic
@@ -28,24 +29,24 @@ create
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    gridly "./openapi"
+	"context"
+	"fmt"
+	"os"
+	gridly "github.com/gridly-spreadsheet-CMS/gridly-go-sdk"
 )
 
 func main() {
-    createView := *gridly.NewCreateView("Name_example", "GridId_example") // CreateView | 
+	createView := *gridly.NewCreateView("Name_example", "GridId_example") // CreateView | 
 
-    configuration := gridly.NewConfiguration()
-    apiClient := gridly.NewAPIClient(configuration)
-    resp, r, err := apiClient.ViewApi.Create(context.Background()).CreateView(createView).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `ViewApi.Create``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `Create`: View
-    fmt.Fprintf(os.Stdout, "Response from `ViewApi.Create`: %v\n", resp)
+	configuration := gridly.NewConfiguration()
+	apiClient := gridly.NewAPIClient(configuration)
+	resp, r, err := apiClient.ViewApi.Create(context.Background()).CreateView(createView).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `ViewApi.Create``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `Create`: View
+	fmt.Fprintf(os.Stdout, "Response from `ViewApi.Create`: %v\n", resp)
 }
 ```
 
@@ -80,6 +81,74 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
+## Delete
+
+> Delete(ctx, viewId).Execute()
+
+delete
+
+
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+	gridly "github.com/gridly-spreadsheet-CMS/gridly-go-sdk"
+)
+
+func main() {
+	viewId := "viewId_example" // string | viewId
+
+	configuration := gridly.NewConfiguration()
+	apiClient := gridly.NewAPIClient(configuration)
+	r, err := apiClient.ViewApi.Delete(context.Background(), viewId).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `ViewApi.Delete``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**viewId** | **string** | viewId | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiDeleteRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+### Return type
+
+ (empty response body)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: Not defined
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
 ## Export
 
 > *os.File Export(ctx, viewId).ColumnIds(columnIds).FileHeader(fileHeader).Query(query).Sort(sort).Type_(type_).Execute()
@@ -94,29 +163,29 @@ export
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    gridly "./openapi"
+	"context"
+	"fmt"
+	"os"
+	gridly "github.com/gridly-spreadsheet-CMS/gridly-go-sdk"
 )
 
 func main() {
-    viewId := "viewId_example" // string | viewId
-    columnIds := []string{"Inner_example"} // []string | columnIds (optional) (default to [])
-    fileHeader := gridly.ExportFileHeader("none") // ExportFileHeader | fileHeader (optional)
-    query := "query_example" // string | query (optional) (default to "{}")
-    sort := "sort_example" // string | sort (optional) (default to "{}")
-    type_ := gridly.FileType("csv") // FileType | type (optional)
+	viewId := "viewId_example" // string | viewId
+	columnIds := []string{"Inner_example"} // []string | columnIds (optional) (default to [])
+	fileHeader := gridly.ExportFileHeader("none") // ExportFileHeader | fileHeader (optional)
+	query := "query_example" // string | query (optional) (default to "{}")
+	sort := "sort_example" // string | sort (optional) (default to "{}")
+	type_ := gridly.FileType("csv") // FileType | type (optional)
 
-    configuration := gridly.NewConfiguration()
-    apiClient := gridly.NewAPIClient(configuration)
-    resp, r, err := apiClient.ViewApi.Export(context.Background(), viewId).ColumnIds(columnIds).FileHeader(fileHeader).Query(query).Sort(sort).Type_(type_).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `ViewApi.Export``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `Export`: *os.File
-    fmt.Fprintf(os.Stdout, "Response from `ViewApi.Export`: %v\n", resp)
+	configuration := gridly.NewConfiguration()
+	apiClient := gridly.NewAPIClient(configuration)
+	resp, r, err := apiClient.ViewApi.Export(context.Background(), viewId).ColumnIds(columnIds).FileHeader(fileHeader).Query(query).Sort(sort).Type_(type_).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `ViewApi.Export``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `Export`: *os.File
+	fmt.Fprintf(os.Stdout, "Response from `ViewApi.Export`: %v\n", resp)
 }
 ```
 
@@ -174,29 +243,29 @@ get
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    gridly "./openapi"
+	"context"
+	"fmt"
+	"os"
+	gridly "github.com/gridly-spreadsheet-CMS/gridly-go-sdk"
 )
 
 func main() {
-    viewId := "viewId_example" // string | viewId
-    columnIds := []string{"Inner_example"} // []string | columnIds (optional) (default to [])
-    include := []string{"Include_example"} // []string | include (optional) (default to [])
-    page := "page_example" // string | page (optional) (default to "{}")
-    query := "query_example" // string | query (optional) (default to "{}")
-    sort := "sort_example" // string | sort (optional) (default to "{}")
+	viewId := "viewId_example" // string | viewId
+	columnIds := []string{"Inner_example"} // []string | columnIds (optional) (default to [])
+	include := []string{"Include_example"} // []string | include (optional) (default to [])
+	page := "page_example" // string | page (optional) (default to "{}")
+	query := "query_example" // string | query (optional) (default to "{}")
+	sort := "sort_example" // string | sort (optional) (default to "{}")
 
-    configuration := gridly.NewConfiguration()
-    apiClient := gridly.NewAPIClient(configuration)
-    resp, r, err := apiClient.ViewApi.Get(context.Background(), viewId).ColumnIds(columnIds).Include(include).Page(page).Query(query).Sort(sort).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `ViewApi.Get``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `Get`: View
-    fmt.Fprintf(os.Stdout, "Response from `ViewApi.Get`: %v\n", resp)
+	configuration := gridly.NewConfiguration()
+	apiClient := gridly.NewAPIClient(configuration)
+	resp, r, err := apiClient.ViewApi.Get(context.Background(), viewId).ColumnIds(columnIds).Include(include).Page(page).Query(query).Sort(sort).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `ViewApi.Get``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `Get`: View
+	fmt.Fprintf(os.Stdout, "Response from `ViewApi.Get`: %v\n", resp)
 }
 ```
 
@@ -254,25 +323,25 @@ getStatistic
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    gridly "./openapi"
+	"context"
+	"fmt"
+	"os"
+	gridly "github.com/gridly-spreadsheet-CMS/gridly-go-sdk"
 )
 
 func main() {
-    viewId := "viewId_example" // string | viewId
-    columnIds := []string{"Inner_example"} // []string | columnIds (optional) (default to [])
+	viewId := "viewId_example" // string | viewId
+	columnIds := []string{"Inner_example"} // []string | columnIds (optional) (default to [])
 
-    configuration := gridly.NewConfiguration()
-    apiClient := gridly.NewAPIClient(configuration)
-    resp, r, err := apiClient.ViewApi.GetStatistic(context.Background(), viewId).ColumnIds(columnIds).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `ViewApi.GetStatistic``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `GetStatistic`: ViewStatistic
-    fmt.Fprintf(os.Stdout, "Response from `ViewApi.GetStatistic`: %v\n", resp)
+	configuration := gridly.NewConfiguration()
+	apiClient := gridly.NewAPIClient(configuration)
+	resp, r, err := apiClient.ViewApi.GetStatistic(context.Background(), viewId).ColumnIds(columnIds).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `ViewApi.GetStatistic``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `GetStatistic`: ViewStatistic
+	fmt.Fprintf(os.Stdout, "Response from `ViewApi.GetStatistic`: %v\n", resp)
 }
 ```
 
@@ -326,25 +395,25 @@ importView
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    gridly "./openapi"
+	"context"
+	"fmt"
+	"os"
+	gridly "github.com/gridly-spreadsheet-CMS/gridly-go-sdk"
 )
 
 func main() {
-    viewId := "viewId_example" // string | viewId
-    file := os.NewFile(1234, "some_file") // *os.File | The following file types are supported: csv, tsv, xls, xlsx and json
-    importRequest := "importRequest_example" // string | importRequest (optional) (default to "{}")
-    type_ := gridly.FileType("csv") // FileType | type (optional)
+	viewId := "viewId_example" // string | viewId
+	file := os.NewFile(1234, "some_file") // *os.File | The following file types are supported: csv, tsv, xls, xlsx and json
+	importRequest := "importRequest_example" // string | importRequest (optional) (default to "{}")
+	type_ := gridly.FileType("csv") // FileType | type (optional)
 
-    configuration := gridly.NewConfiguration()
-    apiClient := gridly.NewAPIClient(configuration)
-    resp, r, err := apiClient.ViewApi.ImportView(context.Background(), viewId).File(file).ImportRequest(importRequest).Type_(type_).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `ViewApi.ImportView``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
+	configuration := gridly.NewConfiguration()
+	apiClient := gridly.NewAPIClient(configuration)
+	r, err := apiClient.ViewApi.ImportView(context.Background(), viewId).File(file).ImportRequest(importRequest).Type_(type_).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `ViewApi.ImportView``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
 }
 ```
 
@@ -400,26 +469,26 @@ list
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    gridly "./openapi"
+	"context"
+	"fmt"
+	"os"
+	gridly "github.com/gridly-spreadsheet-CMS/gridly-go-sdk"
 )
 
 func main() {
-    branchId := "branchId_example" // string | branchId (optional)
-    gridId := "gridId_example" // string | gridId (optional)
-    type_ := "type__example" // string | type (optional)
+	branchId := "branchId_example" // string | branchId (optional)
+	gridId := "gridId_example" // string | gridId (optional)
+	type_ := "type__example" // string | type (optional)
 
-    configuration := gridly.NewConfiguration()
-    apiClient := gridly.NewAPIClient(configuration)
-    resp, r, err := apiClient.ViewApi.List(context.Background()).BranchId(branchId).GridId(gridId).Type_(type_).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `ViewApi.List``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `List`: []View
-    fmt.Fprintf(os.Stdout, "Response from `ViewApi.List`: %v\n", resp)
+	configuration := gridly.NewConfiguration()
+	apiClient := gridly.NewAPIClient(configuration)
+	resp, r, err := apiClient.ViewApi.List(context.Background()).BranchId(branchId).GridId(gridId).Type_(type_).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `ViewApi.List``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `List`: []View
+	fmt.Fprintf(os.Stdout, "Response from `ViewApi.List`: %v\n", resp)
 }
 ```
 
@@ -470,27 +539,27 @@ merge
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    gridly "./openapi"
+	"context"
+	"fmt"
+	"os"
+	gridly "github.com/gridly-spreadsheet-CMS/gridly-go-sdk"
 )
 
 func main() {
-    destinationViewId := "destinationViewId_example" // string | destinationViewId
-    viewId := "viewId_example" // string | viewId
-    mergeBranchRequest := *gridly.NewMergeBranchRequest() // MergeBranchRequest | 
-    mergeRecordOptions := []string{"MergeRecordOptions_example"} // []string | mergeRecordOptions (optional) (default to [])
+	destinationViewId := "destinationViewId_example" // string | destinationViewId
+	viewId := "viewId_example" // string | viewId
+	mergeBranchRequest := *gridly.NewMergeBranchRequest() // MergeBranchRequest | 
+	mergeRecordOptions := []string{"MergeRecordOptions_example"} // []string | mergeRecordOptions (optional) (default to [])
 
-    configuration := gridly.NewConfiguration()
-    apiClient := gridly.NewAPIClient(configuration)
-    resp, r, err := apiClient.ViewApi.Merge(context.Background(), viewId).DestinationViewId(destinationViewId).MergeBranchRequest(mergeBranchRequest).MergeRecordOptions(mergeRecordOptions).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `ViewApi.Merge``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `Merge`: Task
-    fmt.Fprintf(os.Stdout, "Response from `ViewApi.Merge`: %v\n", resp)
+	configuration := gridly.NewConfiguration()
+	apiClient := gridly.NewAPIClient(configuration)
+	resp, r, err := apiClient.ViewApi.Merge(context.Background(), viewId).DestinationViewId(destinationViewId).MergeBranchRequest(mergeBranchRequest).MergeRecordOptions(mergeRecordOptions).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `ViewApi.Merge``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `Merge`: Task
+	fmt.Fprintf(os.Stdout, "Response from `ViewApi.Merge`: %v\n", resp)
 }
 ```
 

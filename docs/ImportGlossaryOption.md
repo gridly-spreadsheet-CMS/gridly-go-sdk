@@ -1,13 +1,13 @@
-# ExportFormat
+# ImportGlossaryOption
 
 ## Enum
 
 
-* `TMX` (value: `"tmx"`)
+* `ADD` (value: `"ADD"`)
 
-* `CSV` (value: `"csv"`)
+* `UPDATE` (value: `"UPDATE"`)
 
-* `XLSX` (value: `"xlsx"`)
+* `UPDATE_ONLY` (value: `"UPDATE_ONLY"`)
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

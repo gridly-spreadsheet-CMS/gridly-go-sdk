@@ -3,7 +3,7 @@ Gridly API
 
 Gridly API documentation
 
-API version: 5.9.0
+API version: 6.13.0
 Contact: support@gridly.com
 */
 
@@ -14,6 +14,9 @@ package gridly
 import (
 	"encoding/json"
 )
+
+// checks if the BranchDiffCell type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &BranchDiffCell{}
 
 // BranchDiffCell struct for BranchDiffCell
 type BranchDiffCell struct {
@@ -48,7 +51,7 @@ func NewBranchDiffCellWithDefaults() *BranchDiffCell {
 
 // GetSourceDependencyStatus returns the SourceDependencyStatus field value if set, zero value otherwise.
 func (o *BranchDiffCell) GetSourceDependencyStatus() string {
-	if o == nil || isNil(o.SourceDependencyStatus) {
+	if o == nil || IsNil(o.SourceDependencyStatus) {
 		var ret string
 		return ret
 	}
@@ -58,15 +61,15 @@ func (o *BranchDiffCell) GetSourceDependencyStatus() string {
 // GetSourceDependencyStatusOk returns a tuple with the SourceDependencyStatus field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *BranchDiffCell) GetSourceDependencyStatusOk() (*string, bool) {
-	if o == nil || isNil(o.SourceDependencyStatus) {
-    return nil, false
+	if o == nil || IsNil(o.SourceDependencyStatus) {
+		return nil, false
 	}
 	return o.SourceDependencyStatus, true
 }
 
 // HasSourceDependencyStatus returns a boolean if a field has been set.
 func (o *BranchDiffCell) HasSourceDependencyStatus() bool {
-	if o != nil && !isNil(o.SourceDependencyStatus) {
+	if o != nil && !IsNil(o.SourceDependencyStatus) {
 		return true
 	}
 
@@ -80,7 +83,7 @@ func (o *BranchDiffCell) SetSourceDependencyStatus(v string) {
 
 // GetDestinationDependencyStatus returns the DestinationDependencyStatus field value if set, zero value otherwise.
 func (o *BranchDiffCell) GetDestinationDependencyStatus() string {
-	if o == nil || isNil(o.DestinationDependencyStatus) {
+	if o == nil || IsNil(o.DestinationDependencyStatus) {
 		var ret string
 		return ret
 	}
@@ -90,15 +93,15 @@ func (o *BranchDiffCell) GetDestinationDependencyStatus() string {
 // GetDestinationDependencyStatusOk returns a tuple with the DestinationDependencyStatus field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *BranchDiffCell) GetDestinationDependencyStatusOk() (*string, bool) {
-	if o == nil || isNil(o.DestinationDependencyStatus) {
-    return nil, false
+	if o == nil || IsNil(o.DestinationDependencyStatus) {
+		return nil, false
 	}
 	return o.DestinationDependencyStatus, true
 }
 
 // HasDestinationDependencyStatus returns a boolean if a field has been set.
 func (o *BranchDiffCell) HasDestinationDependencyStatus() bool {
-	if o != nil && !isNil(o.DestinationDependencyStatus) {
+	if o != nil && !IsNil(o.DestinationDependencyStatus) {
 		return true
 	}
 
@@ -112,7 +115,7 @@ func (o *BranchDiffCell) SetDestinationDependencyStatus(v string) {
 
 // GetSourceSourceStatus returns the SourceSourceStatus field value if set, zero value otherwise.
 func (o *BranchDiffCell) GetSourceSourceStatus() string {
-	if o == nil || isNil(o.SourceSourceStatus) {
+	if o == nil || IsNil(o.SourceSourceStatus) {
 		var ret string
 		return ret
 	}
@@ -122,15 +125,15 @@ func (o *BranchDiffCell) GetSourceSourceStatus() string {
 // GetSourceSourceStatusOk returns a tuple with the SourceSourceStatus field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *BranchDiffCell) GetSourceSourceStatusOk() (*string, bool) {
-	if o == nil || isNil(o.SourceSourceStatus) {
-    return nil, false
+	if o == nil || IsNil(o.SourceSourceStatus) {
+		return nil, false
 	}
 	return o.SourceSourceStatus, true
 }
 
 // HasSourceSourceStatus returns a boolean if a field has been set.
 func (o *BranchDiffCell) HasSourceSourceStatus() bool {
-	if o != nil && !isNil(o.SourceSourceStatus) {
+	if o != nil && !IsNil(o.SourceSourceStatus) {
 		return true
 	}
 
@@ -144,7 +147,7 @@ func (o *BranchDiffCell) SetSourceSourceStatus(v string) {
 
 // GetDestinationSourceStatus returns the DestinationSourceStatus field value if set, zero value otherwise.
 func (o *BranchDiffCell) GetDestinationSourceStatus() string {
-	if o == nil || isNil(o.DestinationSourceStatus) {
+	if o == nil || IsNil(o.DestinationSourceStatus) {
 		var ret string
 		return ret
 	}
@@ -154,15 +157,15 @@ func (o *BranchDiffCell) GetDestinationSourceStatus() string {
 // GetDestinationSourceStatusOk returns a tuple with the DestinationSourceStatus field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *BranchDiffCell) GetDestinationSourceStatusOk() (*string, bool) {
-	if o == nil || isNil(o.DestinationSourceStatus) {
-    return nil, false
+	if o == nil || IsNil(o.DestinationSourceStatus) {
+		return nil, false
 	}
 	return o.DestinationSourceStatus, true
 }
 
 // HasDestinationSourceStatus returns a boolean if a field has been set.
 func (o *BranchDiffCell) HasDestinationSourceStatus() bool {
-	if o != nil && !isNil(o.DestinationSourceStatus) {
+	if o != nil && !IsNil(o.DestinationSourceStatus) {
 		return true
 	}
 
@@ -176,7 +179,7 @@ func (o *BranchDiffCell) SetDestinationSourceStatus(v string) {
 
 // GetSourceLengthSetting returns the SourceLengthSetting field value if set, zero value otherwise.
 func (o *BranchDiffCell) GetSourceLengthSetting() int32 {
-	if o == nil || isNil(o.SourceLengthSetting) {
+	if o == nil || IsNil(o.SourceLengthSetting) {
 		var ret int32
 		return ret
 	}
@@ -186,15 +189,15 @@ func (o *BranchDiffCell) GetSourceLengthSetting() int32 {
 // GetSourceLengthSettingOk returns a tuple with the SourceLengthSetting field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *BranchDiffCell) GetSourceLengthSettingOk() (*int32, bool) {
-	if o == nil || isNil(o.SourceLengthSetting) {
-    return nil, false
+	if o == nil || IsNil(o.SourceLengthSetting) {
+		return nil, false
 	}
 	return o.SourceLengthSetting, true
 }
 
 // HasSourceLengthSetting returns a boolean if a field has been set.
 func (o *BranchDiffCell) HasSourceLengthSetting() bool {
-	if o != nil && !isNil(o.SourceLengthSetting) {
+	if o != nil && !IsNil(o.SourceLengthSetting) {
 		return true
 	}
 
@@ -208,7 +211,7 @@ func (o *BranchDiffCell) SetSourceLengthSetting(v int32) {
 
 // GetDestinationLengthSetting returns the DestinationLengthSetting field value if set, zero value otherwise.
 func (o *BranchDiffCell) GetDestinationLengthSetting() int32 {
-	if o == nil || isNil(o.DestinationLengthSetting) {
+	if o == nil || IsNil(o.DestinationLengthSetting) {
 		var ret int32
 		return ret
 	}
@@ -218,15 +221,15 @@ func (o *BranchDiffCell) GetDestinationLengthSetting() int32 {
 // GetDestinationLengthSettingOk returns a tuple with the DestinationLengthSetting field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *BranchDiffCell) GetDestinationLengthSettingOk() (*int32, bool) {
-	if o == nil || isNil(o.DestinationLengthSetting) {
-    return nil, false
+	if o == nil || IsNil(o.DestinationLengthSetting) {
+		return nil, false
 	}
 	return o.DestinationLengthSetting, true
 }
 
 // HasDestinationLengthSetting returns a boolean if a field has been set.
 func (o *BranchDiffCell) HasDestinationLengthSetting() bool {
-	if o != nil && !isNil(o.DestinationLengthSetting) {
+	if o != nil && !IsNil(o.DestinationLengthSetting) {
 		return true
 	}
 
@@ -240,7 +243,7 @@ func (o *BranchDiffCell) SetDestinationLengthSetting(v int32) {
 
 // GetStatus returns the Status field value if set, zero value otherwise.
 func (o *BranchDiffCell) GetStatus() string {
-	if o == nil || isNil(o.Status) {
+	if o == nil || IsNil(o.Status) {
 		var ret string
 		return ret
 	}
@@ -250,15 +253,15 @@ func (o *BranchDiffCell) GetStatus() string {
 // GetStatusOk returns a tuple with the Status field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *BranchDiffCell) GetStatusOk() (*string, bool) {
-	if o == nil || isNil(o.Status) {
-    return nil, false
+	if o == nil || IsNil(o.Status) {
+		return nil, false
 	}
 	return o.Status, true
 }
 
 // HasStatus returns a boolean if a field has been set.
 func (o *BranchDiffCell) HasStatus() bool {
-	if o != nil && !isNil(o.Status) {
+	if o != nil && !IsNil(o.Status) {
 		return true
 	}
 
@@ -272,7 +275,7 @@ func (o *BranchDiffCell) SetStatus(v string) {
 
 // GetColumnId returns the ColumnId field value if set, zero value otherwise.
 func (o *BranchDiffCell) GetColumnId() string {
-	if o == nil || isNil(o.ColumnId) {
+	if o == nil || IsNil(o.ColumnId) {
 		var ret string
 		return ret
 	}
@@ -282,15 +285,15 @@ func (o *BranchDiffCell) GetColumnId() string {
 // GetColumnIdOk returns a tuple with the ColumnId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *BranchDiffCell) GetColumnIdOk() (*string, bool) {
-	if o == nil || isNil(o.ColumnId) {
-    return nil, false
+	if o == nil || IsNil(o.ColumnId) {
+		return nil, false
 	}
 	return o.ColumnId, true
 }
 
 // HasColumnId returns a boolean if a field has been set.
 func (o *BranchDiffCell) HasColumnId() bool {
-	if o != nil && !isNil(o.ColumnId) {
+	if o != nil && !IsNil(o.ColumnId) {
 		return true
 	}
 
@@ -304,7 +307,7 @@ func (o *BranchDiffCell) SetColumnId(v string) {
 
 // GetSourceValue returns the SourceValue field value if set, zero value otherwise.
 func (o *BranchDiffCell) GetSourceValue() map[string]interface{} {
-	if o == nil || isNil(o.SourceValue) {
+	if o == nil || IsNil(o.SourceValue) {
 		var ret map[string]interface{}
 		return ret
 	}
@@ -314,15 +317,15 @@ func (o *BranchDiffCell) GetSourceValue() map[string]interface{} {
 // GetSourceValueOk returns a tuple with the SourceValue field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *BranchDiffCell) GetSourceValueOk() (map[string]interface{}, bool) {
-	if o == nil || isNil(o.SourceValue) {
-    return map[string]interface{}{}, false
+	if o == nil || IsNil(o.SourceValue) {
+		return map[string]interface{}{}, false
 	}
 	return o.SourceValue, true
 }
 
 // HasSourceValue returns a boolean if a field has been set.
 func (o *BranchDiffCell) HasSourceValue() bool {
-	if o != nil && !isNil(o.SourceValue) {
+	if o != nil && !IsNil(o.SourceValue) {
 		return true
 	}
 
@@ -336,7 +339,7 @@ func (o *BranchDiffCell) SetSourceValue(v map[string]interface{}) {
 
 // GetDestinationValue returns the DestinationValue field value if set, zero value otherwise.
 func (o *BranchDiffCell) GetDestinationValue() map[string]interface{} {
-	if o == nil || isNil(o.DestinationValue) {
+	if o == nil || IsNil(o.DestinationValue) {
 		var ret map[string]interface{}
 		return ret
 	}
@@ -346,15 +349,15 @@ func (o *BranchDiffCell) GetDestinationValue() map[string]interface{} {
 // GetDestinationValueOk returns a tuple with the DestinationValue field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *BranchDiffCell) GetDestinationValueOk() (map[string]interface{}, bool) {
-	if o == nil || isNil(o.DestinationValue) {
-    return map[string]interface{}{}, false
+	if o == nil || IsNil(o.DestinationValue) {
+		return map[string]interface{}{}, false
 	}
 	return o.DestinationValue, true
 }
 
 // HasDestinationValue returns a boolean if a field has been set.
 func (o *BranchDiffCell) HasDestinationValue() bool {
-	if o != nil && !isNil(o.DestinationValue) {
+	if o != nil && !IsNil(o.DestinationValue) {
 		return true
 	}
 
@@ -367,38 +370,46 @@ func (o *BranchDiffCell) SetDestinationValue(v map[string]interface{}) {
 }
 
 func (o BranchDiffCell) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if !isNil(o.SourceDependencyStatus) {
-		toSerialize["sourceDependencyStatus"] = o.SourceDependencyStatus
-	}
-	if !isNil(o.DestinationDependencyStatus) {
-		toSerialize["destinationDependencyStatus"] = o.DestinationDependencyStatus
-	}
-	if !isNil(o.SourceSourceStatus) {
-		toSerialize["sourceSourceStatus"] = o.SourceSourceStatus
-	}
-	if !isNil(o.DestinationSourceStatus) {
-		toSerialize["destinationSourceStatus"] = o.DestinationSourceStatus
-	}
-	if !isNil(o.SourceLengthSetting) {
-		toSerialize["sourceLengthSetting"] = o.SourceLengthSetting
-	}
-	if !isNil(o.DestinationLengthSetting) {
-		toSerialize["destinationLengthSetting"] = o.DestinationLengthSetting
-	}
-	if !isNil(o.Status) {
-		toSerialize["status"] = o.Status
-	}
-	if !isNil(o.ColumnId) {
-		toSerialize["columnId"] = o.ColumnId
-	}
-	if !isNil(o.SourceValue) {
-		toSerialize["sourceValue"] = o.SourceValue
-	}
-	if !isNil(o.DestinationValue) {
-		toSerialize["destinationValue"] = o.DestinationValue
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o BranchDiffCell) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.SourceDependencyStatus) {
+		toSerialize["sourceDependencyStatus"] = o.SourceDependencyStatus
+	}
+	if !IsNil(o.DestinationDependencyStatus) {
+		toSerialize["destinationDependencyStatus"] = o.DestinationDependencyStatus
+	}
+	if !IsNil(o.SourceSourceStatus) {
+		toSerialize["sourceSourceStatus"] = o.SourceSourceStatus
+	}
+	if !IsNil(o.DestinationSourceStatus) {
+		toSerialize["destinationSourceStatus"] = o.DestinationSourceStatus
+	}
+	if !IsNil(o.SourceLengthSetting) {
+		toSerialize["sourceLengthSetting"] = o.SourceLengthSetting
+	}
+	if !IsNil(o.DestinationLengthSetting) {
+		toSerialize["destinationLengthSetting"] = o.DestinationLengthSetting
+	}
+	if !IsNil(o.Status) {
+		toSerialize["status"] = o.Status
+	}
+	if !IsNil(o.ColumnId) {
+		toSerialize["columnId"] = o.ColumnId
+	}
+	if !IsNil(o.SourceValue) {
+		toSerialize["sourceValue"] = o.SourceValue
+	}
+	if !IsNil(o.DestinationValue) {
+		toSerialize["destinationValue"] = o.DestinationValue
+	}
+	return toSerialize, nil
 }
 
 type NullableBranchDiffCell struct {

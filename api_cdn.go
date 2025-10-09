@@ -3,7 +3,7 @@ Gridly API
 
 Gridly API documentation
 
-API version: 5.9.0
+API version: 6.13.0
 Contact: support@gridly.com
 */
 
@@ -14,7 +14,7 @@ package gridly
 import (
 	"bytes"
 	"context"
-	"io/ioutil"
+	"io"
 	"net/http"
 	"net/url"
 	"strings"
@@ -109,25 +109,31 @@ func (a *CdnApiService) ListExecute(r CdnApiListRequest) ([]CDN, *http.Response,
 	}
 
 	if r.offset != nil {
-		localVarQueryParams.Add("offset", parameterToString(*r.offset, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "offset", r.offset, "form", "")
+	} else {
+		var defaultValue int32 = 0
+		r.offset = &defaultValue
 	}
 	if r.limit != nil {
-		localVarQueryParams.Add("limit", parameterToString(*r.limit, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "limit", r.limit, "form", "")
+	} else {
+		var defaultValue int32 = 128
+		r.limit = &defaultValue
 	}
 	if r.ids != nil {
 		t := *r.ids
 		if reflect.TypeOf(t).Kind() == reflect.Slice {
 			s := reflect.ValueOf(t)
 			for i := 0; i < s.Len(); i++ {
-				localVarQueryParams.Add("ids", parameterToString(s.Index(i), "multi"))
+				parameterAddToHeaderOrQuery(localVarQueryParams, "ids", s.Index(i).Interface(), "form", "multi")
 			}
 		} else {
-			localVarQueryParams.Add("ids", parameterToString(t, "multi"))
+			parameterAddToHeaderOrQuery(localVarQueryParams, "ids", t, "form", "multi")
 		}
 	}
-	localVarQueryParams.Add("gridId", parameterToString(*r.gridId, ""))
+	parameterAddToHeaderOrQuery(localVarQueryParams, "gridId", r.gridId, "form", "")
 	if r.published != nil {
-		localVarQueryParams.Add("published", parameterToString(*r.published, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "published", r.published, "form", "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -170,9 +176,9 @@ func (a *CdnApiService) ListExecute(r CdnApiListRequest) ([]CDN, *http.Response,
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -240,7 +246,7 @@ func (a *CdnApiService) PublishExecute(r CdnApiPublishRequest) (*CDN, *http.Resp
 	}
 
 	localVarPath := localBasePath + "/v1/cdns/{cdnId}/publish"
-	localVarPath = strings.Replace(localVarPath, "{"+"cdnId"+"}", url.PathEscape(parameterToString(r.cdnId, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"cdnId"+"}", url.PathEscape(parameterValueToString(r.cdnId, "cdnId")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -287,9 +293,9 @@ func (a *CdnApiService) PublishExecute(r CdnApiPublishRequest) (*CDN, *http.Resp
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -357,7 +363,7 @@ func (a *CdnApiService) UnPublishExecute(r CdnApiUnPublishRequest) (*CDN, *http.
 	}
 
 	localVarPath := localBasePath + "/v1/cdns/{cdnId}/unpublish"
-	localVarPath = strings.Replace(localVarPath, "{"+"cdnId"+"}", url.PathEscape(parameterToString(r.cdnId, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"cdnId"+"}", url.PathEscape(parameterValueToString(r.cdnId, "cdnId")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -404,9 +410,9 @@ func (a *CdnApiService) UnPublishExecute(r CdnApiUnPublishRequest) (*CDN, *http.
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}

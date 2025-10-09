@@ -3,7 +3,7 @@ Gridly API
 
 Gridly API documentation
 
-API version: 5.9.0
+API version: 6.13.0
 Contact: support@gridly.com
 */
 
@@ -14,6 +14,9 @@ package gridly
 import (
 	"encoding/json"
 )
+
+// checks if the Branch type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &Branch{}
 
 // Branch struct for Branch
 type Branch struct {
@@ -47,7 +50,7 @@ func NewBranchWithDefaults() *Branch {
 
 // GetId returns the Id field value if set, zero value otherwise.
 func (o *Branch) GetId() string {
-	if o == nil || isNil(o.Id) {
+	if o == nil || IsNil(o.Id) {
 		var ret string
 		return ret
 	}
@@ -57,15 +60,15 @@ func (o *Branch) GetId() string {
 // GetIdOk returns a tuple with the Id field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Branch) GetIdOk() (*string, bool) {
-	if o == nil || isNil(o.Id) {
-    return nil, false
+	if o == nil || IsNil(o.Id) {
+		return nil, false
 	}
 	return o.Id, true
 }
 
 // HasId returns a boolean if a field has been set.
 func (o *Branch) HasId() bool {
-	if o != nil && !isNil(o.Id) {
+	if o != nil && !IsNil(o.Id) {
 		return true
 	}
 
@@ -79,7 +82,7 @@ func (o *Branch) SetId(v string) {
 
 // GetColumns returns the Columns field value if set, zero value otherwise.
 func (o *Branch) GetColumns() []ViewColumn {
-	if o == nil || isNil(o.Columns) {
+	if o == nil || IsNil(o.Columns) {
 		var ret []ViewColumn
 		return ret
 	}
@@ -89,15 +92,15 @@ func (o *Branch) GetColumns() []ViewColumn {
 // GetColumnsOk returns a tuple with the Columns field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Branch) GetColumnsOk() ([]ViewColumn, bool) {
-	if o == nil || isNil(o.Columns) {
-    return nil, false
+	if o == nil || IsNil(o.Columns) {
+		return nil, false
 	}
 	return o.Columns, true
 }
 
 // HasColumns returns a boolean if a field has been set.
 func (o *Branch) HasColumns() bool {
-	if o != nil && !isNil(o.Columns) {
+	if o != nil && !IsNil(o.Columns) {
 		return true
 	}
 
@@ -111,7 +114,7 @@ func (o *Branch) SetColumns(v []ViewColumn) {
 
 // GetDefaultAccessViewId returns the DefaultAccessViewId field value if set, zero value otherwise.
 func (o *Branch) GetDefaultAccessViewId() string {
-	if o == nil || isNil(o.DefaultAccessViewId) {
+	if o == nil || IsNil(o.DefaultAccessViewId) {
 		var ret string
 		return ret
 	}
@@ -121,15 +124,15 @@ func (o *Branch) GetDefaultAccessViewId() string {
 // GetDefaultAccessViewIdOk returns a tuple with the DefaultAccessViewId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Branch) GetDefaultAccessViewIdOk() (*string, bool) {
-	if o == nil || isNil(o.DefaultAccessViewId) {
-    return nil, false
+	if o == nil || IsNil(o.DefaultAccessViewId) {
+		return nil, false
 	}
 	return o.DefaultAccessViewId, true
 }
 
 // HasDefaultAccessViewId returns a boolean if a field has been set.
 func (o *Branch) HasDefaultAccessViewId() bool {
-	if o != nil && !isNil(o.DefaultAccessViewId) {
+	if o != nil && !IsNil(o.DefaultAccessViewId) {
 		return true
 	}
 
@@ -143,7 +146,7 @@ func (o *Branch) SetDefaultAccessViewId(v string) {
 
 // GetDescription returns the Description field value if set, zero value otherwise.
 func (o *Branch) GetDescription() string {
-	if o == nil || isNil(o.Description) {
+	if o == nil || IsNil(o.Description) {
 		var ret string
 		return ret
 	}
@@ -153,15 +156,15 @@ func (o *Branch) GetDescription() string {
 // GetDescriptionOk returns a tuple with the Description field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Branch) GetDescriptionOk() (*string, bool) {
-	if o == nil || isNil(o.Description) {
-    return nil, false
+	if o == nil || IsNil(o.Description) {
+		return nil, false
 	}
 	return o.Description, true
 }
 
 // HasDescription returns a boolean if a field has been set.
 func (o *Branch) HasDescription() bool {
-	if o != nil && !isNil(o.Description) {
+	if o != nil && !IsNil(o.Description) {
 		return true
 	}
 
@@ -175,7 +178,7 @@ func (o *Branch) SetDescription(v string) {
 
 // GetIsMaster returns the IsMaster field value if set, zero value otherwise.
 func (o *Branch) GetIsMaster() bool {
-	if o == nil || isNil(o.IsMaster) {
+	if o == nil || IsNil(o.IsMaster) {
 		var ret bool
 		return ret
 	}
@@ -185,15 +188,15 @@ func (o *Branch) GetIsMaster() bool {
 // GetIsMasterOk returns a tuple with the IsMaster field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Branch) GetIsMasterOk() (*bool, bool) {
-	if o == nil || isNil(o.IsMaster) {
-    return nil, false
+	if o == nil || IsNil(o.IsMaster) {
+		return nil, false
 	}
 	return o.IsMaster, true
 }
 
 // HasIsMaster returns a boolean if a field has been set.
 func (o *Branch) HasIsMaster() bool {
-	if o != nil && !isNil(o.IsMaster) {
+	if o != nil && !IsNil(o.IsMaster) {
 		return true
 	}
 
@@ -207,7 +210,7 @@ func (o *Branch) SetIsMaster(v bool) {
 
 // GetMetadata returns the Metadata field value if set, zero value otherwise.
 func (o *Branch) GetMetadata() map[string]string {
-	if o == nil || isNil(o.Metadata) {
+	if o == nil || IsNil(o.Metadata) {
 		var ret map[string]string
 		return ret
 	}
@@ -217,15 +220,15 @@ func (o *Branch) GetMetadata() map[string]string {
 // GetMetadataOk returns a tuple with the Metadata field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Branch) GetMetadataOk() (*map[string]string, bool) {
-	if o == nil || isNil(o.Metadata) {
-    return nil, false
+	if o == nil || IsNil(o.Metadata) {
+		return nil, false
 	}
 	return o.Metadata, true
 }
 
 // HasMetadata returns a boolean if a field has been set.
 func (o *Branch) HasMetadata() bool {
-	if o != nil && !isNil(o.Metadata) {
+	if o != nil && !IsNil(o.Metadata) {
 		return true
 	}
 
@@ -239,7 +242,7 @@ func (o *Branch) SetMetadata(v map[string]string) {
 
 // GetName returns the Name field value if set, zero value otherwise.
 func (o *Branch) GetName() string {
-	if o == nil || isNil(o.Name) {
+	if o == nil || IsNil(o.Name) {
 		var ret string
 		return ret
 	}
@@ -249,15 +252,15 @@ func (o *Branch) GetName() string {
 // GetNameOk returns a tuple with the Name field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Branch) GetNameOk() (*string, bool) {
-	if o == nil || isNil(o.Name) {
-    return nil, false
+	if o == nil || IsNil(o.Name) {
+		return nil, false
 	}
 	return o.Name, true
 }
 
 // HasName returns a boolean if a field has been set.
 func (o *Branch) HasName() bool {
-	if o != nil && !isNil(o.Name) {
+	if o != nil && !IsNil(o.Name) {
 		return true
 	}
 
@@ -271,7 +274,7 @@ func (o *Branch) SetName(v string) {
 
 // GetRecordIdentifierType returns the RecordIdentifierType field value if set, zero value otherwise.
 func (o *Branch) GetRecordIdentifierType() string {
-	if o == nil || isNil(o.RecordIdentifierType) {
+	if o == nil || IsNil(o.RecordIdentifierType) {
 		var ret string
 		return ret
 	}
@@ -281,15 +284,15 @@ func (o *Branch) GetRecordIdentifierType() string {
 // GetRecordIdentifierTypeOk returns a tuple with the RecordIdentifierType field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Branch) GetRecordIdentifierTypeOk() (*string, bool) {
-	if o == nil || isNil(o.RecordIdentifierType) {
-    return nil, false
+	if o == nil || IsNil(o.RecordIdentifierType) {
+		return nil, false
 	}
 	return o.RecordIdentifierType, true
 }
 
 // HasRecordIdentifierType returns a boolean if a field has been set.
 func (o *Branch) HasRecordIdentifierType() bool {
-	if o != nil && !isNil(o.RecordIdentifierType) {
+	if o != nil && !IsNil(o.RecordIdentifierType) {
 		return true
 	}
 
@@ -303,7 +306,7 @@ func (o *Branch) SetRecordIdentifierType(v string) {
 
 // GetStatus returns the Status field value if set, zero value otherwise.
 func (o *Branch) GetStatus() string {
-	if o == nil || isNil(o.Status) {
+	if o == nil || IsNil(o.Status) {
 		var ret string
 		return ret
 	}
@@ -313,15 +316,15 @@ func (o *Branch) GetStatus() string {
 // GetStatusOk returns a tuple with the Status field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Branch) GetStatusOk() (*string, bool) {
-	if o == nil || isNil(o.Status) {
-    return nil, false
+	if o == nil || IsNil(o.Status) {
+		return nil, false
 	}
 	return o.Status, true
 }
 
 // HasStatus returns a boolean if a field has been set.
 func (o *Branch) HasStatus() bool {
-	if o != nil && !isNil(o.Status) {
+	if o != nil && !IsNil(o.Status) {
 		return true
 	}
 
@@ -334,35 +337,43 @@ func (o *Branch) SetStatus(v string) {
 }
 
 func (o Branch) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if !isNil(o.Id) {
-		toSerialize["id"] = o.Id
-	}
-	if !isNil(o.Columns) {
-		toSerialize["columns"] = o.Columns
-	}
-	if !isNil(o.DefaultAccessViewId) {
-		toSerialize["defaultAccessViewId"] = o.DefaultAccessViewId
-	}
-	if !isNil(o.Description) {
-		toSerialize["description"] = o.Description
-	}
-	if !isNil(o.IsMaster) {
-		toSerialize["isMaster"] = o.IsMaster
-	}
-	if !isNil(o.Metadata) {
-		toSerialize["metadata"] = o.Metadata
-	}
-	if !isNil(o.Name) {
-		toSerialize["name"] = o.Name
-	}
-	if !isNil(o.RecordIdentifierType) {
-		toSerialize["recordIdentifierType"] = o.RecordIdentifierType
-	}
-	if !isNil(o.Status) {
-		toSerialize["status"] = o.Status
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o Branch) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.Id) {
+		toSerialize["id"] = o.Id
+	}
+	if !IsNil(o.Columns) {
+		toSerialize["columns"] = o.Columns
+	}
+	if !IsNil(o.DefaultAccessViewId) {
+		toSerialize["defaultAccessViewId"] = o.DefaultAccessViewId
+	}
+	if !IsNil(o.Description) {
+		toSerialize["description"] = o.Description
+	}
+	if !IsNil(o.IsMaster) {
+		toSerialize["isMaster"] = o.IsMaster
+	}
+	if !IsNil(o.Metadata) {
+		toSerialize["metadata"] = o.Metadata
+	}
+	if !IsNil(o.Name) {
+		toSerialize["name"] = o.Name
+	}
+	if !IsNil(o.RecordIdentifierType) {
+		toSerialize["recordIdentifierType"] = o.RecordIdentifierType
+	}
+	if !IsNil(o.Status) {
+		toSerialize["status"] = o.Status
+	}
+	return toSerialize, nil
 }
 
 type NullableBranch struct {

@@ -3,7 +3,7 @@ Gridly API
 
 Gridly API documentation
 
-API version: 5.9.0
+API version: 6.13.0
 Contact: support@gridly.com
 */
 
@@ -13,13 +13,20 @@ package gridly
 
 import (
 	"encoding/json"
+	"bytes"
+	"fmt"
 )
+
+// checks if the RecordIdentifierWrapper type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &RecordIdentifierWrapper{}
 
 // RecordIdentifierWrapper struct for RecordIdentifierWrapper
 type RecordIdentifierWrapper struct {
 	Id string `json:"id"`
 	Path string `json:"path"`
 }
+
+type _RecordIdentifierWrapper RecordIdentifierWrapper
 
 // NewRecordIdentifierWrapper instantiates a new RecordIdentifierWrapper object
 // This constructor will assign default values to properties that have it defined,
@@ -54,7 +61,7 @@ func (o *RecordIdentifierWrapper) GetId() string {
 // and a boolean to check if the value has been set.
 func (o *RecordIdentifierWrapper) GetIdOk() (*string, bool) {
 	if o == nil {
-    return nil, false
+		return nil, false
 	}
 	return &o.Id, true
 }
@@ -63,6 +70,7 @@ func (o *RecordIdentifierWrapper) GetIdOk() (*string, bool) {
 func (o *RecordIdentifierWrapper) SetId(v string) {
 	o.Id = v
 }
+
 
 // GetPath returns the Path field value
 func (o *RecordIdentifierWrapper) GetPath() string {
@@ -78,7 +86,7 @@ func (o *RecordIdentifierWrapper) GetPath() string {
 // and a boolean to check if the value has been set.
 func (o *RecordIdentifierWrapper) GetPathOk() (*string, bool) {
 	if o == nil {
-    return nil, false
+		return nil, false
 	}
 	return &o.Path, true
 }
@@ -88,15 +96,75 @@ func (o *RecordIdentifierWrapper) SetPath(v string) {
 	o.Path = v
 }
 
+
 func (o RecordIdentifierWrapper) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if true {
-		toSerialize["id"] = o.Id
-	}
-	if true {
-		toSerialize["path"] = o.Path
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o RecordIdentifierWrapper) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	toSerialize["id"] = o.Id
+	toSerialize["path"] = o.Path
+	return toSerialize, nil
+}
+
+func (o *RecordIdentifierWrapper) UnmarshalJSON(data []byte) (err error) {
+	// This validates that all required properties are included in the JSON object
+	// by unmarshalling the object into a generic map with string keys and checking
+	// that every required field exists as a key in the generic map.
+	requiredProperties := []string{
+		"id",
+		"path",
+	}
+
+	// defaultValueFuncMap captures the default values for required properties.
+	// These values are used when required properties are missing from the payload.
+	defaultValueFuncMap := map[string]func() interface{} {
+	}
+	var defaultValueApplied bool
+	allProperties := make(map[string]interface{})
+
+	err = json.Unmarshal(data, &allProperties)
+
+	if err != nil {
+		return err;
+	}
+
+	for _, requiredProperty := range(requiredProperties) {
+		if value, exists := allProperties[requiredProperty]; !exists || value == "" {
+			if _, ok := defaultValueFuncMap[requiredProperty]; ok {
+				allProperties[requiredProperty] = defaultValueFuncMap[requiredProperty]()
+				defaultValueApplied = true
+			}
+		}
+		if value, exists := allProperties[requiredProperty]; !exists || value == ""{
+			return fmt.Errorf("no value given for required property %v", requiredProperty)
+		}
+	}
+
+	if defaultValueApplied {
+		data, err = json.Marshal(allProperties)
+		if err != nil{
+			return err
+		}
+	}
+	varRecordIdentifierWrapper := _RecordIdentifierWrapper{}
+
+	decoder := json.NewDecoder(bytes.NewReader(data))
+	decoder.DisallowUnknownFields()
+	err = decoder.Decode(&varRecordIdentifierWrapper)
+
+	if err != nil {
+		return err
+	}
+
+	*o = RecordIdentifierWrapper(varRecordIdentifierWrapper)
+
+	return err
 }
 
 type NullableRecordIdentifierWrapper struct {

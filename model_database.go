@@ -3,7 +3,7 @@ Gridly API
 
 Gridly API documentation
 
-API version: 5.9.0
+API version: 6.13.0
 Contact: support@gridly.com
 */
 
@@ -14,6 +14,9 @@ package gridly
 import (
 	"encoding/json"
 )
+
+// checks if the Database type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &Database{}
 
 // Database struct for Database
 type Database struct {
@@ -46,7 +49,7 @@ func NewDatabaseWithDefaults() *Database {
 
 // GetId returns the Id field value if set, zero value otherwise.
 func (o *Database) GetId() string {
-	if o == nil || isNil(o.Id) {
+	if o == nil || IsNil(o.Id) {
 		var ret string
 		return ret
 	}
@@ -56,15 +59,15 @@ func (o *Database) GetId() string {
 // GetIdOk returns a tuple with the Id field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Database) GetIdOk() (*string, bool) {
-	if o == nil || isNil(o.Id) {
-    return nil, false
+	if o == nil || IsNil(o.Id) {
+		return nil, false
 	}
 	return o.Id, true
 }
 
 // HasId returns a boolean if a field has been set.
 func (o *Database) HasId() bool {
-	if o != nil && !isNil(o.Id) {
+	if o != nil && !IsNil(o.Id) {
 		return true
 	}
 
@@ -78,7 +81,7 @@ func (o *Database) SetId(v string) {
 
 // GetName returns the Name field value if set, zero value otherwise.
 func (o *Database) GetName() string {
-	if o == nil || isNil(o.Name) {
+	if o == nil || IsNil(o.Name) {
 		var ret string
 		return ret
 	}
@@ -88,15 +91,15 @@ func (o *Database) GetName() string {
 // GetNameOk returns a tuple with the Name field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Database) GetNameOk() (*string, bool) {
-	if o == nil || isNil(o.Name) {
-    return nil, false
+	if o == nil || IsNil(o.Name) {
+		return nil, false
 	}
 	return o.Name, true
 }
 
 // HasName returns a boolean if a field has been set.
 func (o *Database) HasName() bool {
-	if o != nil && !isNil(o.Name) {
+	if o != nil && !IsNil(o.Name) {
 		return true
 	}
 
@@ -110,7 +113,7 @@ func (o *Database) SetName(v string) {
 
 // GetDescription returns the Description field value if set, zero value otherwise.
 func (o *Database) GetDescription() string {
-	if o == nil || isNil(o.Description) {
+	if o == nil || IsNil(o.Description) {
 		var ret string
 		return ret
 	}
@@ -120,15 +123,15 @@ func (o *Database) GetDescription() string {
 // GetDescriptionOk returns a tuple with the Description field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Database) GetDescriptionOk() (*string, bool) {
-	if o == nil || isNil(o.Description) {
-    return nil, false
+	if o == nil || IsNil(o.Description) {
+		return nil, false
 	}
 	return o.Description, true
 }
 
 // HasDescription returns a boolean if a field has been set.
 func (o *Database) HasDescription() bool {
-	if o != nil && !isNil(o.Description) {
+	if o != nil && !IsNil(o.Description) {
 		return true
 	}
 
@@ -142,7 +145,7 @@ func (o *Database) SetDescription(v string) {
 
 // GetProjectId returns the ProjectId field value if set, zero value otherwise.
 func (o *Database) GetProjectId() int64 {
-	if o == nil || isNil(o.ProjectId) {
+	if o == nil || IsNil(o.ProjectId) {
 		var ret int64
 		return ret
 	}
@@ -152,15 +155,15 @@ func (o *Database) GetProjectId() int64 {
 // GetProjectIdOk returns a tuple with the ProjectId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Database) GetProjectIdOk() (*int64, bool) {
-	if o == nil || isNil(o.ProjectId) {
-    return nil, false
+	if o == nil || IsNil(o.ProjectId) {
+		return nil, false
 	}
 	return o.ProjectId, true
 }
 
 // HasProjectId returns a boolean if a field has been set.
 func (o *Database) HasProjectId() bool {
-	if o != nil && !isNil(o.ProjectId) {
+	if o != nil && !IsNil(o.ProjectId) {
 		return true
 	}
 
@@ -174,7 +177,7 @@ func (o *Database) SetProjectId(v int64) {
 
 // GetGrids returns the Grids field value if set, zero value otherwise.
 func (o *Database) GetGrids() []Grid {
-	if o == nil || isNil(o.Grids) {
+	if o == nil || IsNil(o.Grids) {
 		var ret []Grid
 		return ret
 	}
@@ -184,15 +187,15 @@ func (o *Database) GetGrids() []Grid {
 // GetGridsOk returns a tuple with the Grids field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Database) GetGridsOk() ([]Grid, bool) {
-	if o == nil || isNil(o.Grids) {
-    return nil, false
+	if o == nil || IsNil(o.Grids) {
+		return nil, false
 	}
 	return o.Grids, true
 }
 
 // HasGrids returns a boolean if a field has been set.
 func (o *Database) HasGrids() bool {
-	if o != nil && !isNil(o.Grids) {
+	if o != nil && !IsNil(o.Grids) {
 		return true
 	}
 
@@ -206,7 +209,7 @@ func (o *Database) SetGrids(v []Grid) {
 
 // GetViews returns the Views field value if set, zero value otherwise.
 func (o *Database) GetViews() []View {
-	if o == nil || isNil(o.Views) {
+	if o == nil || IsNil(o.Views) {
 		var ret []View
 		return ret
 	}
@@ -216,15 +219,15 @@ func (o *Database) GetViews() []View {
 // GetViewsOk returns a tuple with the Views field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Database) GetViewsOk() ([]View, bool) {
-	if o == nil || isNil(o.Views) {
-    return nil, false
+	if o == nil || IsNil(o.Views) {
+		return nil, false
 	}
 	return o.Views, true
 }
 
 // HasViews returns a boolean if a field has been set.
 func (o *Database) HasViews() bool {
-	if o != nil && !isNil(o.Views) {
+	if o != nil && !IsNil(o.Views) {
 		return true
 	}
 
@@ -238,7 +241,7 @@ func (o *Database) SetViews(v []View) {
 
 // GetProject returns the Project field value if set, zero value otherwise.
 func (o *Database) GetProject() Project {
-	if o == nil || isNil(o.Project) {
+	if o == nil || IsNil(o.Project) {
 		var ret Project
 		return ret
 	}
@@ -248,15 +251,15 @@ func (o *Database) GetProject() Project {
 // GetProjectOk returns a tuple with the Project field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Database) GetProjectOk() (*Project, bool) {
-	if o == nil || isNil(o.Project) {
-    return nil, false
+	if o == nil || IsNil(o.Project) {
+		return nil, false
 	}
 	return o.Project, true
 }
 
 // HasProject returns a boolean if a field has been set.
 func (o *Database) HasProject() bool {
-	if o != nil && !isNil(o.Project) {
+	if o != nil && !IsNil(o.Project) {
 		return true
 	}
 
@@ -270,7 +273,7 @@ func (o *Database) SetProject(v Project) {
 
 // GetGroups returns the Groups field value if set, zero value otherwise.
 func (o *Database) GetGroups() []Group {
-	if o == nil || isNil(o.Groups) {
+	if o == nil || IsNil(o.Groups) {
 		var ret []Group
 		return ret
 	}
@@ -280,15 +283,15 @@ func (o *Database) GetGroups() []Group {
 // GetGroupsOk returns a tuple with the Groups field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Database) GetGroupsOk() ([]Group, bool) {
-	if o == nil || isNil(o.Groups) {
-    return nil, false
+	if o == nil || IsNil(o.Groups) {
+		return nil, false
 	}
 	return o.Groups, true
 }
 
 // HasGroups returns a boolean if a field has been set.
 func (o *Database) HasGroups() bool {
-	if o != nil && !isNil(o.Groups) {
+	if o != nil && !IsNil(o.Groups) {
 		return true
 	}
 
@@ -301,32 +304,40 @@ func (o *Database) SetGroups(v []Group) {
 }
 
 func (o Database) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if !isNil(o.Id) {
-		toSerialize["id"] = o.Id
-	}
-	if !isNil(o.Name) {
-		toSerialize["name"] = o.Name
-	}
-	if !isNil(o.Description) {
-		toSerialize["description"] = o.Description
-	}
-	if !isNil(o.ProjectId) {
-		toSerialize["projectId"] = o.ProjectId
-	}
-	if !isNil(o.Grids) {
-		toSerialize["grids"] = o.Grids
-	}
-	if !isNil(o.Views) {
-		toSerialize["views"] = o.Views
-	}
-	if !isNil(o.Project) {
-		toSerialize["project"] = o.Project
-	}
-	if !isNil(o.Groups) {
-		toSerialize["groups"] = o.Groups
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o Database) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.Id) {
+		toSerialize["id"] = o.Id
+	}
+	if !IsNil(o.Name) {
+		toSerialize["name"] = o.Name
+	}
+	if !IsNil(o.Description) {
+		toSerialize["description"] = o.Description
+	}
+	if !IsNil(o.ProjectId) {
+		toSerialize["projectId"] = o.ProjectId
+	}
+	if !IsNil(o.Grids) {
+		toSerialize["grids"] = o.Grids
+	}
+	if !IsNil(o.Views) {
+		toSerialize["views"] = o.Views
+	}
+	if !IsNil(o.Project) {
+		toSerialize["project"] = o.Project
+	}
+	if !IsNil(o.Groups) {
+		toSerialize["groups"] = o.Groups
+	}
+	return toSerialize, nil
 }
 
 type NullableDatabase struct {

@@ -28,22 +28,22 @@ Erases all the translation data of the provided tmId
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    gridly "./openapi"
+	"context"
+	"fmt"
+	"os"
+	gridly "github.com/gridly-spreadsheet-CMS/gridly-go-sdk"
 )
 
 func main() {
-    tmId := "tmId_example" // string | 
+	tmId := "tmId_example" // string | 
 
-    configuration := gridly.NewConfiguration()
-    apiClient := gridly.NewAPIClient(configuration)
-    resp, r, err := apiClient.TransmemApi.Cleanup(context.Background(), tmId).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `TransmemApi.Cleanup``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
+	configuration := gridly.NewConfiguration()
+	apiClient := gridly.NewAPIClient(configuration)
+	r, err := apiClient.TransmemApi.Cleanup(context.Background(), tmId).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `TransmemApi.Cleanup``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
 }
 ```
 
@@ -94,24 +94,24 @@ Create a new translation memory
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    gridly "./openapi"
+	"context"
+	"fmt"
+	"os"
+	gridly "github.com/gridly-spreadsheet-CMS/gridly-go-sdk"
 )
 
 func main() {
-    createTransMem := *gridly.NewCreateTransMem("Name_example") // CreateTransMem |  (optional)
+	createTransMem := *gridly.NewCreateTransMem("Name_example") // CreateTransMem | 
 
-    configuration := gridly.NewConfiguration()
-    apiClient := gridly.NewAPIClient(configuration)
-    resp, r, err := apiClient.TransmemApi.Create(context.Background()).CreateTransMem(createTransMem).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `TransmemApi.Create``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `Create`: TransMem
-    fmt.Fprintf(os.Stdout, "Response from `TransmemApi.Create`: %v\n", resp)
+	configuration := gridly.NewConfiguration()
+	apiClient := gridly.NewAPIClient(configuration)
+	resp, r, err := apiClient.TransmemApi.Create(context.Background()).CreateTransMem(createTransMem).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `TransmemApi.Create``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `Create`: TransMem
+	fmt.Fprintf(os.Stdout, "Response from `TransmemApi.Create`: %v\n", resp)
 }
 ```
 
@@ -158,24 +158,24 @@ Create a new translation memory by uploading tmx file
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    gridly "./openapi"
+	"context"
+	"fmt"
+	"os"
+	gridly "github.com/gridly-spreadsheet-CMS/gridly-go-sdk"
 )
 
 func main() {
-    file := os.NewFile(1234, "some_file") // *os.File | 
+	file := os.NewFile(1234, "some_file") // *os.File | 
 
-    configuration := gridly.NewConfiguration()
-    apiClient := gridly.NewAPIClient(configuration)
-    resp, r, err := apiClient.TransmemApi.CreateWithFile(context.Background()).File(file).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `TransmemApi.CreateWithFile``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `CreateWithFile`: TransMem
-    fmt.Fprintf(os.Stdout, "Response from `TransmemApi.CreateWithFile`: %v\n", resp)
+	configuration := gridly.NewConfiguration()
+	apiClient := gridly.NewAPIClient(configuration)
+	resp, r, err := apiClient.TransmemApi.CreateWithFile(context.Background()).File(file).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `TransmemApi.CreateWithFile``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `CreateWithFile`: TransMem
+	fmt.Fprintf(os.Stdout, "Response from `TransmemApi.CreateWithFile`: %v\n", resp)
 }
 ```
 
@@ -222,24 +222,24 @@ Delete a translation memory by id
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    gridly "./openapi"
+	"context"
+	"fmt"
+	"os"
+	gridly "github.com/gridly-spreadsheet-CMS/gridly-go-sdk"
 )
 
 func main() {
-    tmId := "tmId_example" // string | 
+	tmId := "tmId_example" // string | 
 
-    configuration := gridly.NewConfiguration()
-    apiClient := gridly.NewAPIClient(configuration)
-    resp, r, err := apiClient.TransmemApi.Delete(context.Background(), tmId).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `TransmemApi.Delete``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `Delete`: TransMem
-    fmt.Fprintf(os.Stdout, "Response from `TransmemApi.Delete`: %v\n", resp)
+	configuration := gridly.NewConfiguration()
+	apiClient := gridly.NewAPIClient(configuration)
+	resp, r, err := apiClient.TransmemApi.Delete(context.Background(), tmId).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `TransmemApi.Delete``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `Delete`: TransMem
+	fmt.Fprintf(os.Stdout, "Response from `TransmemApi.Delete`: %v\n", resp)
 }
 ```
 
@@ -290,27 +290,27 @@ Export translation memory tmx file
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    gridly "./openapi"
+	"context"
+	"fmt"
+	"os"
+	gridly "github.com/gridly-spreadsheet-CMS/gridly-go-sdk"
 )
 
 func main() {
-    tmId := "tmId_example" // string | 
-    format := gridly.ExportFormat("tmx") // ExportFormat |  (optional)
-    sourceLang := "sourceLang_example" // string |  (optional)
-    targetLangs := []string{"Inner_example"} // []string |  (optional)
+	tmId := "tmId_example" // string | 
+	format := gridly.ExportTransMemFormat("tmx") // ExportTransMemFormat |  (optional) (default to "tmx")
+	sourceLang := "sourceLang_example" // string |  (optional)
+	targetLangs := []string{"Inner_example"} // []string |  (optional)
 
-    configuration := gridly.NewConfiguration()
-    apiClient := gridly.NewAPIClient(configuration)
-    resp, r, err := apiClient.TransmemApi.Export(context.Background(), tmId).Format(format).SourceLang(sourceLang).TargetLangs(targetLangs).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `TransmemApi.Export``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `Export`: *os.File
-    fmt.Fprintf(os.Stdout, "Response from `TransmemApi.Export`: %v\n", resp)
+	configuration := gridly.NewConfiguration()
+	apiClient := gridly.NewAPIClient(configuration)
+	resp, r, err := apiClient.TransmemApi.Export(context.Background(), tmId).Format(format).SourceLang(sourceLang).TargetLangs(targetLangs).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `TransmemApi.Export``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `Export`: *os.File
+	fmt.Fprintf(os.Stdout, "Response from `TransmemApi.Export`: %v\n", resp)
 }
 ```
 
@@ -330,7 +330,7 @@ Other parameters are passed through a pointer to a apiExportRequest struct via t
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **format** | [**ExportFormat**](ExportFormat.md) |  | 
+ **format** | [**ExportTransMemFormat**](ExportTransMemFormat.md) |  | [default to &quot;tmx&quot;]
  **sourceLang** | **string** |  | 
  **targetLangs** | **[]string** |  | 
 
@@ -364,24 +364,24 @@ Get translation memory info by id
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    gridly "./openapi"
+	"context"
+	"fmt"
+	"os"
+	gridly "github.com/gridly-spreadsheet-CMS/gridly-go-sdk"
 )
 
 func main() {
-    tmId := "tmId_example" // string | 
+	tmId := "tmId_example" // string | 
 
-    configuration := gridly.NewConfiguration()
-    apiClient := gridly.NewAPIClient(configuration)
-    resp, r, err := apiClient.TransmemApi.Get(context.Background(), tmId).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `TransmemApi.Get``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `Get`: TransMem
-    fmt.Fprintf(os.Stdout, "Response from `TransmemApi.Get`: %v\n", resp)
+	configuration := gridly.NewConfiguration()
+	apiClient := gridly.NewAPIClient(configuration)
+	resp, r, err := apiClient.TransmemApi.Get(context.Background(), tmId).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `TransmemApi.Get``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `Get`: TransMem
+	fmt.Fprintf(os.Stdout, "Response from `TransmemApi.Get`: %v\n", resp)
 }
 ```
 
@@ -432,23 +432,23 @@ Import a translation memory from tmx file
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    gridly "./openapi"
+	"context"
+	"fmt"
+	"os"
+	gridly "github.com/gridly-spreadsheet-CMS/gridly-go-sdk"
 )
 
 func main() {
-    tmId := "tmId_example" // string | 
-    file := os.NewFile(1234, "some_file") // *os.File | 
+	tmId := "tmId_example" // string | 
+	file := os.NewFile(1234, "some_file") // *os.File | 
 
-    configuration := gridly.NewConfiguration()
-    apiClient := gridly.NewAPIClient(configuration)
-    resp, r, err := apiClient.TransmemApi.ImportTmx(context.Background(), tmId).File(file).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `TransmemApi.ImportTmx``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
+	configuration := gridly.NewConfiguration()
+	apiClient := gridly.NewAPIClient(configuration)
+	r, err := apiClient.TransmemApi.ImportTmx(context.Background(), tmId).File(file).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `TransmemApi.ImportTmx``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
 }
 ```
 
@@ -500,24 +500,24 @@ List all available translation memories or create default one if there is no tra
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    gridly "./openapi"
+	"context"
+	"fmt"
+	"os"
+	gridly "github.com/gridly-spreadsheet-CMS/gridly-go-sdk"
 )
 
 func main() {
-    projectId := int64(789) // int64 |  (optional)
+	projectId := int64(789) // int64 |  (optional)
 
-    configuration := gridly.NewConfiguration()
-    apiClient := gridly.NewAPIClient(configuration)
-    resp, r, err := apiClient.TransmemApi.ListTM(context.Background()).ProjectId(projectId).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `TransmemApi.ListTM``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `ListTM`: []TransMem
-    fmt.Fprintf(os.Stdout, "Response from `TransmemApi.ListTM`: %v\n", resp)
+	configuration := gridly.NewConfiguration()
+	apiClient := gridly.NewAPIClient(configuration)
+	resp, r, err := apiClient.TransmemApi.ListTM(context.Background()).ProjectId(projectId).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `TransmemApi.ListTM``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `ListTM`: []TransMem
+	fmt.Fprintf(os.Stdout, "Response from `TransmemApi.ListTM`: %v\n", resp)
 }
 ```
 
@@ -564,25 +564,25 @@ Update a translation memory
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    gridly "./openapi"
+	"context"
+	"fmt"
+	"os"
+	gridly "github.com/gridly-spreadsheet-CMS/gridly-go-sdk"
 )
 
 func main() {
-    tmId := "tmId_example" // string | 
-    updateTransMem := *gridly.NewUpdateTransMem() // UpdateTransMem |  (optional)
+	tmId := "tmId_example" // string | 
+	updateTransMem := *gridly.NewUpdateTransMem() // UpdateTransMem | 
 
-    configuration := gridly.NewConfiguration()
-    apiClient := gridly.NewAPIClient(configuration)
-    resp, r, err := apiClient.TransmemApi.Update(context.Background(), tmId).UpdateTransMem(updateTransMem).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `TransmemApi.Update``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `Update`: TransMem
-    fmt.Fprintf(os.Stdout, "Response from `TransmemApi.Update`: %v\n", resp)
+	configuration := gridly.NewConfiguration()
+	apiClient := gridly.NewAPIClient(configuration)
+	resp, r, err := apiClient.TransmemApi.Update(context.Background(), tmId).UpdateTransMem(updateTransMem).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `TransmemApi.Update``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `Update`: TransMem
+	fmt.Fprintf(os.Stdout, "Response from `TransmemApi.Update`: %v\n", resp)
 }
 ```
 

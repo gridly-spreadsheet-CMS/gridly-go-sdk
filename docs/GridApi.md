@@ -35,25 +35,25 @@ create
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    gridly "./openapi"
+	"context"
+	"fmt"
+	"os"
+	gridly "github.com/gridly-spreadsheet-CMS/gridly-go-sdk"
 )
 
 func main() {
-    dbId := "dbId_example" // string | dbId
-    createGrid := *gridly.NewCreateGrid("Name_example") // CreateGrid | 
+	dbId := "dbId_example" // string | dbId
+	createGrid := *gridly.NewCreateGrid("Name_example", "RecordIdentifierType_example") // CreateGrid | 
 
-    configuration := gridly.NewConfiguration()
-    apiClient := gridly.NewAPIClient(configuration)
-    resp, r, err := apiClient.GridApi.Create(context.Background()).DbId(dbId).CreateGrid(createGrid).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `GridApi.Create``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `Create`: Grid
-    fmt.Fprintf(os.Stdout, "Response from `GridApi.Create`: %v\n", resp)
+	configuration := gridly.NewConfiguration()
+	apiClient := gridly.NewAPIClient(configuration)
+	resp, r, err := apiClient.GridApi.Create(context.Background()).DbId(dbId).CreateGrid(createGrid).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `GridApi.Create``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `Create`: Grid
+	fmt.Fprintf(os.Stdout, "Response from `GridApi.Create`: %v\n", resp)
 }
 ```
 
@@ -103,25 +103,25 @@ createCategory
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    gridly "./openapi"
+	"context"
+	"fmt"
+	"os"
+	gridly "github.com/gridly-spreadsheet-CMS/gridly-go-sdk"
 )
 
 func main() {
-    gridId := "gridId_example" // string | gridId
-    createFileCategory := *gridly.NewCreateFileCategory("Name_example") // CreateFileCategory | 
+	gridId := "gridId_example" // string | gridId
+	createFileCategory := *gridly.NewCreateFileCategory("Name_example") // CreateFileCategory | 
 
-    configuration := gridly.NewConfiguration()
-    apiClient := gridly.NewAPIClient(configuration)
-    resp, r, err := apiClient.GridApi.CreateCategory(context.Background(), gridId).CreateFileCategory(createFileCategory).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `GridApi.CreateCategory``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `CreateCategory`: FileCategory
-    fmt.Fprintf(os.Stdout, "Response from `GridApi.CreateCategory`: %v\n", resp)
+	configuration := gridly.NewConfiguration()
+	apiClient := gridly.NewAPIClient(configuration)
+	resp, r, err := apiClient.GridApi.CreateCategory(context.Background(), gridId).CreateFileCategory(createFileCategory).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `GridApi.CreateCategory``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `CreateCategory`: FileCategory
+	fmt.Fprintf(os.Stdout, "Response from `GridApi.CreateCategory`: %v\n", resp)
 }
 ```
 
@@ -175,22 +175,22 @@ delete
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    gridly "./openapi"
+	"context"
+	"fmt"
+	"os"
+	gridly "github.com/gridly-spreadsheet-CMS/gridly-go-sdk"
 )
 
 func main() {
-    gridId := "gridId_example" // string | gridId
+	gridId := "gridId_example" // string | gridId
 
-    configuration := gridly.NewConfiguration()
-    apiClient := gridly.NewAPIClient(configuration)
-    resp, r, err := apiClient.GridApi.Delete(context.Background(), gridId).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `GridApi.Delete``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
+	configuration := gridly.NewConfiguration()
+	apiClient := gridly.NewAPIClient(configuration)
+	r, err := apiClient.GridApi.Delete(context.Background(), gridId).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `GridApi.Delete``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
 }
 ```
 
@@ -243,23 +243,23 @@ deleteCategory
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    gridly "./openapi"
+	"context"
+	"fmt"
+	"os"
+	gridly "github.com/gridly-spreadsheet-CMS/gridly-go-sdk"
 )
 
 func main() {
-    gridId := "gridId_example" // string | gridId
-    categoryId := "categoryId_example" // string | categoryId
+	gridId := "gridId_example" // string | gridId
+	categoryId := "categoryId_example" // string | categoryId
 
-    configuration := gridly.NewConfiguration()
-    apiClient := gridly.NewAPIClient(configuration)
-    resp, r, err := apiClient.GridApi.DeleteCategory(context.Background(), gridId, categoryId).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `GridApi.DeleteCategory``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
+	configuration := gridly.NewConfiguration()
+	apiClient := gridly.NewAPIClient(configuration)
+	r, err := apiClient.GridApi.DeleteCategory(context.Background(), gridId, categoryId).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `GridApi.DeleteCategory``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
 }
 ```
 
@@ -314,24 +314,24 @@ deleteFile
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    gridly "./openapi"
+	"context"
+	"fmt"
+	"os"
+	gridly "github.com/gridly-spreadsheet-CMS/gridly-go-sdk"
 )
 
 func main() {
-    gridId := "gridId_example" // string | gridId
-    categoryId := "categoryId_example" // string | categoryId
-    fileId := "fileId_example" // string | fileId
+	gridId := "gridId_example" // string | gridId
+	categoryId := "categoryId_example" // string | categoryId
+	fileId := "fileId_example" // string | fileId
 
-    configuration := gridly.NewConfiguration()
-    apiClient := gridly.NewAPIClient(configuration)
-    resp, r, err := apiClient.GridApi.DeleteFile(context.Background(), gridId, categoryId, fileId).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `GridApi.DeleteFile``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
+	configuration := gridly.NewConfiguration()
+	apiClient := gridly.NewAPIClient(configuration)
+	r, err := apiClient.GridApi.DeleteFile(context.Background(), gridId, categoryId, fileId).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `GridApi.DeleteFile``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
 }
 ```
 
@@ -388,24 +388,24 @@ get
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    gridly "./openapi"
+	"context"
+	"fmt"
+	"os"
+	gridly "github.com/gridly-spreadsheet-CMS/gridly-go-sdk"
 )
 
 func main() {
-    gridId := "gridId_example" // string | gridId
+	gridId := "gridId_example" // string | gridId
 
-    configuration := gridly.NewConfiguration()
-    apiClient := gridly.NewAPIClient(configuration)
-    resp, r, err := apiClient.GridApi.Get(context.Background(), gridId).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `GridApi.Get``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `Get`: Grid
-    fmt.Fprintf(os.Stdout, "Response from `GridApi.Get`: %v\n", resp)
+	configuration := gridly.NewConfiguration()
+	apiClient := gridly.NewAPIClient(configuration)
+	resp, r, err := apiClient.GridApi.Get(context.Background(), gridId).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `GridApi.Get``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `Get`: Grid
+	fmt.Fprintf(os.Stdout, "Response from `GridApi.Get`: %v\n", resp)
 }
 ```
 
@@ -458,24 +458,24 @@ getSetting
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    gridly "./openapi"
+	"context"
+	"fmt"
+	"os"
+	gridly "github.com/gridly-spreadsheet-CMS/gridly-go-sdk"
 )
 
 func main() {
-    gridId := "gridId_example" // string | gridId
+	gridId := "gridId_example" // string | gridId
 
-    configuration := gridly.NewConfiguration()
-    apiClient := gridly.NewAPIClient(configuration)
-    resp, r, err := apiClient.GridApi.GetSetting(context.Background(), gridId).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `GridApi.GetSetting``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `GetSetting`: GridSetting
-    fmt.Fprintf(os.Stdout, "Response from `GridApi.GetSetting`: %v\n", resp)
+	configuration := gridly.NewConfiguration()
+	apiClient := gridly.NewAPIClient(configuration)
+	resp, r, err := apiClient.GridApi.GetSetting(context.Background(), gridId).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `GridApi.GetSetting``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `GetSetting`: GridSetting
+	fmt.Fprintf(os.Stdout, "Response from `GridApi.GetSetting`: %v\n", resp)
 }
 ```
 
@@ -516,7 +516,7 @@ Name | Type | Description  | Notes
 
 ## List
 
-> []Grid List(ctx).DbId(dbId).Execute()
+> []Grid List(ctx).DbId(dbId).Query(query).Execute()
 
 list
 
@@ -528,24 +528,25 @@ list
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    gridly "./openapi"
+	"context"
+	"fmt"
+	"os"
+	gridly "github.com/gridly-spreadsheet-CMS/gridly-go-sdk"
 )
 
 func main() {
-    dbId := "dbId_example" // string | dbId
+	dbId := "dbId_example" // string | dbId
+	query := "query_example" // string | query (optional) (default to "{}")
 
-    configuration := gridly.NewConfiguration()
-    apiClient := gridly.NewAPIClient(configuration)
-    resp, r, err := apiClient.GridApi.List(context.Background()).DbId(dbId).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `GridApi.List``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `List`: []Grid
-    fmt.Fprintf(os.Stdout, "Response from `GridApi.List`: %v\n", resp)
+	configuration := gridly.NewConfiguration()
+	apiClient := gridly.NewAPIClient(configuration)
+	resp, r, err := apiClient.GridApi.List(context.Background()).DbId(dbId).Query(query).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `GridApi.List``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `List`: []Grid
+	fmt.Fprintf(os.Stdout, "Response from `GridApi.List`: %v\n", resp)
 }
 ```
 
@@ -561,6 +562,7 @@ Other parameters are passed through a pointer to a apiListRequest struct via the
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **dbId** | **string** | dbId | 
+ **query** | **string** | query | [default to &quot;{}&quot;]
 
 ### Return type
 
@@ -594,25 +596,25 @@ listFiles
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    gridly "./openapi"
+	"context"
+	"fmt"
+	"os"
+	gridly "github.com/gridly-spreadsheet-CMS/gridly-go-sdk"
 )
 
 func main() {
-    gridId := "gridId_example" // string | gridId
-    categoryId := []string{"Inner_example"} // []string | categoryId (optional)
+	gridId := "gridId_example" // string | gridId
+	categoryId := []string{"Inner_example"} // []string | categoryId (optional)
 
-    configuration := gridly.NewConfiguration()
-    apiClient := gridly.NewAPIClient(configuration)
-    resp, r, err := apiClient.GridApi.ListFiles(context.Background(), gridId).CategoryId(categoryId).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `GridApi.ListFiles``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `ListFiles`: []SettingFile
-    fmt.Fprintf(os.Stdout, "Response from `GridApi.ListFiles`: %v\n", resp)
+	configuration := gridly.NewConfiguration()
+	apiClient := gridly.NewAPIClient(configuration)
+	resp, r, err := apiClient.GridApi.ListFiles(context.Background(), gridId).CategoryId(categoryId).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `GridApi.ListFiles``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `ListFiles`: []SettingFile
+	fmt.Fprintf(os.Stdout, "Response from `GridApi.ListFiles`: %v\n", resp)
 }
 ```
 
@@ -666,23 +668,23 @@ listTemplateGrids
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    gridly "./openapi"
+	"context"
+	"fmt"
+	"os"
+	gridly "github.com/gridly-spreadsheet-CMS/gridly-go-sdk"
 )
 
 func main() {
 
-    configuration := gridly.NewConfiguration()
-    apiClient := gridly.NewAPIClient(configuration)
-    resp, r, err := apiClient.GridApi.ListTemplateGrids(context.Background()).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `GridApi.ListTemplateGrids``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `ListTemplateGrids`: []Grid
-    fmt.Fprintf(os.Stdout, "Response from `GridApi.ListTemplateGrids`: %v\n", resp)
+	configuration := gridly.NewConfiguration()
+	apiClient := gridly.NewAPIClient(configuration)
+	resp, r, err := apiClient.GridApi.ListTemplateGrids(context.Background()).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `GridApi.ListTemplateGrids``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `ListTemplateGrids`: []Grid
+	fmt.Fprintf(os.Stdout, "Response from `GridApi.ListTemplateGrids`: %v\n", resp)
 }
 ```
 
@@ -727,25 +729,25 @@ update
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    gridly "./openapi"
+	"context"
+	"fmt"
+	"os"
+	gridly "github.com/gridly-spreadsheet-CMS/gridly-go-sdk"
 )
 
 func main() {
-    gridId := "gridId_example" // string | gridId
-    updateGrid := *gridly.NewUpdateGrid() // UpdateGrid | 
+	gridId := "gridId_example" // string | gridId
+	updateGrid := *gridly.NewUpdateGrid() // UpdateGrid | 
 
-    configuration := gridly.NewConfiguration()
-    apiClient := gridly.NewAPIClient(configuration)
-    resp, r, err := apiClient.GridApi.Update(context.Background(), gridId).UpdateGrid(updateGrid).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `GridApi.Update``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `Update`: Grid
-    fmt.Fprintf(os.Stdout, "Response from `GridApi.Update`: %v\n", resp)
+	configuration := gridly.NewConfiguration()
+	apiClient := gridly.NewAPIClient(configuration)
+	resp, r, err := apiClient.GridApi.Update(context.Background(), gridId).UpdateGrid(updateGrid).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `GridApi.Update``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `Update`: Grid
+	fmt.Fprintf(os.Stdout, "Response from `GridApi.Update`: %v\n", resp)
 }
 ```
 
@@ -799,26 +801,26 @@ updateCategory
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    gridly "./openapi"
+	"context"
+	"fmt"
+	"os"
+	gridly "github.com/gridly-spreadsheet-CMS/gridly-go-sdk"
 )
 
 func main() {
-    gridId := "gridId_example" // string | gridId
-    categoryId := "categoryId_example" // string | categoryId
-    updateCategory := *gridly.NewUpdateCategory("Name_example") // UpdateCategory | 
+	gridId := "gridId_example" // string | gridId
+	categoryId := "categoryId_example" // string | categoryId
+	updateCategory := *gridly.NewUpdateCategory("Name_example") // UpdateCategory | 
 
-    configuration := gridly.NewConfiguration()
-    apiClient := gridly.NewAPIClient(configuration)
-    resp, r, err := apiClient.GridApi.UpdateCategory(context.Background(), gridId, categoryId).UpdateCategory(updateCategory).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `GridApi.UpdateCategory``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `UpdateCategory`: FileCategory
-    fmt.Fprintf(os.Stdout, "Response from `GridApi.UpdateCategory`: %v\n", resp)
+	configuration := gridly.NewConfiguration()
+	apiClient := gridly.NewAPIClient(configuration)
+	resp, r, err := apiClient.GridApi.UpdateCategory(context.Background(), gridId, categoryId).UpdateCategory(updateCategory).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `GridApi.UpdateCategory``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `UpdateCategory`: FileCategory
+	fmt.Fprintf(os.Stdout, "Response from `GridApi.UpdateCategory`: %v\n", resp)
 }
 ```
 
@@ -874,25 +876,25 @@ updateSetting
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    gridly "./openapi"
+	"context"
+	"fmt"
+	"os"
+	gridly "github.com/gridly-spreadsheet-CMS/gridly-go-sdk"
 )
 
 func main() {
-    gridId := "gridId_example" // string | gridId
-    updateGridSetting := *gridly.NewUpdateGridSetting() // UpdateGridSetting | 
+	gridId := "gridId_example" // string | gridId
+	updateGridSetting := *gridly.NewUpdateGridSetting() // UpdateGridSetting | 
 
-    configuration := gridly.NewConfiguration()
-    apiClient := gridly.NewAPIClient(configuration)
-    resp, r, err := apiClient.GridApi.UpdateSetting(context.Background(), gridId).UpdateGridSetting(updateGridSetting).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `GridApi.UpdateSetting``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `UpdateSetting`: GridSetting
-    fmt.Fprintf(os.Stdout, "Response from `GridApi.UpdateSetting`: %v\n", resp)
+	configuration := gridly.NewConfiguration()
+	apiClient := gridly.NewAPIClient(configuration)
+	resp, r, err := apiClient.GridApi.UpdateSetting(context.Background(), gridId).UpdateGridSetting(updateGridSetting).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `GridApi.UpdateSetting``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `UpdateSetting`: GridSetting
+	fmt.Fprintf(os.Stdout, "Response from `GridApi.UpdateSetting`: %v\n", resp)
 }
 ```
 
@@ -946,26 +948,26 @@ uploadSettingFile
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    gridly "./openapi"
+	"context"
+	"fmt"
+	"os"
+	gridly "github.com/gridly-spreadsheet-CMS/gridly-go-sdk"
 )
 
 func main() {
-    gridId := "gridId_example" // string | gridId
-    categoryId := "categoryId_example" // string | categoryId
-    uploadSettingFileRequest := *gridly.NewUploadSettingFileRequest() // UploadSettingFileRequest | 
+	gridId := "gridId_example" // string | gridId
+	categoryId := "categoryId_example" // string | categoryId
+	uploadSettingFileRequest := *gridly.NewUploadSettingFileRequest() // UploadSettingFileRequest | 
 
-    configuration := gridly.NewConfiguration()
-    apiClient := gridly.NewAPIClient(configuration)
-    resp, r, err := apiClient.GridApi.UploadSettingFile(context.Background(), gridId, categoryId).UploadSettingFileRequest(uploadSettingFileRequest).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `GridApi.UploadSettingFile``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `UploadSettingFile`: UploadedFile
-    fmt.Fprintf(os.Stdout, "Response from `GridApi.UploadSettingFile`: %v\n", resp)
+	configuration := gridly.NewConfiguration()
+	apiClient := gridly.NewAPIClient(configuration)
+	resp, r, err := apiClient.GridApi.UploadSettingFile(context.Background(), gridId, categoryId).UploadSettingFileRequest(uploadSettingFileRequest).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `GridApi.UploadSettingFile``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `UploadSettingFile`: UploadedFile
+	fmt.Fprintf(os.Stdout, "Response from `GridApi.UploadSettingFile`: %v\n", resp)
 }
 ```
 

@@ -3,7 +3,7 @@ Gridly API
 
 Gridly API documentation
 
-API version: 5.9.0
+API version: 6.13.0
 Contact: support@gridly.com
 */
 
@@ -13,12 +13,19 @@ package gridly
 
 import (
 	"encoding/json"
+	"bytes"
+	"fmt"
 )
+
+// checks if the DeleteFile type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &DeleteFile{}
 
 // DeleteFile struct for DeleteFile
 type DeleteFile struct {
 	Ids []string `json:"ids"`
 }
+
+type _DeleteFile DeleteFile
 
 // NewDeleteFile instantiates a new DeleteFile object
 // This constructor will assign default values to properties that have it defined,
@@ -52,7 +59,7 @@ func (o *DeleteFile) GetIds() []string {
 // and a boolean to check if the value has been set.
 func (o *DeleteFile) GetIdsOk() ([]string, bool) {
 	if o == nil {
-    return nil, false
+		return nil, false
 	}
 	return o.Ids, true
 }
@@ -62,12 +69,73 @@ func (o *DeleteFile) SetIds(v []string) {
 	o.Ids = v
 }
 
+
 func (o DeleteFile) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if true {
-		toSerialize["ids"] = o.Ids
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o DeleteFile) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	toSerialize["ids"] = o.Ids
+	return toSerialize, nil
+}
+
+func (o *DeleteFile) UnmarshalJSON(data []byte) (err error) {
+	// This validates that all required properties are included in the JSON object
+	// by unmarshalling the object into a generic map with string keys and checking
+	// that every required field exists as a key in the generic map.
+	requiredProperties := []string{
+		"ids",
+	}
+
+	// defaultValueFuncMap captures the default values for required properties.
+	// These values are used when required properties are missing from the payload.
+	defaultValueFuncMap := map[string]func() interface{} {
+	}
+	var defaultValueApplied bool
+	allProperties := make(map[string]interface{})
+
+	err = json.Unmarshal(data, &allProperties)
+
+	if err != nil {
+		return err;
+	}
+
+	for _, requiredProperty := range(requiredProperties) {
+		if value, exists := allProperties[requiredProperty]; !exists || value == "" {
+			if _, ok := defaultValueFuncMap[requiredProperty]; ok {
+				allProperties[requiredProperty] = defaultValueFuncMap[requiredProperty]()
+				defaultValueApplied = true
+			}
+		}
+		if value, exists := allProperties[requiredProperty]; !exists || value == ""{
+			return fmt.Errorf("no value given for required property %v", requiredProperty)
+		}
+	}
+
+	if defaultValueApplied {
+		data, err = json.Marshal(allProperties)
+		if err != nil{
+			return err
+		}
+	}
+	varDeleteFile := _DeleteFile{}
+
+	decoder := json.NewDecoder(bytes.NewReader(data))
+	decoder.DisallowUnknownFields()
+	err = decoder.Decode(&varDeleteFile)
+
+	if err != nil {
+		return err
+	}
+
+	*o = DeleteFile(varDeleteFile)
+
+	return err
 }
 
 type NullableDeleteFile struct {

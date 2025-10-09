@@ -3,7 +3,7 @@ Gridly API
 
 Gridly API documentation
 
-API version: 5.9.0
+API version: 6.13.0
 Contact: support@gridly.com
 */
 
@@ -13,7 +13,12 @@ package gridly
 
 import (
 	"encoding/json"
+	"bytes"
+	"fmt"
 )
+
+// checks if the Reference type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &Reference{}
 
 // Reference struct for Reference
 type Reference struct {
@@ -23,6 +28,8 @@ type Reference struct {
 	Type *string `json:"type,omitempty"`
 	SelectionType *string `json:"selectionType,omitempty"`
 }
+
+type _Reference Reference
 
 // NewReference instantiates a new Reference object
 // This constructor will assign default values to properties that have it defined,
@@ -57,7 +64,7 @@ func (o *Reference) GetGridId() string {
 // and a boolean to check if the value has been set.
 func (o *Reference) GetGridIdOk() (*string, bool) {
 	if o == nil {
-    return nil, false
+		return nil, false
 	}
 	return &o.GridId, true
 }
@@ -67,9 +74,10 @@ func (o *Reference) SetGridId(v string) {
 	o.GridId = v
 }
 
+
 // GetBranchId returns the BranchId field value if set, zero value otherwise.
 func (o *Reference) GetBranchId() string {
-	if o == nil || isNil(o.BranchId) {
+	if o == nil || IsNil(o.BranchId) {
 		var ret string
 		return ret
 	}
@@ -79,15 +87,15 @@ func (o *Reference) GetBranchId() string {
 // GetBranchIdOk returns a tuple with the BranchId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Reference) GetBranchIdOk() (*string, bool) {
-	if o == nil || isNil(o.BranchId) {
-    return nil, false
+	if o == nil || IsNil(o.BranchId) {
+		return nil, false
 	}
 	return o.BranchId, true
 }
 
 // HasBranchId returns a boolean if a field has been set.
 func (o *Reference) HasBranchId() bool {
-	if o != nil && !isNil(o.BranchId) {
+	if o != nil && !IsNil(o.BranchId) {
 		return true
 	}
 
@@ -113,7 +121,7 @@ func (o *Reference) GetColumnId() string {
 // and a boolean to check if the value has been set.
 func (o *Reference) GetColumnIdOk() (*string, bool) {
 	if o == nil {
-    return nil, false
+		return nil, false
 	}
 	return &o.ColumnId, true
 }
@@ -123,9 +131,10 @@ func (o *Reference) SetColumnId(v string) {
 	o.ColumnId = v
 }
 
+
 // GetType returns the Type field value if set, zero value otherwise.
 func (o *Reference) GetType() string {
-	if o == nil || isNil(o.Type) {
+	if o == nil || IsNil(o.Type) {
 		var ret string
 		return ret
 	}
@@ -135,15 +144,15 @@ func (o *Reference) GetType() string {
 // GetTypeOk returns a tuple with the Type field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Reference) GetTypeOk() (*string, bool) {
-	if o == nil || isNil(o.Type) {
-    return nil, false
+	if o == nil || IsNil(o.Type) {
+		return nil, false
 	}
 	return o.Type, true
 }
 
 // HasType returns a boolean if a field has been set.
 func (o *Reference) HasType() bool {
-	if o != nil && !isNil(o.Type) {
+	if o != nil && !IsNil(o.Type) {
 		return true
 	}
 
@@ -157,7 +166,7 @@ func (o *Reference) SetType(v string) {
 
 // GetSelectionType returns the SelectionType field value if set, zero value otherwise.
 func (o *Reference) GetSelectionType() string {
-	if o == nil || isNil(o.SelectionType) {
+	if o == nil || IsNil(o.SelectionType) {
 		var ret string
 		return ret
 	}
@@ -167,15 +176,15 @@ func (o *Reference) GetSelectionType() string {
 // GetSelectionTypeOk returns a tuple with the SelectionType field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Reference) GetSelectionTypeOk() (*string, bool) {
-	if o == nil || isNil(o.SelectionType) {
-    return nil, false
+	if o == nil || IsNil(o.SelectionType) {
+		return nil, false
 	}
 	return o.SelectionType, true
 }
 
 // HasSelectionType returns a boolean if a field has been set.
 func (o *Reference) HasSelectionType() bool {
-	if o != nil && !isNil(o.SelectionType) {
+	if o != nil && !IsNil(o.SelectionType) {
 		return true
 	}
 
@@ -188,23 +197,82 @@ func (o *Reference) SetSelectionType(v string) {
 }
 
 func (o Reference) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if true {
-		toSerialize["gridId"] = o.GridId
-	}
-	if !isNil(o.BranchId) {
-		toSerialize["branchId"] = o.BranchId
-	}
-	if true {
-		toSerialize["columnId"] = o.ColumnId
-	}
-	if !isNil(o.Type) {
-		toSerialize["type"] = o.Type
-	}
-	if !isNil(o.SelectionType) {
-		toSerialize["selectionType"] = o.SelectionType
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o Reference) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	toSerialize["gridId"] = o.GridId
+	if !IsNil(o.BranchId) {
+		toSerialize["branchId"] = o.BranchId
+	}
+	toSerialize["columnId"] = o.ColumnId
+	if !IsNil(o.Type) {
+		toSerialize["type"] = o.Type
+	}
+	if !IsNil(o.SelectionType) {
+		toSerialize["selectionType"] = o.SelectionType
+	}
+	return toSerialize, nil
+}
+
+func (o *Reference) UnmarshalJSON(data []byte) (err error) {
+	// This validates that all required properties are included in the JSON object
+	// by unmarshalling the object into a generic map with string keys and checking
+	// that every required field exists as a key in the generic map.
+	requiredProperties := []string{
+		"gridId",
+		"columnId",
+	}
+
+	// defaultValueFuncMap captures the default values for required properties.
+	// These values are used when required properties are missing from the payload.
+	defaultValueFuncMap := map[string]func() interface{} {
+	}
+	var defaultValueApplied bool
+	allProperties := make(map[string]interface{})
+
+	err = json.Unmarshal(data, &allProperties)
+
+	if err != nil {
+		return err;
+	}
+
+	for _, requiredProperty := range(requiredProperties) {
+		if value, exists := allProperties[requiredProperty]; !exists || value == "" {
+			if _, ok := defaultValueFuncMap[requiredProperty]; ok {
+				allProperties[requiredProperty] = defaultValueFuncMap[requiredProperty]()
+				defaultValueApplied = true
+			}
+		}
+		if value, exists := allProperties[requiredProperty]; !exists || value == ""{
+			return fmt.Errorf("no value given for required property %v", requiredProperty)
+		}
+	}
+
+	if defaultValueApplied {
+		data, err = json.Marshal(allProperties)
+		if err != nil{
+			return err
+		}
+	}
+	varReference := _Reference{}
+
+	decoder := json.NewDecoder(bytes.NewReader(data))
+	decoder.DisallowUnknownFields()
+	err = decoder.Decode(&varReference)
+
+	if err != nil {
+		return err
+	}
+
+	*o = Reference(varReference)
+
+	return err
 }
 
 type NullableReference struct {

@@ -3,7 +3,7 @@ Gridly API
 
 Gridly API documentation
 
-API version: 5.9.0
+API version: 6.13.0
 Contact: support@gridly.com
 */
 
@@ -13,7 +13,12 @@ package gridly
 
 import (
 	"encoding/json"
+	"bytes"
+	"fmt"
 )
+
+// checks if the Formula type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &Formula{}
 
 // Formula struct for Formula
 type Formula struct {
@@ -21,6 +26,8 @@ type Formula struct {
 	AlwaysFormatResultValueAsList *bool `json:"alwaysFormatResultValueAsList,omitempty"`
 	DetectResultValueType *string `json:"detectResultValueType,omitempty"`
 }
+
+type _Formula Formula
 
 // NewFormula instantiates a new Formula object
 // This constructor will assign default values to properties that have it defined,
@@ -54,7 +61,7 @@ func (o *Formula) GetFormulaText() string {
 // and a boolean to check if the value has been set.
 func (o *Formula) GetFormulaTextOk() (*string, bool) {
 	if o == nil {
-    return nil, false
+		return nil, false
 	}
 	return &o.FormulaText, true
 }
@@ -64,9 +71,10 @@ func (o *Formula) SetFormulaText(v string) {
 	o.FormulaText = v
 }
 
+
 // GetAlwaysFormatResultValueAsList returns the AlwaysFormatResultValueAsList field value if set, zero value otherwise.
 func (o *Formula) GetAlwaysFormatResultValueAsList() bool {
-	if o == nil || isNil(o.AlwaysFormatResultValueAsList) {
+	if o == nil || IsNil(o.AlwaysFormatResultValueAsList) {
 		var ret bool
 		return ret
 	}
@@ -76,15 +84,15 @@ func (o *Formula) GetAlwaysFormatResultValueAsList() bool {
 // GetAlwaysFormatResultValueAsListOk returns a tuple with the AlwaysFormatResultValueAsList field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Formula) GetAlwaysFormatResultValueAsListOk() (*bool, bool) {
-	if o == nil || isNil(o.AlwaysFormatResultValueAsList) {
-    return nil, false
+	if o == nil || IsNil(o.AlwaysFormatResultValueAsList) {
+		return nil, false
 	}
 	return o.AlwaysFormatResultValueAsList, true
 }
 
 // HasAlwaysFormatResultValueAsList returns a boolean if a field has been set.
 func (o *Formula) HasAlwaysFormatResultValueAsList() bool {
-	if o != nil && !isNil(o.AlwaysFormatResultValueAsList) {
+	if o != nil && !IsNil(o.AlwaysFormatResultValueAsList) {
 		return true
 	}
 
@@ -98,7 +106,7 @@ func (o *Formula) SetAlwaysFormatResultValueAsList(v bool) {
 
 // GetDetectResultValueType returns the DetectResultValueType field value if set, zero value otherwise.
 func (o *Formula) GetDetectResultValueType() string {
-	if o == nil || isNil(o.DetectResultValueType) {
+	if o == nil || IsNil(o.DetectResultValueType) {
 		var ret string
 		return ret
 	}
@@ -108,15 +116,15 @@ func (o *Formula) GetDetectResultValueType() string {
 // GetDetectResultValueTypeOk returns a tuple with the DetectResultValueType field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Formula) GetDetectResultValueTypeOk() (*string, bool) {
-	if o == nil || isNil(o.DetectResultValueType) {
-    return nil, false
+	if o == nil || IsNil(o.DetectResultValueType) {
+		return nil, false
 	}
 	return o.DetectResultValueType, true
 }
 
 // HasDetectResultValueType returns a boolean if a field has been set.
 func (o *Formula) HasDetectResultValueType() bool {
-	if o != nil && !isNil(o.DetectResultValueType) {
+	if o != nil && !IsNil(o.DetectResultValueType) {
 		return true
 	}
 
@@ -129,17 +137,77 @@ func (o *Formula) SetDetectResultValueType(v string) {
 }
 
 func (o Formula) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if true {
-		toSerialize["formulaText"] = o.FormulaText
-	}
-	if !isNil(o.AlwaysFormatResultValueAsList) {
-		toSerialize["alwaysFormatResultValueAsList"] = o.AlwaysFormatResultValueAsList
-	}
-	if !isNil(o.DetectResultValueType) {
-		toSerialize["detectResultValueType"] = o.DetectResultValueType
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o Formula) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	toSerialize["formulaText"] = o.FormulaText
+	if !IsNil(o.AlwaysFormatResultValueAsList) {
+		toSerialize["alwaysFormatResultValueAsList"] = o.AlwaysFormatResultValueAsList
+	}
+	if !IsNil(o.DetectResultValueType) {
+		toSerialize["detectResultValueType"] = o.DetectResultValueType
+	}
+	return toSerialize, nil
+}
+
+func (o *Formula) UnmarshalJSON(data []byte) (err error) {
+	// This validates that all required properties are included in the JSON object
+	// by unmarshalling the object into a generic map with string keys and checking
+	// that every required field exists as a key in the generic map.
+	requiredProperties := []string{
+		"formulaText",
+	}
+
+	// defaultValueFuncMap captures the default values for required properties.
+	// These values are used when required properties are missing from the payload.
+	defaultValueFuncMap := map[string]func() interface{} {
+	}
+	var defaultValueApplied bool
+	allProperties := make(map[string]interface{})
+
+	err = json.Unmarshal(data, &allProperties)
+
+	if err != nil {
+		return err;
+	}
+
+	for _, requiredProperty := range(requiredProperties) {
+		if value, exists := allProperties[requiredProperty]; !exists || value == "" {
+			if _, ok := defaultValueFuncMap[requiredProperty]; ok {
+				allProperties[requiredProperty] = defaultValueFuncMap[requiredProperty]()
+				defaultValueApplied = true
+			}
+		}
+		if value, exists := allProperties[requiredProperty]; !exists || value == ""{
+			return fmt.Errorf("no value given for required property %v", requiredProperty)
+		}
+	}
+
+	if defaultValueApplied {
+		data, err = json.Marshal(allProperties)
+		if err != nil{
+			return err
+		}
+	}
+	varFormula := _Formula{}
+
+	decoder := json.NewDecoder(bytes.NewReader(data))
+	decoder.DisallowUnknownFields()
+	err = decoder.Decode(&varFormula)
+
+	if err != nil {
+		return err
+	}
+
+	*o = Formula(varFormula)
+
+	return err
 }
 
 type NullableFormula struct {

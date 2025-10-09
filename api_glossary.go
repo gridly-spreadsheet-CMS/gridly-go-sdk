@@ -3,7 +3,7 @@ Gridly API
 
 Gridly API documentation
 
-API version: 5.9.0
+API version: 6.13.0
 Contact: support@gridly.com
 */
 
@@ -14,10 +14,11 @@ package gridly
 import (
 	"bytes"
 	"context"
-	"io/ioutil"
+	"io"
 	"net/http"
 	"net/url"
 	"strings"
+	"os"
 	"reflect"
 )
 
@@ -73,6 +74,9 @@ func (a *GlossaryApiService) CreateExecute(r GlossaryApiCreateRequest) (*Glossar
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
+	if r.createGlossary == nil {
+		return localVarReturnValue, nil, reportError("createGlossary is required and must be specified")
+	}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{"application/json"}
@@ -117,9 +121,9 @@ func (a *GlossaryApiService) CreateExecute(r GlossaryApiCreateRequest) (*Glossar
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -147,7 +151,7 @@ func (a *GlossaryApiService) CreateExecute(r GlossaryApiCreateRequest) (*Glossar
 type GlossaryApiDeleteRequest struct {
 	ctx context.Context
 	ApiService *GlossaryApiService
-	id int64
+	id string
 }
 
 func (r GlossaryApiDeleteRequest) Execute() (*http.Response, error) {
@@ -161,7 +165,7 @@ Delete Delete a glossary
  @param id
  @return GlossaryApiDeleteRequest
 */
-func (a *GlossaryApiService) Delete(ctx context.Context, id int64) GlossaryApiDeleteRequest {
+func (a *GlossaryApiService) Delete(ctx context.Context, id string) GlossaryApiDeleteRequest {
 	return GlossaryApiDeleteRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -183,7 +187,7 @@ func (a *GlossaryApiService) DeleteExecute(r GlossaryApiDeleteRequest) (*http.Re
 	}
 
 	localVarPath := localBasePath + "/v1/glossaries/{id}"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -230,9 +234,9 @@ func (a *GlossaryApiService) DeleteExecute(r GlossaryApiDeleteRequest) (*http.Re
 		return localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarHTTPResponse, err
 	}
@@ -251,9 +255,9 @@ func (a *GlossaryApiService) DeleteExecute(r GlossaryApiDeleteRequest) (*http.Re
 type GlossaryApiExportFileRequest struct {
 	ctx context.Context
 	ApiService *GlossaryApiService
-	id int64
+	id string
 	fields *[]string
-	format *GlossaryExportFormat
+	format *ExportGlossaryFormat
 	langs *[]string
 }
 
@@ -262,7 +266,7 @@ func (r GlossaryApiExportFileRequest) Fields(fields []string) GlossaryApiExportF
 	return r
 }
 
-func (r GlossaryApiExportFileRequest) Format(format GlossaryExportFormat) GlossaryApiExportFileRequest {
+func (r GlossaryApiExportFileRequest) Format(format ExportGlossaryFormat) GlossaryApiExportFileRequest {
 	r.format = &format
 	return r
 }
@@ -272,7 +276,7 @@ func (r GlossaryApiExportFileRequest) Langs(langs []string) GlossaryApiExportFil
 	return r
 }
 
-func (r GlossaryApiExportFileRequest) Execute() (*http.Response, error) {
+func (r GlossaryApiExportFileRequest) Execute() (*os.File, *http.Response, error) {
 	return r.ApiService.ExportFileExecute(r)
 }
 
@@ -283,7 +287,7 @@ ExportFile Export a glossary
  @param id
  @return GlossaryApiExportFileRequest
 */
-func (a *GlossaryApiService) ExportFile(ctx context.Context, id int64) GlossaryApiExportFileRequest {
+func (a *GlossaryApiService) ExportFile(ctx context.Context, id string) GlossaryApiExportFileRequest {
 	return GlossaryApiExportFileRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -292,20 +296,22 @@ func (a *GlossaryApiService) ExportFile(ctx context.Context, id int64) GlossaryA
 }
 
 // Execute executes the request
-func (a *GlossaryApiService) ExportFileExecute(r GlossaryApiExportFileRequest) (*http.Response, error) {
+//  @return *os.File
+func (a *GlossaryApiService) ExportFileExecute(r GlossaryApiExportFileRequest) (*os.File, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
+		localVarReturnValue  *os.File
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "GlossaryApiService.ExportFile")
 	if err != nil {
-		return nil, &GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/v1/glossaries/{id}/export"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -316,24 +322,27 @@ func (a *GlossaryApiService) ExportFileExecute(r GlossaryApiExportFileRequest) (
 		if reflect.TypeOf(t).Kind() == reflect.Slice {
 			s := reflect.ValueOf(t)
 			for i := 0; i < s.Len(); i++ {
-				localVarQueryParams.Add("fields", parameterToString(s.Index(i), "multi"))
+				parameterAddToHeaderOrQuery(localVarQueryParams, "fields", s.Index(i).Interface(), "form", "multi")
 			}
 		} else {
-			localVarQueryParams.Add("fields", parameterToString(t, "multi"))
+			parameterAddToHeaderOrQuery(localVarQueryParams, "fields", t, "form", "multi")
 		}
 	}
 	if r.format != nil {
-		localVarQueryParams.Add("format", parameterToString(*r.format, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "format", r.format, "form", "")
+	} else {
+		var defaultValue ExportGlossaryFormat = "tbx"
+		r.format = &defaultValue
 	}
 	if r.langs != nil {
 		t := *r.langs
 		if reflect.TypeOf(t).Kind() == reflect.Slice {
 			s := reflect.ValueOf(t)
 			for i := 0; i < s.Len(); i++ {
-				localVarQueryParams.Add("langs", parameterToString(s.Index(i), "multi"))
+				parameterAddToHeaderOrQuery(localVarQueryParams, "langs", s.Index(i).Interface(), "form", "multi")
 			}
 		} else {
-			localVarQueryParams.Add("langs", parameterToString(t, "multi"))
+			parameterAddToHeaderOrQuery(localVarQueryParams, "langs", t, "form", "multi")
 		}
 	}
 	// to determine the Content-Type header
@@ -346,7 +355,7 @@ func (a *GlossaryApiService) ExportFileExecute(r GlossaryApiExportFileRequest) (
 	}
 
 	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{}
+	localVarHTTPHeaderAccepts := []string{"application/octet-stream"}
 
 	// set Accept header
 	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
@@ -369,19 +378,19 @@ func (a *GlossaryApiService) ExportFileExecute(r GlossaryApiExportFileRequest) (
 	}
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
-		return nil, err
+		return localVarReturnValue, nil, err
 	}
 
 	localVarHTTPResponse, err := a.client.callAPI(req)
 	if err != nil || localVarHTTPResponse == nil {
-		return localVarHTTPResponse, err
+		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
-		return localVarHTTPResponse, err
+		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
@@ -389,16 +398,25 @@ func (a *GlossaryApiService) ExportFileExecute(r GlossaryApiExportFileRequest) (
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
-		return localVarHTTPResponse, newErr
+		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
 
-	return localVarHTTPResponse, nil
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
 type GlossaryApiGetRequest struct {
 	ctx context.Context
 	ApiService *GlossaryApiService
-	id int64
+	id string
 }
 
 func (r GlossaryApiGetRequest) Execute() (*Glossary, *http.Response, error) {
@@ -406,13 +424,13 @@ func (r GlossaryApiGetRequest) Execute() (*Glossary, *http.Response, error) {
 }
 
 /*
-Get get glossary info
+Get Get glossary info
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param id
  @return GlossaryApiGetRequest
 */
-func (a *GlossaryApiService) Get(ctx context.Context, id int64) GlossaryApiGetRequest {
+func (a *GlossaryApiService) Get(ctx context.Context, id string) GlossaryApiGetRequest {
 	return GlossaryApiGetRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -436,7 +454,7 @@ func (a *GlossaryApiService) GetExecute(r GlossaryApiGetRequest) (*Glossary, *ht
 	}
 
 	localVarPath := localBasePath + "/v1/glossaries/{id}"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -483,9 +501,9 @@ func (a *GlossaryApiService) GetExecute(r GlossaryApiGetRequest) (*Glossary, *ht
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -594,9 +612,9 @@ func (a *GlossaryApiService) GetAllExecute(r GlossaryApiGetAllRequest) ([]Glossa
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -624,18 +642,18 @@ func (a *GlossaryApiService) GetAllExecute(r GlossaryApiGetAllRequest) ([]Glossa
 type GlossaryApiImportFileRequest struct {
 	ctx context.Context
 	ApiService *GlossaryApiService
-	id int64
-	importOption *ImportOption
-	file *map[string]interface{}
+	id string
+	importOption *ImportGlossaryOption
+	file *os.File
 }
 
-func (r GlossaryApiImportFileRequest) ImportOption(importOption ImportOption) GlossaryApiImportFileRequest {
+func (r GlossaryApiImportFileRequest) ImportOption(importOption ImportGlossaryOption) GlossaryApiImportFileRequest {
 	r.importOption = &importOption
 	return r
 }
 
-func (r GlossaryApiImportFileRequest) File(file map[string]interface{}) GlossaryApiImportFileRequest {
-	r.file = &file
+func (r GlossaryApiImportFileRequest) File(file *os.File) GlossaryApiImportFileRequest {
+	r.file = file
 	return r
 }
 
@@ -650,7 +668,7 @@ ImportFile Import a glossary from file
  @param id
  @return GlossaryApiImportFileRequest
 */
-func (a *GlossaryApiService) ImportFile(ctx context.Context, id int64) GlossaryApiImportFileRequest {
+func (a *GlossaryApiService) ImportFile(ctx context.Context, id string) GlossaryApiImportFileRequest {
 	return GlossaryApiImportFileRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -672,14 +690,17 @@ func (a *GlossaryApiService) ImportFileExecute(r GlossaryApiImportFileRequest) (
 	}
 
 	localVarPath := localBasePath + "/v1/glossaries/{id}/import"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
 
 	if r.importOption != nil {
-		localVarQueryParams.Add("importOption", parameterToString(*r.importOption, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "importOption", r.importOption, "form", "")
+	} else {
+		var defaultValue ImportGlossaryOption = "UPDATE"
+		r.importOption = &defaultValue
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{"multipart/form-data"}
@@ -691,15 +712,27 @@ func (a *GlossaryApiService) ImportFileExecute(r GlossaryApiImportFileRequest) (
 	}
 
 	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{}
+	localVarHTTPHeaderAccepts := []string{"application/json"}
 
 	// set Accept header
 	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
-	if r.file != nil {
-		localVarFormParams.Add("file", parameterToString(*r.file, ""))
+	var fileLocalVarFormFileName string
+	var fileLocalVarFileName     string
+	var fileLocalVarFileBytes    []byte
+
+	fileLocalVarFormFileName = "file"
+	fileLocalVarFile := r.file
+
+	if fileLocalVarFile != nil {
+		fbs, _ := io.ReadAll(fileLocalVarFile)
+
+		fileLocalVarFileBytes = fbs
+		fileLocalVarFileName = fileLocalVarFile.Name()
+		fileLocalVarFile.Close()
+		formFiles = append(formFiles, formFile{fileBytes: fileLocalVarFileBytes, fileName: fileLocalVarFileName, formFileName: fileLocalVarFormFileName})
 	}
 	if r.ctx != nil {
 		// API Key Authentication
@@ -725,9 +758,9 @@ func (a *GlossaryApiService) ImportFileExecute(r GlossaryApiImportFileRequest) (
 		return localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarHTTPResponse, err
 	}
@@ -746,7 +779,7 @@ func (a *GlossaryApiService) ImportFileExecute(r GlossaryApiImportFileRequest) (
 type GlossaryApiUpdateRequest struct {
 	ctx context.Context
 	ApiService *GlossaryApiService
-	id int64
+	id string
 	updateGlossary *UpdateGlossary
 }
 
@@ -755,7 +788,7 @@ func (r GlossaryApiUpdateRequest) UpdateGlossary(updateGlossary UpdateGlossary) 
 	return r
 }
 
-func (r GlossaryApiUpdateRequest) Execute() (*http.Response, error) {
+func (r GlossaryApiUpdateRequest) Execute() (*Glossary, *http.Response, error) {
 	return r.ApiService.UpdateExecute(r)
 }
 
@@ -766,7 +799,7 @@ Update Update glossary info
  @param id
  @return GlossaryApiUpdateRequest
 */
-func (a *GlossaryApiService) Update(ctx context.Context, id int64) GlossaryApiUpdateRequest {
+func (a *GlossaryApiService) Update(ctx context.Context, id string) GlossaryApiUpdateRequest {
 	return GlossaryApiUpdateRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -775,24 +808,29 @@ func (a *GlossaryApiService) Update(ctx context.Context, id int64) GlossaryApiUp
 }
 
 // Execute executes the request
-func (a *GlossaryApiService) UpdateExecute(r GlossaryApiUpdateRequest) (*http.Response, error) {
+//  @return Glossary
+func (a *GlossaryApiService) UpdateExecute(r GlossaryApiUpdateRequest) (*Glossary, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPut
 		localVarPostBody     interface{}
 		formFiles            []formFile
+		localVarReturnValue  *Glossary
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "GlossaryApiService.Update")
 	if err != nil {
-		return nil, &GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/v1/glossaries/{id}"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
+	if r.updateGlossary == nil {
+		return localVarReturnValue, nil, reportError("updateGlossary is required and must be specified")
+	}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{"application/json"}
@@ -804,7 +842,7 @@ func (a *GlossaryApiService) UpdateExecute(r GlossaryApiUpdateRequest) (*http.Re
 	}
 
 	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{}
+	localVarHTTPHeaderAccepts := []string{"application/json"}
 
 	// set Accept header
 	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
@@ -829,19 +867,19 @@ func (a *GlossaryApiService) UpdateExecute(r GlossaryApiUpdateRequest) (*http.Re
 	}
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
-		return nil, err
+		return localVarReturnValue, nil, err
 	}
 
 	localVarHTTPResponse, err := a.client.callAPI(req)
 	if err != nil || localVarHTTPResponse == nil {
-		return localVarHTTPResponse, err
+		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
-		return localVarHTTPResponse, err
+		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
@@ -849,8 +887,17 @@ func (a *GlossaryApiService) UpdateExecute(r GlossaryApiUpdateRequest) (*http.Re
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
-		return localVarHTTPResponse, newErr
+		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
 
-	return localVarHTTPResponse, nil
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
 }

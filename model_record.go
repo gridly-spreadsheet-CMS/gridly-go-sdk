@@ -3,7 +3,7 @@ Gridly API
 
 Gridly API documentation
 
-API version: 5.9.0
+API version: 6.13.0
 Contact: support@gridly.com
 */
 
@@ -15,6 +15,9 @@ import (
 	"encoding/json"
 	"time"
 )
+
+// checks if the Record type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &Record{}
 
 // Record struct for Record
 type Record struct {
@@ -44,7 +47,7 @@ func NewRecordWithDefaults() *Record {
 
 // GetId returns the Id field value if set, zero value otherwise.
 func (o *Record) GetId() string {
-	if o == nil || isNil(o.Id) {
+	if o == nil || IsNil(o.Id) {
 		var ret string
 		return ret
 	}
@@ -54,15 +57,15 @@ func (o *Record) GetId() string {
 // GetIdOk returns a tuple with the Id field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Record) GetIdOk() (*string, bool) {
-	if o == nil || isNil(o.Id) {
-    return nil, false
+	if o == nil || IsNil(o.Id) {
+		return nil, false
 	}
 	return o.Id, true
 }
 
 // HasId returns a boolean if a field has been set.
 func (o *Record) HasId() bool {
-	if o != nil && !isNil(o.Id) {
+	if o != nil && !IsNil(o.Id) {
 		return true
 	}
 
@@ -76,7 +79,7 @@ func (o *Record) SetId(v string) {
 
 // GetCells returns the Cells field value if set, zero value otherwise.
 func (o *Record) GetCells() []Cell {
-	if o == nil || isNil(o.Cells) {
+	if o == nil || IsNil(o.Cells) {
 		var ret []Cell
 		return ret
 	}
@@ -86,15 +89,15 @@ func (o *Record) GetCells() []Cell {
 // GetCellsOk returns a tuple with the Cells field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Record) GetCellsOk() ([]Cell, bool) {
-	if o == nil || isNil(o.Cells) {
-    return nil, false
+	if o == nil || IsNil(o.Cells) {
+		return nil, false
 	}
 	return o.Cells, true
 }
 
 // HasCells returns a boolean if a field has been set.
 func (o *Record) HasCells() bool {
-	if o != nil && !isNil(o.Cells) {
+	if o != nil && !IsNil(o.Cells) {
 		return true
 	}
 
@@ -108,7 +111,7 @@ func (o *Record) SetCells(v []Cell) {
 
 // GetLastModifiedBy returns the LastModifiedBy field value if set, zero value otherwise.
 func (o *Record) GetLastModifiedBy() string {
-	if o == nil || isNil(o.LastModifiedBy) {
+	if o == nil || IsNil(o.LastModifiedBy) {
 		var ret string
 		return ret
 	}
@@ -118,15 +121,15 @@ func (o *Record) GetLastModifiedBy() string {
 // GetLastModifiedByOk returns a tuple with the LastModifiedBy field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Record) GetLastModifiedByOk() (*string, bool) {
-	if o == nil || isNil(o.LastModifiedBy) {
-    return nil, false
+	if o == nil || IsNil(o.LastModifiedBy) {
+		return nil, false
 	}
 	return o.LastModifiedBy, true
 }
 
 // HasLastModifiedBy returns a boolean if a field has been set.
 func (o *Record) HasLastModifiedBy() bool {
-	if o != nil && !isNil(o.LastModifiedBy) {
+	if o != nil && !IsNil(o.LastModifiedBy) {
 		return true
 	}
 
@@ -140,7 +143,7 @@ func (o *Record) SetLastModifiedBy(v string) {
 
 // GetLastModifiedTime returns the LastModifiedTime field value if set, zero value otherwise.
 func (o *Record) GetLastModifiedTime() time.Time {
-	if o == nil || isNil(o.LastModifiedTime) {
+	if o == nil || IsNil(o.LastModifiedTime) {
 		var ret time.Time
 		return ret
 	}
@@ -150,15 +153,15 @@ func (o *Record) GetLastModifiedTime() time.Time {
 // GetLastModifiedTimeOk returns a tuple with the LastModifiedTime field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Record) GetLastModifiedTimeOk() (*time.Time, bool) {
-	if o == nil || isNil(o.LastModifiedTime) {
-    return nil, false
+	if o == nil || IsNil(o.LastModifiedTime) {
+		return nil, false
 	}
 	return o.LastModifiedTime, true
 }
 
 // HasLastModifiedTime returns a boolean if a field has been set.
 func (o *Record) HasLastModifiedTime() bool {
-	if o != nil && !isNil(o.LastModifiedTime) {
+	if o != nil && !IsNil(o.LastModifiedTime) {
 		return true
 	}
 
@@ -172,7 +175,7 @@ func (o *Record) SetLastModifiedTime(v time.Time) {
 
 // GetPath returns the Path field value if set, zero value otherwise.
 func (o *Record) GetPath() string {
-	if o == nil || isNil(o.Path) {
+	if o == nil || IsNil(o.Path) {
 		var ret string
 		return ret
 	}
@@ -182,15 +185,15 @@ func (o *Record) GetPath() string {
 // GetPathOk returns a tuple with the Path field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Record) GetPathOk() (*string, bool) {
-	if o == nil || isNil(o.Path) {
-    return nil, false
+	if o == nil || IsNil(o.Path) {
+		return nil, false
 	}
 	return o.Path, true
 }
 
 // HasPath returns a boolean if a field has been set.
 func (o *Record) HasPath() bool {
-	if o != nil && !isNil(o.Path) {
+	if o != nil && !IsNil(o.Path) {
 		return true
 	}
 
@@ -203,23 +206,31 @@ func (o *Record) SetPath(v string) {
 }
 
 func (o Record) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if !isNil(o.Id) {
-		toSerialize["id"] = o.Id
-	}
-	if !isNil(o.Cells) {
-		toSerialize["cells"] = o.Cells
-	}
-	if !isNil(o.LastModifiedBy) {
-		toSerialize["lastModifiedBy"] = o.LastModifiedBy
-	}
-	if !isNil(o.LastModifiedTime) {
-		toSerialize["lastModifiedTime"] = o.LastModifiedTime
-	}
-	if !isNil(o.Path) {
-		toSerialize["path"] = o.Path
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o Record) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.Id) {
+		toSerialize["id"] = o.Id
+	}
+	if !IsNil(o.Cells) {
+		toSerialize["cells"] = o.Cells
+	}
+	if !IsNil(o.LastModifiedBy) {
+		toSerialize["lastModifiedBy"] = o.LastModifiedBy
+	}
+	if !IsNil(o.LastModifiedTime) {
+		toSerialize["lastModifiedTime"] = o.LastModifiedTime
+	}
+	if !IsNil(o.Path) {
+		toSerialize["path"] = o.Path
+	}
+	return toSerialize, nil
 }
 
 type NullableRecord struct {

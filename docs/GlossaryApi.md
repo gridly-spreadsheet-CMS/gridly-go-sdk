@@ -7,7 +7,7 @@ Method | HTTP request | Description
 [**Create**](GlossaryApi.md#Create) | **Post** /v1/glossaries | Create a new glossary
 [**Delete**](GlossaryApi.md#Delete) | **Delete** /v1/glossaries/{id} | Delete a glossary
 [**ExportFile**](GlossaryApi.md#ExportFile) | **Get** /v1/glossaries/{id}/export | Export a glossary
-[**Get**](GlossaryApi.md#Get) | **Get** /v1/glossaries/{id} | get glossary info
+[**Get**](GlossaryApi.md#Get) | **Get** /v1/glossaries/{id} | Get glossary info
 [**GetAll**](GlossaryApi.md#GetAll) | **Get** /v1/glossaries | List all glossaries
 [**ImportFile**](GlossaryApi.md#ImportFile) | **Post** /v1/glossaries/{id}/import | Import a glossary from file
 [**Update**](GlossaryApi.md#Update) | **Put** /v1/glossaries/{id} | Update glossary info
@@ -26,24 +26,24 @@ Create a new glossary
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    gridly "./openapi"
+	"context"
+	"fmt"
+	"os"
+	gridly "github.com/gridly-spreadsheet-CMS/gridly-go-sdk"
 )
 
 func main() {
-    createGlossary := *gridly.NewCreateGlossary("Name_example") // CreateGlossary |  (optional)
+	createGlossary := *gridly.NewCreateGlossary("Name_example") // CreateGlossary | 
 
-    configuration := gridly.NewConfiguration()
-    apiClient := gridly.NewAPIClient(configuration)
-    resp, r, err := apiClient.GlossaryApi.Create(context.Background()).CreateGlossary(createGlossary).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `GlossaryApi.Create``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `Create`: Glossary
-    fmt.Fprintf(os.Stdout, "Response from `GlossaryApi.Create`: %v\n", resp)
+	configuration := gridly.NewConfiguration()
+	apiClient := gridly.NewAPIClient(configuration)
+	resp, r, err := apiClient.GlossaryApi.Create(context.Background()).CreateGlossary(createGlossary).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `GlossaryApi.Create``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `Create`: Glossary
+	fmt.Fprintf(os.Stdout, "Response from `GlossaryApi.Create`: %v\n", resp)
 }
 ```
 
@@ -90,22 +90,22 @@ Delete a glossary
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    gridly "./openapi"
+	"context"
+	"fmt"
+	"os"
+	gridly "github.com/gridly-spreadsheet-CMS/gridly-go-sdk"
 )
 
 func main() {
-    id := int64(789) // int64 | 
+	id := "id_example" // string | 
 
-    configuration := gridly.NewConfiguration()
-    apiClient := gridly.NewAPIClient(configuration)
-    resp, r, err := apiClient.GlossaryApi.Delete(context.Background(), id).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `GlossaryApi.Delete``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
+	configuration := gridly.NewConfiguration()
+	apiClient := gridly.NewAPIClient(configuration)
+	r, err := apiClient.GlossaryApi.Delete(context.Background(), id).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `GlossaryApi.Delete``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
 }
 ```
 
@@ -115,7 +115,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**id** | **int64** |  | 
+**id** | **string** |  | 
 
 ### Other Parameters
 
@@ -146,7 +146,7 @@ Name | Type | Description  | Notes
 
 ## ExportFile
 
-> ExportFile(ctx, id).Fields(fields).Format(format).Langs(langs).Execute()
+> *os.File ExportFile(ctx, id).Fields(fields).Format(format).Langs(langs).Execute()
 
 Export a glossary
 
@@ -156,25 +156,27 @@ Export a glossary
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    gridly "./openapi"
+	"context"
+	"fmt"
+	"os"
+	gridly "github.com/gridly-spreadsheet-CMS/gridly-go-sdk"
 )
 
 func main() {
-    id := int64(789) // int64 | 
-    fields := []string{"Inner_example"} // []string |  (optional)
-    format := gridly.GlossaryExportFormat("csv") // GlossaryExportFormat |  (optional)
-    langs := []string{"Inner_example"} // []string |  (optional)
+	id := "id_example" // string | 
+	fields := []string{"Inner_example"} // []string |  (optional)
+	format := gridly.ExportGlossaryFormat("csv") // ExportGlossaryFormat |  (optional) (default to "tbx")
+	langs := []string{"Inner_example"} // []string |  (optional)
 
-    configuration := gridly.NewConfiguration()
-    apiClient := gridly.NewAPIClient(configuration)
-    resp, r, err := apiClient.GlossaryApi.ExportFile(context.Background(), id).Fields(fields).Format(format).Langs(langs).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `GlossaryApi.ExportFile``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
+	configuration := gridly.NewConfiguration()
+	apiClient := gridly.NewAPIClient(configuration)
+	resp, r, err := apiClient.GlossaryApi.ExportFile(context.Background(), id).Fields(fields).Format(format).Langs(langs).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `GlossaryApi.ExportFile``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `ExportFile`: *os.File
+	fmt.Fprintf(os.Stdout, "Response from `GlossaryApi.ExportFile`: %v\n", resp)
 }
 ```
 
@@ -184,7 +186,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**id** | **int64** |  | 
+**id** | **string** |  | 
 
 ### Other Parameters
 
@@ -195,12 +197,12 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
  **fields** | **[]string** |  | 
- **format** | [**GlossaryExportFormat**](GlossaryExportFormat.md) |  | 
+ **format** | [**ExportGlossaryFormat**](ExportGlossaryFormat.md) |  | [default to &quot;tbx&quot;]
  **langs** | **[]string** |  | 
 
 ### Return type
 
- (empty response body)
+[***os.File**](*os.File.md)
 
 ### Authorization
 
@@ -209,7 +211,7 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: Not defined
+- **Accept**: application/octet-stream
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)
@@ -220,7 +222,7 @@ Name | Type | Description  | Notes
 
 > Glossary Get(ctx, id).Execute()
 
-get glossary info
+Get glossary info
 
 ### Example
 
@@ -228,24 +230,24 @@ get glossary info
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    gridly "./openapi"
+	"context"
+	"fmt"
+	"os"
+	gridly "github.com/gridly-spreadsheet-CMS/gridly-go-sdk"
 )
 
 func main() {
-    id := int64(789) // int64 | 
+	id := "id_example" // string | 
 
-    configuration := gridly.NewConfiguration()
-    apiClient := gridly.NewAPIClient(configuration)
-    resp, r, err := apiClient.GlossaryApi.Get(context.Background(), id).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `GlossaryApi.Get``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `Get`: Glossary
-    fmt.Fprintf(os.Stdout, "Response from `GlossaryApi.Get`: %v\n", resp)
+	configuration := gridly.NewConfiguration()
+	apiClient := gridly.NewAPIClient(configuration)
+	resp, r, err := apiClient.GlossaryApi.Get(context.Background(), id).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `GlossaryApi.Get``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `Get`: Glossary
+	fmt.Fprintf(os.Stdout, "Response from `GlossaryApi.Get`: %v\n", resp)
 }
 ```
 
@@ -255,7 +257,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**id** | **int64** |  | 
+**id** | **string** |  | 
 
 ### Other Parameters
 
@@ -296,23 +298,23 @@ List all glossaries
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    gridly "./openapi"
+	"context"
+	"fmt"
+	"os"
+	gridly "github.com/gridly-spreadsheet-CMS/gridly-go-sdk"
 )
 
 func main() {
 
-    configuration := gridly.NewConfiguration()
-    apiClient := gridly.NewAPIClient(configuration)
-    resp, r, err := apiClient.GlossaryApi.GetAll(context.Background()).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `GlossaryApi.GetAll``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `GetAll`: []Glossary
-    fmt.Fprintf(os.Stdout, "Response from `GlossaryApi.GetAll`: %v\n", resp)
+	configuration := gridly.NewConfiguration()
+	apiClient := gridly.NewAPIClient(configuration)
+	resp, r, err := apiClient.GlossaryApi.GetAll(context.Background()).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `GlossaryApi.GetAll``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `GetAll`: []Glossary
+	fmt.Fprintf(os.Stdout, "Response from `GlossaryApi.GetAll`: %v\n", resp)
 }
 ```
 
@@ -355,24 +357,24 @@ Import a glossary from file
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    gridly "./openapi"
+	"context"
+	"fmt"
+	"os"
+	gridly "github.com/gridly-spreadsheet-CMS/gridly-go-sdk"
 )
 
 func main() {
-    id := int64(789) // int64 | 
-    importOption := gridly.ImportOption("ADD") // ImportOption |  (optional)
-    file := map[string]interface{}{ ... } // map[string]interface{} |  (optional)
+	id := "id_example" // string | 
+	importOption := gridly.ImportGlossaryOption("ADD") // ImportGlossaryOption |  (optional) (default to "UPDATE")
+	file := os.NewFile(1234, "some_file") // *os.File |  (optional)
 
-    configuration := gridly.NewConfiguration()
-    apiClient := gridly.NewAPIClient(configuration)
-    resp, r, err := apiClient.GlossaryApi.ImportFile(context.Background(), id).ImportOption(importOption).File(file).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `GlossaryApi.ImportFile``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
+	configuration := gridly.NewConfiguration()
+	apiClient := gridly.NewAPIClient(configuration)
+	r, err := apiClient.GlossaryApi.ImportFile(context.Background(), id).ImportOption(importOption).File(file).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `GlossaryApi.ImportFile``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
 }
 ```
 
@@ -382,7 +384,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**id** | **int64** |  | 
+**id** | **string** |  | 
 
 ### Other Parameters
 
@@ -392,8 +394,8 @@ Other parameters are passed through a pointer to a apiImportFileRequest struct v
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **importOption** | [**ImportOption**](ImportOption.md) |  | 
- **file** | [**map[string]interface{}**](map[string]interface{}.md) |  | 
+ **importOption** | [**ImportGlossaryOption**](ImportGlossaryOption.md) |  | [default to &quot;UPDATE&quot;]
+ **file** | ***os.File** |  | 
 
 ### Return type
 
@@ -406,7 +408,7 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: multipart/form-data
-- **Accept**: Not defined
+- **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)
@@ -415,7 +417,7 @@ Name | Type | Description  | Notes
 
 ## Update
 
-> Update(ctx, id).UpdateGlossary(updateGlossary).Execute()
+> Glossary Update(ctx, id).UpdateGlossary(updateGlossary).Execute()
 
 Update glossary info
 
@@ -425,23 +427,25 @@ Update glossary info
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    gridly "./openapi"
+	"context"
+	"fmt"
+	"os"
+	gridly "github.com/gridly-spreadsheet-CMS/gridly-go-sdk"
 )
 
 func main() {
-    id := int64(789) // int64 | 
-    updateGlossary := *gridly.NewUpdateGlossary() // UpdateGlossary |  (optional)
+	id := "id_example" // string | 
+	updateGlossary := *gridly.NewUpdateGlossary() // UpdateGlossary | 
 
-    configuration := gridly.NewConfiguration()
-    apiClient := gridly.NewAPIClient(configuration)
-    resp, r, err := apiClient.GlossaryApi.Update(context.Background(), id).UpdateGlossary(updateGlossary).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `GlossaryApi.Update``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
+	configuration := gridly.NewConfiguration()
+	apiClient := gridly.NewAPIClient(configuration)
+	resp, r, err := apiClient.GlossaryApi.Update(context.Background(), id).UpdateGlossary(updateGlossary).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `GlossaryApi.Update``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `Update`: Glossary
+	fmt.Fprintf(os.Stdout, "Response from `GlossaryApi.Update`: %v\n", resp)
 }
 ```
 
@@ -451,7 +455,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**id** | **int64** |  | 
+**id** | **string** |  | 
 
 ### Other Parameters
 
@@ -465,7 +469,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
- (empty response body)
+[**Glossary**](Glossary.md)
 
 ### Authorization
 
@@ -474,7 +478,7 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: application/json
-- **Accept**: Not defined
+- **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)

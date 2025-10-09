@@ -3,7 +3,7 @@ Gridly API
 
 Gridly API documentation
 
-API version: 5.9.0
+API version: 6.13.0
 Contact: support@gridly.com
 */
 
@@ -14,6 +14,9 @@ package gridly
 import (
 	"encoding/json"
 )
+
+// checks if the ViewColumn type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &ViewColumn{}
 
 // ViewColumn struct for ViewColumn
 type ViewColumn struct {
@@ -26,10 +29,13 @@ type ViewColumn struct {
 	IsSource *bool `json:"isSource,omitempty"`
 	IsTarget *bool `json:"isTarget,omitempty"`
 	LanguageCode *string `json:"languageCode,omitempty"`
+	LanguageName *string `json:"languageName,omitempty"`
+	LengthLimitSetting *LengthLimitSetting `json:"lengthLimitSetting,omitempty"`
 	LocalizationType *string `json:"localizationType,omitempty"`
 	Name *string `json:"name,omitempty"`
 	NumberFormat *NumberFormat `json:"numberFormat,omitempty"`
 	Reference *ColumnReference `json:"reference,omitempty"`
+	Selection *Selection `json:"selection,omitempty"`
 	SelectionOptions []string `json:"selectionOptions,omitempty"`
 	Type *string `json:"type,omitempty"`
 }
@@ -53,7 +59,7 @@ func NewViewColumnWithDefaults() *ViewColumn {
 
 // GetId returns the Id field value if set, zero value otherwise.
 func (o *ViewColumn) GetId() string {
-	if o == nil || isNil(o.Id) {
+	if o == nil || IsNil(o.Id) {
 		var ret string
 		return ret
 	}
@@ -63,15 +69,15 @@ func (o *ViewColumn) GetId() string {
 // GetIdOk returns a tuple with the Id field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ViewColumn) GetIdOk() (*string, bool) {
-	if o == nil || isNil(o.Id) {
-    return nil, false
+	if o == nil || IsNil(o.Id) {
+		return nil, false
 	}
 	return o.Id, true
 }
 
 // HasId returns a boolean if a field has been set.
 func (o *ViewColumn) HasId() bool {
-	if o != nil && !isNil(o.Id) {
+	if o != nil && !IsNil(o.Id) {
 		return true
 	}
 
@@ -85,7 +91,7 @@ func (o *ViewColumn) SetId(v string) {
 
 // GetDateTimeFormat returns the DateTimeFormat field value if set, zero value otherwise.
 func (o *ViewColumn) GetDateTimeFormat() DateTimeFormat {
-	if o == nil || isNil(o.DateTimeFormat) {
+	if o == nil || IsNil(o.DateTimeFormat) {
 		var ret DateTimeFormat
 		return ret
 	}
@@ -95,15 +101,15 @@ func (o *ViewColumn) GetDateTimeFormat() DateTimeFormat {
 // GetDateTimeFormatOk returns a tuple with the DateTimeFormat field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ViewColumn) GetDateTimeFormatOk() (*DateTimeFormat, bool) {
-	if o == nil || isNil(o.DateTimeFormat) {
-    return nil, false
+	if o == nil || IsNil(o.DateTimeFormat) {
+		return nil, false
 	}
 	return o.DateTimeFormat, true
 }
 
 // HasDateTimeFormat returns a boolean if a field has been set.
 func (o *ViewColumn) HasDateTimeFormat() bool {
-	if o != nil && !isNil(o.DateTimeFormat) {
+	if o != nil && !IsNil(o.DateTimeFormat) {
 		return true
 	}
 
@@ -117,7 +123,7 @@ func (o *ViewColumn) SetDateTimeFormat(v DateTimeFormat) {
 
 // GetDependsOn returns the DependsOn field value if set, zero value otherwise.
 func (o *ViewColumn) GetDependsOn() string {
-	if o == nil || isNil(o.DependsOn) {
+	if o == nil || IsNil(o.DependsOn) {
 		var ret string
 		return ret
 	}
@@ -127,15 +133,15 @@ func (o *ViewColumn) GetDependsOn() string {
 // GetDependsOnOk returns a tuple with the DependsOn field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ViewColumn) GetDependsOnOk() (*string, bool) {
-	if o == nil || isNil(o.DependsOn) {
-    return nil, false
+	if o == nil || IsNil(o.DependsOn) {
+		return nil, false
 	}
 	return o.DependsOn, true
 }
 
 // HasDependsOn returns a boolean if a field has been set.
 func (o *ViewColumn) HasDependsOn() bool {
-	if o != nil && !isNil(o.DependsOn) {
+	if o != nil && !IsNil(o.DependsOn) {
 		return true
 	}
 
@@ -149,7 +155,7 @@ func (o *ViewColumn) SetDependsOn(v string) {
 
 // GetDescription returns the Description field value if set, zero value otherwise.
 func (o *ViewColumn) GetDescription() string {
-	if o == nil || isNil(o.Description) {
+	if o == nil || IsNil(o.Description) {
 		var ret string
 		return ret
 	}
@@ -159,15 +165,15 @@ func (o *ViewColumn) GetDescription() string {
 // GetDescriptionOk returns a tuple with the Description field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ViewColumn) GetDescriptionOk() (*string, bool) {
-	if o == nil || isNil(o.Description) {
-    return nil, false
+	if o == nil || IsNil(o.Description) {
+		return nil, false
 	}
 	return o.Description, true
 }
 
 // HasDescription returns a boolean if a field has been set.
 func (o *ViewColumn) HasDescription() bool {
-	if o != nil && !isNil(o.Description) {
+	if o != nil && !IsNil(o.Description) {
 		return true
 	}
 
@@ -181,7 +187,7 @@ func (o *ViewColumn) SetDescription(v string) {
 
 // GetEditable returns the Editable field value if set, zero value otherwise.
 func (o *ViewColumn) GetEditable() bool {
-	if o == nil || isNil(o.Editable) {
+	if o == nil || IsNil(o.Editable) {
 		var ret bool
 		return ret
 	}
@@ -191,15 +197,15 @@ func (o *ViewColumn) GetEditable() bool {
 // GetEditableOk returns a tuple with the Editable field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ViewColumn) GetEditableOk() (*bool, bool) {
-	if o == nil || isNil(o.Editable) {
-    return nil, false
+	if o == nil || IsNil(o.Editable) {
+		return nil, false
 	}
 	return o.Editable, true
 }
 
 // HasEditable returns a boolean if a field has been set.
 func (o *ViewColumn) HasEditable() bool {
-	if o != nil && !isNil(o.Editable) {
+	if o != nil && !IsNil(o.Editable) {
 		return true
 	}
 
@@ -213,7 +219,7 @@ func (o *ViewColumn) SetEditable(v bool) {
 
 // GetFormula returns the Formula field value if set, zero value otherwise.
 func (o *ViewColumn) GetFormula() Formula {
-	if o == nil || isNil(o.Formula) {
+	if o == nil || IsNil(o.Formula) {
 		var ret Formula
 		return ret
 	}
@@ -223,15 +229,15 @@ func (o *ViewColumn) GetFormula() Formula {
 // GetFormulaOk returns a tuple with the Formula field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ViewColumn) GetFormulaOk() (*Formula, bool) {
-	if o == nil || isNil(o.Formula) {
-    return nil, false
+	if o == nil || IsNil(o.Formula) {
+		return nil, false
 	}
 	return o.Formula, true
 }
 
 // HasFormula returns a boolean if a field has been set.
 func (o *ViewColumn) HasFormula() bool {
-	if o != nil && !isNil(o.Formula) {
+	if o != nil && !IsNil(o.Formula) {
 		return true
 	}
 
@@ -245,7 +251,7 @@ func (o *ViewColumn) SetFormula(v Formula) {
 
 // GetIsSource returns the IsSource field value if set, zero value otherwise.
 func (o *ViewColumn) GetIsSource() bool {
-	if o == nil || isNil(o.IsSource) {
+	if o == nil || IsNil(o.IsSource) {
 		var ret bool
 		return ret
 	}
@@ -255,15 +261,15 @@ func (o *ViewColumn) GetIsSource() bool {
 // GetIsSourceOk returns a tuple with the IsSource field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ViewColumn) GetIsSourceOk() (*bool, bool) {
-	if o == nil || isNil(o.IsSource) {
-    return nil, false
+	if o == nil || IsNil(o.IsSource) {
+		return nil, false
 	}
 	return o.IsSource, true
 }
 
 // HasIsSource returns a boolean if a field has been set.
 func (o *ViewColumn) HasIsSource() bool {
-	if o != nil && !isNil(o.IsSource) {
+	if o != nil && !IsNil(o.IsSource) {
 		return true
 	}
 
@@ -277,7 +283,7 @@ func (o *ViewColumn) SetIsSource(v bool) {
 
 // GetIsTarget returns the IsTarget field value if set, zero value otherwise.
 func (o *ViewColumn) GetIsTarget() bool {
-	if o == nil || isNil(o.IsTarget) {
+	if o == nil || IsNil(o.IsTarget) {
 		var ret bool
 		return ret
 	}
@@ -287,15 +293,15 @@ func (o *ViewColumn) GetIsTarget() bool {
 // GetIsTargetOk returns a tuple with the IsTarget field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ViewColumn) GetIsTargetOk() (*bool, bool) {
-	if o == nil || isNil(o.IsTarget) {
-    return nil, false
+	if o == nil || IsNil(o.IsTarget) {
+		return nil, false
 	}
 	return o.IsTarget, true
 }
 
 // HasIsTarget returns a boolean if a field has been set.
 func (o *ViewColumn) HasIsTarget() bool {
-	if o != nil && !isNil(o.IsTarget) {
+	if o != nil && !IsNil(o.IsTarget) {
 		return true
 	}
 
@@ -309,7 +315,7 @@ func (o *ViewColumn) SetIsTarget(v bool) {
 
 // GetLanguageCode returns the LanguageCode field value if set, zero value otherwise.
 func (o *ViewColumn) GetLanguageCode() string {
-	if o == nil || isNil(o.LanguageCode) {
+	if o == nil || IsNil(o.LanguageCode) {
 		var ret string
 		return ret
 	}
@@ -319,15 +325,15 @@ func (o *ViewColumn) GetLanguageCode() string {
 // GetLanguageCodeOk returns a tuple with the LanguageCode field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ViewColumn) GetLanguageCodeOk() (*string, bool) {
-	if o == nil || isNil(o.LanguageCode) {
-    return nil, false
+	if o == nil || IsNil(o.LanguageCode) {
+		return nil, false
 	}
 	return o.LanguageCode, true
 }
 
 // HasLanguageCode returns a boolean if a field has been set.
 func (o *ViewColumn) HasLanguageCode() bool {
-	if o != nil && !isNil(o.LanguageCode) {
+	if o != nil && !IsNil(o.LanguageCode) {
 		return true
 	}
 
@@ -339,9 +345,73 @@ func (o *ViewColumn) SetLanguageCode(v string) {
 	o.LanguageCode = &v
 }
 
+// GetLanguageName returns the LanguageName field value if set, zero value otherwise.
+func (o *ViewColumn) GetLanguageName() string {
+	if o == nil || IsNil(o.LanguageName) {
+		var ret string
+		return ret
+	}
+	return *o.LanguageName
+}
+
+// GetLanguageNameOk returns a tuple with the LanguageName field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ViewColumn) GetLanguageNameOk() (*string, bool) {
+	if o == nil || IsNil(o.LanguageName) {
+		return nil, false
+	}
+	return o.LanguageName, true
+}
+
+// HasLanguageName returns a boolean if a field has been set.
+func (o *ViewColumn) HasLanguageName() bool {
+	if o != nil && !IsNil(o.LanguageName) {
+		return true
+	}
+
+	return false
+}
+
+// SetLanguageName gets a reference to the given string and assigns it to the LanguageName field.
+func (o *ViewColumn) SetLanguageName(v string) {
+	o.LanguageName = &v
+}
+
+// GetLengthLimitSetting returns the LengthLimitSetting field value if set, zero value otherwise.
+func (o *ViewColumn) GetLengthLimitSetting() LengthLimitSetting {
+	if o == nil || IsNil(o.LengthLimitSetting) {
+		var ret LengthLimitSetting
+		return ret
+	}
+	return *o.LengthLimitSetting
+}
+
+// GetLengthLimitSettingOk returns a tuple with the LengthLimitSetting field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ViewColumn) GetLengthLimitSettingOk() (*LengthLimitSetting, bool) {
+	if o == nil || IsNil(o.LengthLimitSetting) {
+		return nil, false
+	}
+	return o.LengthLimitSetting, true
+}
+
+// HasLengthLimitSetting returns a boolean if a field has been set.
+func (o *ViewColumn) HasLengthLimitSetting() bool {
+	if o != nil && !IsNil(o.LengthLimitSetting) {
+		return true
+	}
+
+	return false
+}
+
+// SetLengthLimitSetting gets a reference to the given LengthLimitSetting and assigns it to the LengthLimitSetting field.
+func (o *ViewColumn) SetLengthLimitSetting(v LengthLimitSetting) {
+	o.LengthLimitSetting = &v
+}
+
 // GetLocalizationType returns the LocalizationType field value if set, zero value otherwise.
 func (o *ViewColumn) GetLocalizationType() string {
-	if o == nil || isNil(o.LocalizationType) {
+	if o == nil || IsNil(o.LocalizationType) {
 		var ret string
 		return ret
 	}
@@ -351,15 +421,15 @@ func (o *ViewColumn) GetLocalizationType() string {
 // GetLocalizationTypeOk returns a tuple with the LocalizationType field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ViewColumn) GetLocalizationTypeOk() (*string, bool) {
-	if o == nil || isNil(o.LocalizationType) {
-    return nil, false
+	if o == nil || IsNil(o.LocalizationType) {
+		return nil, false
 	}
 	return o.LocalizationType, true
 }
 
 // HasLocalizationType returns a boolean if a field has been set.
 func (o *ViewColumn) HasLocalizationType() bool {
-	if o != nil && !isNil(o.LocalizationType) {
+	if o != nil && !IsNil(o.LocalizationType) {
 		return true
 	}
 
@@ -373,7 +443,7 @@ func (o *ViewColumn) SetLocalizationType(v string) {
 
 // GetName returns the Name field value if set, zero value otherwise.
 func (o *ViewColumn) GetName() string {
-	if o == nil || isNil(o.Name) {
+	if o == nil || IsNil(o.Name) {
 		var ret string
 		return ret
 	}
@@ -383,15 +453,15 @@ func (o *ViewColumn) GetName() string {
 // GetNameOk returns a tuple with the Name field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ViewColumn) GetNameOk() (*string, bool) {
-	if o == nil || isNil(o.Name) {
-    return nil, false
+	if o == nil || IsNil(o.Name) {
+		return nil, false
 	}
 	return o.Name, true
 }
 
 // HasName returns a boolean if a field has been set.
 func (o *ViewColumn) HasName() bool {
-	if o != nil && !isNil(o.Name) {
+	if o != nil && !IsNil(o.Name) {
 		return true
 	}
 
@@ -405,7 +475,7 @@ func (o *ViewColumn) SetName(v string) {
 
 // GetNumberFormat returns the NumberFormat field value if set, zero value otherwise.
 func (o *ViewColumn) GetNumberFormat() NumberFormat {
-	if o == nil || isNil(o.NumberFormat) {
+	if o == nil || IsNil(o.NumberFormat) {
 		var ret NumberFormat
 		return ret
 	}
@@ -415,15 +485,15 @@ func (o *ViewColumn) GetNumberFormat() NumberFormat {
 // GetNumberFormatOk returns a tuple with the NumberFormat field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ViewColumn) GetNumberFormatOk() (*NumberFormat, bool) {
-	if o == nil || isNil(o.NumberFormat) {
-    return nil, false
+	if o == nil || IsNil(o.NumberFormat) {
+		return nil, false
 	}
 	return o.NumberFormat, true
 }
 
 // HasNumberFormat returns a boolean if a field has been set.
 func (o *ViewColumn) HasNumberFormat() bool {
-	if o != nil && !isNil(o.NumberFormat) {
+	if o != nil && !IsNil(o.NumberFormat) {
 		return true
 	}
 
@@ -437,7 +507,7 @@ func (o *ViewColumn) SetNumberFormat(v NumberFormat) {
 
 // GetReference returns the Reference field value if set, zero value otherwise.
 func (o *ViewColumn) GetReference() ColumnReference {
-	if o == nil || isNil(o.Reference) {
+	if o == nil || IsNil(o.Reference) {
 		var ret ColumnReference
 		return ret
 	}
@@ -447,15 +517,15 @@ func (o *ViewColumn) GetReference() ColumnReference {
 // GetReferenceOk returns a tuple with the Reference field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ViewColumn) GetReferenceOk() (*ColumnReference, bool) {
-	if o == nil || isNil(o.Reference) {
-    return nil, false
+	if o == nil || IsNil(o.Reference) {
+		return nil, false
 	}
 	return o.Reference, true
 }
 
 // HasReference returns a boolean if a field has been set.
 func (o *ViewColumn) HasReference() bool {
-	if o != nil && !isNil(o.Reference) {
+	if o != nil && !IsNil(o.Reference) {
 		return true
 	}
 
@@ -467,9 +537,41 @@ func (o *ViewColumn) SetReference(v ColumnReference) {
 	o.Reference = &v
 }
 
+// GetSelection returns the Selection field value if set, zero value otherwise.
+func (o *ViewColumn) GetSelection() Selection {
+	if o == nil || IsNil(o.Selection) {
+		var ret Selection
+		return ret
+	}
+	return *o.Selection
+}
+
+// GetSelectionOk returns a tuple with the Selection field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ViewColumn) GetSelectionOk() (*Selection, bool) {
+	if o == nil || IsNil(o.Selection) {
+		return nil, false
+	}
+	return o.Selection, true
+}
+
+// HasSelection returns a boolean if a field has been set.
+func (o *ViewColumn) HasSelection() bool {
+	if o != nil && !IsNil(o.Selection) {
+		return true
+	}
+
+	return false
+}
+
+// SetSelection gets a reference to the given Selection and assigns it to the Selection field.
+func (o *ViewColumn) SetSelection(v Selection) {
+	o.Selection = &v
+}
+
 // GetSelectionOptions returns the SelectionOptions field value if set, zero value otherwise.
 func (o *ViewColumn) GetSelectionOptions() []string {
-	if o == nil || isNil(o.SelectionOptions) {
+	if o == nil || IsNil(o.SelectionOptions) {
 		var ret []string
 		return ret
 	}
@@ -479,15 +581,15 @@ func (o *ViewColumn) GetSelectionOptions() []string {
 // GetSelectionOptionsOk returns a tuple with the SelectionOptions field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ViewColumn) GetSelectionOptionsOk() ([]string, bool) {
-	if o == nil || isNil(o.SelectionOptions) {
-    return nil, false
+	if o == nil || IsNil(o.SelectionOptions) {
+		return nil, false
 	}
 	return o.SelectionOptions, true
 }
 
 // HasSelectionOptions returns a boolean if a field has been set.
 func (o *ViewColumn) HasSelectionOptions() bool {
-	if o != nil && !isNil(o.SelectionOptions) {
+	if o != nil && !IsNil(o.SelectionOptions) {
 		return true
 	}
 
@@ -501,7 +603,7 @@ func (o *ViewColumn) SetSelectionOptions(v []string) {
 
 // GetType returns the Type field value if set, zero value otherwise.
 func (o *ViewColumn) GetType() string {
-	if o == nil || isNil(o.Type) {
+	if o == nil || IsNil(o.Type) {
 		var ret string
 		return ret
 	}
@@ -511,15 +613,15 @@ func (o *ViewColumn) GetType() string {
 // GetTypeOk returns a tuple with the Type field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ViewColumn) GetTypeOk() (*string, bool) {
-	if o == nil || isNil(o.Type) {
-    return nil, false
+	if o == nil || IsNil(o.Type) {
+		return nil, false
 	}
 	return o.Type, true
 }
 
 // HasType returns a boolean if a field has been set.
 func (o *ViewColumn) HasType() bool {
-	if o != nil && !isNil(o.Type) {
+	if o != nil && !IsNil(o.Type) {
 		return true
 	}
 
@@ -532,53 +634,70 @@ func (o *ViewColumn) SetType(v string) {
 }
 
 func (o ViewColumn) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if !isNil(o.Id) {
-		toSerialize["id"] = o.Id
-	}
-	if !isNil(o.DateTimeFormat) {
-		toSerialize["dateTimeFormat"] = o.DateTimeFormat
-	}
-	if !isNil(o.DependsOn) {
-		toSerialize["dependsOn"] = o.DependsOn
-	}
-	if !isNil(o.Description) {
-		toSerialize["description"] = o.Description
-	}
-	if !isNil(o.Editable) {
-		toSerialize["editable"] = o.Editable
-	}
-	if !isNil(o.Formula) {
-		toSerialize["formula"] = o.Formula
-	}
-	if !isNil(o.IsSource) {
-		toSerialize["isSource"] = o.IsSource
-	}
-	if !isNil(o.IsTarget) {
-		toSerialize["isTarget"] = o.IsTarget
-	}
-	if !isNil(o.LanguageCode) {
-		toSerialize["languageCode"] = o.LanguageCode
-	}
-	if !isNil(o.LocalizationType) {
-		toSerialize["localizationType"] = o.LocalizationType
-	}
-	if !isNil(o.Name) {
-		toSerialize["name"] = o.Name
-	}
-	if !isNil(o.NumberFormat) {
-		toSerialize["numberFormat"] = o.NumberFormat
-	}
-	if !isNil(o.Reference) {
-		toSerialize["reference"] = o.Reference
-	}
-	if !isNil(o.SelectionOptions) {
-		toSerialize["selectionOptions"] = o.SelectionOptions
-	}
-	if !isNil(o.Type) {
-		toSerialize["type"] = o.Type
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o ViewColumn) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.Id) {
+		toSerialize["id"] = o.Id
+	}
+	if !IsNil(o.DateTimeFormat) {
+		toSerialize["dateTimeFormat"] = o.DateTimeFormat
+	}
+	if !IsNil(o.DependsOn) {
+		toSerialize["dependsOn"] = o.DependsOn
+	}
+	if !IsNil(o.Description) {
+		toSerialize["description"] = o.Description
+	}
+	if !IsNil(o.Editable) {
+		toSerialize["editable"] = o.Editable
+	}
+	if !IsNil(o.Formula) {
+		toSerialize["formula"] = o.Formula
+	}
+	if !IsNil(o.IsSource) {
+		toSerialize["isSource"] = o.IsSource
+	}
+	if !IsNil(o.IsTarget) {
+		toSerialize["isTarget"] = o.IsTarget
+	}
+	if !IsNil(o.LanguageCode) {
+		toSerialize["languageCode"] = o.LanguageCode
+	}
+	if !IsNil(o.LanguageName) {
+		toSerialize["languageName"] = o.LanguageName
+	}
+	if !IsNil(o.LengthLimitSetting) {
+		toSerialize["lengthLimitSetting"] = o.LengthLimitSetting
+	}
+	if !IsNil(o.LocalizationType) {
+		toSerialize["localizationType"] = o.LocalizationType
+	}
+	if !IsNil(o.Name) {
+		toSerialize["name"] = o.Name
+	}
+	if !IsNil(o.NumberFormat) {
+		toSerialize["numberFormat"] = o.NumberFormat
+	}
+	if !IsNil(o.Reference) {
+		toSerialize["reference"] = o.Reference
+	}
+	if !IsNil(o.Selection) {
+		toSerialize["selection"] = o.Selection
+	}
+	if !IsNil(o.SelectionOptions) {
+		toSerialize["selectionOptions"] = o.SelectionOptions
+	}
+	if !IsNil(o.Type) {
+		toSerialize["type"] = o.Type
+	}
+	return toSerialize, nil
 }
 
 type NullableViewColumn struct {

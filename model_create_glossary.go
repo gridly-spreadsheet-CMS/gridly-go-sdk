@@ -3,7 +3,7 @@ Gridly API
 
 Gridly API documentation
 
-API version: 5.9.0
+API version: 6.13.0
 Contact: support@gridly.com
 */
 
@@ -13,15 +13,22 @@ package gridly
 
 import (
 	"encoding/json"
+	"bytes"
+	"fmt"
 )
+
+// checks if the CreateGlossary type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &CreateGlossary{}
 
 // CreateGlossary struct for CreateGlossary
 type CreateGlossary struct {
-	Name string `json:"name"`
+	Name string `json:"name" validate:"regexp=\\\\S"`
 	Description *string `json:"description,omitempty"`
 	Langs []string `json:"langs,omitempty"`
-	Projects []GlossaryProject `json:"projects,omitempty"`
+	ProjectIds []int64 `json:"projectIds,omitempty"`
 }
+
+type _CreateGlossary CreateGlossary
 
 // NewCreateGlossary instantiates a new CreateGlossary object
 // This constructor will assign default values to properties that have it defined,
@@ -55,7 +62,7 @@ func (o *CreateGlossary) GetName() string {
 // and a boolean to check if the value has been set.
 func (o *CreateGlossary) GetNameOk() (*string, bool) {
 	if o == nil {
-    return nil, false
+		return nil, false
 	}
 	return &o.Name, true
 }
@@ -65,9 +72,10 @@ func (o *CreateGlossary) SetName(v string) {
 	o.Name = v
 }
 
+
 // GetDescription returns the Description field value if set, zero value otherwise.
 func (o *CreateGlossary) GetDescription() string {
-	if o == nil || isNil(o.Description) {
+	if o == nil || IsNil(o.Description) {
 		var ret string
 		return ret
 	}
@@ -77,15 +85,15 @@ func (o *CreateGlossary) GetDescription() string {
 // GetDescriptionOk returns a tuple with the Description field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CreateGlossary) GetDescriptionOk() (*string, bool) {
-	if o == nil || isNil(o.Description) {
-    return nil, false
+	if o == nil || IsNil(o.Description) {
+		return nil, false
 	}
 	return o.Description, true
 }
 
 // HasDescription returns a boolean if a field has been set.
 func (o *CreateGlossary) HasDescription() bool {
-	if o != nil && !isNil(o.Description) {
+	if o != nil && !IsNil(o.Description) {
 		return true
 	}
 
@@ -99,7 +107,7 @@ func (o *CreateGlossary) SetDescription(v string) {
 
 // GetLangs returns the Langs field value if set, zero value otherwise.
 func (o *CreateGlossary) GetLangs() []string {
-	if o == nil || isNil(o.Langs) {
+	if o == nil || IsNil(o.Langs) {
 		var ret []string
 		return ret
 	}
@@ -109,15 +117,15 @@ func (o *CreateGlossary) GetLangs() []string {
 // GetLangsOk returns a tuple with the Langs field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CreateGlossary) GetLangsOk() ([]string, bool) {
-	if o == nil || isNil(o.Langs) {
-    return nil, false
+	if o == nil || IsNil(o.Langs) {
+		return nil, false
 	}
 	return o.Langs, true
 }
 
 // HasLangs returns a boolean if a field has been set.
 func (o *CreateGlossary) HasLangs() bool {
-	if o != nil && !isNil(o.Langs) {
+	if o != nil && !IsNil(o.Langs) {
 		return true
 	}
 
@@ -129,53 +137,113 @@ func (o *CreateGlossary) SetLangs(v []string) {
 	o.Langs = v
 }
 
-// GetProjects returns the Projects field value if set, zero value otherwise.
-func (o *CreateGlossary) GetProjects() []GlossaryProject {
-	if o == nil || isNil(o.Projects) {
-		var ret []GlossaryProject
+// GetProjectIds returns the ProjectIds field value if set, zero value otherwise.
+func (o *CreateGlossary) GetProjectIds() []int64 {
+	if o == nil || IsNil(o.ProjectIds) {
+		var ret []int64
 		return ret
 	}
-	return o.Projects
+	return o.ProjectIds
 }
 
-// GetProjectsOk returns a tuple with the Projects field value if set, nil otherwise
+// GetProjectIdsOk returns a tuple with the ProjectIds field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *CreateGlossary) GetProjectsOk() ([]GlossaryProject, bool) {
-	if o == nil || isNil(o.Projects) {
-    return nil, false
+func (o *CreateGlossary) GetProjectIdsOk() ([]int64, bool) {
+	if o == nil || IsNil(o.ProjectIds) {
+		return nil, false
 	}
-	return o.Projects, true
+	return o.ProjectIds, true
 }
 
-// HasProjects returns a boolean if a field has been set.
-func (o *CreateGlossary) HasProjects() bool {
-	if o != nil && !isNil(o.Projects) {
+// HasProjectIds returns a boolean if a field has been set.
+func (o *CreateGlossary) HasProjectIds() bool {
+	if o != nil && !IsNil(o.ProjectIds) {
 		return true
 	}
 
 	return false
 }
 
-// SetProjects gets a reference to the given []GlossaryProject and assigns it to the Projects field.
-func (o *CreateGlossary) SetProjects(v []GlossaryProject) {
-	o.Projects = v
+// SetProjectIds gets a reference to the given []int64 and assigns it to the ProjectIds field.
+func (o *CreateGlossary) SetProjectIds(v []int64) {
+	o.ProjectIds = v
 }
 
 func (o CreateGlossary) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if true {
-		toSerialize["name"] = o.Name
-	}
-	if !isNil(o.Description) {
-		toSerialize["description"] = o.Description
-	}
-	if !isNil(o.Langs) {
-		toSerialize["langs"] = o.Langs
-	}
-	if !isNil(o.Projects) {
-		toSerialize["projects"] = o.Projects
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o CreateGlossary) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	toSerialize["name"] = o.Name
+	if !IsNil(o.Description) {
+		toSerialize["description"] = o.Description
+	}
+	if !IsNil(o.Langs) {
+		toSerialize["langs"] = o.Langs
+	}
+	if !IsNil(o.ProjectIds) {
+		toSerialize["projectIds"] = o.ProjectIds
+	}
+	return toSerialize, nil
+}
+
+func (o *CreateGlossary) UnmarshalJSON(data []byte) (err error) {
+	// This validates that all required properties are included in the JSON object
+	// by unmarshalling the object into a generic map with string keys and checking
+	// that every required field exists as a key in the generic map.
+	requiredProperties := []string{
+		"name",
+	}
+
+	// defaultValueFuncMap captures the default values for required properties.
+	// These values are used when required properties are missing from the payload.
+	defaultValueFuncMap := map[string]func() interface{} {
+	}
+	var defaultValueApplied bool
+	allProperties := make(map[string]interface{})
+
+	err = json.Unmarshal(data, &allProperties)
+
+	if err != nil {
+		return err;
+	}
+
+	for _, requiredProperty := range(requiredProperties) {
+		if value, exists := allProperties[requiredProperty]; !exists || value == "" {
+			if _, ok := defaultValueFuncMap[requiredProperty]; ok {
+				allProperties[requiredProperty] = defaultValueFuncMap[requiredProperty]()
+				defaultValueApplied = true
+			}
+		}
+		if value, exists := allProperties[requiredProperty]; !exists || value == ""{
+			return fmt.Errorf("no value given for required property %v", requiredProperty)
+		}
+	}
+
+	if defaultValueApplied {
+		data, err = json.Marshal(allProperties)
+		if err != nil{
+			return err
+		}
+	}
+	varCreateGlossary := _CreateGlossary{}
+
+	decoder := json.NewDecoder(bytes.NewReader(data))
+	decoder.DisallowUnknownFields()
+	err = decoder.Decode(&varCreateGlossary)
+
+	if err != nil {
+		return err
+	}
+
+	*o = CreateGlossary(varCreateGlossary)
+
+	return err
 }
 
 type NullableCreateGlossary struct {

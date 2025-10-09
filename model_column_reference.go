@@ -3,7 +3,7 @@ Gridly API
 
 Gridly API documentation
 
-API version: 5.9.0
+API version: 6.13.0
 Contact: support@gridly.com
 */
 
@@ -14,6 +14,9 @@ package gridly
 import (
 	"encoding/json"
 )
+
+// checks if the ColumnReference type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &ColumnReference{}
 
 // ColumnReference struct for ColumnReference
 type ColumnReference struct {
@@ -43,7 +46,7 @@ func NewColumnReferenceWithDefaults() *ColumnReference {
 
 // GetGrid returns the Grid field value if set, zero value otherwise.
 func (o *ColumnReference) GetGrid() ReferencedGrid {
-	if o == nil || isNil(o.Grid) {
+	if o == nil || IsNil(o.Grid) {
 		var ret ReferencedGrid
 		return ret
 	}
@@ -53,15 +56,15 @@ func (o *ColumnReference) GetGrid() ReferencedGrid {
 // GetGridOk returns a tuple with the Grid field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ColumnReference) GetGridOk() (*ReferencedGrid, bool) {
-	if o == nil || isNil(o.Grid) {
-    return nil, false
+	if o == nil || IsNil(o.Grid) {
+		return nil, false
 	}
 	return o.Grid, true
 }
 
 // HasGrid returns a boolean if a field has been set.
 func (o *ColumnReference) HasGrid() bool {
-	if o != nil && !isNil(o.Grid) {
+	if o != nil && !IsNil(o.Grid) {
 		return true
 	}
 
@@ -75,7 +78,7 @@ func (o *ColumnReference) SetGrid(v ReferencedGrid) {
 
 // GetColumn returns the Column field value if set, zero value otherwise.
 func (o *ColumnReference) GetColumn() ReferencedColumn {
-	if o == nil || isNil(o.Column) {
+	if o == nil || IsNil(o.Column) {
 		var ret ReferencedColumn
 		return ret
 	}
@@ -85,15 +88,15 @@ func (o *ColumnReference) GetColumn() ReferencedColumn {
 // GetColumnOk returns a tuple with the Column field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ColumnReference) GetColumnOk() (*ReferencedColumn, bool) {
-	if o == nil || isNil(o.Column) {
-    return nil, false
+	if o == nil || IsNil(o.Column) {
+		return nil, false
 	}
 	return o.Column, true
 }
 
 // HasColumn returns a boolean if a field has been set.
 func (o *ColumnReference) HasColumn() bool {
-	if o != nil && !isNil(o.Column) {
+	if o != nil && !IsNil(o.Column) {
 		return true
 	}
 
@@ -107,7 +110,7 @@ func (o *ColumnReference) SetColumn(v ReferencedColumn) {
 
 // GetBranch returns the Branch field value if set, zero value otherwise.
 func (o *ColumnReference) GetBranch() ReferencedGrid {
-	if o == nil || isNil(o.Branch) {
+	if o == nil || IsNil(o.Branch) {
 		var ret ReferencedGrid
 		return ret
 	}
@@ -117,15 +120,15 @@ func (o *ColumnReference) GetBranch() ReferencedGrid {
 // GetBranchOk returns a tuple with the Branch field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ColumnReference) GetBranchOk() (*ReferencedGrid, bool) {
-	if o == nil || isNil(o.Branch) {
-    return nil, false
+	if o == nil || IsNil(o.Branch) {
+		return nil, false
 	}
 	return o.Branch, true
 }
 
 // HasBranch returns a boolean if a field has been set.
 func (o *ColumnReference) HasBranch() bool {
-	if o != nil && !isNil(o.Branch) {
+	if o != nil && !IsNil(o.Branch) {
 		return true
 	}
 
@@ -139,7 +142,7 @@ func (o *ColumnReference) SetBranch(v ReferencedGrid) {
 
 // GetType returns the Type field value if set, zero value otherwise.
 func (o *ColumnReference) GetType() string {
-	if o == nil || isNil(o.Type) {
+	if o == nil || IsNil(o.Type) {
 		var ret string
 		return ret
 	}
@@ -149,15 +152,15 @@ func (o *ColumnReference) GetType() string {
 // GetTypeOk returns a tuple with the Type field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ColumnReference) GetTypeOk() (*string, bool) {
-	if o == nil || isNil(o.Type) {
-    return nil, false
+	if o == nil || IsNil(o.Type) {
+		return nil, false
 	}
 	return o.Type, true
 }
 
 // HasType returns a boolean if a field has been set.
 func (o *ColumnReference) HasType() bool {
-	if o != nil && !isNil(o.Type) {
+	if o != nil && !IsNil(o.Type) {
 		return true
 	}
 
@@ -171,7 +174,7 @@ func (o *ColumnReference) SetType(v string) {
 
 // GetSelectionType returns the SelectionType field value if set, zero value otherwise.
 func (o *ColumnReference) GetSelectionType() string {
-	if o == nil || isNil(o.SelectionType) {
+	if o == nil || IsNil(o.SelectionType) {
 		var ret string
 		return ret
 	}
@@ -181,15 +184,15 @@ func (o *ColumnReference) GetSelectionType() string {
 // GetSelectionTypeOk returns a tuple with the SelectionType field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ColumnReference) GetSelectionTypeOk() (*string, bool) {
-	if o == nil || isNil(o.SelectionType) {
-    return nil, false
+	if o == nil || IsNil(o.SelectionType) {
+		return nil, false
 	}
 	return o.SelectionType, true
 }
 
 // HasSelectionType returns a boolean if a field has been set.
 func (o *ColumnReference) HasSelectionType() bool {
-	if o != nil && !isNil(o.SelectionType) {
+	if o != nil && !IsNil(o.SelectionType) {
 		return true
 	}
 
@@ -202,23 +205,31 @@ func (o *ColumnReference) SetSelectionType(v string) {
 }
 
 func (o ColumnReference) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if !isNil(o.Grid) {
-		toSerialize["grid"] = o.Grid
-	}
-	if !isNil(o.Column) {
-		toSerialize["column"] = o.Column
-	}
-	if !isNil(o.Branch) {
-		toSerialize["branch"] = o.Branch
-	}
-	if !isNil(o.Type) {
-		toSerialize["type"] = o.Type
-	}
-	if !isNil(o.SelectionType) {
-		toSerialize["selectionType"] = o.SelectionType
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o ColumnReference) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.Grid) {
+		toSerialize["grid"] = o.Grid
+	}
+	if !IsNil(o.Column) {
+		toSerialize["column"] = o.Column
+	}
+	if !IsNil(o.Branch) {
+		toSerialize["branch"] = o.Branch
+	}
+	if !IsNil(o.Type) {
+		toSerialize["type"] = o.Type
+	}
+	if !IsNil(o.SelectionType) {
+		toSerialize["selectionType"] = o.SelectionType
+	}
+	return toSerialize, nil
 }
 
 type NullableColumnReference struct {
