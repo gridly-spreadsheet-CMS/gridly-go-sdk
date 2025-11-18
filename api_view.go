@@ -1087,7 +1087,7 @@ type ViewApiMergeRequest struct {
 	destinationViewId *string
 	viewId string
 	mergeBranchRequest *MergeBranchRequest
-	mergeRecordOptions *[]MergeRecordOption
+	mergeRecordOptions *[]string
 }
 
 // destinationViewId
@@ -1102,7 +1102,7 @@ func (r ViewApiMergeRequest) MergeBranchRequest(mergeBranchRequest MergeBranchRe
 }
 
 // mergeRecordOptions
-func (r ViewApiMergeRequest) MergeRecordOptions(mergeRecordOptions []MergeRecordOption) ViewApiMergeRequest {
+func (r ViewApiMergeRequest) MergeRecordOptions(mergeRecordOptions []string) ViewApiMergeRequest {
 	r.mergeRecordOptions = &mergeRecordOptions
 	return r
 }
@@ -1168,7 +1168,7 @@ func (a *ViewApiService) MergeExecute(r ViewApiMergeRequest) (*Task, *http.Respo
 			parameterAddToHeaderOrQuery(localVarQueryParams, "mergeRecordOptions", t, "form", "multi")
 		}
 	} else {
-		var defaultValue []MergeRecordOption = []MergeRecordOption{}
+		var defaultValue []string = []string{}
 		r.mergeRecordOptions = &defaultValue
 	}
 	// to determine the Content-Type header

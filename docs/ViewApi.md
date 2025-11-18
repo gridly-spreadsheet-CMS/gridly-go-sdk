@@ -549,7 +549,7 @@ func main() {
 	destinationViewId := "destinationViewId_example" // string | destinationViewId
 	viewId := "viewId_example" // string | viewId
 	mergeBranchRequest := *gridly.NewMergeBranchRequest() // MergeBranchRequest | 
-	mergeRecordOptions := []gridly.MergeRecordOption{gridly.MergeRecordOption("add")} // []MergeRecordOption | mergeRecordOptions (optional) (default to [])
+	mergeRecordOptions := []string{"MergeRecordOptions_example"} // []string | mergeRecordOptions (optional) (default to [])
 
 	configuration := gridly.NewConfiguration()
 	apiClient := gridly.NewAPIClient(configuration)
@@ -581,7 +581,7 @@ Name | Type | Description  | Notes
  **destinationViewId** | **string** | destinationViewId | 
 
  **mergeBranchRequest** | [**MergeBranchRequest**](MergeBranchRequest.md) |  | 
- **mergeRecordOptions** | [**[]MergeRecordOption**](MergeRecordOption.md) | mergeRecordOptions | [default to []]
+ **mergeRecordOptions** | **[]string** | mergeRecordOptions | [default to []]
 
 ### Return type
 
