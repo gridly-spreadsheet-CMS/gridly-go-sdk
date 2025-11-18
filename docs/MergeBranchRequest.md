@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**MergeRecordOptions** | Pointer to **[]string** |  | [optional] 
+**MergeRecordOptions** | Pointer to [**[]MergeRecordOption**](MergeRecordOption.md) |  | [optional] 
 **MergeRecordConflicts** | Pointer to [**[]MergeRecordConflict**](MergeRecordConflict.md) |  | [optional] 
 **UseLastMergeResolve** | Pointer to **bool** |  | [optional] 
 **CheckMismatchedColumnType** | Pointer to **bool** |  | [optional] 
@@ -31,20 +31,20 @@ but it doesn't guarantee that properties required by API are set
 
 ### GetMergeRecordOptions
 
-`func (o *MergeBranchRequest) GetMergeRecordOptions() []string`
+`func (o *MergeBranchRequest) GetMergeRecordOptions() []MergeRecordOption`
 
 GetMergeRecordOptions returns the MergeRecordOptions field if non-nil, zero value otherwise.
 
 ### GetMergeRecordOptionsOk
 
-`func (o *MergeBranchRequest) GetMergeRecordOptionsOk() (*[]string, bool)`
+`func (o *MergeBranchRequest) GetMergeRecordOptionsOk() (*[]MergeRecordOption, bool)`
 
 GetMergeRecordOptionsOk returns a tuple with the MergeRecordOptions field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetMergeRecordOptions
 
-`func (o *MergeBranchRequest) SetMergeRecordOptions(v []string)`
+`func (o *MergeBranchRequest) SetMergeRecordOptions(v []MergeRecordOption)`
 
 SetMergeRecordOptions sets MergeRecordOptions field to given value.
 

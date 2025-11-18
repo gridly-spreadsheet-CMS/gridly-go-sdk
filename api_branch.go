@@ -531,13 +531,13 @@ type BranchApiGetDiffCheckRequest struct {
 	ctx context.Context
 	ApiService *BranchApiService
 	taskId string
-	mergeRecordOptions *[]string
+	mergeRecordOptions *[]MergeRecordOption
 	query *string
 	page *string
 }
 
 // mergeRecordOptions
-func (r BranchApiGetDiffCheckRequest) MergeRecordOptions(mergeRecordOptions []string) BranchApiGetDiffCheckRequest {
+func (r BranchApiGetDiffCheckRequest) MergeRecordOptions(mergeRecordOptions []MergeRecordOption) BranchApiGetDiffCheckRequest {
 	r.mergeRecordOptions = &mergeRecordOptions
 	return r
 }
@@ -608,7 +608,7 @@ func (a *BranchApiService) GetDiffCheckExecute(r BranchApiGetDiffCheckRequest) (
 			parameterAddToHeaderOrQuery(localVarQueryParams, "mergeRecordOptions", t, "form", "multi")
 		}
 	} else {
-		var defaultValue []string = []string{"add","update","delete"}
+		var defaultValue []MergeRecordOption = []MergeRecordOption{"add","update","delete"}
 		r.mergeRecordOptions = &defaultValue
 	}
 	if r.query != nil {
@@ -821,7 +821,7 @@ type BranchApiMergeRequest struct {
 	branchId string
 	destinationBranchId *string
 	mergeBranchRequest *MergeBranchRequest
-	mergeRecordOptions *[]string
+	mergeRecordOptions *[]MergeRecordOption
 }
 
 // destinationBranchId
@@ -836,7 +836,7 @@ func (r BranchApiMergeRequest) MergeBranchRequest(mergeBranchRequest MergeBranch
 }
 
 // mergeRecordOptions
-func (r BranchApiMergeRequest) MergeRecordOptions(mergeRecordOptions []string) BranchApiMergeRequest {
+func (r BranchApiMergeRequest) MergeRecordOptions(mergeRecordOptions []MergeRecordOption) BranchApiMergeRequest {
 	r.mergeRecordOptions = &mergeRecordOptions
 	return r
 }
@@ -902,7 +902,7 @@ func (a *BranchApiService) MergeExecute(r BranchApiMergeRequest) (*Task, *http.R
 			parameterAddToHeaderOrQuery(localVarQueryParams, "mergeRecordOptions", t, "form", "multi")
 		}
 	} else {
-		var defaultValue []string = []string{}
+		var defaultValue []MergeRecordOption = []MergeRecordOption{}
 		r.mergeRecordOptions = &defaultValue
 	}
 	// to determine the Content-Type header

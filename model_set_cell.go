@@ -20,6 +20,7 @@ var _ MappedNullable = &SetCell{}
 
 // SetCell struct for SetCell
 type SetCell struct {
+	Color *string `json:"color,omitempty"`
 	ColumnId *string `json:"columnId,omitempty"`
 	DependencyStatus *string `json:"dependencyStatus,omitempty"`
 	LengthLimit *int32 `json:"lengthLimit,omitempty"`
@@ -43,6 +44,38 @@ func NewSetCell() *SetCell {
 func NewSetCellWithDefaults() *SetCell {
 	this := SetCell{}
 	return &this
+}
+
+// GetColor returns the Color field value if set, zero value otherwise.
+func (o *SetCell) GetColor() string {
+	if o == nil || IsNil(o.Color) {
+		var ret string
+		return ret
+	}
+	return *o.Color
+}
+
+// GetColorOk returns a tuple with the Color field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *SetCell) GetColorOk() (*string, bool) {
+	if o == nil || IsNil(o.Color) {
+		return nil, false
+	}
+	return o.Color, true
+}
+
+// HasColor returns a boolean if a field has been set.
+func (o *SetCell) HasColor() bool {
+	if o != nil && !IsNil(o.Color) {
+		return true
+	}
+
+	return false
+}
+
+// SetColor gets a reference to the given string and assigns it to the Color field.
+func (o *SetCell) SetColor(v string) {
+	o.Color = &v
 }
 
 // GetColumnId returns the ColumnId field value if set, zero value otherwise.
@@ -247,6 +280,9 @@ func (o SetCell) MarshalJSON() ([]byte, error) {
 
 func (o SetCell) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
+	if !IsNil(o.Color) {
+		toSerialize["color"] = o.Color
+	}
 	if !IsNil(o.ColumnId) {
 		toSerialize["columnId"] = o.ColumnId
 	}

@@ -21,6 +21,7 @@ var _ MappedNullable = &Cell{}
 // Cell struct for Cell
 type Cell struct {
 	ColumnId *string `json:"columnId,omitempty"`
+	Color *string `json:"color,omitempty"`
 	DependencyStatus *string `json:"dependencyStatus,omitempty"`
 	LengthLimit *int32 `json:"lengthLimit,omitempty"`
 	LineLimit *int32 `json:"lineLimit,omitempty"`
@@ -79,6 +80,38 @@ func (o *Cell) HasColumnId() bool {
 // SetColumnId gets a reference to the given string and assigns it to the ColumnId field.
 func (o *Cell) SetColumnId(v string) {
 	o.ColumnId = &v
+}
+
+// GetColor returns the Color field value if set, zero value otherwise.
+func (o *Cell) GetColor() string {
+	if o == nil || IsNil(o.Color) {
+		var ret string
+		return ret
+	}
+	return *o.Color
+}
+
+// GetColorOk returns a tuple with the Color field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *Cell) GetColorOk() (*string, bool) {
+	if o == nil || IsNil(o.Color) {
+		return nil, false
+	}
+	return o.Color, true
+}
+
+// HasColor returns a boolean if a field has been set.
+func (o *Cell) HasColor() bool {
+	if o != nil && !IsNil(o.Color) {
+		return true
+	}
+
+	return false
+}
+
+// SetColor gets a reference to the given string and assigns it to the Color field.
+func (o *Cell) SetColor(v string) {
+	o.Color = &v
 }
 
 // GetDependencyStatus returns the DependencyStatus field value if set, zero value otherwise.
@@ -381,6 +414,9 @@ func (o Cell) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if !IsNil(o.ColumnId) {
 		toSerialize["columnId"] = o.ColumnId
+	}
+	if !IsNil(o.Color) {
+		toSerialize["color"] = o.Color
 	}
 	if !IsNil(o.DependencyStatus) {
 		toSerialize["dependencyStatus"] = o.DependencyStatus

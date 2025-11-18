@@ -91,6 +91,7 @@ docs/LqaModelApi.md
 docs/MergeBranchRequest.md
 docs/MergeCellConflict.md
 docs/MergeRecordConflict.md
+docs/MergeRecordOption.md
 docs/MovePath.md
 docs/NumberFormat.md
 docs/PathApi.md
@@ -204,6 +205,7 @@ model_lqa_model_sub_category_response.go
 model_merge_branch_request.go
 model_merge_cell_conflict.go
 model_merge_record_conflict.go
+model_merge_record_option.go
 model_move_path.go
 model_number_format.go
 model_path_list.go

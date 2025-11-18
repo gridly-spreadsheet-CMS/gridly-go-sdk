@@ -5,6 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **ColumnId** | Pointer to **string** |  | [optional] 
+**Color** | Pointer to **string** |  | [optional] 
 **DependencyStatus** | Pointer to **string** |  | [optional] 
 **LengthLimit** | Pointer to **int32** |  | [optional] 
 **LineLimit** | Pointer to **int32** |  | [optional] 
@@ -58,6 +59,31 @@ SetColumnId sets ColumnId field to given value.
 `func (o *Cell) HasColumnId() bool`
 
 HasColumnId returns a boolean if a field has been set.
+
+### GetColor
+
+`func (o *Cell) GetColor() string`
+
+GetColor returns the Color field if non-nil, zero value otherwise.
+
+### GetColorOk
+
+`func (o *Cell) GetColorOk() (*string, bool)`
+
+GetColorOk returns a tuple with the Color field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetColor
+
+`func (o *Cell) SetColor(v string)`
+
+SetColor sets Color field to given value.
+
+### HasColor
+
+`func (o *Cell) HasColor() bool`
+
+HasColor returns a boolean if a field has been set.
 
 ### GetDependencyStatus
 

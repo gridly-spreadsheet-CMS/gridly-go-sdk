@@ -72,7 +72,7 @@ func (a *ViewColumnApiService) AddExecute(r ViewColumnApiAddRequest) (*ViewColum
 	localVarPath := localBasePath + "/v1/views/{viewId}/columns/{columnId}/add"
 	localVarPath = strings.Replace(localVarPath, "{"+"columnId"+"}", url.PathEscape(parameterValueToString(r.columnId, "columnId")), -1)
 	localVarPath = strings.Replace(localVarPath, "{"+"viewId"+"}", url.PathEscape(parameterValueToString(r.viewId, "viewId")), -1)
-	
+
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}

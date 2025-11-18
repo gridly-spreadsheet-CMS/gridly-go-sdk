@@ -20,7 +20,7 @@ var _ MappedNullable = &MergeBranchRequest{}
 
 // MergeBranchRequest struct for MergeBranchRequest
 type MergeBranchRequest struct {
-	MergeRecordOptions []string `json:"mergeRecordOptions,omitempty"`
+	MergeRecordOptions []MergeRecordOption `json:"mergeRecordOptions,omitempty"`
 	MergeRecordConflicts []MergeRecordConflict `json:"mergeRecordConflicts,omitempty"`
 	UseLastMergeResolve *bool `json:"useLastMergeResolve,omitempty"`
 	CheckMismatchedColumnType *bool `json:"checkMismatchedColumnType,omitempty"`
@@ -45,9 +45,9 @@ func NewMergeBranchRequestWithDefaults() *MergeBranchRequest {
 }
 
 // GetMergeRecordOptions returns the MergeRecordOptions field value if set, zero value otherwise.
-func (o *MergeBranchRequest) GetMergeRecordOptions() []string {
+func (o *MergeBranchRequest) GetMergeRecordOptions() []MergeRecordOption {
 	if o == nil || IsNil(o.MergeRecordOptions) {
-		var ret []string
+		var ret []MergeRecordOption
 		return ret
 	}
 	return o.MergeRecordOptions
@@ -55,7 +55,7 @@ func (o *MergeBranchRequest) GetMergeRecordOptions() []string {
 
 // GetMergeRecordOptionsOk returns a tuple with the MergeRecordOptions field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *MergeBranchRequest) GetMergeRecordOptionsOk() ([]string, bool) {
+func (o *MergeBranchRequest) GetMergeRecordOptionsOk() ([]MergeRecordOption, bool) {
 	if o == nil || IsNil(o.MergeRecordOptions) {
 		return nil, false
 	}
@@ -71,8 +71,8 @@ func (o *MergeBranchRequest) HasMergeRecordOptions() bool {
 	return false
 }
 
-// SetMergeRecordOptions gets a reference to the given []string and assigns it to the MergeRecordOptions field.
-func (o *MergeBranchRequest) SetMergeRecordOptions(v []string) {
+// SetMergeRecordOptions gets a reference to the given []MergeRecordOption and assigns it to the MergeRecordOptions field.
+func (o *MergeBranchRequest) SetMergeRecordOptions(v []MergeRecordOption) {
 	o.MergeRecordOptions = v
 }
 
